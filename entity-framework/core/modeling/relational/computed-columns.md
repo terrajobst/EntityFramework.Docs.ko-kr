@@ -1,0 +1,55 @@
+---
+title: "계산된 열-EF 코어"
+author: rowanmiller
+ms.author: divega
+ms.date: 10/27/2016
+ms.assetid: e9d81f06-805d-45c9-97c2-3546df654829
+ms.technology: entity-framework-core
+uid: core/modeling/relational/computed-columns
+ms.openlocfilehash: 95312504286bd34cc666b5a21273835c4b35d379
+ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 10/27/2017
+---
+# <a name="computed-columns"></a>계산 열
+
+> [!NOTE]  
+> 이 섹션의 구성을 일반적 관계형 데이터베이스에 적용 됩니다. 여기에 표시 된 확장 메서드를 사용할 수 있는 관계형 데이터베이스 공급자를 설치할 때 (공유 인해 *Microsoft.EntityFrameworkCore.Relational* 패키지).
+
+계산된 열은 열 값은 데이터베이스에서 계산 됩니다. 계산된 열 해당 값을 계산 테이블의 다른 열을 사용할 수 있습니다.
+
+## <a name="conventions"></a>규칙
+
+규칙에 따라 계산된 열은 모델에서 만들어지지 않습니다.
+
+## <a name="data-annotations"></a>데이터 주석
+
+데이터 주석을 사용한 계산된 열을 구성할 수 있습니다.
+
+## <a name="fluent-api"></a>Fluent API
+
+속성을 계산된 열에 매핑해야 지정 하려면 Fluent API를 사용할 수 있습니다.
+
+<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/ComputedColumn.cs?highlight=9)] -->
+``` csharp
+class MyContext : DbContext
+{
+    public DbSet<Person> People { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Person>()
+            .Property(p => p.DisplayName)
+            .HasComputedColumnSql("[LastName] + ', ' + [FirstName]");
+    }
+}
+
+public class Person
+{
+    public int PersonId { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public string DisplayName { get; set; }
+}
+```
