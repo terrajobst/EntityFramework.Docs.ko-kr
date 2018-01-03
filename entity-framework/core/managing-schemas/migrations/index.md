@@ -4,11 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 3e75947e65b8e7707292fec8d74b170aff191395
-ms.sourcegitcommit: c72d85805db0aa95f980514a18381fdc5e17c786
+uid: core/managing-schemas/migrations/index
+ms.openlocfilehash: 24fbe344eba9b99929d905ac2b9e49c68a1a4323
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 12/22/2017
 ---
 <a name="migrations"></a>마이그레이션
 ==========
@@ -144,7 +145,7 @@ dotnet ef database update LastGoodMigration
 * 저장 프로시저
 * 트리거
 * 보기
-* 등
+* 기타
 
 <a name="generating-a-sql-script"></a>SQL 스크립트 생성
 -----------------------
