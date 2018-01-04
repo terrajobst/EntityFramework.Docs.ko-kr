@@ -6,25 +6,49 @@ ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 ms.technology: entity-framework-core
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 96abf3b94be3e1d19f833644f1c2f6f13fe0e730
-ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
+ms.openlocfilehash: de26e3b28851d4dc4e50f0490093dd05ad489b31
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2017
+ms.lasthandoff: 12/22/2017
 ---
-# <a name="configuring-a-dbcontext"></a><span data-ttu-id="7ace6-102">DbContext를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-102">Configuring a DbContext</span></span>
+# <a name="configuring-a-dbcontext"></a><span data-ttu-id="5dcb8-102">DbContext를 구성합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-102">Configuring a DbContext</span></span>
 
-<span data-ttu-id="7ace6-103">이 문서에서는 구성에 대 한 패턴을 `DbContext` 와 `DbContextOptions`합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-103">This article shows patterns for configuring a `DbContext` with `DbContextOptions`.</span></span> <span data-ttu-id="7ace6-104">옵션은 선택 하 고 데이터 저장소 구성에서 주로 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-104">Options are primarily used to select and configure the data store.</span></span>
+<span data-ttu-id="5dcb8-103">이 문서에서는 기본 패턴을 구성 하는 데는 `DbContext` 통해는 `DbContextOptions` 특정 EF 핵심 공급자 및 선택적 동작을 사용 하 여 데이터베이스에 연결 하 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-103">This article shows basic patterns for configuring a `DbContext` via a `DbContextOptions` to connect to a database using a specific EF Core provider and optional behaviors.</span></span>
 
-## <a name="configuring-dbcontextoptions"></a><span data-ttu-id="7ace6-105">DbContextOptions 구성</span><span class="sxs-lookup"><span data-stu-id="7ace6-105">Configuring DbContextOptions</span></span>
+## <a name="design-time-dbcontext-configuration"></a><span data-ttu-id="5dcb8-104">디자인 타임 DbContext 구성</span><span class="sxs-lookup"><span data-stu-id="5dcb8-104">Design-time DbContext configuration</span></span>
 
-<span data-ttu-id="7ace6-106">`DbContext`인스턴스가 있어야 `DbContextOptions` 실행할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-106">`DbContext` must have an instance of `DbContextOptions` in order to execute.</span></span> <span data-ttu-id="7ace6-107">이 재정의 하 여 구성할 수 있습니다 `OnConfiguring`, 또는 생성자 인수를 통해 외부적으로 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-107">This can be configured by overriding `OnConfiguring`, or supplied externally via a constructor argument.</span></span>
+<span data-ttu-id="5dcb8-105">EF 핵심 디자인 타임와 같은 도구 [마이그레이션](xref:core/managing-schemas/migrations/index) 검색 하 고 작업의 인스턴스를 만들 수 있어야는 `DbContext` 응용 프로그램의 엔터티 형식 및 데이터베이스 스키마에 매핑되는 방식에 대 한 세부 정보를 수집 하려면 쿼리 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-105">EF Core design-time tools such as [migrations](xref:core/managing-schemas/migrations/index) need to be able to discover and create a working instance of a `DbContext` type in order to gather details about the application's entity types and how they map to a database schema.</span></span> <span data-ttu-id="5dcb8-106">이 프로세스도 가능 자동으로 도구를 쉽게 만들 수는 `DbContext` 것은 구성 하는 것 마찬가지로 녀석 시 방법을 구성 하는 방식에서입니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-106">This process can be automatic as long as the tool can easily create the `DbContext` in such a way that it will be configured similarly to how it would be configured at runt-time.</span></span>
 
-<span data-ttu-id="7ace6-108">모두 사용 하는 경우 `OnConfiguring` 이므로 덧셈 및 제공 된 옵션에서 실행 되는 생성자 인수를 제공 하는 옵션을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-108">If both are used, `OnConfiguring` is executed on the supplied options, meaning it is additive and can overwrite  options supplied to the constructor argument.</span></span>
+<span data-ttu-id="5dcb8-107">임의의 패턴에 필요한 구성 정보를 제공 하는 동안는 `DbContext` 런타임에 사용 하 여 해야 하는 도구에서 작업할 수는 `DbContext` 디자인 타임에만 처리할 수 있는 제한 된 수의 패턴입니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-107">While any pattern that provides the necessary configuration information to the `DbContext` can work at run-time, tools that require using a `DbContext` at design-time can only work with a limited number of patterns.</span></span> <span data-ttu-id="5dcb8-108">더 자세하게에서 살펴보시기는 [디자인 타임 컨텍스트를 만들지](xref:core/miscellaneous/cli/dbcontext-creation) 섹션.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-108">These are covered in more detail in the [Design-Time Context Creation](xref:core/miscellaneous/cli/dbcontext-creation) section.</span></span>
 
-### <a name="constructor-argument"></a><span data-ttu-id="7ace6-109">생성자 인수</span><span class="sxs-lookup"><span data-stu-id="7ace6-109">Constructor argument</span></span>
+## <a name="configuring-dbcontextoptions"></a><span data-ttu-id="5dcb8-109">DbContextOptions 구성</span><span class="sxs-lookup"><span data-stu-id="5dcb8-109">Configuring DbContextOptions</span></span>
 
-<span data-ttu-id="7ace6-110">생성자를 사용 하 여 컨텍스트 코드</span><span class="sxs-lookup"><span data-stu-id="7ace6-110">Context code with constructor</span></span>
+<span data-ttu-id="5dcb8-110">`DbContext`인스턴스가 있어야 `DbContextOptions` 하려면 작업을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-110">`DbContext` must have an instance of `DbContextOptions` in order to perform any work.</span></span> <span data-ttu-id="5dcb8-111">`DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-111">The `DbContextOptions` instance carries configuration information such as:</span></span>
+
+- <span data-ttu-id="5dcb8-112">와 같은 메서드를 호출 하 여 데이터베이스 공급자를 사용 하려면 일반적으로 선택 `UseSqlServer` 또는`UseSqlite`</span><span class="sxs-lookup"><span data-stu-id="5dcb8-112">The database provider to use, typically selected by invoking a method such as `UseSqlServer` or `UseSqlite`</span></span>
+- <span data-ttu-id="5dcb8-113">모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법</span><span class="sxs-lookup"><span data-stu-id="5dcb8-113">Any necessary connection string or identifier of the database instance, typically passed as an argument to the provider selection method mentioned above</span></span>
+- <span data-ttu-id="5dcb8-114">일반적으로 내 공급자 선택 방법에 대 한 호출 또한 연결 된 공급자 수준의 선택적 동작 선택기</span><span class="sxs-lookup"><span data-stu-id="5dcb8-114">Any provider-level optional behavior selectors, typically also chained inside the call to the provider selection method</span></span>
+- <span data-ttu-id="5dcb8-115">일반적으로 공급자 선택기 메서드 전이나 후 연결 된 모든 일반 EF 코어 동작 선택기</span><span class="sxs-lookup"><span data-stu-id="5dcb8-115">Any general EF Core behavior selectors, typically chained after or before the provider selector method</span></span>
+
+<span data-ttu-id="5dcb8-116">다음 예제에서는 구성에서 `DbContextOptions` 에 포함 된 연결을 SQL Server 공급자를 사용 하는 `connectionString` 변수와 공급자 수준의 명령 제한 시간에 실행 되는 모든 쿼리는 EF 코어 동작 선택 기가 있는 `DbContext` [아니요 추적](xref:core/querying/tracking#no-tracking-queries) 기본적으로:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-116">The following example configures the `DbContextOptions` to use the SQL Server provider, a connection contained in the `connectionString` variable, a provider-level command timeout, and an EF Core behavior selector that makes all queries executed in the `DbContext` [no-tracking](xref:core/querying/tracking#no-tracking-queries) by default:</span></span>
+
+``` csharp
+optionsBuilder
+    .UseSqlServer(connectionString, providerOptions=>providerOptions.CommandTimeout(60))
+    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking);
+```
+
+> [!NOTE]  
+> <span data-ttu-id="5dcb8-117">공급자 선택기 메서드 및 위에서 언급 한 다른 동작 선택기 메서드는 확장명 메서드가 `DbContextOptions` 또는 공급자별 옵션 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-117">Provider selector methods and other behavior selector methods mentioned above are extension methods on `DbContextOptions` or provider-specific option classes.</span></span> <span data-ttu-id="5dcb8-118">네임 스페이스를 포함 해야 합니다. 이러한 확장 메서드에 대 한 액세스를 가지려면 (일반적으로 `Microsoft.EntityFrameworkCore`)에서 범위가 지정 되 고 프로젝트에 추가 패키지 종속성을 포함 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-118">In order to have access to these extension methods you may need to have a namespace (typically `Microsoft.EntityFrameworkCore`) in scope and include additional package dependencies in the project.</span></span>
+
+<span data-ttu-id="5dcb8-119">`DbContextOptions` 에 제공할 수는 `DbContext` 재정의 하 여는 `OnConfiguring` 메서드 또는 생성자 인수를 통해 외부적으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-119">The `DbContextOptions` can be supplied to the `DbContext` by overriding the `OnConfiguring` method or externally via a constructor argument.</span></span>
+
+<span data-ttu-id="5dcb8-120">모두 사용 되 면 `OnConfiguring` 마지막에 적용 하 고는 생성자 인수를 제공 하는 옵션을 덮어쓸 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-120">If both are used, `OnConfiguring` is applied last and can overwrite options supplied to the constructor argument.</span></span>
+
+### <a name="constructor-argument"></a><span data-ttu-id="5dcb8-121">생성자 인수</span><span class="sxs-lookup"><span data-stu-id="5dcb8-121">Constructor argument</span></span>
+
+<span data-ttu-id="5dcb8-122">생성자를 사용 하 여 상황에 맞는 코드:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-122">Context code with constructor:</span></span>
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -38,9 +62,9 @@ public class BloggingContext : DbContext
 ```
 
 > [!TIP]  
-> <span data-ttu-id="7ace6-111">DbContext의 기본 생성자는 또한의 비 제네릭 버전 허용 `DbContextOptions`합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-111">The base constructor of DbContext also accepts the non-generic version of `DbContextOptions`.</span></span> <span data-ttu-id="7ace6-112">비 제네릭 버전을 사용 하 여 여러 컨텍스트 유형으로 응용 프로그램에 대 한 권장 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-112">Using the non-generic version is not recommended for applications with multiple context types.</span></span>
+> <span data-ttu-id="5dcb8-123">DbContext의 기본 생성자는 또한의 비 제네릭 버전 허용 `DbContextOptions`, 하지만 비 제네릭 버전을 사용 하 여 여러 컨텍스트 유형으로 응용 프로그램에 대 한 권장 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-123">The base constructor of DbContext also accepts the non-generic version of `DbContextOptions`, but using the non-generic version is not recommended for applications with multiple context types.</span></span>
 
-<span data-ttu-id="7ace6-113">생성자 인수에서 초기화 하는 응용 프로그램 코드</span><span class="sxs-lookup"><span data-stu-id="7ace6-113">Application code to initialize from constructor argument</span></span>
+<span data-ttu-id="5dcb8-124">생성자 인수에서 초기화 하는 응용 프로그램 코드:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-124">Application code to initialize from constructor argument:</span></span>
 
 ``` csharp
 var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
@@ -52,12 +76,9 @@ using (var context = new BloggingContext(optionsBuilder.Options))
 }
 ```
 
-### <a name="onconfiguring"></a><span data-ttu-id="7ace6-114">OnConfiguring</span><span class="sxs-lookup"><span data-stu-id="7ace6-114">OnConfiguring</span></span>
+### <a name="onconfiguring"></a><span data-ttu-id="5dcb8-125">OnConfiguring</span><span class="sxs-lookup"><span data-stu-id="5dcb8-125">OnConfiguring</span></span>
 
-> [!WARNING]  
-> <span data-ttu-id="7ace6-115">`OnConfiguring`마지막 발생 하 고 DI 또는 생성자에서 가져온 옵션을 덮어쓸 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-115">`OnConfiguring` occurs last and can overwrite options obtained from DI or the constructor.</span></span> <span data-ttu-id="7ace6-116">이 방법은 (없는 경우 전체 데이터베이스를 대상)를 테스트 자체을 충분 하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-116">This approach does not lend itself to testing (unless you target the full database).</span></span>
-
-<span data-ttu-id="7ace6-117">사용 하 여 상황에 맞는 코드 `OnConfiguring`:</span><span class="sxs-lookup"><span data-stu-id="7ace6-117">Context code with `OnConfiguring`:</span></span>
+<span data-ttu-id="5dcb8-126">사용 하 여 상황에 맞는 코드 `OnConfiguring`:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-126">Context code with `OnConfiguring`:</span></span>
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -71,7 +92,7 @@ public class BloggingContext : DbContext
 }
 ```
 
-<span data-ttu-id="7ace6-118">으로 초기화 하려면 응용 프로그램 코드 `OnConfiguring`:</span><span class="sxs-lookup"><span data-stu-id="7ace6-118">Application code to initialize with `OnConfiguring`:</span></span>
+<span data-ttu-id="5dcb8-127">초기화 하는 응용 프로그램 코드는 `DbContext` 사용 하 여 `OnConfiguring`:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-127">Application code to initialize a `DbContext` that uses `OnConfiguring`:</span></span>
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -80,15 +101,18 @@ using (var context = new BloggingContext())
 }
 ```
 
-## <a name="using-dbcontext-with-dependency-injection"></a><span data-ttu-id="7ace6-119">종속성 주입 DbContext 사용</span><span class="sxs-lookup"><span data-stu-id="7ace6-119">Using DbContext with dependency injection</span></span>
+> [!TIP]
+> <span data-ttu-id="5dcb8-128">이 접근 방식에 적합 하지 않은 자체 테스트를 테스트 전체 데이터베이스를 대상으로 하지 않는 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-128">This approach does not lend itself to testing, unless the tests target the full database.</span></span>
 
-<span data-ttu-id="7ace6-120">EF를 사용 하 여 원하는 `DbContext` 종속성 주입 컨테이너를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-120">EF supports using `DbContext` with a dependency injection container.</span></span> <span data-ttu-id="7ace6-121">사용 하 여 서비스 컨테이너에 추가할 수 DbContext 형식 `AddDbContext<TContext>`합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-121">Your DbContext type can be added to the service container by using `AddDbContext<TContext>`.</span></span>
+### <a name="using-dbcontext-with-dependency-injection"></a><span data-ttu-id="5dcb8-129">종속성 주입 DbContext 사용</span><span class="sxs-lookup"><span data-stu-id="5dcb8-129">Using DbContext with dependency injection</span></span>
 
-<span data-ttu-id="7ace6-122">`AddDbContext`두 프로그램 DbContext 형식 하면 `TContext`, 및 `DbContextOptions<TContext>` 서비스 컨테이너에서 삽입에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-122">`AddDbContext` will make both your DbContext type, `TContext`, and `DbContextOptions<TContext>` available for injection from the service container.</span></span>
+<span data-ttu-id="5dcb8-130">EF 코어를 사용 하 여 원하는 `DbContext` 종속성 주입 컨테이너를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-130">EF Core supports using `DbContext` with a dependency injection container.</span></span> <span data-ttu-id="5dcb8-131">DbContext 형식을 사용 하 여 서비스 컨테이너에 추가할 수 있습니다는 `AddDbContext<TContext>` 메서드.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-131">Your DbContext type can be added to the service container by using the `AddDbContext<TContext>` method.</span></span>
 
-<span data-ttu-id="7ace6-123">참조 [더 많은 읽기](#more-reading) 아래 종속성 주입에 대 한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-123">See [more reading](#more-reading) below for information on dependency injection.</span></span>
+<span data-ttu-id="5dcb8-132">`AddDbContext<TContext>`모두에 DbContext 형식 하면 `TContext`, 및 해당 `DbContextOptions<TContext>` 서비스 컨테이너에서 삽입에 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-132">`AddDbContext<TContext>` will make both your DbContext type, `TContext`, and the corresponding `DbContextOptions<TContext>` available for injection from the service container.</span></span>
 
-<span data-ttu-id="7ace6-124">종속성 주입에 dbcontext를 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-124">Adding dbcontext to dependency injection</span></span>
+<span data-ttu-id="5dcb8-133">참조 [더 많은 읽기](#more-reading) 아래에 대 한 자세한 내용은 종속성 주입 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-133">See [more reading](#more-reading) below for additional information on dependency injection.</span></span>
+
+<span data-ttu-id="5dcb8-134">추가 `Dbcontext` 종속성 주입에:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-134">Adding the `Dbcontext` to dependency injection:</span></span>
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
@@ -97,9 +121,9 @@ public void ConfigureServices(IServiceCollection services)
 }
 ```
 
-<span data-ttu-id="7ace6-125">이 위해서는 추가 [생성자 인수](#constructor-argument) 를 허용 하 DbContext 형식으로 `DbContextOptions`합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-125">This requires adding a [constructor argument](#constructor-argument) to your DbContext type that accepts `DbContextOptions`.</span></span>
+<span data-ttu-id="5dcb8-135">이 위해서는 추가 [생성자 인수](#constructor-argument) 를 허용 하 DbContext 형식으로 `DbContextOptions<TContext>`합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-135">This requires adding a [constructor argument](#constructor-argument) to your DbContext type that accepts `DbContextOptions<TContext>`.</span></span>
 
-<span data-ttu-id="7ace6-126">상황에 맞는 코드:</span><span class="sxs-lookup"><span data-stu-id="7ace6-126">Context code:</span></span>
+<span data-ttu-id="5dcb8-136">상황에 맞는 코드:</span><span class="sxs-lookup"><span data-stu-id="5dcb8-136">Context code:</span></span>
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -112,13 +136,23 @@ public class BloggingContext : DbContext
 }
 ```
 
-<span data-ttu-id="7ace6-127">응용 프로그램 코드 (ASP.NET Core):</span><span class="sxs-lookup"><span data-stu-id="7ace6-127">Application code (in ASP.NET Core):</span></span>
+<span data-ttu-id="5dcb8-137">응용 프로그램 코드 (ASP.NET Core):</span><span class="sxs-lookup"><span data-stu-id="5dcb8-137">Application code (in ASP.NET Core):</span></span>
 
 ``` csharp
-public MyController(BloggingContext context)
+public class MyController
+{
+    private readonly BloggingContext _context;
+
+    public MyController(BloggingContext context)
+    {
+      _context = context;
+    }
+
+    ...
+}
 ```
 
-<span data-ttu-id="7ace6-128">응용 프로그램 코드 (ServiceProvider를 코드도 직접 사용):</span><span class="sxs-lookup"><span data-stu-id="7ace6-128">Application code (using ServiceProvider directly, less common):</span></span>
+<span data-ttu-id="5dcb8-138">응용 프로그램 코드 (ServiceProvider를 코드도 직접 사용):</span><span class="sxs-lookup"><span data-stu-id="5dcb8-138">Application code (using ServiceProvider directly, less common):</span></span>
 
 ``` csharp
 using (var context = serviceProvider.GetService<BloggingContext>())
@@ -129,35 +163,8 @@ using (var context = serviceProvider.GetService<BloggingContext>())
 var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
 
-## <a name="using-idesigntimedbcontextfactorytcontext"></a><span data-ttu-id="7ace6-129">사용 하 여`IDesignTimeDbContextFactory<TContext>`</span><span class="sxs-lookup"><span data-stu-id="7ace6-129">Using `IDesignTimeDbContextFactory<TContext>`</span></span>
+## <a name="more-reading"></a><span data-ttu-id="5dcb8-139">더 많은 읽기</span><span class="sxs-lookup"><span data-stu-id="5dcb8-139">More reading</span></span>
 
-<span data-ttu-id="7ace6-130">위의 옵션 대신, 있습니다 수 구현도 제공의 `IDesignTimeDbContextFactory<TContext>`합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-130">As an alternative to the options above, you may also provide an implementation of `IDesignTimeDbContextFactory<TContext>`.</span></span> <span data-ttu-id="7ace6-131">EF 도구가이 팩터리에서 사용 프로그램 DbContext의 인스턴스를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-131">EF tools can use this factory to create an instance of your DbContext.</span></span> <span data-ttu-id="7ace6-132">이 마이그레이션 등 특정 디자인 타임 환경을 제공 하기 위해 필요할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-132">This may be required in order to enable specific design-time experiences such as migrations.</span></span>
-
-<span data-ttu-id="7ace6-133">기본 public 생성자가 없는 컨텍스트 형식에 대 한 디자인 타임 서비스를 사용 하도록 설정 하려면이 인터페이스를 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-133">Implement this interface to enable design-time services for context types that do not have a public default constructor.</span></span> <span data-ttu-id="7ace6-134">디자인 타임 서비스를이 파생 컨텍스트로 동일한 어셈블리에 있는이 인터페이스의 구현 자동으로 검색 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-134">Design-time services will automatically discover implementations of this interface that are in the same assembly as the derived context.</span></span>
-
-<span data-ttu-id="7ace6-135">예제:</span><span class="sxs-lookup"><span data-stu-id="7ace6-135">Example:</span></span>
-
-``` csharp
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-
-namespace MyProject
-{
-    public class BloggingContextFactory : IDesignTimeDbContextFactory<BloggingContext>
-    {
-        public BloggingContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
-            optionsBuilder.UseSqlite("Data Source=blog.db");
-
-            return new BloggingContext(optionsBuilder.Options);
-        }
-    }
-}
-```
-
-## <a name="more-reading"></a><span data-ttu-id="7ace6-136">더 많은 읽기</span><span class="sxs-lookup"><span data-stu-id="7ace6-136">More reading</span></span>
-
-* <span data-ttu-id="7ace6-137">읽기 [ASP.NET 코어에서 시작](../get-started/aspnetcore/index.md) EF를 사용 하 여 ASP.NET 코어 대 한 자세한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-137">Read [Getting Started on ASP.NET Core](../get-started/aspnetcore/index.md) for more information on using EF with ASP.NET Core.</span></span>
-* <span data-ttu-id="7ace6-138">읽기 [종속성 주입](https://docs.asp.net/en/latest/fundamentals/dependency-injection.html) DI를 사용 하는 방법에 대 한 자세한 내용을 보려면 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-138">Read [Dependency Injection](https://docs.asp.net/en/latest/fundamentals/dependency-injection.html) to learn more about using DI.</span></span>
-* <span data-ttu-id="7ace6-139">읽기 [테스트](testing/index.md) 자세한 정보에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="7ace6-139">Read [Testing](testing/index.md) for more information.</span></span>
+* <span data-ttu-id="5dcb8-140">읽기 [ASP.NET 코어에서 시작](../get-started/aspnetcore/index.md) EF를 사용 하 여 ASP.NET 코어 대 한 자세한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-140">Read [Getting Started on ASP.NET Core](../get-started/aspnetcore/index.md) for more information on using EF with ASP.NET Core.</span></span>
+* <span data-ttu-id="5dcb8-141">읽기 [종속성 주입](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) DI를 사용 하는 방법에 대 한 자세한 내용을 보려면 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-141">Read [Dependency Injection](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection) to learn more about using DI.</span></span>
+* <span data-ttu-id="5dcb8-142">읽기 [테스트](testing/index.md) 자세한 정보에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="5dcb8-142">Read [Testing](testing/index.md) for more information.</span></span>
