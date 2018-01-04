@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 ms.technology: entity-framework-core
 uid: core/querying/raw-sql
-ms.openlocfilehash: ddf3a841800684688d50dcf9323f4d83c851222f
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 79894c7b9fd9e40cdf14460abf5d872ee2f4b9f0
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
 Entity Framework Core를 사용 하면 관계형 데이터베이스와 함께 사용할 때 원시 SQL 쿼리로 드롭다운 수 있습니다. LINQ를 사용 하 여 수행 하려는 쿼리를 표현할 수 없는 경우 또는 비효율적인 SQL 데이터베이스에 전송 되는 줄여주는 LINQ 쿼리를 사용 하는 경우에 유용할 수 있습니다.
 
 > [!TIP]  
-> 이 문서를 볼 수 있습니다 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) GitHub에서 합니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 ## <a name="limitations"></a>제한 사항
 
@@ -29,6 +29,13 @@ Entity Framework Core를 사용 하면 관계형 데이터베이스와 함께 �
 * 결과 집합의 열 이름 속성에 매핑되는 열 이름이 일치 해야 합니다. 이 옵션은 원시 SQL 쿼리에 대 한 속성/열 매핑이 무시 되었습니다 여기서 EF6 다릅니다 및 결과 집합 열 이름은 속성 이름과 일치 해야 합니다.
 
 * SQL 쿼리는 관련된 데이터를 포함할 수 없습니다. 그러나 대부분의 경우에서 구성할 수 있습니다를 사용 하 여 쿼리를 기반으로 `Include` 관련된 데이터를 반환 하도록 연산자 (참조 [관련된 데이터를 포함 하 여](#including-related-data)).
+
+* `SELECT`이 메서드에 전달 된 문은 일반적으로 구성 가능 해야: 서버에서 추가 쿼리 연산자를 평가 해야 하는 경우 EF 코어 (예: 다음에 적용 하는 LINQ 연산자를 변환 하 `FromSql`), 제공 된 SQL 하위 쿼리로 간주 합니다. 즉, 모든 문자 또는 유효 하지 않은 하위 쿼리,와 같은 옵션 전달 된 sql 문을 포함 하지 않아야 합니다.
+  * 후행 세미콜론
+  * SQL Server에서 후행 쿼리 수준 힌트, 예:`OPTION (HASH JOIN)`
+  * SQL Server에는 `ORDER BY` 은 하지의 함께 사용 하는 절 `TOP 100 PERCENT` 에 `SELECT` 절
+
+* 이외의 다른 SQL 문을 `SELECT` 으로 구성할 수 없는 자동으로 인식 됩니다. 이 인해 저장된 프로시저의 전체 결과 항상 클라이언트에 반환 하 고 모든 LINQ 연산자 뒤에 적용 `FromSql` 메모리에 평가 됩니다. 
 
 ## <a name="basic-raw-sql-queries"></a>기본 원시 SQL 쿼리
 

@@ -6,11 +6,11 @@ ms.date: 8/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 ms.technology: entity-framework-core
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: 0bd1ea2476621f826cca7d4a526a49a1b902acf8
-ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
+ms.openlocfilehash: 380f27c9f00943a2909ec7b876e151572a67dc37
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2017
+ms.lasthandoff: 12/22/2017
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>EF 코어 2.0 이전 버전에서 응용 프로그램 업그레이드
 
@@ -31,9 +31,9 @@ EF 코어 2.0으로 기존 응용 프로그램을 업데이트 해야 할 수 �
 1. 특히 참조는 [응용 프로그램의 서비스 공급자를 초기화 하기 위한 새 패턴](#new-way-of-getting-application-services) 아래에서 설명 합니다.
 
 > [!TIP]  
-> 이 새 패턴을 적극 권장 하 고 Entity Framework Core 마이그레이션 같은 제품 기능에 대 한 작업 순서에 필요한 응용 프로그램을 2.0 업데이트를 도입 합니다. 다른 일반적인 대신 [구현 *IDesignTimeDbContextFactory\<TContext >*](configuring-dbcontext.md#using-idesigntimedbcontextfactorytcontext)합니다.
+> 이 새 패턴을 적극 권장 하 고 Entity Framework Core 마이그레이션 같은 제품 기능에 대 한 작업 순서에 필요한 응용 프로그램을 2.0 업데이트를 도입 합니다. 다른 일반적인 대신 [구현 *IDesignTimeDbContextFactory\<TContext >*](xref:core/miscellaneous/cli/dbcontext-creation#from-a-design-time-factory)합니다.
 
-2. ASP.NET Core 2.0을 대상으로 응용 프로그램 EF 코어 2.0을 사용 하 여 제 3 자 데이터베이스 공급자 외에도 추가 종속성 없이 수 있습니다. 그러나 이전 버전의 ASP.NET 코어를 대상으로 응용 프로그램 EF 코어 2.0을 사용 하려면 ASP.NET 코어 2.0으로 업그레이드 해야 합니다. ASP.NET Core 응용 프로그램을 2.0 업그레이드에 대 한 자세한 내용은 참조 [주체에서 ASP.NET Core 설명서](https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/)합니다.
+2. ASP.NET Core 2.0을 대상으로 하는 응용 프로그램은 추가적인 종속성 없이 타사 데이터베이스 공급자와 함께 EF Core 2.0을 사용할 수 있습니다. 그러나 이전 버전의 ASP.NET 코어를 대상으로 응용 프로그램 EF 코어 2.0을 사용 하려면 ASP.NET 코어 2.0으로 업그레이드 해야 합니다. ASP.NET Core 응용 프로그램을 2.0 업그레이드에 대 한 자세한 내용은 참조 [주체에서 ASP.NET Core 설명서](https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/)합니다.
 
 ## <a name="breaking-changes"></a>주요 변경 사항
 
@@ -102,9 +102,9 @@ EF 팀에서 제공 되는 SQL Server 및 SQLite 공급자 및 2.0 버전을 사
 
 참고: 이러한 변경 내용은 대부분의 응용 프로그램 코드가 영향을 주지 않아야 합니다.
 
-로 보낸 메시지에 대 한 이벤트 Id는 [ILogger](https://github.com/aspnet/Logging/blob/dev/src/Microsoft.Extensions.Logging.Abstractions/ILogger.cs) 2.0에서 변경 되었습니다. 이벤트 Id는 이제 EF 핵심 코드에서 고유 합니다. 이러한 메시지 이제도 표준 패턴을 따가 구조적된 로깅 예를 들어 MVC 사용 합니다.
+로 보낸 메시지에 대 한 이벤트 Id는 [ILogger](https://github.com/aspnet/Logging/blob/dev/src/Microsoft.Extensions.Logging.Abstractions/ILogger.cs) 2.0에서 변경 되었습니다. 이제 이벤트 ID가 EF Core 코드 전체에서 고유합니다. 또한 이 메시지가 MVC 등에서 사용되는 구조화된 로깅의 표준 패턴을 따릅니다.
 
-로 거 범주 함께 변경 합니다. 이제는 잘 알려진 범주 집합을 통해 액세스는 [DbLoggerCategory](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/DbLoggerCategory.cs)합니다.
+로거 범주도 변경되었습니다. 이제 [DbLoggerCategory](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/DbLoggerCategory.cs)를 통해 액세스되는 잘 알려진 범주 집합입니다.
 
 [DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) 해당 이벤트 이제 사용 하 여 동일한 이벤트 ID 이름이 `ILogger` 메시지입니다. 이벤트 페이로드는 모든 명목 형식에서 파생 된 [EventData](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Diagnostics/EventData.cs)합니다.
 
@@ -114,7 +114,7 @@ Id도 Microsoft.EntityFrameworkCore.Infraestructure에서 새 Microsoft.EntityFr
 
 ### <a name="ef-core-relational-metadata-api-changes"></a>EF 코어 관계형 메타 데이터 API 변경
 
-EF 코어 2.0은 이제 다른 빌드할 [IModel](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IModel.cs) 사용 중인 각 다른 공급자에 대 한 합니다. 이 일반적으로 응용 프로그램에 투명 합니다. 액세스 하는 모든 하위 수준의 메타 데이터 Api의 단순화 된 버전 때문에이 _일반적인 관계형 메타 데이터 개념_ 항상 호출을 통해 이루어집니다 `.Relational` 대신 `.SqlServer`, `.Sqlite`등입니다. 예를 들어 1.1.x 다음과 같은 코드:
+이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 응용 프로그램에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 _공통 관계형 메타데이터 개념_에 대한 모든 액세스가 항상 `.SqlServer`, `.Sqlite` 등이 아닌 `.Relational` 호출을 통해 이루어집니다. 예를 들어 1.1.x 다음과 같은 코드:
 
 ``` csharp
 var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName;

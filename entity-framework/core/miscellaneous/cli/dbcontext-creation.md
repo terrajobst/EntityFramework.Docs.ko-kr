@@ -4,28 +4,37 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/27/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 5fcd9e362d76127e7acadd9e552ef3ac90967a37
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+uid: core/miscellaneous/cli/dbcontext-creation
+ms.openlocfilehash: a899c474cc45437bff7c82ce5bddeb915b15c3b0
+ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 12/22/2017
 ---
 <a name="design-time-dbcontext-creation"></a>디자인 타임 DbContext 만들기
 ==============================
-명령에는 디자인에 만들려는 DbContext 인스턴스 필요 EF 도구 중 일부 (예를 들어 실행 하는 경우 마이그레이션 명령) 시간입니다. 여러 가지 방법으로 도구를 만들려고 시도 합니다.
+EF 핵심 도구 명령 중 일부 (예를 들어는 [마이그레이션] [ 1] 명령) 파생 필요 `DbContext` 인스턴스를 응용 프로그램에 대 한 세부 정보를 수집 하려면 쿼리 디자인 타임에 만듭니다 엔터티 형식 및 데이터베이스 스키마에 매핑되는 방식입니다. 대부분의 경우 것은 바람직하지 하는 `DbContext` 함으로써 만든 어떻게 하는 것을 유사한 방식으로 구성 [런타임 시 구성][2]합니다.
+
+여러 가지 방법으로 만들려고 시도 하는 도구는 `DbContext`:
 
 <a name="from-application-services"></a>응용 프로그램 서비스
 -------------------------
-시작 프로젝트는 ASP.NET Core 응용 프로그램, 도구는 응용 프로그램의 서비스 공급자에서 DbContext 개체를 가져올 하려고 합니다. 호출 하 여 가져올은 `Program.BuildWebHost()` 에 액세스 하 고는 `IWebHost.Services` 속성입니다. 사용 하 여 모든 DbContext 등록 `IServiceCollection.AddDbContext<TContext>()` 찾을 수 있으며 이런 방식이으로 만든 합니다. 이 패턴 [ASP.NET 코어 2.0에 도입 된][1]
+시작 프로젝트는 ASP.NET Core 응용 프로그램, 도구는 응용 프로그램의 서비스 공급자에서 DbContext 개체를 가져올 하려고 합니다.
 
-<a name="using-the-default-constructor"></a>기본 생성자를 사용 하 여
------------------------------
-DbContext를 응용 프로그램 서비스 공급자 로부터 가져올 수 없으며 도구 프로젝트 내부에 DbContext 형식 찾아보십시오. 기본 생성자를 사용 하 여 만들 하려고 합니다.
+이 도구를 호출 하 여 서비스 공급자를 먼저 시도 `Program.BuildWebHost()` 에 액세스 하 고는 `IWebHost.Services` 속성입니다.
+
+> [!NOTE]
+> 새 ASP.NET 코어 2.0 응용 프로그램을 만들 때 기본적으로이 후크 포함 됩니다. EF Core 및 ASP.NET 코어의 이전 버전에서는 도구를 호출 하려고 `Startup.ConfigureServices` 더 이상 응용 프로그램의 서비스 공급자 하지만이 패턴을 얻기 위해 제대로 작동 ASP.NET 코어 2.0 응용 프로그램에서 직접 합니다. ASP.NET Core 1.x 응용 프로그램 2.0 업그레이드 하는 경우 다음을 할 수 있습니다 [수정 프로그램 `Program` 새 패턴을 따르도록 클래스][3]합니다.
+
+`DbContext` 자체 및 모든 종속성의 생성자에 서비스 응용 프로그램의 서비스 공급자에 등록 해야 합니다. 쉽게 액세스가 가능 하도록 하 여 [에 생성자가는 `DbContext` 의 인스턴스를 사용 하 `DbContextOptions<TContext>` 인수로] [ 4] 를 사용 하 고는 [ `AddDbContext<TContext>` 메서드] [5].
+
+<a name="using-a-constructor-with-no-parameters"></a>매개 변수가 없는 생성자를 사용 하 여
+--------------------------------------
+경우에 DbContext를 응용 프로그램 서비스 공급자 로부터 가져올 수 없으며 도구를 찾습니다는 파생 된 `DbContext` 프로젝트 내부에 형식입니다. 다음은 매개 변수가 없는 생성자를 사용 하 여 인스턴스를 만들려고 시도 합니다. 이 경우 기본 생성자를 수 있습니다는 `DbContext` 을 사용 하도록 구성 된 [ `OnConfiguring` ] [ 6] 메서드.
 
 <a name="from-a-design-time-factory"></a>디자인 타임 공장에서
 --------------------------
-알 수 있습니다는 도구를 구현 하 여 프로그램 DbContext를 만드는 방법을 `IDesignTimeDbContextFactory`합니다. 이 인터페이스를 구현 하는 클래스는 프로젝트 내부에서 발견 되 면 도구 DbContext를 만드는 다른 방법으로 무시 합니다.
-팩터리 디자인 타임에 항상 사용합니다. 팩터리는 런타임 시 보다 디자인 타임에 대 한 DbContext를 다르게 구성 해야 하는 경우에 특히 유용 합니다.
+알 수 있습니다는 도구를 구현 하 여 프로그램 DbContext를 만드는 방법의 `IDesignTimeDbContextFactory<TContext>` 인터페이스:이 인터페이스를 구현 하는 클래스는 파생 된 동일한 프로젝트 중 하나에서 발견 되 면 `DbContext` 또는 응용 프로그램의 시작 프로젝트에 도구는 다음과 같이 무시 됩니다. 대신 DbContext 및 사용 하 여 디자인 타임 팩터리를 만드는 다른 방법입니다.
 
 ``` csharp
 using Microsoft.EntityFrameworkCore;
@@ -47,7 +56,15 @@ namespace MyProject
 ```
 
 > [!NOTE]
-> `args` 매개 변수는 현재 사용 되지 않습니다. [문제] [ 2] 도구에서 디자인 타임 인수를 지정 하는 기능을 추적 합니다.
+> `args` 매개 변수는 현재 사용 되지 않습니다. [문제] [ 7] 도구에서 디자인 타임 인수를 지정 하는 기능을 추적 합니다.
 
-  [1]: https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/#update-main-method-in-programcs
-  [2]: https://github.com/aspnet/EntityFrameworkCore/issues/8332
+디자인 타임 팩터리 경우 런타임 시 보다 디자인 타임에 대 한 DbContext를 다르게 구성 해야 하는 경우에 특히 유용할 수 있습니다는 `DbContext` DI를 전혀 사용 하지 않는 경우 추가 매개 변수 DI를에 등록 되지 않은 생성자 하나 또는 일부에 대 한 경우 있어야 하 고 싶지 이유는 `BuildWebHost` ASP.NET Core 응용 프로그램의 메서드  
+`Main` 클래스.
+
+  [1]: xref:core/managing-schemas/migrations/index
+  [2]: xref:core/miscellaneous/configuring-dbcontext
+  [3]: https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/#update-main-method-in-programcs
+  [4]: xref:core/miscellaneous/configuring-dbcontext#constructor-argument
+  [5]: xref:core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection
+  [6]: xref:core/miscellaneous/configuring-dbcontext#onconfiguring
+  [7]: https://github.com/aspnet/EntityFrameworkCore/issues/8332
