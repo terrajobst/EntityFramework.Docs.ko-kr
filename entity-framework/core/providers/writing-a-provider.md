@@ -16,7 +16,7 @@ ms.lasthandoff: 10/27/2017
 
 Entity Framework Core 데이터베이스 공급자를 작성 하는 방법에 대 한 정보를 참조 하십시오. [EF 핵심 공급자를 작성 하려고](https://blog.oneunicorn.com/2016/11/11/so-you-want-to-write-an-ef-core-provider/) 여 [Arthur Vickers](https://github.com/ajcvickers)합니다.
 
-EF 핵심 코드 베이스는 오픈 소스 이며 대 한 참조로 사용할 수 있는 몇 가지 데이터베이스 공급자를 포함 합니다. Https://github.com/aspnet/EntityFramework에서 소스 코드를 찾을 수 있습니다.
+EF 핵심 코드 베이스는 오픈 소스 이며 대 한 참조로 사용할 수 있는 몇 가지 데이터베이스 공급자를 포함 합니다. https://github.com/aspnet/EntityFramework 에서 소스 코드를 찾을 수 있습니다.
 
 ## <a name="the-providers-beware-label"></a>공급자 조심 레이블
 
