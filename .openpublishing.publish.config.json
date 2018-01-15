@@ -59,7 +59,7 @@
   },
   "Targets": {
     "Pdf": {
-      "template_folder": "_themes.pdf"
+      "template_folder": "_themes.pdf" 
     }
   }
 }
