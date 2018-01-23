@@ -8,7 +8,7 @@ ms.technology: entity-framework-core
 uid: core/saving/cascade-delete
 ms.openlocfilehash: a9481fe851cc264ab3eaecad052c2e683ae57a44
 ms.sourcegitcommit: 5367516f063cb42804ec92c31cdf76322554f2b5
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/08/2017
 ---
@@ -16,7 +16,7 @@ ms.lasthandoff: 11/08/2017
 
 모두 삭제 한 행을 관련 된 행의 삭제를 자동으로 트리거하도록의 삭제를 허용 하는 특징을 설명 하기 위해 데이터베이스 용어에서 주로 사용 됩니다. EF 코어 delete 동작도 적용 밀접 하 게 관련 된 개념은 하나의 자식 엔터티 관계 상위 되었을 때 자동으로 삭제할 어렵다는-일반적으로 "고아 파일 삭제" 이라고이 i입니다.
 
-EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 delete 동작의 구성을 허용 합니다. EF 코어 [requiredness 관계의](... /modeling/relationships.md#required-and-optional-relationships) 에 따라 각 관계에 대 한 유용한 기본값 삭제 동작을 자동으로 구성 하는 규칙을 구현 입니다.
+EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 delete 동작의 구성을 허용 합니다. EF 코어 [requiredness 관계의](../modeling/relationships.md#required-and-optional-relationships) 에 따라 각 관계에 대 한 유용한 기본값 삭제 동작을 자동으로 구성 하는 규칙을 구현 입니다.
 
 ## <a name="delete-behaviors"></a>동작 삭제
 삭제 동작에 정의 된는 *DeleteBehavior* 열거자 입력 하 고에 전달 될 수는 *OnDelete* fluent API를 제어 하는지 여부를 사용자/부모 엔터티 또는의 비활성화할 삭제는 엔터티에도 종속/자식 관계에 종속/자식 엔터티 부작용 있어야 합니다.
