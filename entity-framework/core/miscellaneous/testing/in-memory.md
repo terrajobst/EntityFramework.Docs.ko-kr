@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: 0d0590f1-1ea3-4d5c-8f44-db17395cd3f3
 ms.technology: entity-framework-core
 uid: core/miscellaneous/testing/in-memory
-ms.openlocfilehash: c5c48c575e9fd693d1f28d1a6d10eb83ebbc9d70
-ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
+ms.openlocfilehash: 33690e3424d0777930d3cb8167575fb0f4ddd8f7
+ms.sourcegitcommit: d096484dcf9eff73d9943fa60db7a418b10ca0b3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="testing-with-inmemory"></a>InMemory를 사용 하 여 테스트
 
 InMemory 공급자 접근 실제 데이터베이스 작업의 오버 헤드 없이 실제 데이터베이스에 연결 하는 수준의 암호화를 사용 하는 구성 요소를 테스트 하려는 경우 유용 합니다.
 
 > [!TIP]  
-> 이 문서를 볼 수 있습니다 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing) GitHub에서 합니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing)을 볼 수 있습니다.
 
 ## <a name="inmemory-is-not-a-relational-database"></a>InMemory 관계형 데이터베이스가 아닙니다.
 
@@ -64,6 +64,6 @@ EF 핵심 데이터베이스 공급자는 관계형 데이터베이스를 사용
 InMemory 데이터베이스를 사용 하는 테스트 클래스의 예를 들면 다음과 같습니다. 각 테스트 메서드는 각 방법에는 고유한 InMemory 데이터베이스를 의미 하 고 고유한 데이터베이스 이름을 지정 합니다.
 
 >[!TIP]
-> 사용 하 여 `.UseInMemoryDatabase()` 확장 메서드를 참조 Nuget 패키지 `Microsoft.EntityFrameworkCore.InMemory`합니다.
+> 사용 하 여 `.UseInMemoryDatabase()` 확장 메서드를 참조 NuGet 패키지 `Microsoft.EntityFrameworkCore.InMemory`합니다.
 
 [!code-csharp[Main](../../../../samples/core/Miscellaneous/Testing/TestProject/InMemory/BlogServiceTests.cs)]
