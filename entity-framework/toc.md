@@ -55,7 +55,7 @@
 ##### [시퀀스](core/modeling/relational/sequences.md)
 ##### [기본값](core/modeling/relational/default-values.md)
 ##### [인덱스](core/modeling/relational/indexes.md)
-##### [Foreign Key Constraints](core/modeling/relational/fk-constraints.md)
+##### [외래 키 제약 조건](core/modeling/relational/fk-constraints.md)
 ##### [대체 키(고유 제약 조건)](core/modeling/relational/unique-constraints.md)
 ##### [상속(관계형데이터베이스)](core/modeling/relational/inheritance.md)
 
@@ -83,7 +83,7 @@
 
 ### [데이터베이스 공급자](core/providers/index.md)
 #### [Microsoft SQL Server](core/providers/sql-server/index.md)
-##### [Memory-Optimized Tables](core/providers/sql-server/memory-optimized-tables.md)
+##### [메모리 최적화 테이블](core/providers/sql-server/memory-optimized-tables.md)
 #### [SQLite](core/providers/sqlite/index.md)
 ##### [SQLite 제한 사항](core/providers/sqlite/limitations.md) 
 #### [PostgreSQL(Npgsql)](core/providers/npgsql/index.md)
@@ -129,6 +129,7 @@
 #### [Microsoft.EntityFrameworkCore.AutoHistory](core/extensions/autohistory.md)
 #### [Microsoft.EntityFrameworkCore.DynamicLinq](core/extensions/dynamiclinq.md)
 #### [Microsoft.EntityFrameworkCore.UnitOfWork](core/extensions/unitofwork.md)
+#### [NeinLinq.EntityFrameworkCore](core/extensions/neinlinq.md)
 
 ### 기타
 #### [연결 문자열](core/miscellaneous/connection-strings.md)
