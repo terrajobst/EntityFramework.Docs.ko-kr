@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 9a7c5488-aaf4-4b40-b1ff-f435ff30f6ec
 ms.technology: entity-framework-core
 uid: core/modeling/relational/inheritance
-ms.openlocfilehash: 55286adf08a6a1c3286b7059d747a62e1feffd22
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 22eed0002b5903d3cfd18a7e4af0fcd2d46a5c4c
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="inheritance-relational-database"></a>상속 (관계형 데이터베이스)
 
@@ -85,4 +85,52 @@ public class RssBlog : Blog
 {
     public string RssUrl { get; set; }
 }
+```
+
+## <a name="configuring-the-discriminator-property"></a>판별자 속성 구성
+
+위의 예에 판별자로 만들어집니다는 [속성 그림자](xref:core/modeling/shadow-properties) 에 계층의 기준 엔터티입니다. 모델의 속성 이므로, 다른 속성과 마찬가지로 구성할 수 있습니다. 예를 들어, 기본값, 규칙을 통한 판별자를 사용 하는 경우 최대 길이 설정 하려면:
+
+```C#
+modelBuilder.Entity<Blog>()
+    .Property("Discriminator")
+    .HasMaxLength(200);
+```
+
+판별자는 엔터티의 실제 CLR 속성에도 매핑할 수 있습니다. 예:
+```C#
+class MyContext : DbContext
+{
+    public DbSet<Blog> Blogs { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Blog>()
+            .HasDiscriminator<string>("BlogType");
+    }
+}
+
+public class Blog
+{
+    public int BlogId { get; set; }
+    public string Url { get; set; }
+    public string BlogType { get; set; }
+}
+
+public class RssBlog : Blog
+{
+    public string RssUrl { get; set; }
+}
+```
+
+이러한 두 가지를 함께 결합 수 있기를 모두 판별자의 실제 속성 매핑 구성:
+```C#
+modelBuilder.Entity<Blog>(b =>
+{
+    b.HasDiscriminator<string>("BlogType");
+
+    b.Property(e => e.BlogType)
+        .HasMaxLength(200)
+        .HasColumnName("blog_type");
+});
 ```

@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 ms.technology: entity-framework-core
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: de26e3b28851d4dc4e50f0490093dd05ad489b31
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 6980acd53b0a74055af7a1e04b476f4625c327c9
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext를 구성합니다.
 
@@ -18,15 +18,15 @@ ms.lasthandoff: 12/22/2017
 
 ## <a name="design-time-dbcontext-configuration"></a>디자인 타임 DbContext 구성
 
-EF 핵심 디자인 타임와 같은 도구 [마이그레이션](xref:core/managing-schemas/migrations/index) 검색 하 고 작업의 인스턴스를 만들 수 있어야는 `DbContext` 응용 프로그램의 엔터티 형식 및 데이터베이스 스키마에 매핑되는 방식에 대 한 세부 정보를 수집 하려면 쿼리 형식입니다. 이 프로세스도 가능 자동으로 도구를 쉽게 만들 수는 `DbContext` 것은 구성 하는 것 마찬가지로 녀석 시 방법을 구성 하는 방식에서입니다.
+EF 핵심 디자인 타임와 같은 도구 [마이그레이션](xref:core/managing-schemas/migrations/index) 검색 하 고 작업의 인스턴스를 만들 수 있어야는 `DbContext` 응용 프로그램의 엔터티 형식 및 데이터베이스 스키마에 매핑되는 방식에 대 한 세부 정보를 수집 하려면 쿼리 형식입니다. 이 프로세스도 가능 자동으로 도구를 쉽게 만들 수는 `DbContext` 것은 구성 하는 것 마찬가지로 실행 시 방법을 구성 하는 방식에서입니다.
 
 임의의 패턴에 필요한 구성 정보를 제공 하는 동안는 `DbContext` 런타임에 사용 하 여 해야 하는 도구에서 작업할 수는 `DbContext` 디자인 타임에만 처리할 수 있는 제한 된 수의 패턴입니다. 더 자세하게에서 살펴보시기는 [디자인 타임 컨텍스트를 만들지](xref:core/miscellaneous/cli/dbcontext-creation) 섹션.
 
 ## <a name="configuring-dbcontextoptions"></a>DbContextOptions 구성
 
-`DbContext`인스턴스가 있어야 `DbContextOptions` 하려면 작업을 수행 합니다. `DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.
+`DbContext` 인스턴스가 있어야 `DbContextOptions` 하려면 작업을 수행 합니다. `DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.
 
-- 와 같은 메서드를 호출 하 여 데이터베이스 공급자를 사용 하려면 일반적으로 선택 `UseSqlServer` 또는`UseSqlite`
+- 와 같은 메서드를 호출 하 여 데이터베이스 공급자를 사용 하려면 일반적으로 선택 `UseSqlServer` 또는 `UseSqlite`
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
 - 일반적으로 내 공급자 선택 방법에 대 한 호출 또한 연결 된 공급자 수준의 선택적 동작 선택기
 - 일반적으로 공급자 선택기 메서드 전이나 후 연결 된 모든 일반 EF 코어 동작 선택기
@@ -108,7 +108,7 @@ using (var context = new BloggingContext())
 
 EF 코어를 사용 하 여 원하는 `DbContext` 종속성 주입 컨테이너를 사용 합니다. DbContext 형식을 사용 하 여 서비스 컨테이너에 추가할 수 있습니다는 `AddDbContext<TContext>` 메서드.
 
-`AddDbContext<TContext>`모두에 DbContext 형식 하면 `TContext`, 및 해당 `DbContextOptions<TContext>` 서비스 컨테이너에서 삽입에 사용할 수 있습니다.
+`AddDbContext<TContext>` 모두에 DbContext 형식 하면 `TContext`, 및 해당 `DbContextOptions<TContext>` 서비스 컨테이너에서 삽입에 사용할 수 있습니다.
 
 참조 [더 많은 읽기](#more-reading) 아래에 대 한 자세한 내용은 종속성 주입 합니다.
 

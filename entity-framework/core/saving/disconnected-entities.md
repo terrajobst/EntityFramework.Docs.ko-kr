@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 ms.technology: entity-framework-core
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 0ea02876b9594d54c971a7b70fcf7ce591e56ba0
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 0b145217d40027c4b8e4746e9c5651652a28c9eb
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="disconnected-entities"></a>연결이 끊긴된 엔터티
 
@@ -20,6 +20,9 @@ DbContext 인스턴스는 자동으로 데이터베이스에서 반환 되는 �
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Disconnected/)을 볼 수 있습니다.
+
+> [!TIP]
+> EF 코어만 인스턴스의 지정 된 기본 키 값의 모든 엔터티를 관리할 수 있습니다. 가장 좋은 방법은 문제 컨텍스트를 빈 상태로 시작 되도록 각--작업 단위에 대해 단기간 용 컨텍스트를 사용 하는 것이 되지 않게 하려면에 엔터티가 연결 되어 있어 저장 해당 엔터티 및 컨텍스트 삭제 되 고 삭제 합니다.
 
 ## <a name="identifying-new-entities"></a>새 엔터티를 식별합니다.
 
@@ -85,6 +88,10 @@ Insert 또는 update 필요 여부 다음 추가 또는 업데이트를 적절 �
 > 추적 된 엔터티입니다의 값이 다른 속성을 수정한 SetValues은 표시만 합니다. 즉,는 업데이트를 보낼 때 실제로 변경 된 열만 업데이트 됩니다. (및 변경 된 내용이, 업데이트가 전혀 전송 됩니다.)
 
 ## <a name="working-with-graphs"></a>그래프 작업
+
+### <a name="identity-resolution"></a>Id 확인
+
+위에서 언급 한 대로 EF 코어 지정 된 기본 키 값의 모든 엔터티 인스턴스의 관리할 수 있습니다. 그래프 작업 하는 경우 그래프는 이상적으로 만들어야이 invariant는 유지 하 고 하나의--작업 단위에 대 한 컨텍스트를 사용 해야 합니다. 그래프에 중복 항목이 포함 되어, 다음 됩니다 그래프 하나에 여러 인스턴스를 통합 하는 EF에 보내기 전에 처리 해야 합니다. 이 아닐 trivial 여기서 인스턴스 없으므로 충돌 하는 값과 관계, 병합 복제 충돌 해결을 방지 하기 위해 응용 프로그램 파이프라인에 가능한 한 빨리 수행 해야 합니다.
 
 ### <a name="all-newall-existing-entities"></a>모든 새/all 기존 엔터티
 
