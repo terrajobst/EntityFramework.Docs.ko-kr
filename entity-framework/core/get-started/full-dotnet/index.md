@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: 06f1f18b-3267-4f79-b94e-173f9db0a7cb
 ms.technology: entity-framework-core
 uid: core/get-started/full-dotnet/index
-ms.openlocfilehash: c69c851e8e2cda944fdf1901c19b0c45cf9ac942
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: b6b265ed8742459921b7ba4f3f04720eb43d06da
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="getting-started-with-ef-core-on-net-framework"></a>.NET Framework에서 EF Core 시작
 
@@ -19,4 +19,4 @@ ms.lasthandoff: 10/27/2017
 이 자습서에서 익힌 방법은 WPF 및 WinForms를 포함하여 .NET Framework를 대상으로 하는 모든 응용 프로그램에서 활용할 수 있습니다. 
 
 > [!NOTE]  
-> 이 자습서와 해당 샘플은 EF Core 2.0을 사용하도록 업데이트되었습니다(EF Core 1.1을 계속 사용하는 UWP 제외). 그러나 대부분의 경우 명령을 약간만 수정하면 이전 릴리스를 사용하는 응용 프로그램을 만들 수 있습니다.
+> 이 자습서와 함께 제공되는 샘플은 EF Core 2.0을 사용하도록 업데이트되었습니다. 그러나 대부분의 경우 명령을 약간만 수정하면 이전 릴리스를 사용하는 응용 프로그램을 만들 수 있습니다.
