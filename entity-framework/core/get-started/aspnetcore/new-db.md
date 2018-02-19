@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 7e7ecaff29e9830bf3bcf742e6a5d54e1ced24de
-ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
+ms.openlocfilehash: f6ed19d3c5d2ae8d1f5756558e50c1f0dddd2f07
+ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/05/2017
+ms.lasthandoff: 02/12/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>ASP.NET Core에서 새 데이터베이스로 EF Core 시작
 
@@ -121,9 +121,9 @@ F5 키를 눌러 앱을 실행하고 테스트합니다.
 * `/Blogs`로 이동합니다.
 * 만들기 링크를 사용하여 일부 블로그 항목을 만듭니다. 세부 정보를 테스트하고 링크를 삭제합니다.
 
-![image](_static/create.png)
+![이미지](_static/create.png)
 
-![image](_static/index-new-db.png)
+![이미지](_static/index-new-db.png)
 
 ## <a name="additional-resources"></a>추가 리소스
 
