@@ -6,11 +6,11 @@ ms.date: 8/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 ms.technology: entity-framework-core
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: 380f27c9f00943a2909ec7b876e151572a67dc37
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 30f4de794d42b1385145286e77c2e7c67987fea6
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>EF 코어 2.0 이전 버전에서 응용 프로그램 업그레이드
 
@@ -78,15 +78,15 @@ namespace AspNetCoreDotNetCore2._0App
 
 2.0 릴리스는 `IDbContextFactory<TContext>` 계속 존재 하지만 사용 되지 않는 것으로 표시 합니다.
 
-### <a name="dbcontextfactoryoptions-removed"></a>DbContextFactoryOptions 제거
+### <a name="dbcontextfactoryoptions-removed"></a>DbContextFactoryOptions removed
 
 위에서 설명한 ASP.NET 코어 2.0 변경으로 인해 것을 발견 하는 `DbContextFactoryOptions` 새 필요 없게 된 `IDesignTimeDbContextFactory<TContext>` 인터페이스입니다. 대신 사용 해야 하는 대체 방법을 다음과 같습니다.
 
-DbContextFactoryOptions | 대체
---- | ---
-ApplicationBasePath | AppContext.BaseDirectory
-ContentRootPath | Directory.GetCurrentDirectory()
-EnvironmentName | Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT")
+| DbContextFactoryOptions | 대체                                                  |
+|:------------------------|:-------------------------------------------------------------|
+| ApplicationBasePath     | AppContext.BaseDirectory                                     |
+| ContentRootPath         | Directory.GetCurrentDirectory()                              |
+| EnvironmentName         | Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") |
 
 ### <a name="design-time-working-directory-changed"></a>디자인 타임 작업 디렉터리 변경
 
@@ -159,7 +159,7 @@ optionsBuilder.UseInMemoryDatabase("MyDatabase");
 
 ### <a name="new-clientsetnull-delete-behavior"></a>새 ClientSetNull 삭제 동작
 
-이전 릴리스에서 [DeleteBehavior.Restrict](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/DeleteBehavior.cs) 했습니다 엔터티에 대 한 동작 컨텍스트에서 추적 이상의 닫힌 일치 `SetNull` 의미 합니다. EF 코어 2.0에서는 새 `ClientSetNull` 선택적 관계에 대 한 기본 동작을 도입 했습니다. 이 때문에 `SetNull` 추적 된 엔터티에 대 한 의미 체계 및 `Restrict` EF 코어를 사용 하 여 만든 데이터베이스에 대 한 동작입니다. 경험에 따르면 이러한 항목은 추적 된 엔터티 및 데이터베이스에 대 한 예상/유용한 동작 합니다. `DeleteBehavior.Restrict`이제 선택적 관계에 대해 설정 된 경우 추적 된 엔터티에 대 한 인식 됩니다.
+이전 릴리스에서 [DeleteBehavior.Restrict](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/DeleteBehavior.cs) 했습니다 엔터티에 대 한 동작 컨텍스트에서 추적 이상의 닫힌 일치 `SetNull` 의미 합니다. EF 코어 2.0에서는 새 `ClientSetNull` 선택적 관계에 대 한 기본 동작을 도입 했습니다. 이 때문에 `SetNull` 추적 된 엔터티에 대 한 의미 체계 및 `Restrict` EF 코어를 사용 하 여 만든 데이터베이스에 대 한 동작입니다. 경험에 따르면 이러한 항목은 추적 된 엔터티 및 데이터베이스에 대 한 예상/유용한 동작 합니다. `DeleteBehavior.Restrict` 이제 선택적 관계에 대해 설정 된 경우 추적 된 엔터티에 대 한 인식 됩니다.
 
 ### <a name="provider-design-time-packages-removed"></a>공급자 디자인 타임 패키지 제거
 

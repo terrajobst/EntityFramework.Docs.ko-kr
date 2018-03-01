@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 ms.technology: entity-framework-core
 uid: core/saving/cascade-delete
-ms.openlocfilehash: e1cb194d7c7472af59eb44fe2a084fa16c40c186
-ms.sourcegitcommit: 3b21a7fdeddc7b3c70d9b7777b72bef61f59216c
+ms.openlocfilehash: 1ab9d114e27aac0bec972df631a426c8ce87a518
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
@@ -33,21 +33,21 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
 
 4 개 delete 되어 동작은 아래 표에 나와 있습니다. 선택적 관계 (nullable 외래 키)에 대 한 것 _은_ 그 결과 다음과 같은 효과가 null 외래 키 값을 저장할 수 있습니다.
 
-| 동작 이름 | 종속/자식 메모리에 대 한 영향 | 종속/자식 데이터베이스에 대 한 영향
-|-|-|-
-| **Cascade** | 엔터티 삭제 | 엔터티 삭제
-| **ClientSetNull** (기본값) | 외래 키 속성은 null로 | 없음
-| **SetNull** | 외래 키 속성은 null로 | 외래 키 속성은 null로
-| **제한** | 없음 | 없음
+| 동작 이름               | 종속/자식 메모리에 대 한 영향    | 종속/자식 데이터베이스에 대 한 영향  |
+|:----------------------------|:---------------------------------------|:---------------------------------------|
+| **Cascade**                 | 엔터티 삭제                   | 엔터티 삭제                   |
+| **ClientSetNull** (기본값) | 외래 키 속성은 null로 | 없음                                   |
+| **SetNull**                 | 외래 키 속성은 null로 | 외래 키 속성은 null로 |
+| **제한**                | 없음                                   | 없음                                   |
 
 필요한 관계 (nullable이 아닌 외래 키)에 대 한 _하지_ 그 결과 다음과 같은 효과가 null 외래 키 값을 저장할 수:
 
-| 동작 이름 | 종속/자식 메모리에 대 한 영향 | 종속/자식 데이터베이스에 대 한 영향
-|-|-|-
-| **Cascade** (기본값) | 엔터티 삭제 | 엔터티 삭제
-| **ClientSetNull** | SaveChanges를 발생 시킵니다. | 없음
-| **SetNull** | SaveChanges를 발생 시킵니다. | SaveChanges를 발생 시킵니다.
-| **제한** | 없음 | 없음
+| 동작 이름         | 종속/자식 메모리에 대 한 영향 | 종속/자식 데이터베이스에 대 한 영향 |
+|:----------------------|:------------------------------------|:--------------------------------------|
+| **Cascade** (기본값) | 엔터티 삭제                | 엔터티 삭제                  |
+| **ClientSetNull**     | SaveChanges를 발생 시킵니다.                  | 없음                                  |
+| **SetNull**           | SaveChanges를 발생 시킵니다.                  | SaveChanges를 발생 시킵니다.                    |
+| **제한**          | 없음                                | 없음                                  |
 
 위의 표에 *None* 제약 조건 위반이 발생할 수 있습니다. 예를 들어 주/자식 엔터티 삭제 표시 되지만 아무 작업도 수행 종속/자식의 외래 키를 변경 하려면 다음 데이터베이스 가능성이를 throw 합니다 SaveChanges 외부 제약 조건 위반 합니다.
 
