@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: ec69bb128890a1e0b72fe77014f37747585bb5a5
-ms.sourcegitcommit: 3b21a7fdeddc7b3c70d9b7777b72bef61f59216c
+ms.openlocfilehash: dadc6235c3879ae27ad5c99988a5e594872045df
+ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="loading-related-data"></a>관련된 데이터를 로드 합니다.
 
 Entity Framework Core를 사용 하면 모델에서 탐색 속성을 사용 하 여 관련된 엔터티 로드 수 있습니다. 관련된 데이터를 로드 하는 데 사용 하는 일반적인 O/RM 패턴 세 가지가 있습니다.
 * **즉시 로드** 초기 쿼리의 일부로 관련된 데이터가 데이터베이스에서 로드 될 것을 의미 합니다.
 * **명시적 로드** 나중에 관련된 된 데이터는 데이터베이스에서 명시적으로 로드 의미 합니다.
-* **지연 로드** 탐색 속성에 액세스할 때 관련된 데이터는 데이터베이스에서 로드 투명 하 게 한다는 것을 의미 합니다. 지연 로드 불가능 아직 EF 코어 합니다.
+* **지연 로드** 탐색 속성에 액세스할 때 관련된 데이터는 데이터베이스에서 로드 투명 하 게 한다는 것을 의미 합니다.
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
@@ -57,6 +57,61 @@ Entity Framework Core를 사용 하면 모델에서 탐색 속성을 사용 하 
 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
 
+### <a name="include-on-derived-types"></a>파생된 형식에 대해 포함
+
+탐색을 사용 하 여 파생 된 형식에 대해서만 정의할의 관련된 데이터를 포함할 수 있습니다 `Include` 및 `ThenInclude`합니다. 
+
+다음 모델을 가정합니다.
+
+```Csharp
+    public class SchoolContext : DbContext
+    {
+        public DbSet<Person> People { get; set; }
+        public DbSet<School> Schools { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
+        }
+    }
+
+    public class Person
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class Student : Person
+    {
+        public School School { get; set; }
+    }
+
+    public class School
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public List<Student> Students { get; set; }
+    }
+```
+
+내용을 `School` 학생 인 모든 사용자의 탐색 수 로드 되도록 할 다양 한 패턴을 사용 하 여:
+
+- cast 사용
+```Csharp
+context.People.Include(person => ((Student)person).School).ToList()
+```
+
+- 사용 하 여 `as` 연산자
+```Csharp
+context.People.Include(person => (person as Student).School).ToList()
+```
+
+- 오버 로드를 사용 하 여 `Include` 형식의 매개 변수를 사용 하는 `string`
+```Csharp
+context.People.Include("Student").ToList()
+```
+
 ### <a name="ignored-includes"></a>무시 포함
 
 쿼리 시작 된 엔터티 형식의 인스턴스를 더 이상 반환 되도록 쿼리를 변경 하면 포함 연산자는 무시 됩니다.
@@ -94,13 +149,174 @@ EF 코어 기본적으로 경고를 기록 합니다 포함 경우 연산자는 
 
 ## <a name="lazy-loading"></a>지연 로드
 
-지연 로드 EF 코어에 아직 지원 되지 않습니다. 볼 수는 [백로그에 항목 한 지연 로딩이](https://github.com/aspnet/EntityFramework/issues/3797) 이 기능을 추적 하 합니다.
+> [!NOTE]  
+> 이 기능은 EF 코어 2.1에 도입 되었습니다.
+
+지연 로드를 사용 하는 가장 간단한 방법은 설치 된 경우는 [Microsoft.EntityFramworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지 및을 호출 하 여 설정 되어 있으므로 `UseLazyLoadingProxies`합니다. 예:
+```Csharp
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseLazyLoadingProxies()
+        .UseSqlServer(myConnectionString);
+```
+또는 AddDbContext를 사용 하는 경우:
+```Csharp
+    .AddDbContext<BloggingContext>(
+        b => b.UseLazyLoadingProxies()
+              .UseSqlServer(myConnectionString));
+```
+EF 코어 가능한-재정의할 수 있는 탐색 속성에 대 한 지연 로딩이 하면 다음 여야 합니다. `virtual` 및에서 상속 될 수 있는 클래스에 있습니다. 예를 들어 다음과 같은 엔터티는 `Post.Blog` 및 `Blog.Posts` 탐색 속성이 지연 로드 됩니다.
+```Csharp
+public class Blog
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public virtual ICollection<Post> Posts { get; set; }
+}
+
+public class Post
+{
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public virtual Blog Blog { get; set; }
+}
+```
+### <a name="lazy-loading-without-proxies"></a>프록시 없이 Lazy 로드
+
+Lazy 로드 프록시를 삽입 하 여 작업의 `ILazyLoader` 에 설명 된 대로 엔터티로 서비스 [엔터티 형식 생성자](../modeling/constructors.md)합니다. 예:
+```Csharp
+public class Blog
+{
+    private ICollection<Post> _posts;
+
+    public Blog()
+    {
+    }
+
+    private Blog(ILazyLoader lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private ILazyLoader LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public ICollection<Post> Posts
+    {
+        get => LazyLoader?.Load(this, ref _posts);
+        set => _posts = value;
+    }
+}
+
+public class Post
+{
+    private Blog _blog;
+
+    public Post()
+    {
+    }
+
+    private Post(ILazyLoader lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private ILazyLoader LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public Blog Blog
+    {
+        get => LazyLoader?.Load(this, ref _blog);
+        set => _blog = value;
+    }
+}
+```
+엔터티 인스턴스를 사용 하 여 만든 있습니다 고 엔터티 형식에서 상속 되어야 또는 가상 탐색 속성에는 필요 하지 않으며이 `new` 지연 로드 한 번에 한 컨텍스트에 연결 합니다. 하지만에 대 한 참조가 필요는 `ILazyLoader` 엔터티 형식 EF 핵심 어셈블리를 결합 하는 서비스입니다. 이 EF 코어를 방지 하기 위해는 `ILazyLoader.Load` 메서드를 대리자로 삽입 합니다. 예:
+```Csharp
+public class Blog
+{
+    private ICollection<Post> _posts;
+
+    public Blog()
+    {
+    }
+
+    private Blog(Action<object, string> lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private Action<object, string> LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Name { get; set; }
+
+    public ICollection<Post> Posts
+    {
+        get => LazyLoader?.Load(this, ref _posts);
+        set => _posts = value;
+    }
+}
+
+public class Post
+{
+    private Blog _blog;
+
+    public Post()
+    {
+    }
+
+    private Post(Action<object, string> lazyLoader)
+    {
+        LazyLoader = lazyLoader;
+    }
+
+    private Action<object, string> LazyLoader { get; set; }
+
+    public int Id { get; set; }
+    public string Title { get; set; }
+    public string Content { get; set; }
+
+    public Blog Blog
+    {
+        get => LazyLoader?.Load(this, ref _blog);
+        set => _blog = value;
+    }
+}
+```
+사용 하 여 위의 코드는 `Load` 확장 메서드는 대리자를 사용 하 여 수행 되는 클리너 비트:
+```Csharp
+public static class PocoLoadingExtensions
+{
+    public static TRelated Load<TRelated>(
+        this Action<object, string> loader,
+        object entity,
+        ref TRelated navigationField,
+        [CallerMemberName] string navigationName = null)
+        where TRelated : class
+    {
+        loader?.Invoke(entity, navigationName);
+
+        return navigationField;
+    }
+}
+```
+> [!NOTE]  
+> 지연 로드 대리자에 대 한 생성자 매개 변수는 "lazyLoader" 호출 되어야 합니다. 이후 버전에 대 한이 계획 되어 있습니다. 다른 이름을 사용할 구성입니다.
 
 ## <a name="related-data-and-serialization"></a>관련된 데이터와 serialization
 
 EF 코어가 자동으로 픽스업 탐색 속성을 실행 하 게 주기와 개체 그래프에 때문에 있습니다. 예를 들어, 블로그 및 것 로드 하는 관련 된 게시물 게시물의 컬렉션을 참조 하는 블로그 개체에서 발생 합니다. 각 해당 게시에 대 한 역참조 블로그 갖습니다.
 
-일부 직렬화 프레임 워크는 이러한 주기를 허용 하지 않습니다. 예를 들어, 사이클은 발견 Json.NET 다음 예외를 throw 합니다.
+일부 직렬화 프레임 워크는 이러한 주기를 허용 하지 않습니다. 예를 들어 순환이 발생 Json.NET 다음 예외를 throw 합니다.
 
 > Newtonsoft.Json.JsonSerializationException: 자체 'MyApplication.Models.Blog' 형식과 '블로그' 속성에 대 한 검색 된 루프를 참조 합니다.
 

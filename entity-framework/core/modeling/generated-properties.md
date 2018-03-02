@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: eb082011-11a1-41b4-a108-15daafa03e80
 ms.technology: entity-framework-core
 uid: core/modeling/generated-properties
-ms.openlocfilehash: 2d79bf1339ebe522c39fe8971d908c30e1f4dca0
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 892494461bcf49ee10d05c972da0ba19ca003c35
+ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="generated-values"></a>생성 된 값
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/27/2017
 
 ## <a name="conventions"></a>규칙
 
-일반적으로 정수 또는 GUID 데이터 형식의 기본 키 값에서 생성 된 추가 설치 됩니다. 다른 모든 속성을 생성 하지 않을 값으로 설정 됩니다.
+규칙에 따라 비 복합 기본 키 형식이 short, int, long, 또는 Guid 값에서 생성 된 추가 설치 됩니다. 다른 모든 속성을 생성 하지 않을 값으로 설정 됩니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/27/2017
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedOnAdd.cs#Sample)]
 
 > [!WARNING]  
-> `ValueGeneratedOnAdd()`방금 추가 된 엔터티에 대 한 값이 생성 되어, EF는 값을 생성 하는 실제 메커니즘을 설치를 보장 하지 않습니다 확인 EF 수 있습니다.  참조 [에 생성 된 값 추가](#value-generated-on-add) 자세한 내용은 섹션.
+> `ValueGeneratedOnAdd()` 방금 추가 된 엔터티에 대 한 값이 생성 되어, EF는 값을 생성 하는 실제 메커니즘을 설치를 보장 하지 않습니다 확인 EF 수 있습니다.  참조 [에 생성 된 값 추가](#value-generated-on-add) 자세한 내용은 섹션.
 
 ### <a name="value-generated-on-add-or-update-fluent-api"></a>에 생성 된 값을 추가 또는 업데이트 (Fluent API)
 
