@@ -6,11 +6,11 @@ ms.date: 02/23/2018
 ms.assetid: 420AFFE7-B709-4A68-9149-F06F8746FB33
 ms.technology: entity-framework-core
 uid: core/modeling/constructors
-ms.openlocfilehash: 2632488569c538a11c7a31a9a866d2fadb29eeb5
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 38ab0c1c3cd8c490875abf30b8478c99bc58630f
+ms.sourcegitcommit: 60b831318c4f5ec99061e8af6a7c9e7c03b3469c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="entity-types-with-constructors"></a>생성자가 있는 엔터티 형식
 
@@ -96,7 +96,7 @@ public class Post
 ### <a name="read-only-properties"></a>읽기 전용 속성
 
 속성은 생성자를 통해 설정 되 면 그 중 일부를 읽기 전용으로 설정 하 여 가능 합니다. EF 코어가 기능이 지원 되지만 하는 데 몇 가지:
-* 속성 getter 없이 일반적으로 매핑되지 않습니다. (이렇게 속성을 매핑하지 말아야, 예: 계산 된 속성을 매핑할 경향이 있습니다.)
+* 속성 setter 없이 일반적으로 매핑되지 않습니다. (이렇게 속성을 매핑하지 말아야, 예: 계산 된 속성을 매핑할 경향이 있습니다.)
 * 자동으로 생성 된 키 값을 사용 하 여 키 값을 새 엔터티를 삽입할 때 키 생성기에서 설정 해야 하므로 읽기-쓰기는 키 속성이 필요 합니다.
 
 이러한 것 들을 방지 하기 위해 쉽게 개인 setter를 사용 하는 것입니다. 예:
