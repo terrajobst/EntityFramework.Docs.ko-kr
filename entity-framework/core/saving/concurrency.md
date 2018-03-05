@@ -1,33 +1,61 @@
 ---
-title: "동시성-EF 핵심 처리"
+title: "동시성 충돌-EF 핵심 처리"
 author: rowanmiller
 ms.author: divega
-ms.date: 10/27/2016
-ms.assetid: bce0539d-b0cd-457d-be71-f7ca16f3baea
+ms.date: 03/03/2018
 ms.technology: entity-framework-core
 uid: core/saving/concurrency
-ms.openlocfilehash: bbd3e154c1b27b16c7d8f8fbf9ed51df0849795c
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 288d9c6fced5ebbaa2c366248c68547502c3698e
+ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="handling-concurrency"></a>동시성 처리
+# <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 
-속성이 동시성 토큰으로 구성 된 다른 사용자가 해당 레코드에 변경 내용을 저장할 때 데이터베이스의 해당 값을 수정 EF 확인 됩니다.
+> [!NOTE]
+> 이 페이지는 EF 코어에서 동시성의 작동 방식 및 응용 프로그램에서 동시성 충돌을 처리 하는 방법을 설명 합니다. 참조 [동시성 토큰](xref:core/modeling/concurrency) 모델에서 동시성 토큰을 구성 하는 방법에 대 한 자세한 내용은 합니다.
 
-> [!TIP]  
-> 이 문서를 볼 수 있습니다 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/) GitHub에서 합니다.
+> [!TIP]
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/)을 볼 수 있습니다.
 
-## <a name="how-concurrency-handling-works-in-ef-core"></a>EF 코어에서 동시성 처리의 작동 방식
+_데이터베이스 동시성_ 수 있는 여러 프로세스 또는 사용자가 액세스 하거나 동시에 데이터베이스의 동일한 데이터를 변경 하는 경우 참조 합니다. _동시성 제어_ 란 동시 변경의 존재에 데이터 일관성을 보장 하는 데 사용 되는 특정 메커니즘을 지칭 합니다.
 
-Entity Framework Core에서 동시성 처리의 작동 방식에 대 한 자세한 설명을 참조 하십시오. [동시성 토큰](../modeling/concurrency.md)합니다.
+EF 코어 구현 _낙관적 동시성 제어_, 여러 프로세스 수 또는 사용자가 동기화의 오버 헤드 없이 독립적으로 변경할 또는 잠금을 합니다. 이상적인 상황에서 이러한 변경 내용은 서로를 방해 하지 않도록 하 고 성공 하는 일을 할 수 있습니다. 최악의 경우에서 두 개 이상의 프로세스가 변경 내용 충돌을 시도 하 고 둘 중 하나만 성공적으로.
+
+## <a name="how-concurrency-control-works-in-ef-core"></a>EF 코어에서 동시성 제어의 작동 방식
+
+속성이 동시성 토큰은 낙관적 동시성 제어를 구현 하는 데 사용 되는 대로 구성: 업데이트 또는 삭제 작업을 수행 하는 동안 때마다 `SaveChanges`, 원본에 대해 데이터베이스의 동시성 토큰의 값을 비교 EF 코어 읽은 값입니다.
+
+- 값이 일치 작업을 완료할 수 있습니다.
+- 값이 일치 하지 않는 경우 다른 사용자는 충돌 하는 연산을 수행 하 고 현재 트랜잭션을 중단 EF 핵심 가정 합니다.
+
+다른 사용자는 현재 작업과 충돌 하는 작업을 수행한 경우 상황 이라고 _동시성 충돌_합니다.
+
+데이터베이스 공급자는 동시성 토큰 값의 비교를 구현 해야 합니다.
+
+관계형 데이터베이스 EF 코어에서 동시성 토큰의 값에 대 한 확인을 포함 된 `WHERE` 모든 절 `UPDATE` 또는 `DELETE` 문. EF 코어 명령문을 실행 한 후 영향을 받는 행의 수를 읽습니다.
+
+행이 없는 영향을 받는 동시성 충돌이 감지 되 면 및 EF 코어 throw `DbUpdateConcurrencyException`합니다.
+
+예를 들어 구성 해야 할 수 있습니다 `LastName` 에 `Person` 동시성 토큰 되도록 합니다. 사용자 업데이트 작업은 동시성 확인에 포함 됩니다는 `WHERE` 절:
+
+``` sql
+UPDATE [Person] SET [FirstName] = @p1
+WHERE [PersonId] = @p0 AND [LastName] = @p2;
+```
 
 ## <a name="resolving-concurrency-conflicts"></a>동시성 충돌 해결
 
-동시성 충돌을 해결에서는 데이터베이스에서 변경으로 현재 사용자의 보류 중인 변경 내용을 병합 하는 알고리즘을 사용 합니다. 정확한 방법은 응용 프로그램에 따라 달라 집니다 하지만 일반적인 방법은 사용자에 게 값을 표시 하 고 올바른 값을 데이터베이스에 저장할 수를 결정 하는 것입니다.
+한 사용자의 일부 변경 내용을 저장 하려고 하는 경우 앞의 예제를 계속 한 `Person`, 다른 사용자가 이미 변경 된의 `LastName` 는 예외가 throw 됩니다.
 
-**동시성 충돌을 해결 하기 위해 사용할 수 있는 값의 세 가지 집합이 있습니다.**
+이 시점에서 응용 프로그램 수 단순히 업데이트 충돌 하는 변경 내용으로 인해 성공 하지 않았음을 사용자에 게 알립니다 및에서 이동 합니다. 하지만이 레코드에는 여전히 동일한 실제 사용자 나타냅니다 확인 하 고 작업을 다시 시도를 사용자를 요청할 수 있습니다.
+
+이 프로세스의 예는 _동시성 충돌을 해결_합니다.
+
+현재에서 보류 중인 변경 내용 병합에서는 동시성 충돌을 해결 `DbContext` 데이터베이스의 값을 사용 합니다. 어떤 값이 병합 가져올 응용 프로그램에 따라 달라 집니다 및 사용자 입력에 따라 리디렉션될 수 있습니다.
+
+**동시성 충돌을 해결 하는 데 사용할 수 있는 값의 세 가지 집합이 있습니다.**
 
 * **현재 값** 응용 프로그램 데이터베이스에 기록 하려고 했던 되는 값입니다.
 
@@ -35,106 +63,13 @@ Entity Framework Core에서 동시성 처리의 작동 방식에 대 한 자세�
 
 * **값을 데이터베이스** 현재 데이터베이스에 저장 하는 값입니다.
 
-동시성 충돌을 처리 하려면 catch는 `DbUpdateConcurrencyException` 중 `SaveChanges()`를 사용 하 여 `DbUpdateConcurrencyException.Entries` 영향을 받는 엔터티에 대 한 새 변경 집합을 준비 하 고 다음 다시 시도 하는 `SaveChanges()` 작업 합니다.
+동시성 충돌을 처리 하는 일반적인 방법이입니다.
 
-다음 예에서 `Person.FirstName` 및 `Person.LastName` 동시성 토큰으로 설정 되도록 합니다. 한 `// TODO:` 포함 응용 프로그램별 논리를 데이터베이스에 저장 된 값을 선택할 수 있는 위치에 대 한 설명입니다.
+1. Catch `DbUpdateConcurrencyException` 중 `SaveChanges`합니다.
+2. 사용 하 여 `DbUpdateConcurrencyException.Entries` 영향을 받는 엔터티에 대 한 새 변경 집합을 준비 합니다.
+3. 데이터베이스의 현재 값을 반영 하도록 동시성 토큰의 원래 값을 새로 고칩니다.
+4. 없는 충돌이 발생할 때까지 프로세스를 다시 시도 합니다.
 
-<!-- [!code-csharp[Main](samples/core/Saving/Saving/Concurrency/Sample.cs?highlight=53,54)] -->
-``` csharp
-using Microsoft.EntityFrameworkCore;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
+다음 예에서 `Person.FirstName` 및 `Person.LastName` 동시성 토큰으로 설정 되도록 합니다. 한 `// TODO:` 을 저장할 값을 선택할 수 있는 응용 프로그램별 논리를 포함 하는 위치에 대 한 설명입니다.
 
-namespace EFSaving.Concurrency
-{
-    public class Sample
-    {
-        public static void Run()
-        {
-            // Ensure database is created and has a person in it
-            using (var context = new PersonContext())
-            {
-                context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
-
-                context.People.Add(new Person { FirstName = "John", LastName = "Doe" });
-                context.SaveChanges();
-            }
-
-            using (var context = new PersonContext())
-            {
-                // Fetch a person from database and change phone number
-                var person = context.People.Single(p => p.PersonId == 1);
-                person.PhoneNumber = "555-555-5555";
-
-                // Change the persons name in the database (will cause a concurrency conflict)
-                context.Database.ExecuteSqlCommand("UPDATE dbo.People SET FirstName = 'Jane' WHERE PersonId = 1");
-
-                try
-                {
-                    // Attempt to save changes to the database
-                    context.SaveChanges();
-                }
-                catch (DbUpdateConcurrencyException ex)
-                {
-                    foreach (var entry in ex.Entries)
-                    {
-                        if (entry.Entity is Person)
-                        {
-                            // Using a NoTracking query means we get the entity but it is not tracked by the context
-                            // and will not be merged with existing entities in the context.
-                            var databaseEntity = context.People.AsNoTracking().Single(p => p.PersonId == ((Person)entry.Entity).PersonId);
-                            var databaseEntry = context.Entry(databaseEntity);
-
-                            foreach (var property in entry.Metadata.GetProperties())
-                            {
-                                var proposedValue = entry.Property(property.Name).CurrentValue;
-                                var originalValue = entry.Property(property.Name).OriginalValue;
-                                var databaseValue = databaseEntry.Property(property.Name).CurrentValue;
-
-                                // TODO: Logic to decide which value should be written to database
-                                // entry.Property(property.Name).CurrentValue = <value to be saved>;
-
-                                // Update original values to
-                                entry.Property(property.Name).OriginalValue = databaseEntry.Property(property.Name).CurrentValue;
-                            }
-                        }
-                        else
-                        {
-                            throw new NotSupportedException("Don't know how to handle concurrency conflicts for " + entry.Metadata.Name);
-                        }
-                    }
-
-                    // Retry the save operation
-                    context.SaveChanges();
-                }
-            }
-        }
-
-        public class PersonContext : DbContext
-        {
-            public DbSet<Person> People { get; set; }
-
-            protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            {
-                optionsBuilder.UseSqlServer(@"Server=(localdb)\mssqllocaldb;Database=EFSaving.Concurrency;Trusted_Connection=True;");
-            }
-        }
-
-        public class Person
-        {
-            public int PersonId { get; set; }
-
-            [ConcurrencyCheck]
-            public string FirstName { get; set; }
-
-            [ConcurrencyCheck]
-            public string LastName { get; set; }
-
-            public string PhoneNumber { get; set; }
-        }
-
-    }
-}
-```
+[!code-csharp[Main](../../../samples/core/Saving/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]

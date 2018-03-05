@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: dadc6235c3879ae27ad5c99988a5e594872045df
-ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
+ms.openlocfilehash: 0d7705e0e5368435536e98d319c853ea8c732643
+ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="loading-related-data"></a>관련된 데이터를 로드 합니다.
 
@@ -152,7 +152,7 @@ EF 코어 기본적으로 경고를 기록 합니다 포함 경우 연산자는 
 > [!NOTE]  
 > 이 기능은 EF 코어 2.1에 도입 되었습니다.
 
-지연 로드를 사용 하는 가장 간단한 방법은 설치 된 경우는 [Microsoft.EntityFramworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지 및을 호출 하 여 설정 되어 있으므로 `UseLazyLoadingProxies`합니다. 예:
+지연 로드를 사용 하는 가장 간단한 방법은 설치 된 경우는 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지 및을 호출 하 여 설정 되어 있으므로 `UseLazyLoadingProxies`합니다. 예:
 ```Csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
