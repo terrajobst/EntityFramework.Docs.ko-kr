@@ -6,15 +6,15 @@ ms.date: 10/27/2016
 ms.assetid: 9af0cba7-7605-4f8f-9cfa-dd616fcb880c
 ms.technology: entity-framework-core
 uid: core/providers/in-memory/index
-ms.openlocfilehash: a8e05f50837f3da554b338475d24215706dfa2ec
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: 356af9390a8aafa5afe35f333cd1e6ac1988390d
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="ef-core-in-memory-database-provider"></a>EF 코어 In-Memory 데이터베이스 공급자
 
-이 데이터베이스 공급자를 설치하면 Entity Framework Core를 메모리 내 데이터베이스에서 사용할 수 있습니다. Entity Framework Core를 사용하는 코드를 테스트할 때 유용합니다. 이 공급자는 [EntityFramework GitHub 프로젝트](https://github.com/aspnet/EntityFramework)의 일부로 유지 관리됩니다.
+이 데이터베이스 공급자를 설치하면 Entity Framework Core를 메모리 내 데이터베이스에서 사용할 수 있습니다. 메모리 내 모드인 SQLite 공급자가 관계형 데이터베이스에 보다 적절한 테스트로 대체될 수 있지만 이 기능이 테스트에 유용할 수 있습니다. 공급자는 [Entity Framework Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore)의 일부로 유지 관리됩니다.
 
 ## <a name="install"></a>설치
 

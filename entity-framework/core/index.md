@@ -6,11 +6,11 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: 13de9cf98111b8e253e073c591fcec04206b4c4f
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: c76b4cd318151b502c549fa0a82800f9987ed94c
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="entity-framework-core-quick-overview"></a>Entity Framework Core 요약 개요
 
@@ -20,16 +20,18 @@ EF Core는 개체 관계형 매퍼(O/RM)로, .NET 개발자들이 .NET 개체를
 
 코드 작성을 통해 학습하려면 [시작](get-started/index.md) 가이드 중 하나를 사용하여 EF Core를 시작해 보는 것이 좋습니다.
 
-## <a name="latest-version-ef-core-20"></a>최신 버전: EF Core 2.0
+## <a name="what-is-new-in-ef-core"></a>EF Core의 새로운 기능
 
-EF Core를 잘 알고 있고 새 버전의 세부 정보로 직접 이동하려는 경우:
+EF Core를 잘 알고 있고 최신 릴리스의 세부 정보로 직접 이동하려는 경우:
 
-- **[EF Core 2.0의 새로운 기능](what-is-new/index.md)**
-- **[EF Core 2.0으로 기존 응용 프로그램 업그레이드](miscellaneous/1x-2x-upgrade.md)**
+- **[EF Core 2.1의 새로운 기능(현재 미리 보기 상태)](xref:core/what-is-new/ef-core-2.1)**
+- **[EF Core 2.0의 새로운 기능(출시된 최신 버전)](xref:core/what-is-new/ef-core-2.0)**
+- **[EF Core 2.0으로 기존 응용 프로그램 업그레이드](xref:core/miscellaneous/1x-2x-upgrade)**
+
 
 ## <a name="get-entity-framework-core"></a>Entity Framework Core 구하기
 
-사용할 데이터베이스 공급자에 대한 [NuGet 패키지를 설치합니다](https://docs.nuget.org/ndocs/quickstart/use-a-package). 예를 들어 명령줄에서 `dotnet` 도구를 사용하여 교차 플랫폼 개발에서 SQL Server 공급자를 설치하려면
+사용할 데이터베이스 공급자에 대한 [NuGet 패키지를 설치합니다](https://docs.nuget.org/ndocs/quickstart/use-a-package). 예: 명령줄에서 `dotnet` 도구를 사용하여 교차 플랫폼 개발에서 SQL Server 공급자를 설치하려면
 
 ``` Console
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer

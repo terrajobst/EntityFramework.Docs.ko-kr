@@ -5,25 +5,31 @@ ms.author: divega
 ms.date: 08/30/2017
 ms.technology: entity-framework-core
 uid: core/platforms/index
-ms.openlocfilehash: 6b6ea9ca833810169d0d850f3bea8776b761c007
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 02e9450cb0ead1701da9f58c51bef3031a3be4ed
+ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>EF Core에서 지원되는 .NET 구현
 
-.NET 코드를 작성할 수 있으면 어디서나 EF Core를 사용할 수 있게 하기 위해 노력하고 있지만 아직 노력이 더 필요합니다. 다음 표에서는 EF Core를 사용할 수 있게 하고자 하는 각 .NET 구현에 대한 지침을 제공합니다.
+.NET 코드를 작성할 수 있으면 어디서나 EF Core를 사용할 수 있게 하기 위해 노력하고 있지만 아직 노력이 더 필요합니다. .NET Core와 .NET Framework에서 EF Core 지원이 널리 사용되는 자동화된 테스트 및 여러 응용 프로그램에서 다루어지는 반면, Mono, Xamarin 및 UWP에는 몇 가지 문제가 있습니다.
 
-EF Core 2.0은 [.NET Standard 2.0](https://docs.microsoft.com/dotnet/standard/net-standard)을 대상으로 하므로 이를 지원하는 .NET 구현이 필요합니다.
+다음 표에서는 각 .NET 구현에 대한 지침을 제공합니다.
 
-| .NET 구현 | 상태 | 1.x 필요 | 2.x 필요
-|-|-|-|-
-| **.NET Core**([ASP.NET Core](../get-started/aspnetcore/index.md), [Console](../get-started/netcore/index.md) 등) | **완전히 지원 및 권장:** 자동 테스트를 거쳤으며 여러 응용 프로그래에서 성공적으로 사용된 것으로 알려져 있습니다. | [.NET Core SDK 1.x](https://www.microsoft.com/net/core/) | [.NET Core SDK 2.x](https://www.microsoft.com/net/core/)
-| **.NET Framework**(WinForms, WPF, ASP.NET, [Console](../get-started/full-dotnet/index.md) 등) | **완전히 지원 및 권장:** 자동 테스트를 거쳤으며 여러 응용 프로그래에서 성공적으로 사용된 것으로 알려져 있습니다. EF 6도 이 플랫폼에서 사용할 수 있습니다(올바른 기술을 선택하려면 [EF Core & EF6 비교](../../efcore-and-ef6/index.md) 참조). | .NET Framework 4.5.1 | .NET Framework 4.6.1
-| **Mono & Xamarin** | **진행 중 - 문제가 발생할 수 있음:** EF Core 팀 및 고객에서 부분적으로 테스트했습니다. 얼리어답터가 성공 사례를 보고했으나 [문제가 있었고](https://github.com/aspnet/entityframework/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin) 테스트가 진행되면서 다른 문제가 나타날 수 있습니다. 특히, Xamarin.iOS에서 EF Core 2.0을 통해 개발된 일부 응용 프로그램이 제대로 작동하지 않을 수 있는 제한이 있습니다. | Mono 4.6 <br/> Xamarin.iOS 10 <br/> Xamarin.Mac 3 <br/> Xamarin.Android 7 | Mono 5.4 <br/> Xamarin.iOS 10.14 <br/> Xamarin.Mac 3.8 <br/> Xamarin.Android 7.5
-| [**유니버설 Windows 플랫폼**](../get-started/uwp/index.md) | **진행 중 - 문제가 발생할 수 있음:** EF Core 팀 및 고객에서 부분적으로 테스트했습니다. 릴리스 빌드에서 일반적으로 사용되며 Windows Store 배포를 위한 요규 사항인 .NET Native 툴체인으로 컴파일할 때 [문제](https://github.com/aspnet/entityframework/issues?utf8=%E2%9C%93&q=is%3Aopen%20is%3Aissue%20label%3Aarea-uwp%20)가 보고되었습니다. .NET Native를 사용하지 않거나 테스트만 해보려는 경우 이 문제는 대부분 영향이 없습니다. | [최신 .NET UWP 5 패키지](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/5.4.1) | [최신 .NET UWP 6 패키지](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/) <sup>(1)</sup>
+| .NET 구현                                                                                                  | 상태                                                             | EF Core 1.x 요구 사항                                                                                | EF Core 2.x 요구 사항<sup>(1)</sup>                                                                 |
+|:---------------------------------------------------------------------------------------------------------------------|:-------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------|
+| **.NET Core**([ASP.NET Core](../get-started/aspnetcore/index.md), [Console](../get-started/netcore/index.md) 등) | 완벽하게 지원 및 권장됨                                    | [.NET Core SDK 1.x](https://www.microsoft.com/net/core/)                                                | [.NET Core SDK 2.x](https://www.microsoft.com/net/core/)                                                |
+| **.NET Framework**(WinForms, WPF, ASP.NET, [Console](../get-started/full-dotnet/index.md) 등)                    | 완벽하게 지원 및 권장됨 EF6도 지원<sup>(2)</sup> | .NET Framework 4.5.1                                                                                    | .NET Framework 4.6.1                                                                                    |
+| **Mono & Xamarin**                                                                                                   | 진행 중<sup>(3)</sup>                                         | Mono 4.6 <br/> Xamarin.iOS 10 <br/> Xamarin.Mac 3 <br/> Xamarin.Android 7                               | Mono 5.4 <br/> Xamarin.iOS 10.14 <br/> Xamarin.Mac 3.8 <br/> Xamarin.Android 7.5                        |
+| [**유니버설 Windows 플랫폼**](../get-started/uwp/index.md)                                                        | EF Core 2.0.1 권장됨<sup>(4)</sup>                           | [.NET Core UWP 5.x 패키지](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/) | [.NET Core UWP 6.x 패키지](https://www.nuget.org/packages/Microsoft.NETCore.UniversalWindowsPlatform/) |
 
-<sup>(1) </sup> 이 버전의 .NET UWP는 .NET Standard 2.0에 대한 지원을 추가하고 .NET Native 2.0을 포함하여 이전에 보고된 대부분의 호환성 문제를 해결하지만 EF Core 2.0에서의 [몇 가지 다른 문제](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+milestone%3A2.0.1+label%3Aarea-uwp)는 향후 패치 릴리스를 통해 해결될 예정입니다.
+<sup>(1)</sup>EF Core 2.0은 [.NET Standard 2.0](https://docs.microsoft.com/dotnet/standard/net-standard)을 대상으로 하므로 이를 지원하는 .NET 구현이 필요합니다.
 
-예상대로 작동하지 않는 다른 조합의 경우 [EF Core 문제 추적기](https://github.com/aspnet/entityframeworkcore/issues/new)에 새 문제를 작성해 주시기 바랍니다. Xamarin 관련 문제는 [Xamarin 문제 추적기](https://bugzilla.xamarin.com/newbug)를 사용하세요.
+<sup>(2)</sup>올바른 기술을 선택하려면 [EF Core 및 EF6 비교](../../efcore-and-ef6/index.md)를 참조하세요.
+
+<sup>(3)</sup>Xamarin에는 EF Core 2.0을 사용하여 개발된 일부 응용 프로그램이 제대로 작동하지 않을 수 있는 문제 및 알려진 제한이 있습니다. 해결 방법은 [활성 문제]([](https://github.com/aspnet/entityframeworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin) 목록을 확인하세요.
+
+<sup>(4)</sup>이전 버전의 EF Core 및 .NET UWP에는 여러 가지 호환성 문제가 있었습니다(특히 .NET 네이티브 도구 체인을 사용하여 컴파일된 응용 프로그램 관련). 새 .NET UWP 버전은 .NET Standard 2.0에 대한 지원을 추가하고 .NET 네이티브 2.0을 포함하여 이전에 보고된 호환성 문제 대부분을 해결했습니다. EF Core 2.0.1은 UWP와 함께 완벽하게 테스트되었지만 테스트가 자동화되지 않았습니다.
+
+예상대로 작동하지 않는 다른 조합의 경우 [EF Core 문제 추적기](https://github.com/aspnet/entityframeworkcore/issues/new)에 새 문제를 작성해 주시기 바랍니다. Xamarin 관련 문제는 [Xamarin.Android](https://github.com/xamarin/xamarin-android/issues/new) 또는 [Xamarin.iOS](https://github.com/xamarin/xamarin-macios/issues/new)의 문제 추적기를 사용하세요.
