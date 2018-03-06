@@ -12,9 +12,11 @@
 
 ## [Entity Framework Core](core/index.md)
 
-### [EF Core 2.0의 새로운 기능](core/what-is-new/index.md)
-#### [EF Core 1.0(이전 버전)](core/what-is-new/ef-core-1.0.md)
+### [EF Core의 새로운 기능](core/what-is-new/index.md)
+#### [EF Core 2.1(미리 보기 상태)](core/what-is-new/ef-core-2.1.md)
+#### [EF Core 2.0(최신 버전 릴리스됨)](core/what-is-new/ef-core-2.0.md)
 #### [EF Core 1.1(이전 버전)](core/what-is-new/ef-core-1.1.md)
+#### [EF Core 1.0(이전 버전)](core/what-is-new/ef-core-1.0.md)
 
 ### [시작](core/get-started/index.md)
 #### [EF Core 설치](core/get-started/install/index.md)
@@ -44,6 +46,11 @@
 #### [대체 키](core/modeling/alternate-keys.md)
 #### [상속](core/modeling/inheritance.md)
 #### [지원 필드](core/modeling/backing-field.md)
+#### [값 변환](core/modeling/value-conversions.md)
+#### [데이터 시드](core/modeling/data-seeding.md)
+#### [엔터티 형식 생성자](core/modeling/constructors.md)
+#### [소유한 엔터티 형식](core/modeling/owned-entities.md)
+#### [쿼리 형식](core/modeling/query-types.md)
 #### [동일한 DbContext를 갖는 대체 모델](core/modeling/dynamic-model.md)
 #### [관계형 데이터베이스 모델링](core/modeling/relational/index.md)
 ##### [테이블 매핑](core/modeling/relational/tables.md)
@@ -86,16 +93,7 @@
 ##### [메모리 최적화 테이블](core/providers/sql-server/memory-optimized-tables.md)
 #### [SQLite](core/providers/sqlite/index.md)
 ##### [SQLite 제한 사항](core/providers/sqlite/limitations.md) 
-#### [PostgreSQL(Npgsql)](core/providers/npgsql/index.md)
-#### [IBM Data Server(DB2)](core/providers/ibm/index.md)
-#### [MySQL(공식)](core/providers/mysql/index.md)
-#### [MySQL(Pomelo)](core/providers/pomelo/index.md)
-#### [Microsoft SQL Server Compact Edition](core/providers/sql-compact/index.md)
 #### [InMemory(테스트용)](core/providers/in-memory/index.md)
-#### [Devart(MySQL, Oracle, PostgreSQL, SQLite, DB2 및 기타)](core/providers/devart/index.md)
-#### [Oracle(아직 사용할 수 없음)](core/providers/oracle/index.md)
-#### [MyCat](core/providers/my-cat/index.md)
-#### [Firebird-Community](core/providers/firebird-community/index.md)
 #### [데이터베이스 공급자 작성](core/providers/writing-a-provider.md)
 
 ### [데이터베이스 스키마 관리](core/managing-schemas/index.md)
@@ -133,7 +131,7 @@
 
 ### 기타
 #### [연결 문자열](core/miscellaneous/connection-strings.md)
-#### [로깅](core/miscellaneous/logging.md)
+#### 자세한 내용은[로깅](core/miscellaneous/logging.md)을 참고하시기 바랍니다.
 #### [연결 복원력](core/miscellaneous/connection-resiliency.md)
 #### [테스트](core/miscellaneous/testing/index.md)
 ##### [SQLite 테스트](core/miscellaneous/testing/sqlite.md)
