@@ -6,11 +6,11 @@ ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: d03c4b1d5635530e63b93e051cb69583718deb4e
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 19a371c65da33e8209cc1ab3423a67c34ddae61e
+ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="query-types"></a>쿼리 유형
 > [!NOTE]
@@ -55,6 +55,10 @@ ms.lasthandoff: 02/28/2018
 다음으로 연결 된 각 블로그 게시물의 수를 쿼리할 수 있도록 간단한 데이터베이스 뷰를 정의 합니다.
 
 [!code-csharp[Main](../../../efcore-dev/samples/QueryTypes/Program.cs#View)]
+
+다음으로, 데이터베이스 보기에서 결과 보관할 클래스를 정의 합니다.
+
+[!code-csharp[Main](../../../efcore-dev/samples/QueryTypes/Program.cs#QueryType)]
 
 다음으로에서는 구성에서 쿼리 유형을 _OnModelCreating_ 를 사용 하 여는 ```modelBuilder.Query<T>``` API입니다.
 쿼리 형식에 대 한 매핑을 구성 하려면 표준 fluent 구성 Api를 사용 합니다.
