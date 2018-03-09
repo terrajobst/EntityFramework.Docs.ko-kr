@@ -6,11 +6,11 @@ ms.date: 2/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 ms.technology: entity-framework-core
 uid: core/providers/index
-ms.openlocfilehash: 520afe85af5a2eacbfc2764fdc0a8addb78c07ab
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 6311f6a336198b45d307fa8c4318abd2e64e9df0
+ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 
@@ -71,7 +71,8 @@ install-package provider_package_name
 기능이 설치되면 종속성 주입 컨테이너를 사용하는 경우 `DbContext`, `OnConfiguring` 메서드 또는 `AddDbContext` 메서드 중 하나에서 공급자를 구성합니다. 예: 다음 줄에서는 전달된 연결 문자열을 사용하여 SQL Server 공급자를 구성합니다.
 
 ``` csharp
-  optionsBuilder.UseSqlServer("Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
+optionsBuilder.UseSqlServer(
+    "Server=(localdb)\mssqllocaldb;Database=MyDatabase;Trusted_Connection=True;");
 ```  
 
 데이터베이스 공급자는 EF Core를 확장하여 특정 데이터베이스에 고유한 기능을 사용할 수 있습니다. 개념은 상당 부분 대부분의 데이터베이스에서 공통이며 기본 EF Core 구성 요소에 포함됩니다. 이러한 개념에는 LINQ에서의 쿼리 표현, 트랜잭션, 데이터베이스에서 로드된 후 개체에 대한 변경 내용 추적 등이 포함됩니다. 일부 개념은 특정 공급자에게만 적용됩니다. 예를 들어 SQL Server 공급자에서는 [메모리 최적화 테이블을 구성](xref:core/providers/sql-server/memory-optimized-tables)할 수 있습니다(SQL Server 특정 기능). 다른 개념은 공급자 클래스에 특정합니다. 예를 들어 관계형 데이터베이스에 대한 EF Core 공급자는 공통 `Microsoft.EntityFrameworkCore.Relational` 라이브러리 위에 작성되며 테이블 및 열 매핑, 외부 키 제약 조건 등을 구성하기 위한 API를 제공합니다. 일반적으로 공급자는 NuGet 패키지로 배포됩니다.
