@@ -6,11 +6,11 @@ ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: 19a371c65da33e8209cc1ab3423a67c34ddae61e
-ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
+ms.openlocfilehash: dfd08cd1c30debddc79740bbf05c39c22e973855
+ms.sourcegitcommit: 01b5cf3b7c983bcced91e7cc4c78391ced2d2caa
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="query-types"></a>쿼리 유형
 > [!NOTE]
@@ -20,7 +20,7 @@ ms.lasthandoff: 03/08/2018
 
 이러한은 있는 엔터티 형식에 개념적으로 유사 합니다.
 
-- POCO C#에서 모델에 추가 된 형식이 ```OnModelCreating``` 를 사용 하 여는 ```ModelBuilder.Query``` 메서드, 또는 DbContext "설정" 속성을 통해 (쿼리는 이러한 속성 형식으로 입력 된 ```DbQuery<T>``` 하는 대신 ```DbSet<T>```).
+- 모델에 추가 되는 C# POCO 형식이 ```OnModelCreating``` 를 사용 하 여는 ```ModelBuilder.Query``` 메서드를 또는 DbContext "설정" 속성을 통해 (쿼리는 이러한 속성 형식으로 입력 된 ```DbQuery<T>``` 대신 ```DbSet<T>```).
 - 대부분의 일반 엔터티 형식으로 동일한 매핑 기능 지원 합니다. 예: 상속 매핑, 탐색 (limitiations 아래 참조) 및 관계형 저장소를 통해 대상 데이터베이스 스키마 개체를 구성 하는 기능에서 ```ToTable```, ```HasColumn``` fluent api 메서드 (또는 데이터 주석).
 
 쿼리 유형으로는 엔터티에서 다른 것을 형식:
@@ -41,7 +41,7 @@ ms.lasthandoff: 03/08/2018
 > [!TIP]
 > 사용 하 여 이루어집니다 데이터베이스 뷰를 쿼리 형식을 매핑하는 ```ToTable``` fluent API입니다.
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 다음 예제에서는 쿼리 유형을 사용 하 여 데이터베이스 뷰를 쿼리 하는 방법을 보여 줍니다.
 
