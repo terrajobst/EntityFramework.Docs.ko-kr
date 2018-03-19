@@ -6,11 +6,11 @@ ms.date: 2/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: 1e5e9839bae1e5da4082d90c02d098bb3b2b43bd
-ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
+ms.openlocfilehash: bb1e691e0f22bd36467d58c02bde22c63067207e
+ms.sourcegitcommit: fcaeaf085171dfb5c080ec42df1d1df8dfe204fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
 > [!NOTE]  
@@ -124,7 +124,7 @@ var query = context.Customers.Select(
 
 이 쿼리를 두 개의 SQL 쿼리로 변환할 수 있습니다. 하나는 고객, 다른 하나는 순서로 변환합니다.
 
-### <a name="ownedattribute"></a>OwnedAttribute
+## <a name="ownedattribute"></a>OwnedAttribute
 
 이제 형식에 `[Owned]`라는 주석을 달고 소유자 엔터티를 모델에 추가하여 [소유한 엔터티 형식](xref:core/modeling/owned-entities)을 구성할 수 있습니다.
 
