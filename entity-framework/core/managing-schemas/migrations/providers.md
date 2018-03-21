@@ -4,11 +4,11 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/8/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 6b278a5ae270b6a84269dffd72eeca609b168cdd
-ms.sourcegitcommit: 3b6159db8a6c0653f13c7b528367b4e69ac3d51e
+ms.openlocfilehash: d950e74ed4cef7d4274aabcf3eda7b0b735574c6
+ms.sourcegitcommit: 2ef0a4a90b01edd22b9206f8729b8de459ef8cab
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/20/2018
 ---
 <a name="migrations-with-multiple-providers"></a>여러 공급자와 마이그레이션
 ==================================
@@ -20,7 +20,7 @@ ms.lasthandoff: 11/28/2017
 
 작업을 수행 하는 한 가지 방법은이 통해 각 마이그레이션 집합 배치 [별도 어셈블리에] [ 2] 수동으로 추가 두 마이그레이션 사이의 활성 공급자 (및 마이그레이션 어셈블리)를 전환 합니다.
 
-새 형식을 만드는 쉽게 도구와 함께 작업 임을 또 다른 방법은 프로그램 DbContext에서 파생 되 고 활성 공급자를 재정의 합니다. 이 형식은 디자인에 사용 됩니다 때 추가 하거나 마이그레이션을 적용 합니다.
+더 쉽게 도구와 함께 사용할 또 다른 방법은 프로그램 DbContext에서 파생 되 고 활성 공급자를 재정의 하는 새 형식을 만드는 것입니다. 이 형식은 디자인에 사용 됩니다 때 추가 하거나 마이그레이션을 적용 합니다.
 
 ``` csharp
 class MySqliteDbContext : MyDbContext
