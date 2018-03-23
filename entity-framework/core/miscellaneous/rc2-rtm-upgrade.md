@@ -1,16 +1,16 @@
 ---
-title: "RTM-1.0 RC2 핵심 EF에서 업그레이드 EF 코어"
+title: RTM-1.0 RC2 핵심 EF에서 업그레이드 EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: c3c1940b-136d-45d8-aa4f-cb5040f8980a
 ms.technology: entity-framework-core
 uid: core/miscellaneous/rc2-rtm-upgrade
-ms.openlocfilehash: 7a1d85949a5f9e1ad7efdbf585a608d815e8ce63
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 4bb4c5736708413f6581cad250b089b7bc22a559
+ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrading-from-ef-core-10-rc2-to-rtm"></a>EF 1.0 Core RC2에서 RTM으로 업그레이드
 
@@ -69,6 +69,9 @@ RTM을 사용 하기 전에 스 캐 폴드 된 하는 모든 기존 마이그레
   }
 }
 ```
+
+> [!NOTE]  
+> 버전 1.0부터 RTM는 [.NET Core SDK](https://www.microsoft.com/net/download/core) 더 이상 지원 `project.json` Visual Studio 2015를 사용 하 여.NET Core 응용 프로그램을 개발 합니다. [project.json에서 csproj로 마이그레이션](https://docs.microsoft.com/dotnet/articles/core/migration/)하는 것이 좋습니다. Visual Studio를 사용 하는 경우 업그레이드 하는 것이 좋습니다 [Visual Studio 2017](https://www.visualstudio.com/downloads/)합니다.
 
 ## <a name="uwp-add-binding-redirects"></a>UWP: 바인딩 리디렉션을 추가합니다
 
