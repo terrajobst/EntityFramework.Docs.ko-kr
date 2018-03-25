@@ -1,28 +1,25 @@
 ---
-title: "ASP.NET Core에서 시작 - 기존 데이터베이스 - EF Core"
+title: ASP.NET Core에서 시작 - 기존 데이터베이스 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: afd99d68d2ba25ce58a21dc48d2c7ce27f208807
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: db2469d0badd428734425c1f568667f00bef2f4f
+ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
-
-> [!IMPORTANT]  
-> [.NET Core SDK](https://www.microsoft.com/net/download/core)는 더 이상 `project.json` 또는 Visual Studio 2015를 지원하지 않습니다. .NET Core 개발을 수행하는 모든 사용자는 [project.json에서 csproj](https://docs.microsoft.com/dotnet/articles/core/migration/) 및 [Visual Studio 2017](https://www.visualstudio.com/downloads/)로 마이그레이션하는 것이 좋습니다.
 
 이 연습에서는 Entity Framework를 사용하여 기본 데이터 액세스를 수행하는 ASP.NET Core MVC 응용 프로그램을 빌드합니다. 리버스 엔지니어링을 사용하여 기존 데이터베이스를 기반으로 Entity Framework 모델을 만듭니다.
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.ExistingDb)을 볼 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 연습을 완료하려면 다음 필수 구성 요소가 필요합니다.
 
@@ -93,7 +90,7 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Conn
 `The term 'Scaffold-DbContext' is not recognized as the name of a cmdlet`이라는 오류가 표시되면 Visual Studio를 닫았다가 다시 엽니다.
 
 > [!TIP]  
-> 위의 명령에 `-Tables` 인수를 추가하여 엔터티를 생성할 테이블을 지정할 수 있습니다. 예를 들어 `-Tables Blog,Post`.
+> 위의 명령에 `-Tables` 인수를 추가하여 엔터티를 생성할 테이블을 지정할 수 있습니다. 예: `-Tables Blog,Post`.
 
 리버스 엔지니어링 프로세스에서는 기존 데이터베이스의 스키마를 기반으로 엔터티 클래스(`Blog.cs` & `Post.cs`) 및 파생 컨텍스트(`BloggingContext.cs`)를 만들었습니다.
 
@@ -144,7 +141,7 @@ public partial class BloggingContext : DbContext
 
 ASP.NET Core에서 구성은 일반적으로 **Startup.cs**에서 수행됩니다. 이 패턴을 따르기 위해 데이터베이스 공급자의 구성을 **Startup.cs**로 이동합니다.
 
-* 열기 `Models\BloggingContext.cs`
+* `Models\BloggingContext.cs`를 엽니다.
 * `OnConfiguring(...)` 메서드를 삭제합니다.
 
 ``` csharp
@@ -202,6 +199,6 @@ MVC 컨트롤러에서 `BloggingContext`를 사용하려면 이 항목을 서비
 * **새로 만들기**를 클릭합니다.
 * 새 블로그의 **URL**을 입력하고 **만들기**를 클릭합니다.
 
-![image](_static/create.png)
+![이미지](_static/create.png)
 
-![image](_static/index-existing-db.png)
+![이미지](_static/index-existing-db.png)
