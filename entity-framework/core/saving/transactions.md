@@ -1,16 +1,16 @@
 ---
-title: "트랜잭션-EF 코어"
+title: 트랜잭션-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 ms.technology: entity-framework-core
 uid: core/saving/transactions
-ms.openlocfilehash: 2dda7b7d58ae058fc2aa89fe16fbf46adc8c6bdc
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: fe4c0d6ad7ccb2e97dc94fbf2eb26a41e7fbcb19
+ms.sourcegitcommit: 7113e8675f26cbb546200824512078bf360225df
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-transactions"></a>트랜잭션 사용
 
@@ -133,4 +133,4 @@ public class BloggingContext : DbContext
    > [!IMPORTANT]  
    > 테스트 하는 API 올바르게 작동 공급 전에 트랜잭션을 관리에 의존 하는 것이 좋습니다. 그렇지 않은 경우 데이터베이스 공급자의 유지 관리자에 게 문의 하 라는 메시지가 표시 됩니다. 
 
-2. 2.1 버전부터.NET Core에서는 System.Transactions 구현은 분산된 트랜잭션 지원, 있습니다 사용할 수 없습니다 `TransactionScope` 또는 `CommitableTransaction`여러 리소스 관리자에서 트랜잭션을 조정할 수 있습니다. 
+2. 2.1 버전부터.NET Core에서는 System.Transactions 구현은 분산된 트랜잭션 지원, 있습니다 사용할 수 없습니다 `TransactionScope` 또는 `CommitableTransaction` 여러 리소스 관리자에서 트랜잭션을 조정할 수 있습니다. 
