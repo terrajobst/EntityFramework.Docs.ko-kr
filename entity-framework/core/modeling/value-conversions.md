@@ -1,16 +1,16 @@
 ---
-title: "값 변환-EF 코어"
+title: 값 변환-EF 코어
 author: ajcvickers
 ms.author: divega
 ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 ms.technology: entity-framework-core
 uid: core/modeling/value-conversions
-ms.openlocfilehash: 50acba39cdec16caa9300fcaf47ab6242a4f69fb
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 329d2757059462468ca30772d37789343c03ba7b
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="value-conversions"></a>값 변환
 
@@ -60,7 +60,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="the-valueconverter-class"></a>ValueConverter 클래스
 
-호출 `HasConversion` 위와 같이 만들어집니다는 `ValueConverter` 인스턴스 및 속성에 설정 합니다. `ValueConverter` 대신 명시적으로 만들 수 있습니다. 예:
+호출 `HasConversion` 위와 같이 만들어집니다는 `ValueConverter` 인스턴스 및 속성에 설정 합니다. `ValueConverter` 대신 명시적으로 만들 수 있습니다. 예를 들어:
 ```Csharp
 var converter = new ValueConverter<EquineBeast, string>(
     v => v.ToString(),
@@ -137,6 +137,6 @@ public class Rider
 
 값 변환 시스템의 몇 가지 알려진된 현재 제한 되어 있습니다.
 * 위에서 언급 했 듯이 `null` 로 변환할 수 없습니다.
-* 현재 방법이 있으면 확산 multuple 열 또는 그 반대로 두 속성으로 변환 합니다.
+* 현재 방법이 있으면 확산 한 속성의 여러 열 이나 그 반대로으로 변환 합니다.
 * 값 변환에 대 한 사용 하 여 SQL 식을 변환 하는 기능이 EF 코어의 떨어질 수 있습니다. 이 경우에는 경고가 기록 됩니다.
 향후 릴리스에 고려할 이러한 제한 제거 합니다.

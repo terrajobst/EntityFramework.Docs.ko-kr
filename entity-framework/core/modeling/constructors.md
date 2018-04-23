@@ -1,16 +1,16 @@
 ---
-title: "EF 코어-한 생성자가 있는 엔터티 형식"
+title: EF 코어-한 생성자가 있는 엔터티 형식
 author: ajcvickers
 ms.author: divega
 ms.date: 02/23/2018
 ms.assetid: 420AFFE7-B709-4A68-9149-F06F8746FB33
 ms.technology: entity-framework-core
 uid: core/modeling/constructors
-ms.openlocfilehash: 38ab0c1c3cd8c490875abf30b8478c99bc58630f
-ms.sourcegitcommit: 60b831318c4f5ec99061e8af6a7c9e7c03b3469c
+ms.openlocfilehash: 3f861d54c5bff637ae28f38b08da7aff7d0ea5c0
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="entity-types-with-constructors"></a>생성자가 있는 엔터티 형식
 
@@ -49,7 +49,7 @@ public class Post
 }
 ```
 
-EF 코어 이러한 형식의 인스턴스를 만들 때와 같은 쿼리 결과 대 한 기본 매개 변수가 없는 생성자를 호출 되며 다음 데이터베이스에서 각 속성 값을 설정 합니다. 그러나 EF 코어와 매개 변수가 있는 생성자가 발견 매개 변수 이름과 일치 하는 형식 속성을 매핑할 경우 해당 속성에 대 한 값을 가진 매개 변수가 있는 생성자를 대신 호출 됩니다 하 고 각 속성을 명시적으로 설정 하지 것입니다. 예:
+EF 코어 이러한 형식의 인스턴스를 만들 때와 같은 쿼리 결과 대 한 기본 매개 변수가 없는 생성자를 호출 되며 다음 데이터베이스에서 각 속성 값을 설정 합니다. 그러나 EF 코어와 매개 변수가 있는 생성자가 발견 매개 변수 이름과 일치 하는 형식 속성을 매핑할 경우 해당 속성에 대 한 값을 가진 매개 변수가 있는 생성자를 대신 호출 됩니다 하 고 각 속성을 명시적으로 설정 하지 것입니다. 예를 들어:
 
 ```Csharp
 public class Blog
@@ -99,7 +99,7 @@ public class Post
 * 속성 setter 없이 일반적으로 매핑되지 않습니다. (이렇게 속성을 매핑하지 말아야, 예: 계산 된 속성을 매핑할 경향이 있습니다.)
 * 자동으로 생성 된 키 값을 사용 하 여 키 값을 새 엔터티를 삽입할 때 키 생성기에서 설정 해야 하므로 읽기-쓰기는 키 속성이 필요 합니다.
 
-이러한 것 들을 방지 하기 위해 쉽게 개인 setter를 사용 하는 것입니다. 예:
+이러한 것 들을 방지 하기 위해 쉽게 개인 setter를 사용 하는 것입니다. 예를 들어:
 ```Csharp
 public class Blog
 {
@@ -254,7 +254,7 @@ public class Post
 }
 ```
 이 대 한 감지 하는 데 몇 가지 사항은 다음과 같습니다.
-* 가구의 EF 코어에 호출 하지만 일반 용도로 다른 공용 생성자는 생성자가 private, 합니다.
+* EF 코어만 라고 하 고 일반 용도로 다른 공용 생성자는 생성자가 private입니다.
 * 삽입 된 서비스를 사용 하 여 코드 (즉, 컨텍스트)에 대 한 방어가 되 고 `null` EF 코어 인스턴스 작성 하지는 경우를 처리 합니다.
 * 서비스는 읽기/쓰기 속성에 저장 되기 때문에 엔터티가 새 컨텍스트 인스턴스에 연결 되 면 재설정 됩니다.
 
