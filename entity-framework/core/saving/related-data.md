@@ -1,23 +1,23 @@
 ---
-title: "저장 된 데이터-EF 코어"
+title: 저장 된 데이터-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 ms.technology: entity-framework-core
 uid: core/saving/related-data
-ms.openlocfilehash: 078879163002cb66e0f0f439415789963181ec15
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: b0ed25267c85e82db18d8a89693b6040db7e4b34
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="saving-related-data"></a>관련된 데이터 저장
 
 격리 된 엔터티 외에도 작업도 가능 모델에 정의 된 관계를 사용 합니다.
 
 > [!TIP]  
-> 이 문서를 볼 수 있습니다 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/) GitHub에서 합니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/)을 볼 수 있습니다.
 
 ## <a name="adding-a-graph-of-new-entities"></a>새 엔터티의 그래프를 추가합니다.
 
@@ -26,6 +26,9 @@ ms.lasthandoff: 10/27/2017
 다음 예에서 블로그 및 관련 된 게시물 3 개는 모든 데이터베이스에 삽입 합니다. 게시물 검색 및를 통해 연결할 수 있기 때문에 추가 되는 `Blog.Posts` 탐색 속성입니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
+
+> [!TIP]  
+> EntityEntry.State 속성을 사용 하 여 방금 단일 엔터티의 상태를 설정 합니다. 예를 들어, `context.Entry(blog).State = EntityState.Modified`을 입력합니다.
 
 ## <a name="adding-a-related-entity"></a>관련된 엔터티를 추가합니다.
 
