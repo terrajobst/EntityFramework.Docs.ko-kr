@@ -1,16 +1,16 @@
 ---
-title: "엔터티 형식-EF 코어 소유"
+title: 엔터티 형식-EF 코어 소유
 author: julielerman
 ms.author: divega
 ms.date: 2/26/2018
 ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
 ms.technology: entity-framework-core
 uid: core/modeling/owned-entities
-ms.openlocfilehash: a6823377eb626ca92263c31351e1aef61db5a787
-ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
+ms.openlocfilehash: f2f05499a3e3494f420d916df2db19667a6f1e29
+ms.sourcegitcommit: 26f33758c47399ae933f22fec8e1d19fa7d2c0b7
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/19/2018
 ---
 # <a name="owned-entity-types"></a>소유한 엔터티 형식
 
@@ -21,7 +21,7 @@ EF 코어 다른 엔터티 형식의 탐색 속성에만 표시할 수 있는 �
 
 ## <a name="explicit-configuration"></a>명시적 구성
 
-형식에에서 포함 되지 않습니다 EF 코어 모델 규칙에 따라 엔터티를 소유 합니다. 사용할 수 있습니다는 `OwnsOne` 에서 메서드 `OnModelCreating` 주석을 사용 하 여 형식 또는 `OwnedAttrbibute` (EF 코어 2.1의 새로운) 유형을 소유 하는 형식으로 구성 합니다.
+형식에에서 포함 되지 않습니다 EF 코어 모델 규칙에 따라 엔터티를 소유 합니다. 사용할 수 있습니다는 `OwnsOne` 에서 메서드 `OnModelCreating` 주석을 사용 하 여 형식 또는 `OwnedAttribute` (EF 코어 2.1의 새로운) 유형을 소유 하는 형식으로 구성 합니다.
 
 이 예제에서는 StreetAddress 포함 형식인 identity 속성이 없습니다. 특정 주문의 배송 주소를 지정하기 위한 Order 형식 속성으로 사용됩니다. `OnModelCreating`를 사용 하 여는 `OwnsOne` ShippingAddress 속성이 Order 형식의 소유 엔터티 인지를 지정 하는 메서드.
 
