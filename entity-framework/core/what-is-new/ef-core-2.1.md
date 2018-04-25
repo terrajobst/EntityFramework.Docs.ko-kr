@@ -1,22 +1,22 @@
 ---
-title: "EF Core 2.1의 새로운 기능 - EF Core"
+title: EF Core 2.1의 새로운 기능 - EF Core
 author: divega
 ms.author: divega
 ms.date: 2/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: bb1e691e0f22bd36467d58c02bde22c63067207e
-ms.sourcegitcommit: fcaeaf085171dfb5c080ec42df1d1df8dfe204fb
+ms.openlocfilehash: db1648095aa4d612af53f4e10a30be36edc40da5
+ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 04/16/2018
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
 > [!NOTE]  
 > 이 릴리스는 아직 미리 보기 상태입니다.
 
-EF Core 2.1에는 여러 가지 향상된 기능 및 백 개 이상의 제품 버그 수정 외에도 몇 가지 새로운 기능이 포함되어 있습니다.
+수많은 버그 수정 및 작은 기능 및 성능 개선 사항 외에도 EF Core 2.1에는 몇 가지 놀라운 기능이 있습니다.
 
 ## <a name="lazy-loading"></a>지연 로드
 이제 EF Core에는 요청 시 해당 탐색 속성을 로드할 수 있는 엔터티 클래스를 작성하는 사용자에게 필요한 구성 요소가 포함됩니다. 또한 Microsoft.EntityFrameworkCore.Proxies라는 새 패키지를 만들었습니다. 여기서는 해당 구성 요소를 활용하여 최소한으로 수정된 엔터티 클래스(예: 가상 탐색 속성이 포함된 클래스)를 기반으로 지연된 로드 프록시 클래스를 생성합니다.
@@ -71,7 +71,7 @@ GROUP BY [o].[CustomerId], [o].[EmployeeId];
 예를 들어 이를 사용하여 `OnModelCreating`에서 게시물의 시드 데이터를 구성할 수 있습니다.
 
 ``` csharp
-modelBuilder.Entity<Post>().SeedData(new Post{ Id = 1, Text = "Hello World!" });
+modelBuilder.Entity<Post>().HasData(new Post{ Id = 1, Text = "Hello World!" });
 ```
 
 이 항목에 대한 자세한 내용은 [데이터 시드에 대한 섹션](xref:core/modeling/data-seeding)을 참고하세요.  
@@ -143,9 +143,29 @@ public class Order
 }
 ```
 
+## <a name="new-dotnet-ef-global-tool"></a>새 dotnet-ef 전역 도구
+
+_dotnet-ef_ 명령은 .NET CLI 전역 도구로 변환되었으므로, 마이그레이션을 사용하거나 기존 데이터베이스에서 DbContext를 스캐폴딩하기 위해 더 이상 프로젝트에서 DotNetCliToolReference를 사용할 필요가 없습니다.
+
+## <a name="microsoftentityframeworkcoreabstractions-package"></a>Microsoft.EntityFrameworkCore.Abstractions 패키지
+새 패키지에는 전체적으로 EF Core에 의존하지 않고 EF Core 기능을 강화하기 위해 프로젝트에서 사용할 수 있는 특성 및 인터페이스가 포함되어 있습니다. 예: 미리 보기 1에 도입된 [Owned] 특성이 여기로 이동되었습니다.
+
+## <a name="state-change-events"></a>상태 변경 이벤트
+
+`ChangeTracker`의 새 `Tracked` 및 `StateChanged` 이벤트를 사용하여 DbContext를 입력하거나 상태를 변경하는 엔터티에 대응하는 논리를 작성할 수 있습니다.
+
+## <a name="raw-sql-parameter-analyzer"></a>원시 SQL 매개 변수 분석기
+
+`FromSql` 또는 `ExecuteSqlCommand`와 같이 원시 SQL API의 잠재적으로 안전하지 않은 사용을 발견하는 새 코드 분석기가 EF Core와 함께 포함됩니다. 예: 다음 쿼리의 경우 _minAge_에 매개 변수가 없기 때문에 경고가 표시됩니다.
+
+``` csharp
+var sql = $"SELECT * FROM People WHERE Age > {minAge}";
+var query = context.People.FromSql(sql);
+```
+
 ## <a name="database-provider-compatibility"></a>데이터베이스 공급자 호환성
 
-EF Core 2.1은 EF Core 2.0에 만든 데이터베이스 공급자와 호환되도록 디자인되었습니다. 위에서 설명한 일부 기능(예: 값 변환)에 업데이트된 공급자가 필요하지만 다른 기능(예: 지연된 로드)은 기존 공급자를 사용하여 작동합니다.
+EF Core 2.1은 EF Core 2.0에 만든 데이터베이스 공급자와 호환되거나 최소한으로 변경되도록 디자인되었습니다. 위에서 설명한 일부 기능(예: 값 변환)에 업데이트된 공급자가 필요하지만 다른 기능(예: 지연된 로드)은 기존 공급자를 사용하여 작동합니다.
 
 > [!TIP]
 > 예상치 않은 호환성 또는 새로운 기능의 문제가 발생하거나 이에 대한 의견이 있는 경우 [문제 추적기](https://github.com/aspnet/EntityFrameworkCore/issues/new)를 사용하여 보고해주세요.
