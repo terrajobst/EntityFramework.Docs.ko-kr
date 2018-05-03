@@ -1,16 +1,16 @@
 ---
-title: "생성 된 값-EF 코어"
+title: 생성 된 값-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: eb082011-11a1-41b4-a108-15daafa03e80
 ms.technology: entity-framework-core
 uid: core/modeling/generated-properties
-ms.openlocfilehash: 892494461bcf49ee10d05c972da0ba19ca003c35
-ms.sourcegitcommit: 4b7d3d3e258b0d9cb778bb45a9f4a33c0792e38e
+ms.openlocfilehash: 88ccc2da3c2b6cbba8920d7113c82e769b459897
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="generated-values"></a>생성 된 값
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/28/2018
 
 사용 중인 데이터베이스 공급자에 따라 수 있는 값 EF 또는 데이터베이스에서 클라이언트 쪽을 생성 합니다. 다음 데이터베이스에서 생성 한 값은 컨텍스트에 엔터티를 추가 하면 EF 임시 값을 할당할 수 있습니다. 이 임시 값 하는 동안 데이터베이스에서 생성 된 값으로 대체 됩니다 `SaveChanges()`합니다.
 
-속성에 할당 된 값을 가진 컨텍스트에 엔터티를 추가 하는 경우에 새로 생성 하는 대신 해당 값을 삽입할 EF 시도 합니다. 속성 값이 CLR 기본값 할당 되지 않은 경우 할당으로 간주 됩니다 (`null` 에 대 한 `string`, `0` 에 대 한 `int`, `Guid.Empty` 에 대 한 `Guid`등.). 자세한 내용은 참조 [생성 된 속성에 대 한 명시적 값](..\saving\explicit-values-generated-properties.md)합니다.
+속성에 할당 된 값을 가진 컨텍스트에 엔터티를 추가 하는 경우에 새로 생성 하는 대신 해당 값을 삽입할 EF 시도 합니다. 속성 값이 CLR 기본값 할당 되지 않은 경우 할당으로 간주 됩니다 (`null` 에 대 한 `string`, `0` 에 대 한 `int`, `Guid.Empty` 에 대 한 `Guid`등.). 자세한 내용은 참조 [생성 된 속성에 대 한 명시적 값](../saving/explicit-values-generated-properties.md)합니다.
 
 > [!WARNING]  
 > 추가 된 엔터티에 대 한 값은 생성 하는 방법을 사용 중인 데이터베이스 공급자에 따라 달라 집니다. 데이터베이스 공급자 일부 속성 형식에 대 한 값 생성을 자동으로 설치 될 수 있습니다 하지만 값이 생성 되는 방식을 수동으로 설치 해야 할 수 있습니다 다른 합니다.
@@ -39,13 +39,13 @@ ms.lasthandoff: 02/28/2018
 
 생성 된 값에 추가 또는 업데이트 (삽입 또는 업데이트) 레코드가 저장 될 때마다 새 값을 생성을 의미 합니다.
 
-마찬가지로 `value generated on add`생성 되는 값이 아닌 값을 삽입할 엔터티를 새로 추가 된 인스턴스에서 속성에 대 한 값을 지정 합니다. 업데이트할 때 명시적 값을 설정할 수 이기도 합니다. 자세한 내용은 참조 [생성 된 속성에 대 한 명시적 값](..\saving\explicit-values-generated-properties.md)합니다.
+마찬가지로 `value generated on add`생성 되는 값이 아닌 값을 삽입할 엔터티를 새로 추가 된 인스턴스에서 속성에 대 한 값을 지정 합니다. 업데이트할 때 명시적 값을 설정할 수 이기도 합니다. 자세한 내용은 참조 [생성 된 속성에 대 한 명시적 값](../saving/explicit-values-generated-properties.md)합니다.
 
-> [!WARNING]  
+> [!WARNING]
 > 추가 및 업데이트 된 엔터티에 대 한 값은 생성 하는 방법을 사용 중인 데이터베이스 공급자에 따라 달라 집니다. 자동으로 데이터베이스 공급자 수 필요 해야 수동으로 값은 생성 하는 방법을 설정 하는 다른 일부 속성 형식에 대 한 값 생성을 설치 해야 합니다.
->
+> 
 > 예를 들어, SQL Server를 사용 하는 경우 `byte[]` 에 생성 된 대로 설정 된 속성을 추가 또는 업데이트 하 고 설치 프로그램을 동시성 토큰으로 표시 됩니다는 `rowversion` 하도록 데이터 형식을-데이터베이스에서 값을 생성 합니다. 그러나 지정 하는 경우는 `DateTime` 속성이 생성 된 추가 / 업데이트를 다음 값을 생성할 수 있는 방법을 설정 해야 합니다. 기본값을 구성 하는이 작업을 수행 하는 한 가지 방법은 `GETDATE()` (참조 [기본값](relational/default-values.md)) 새 행에 대 한 값을 생성 합니다. 다음 (예: 다음 예제에서는 트리거) 업데이트 하는 동안 값을 생성 하는 데이터베이스 트리거를 사용할 수 있습니다.
->
+> 
 > [!code-sql[Main](../../../samples/core/Modeling/FluentAPI/Samples/ValueGeneratedOnAddOrUpdate.sql)]
 
 ## <a name="conventions"></a>규칙

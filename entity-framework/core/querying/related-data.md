@@ -1,16 +1,16 @@
 ---
-title: "로드 된 데이터-EF 코어"
+title: 로드 된 데이터-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: 0d7705e0e5368435536e98d319c853ea8c732643
-ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
+ms.openlocfilehash: 5f1fb9376300739ab0e306d9d60e7ec71aa2d2e7
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="loading-related-data"></a>관련된 데이터를 로드 합니다.
 
@@ -43,7 +43,7 @@ Entity Framework Core를 사용 하면 모델에서 탐색 속성을 사용 하 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#SingleThenInclude)]
 
 > [!NOTE]  
-> 현재 버전의 Visual Studio는 잘못 된 코드 완성 옵션을 제공 하 고 올바른 식을 사용 하는 경우 구문 오류와 함께 플래그가 지정 될 수 있습니다는 `ThenInclude` 메서드 후 컬렉션 탐색 속성입니다. 이 https://github.com/dotnet/roslyn/issues/8237에서 추적 프로그램 IntelliSense 버그가 있음을 나타냅니다. 으로 코드가 올바른지와 성공적으로 컴파일할 수 있습니다 이러한 잘못 된 구문 오류는 무시 해도 됩니다. 
+> 현재 버전의 Visual Studio는 잘못 된 코드 완성 옵션을 제공 하 고 올바른 식을 사용 하는 경우 구문 오류와 함께 플래그가 지정 될 수 있습니다는 `ThenInclude` 메서드 후 컬렉션 탐색 속성입니다. 이에서 추적 프로그램 IntelliSense 버그가 있음을 https://github.com/dotnet/roslyn/issues/8237합니다. 으로 코드가 올바른지와 성공적으로 컴파일할 수 있습니다 이러한 잘못 된 구문 오류는 무시 해도 됩니다. 
 
 에 대 한 여러 호출을 체인화할 수 `ThenInclude` 추가 관련된 데이터의 수준을 포함 하 여 계속 합니다.
 
@@ -98,19 +98,19 @@ Entity Framework Core를 사용 하면 모델에서 탐색 속성을 사용 하 
 내용을 `School` 학생 인 모든 사용자의 탐색 수 로드 되도록 할 다양 한 패턴을 사용 하 여:
 
 - cast 사용
-```Csharp
-context.People.Include(person => ((Student)person).School).ToList()
-```
+  ```Csharp
+  context.People.Include(person => ((Student)person).School).ToList()
+  ```
 
 - 사용 하 여 `as` 연산자
-```Csharp
-context.People.Include(person => (person as Student).School).ToList()
-```
+  ```Csharp
+  context.People.Include(person => (person as Student).School).ToList()
+  ```
 
 - 오버 로드를 사용 하 여 `Include` 형식의 매개 변수를 사용 하는 `string`
-```Csharp
-context.People.Include("Student").ToList()
-```
+  ```Csharp
+  context.People.Include("Student").ToList()
+  ```
 
 ### <a name="ignored-includes"></a>무시 포함
 
@@ -152,7 +152,7 @@ EF 코어 기본적으로 경고를 기록 합니다 포함 경우 연산자는 
 > [!NOTE]  
 > 이 기능은 EF 코어 2.1에 도입 되었습니다.
 
-지연 로드를 사용 하는 가장 간단한 방법은 설치 된 경우는 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지 및을 호출 하 여 설정 되어 있으므로 `UseLazyLoadingProxies`합니다. 예:
+지연 로드를 사용 하는 가장 간단한 방법은 설치 된 경우는 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지 및을 호출 하 여 설정 되어 있으므로 `UseLazyLoadingProxies`합니다. 예를 들어:
 ```Csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
@@ -186,7 +186,7 @@ public class Post
 ```
 ### <a name="lazy-loading-without-proxies"></a>프록시 없이 Lazy 로드
 
-Lazy 로드 프록시를 삽입 하 여 작업의 `ILazyLoader` 에 설명 된 대로 엔터티로 서비스 [엔터티 형식 생성자](../modeling/constructors.md)합니다. 예:
+Lazy 로드 프록시를 삽입 하 여 작업의 `ILazyLoader` 에 설명 된 대로 엔터티로 서비스 [엔터티 형식 생성자](../modeling/constructors.md)합니다. 예를 들어:
 ```Csharp
 public class Blog
 {
@@ -239,7 +239,7 @@ public class Post
     }
 }
 ```
-엔터티 인스턴스를 사용 하 여 만든 있습니다 고 엔터티 형식에서 상속 되어야 또는 가상 탐색 속성에는 필요 하지 않으며이 `new` 지연 로드 한 번에 한 컨텍스트에 연결 합니다. 하지만에 대 한 참조가 필요는 `ILazyLoader` 엔터티 형식 EF 핵심 어셈블리를 결합 하는 서비스입니다. 이 EF 코어를 방지 하기 위해는 `ILazyLoader.Load` 메서드를 대리자로 삽입 합니다. 예:
+엔터티 인스턴스를 사용 하 여 만든 있습니다 고 엔터티 형식에서 상속 되어야 또는 가상 탐색 속성에는 필요 하지 않으며이 `new` 지연 로드 한 번에 한 컨텍스트에 연결 합니다. 하지만에 대 한 참조가 필요는 `ILazyLoader` 엔터티 형식 EF 핵심 어셈블리를 결합 하는 서비스입니다. 이 EF 코어를 방지 하기 위해는 `ILazyLoader.Load` 메서드를 대리자로 삽입 합니다. 예를 들어:
 ```Csharp
 public class Blog
 {

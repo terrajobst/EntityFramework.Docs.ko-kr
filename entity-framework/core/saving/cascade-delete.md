@@ -6,17 +6,17 @@ ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 ms.technology: entity-framework-core
 uid: core/saving/cascade-delete
-ms.openlocfilehash: 1ab9d114e27aac0bec972df631a426c8ce87a518
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 0fc8929c56d4c657b7fb1e3c8e4b1a71659220c9
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
-모두 삭제 한 행을 관련 된 행의 삭제를 자동으로 트리거하도록의 삭제를 허용 하는 특징을 설명 하기 위해 데이터베이스 용어에서 주로 사용 됩니다. EF 코어 delete 동작도 적용 밀접 하 게 관련 된 개념은 하나의 자식 엔터티 관계 상위 되었을 때 자동으로 삭제할 어렵다는-일반적으로 "고아 파일 삭제" 이라고이 i입니다.
+모두 삭제 한 행을 관련 된 행의 삭제를 자동으로 트리거하도록의 삭제를 허용 하는 특징을 설명 하기 위해 데이터베이스 용어에서 주로 사용 됩니다. 도 EF 코어 delete 동작 적용 밀접 하 게 관련 된 개념은 하나의 자식 엔터티 자동 삭제의 관계 상위-풀러에서 하는 경우이 일반적으로 라고 "고아 파일 삭제"입니다.
 
-EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 delete 동작의 구성을 허용 합니다. EF 코어 각 관계에 대 한 유용한 기본값 삭제 동작을 자동으로 구성 하는 규칙을 구현 [requiredness 관계의에 따라] (../modeling/relationships.md#required-and-optional-relationships)입니다.
+EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 delete 동작의 구성을 허용 합니다. EF 코어 구현에 따라 각 관계에 대 한 유용한 기본값 삭제 동작을 자동으로 구성 하는 규칙의 [관계의 requiredness](../modeling/relationships.md#required-and-optional-relationships)합니다.
 
 ## <a name="delete-behaviors"></a>동작 삭제
 삭제 동작에 정의 된는 *DeleteBehavior* 열거자 입력 하 고에 전달 될 수는 *OnDelete* fluent API를 제어 하는지 여부를 사용자/부모 엔터티 또는의 비활성화할 삭제는 엔터티에도 종속/자식 관계에 종속/자식 엔터티 부작용 있어야 합니다.
@@ -35,7 +35,7 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
 
 | 동작 이름               | 종속/자식 메모리에 대 한 영향    | 종속/자식 데이터베이스에 대 한 영향  |
 |:----------------------------|:---------------------------------------|:---------------------------------------|
-| **Cascade**                 | 엔터티 삭제                   | 엔터티 삭제                   |
+| **계단식 배열**                 | 엔터티 삭제                   | 엔터티 삭제                   |
 | **ClientSetNull** (기본값) | 외래 키 속성은 null로 | 없음                                   |
 | **SetNull**                 | 외래 키 속성은 null로 | 외래 키 속성은 null로 |
 | **제한**                | 없음                                   | 없음                                   |
