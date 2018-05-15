@@ -6,11 +6,11 @@ ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: 4e02f106e086d243b23a60c02838f32555be210e
-ms.sourcegitcommit: 26f33758c47399ae933f22fec8e1d19fa7d2c0b7
+ms.openlocfilehash: f16e3a130f3a4f92b2bf6014f2df0ca4eec56a25
+ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/19/2018
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="query-types"></a>쿼리 유형
 > [!NOTE]
@@ -28,7 +28,10 @@ EF 핵심 모델 엔터티 형식 외에도 포함할 수 있습니다 _쿼리 �
 - 키를 정의할 수는 필요 하지 않습니다.
 - 변경 내용을 추적 하지 됩니다는 _DbContext_ 및 따라서는 되지 삽입, 업데이트 또는 삭제할 데이터베이스에 있습니다.
 - 규칙으로 검색 되지 않습니다.
-- 특히 탐색 매핑 기능이-의 일부 지원, 관계의 주 끝으로 작동 하지 않을 수 있습니다.
+- 특히 탐색 매핑 기능이-의 일부 지원:
+  - 관계의 주 끝으로 작동 하지 않을 수 있습니다.
+  - 엔터티를 가리키는 참조 탐색 속성에만 사용할 수 있습니다.
+  - 엔터티 쿼리 형식에 탐색 속성을 포함할 수 없습니다.
 - 으로 해결 된 _ModelBuilder_ 를 사용 하는 `Query` 메서드 보다는 `Entity` 메서드.
 - 에 매핑되는 _DbContext_ 형식의 속성을 통해 `DbQuery<T>` 보다는 `DbSet<T>`
 - 사용 하 여 데이터베이스 개체에 매핑되는 `ToView` 메서드를 대신 `ToTable`합니다.

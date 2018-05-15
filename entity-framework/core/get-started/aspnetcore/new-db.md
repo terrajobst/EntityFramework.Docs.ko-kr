@@ -1,5 +1,5 @@
 ---
-title: "ASP.NET Core에서 시작 - 새 데이터베이스 - EF Core"
+title: ASP.NET Core에서 시작 - 새 데이터베이스 - EF Core
 author: rick-anderson
 ms.author: riande
 ms.author2: tdykstra
@@ -8,11 +8,11 @@ ms.topic: get-started-article
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 ms.technology: entity-framework-core
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: f6ed19d3c5d2ae8d1f5756558e50c1f0dddd2f07
-ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
+ms.openlocfilehash: 80477ca57b8b3df6de8ba3595c9056c6b8412040
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2018
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>ASP.NET Core에서 새 데이터베이스로 EF Core 시작
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 02/12/2018
 * 이름으로 **Model.cs**를 입력하고 **확인**을 클릭합니다.
 * 파일의 내용을 다음 코드로 바꿉니다.
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Models/Model.cs)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Models/Model.cs)]
 
 참고: 일반적으로 실제 앱에서는 모델의 각 클래스를 별도의 파일에 저장합니다. 간단한 설명을 위해 모든 클래스를 이 학습서에 대한 하나의 파일에 저장합니다.
 
@@ -78,13 +78,13 @@ MVC 컨트롤러에서 `BloggingContext`를 사용하려면 이 항목을 서비
 * **Startup.cs**를 엽니다.
 * 다음 `using` 문을 추가합니다.
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs#AddedUsings)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs#AddedUsings)]
 
 `AddDbContext` 메서드를 추가하여 서비스로 등록합니다.
 
 * `ConfigureServices` 메서드에 다음 코드를 추가합니다.
 
- [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs?name=ConfigureServices&highlight=7-8)]
+  [!code-csharp[Main](../../../../samples/core/GetStarted/AspNetCore/EFGetStarted.AspNetCore.NewDb/Startup.cs?name=ConfigureServices&highlight=7-8)]
 
 참고: 일반적으로 실제 앱은 연결 문자열을 구성 파일에 저장합니다. 간단한 설명을 위해 여기에서는 코드로 정의합니다. 자세한 내용은 [연결 문자열](../../miscellaneous/connection-strings.md)을 참조하세요.
 

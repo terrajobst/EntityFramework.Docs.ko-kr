@@ -1,5 +1,5 @@
 ---
-title: ".NET Framework에서 시작 - 새 데이터베이스 - EF Core"
+title: .NET Framework에서 시작 - 새 데이터베이스 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -7,10 +7,10 @@ ms.assetid: 52b69727-ded9-4a7b-b8d5-73f3acfbbad3
 ms.technology: entity-framework-core
 uid: core/get-started/full-dotnet/new-db
 ms.openlocfilehash: bd7054c6834ae11bfdc352d63654e4304771e432
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/26/2018
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-a-new-database"></a>.NET Framework에서 새 데이터베이스로 EF Core 시작
 
@@ -19,7 +19,7 @@ ms.lasthandoff: 10/27/2017
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/FullNet/ConsoleApp.NewDb)을 볼 수 있습니다.
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 이 연습을 완료하려면 다음 필수 구성 요소가 필요합니다.
 
@@ -161,4 +161,4 @@ namespace EFGetStarted.ConsoleApp
 
 하나의 블로그가 데이터베이스에 저장되고 모든 블로그의 세부 정보가 콘솔에 출력되는 것을 알 수 있습니다.
 
-![image](_static/output-new-db.png)
+![이미지](_static/output-new-db.png)

@@ -4,11 +4,11 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/6/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 396d31c9d0c0f47d299f49e82e557ed29b8420e7
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: d053d53bd50d2e7d16223c5b4e4009c9bb2298bb
+ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/14/2018
 ---
 <a name="ef-core-net-command-line-tools"></a>EF 핵심.NET 명령줄 도구
 ===============================
@@ -19,14 +19,18 @@ Entity Framework Core.NET 명령줄 도구는 플랫폼 간에 대 한 확장 **
 
 <a name="installing-the-tools"></a>도구 설치
 --------------------
-다음이 단계를 사용 하 여 EF 코어.NET 명령줄 도구를 설치 합니다.
+> [!NOTE]
+> .NET Core SDK 버전 2.1.300 최신 작성과 **dotnet ef** EF 코어 2.0 및 이상 버전을 호환 되는 명령입니다. 따라서 최신 버전의 EF 핵심 런타임 및.NET Core SDK를 사용 하는 경우 설치가 필요 하지 않습니다 및이 섹션의 나머지 부분을 무시할 수 있습니다.
+>
+> 반면에 **dotnet ef** 2.1.300.NET Core SDK 버전에 포함 되 고 최신 도구 EF 핵심 버전 1.0 및 1.1와 호환 되지 않습니다. .NET Core SDK 2.1.300 있는 컴퓨터에 이전 버전의 EF 코어를 사용 하는 프로젝트를 사용 하 여 작업할 수 또는 그 이상 버전이 설치 전에 2.1.200 버전 설치 해야는 SDK의 이전 또는 수정 하 여 이전 버전에 사용할 응용 프로그램을 구성 하 고 해당  [global.json](https://docs.microsoft.com/en-us/dotnet/core/tools/global-json) 파일입니다. 이 파일은 일반적으로 솔루션 디렉터리 (프로젝트 위에서 하나)에 포함 됩니다. 그런 다음 아래 installlation 명령으로 진행할 수 있습니다.
+
+.NET Core SDK의 이전 버전에서는 다음이 단계를 사용 하 여 EF 코어.NET 명령줄 도구를 설치할 수 있습니다.
 
 1. 프로젝트 파일을 편집 하 고 Microsoft.EntityFrameworkCore.Tools.DotNet DotNetCliToolReference 항목 (아래 참조)로 추가
 2. 다음 명령을 실행합니다.
 
        dotnet add package Microsoft.EntityFrameworkCore.Design
        dotnet restore
-
 
 결과 프로젝트 코드는 다음과 같아야 합니다.
 

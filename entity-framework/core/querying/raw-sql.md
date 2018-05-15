@@ -1,16 +1,16 @@
 ---
-title: "원시 SQL 쿼리-EF 코어"
+title: 원시 SQL 쿼리-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 ms.technology: entity-framework-core
 uid: core/querying/raw-sql
-ms.openlocfilehash: 79894c7b9fd9e40cdf14460abf5d872ee2f4b9f0
-ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
+ms.openlocfilehash: 29b7e20e875bf791a88a92636c1df4bc4e31656b
+ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 05/14/2018
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
@@ -21,18 +21,18 @@ Entity Framework Core를 사용 하면 관계형 데이터베이스와 함께 �
 
 ## <a name="limitations"></a>제한 사항
 
-원시 SQL 쿼리를 사용 하는 경우 알아두어야 할 몇 가지 있습니다.
+원시 SQL 쿼리를 사용 하는 경우 고려해 야 할 몇 가지 제한이 있습니다.
 * SQL 쿼리 엔터티 형식을 모델의 일부인 반환에 사용할 수 있습니다. 향상 된 기능을 통해 백로그에 없는 [원시 SQL 쿼리에서 임시 형식을 반환 하는 활성화](https://github.com/aspnet/EntityFramework/issues/1862)합니다.
 
-* SQL 쿼리 엔터티 형식의 모든 속성에 대 한 데이터를 반환 해야 합니다.
+* SQL 쿼리 엔터티 또는 쿼리 형식의 모든 속성에 대 한 데이터를 반환 해야 합니다.
 
 * 결과 집합의 열 이름 속성에 매핑되는 열 이름이 일치 해야 합니다. 이 옵션은 원시 SQL 쿼리에 대 한 속성/열 매핑이 무시 되었습니다 여기서 EF6 다릅니다 및 결과 집합 열 이름은 속성 이름과 일치 해야 합니다.
 
 * SQL 쿼리는 관련된 데이터를 포함할 수 없습니다. 그러나 대부분의 경우에서 구성할 수 있습니다를 사용 하 여 쿼리를 기반으로 `Include` 관련된 데이터를 반환 하도록 연산자 (참조 [관련된 데이터를 포함 하 여](#including-related-data)).
 
-* `SELECT`이 메서드에 전달 된 문은 일반적으로 구성 가능 해야: 서버에서 추가 쿼리 연산자를 평가 해야 하는 경우 EF 코어 (예: 다음에 적용 하는 LINQ 연산자를 변환 하 `FromSql`), 제공 된 SQL 하위 쿼리로 간주 합니다. 즉, 모든 문자 또는 유효 하지 않은 하위 쿼리,와 같은 옵션 전달 된 sql 문을 포함 하지 않아야 합니다.
+* `SELECT` 이 메서드에 전달 된 문은 일반적으로 구성 가능 해야: 서버에서 추가 쿼리 연산자를 평가 해야 하는 경우 EF 코어 (예: 다음에 적용 하는 LINQ 연산자를 변환 하 `FromSql`), 제공 된 SQL 하위 쿼리로 간주 합니다. 즉, 모든 문자 또는 유효 하지 않은 하위 쿼리,와 같은 옵션 전달 된 sql 문을 포함 하지 않아야 합니다.
   * 후행 세미콜론
-  * SQL Server에서 후행 쿼리 수준 힌트, 예:`OPTION (HASH JOIN)`
+  * SQL Server에서 후행 쿼리 수준 힌트, 예: `OPTION (HASH JOIN)`
   * SQL Server에는 `ORDER BY` 은 하지의 함께 사용 하는 절 `TOP 100 PERCENT` 에 `SELECT` 절
 
 * 이외의 다른 SQL 문을 `SELECT` 으로 구성할 수 없는 자동으로 인식 됩니다. 이 인해 저장된 프로시저의 전체 결과 항상 클라이언트에 반환 하 고 모든 LINQ 연산자 뒤에 적용 `FromSql` 메모리에 평가 됩니다. 

@@ -1,14 +1,14 @@
 ---
-title: "사용자 지정 마이그레이션 작업-EF 코어"
+title: 사용자 지정 마이그레이션 작업-EF 코어
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: d41409dee034e84d22092a5f9111dd79c87dcec3
-ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
+ms.openlocfilehash: 84d80175e719c950844b13688e1a4992614f25d8
+ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 05/14/2018
 ---
 <a name="custom-migrations-operations"></a>사용자 지정 마이그레이션 작업
 ============================
@@ -33,7 +33,7 @@ static MigrationBuilder CreateUser(
     => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
 ```
 
-마이그레이션을 여러 데이터베이스 공급자를 지원 해야 하는 경우 사용할 수 있습니다는 `MigrationBuilder.ActiveProvider` 속성입니다. Microsoft SQL Server와 PostreSQL 모두 지 원하는 예제는 다음과 같습니다.
+마이그레이션을 여러 데이터베이스 공급자를 지원 해야 하는 경우 사용할 수 있습니다는 `MigrationBuilder.ActiveProvider` 속성입니다. Microsoft SQL Server와 PostgreSQL 모두 지 원하는 예제는 다음과 같습니다.
 
 ``` csharp
 static MigrationBuilder CreateUser(
