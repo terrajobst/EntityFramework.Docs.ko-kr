@@ -6,11 +6,11 @@ ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 ms.technology: entity-framework-core
 uid: core/modeling/value-conversions
-ms.openlocfilehash: 329d2757059462468ca30772d37789343c03ba7b
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: 3e97c05a87ad9b4817c03f446031ea6c74704f5b
+ms.sourcegitcommit: 605e42232854ce44bae09624a6eebc35b8e2473b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/16/2018
 ---
 # <a name="value-conversions"></a>값 변환
 
@@ -60,7 +60,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="the-valueconverter-class"></a>ValueConverter 클래스
 
-호출 `HasConversion` 위와 같이 만들어집니다는 `ValueConverter` 인스턴스 및 속성에 설정 합니다. `ValueConverter` 대신 명시적으로 만들 수 있습니다. 예를 들어:
+호출 `HasConversion` 위와 같이 만들어집니다는 `ValueConverter` 인스턴스 및 속성에 설정 합니다. `ValueConverter` 대신 명시적으로 만들 수 있습니다. 예:
 ```Csharp
 var converter = new ValueConverter<EquineBeast, string>(
     v => v.ToString(),
@@ -78,7 +78,7 @@ modelBuilder
 
 ## <a name="built-in-converters"></a>기본 제공 변환기
 
-EF 코어 배 집합이 있는 미리 정의 된 `ValueConverter` 에서 찾은 클래스는 `Microsoft.EntityFrameworkCore.Storage.Converters` 네임 스페이스입니다. 이러한 항목은 다음과 같습니다.
+EF 코어 배 집합이 있는 미리 정의 된 `ValueConverter` 에서 찾은 클래스는 `Microsoft.EntityFrameworkCore.Storage.ValueConversion` 네임 스페이스입니다. 이러한 항목은 다음과 같습니다.
 * `BoolToZeroOneConverter` -0과 1에 Bool
 * `BoolToStringConverter` -예: "Y" 및 "N" 문자열로 Bool
 * `BoolToTwoValuesConverter` -Bool 하는 두 값 수
