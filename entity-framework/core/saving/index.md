@@ -1,5 +1,5 @@
 ---
-title: "데이터 저장 - EF Core"
+title: 데이터 저장 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
