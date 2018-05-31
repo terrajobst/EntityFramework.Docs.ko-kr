@@ -1,5 +1,5 @@
 ---
-title: 트랜잭션-EF 코어
+title: 트랜잭션 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -8,28 +8,29 @@ ms.technology: entity-framework-core
 uid: core/saving/transactions
 ms.openlocfilehash: fe4c0d6ad7ccb2e97dc94fbf2eb26a41e7fbcb19
 ms.sourcegitcommit: 7113e8675f26cbb546200824512078bf360225df
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30202499"
 ---
-# <a name="using-transactions"></a><span data-ttu-id="93cee-102">트랜잭션 사용</span><span class="sxs-lookup"><span data-stu-id="93cee-102">Using Transactions</span></span>
+# <a name="using-transactions"></a><span data-ttu-id="abe50-102">트랜잭션 사용</span><span class="sxs-lookup"><span data-stu-id="abe50-102">Using Transactions</span></span>
 
-<span data-ttu-id="93cee-103">트랜잭션을 사용 여러 데이터베이스 작업을 원자성 방식으로 처리 될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-103">Transactions allow several database operations to be processed in an atomic manner.</span></span> <span data-ttu-id="93cee-104">트랜잭션이 커밋된 경우에 데이터베이스에 성공적으로 적용 됩니다 모든 작업.</span><span class="sxs-lookup"><span data-stu-id="93cee-104">If the transaction is committed, all of the operations are successfully applied to the database.</span></span> <span data-ttu-id="93cee-105">트랜잭션이 롤백되면 데이터베이스에 적용 됩니다는 작업은 없습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-105">If the transaction is rolled back, none of the operations are applied to the database.</span></span>
+<span data-ttu-id="abe50-103">트랜잭션을 사용하면 여러 데이터베이스 작업을 원자성 방식으로 처리할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-103">Transactions allow several database operations to be processed in an atomic manner.</span></span> <span data-ttu-id="abe50-104">트랜잭션이 커밋되면 모든 작업이 성공적으로 데이터베이스에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-104">If the transaction is committed, all of the operations are successfully applied to the database.</span></span> <span data-ttu-id="abe50-105">트랜잭션이 롤백되면 데이터베이스에 아무 작업도 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-105">If the transaction is rolled back, none of the operations are applied to the database.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="93cee-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/) on GitHub.</span></span>
+> <span data-ttu-id="abe50-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/) on GitHub.</span></span>
 
-## <a name="default-transaction-behavior"></a><span data-ttu-id="93cee-107">기본 트랜잭션 동작</span><span class="sxs-lookup"><span data-stu-id="93cee-107">Default transaction behavior</span></span>
+## <a name="default-transaction-behavior"></a><span data-ttu-id="abe50-107">기본 트랜잭션 동작</span><span class="sxs-lookup"><span data-stu-id="abe50-107">Default transaction behavior</span></span>
 
-<span data-ttu-id="93cee-108">기본적으로 데이터베이스 공급자에는 트랜잭션을 지원 하는 경우 모든 변경 내용에 대 한 단일 호출에서 `SaveChanges()` 트랜잭션에 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-108">By default, if the database provider supports transactions, all changes in a single call to `SaveChanges()` are applied in a transaction.</span></span> <span data-ttu-id="93cee-109">변경 내용 중 하나라도 실패할 경우 트랜잭션이 롤백 및 데이터베이스에 적용 된 변경 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-109">If any of the changes fail, then the transaction is rolled back and none of the changes are applied to the database.</span></span> <span data-ttu-id="93cee-110">즉 `SaveChanges()` 하거나 완전히 성공 하거나 데이터베이스 오류가 발생 하면 수정 되지 않은 상태로 유지 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-110">This means that `SaveChanges()` is guaranteed to either completely succeed, or leave the database unmodified if an error occurs.</span></span>
+<span data-ttu-id="abe50-108">기본적으로 데이터베이스 공급자가 트랜잭션을 지원하는 경우 `SaveChanges()`에 대한 단일 호출의 모든 변경 내용이 트랜잭션에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-108">By default, if the database provider supports transactions, all changes in a single call to `SaveChanges()` are applied in a transaction.</span></span> <span data-ttu-id="abe50-109">변경이 실패하면 트랜잭션이 롤백되고 변경 내용이 데이터베이스에 적용되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-109">If any of the changes fail, then the transaction is rolled back and none of the changes are applied to the database.</span></span> <span data-ttu-id="abe50-110">즉, `SaveChanges()`이 완전히 성공하도록 보장되거나 오류가 발생하는 경우 데이터베이스가 수정되지 않은 상태로 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-110">This means that `SaveChanges()` is guaranteed to either completely succeed, or leave the database unmodified if an error occurs.</span></span>
 
-<span data-ttu-id="93cee-111">대부분의 응용 프로그램에 대 한이 기본 동작으로 충분 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-111">For most applications, this default behavior is sufficient.</span></span> <span data-ttu-id="93cee-112">응용 프로그램 요구 사항을 하다 고 필요한 경우에 수동으로 트랜잭션을 제어 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-112">You should only manually control transactions if your application requirements deem it necessary.</span></span>
+<span data-ttu-id="abe50-111">대부분의 응용 프로그램에서는 이 기본 동작이면 충분합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-111">For most applications, this default behavior is sufficient.</span></span> <span data-ttu-id="abe50-112">응용 프로그램 요구 사항에서 필요하다고 생각되는 경우에만 트랜잭션을 수동으로 제어해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-112">You should only manually control transactions if your application requirements deem it necessary.</span></span>
 
-## <a name="controlling-transactions"></a><span data-ttu-id="93cee-113">트랜잭션 제어</span><span class="sxs-lookup"><span data-stu-id="93cee-113">Controlling transactions</span></span>
+## <a name="controlling-transactions"></a><span data-ttu-id="abe50-113">트랜잭션 제어</span><span class="sxs-lookup"><span data-stu-id="abe50-113">Controlling transactions</span></span>
 
-<span data-ttu-id="93cee-114">사용할 수는 `DbContext.Database` 시작, 커밋, API 및 rollback 트랜잭션.</span><span class="sxs-lookup"><span data-stu-id="93cee-114">You can use the `DbContext.Database` API to begin, commit, and rollback transactions.</span></span> <span data-ttu-id="93cee-115">다음 예제에서는 두 개의 `SaveChanges()` 단일 트랜잭션 내에서 실행 중인 작업 및 LINQ 쿼리 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-115">The following example shows two `SaveChanges()` operations and a LINQ query being executed in a single transaction.</span></span>
+<span data-ttu-id="abe50-114">`DbContext.Database` API를 사용하여 트랜잭션을 시작하고 커밋하고 롤백할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-114">You can use the `DbContext.Database` API to begin, commit, and rollback transactions.</span></span> <span data-ttu-id="abe50-115">다음 예제에서는 단일 트랜잭션에서 실행되는 두 개의 `SaveChanges()` 작업과 LINQ 쿼리를 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-115">The following example shows two `SaveChanges()` operations and a LINQ query being executed in a single transaction.</span></span>
 
-<span data-ttu-id="93cee-116">모든 데이터베이스 공급자에는 트랜잭션을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-116">Not all database providers support transactions.</span></span> <span data-ttu-id="93cee-117">일부 공급자 throw 될 수 있습니다 또는 아무 트랜잭션 Api 호출 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-117">Some providers may throw or no-op when transaction APIs are called.</span></span>
+<span data-ttu-id="abe50-116">일부 데이터베이스 공급자는 트랜잭션을 지원하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-116">Not all database providers support transactions.</span></span> <span data-ttu-id="abe50-117">일부 공급자는 트랜잭션 API가 호출될 때 throw되거나 작동하지 않을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-117">Some providers may throw or no-op when transaction APIs are called.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Saving/Saving/Transactions/ControllingTransaction/Sample.cs?highlight=3,17,18,19)] -->
 ``` csharp
@@ -61,24 +62,24 @@ ms.lasthandoff: 03/28/2018
         }
 ```
 
-## <a name="cross-context-transaction-relational-databases-only"></a><span data-ttu-id="93cee-118">컨텍스트 간 트랜잭션 (관계형 데이터베이스에만 해당)</span><span class="sxs-lookup"><span data-stu-id="93cee-118">Cross-context transaction (relational databases only)</span></span>
+## <a name="cross-context-transaction-relational-databases-only"></a><span data-ttu-id="abe50-118">컨텍스트 간 트랜잭션(관계형 데이터베이스만 해당)</span><span class="sxs-lookup"><span data-stu-id="abe50-118">Cross-context transaction (relational databases only)</span></span>
 
-<span data-ttu-id="93cee-119">또한 여러 컨텍스트 인스턴스에서 트랜잭션을 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-119">You can also share a transaction across multiple context instances.</span></span> <span data-ttu-id="93cee-120">사용 하기 때문에 관계형 데이터베이스 공급자를 사용 하는 경우에이 기능을 사용할 수만 `DbTransaction` 및 `DbConnection`, 관계형 데이터베이스와 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-120">This functionality is only available when using a relational database provider because it requires the use of `DbTransaction` and `DbConnection`, which are specific to relational databases.</span></span>
+<span data-ttu-id="abe50-119">여러 컨텍스트 인스턴스 간에 트랜잭션을 공유할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-119">You can also share a transaction across multiple context instances.</span></span> <span data-ttu-id="abe50-120">이 기능은 관계형 데이터베이스와 관련된 `DbTransaction` 및 `DbConnection`을 사용해야 하므로 관계형 데이터베이스 공급자를 사용하는 경우에만 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-120">This functionality is only available when using a relational database provider because it requires the use of `DbTransaction` and `DbConnection`, which are specific to relational databases.</span></span>
 
-<span data-ttu-id="93cee-121">트랜잭션을 공유 하는 컨텍스트를 공유 해야 둘 다는 `DbConnection` 및 `DbTransaction`합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-121">To share a transaction, the contexts must share both a `DbConnection` and a `DbTransaction`.</span></span>
+<span data-ttu-id="abe50-121">트랜잭션을 공유하려면 컨텍스트가 `DbConnection`과 `DbTransaction`을 모두 공유해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-121">To share a transaction, the contexts must share both a `DbConnection` and a `DbTransaction`.</span></span>
 
-### <a name="allow-connection-to-be-externally-provided"></a><span data-ttu-id="93cee-122">외부에서 제공 되는 연결 허용</span><span class="sxs-lookup"><span data-stu-id="93cee-122">Allow connection to be externally provided</span></span>
+### <a name="allow-connection-to-be-externally-provided"></a><span data-ttu-id="abe50-122">연결을 외부에서 제공하도록 허용</span><span class="sxs-lookup"><span data-stu-id="abe50-122">Allow connection to be externally provided</span></span>
 
-<span data-ttu-id="93cee-123">공유는 `DbConnection` 것을 생성할 때는 컨텍스트에 대 한 연결을 전달 하는 기능이 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-123">Sharing a `DbConnection` requires the ability to pass a connection into a context when constructing it.</span></span>
+<span data-ttu-id="abe50-123">`DbConnection`을 공유하려면 이를 구성할 때 컨텍스트로 연결을 전달하는 기능이 필요합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-123">Sharing a `DbConnection` requires the ability to pass a connection into a context when constructing it.</span></span>
 
-<span data-ttu-id="93cee-124">허용 하는 가장 쉬운 방법은 `DbConnection` 사용을 중지 하는 외부에서 제공 되는 `DbContext.OnConfiguring` 메서드 컨텍스트를 구성 하 고 외부에서 만드는 `DbContextOptions` 컨텍스트 생성자에 전달 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-124">The easiest way to allow `DbConnection` to be externally provided, is to stop using the `DbContext.OnConfiguring` method to configure the context and externally create `DbContextOptions` and pass them to the context constructor.</span></span>
+<span data-ttu-id="abe50-124">`DbConnection`을 외부에서 제공하도록 하는 가장 쉬운 방법은 `DbContext.OnConfiguring` 메서드를 사용하여 컨텍스트를 구성하고 `DbContextOptions`를 외부에서 만들어 컨텍스트 생성자에 전달하는 것을 중지하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-124">The easiest way to allow `DbConnection` to be externally provided, is to stop using the `DbContext.OnConfiguring` method to configure the context and externally create `DbContextOptions` and pass them to the context constructor.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="93cee-125">`DbContextOptionsBuilder` 사용 하는 API가 `DbContext.OnConfiguring` 컨텍스트를 구성 하려면 이제 하려는 외부에서 만드는 데 사용할 `DbContextOptions`합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-125">`DbContextOptionsBuilder` is the API you used in `DbContext.OnConfiguring` to configure the context, you are now going to use it externally to create `DbContextOptions`.</span></span>
+> <span data-ttu-id="abe50-125">`DbContextOptionsBuilder`는 `DbContext.OnConfiguring`에서 컨텍스트를 구성하는 데 사용되는 API이며, 이제 외부에서 이 API를 사용하여 `DbContextOptions`를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-125">`DbContextOptionsBuilder` is the API you used in `DbContext.OnConfiguring` to configure the context, you are now going to use it externally to create `DbContextOptions`.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Context&highlight=3,4,5)]
 
-<span data-ttu-id="93cee-126">계속 사용 하는 대체 항목은 `DbContext.OnConfiguring`, 하지만 허용는 `DbConnection` 저장 되 고 다음에 사용 하는 `DbContext.OnConfiguring`합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-126">An alternative is to keep using `DbContext.OnConfiguring`, but accept a `DbConnection` that is saved and then used in `DbContext.OnConfiguring`.</span></span>
+<span data-ttu-id="abe50-126">또는 `DbContext.OnConfiguring`을 계속 사용하지만 `DbContext.OnConfiguring`에서 저장된 후 사용되는 `DbConnection`을 허용합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-126">An alternative is to keep using `DbContext.OnConfiguring`, but accept a `DbConnection` that is saved and then used in `DbContext.OnConfiguring`.</span></span>
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -99,38 +100,38 @@ public class BloggingContext : DbContext
 }
 ```
 
-### <a name="share-connection-and-transaction"></a><span data-ttu-id="93cee-127">공유 연결 및 트랜잭션</span><span class="sxs-lookup"><span data-stu-id="93cee-127">Share connection and transaction</span></span>
+### <a name="share-connection-and-transaction"></a><span data-ttu-id="abe50-127">연결 및 트랜잭션 공유</span><span class="sxs-lookup"><span data-stu-id="abe50-127">Share connection and transaction</span></span>
 
-<span data-ttu-id="93cee-128">이제 같은 연결을 공유 하는 여러 상황에 맞는 인스턴스를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-128">You can now create multiple context instances that share the same connection.</span></span> <span data-ttu-id="93cee-129">다음 사용 하 여는 `DbContext.Database.UseTransaction(DbTransaction)` API 두 컨텍스트가 모두 동일한 트랜잭션에 참여 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-129">Then use the `DbContext.Database.UseTransaction(DbTransaction)` API to enlist both contexts in the same transaction.</span></span>
+<span data-ttu-id="abe50-128">이제 동일한 연결을 공유하는 여러 컨텍스트 인스턴스를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-128">You can now create multiple context instances that share the same connection.</span></span> <span data-ttu-id="abe50-129">그런 다음, `DbContext.Database.UseTransaction(DbTransaction)` API를 사용하여 두 컨텍스트를 동일한 트랜잭션에 등록합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-129">Then use the `DbContext.Database.UseTransaction(DbTransaction)` API to enlist both contexts in the same transaction.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Transaction&highlight=1,2,3,7,16,23,24,25)]
 
-## <a name="using-external-dbtransactions-relational-databases-only"></a><span data-ttu-id="93cee-130">외부 DbTransactions (관계형 데이터베이스에만 해당)를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="93cee-130">Using external DbTransactions (relational databases only)</span></span>
+## <a name="using-external-dbtransactions-relational-databases-only"></a><span data-ttu-id="abe50-130">외부 DbTransactions 사용(관계형 데이터베이스만 해당)</span><span class="sxs-lookup"><span data-stu-id="abe50-130">Using external DbTransactions (relational databases only)</span></span>
 
-<span data-ttu-id="93cee-131">여러 데이터 액세스 기술은 관계형 데이터베이스에 액세스를 사용 하는 경우에 이러한 다른 기술에 의해 수행 되는 작업 간에 트랜잭션이 공유 하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-131">If you are using multiple data access technologies to access a relational database, you may want to share a transaction between operations performed by these different technologies.</span></span>
+<span data-ttu-id="abe50-131">여러 데이터 액세스 기술을 사용하여 관계형 데이터베이스에 액세스하는 경우 이러한 서로 다른 기술에서 수행하는 작업 간에 트랜잭션을 공유할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-131">If you are using multiple data access technologies to access a relational database, you may want to share a transaction between operations performed by these different technologies.</span></span>
 
-<span data-ttu-id="93cee-132">다음 예제에서는 동일한 트랜잭션 내에서 ADO.NET SqlClient 작업 및 Entity Framework Core 작업을 수행 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-132">The following example, shows how to perform an ADO.NET SqlClient operation and an Entity Framework Core operation in the same transaction.</span></span>
+<span data-ttu-id="abe50-132">다음 예제에서는 동일한 트랜잭션에서 ADO.NET SqlClient 작업 및 Entity Framework Core 작업을 수행하는 방법을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-132">The following example, shows how to perform an ADO.NET SqlClient operation and an Entity Framework Core operation in the same transaction.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/ExternalDbTransaction/Sample.cs?name=Transaction&highlight=4,10,21,26,27,28)]
 
-## <a name="using-systemtransactions"></a><span data-ttu-id="93cee-133">System.Transactions 사용</span><span class="sxs-lookup"><span data-stu-id="93cee-133">Using System.Transactions</span></span>
+## <a name="using-systemtransactions"></a><span data-ttu-id="abe50-133">System.Transactions 사용</span><span class="sxs-lookup"><span data-stu-id="abe50-133">Using System.Transactions</span></span>
 
 > [!NOTE]  
-> <span data-ttu-id="93cee-134">이 기능은 EF 코어 2.1의 새로운 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-134">This feature is new in EF Core 2.1.</span></span>
+> <span data-ttu-id="abe50-134">이 기능은 EF Core 2.1의 새로운 기능입니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-134">This feature is new in EF Core 2.1.</span></span>
 
-<span data-ttu-id="93cee-135">더 큰 범위의 전체에서 조정 하는 경우 앰비언트 트랜잭션을 사용 하는 것이 불가능 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-135">It is possible to use ambient transactions if you need to coordinate across a larger scope.</span></span>
+<span data-ttu-id="abe50-135">더 큰 범위를 조정해야 하는 경우 앰비언트 트랜잭션을 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-135">It is possible to use ambient transactions if you need to coordinate across a larger scope.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,24,25,26)]
 
-<span data-ttu-id="93cee-136">명시적 트랜잭션 참여 하는 것도 가능 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-136">It is also possible to enlist in an explicit transaction.</span></span>
+<span data-ttu-id="abe50-136">또한 명시적 트랜잭션에 등록할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-136">It is also possible to enlist in an explicit transaction.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,13,26,27,28)]
 
-### <a name="limitations-of-systemtransactions"></a><span data-ttu-id="93cee-137">System.Transactions의 제한 사항</span><span class="sxs-lookup"><span data-stu-id="93cee-137">Limitations of System.Transactions</span></span>  
+### <a name="limitations-of-systemtransactions"></a><span data-ttu-id="abe50-137">System.Transactions의 제한 사항</span><span class="sxs-lookup"><span data-stu-id="abe50-137">Limitations of System.Transactions</span></span>  
 
-1. <span data-ttu-id="93cee-138">EF 코어 System.Transactions에 대 한 지원을 구현 하기 위해 데이터베이스 공급자에 의존 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-138">EF Core relies on database providers to implement support for System.Transactions.</span></span> <span data-ttu-id="93cee-139">.NET Core에 최근에 추가 된만.NET Framework, API 및 따라서 지원에 대 한 지원이 ADO.NET 공급자 중 매우 일반적 하지만 같이 광범위 하 게 없이 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-139">Although support is quite common among ADO.NET providers for .NET Framework, the API has only been recently added to .NET Core and hence support is not be as widespread.</span></span> <span data-ttu-id="93cee-140">공급자를 System.Transactions에 대 한 지원을 구현 하지 않으면, 있기 이러한 Api에 대 한 호출은 완전히 무시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-140">If a provider does not implement support for System.Transactions, it is possible that calls to these APIs will be completely ignored.</span></span> <span data-ttu-id="93cee-141">.NET Core 용 SqlClient에서 2.1부터 지원지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-141">SqlClient for .NET Core does support it from 2.1 onwards.</span></span> <span data-ttu-id="93cee-142">.NET Core 2.0에 대 한 SqlClient 예외가 throw 됩니다의 기능을 사용 하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-142">SqlClient for .NET Core 2.0 will throw an exception of you attempt to use the feature.</span></span> 
+1. <span data-ttu-id="abe50-138">EF Core는 데이터베이스 공급자를 사용하여 System.Transactions에 대한 지원을 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-138">EF Core relies on database providers to implement support for System.Transactions.</span></span> <span data-ttu-id="abe50-139">.NET Framework용 ADO.NET 공급자에서는 지원이 매우 일반적이지만 .NET Core에는 API가 최근에 추가되었으므로 지원이 광범위하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-139">Although support is quite common among ADO.NET providers for .NET Framework, the API has only been recently added to .NET Core and hence support is not be as widespread.</span></span> <span data-ttu-id="abe50-140">공급자가 System.Transactions에 대한 지원을 구현하지 않는 경우 이러한 API에 대한 호출을 완전히 무시해도 됩니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-140">If a provider does not implement support for System.Transactions, it is possible that calls to these APIs will be completely ignored.</span></span> <span data-ttu-id="abe50-141">.NET Core용 SqlClient는 2.1부터 지원을 구현합니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-141">SqlClient for .NET Core does support it from 2.1 onwards.</span></span> <span data-ttu-id="abe50-142">.NET Core용 SqlClient 2.0에서 이 기능을 사용하려고 하면 예외가 throw됩니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-142">SqlClient for .NET Core 2.0 will throw an exception of you attempt to use the feature.</span></span> 
 
    > [!IMPORTANT]  
-   > <span data-ttu-id="93cee-143">테스트 하는 API 올바르게 작동 공급 전에 트랜잭션을 관리에 의존 하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-143">It is recommended that you test that the API behaves correctly with your provider before you rely on it for managing transactions.</span></span> <span data-ttu-id="93cee-144">그렇지 않은 경우 데이터베이스 공급자의 유지 관리자에 게 문의 하 라는 메시지가 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-144">You are encouraged to contact the maintainer of the database provider if it does not.</span></span> 
+   > <span data-ttu-id="abe50-143">트랜잭션을 관리하는 데 사용하기 전에 API가 공급자에서 올바르게 동작하는지 테스트하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-143">It is recommended that you test that the API behaves correctly with your provider before you rely on it for managing transactions.</span></span> <span data-ttu-id="abe50-144">그렇지 않으면 데이터베이스 공급자의 유지 관리자에게 문의하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-144">You are encouraged to contact the maintainer of the database provider if it does not.</span></span> 
 
-2. <span data-ttu-id="93cee-145">2.1 버전부터.NET Core에서는 System.Transactions 구현은 분산된 트랜잭션 지원, 있습니다 사용할 수 없습니다 `TransactionScope` 또는 `CommitableTransaction` 여러 리소스 관리자에서 트랜잭션을 조정할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="93cee-145">As of version 2.1, the System.Transactions implementation in .NET Core does not include support for distributed transactions, therefore you cannot use `TransactionScope` or `CommitableTransaction` to coordinate transactions across multiple resource managers.</span></span> 
+2. <span data-ttu-id="abe50-145">버전 2.1부터 .NET Core의 System.Transactions 구현에 분산 트랜잭션에 대한 지원이 포함되지 않으므로 `TransactionScope`이나 `CommitableTransaction`을 사용하여 여러 리소스 관리자 간에 트랜잭션을 조정할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="abe50-145">As of version 2.1, the System.Transactions implementation in .NET Core does not include support for distributed transactions, therefore you cannot use `TransactionScope` or `CommitableTransaction` to coordinate transactions across multiple resource managers.</span></span> 
