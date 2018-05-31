@@ -1,5 +1,5 @@
 ---
-title: "기본 쿼리-EF 코어"
+title: 기본 쿼리 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -8,22 +8,23 @@ ms.technology: entity-framework-core
 uid: core/querying/basic
 ms.openlocfilehash: 5070faf2aeeffad680e24e7de5a0ffa03a8f0064
 ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052553"
 ---
 # <a name="basic-queries"></a>기본 쿼리
 
-언어 통합 쿼리 (LINQ)를 사용 하 여 데이터베이스에서 엔터티를 로드 하는 방법에 알아봅니다.
+LINQ(Language Integrate Query)를 사용하여 데이터베이스에서 엔터티를 로드하는 방법을 알아보세요.
 
 > [!TIP]  
-> 이 문서를 볼 수 있습니다 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) GitHub에서 합니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
-## <a name="101-linq-samples"></a>101 LINQ 예제
+## <a name="101-linq-samples"></a>101 LINQ 샘플
 
-이 페이지에는 Entity Framework Core 관련 일반 작업을 달성 하기 위해 몇 가지 예가 표시 됩니다. 다양 한 LINQ로 가능한 보여 주는 샘플 집합을 참조 하십시오. [101 LINQ 예제](https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b)합니다.
+이 페이지에서는 Entity Framework Core로 일반 작업을 수행하는 몇 가지 예제를 보여줍니다. LINQ로 수행할 수 있는 작업을 보여주는 광범위한 샘플 모음은 [101 LINQ Samples](https://code.msdn.microsoft.com/101-LINQ-Samples-3fb9811b)(101 LINQ 샘플)를 참조하세요.
 
-## <a name="loading-all-data"></a>모든 데이터를 로드합니다.
+## <a name="loading-all-data"></a>모든 데이터 로드
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/Basics/Sample.cs)] -->
 ``` csharp
@@ -33,7 +34,7 @@ using (var context = new BloggingContext())
 }
 ```
 
-## <a name="loading-a-single-entity"></a>단일 엔터티를 로드합니다.
+## <a name="loading-a-single-entity"></a>단일 엔터티 로드
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/Basics/Sample.cs)] -->
 ``` csharp

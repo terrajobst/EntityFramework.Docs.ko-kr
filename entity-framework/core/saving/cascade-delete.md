@@ -1,5 +1,5 @@
 ---
-title: 하위 삭제-EF 코어
+title: 하위 삭제 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -8,72 +8,73 @@ ms.technology: entity-framework-core
 uid: core/saving/cascade-delete
 ms.openlocfilehash: 0fc8929c56d4c657b7fb1e3c8e4b1a71659220c9
 ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812679"
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
-모두 삭제 한 행을 관련 된 행의 삭제를 자동으로 트리거하도록의 삭제를 허용 하는 특징을 설명 하기 위해 데이터베이스 용어에서 주로 사용 됩니다. 도 EF 코어 delete 동작 적용 밀접 하 게 관련 된 개념은 하나의 자식 엔터티 자동 삭제의 관계 상위-풀러에서 하는 경우이 일반적으로 라고 "고아 파일 삭제"입니다.
+하위 삭제는 데이터베이스 용어에서 행을 삭제하여 관련 행 삭제를 자동으로 트리거하도록 하는 특성을 설명하는 데 일반적으로 사용됩니다. EF Core에서 삭제 동작을 설명하는 밀접하게 관련된 개념으로 부모와의 관계가 끊어진 경우 자식 엔터티의 자동 삭제가 있습니다. 일반적으로 “고아 삭제”라고 합니다.
 
-EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 delete 동작의 구성을 허용 합니다. EF 코어 구현에 따라 각 관계에 대 한 유용한 기본값 삭제 동작을 자동으로 구성 하는 규칙의 [관계의 requiredness](../modeling/relationships.md#required-and-optional-relationships)합니다.
+EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 동작 구성을 허용합니다. 또한 EF Core는 [관계의 필수 여부](../modeling/relationships.md#required-and-optional-relationships)에 따라 각 관계에 대해 유용한 기본 삭제 동작을 자동으로 구성하는 규칙을 구현합니다.
 
-## <a name="delete-behaviors"></a>동작 삭제
-삭제 동작에 정의 된는 *DeleteBehavior* 열거자 입력 하 고에 전달 될 수는 *OnDelete* fluent API를 제어 하는지 여부를 사용자/부모 엔터티 또는의 비활성화할 삭제는 엔터티에도 종속/자식 관계에 종속/자식 엔터티 부작용 있어야 합니다.
+## <a name="delete-behaviors"></a>삭제 동작
+삭제 동작은 *DeleteBehavior* 열거자 유형에 정의되며 *OnDelete* 흐름 API에 전달하여 주/부모 엔터티의 삭제 또는 종속/자식 엔터티에 대한 관계 끊기가 종속/자식 엔터티에 부작용을 일으키는지 여부를 제어할 수 있습니다.
 
-세 가지 작업 EF는 사용자/부모 엔터티가 삭제 되거나 자식에 대 한 관계를 끊는 때 수행할 수 있습니다.
-* 자식/종속 항목을 삭제할 수 있습니다.
-* 어린이 외래 키 값을 설정할 수 있습니다 null로
-* 자식이 변경 되지 않습니다.
+주/부모 엔터티가 삭제되거나 자식에 대한 관계가 끊어지는 경우 EF에서 다음 세 가지 작업을 수행할 수 있습니다.
+* 자식/종속을 삭제할 수 있습니다.
+* 자식의 외래 키 값을 null로 설정할 수 있습니다.
+* 자식을 변경하지 않고 그대로 유지합니다.
 
 > [!NOTE]  
-> EF 핵심 모델에서 구성 된 delete 동작 EF 코어를 사용 하 여 주 엔터티가 삭제 되 고 종속 엔터티가 (즉, 추적 된 종속 파일)의 메모리에 로드 된 경우에 적용 됩니다. 해당 cascade 동작 컨텍스트에서 추적 중이지 않은 데이터를 확인 하기 위해 데이터베이스에서 설치 프로그램에 적용 되는 데 필요한 동작에 있어야 합니다. EF 코어를 사용 하 여 데이터베이스를 만드는 경우이 cascade 동작이 있습니다 설치 됩니다.
+> EF Core 모델에 구성된 삭제 동작은 주 엔터티가 EF Core를 사용하여 삭제되고 종속 엔터티가 메모리에 로드되는 경우(예: 추적된 종속 항목의 경우)에만 적용됩니다. 컨텍스트에서 추적되지 않는 데이터에 필요한 작업이 적용되도록 데이터베이스에서 해당 하위 삭제 동작을 설정해야 합니다. EF Core를 사용하여 데이터베이스를 만드는 경우에는 이 하위 삭제 동작이 자동으로 설정됩니다.
 
-위의 두 번째 작업에 대 한 외래 키 값을 null로 설정지 않습니다 외래 키에서 null을 허용 하는 경우에 유효 합니다. (Nullable이 아닌 외래 키가 필수 관계 같음.) 이러한 경우 EF 코어 외래 키 속성이 될 때 변경 내용을 데이터베이스에 유지할 수 없는 때문에 예외가 throw 됩니다 SaveChanges를 호출할 때까지 null로 표시 되어 있습니다를 추적 합니다. 이것은 데이터베이스에서 제약 조건 위반을 얻는 비슷합니다.
+위의 두 번째 작업에서 외래 키가 null 허용이 아닌 경우 외래 키 값을 null로 설정할 수 없습니다. null을 허용하지 않는 외래 키는 필수 관계와 동일합니다. 이러한 경우 EF Core는 SaveChanges가 호출될 때까지 외래 키 속성이 null로 표시되었음을 추적하며, 이때 변경 내용을 데이터베이스에 유지할 수 없기 때문에 예외가 throw됩니다. 이는 데이터베이스에서 제약 조건 위반을 가져오는 것과 유사합니다.
 
-4 개 delete 되어 동작은 아래 표에 나와 있습니다. 선택적 관계 (nullable 외래 키)에 대 한 것 _은_ 그 결과 다음과 같은 효과가 null 외래 키 값을 저장할 수 있습니다.
+아래 표에 나열된 대로 네 가지 삭제 동작이 있습니다. 선택적 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘있습니다’.
 
-| 동작 이름               | 종속/자식 메모리에 대 한 영향    | 종속/자식 데이터베이스에 대 한 영향  |
+| 동작 이름               | 메모리의 종속/자식에 대한 영향    | 데이터베이스의 종속/자식에 대한 영향  |
 |:----------------------------|:---------------------------------------|:---------------------------------------|
-| **계단식 배열**                 | 엔터티 삭제                   | 엔터티 삭제                   |
-| **ClientSetNull** (기본값) | 외래 키 속성은 null로 | 없음                                   |
-| **SetNull**                 | 외래 키 속성은 null로 | 외래 키 속성은 null로 |
-| **제한**                | 없음                                   | 없음                                   |
+| **Cascade**                 | 엔터티가 삭제됨                   | 엔터티가 삭제됨                   |
+| **ClientSetNull**(기본값) | 외래 키 속성이 null로 설정됨 | 없음                                   |
+| **SetNull**                 | 외래 키 속성이 null로 설정됨 | 외래 키 속성이 null로 설정됨 |
+| **Restrict**                | 없음                                   | 없음                                   |
 
-필요한 관계 (nullable이 아닌 외래 키)에 대 한 _하지_ 그 결과 다음과 같은 효과가 null 외래 키 값을 저장할 수:
+필수 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘없습니다’.
 
-| 동작 이름         | 종속/자식 메모리에 대 한 영향 | 종속/자식 데이터베이스에 대 한 영향 |
+| 동작 이름         | 메모리의 종속/자식에 대한 영향 | 데이터베이스의 종속/자식에 대한 영향 |
 |:----------------------|:------------------------------------|:--------------------------------------|
-| **Cascade** (기본값) | 엔터티 삭제                | 엔터티 삭제                  |
-| **ClientSetNull**     | SaveChanges를 발생 시킵니다.                  | 없음                                  |
-| **SetNull**           | SaveChanges를 발생 시킵니다.                  | SaveChanges를 발생 시킵니다.                    |
-| **제한**          | 없음                                | 없음                                  |
+| **Cascade**(기본값) | 엔터티가 삭제됨                | 엔터티가 삭제됨                  |
+| **ClientSetNull**     | SaveChanges가 throw됨                  | 없음                                  |
+| **SetNull**           | SaveChanges가 throw됨                  | SaveChanges가 throw됨                    |
+| **Restrict**          | 없음                                | 없음                                  |
 
-위의 표에 *None* 제약 조건 위반이 발생할 수 있습니다. 예를 들어 주/자식 엔터티 삭제 표시 되지만 아무 작업도 수행 종속/자식의 외래 키를 변경 하려면 다음 데이터베이스 가능성이를 throw 합니다 SaveChanges 외부 제약 조건 위반 합니다.
+위의 표에서 ‘없음’은 제약 조건 위반을 발생시킬 수 있습니다. 예를 들어 주/자식 엔터티가 삭제되었지만 종속/자식의 외래 키를 변경하는 작업을 수행하지 않으면 외래 제약 조건 위반으로 인해 데이터베이스에서 SaveChanges가 throw될 수 있습니다.
 
-상위 수준:
-* 부모 없이 존재할 수 없는 엔터티 있고 EF 자식을 자동으로 삭제 하기 위한 처리 하기를 원하는 다음 사용 하 여 *Cascade*합니다.
-  * 부모 일반적으로 확인 없이 존재할 수 없는 엔터티 필요한 관계를 활용 *Cascade* 값이 기본값입니다.
-* 수도 부모가 없을 수 있는 엔터티가 있고 EF, 외래 키 무효화 처리 하기를 원하는 다음 사용 하 여 *ClientSetNull*
-  * 부모 일반적으로 확인 없이 존재할 수 있는 엔터티 선택적 관계를 사용 하 여 *ClientSetNull* 값이 기본값입니다.
-  * 데이터베이스에도 자식 외래 키에 null 값을 전파 하려고 할 경우 자식 엔터티 로드 되지 않습니다, 사용 하 여 *SetNull*합니다. 그러나 note 데이터베이스는이 지원 해야 않으며 다른 제한이 발생할 수 있습니다 이와 같은 데이터베이스를 구성 하는 실제로 사용 하면이 옵션으로 합니다. 이 인해 *SetNull* 기본값이 아닙니다.
-* EF 핵심을 적이 자동으로 엔터티를 삭제 하거나 자동으로 외래 키 null 다음 사용 하지 않으려면 *Restrict*합니다. 이 위해서는 코드 유지는 자식 엔터티 및 해당 외래 키 값 동기화 수동으로 참고 그렇지 않은 경우 제약 조건 예외가 throw 됩니다.
+상위 수준에서 다음을 수행합니다.
+* 부모가 있어야 엔터티가 존재할 수 있는 경우 EF에서 자동으로 하위를 삭제할 수 있도록 하려면 *Cascade*를 사용합니다.
+  * 부모가 있어야 존재할 수 있는 엔터티는 일반적으로 *Cascade*가 기본값인 필수 관계를 사용합니다.
+* 엔터티에 부모가 있거나 없을 수 있는 경우 EF에서 외래 키를 자동으로 무효화하도록 하려면 *ClientSetNull*을 사용합니다.
+  * 부모가 없어야 존재할 수 있는 엔터티는 일반적으로 *ClientSetNull*이 기본값인 선택적 관계를 사용합니다.
+  * 자식 엔터티가 로드되지 않은 경우에도 데이터베이스에서 null 값을 자식 외래 키로 전파하도록 하려면 *SetNull*을 사용합니다. 그러나 데이터베이스에서 이를 지원해야 하며, 이렇게 데이터베이스를 구성하면 다른 제한 사항이 나타날 수 있으므로 실제로는 이 옵션이 비현실적인 경우가 많습니다. 이로 인해 *SetNull*은 기본값이 아닙니다.
+* EF Core에서 엔터티를 자동으로 삭제하거나 외래 키를 자동으로 무효화하도록 하지 않으려면 *Restrict*를 사용합니다. 이 경우 코드에서 자식 엔터티 및 해당 외래 키 값을 수동으로 동기화된 상태로 유지하도록 해야 합니다. 그러지 않으면 제약 조건 예외가 throw됩니다.
 
 > [!NOTE]
-> 달리 EF6, EF 코어의 영향이 발생 하지 않으므로 즉시 않고 대신 SaveChanges를 호출할 때에 합니다.
+> EF6와 달리 EF Core에서는 하위 삭제 효과가 즉시 발생하지 않고 SaveChanges가 호출될 때만 발생합니다.
 
 > [!NOTE]  
-> **EF 코어 2.0의 변경 내용:** 이전 릴리스에서 *Restrict* 로 설정 해야 추적 된 종속 엔터티에 외래 키 속성 (옵션)로 인해 null 및 기본 선택적 관계에 대 한 동작을 삭제 했습니다. EF 코어 2.0에서는 *ClientSetNull* 선택적 관계에 대 한 기본값을 문제가 있고 해당 동작을 표시 하기 위해 도입 되었습니다. 동작은 *Restrict* 종속 엔터티가에 예기치 않은 결과가 사용 해야 조정 되었습니다.
+> **EF Core 2.0의 변경 내용:** 이전 릴리스에서는 *Restrict*로 인해 추적된 종속 엔터티의 선택적 외래 키 속성이 null로 설정되었으며, 선택적 관계에 대한 기본 삭제 동작이었습니다. EF Core 2.0에서는 해당 동작을 나타내기 위해 *ClientSetNull*이 도입되었으며 선택적 관계의 기본값이 되었습니다. 종속 엔터티에 의도하지 않은 영향을 주지 않도록 *Restrict*의 동작이 조정되었습니다.
 
-## <a name="entity-deletion-examples"></a>엔터티 삭제 예
+## <a name="entity-deletion-examples"></a>엔터티 삭제 예제
 
-아래 코드의 일부인는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/) 다운로드 한 실행 수입니다. 어떤 일이 생기 선택 및 필수 관계에 대 한 각 삭제 동작에 대 한 부모 엔터티가 삭제 될 때 보여 줍니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모 엔터티가 삭제될 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/CascadeDelete/Sample.cs#DeleteBehaviorVariations)]
 
-상황을 이해 하려면 각 변형을 살펴보겠습니다.
+각 변형을 살펴보고 어떤 상황이 발생하는지 파악해 보겠습니다.
 
-### <a name="deletebehaviorcascade-with-required-or-optional-relationship"></a>필수 또는 선택적 관계와 DeleteBehavior.Cascade
+### <a name="deletebehaviorcascade-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Cascade
 
 ```
   After loading entities:
@@ -97,12 +98,12 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
       Post '1' is in state Detached with FK '1' and no reference to a blog.
 ```
 
-* 블로그 삭제로 표시
-* 단계적 SaveChanges 될 때까지 발생 하지 않으므로 이후 처음 게시물 Unchanged 유지
-* SaveChanges 보냅니다 삭제와에 대 한 종속 항목/하위 (게시) 다음 사용자/부모 (블로그)
-* 저장 한 후 모든 엔터티는 이제 데이터베이스에서 삭제 한 후 분리
+* 블로그가 삭제됨으로 표시됨
+* SaveChanges까지 하위 삭제가 수행되지 않으므로 게시물이 처음에 변경되지 않은 상태로 유지됨
+* SaveChanges에서 두 종속/자식(게시물)에 대해 삭제를 전송한 다음, 주/부모(블로그)에 대해 삭제를 전송함
+* 저장 후에는 모든 엔터티가 데이터베이스에서 삭제되었으므로 분리됨
 
-### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>DeleteBehavior.ClientSetNull 또는 필수 관계와 DeleteBehavior.SetNull
+### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>필수 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
 ```
   After loading entities:
@@ -121,11 +122,11 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
   SaveChanges threw DbUpdateException: Cannot insert the value NULL into column 'BlogId', table 'EFSaving.CascadeDelete.dbo.Posts'; column does not allow nulls. UPDATE fails. The statement has been terminated.
 ```
 
-* 블로그 삭제로 표시
-* 단계적 SaveChanges 될 때까지 발생 하지 않으므로 이후 처음 게시물 Unchanged 유지
-* SaveChanges FK post null로 설정 하려고 시도 하지만 외래 키에서 null을 허용 하기 때문에이 작업이 실패 하면
+* 블로그가 삭제됨으로 표시됨
+* SaveChanges까지 하위 삭제가 수행되지 않으므로 게시물이 처음에 변경되지 않은 상태로 유지됨
+* SaveChanges에서 게시물 FK를 null로 설정하려고 시도하지만 FK가 null을 허용하지 않으므로 실패함
 
-### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>DeleteBehavior.ClientSetNull 또는 선택적 관계와 DeleteBehavior.SetNull
+### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>선택적 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
 ```
   After loading entities:
@@ -149,13 +150,13 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
       Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
 ```
 
-* 블로그 삭제로 표시
-* 단계적 SaveChanges 될 때까지 발생 하지 않으므로 이후 처음 게시물 Unchanged 유지
-* SaveChanges 시도 사용자/부모 (블로그)를 삭제 하기 전에 두 종속 항목/하위 (게시물) FK을 null로 설정
-* 저장 한 후 사용자/부모 (블로그)는 삭제 되지만 종속 항목/하위 (게시)를 여전히 추적
-* 추적 된 종속 항목/하위 (게시물) 이제 null 외래 키 값이 있는 않으며 삭제 된 사용자/부모 (블로그)에 대 한 참조의 삭제 되었습니다.
+* 블로그가 삭제됨으로 표시됨
+* SaveChanges까지 하위 삭제가 수행되지 않으므로 게시물이 처음에 변경되지 않은 상태로 유지됨
+* SaveChanges에서 주/부모(블로그)를 삭제하기 전에 두 종속/하위(게시물)의 FK를 null로 설정함
+* 저장 후에는 주/부모(블로그)가 삭제되지만 종속/자식(게시물)은 계속 추적됨
+* 추적된 종속/자식(게시물)은 null FK 값을 갖고 삭제된 주/부모(블로그)에 대한 참조는 제거됨
 
-### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계와 DeleteBehavior.Restrict
+### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Restrict
 
 ```
   After loading entities:
@@ -172,19 +173,19 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
   SaveChanges threw InvalidOperationException: The association between entity types 'Blog' and 'Post' has been severed but the foreign key for this relationship cannot be set to null. If the dependent entity should be deleted, then setup the relationship to use cascade deletes.
 ```
 
-* 블로그 삭제로 표시
-* 단계적 SaveChanges 될 때까지 발생 하지 않으므로 이후 처음 게시물 Unchanged 유지
-* 이후 *Restrict* 자동으로 null로 외래 키를 설정 하는 EF 지시 null이 아닌 및 저장 하지 않고 SaveChanges를 발생 시킵니다.
+* 블로그가 삭제됨으로 표시됨
+* SaveChanges까지 하위 삭제가 수행되지 않으므로 게시물이 처음에 변경되지 않은 상태로 유지됨
+* *Restrict*에서 FK를 null로 자동 설정하지 않도록 EF에 지시하기 때문에 null이 아닌 상태로 유지되며 저장하지 않고 SaveChanges가 throw됨
 
-## <a name="delete-orphans-examples"></a>삭제 고아 예
+## <a name="delete-orphans-examples"></a>고아 삭제 예제
 
-아래 코드의 일부인는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/) 하는 실행 다운로드할 수 있습니다. 샘플 하는 경우 선택 사항이 고 필수 관계에 대 한 각 삭제 동작에 대 한 부모/보안 주체 및 해당 자식/종속 항목 간의 관계를 끊는 보여 줍니다. 이 예제에서는 사용자/부모 (블로그)의 컬렉션 탐색 속성에서 종속 항목/하위 (게시)를 제거 하 여 관계를 끊는 합니다. 그러나 동작은 동일한 사용자/부모에 종속/자식 참조 대신 않게 닫히면 될 경우입니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모/주와 자식/종속 같 관계가 끊어진 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다. 이 예제에서는 주/부모(블로그)의 컬렉션 탐색 속성에서 종속/자식(게시물)을 제거하여 관계를 끊습니다. 그러나 주/부모에 대한 종속/자식의 참조가 무효화되는 경우에는 동작이 동일합니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/CascadeDelete/Sample.cs#DeleteOrphansVariations)]
 
-상황을 이해 하려면 각 변형을 살펴보겠습니다.
+각 변형을 살펴보고 어떤 상황이 발생하는지 파악해 보겠습니다.
 
-### <a name="deletebehaviorcascade-with-required-or-optional-relationship"></a>필수 또는 선택적 관계와 DeleteBehavior.Cascade
+### <a name="deletebehaviorcascade-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Cascade
 
 ```
   After loading entities:
@@ -207,12 +208,12 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
       Post '1' is in state Detached with FK '1' and no reference to a blog.
 ```
 
-* Null로 표시 되어야 FK 발생 관계 비활성화할 게시물 Modified로 표시 됩니다.
-  * 외래 키에서 null을 허용 하는 경우 다음의 실제 값은 변경 되지 null로 표시 되어 있지만
-* SaveChanges 종속 항목/자식 (게시)에 대 한 삭제를 보냅니다.
-* 저장 한 후 종속 항목/하위 (게시물)는 이제 데이터베이스에서 삭제 한 후 분리
+* 관계를 끊으면 FK가 null로 표시되기 때문에 게시물이 수정됨으로 표시됨
+  * FK가 null을 허용하지 않으면 null로 표시되는 경우에도 실제 값은 변경되지 않음
+* SaveChanges는 종속/자식(게시물)에 대한 삭제를 전송함
+* 저장 후에는 종속/자식(게시물)이 데이터베이스에서 삭제되었으므로 분리됨
 
-### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>DeleteBehavior.ClientSetNull 또는 필수 관계와 DeleteBehavior.SetNull
+### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>필수 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
 ```
   After loading entities:
@@ -231,11 +232,11 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
   SaveChanges threw DbUpdateException: Cannot insert the value NULL into column 'BlogId', table 'EFSaving.CascadeDelete.dbo.Posts'; column does not allow nulls. UPDATE fails. The statement has been terminated.
 ```
 
-* Null로 표시 되어야 FK 발생 관계 비활성화할 게시물 Modified로 표시 됩니다.
-  * 외래 키에서 null을 허용 하는 경우 다음의 실제 값은 변경 되지 null로 표시 되어 있지만
-* SaveChanges FK post null로 설정 하려고 시도 하지만 외래 키에서 null을 허용 하기 때문에이 작업이 실패 하면
+* 관계를 끊으면 FK가 null로 표시되기 때문에 게시물이 수정됨으로 표시됨
+  * FK가 null을 허용하지 않으면 null로 표시되는 경우에도 실제 값은 변경되지 않음
+* SaveChanges에서 게시물 FK를 null로 설정하려고 시도하지만 FK가 null을 허용하지 않으므로 실패함
 
-### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>DeleteBehavior.ClientSetNull 또는 선택적 관계와 DeleteBehavior.SetNull
+### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>선택적 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
 ```
   After loading entities:
@@ -258,12 +259,12 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
       Post '1' is in state Unchanged with FK 'null' and no reference to a blog.
 ```
 
-* Null로 표시 되어야 FK 발생 관계 비활성화할 게시물 Modified로 표시 됩니다.
-  * 외래 키에서 null을 허용 하는 경우 다음의 실제 값은 변경 되지 null로 표시 되어 있지만
-* SaveChanges를 null로 두 종속 항목/하위 (게시물) FK 설정
-* 저장 한 후 종속 항목/하위 (게시물) 이제 null 외래 키 값이 있는 및 삭제 된 사용자/부모 (블로그)에 대 한 참조는 제거 되었습니다.
+* 관계를 끊으면 FK가 null로 표시되기 때문에 게시물이 수정됨으로 표시됨
+  * FK가 null을 허용하지 않으면 null로 표시되는 경우에도 실제 값은 변경되지 않음
+* SaveChanges에서 두 종속/자식(게시물)의 FK를 null로 설정함
+* 저장 후에는 종속/자식(게시물)이 null FK 값을 갖고 삭제된 주/부모(블로그)에 대한 참조가 제거됨
 
-### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계와 DeleteBehavior.Restrict
+### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Restrict
 
 ```
   After loading entities:
@@ -280,13 +281,13 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
   SaveChanges threw InvalidOperationException: The association between entity types 'Blog' and 'Post' has been severed but the foreign key for this relationship cannot be set to null. If the dependent entity should be deleted, then setup the relationship to use cascade deletes.
 ```
 
-* Null로 표시 되어야 FK 발생 관계 비활성화할 게시물 Modified로 표시 됩니다.
-  * 외래 키에서 null을 허용 하는 경우 다음의 실제 값은 변경 되지 null로 표시 되어 있지만
-* 이후 *Restrict* 자동으로 null로 외래 키를 설정 하는 EF 지시 null이 아닌 및 저장 하지 않고 SaveChanges를 발생 시킵니다.
+* 관계를 끊으면 FK가 null로 표시되기 때문에 게시물이 수정됨으로 표시됨
+  * FK가 null을 허용하지 않으면 null로 표시되는 경우에도 실제 값은 변경되지 않음
+* *Restrict*에서 FK를 null로 자동 설정하지 않도록 EF에 지시하기 때문에 null이 아닌 상태로 유지되며 저장하지 않고 SaveChanges가 throw됨
 
-## <a name="cascading-to-untracked-entities"></a>추적 되지 않은 엔터티에도 종속
+## <a name="cascading-to-untracked-entities"></a>추적되지 않은 엔터티에 대한 하위 삭제
 
-호출 하는 경우 *SaveChanges*, cascade 규칙 삭제는 컨텍스트에 의해 추적 되는 엔터티에 적용 됩니다. 이러한 모든 상황은 위에 표시 된 예에서는 이기 때문에 SQL 사용자/부모 (블로그)와 모든 종속 항목/하위 (게시)을 모두 삭제 하도록 생성:
+*SaveChanges*를 호출하면 하위 삭제 규칙이 컨텍스트에서 추적되는 모든 개체에 적용됩니다. 이 상황은 위에 표시된 모든 예제에서 발생하므로, 주/부모(블로그)와 모든 종속/자식(게시물)을 삭제하도록 SQL이 생성되었습니다.
 
 ```sql
     DELETE FROM [Posts] WHERE [PostId] = 1
@@ -294,10 +295,10 @@ EF 코어는 몇 가지 다른 삭제 동작을 구현 하 고 개별 관계의 
     DELETE FROM [Blogs] WHERE [BlogId] = 1
 ```
 
-경우에에서 주 서버를 로드-예를 들어 때 쿼리가 만들어지는 없이 블로그에 대 한 프로그램 `Include(b => b.Posts)` 게시물-포함 하도록 한 다음 SaveChanges 생성 되 고 주/부모를 삭제 하는 SQL:
+`Include(b => b.Posts)`를 사용하지 않고 게시물도 포함하도록 블로그를 쿼리하는 경우처럼 주 엔터티만 로드되는 경우에는 SaveChanges에서 주/부모를 삭제하는 SQL만 생성됩니다.
 
 ```sql
     DELETE FROM [Blogs] WHERE [BlogId] = 1
 ```
 
-종속 항목/하위 (게시물) 데이터베이스에 해당 cascade 동작을 구성 하는 경우에 삭제 됩니다. EF를 사용 하 여 데이터베이스를 만드는 경우이 cascade 동작이 있습니다 설치 됩니다.
+데이터베이스에서 해당 하위 삭제 동작을 구성한 경우에만 종속/자식(게시물)이 삭제됩니다. EF를 사용하여 데이터베이스를 만드는 경우에는 이 하위 삭제 동작이 자동으로 설정됩니다.

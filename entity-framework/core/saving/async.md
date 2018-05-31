@@ -1,5 +1,5 @@
 ---
-title: "비동기 절약-EF 코어"
+title: 비동기 저장 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 01/24/2017
@@ -8,17 +8,18 @@ ms.technology: entity-framework-core
 uid: core/saving/async
 ms.openlocfilehash: 640e5f131b0e9ef4e5028d1dcaf80f3e5bbd9d9b
 ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052623"
 ---
 # <a name="asynchronous-saving"></a>비동기 저장
 
-비동기 저장의 변경 내용이 데이터베이스에 기록 되는 동안에 스레드를 차단 하지 않습니다. 이 고정 하는 굵은 클라이언트 응용 프로그램의 UI를 방지할 수 있습니다. 비동기 작업에 있는 스레드 수를 확보할 수 데이터베이스 작업이 완료 될 때 다른 요청을 처리 하는 웹 응용 프로그램에서 처리량을 높일 수도 있습니다. 자세한 내용은 참조 [C#에서 비동기 프로그래밍](https://docs.microsoft.com/dotnet/csharp/async)합니다.
+비동기 저장은 데이터베이스에 변경 내용을 쓰는 동안 스레드가 차단되지 않도록 도와줍니다. 이 기능은 씩 클라이언트 응용 프로그램의 UI 고정을 방지하는 데 유용할 수 있습니다. 또한 비동기 작업은 웹 응용 프로그램에서 처리량을 늘릴 수 있어, 데이터베이스 작업이 완료되는 동안 스레드가 해제되어 다른 요청을 처리할 수 있습니다. 자세한 내용은 [C#의 비동기 프로그래밍](https://docs.microsoft.com/dotnet/csharp/async)을 참조하세요.
 
 > [!WARNING]  
-> EF 코어 동일한 컨텍스트 인스턴스에에서 실행 되 고 여러 병렬 작업을 지원 하지 않습니다. 다음 작업을 시작 하기 전에 완료 작업에 대해 기다려야 항상 합니다. 사용 하 여 일반적으로 이렇게는 `await` 각 비동기 작업에는 키워드입니다.
+> EF Core는 동일한 컨텍스트 인스턴스에서 실행되는 여러 병렬 작업을 지원하지 않습니다. 항상 작업이 완료될 때까지 대기한 후 다음 작업을 시작해야 합니다. 일반적으로 이 작업은 각 비동기 작업에서 `await` 키워드를 사용하여 수행합니다.
 
-Entity Framework Core 제공 `DbContext.SaveChangesAsync()` 비동기 대신 `DbContext.SaveChanges()`합니다.
+Entity Framework Core는 `DbContext.SaveChangesAsync()`를 `DbContext.SaveChanges()`에 대한 비동기 대안으로 제공합니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Async/Sample.cs#Sample)]
