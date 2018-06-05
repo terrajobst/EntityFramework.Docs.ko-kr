@@ -6,11 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: f9aac91545b97e56686e3a8d2eb9e83c849587d9
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: 3befcbd3ff3da5dd159e6e6cb5fe7140c81317c2
+ms.sourcegitcommit: a2b38dedc88ca3ccbfe7b1db9602ca02da8294cd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/31/2018
+ms.locfileid: "34686664"
 ---
 # <a name="entity-framework-core-quick-overview"></a>Entity Framework Core 요약 개요
 
@@ -26,9 +27,8 @@ EF Core 는 여러 데이터베이스 엔진을 지원합니다. 자세한 내�
 
 EF Core를 잘 알고 있고 최신 릴리스의 세부 정보로 직접 이동하려는 경우:
 
-- **[EF Core 2.1의 새로운 기능(현재 미리 보기 상태)](xref:core/what-is-new/ef-core-2.1)**
-- **[EF Core 2.0의 새로운 기능(출시된 최신 버전)](xref:core/what-is-new/ef-core-2.0)**
-- **[EF Core 2.0으로 기존 응용 프로그램 업그레이드](xref:core/miscellaneous/1x-2x-upgrade)**
+- **[EF Core 2.1의 새로운 기능](xref:core/what-is-new/ef-core-2.1)**
+- **[EF Core 2.x으로 기존 응용 프로그램 업그레이드](xref:core/miscellaneous/1x-2x-upgrade)**
 
 
 ## <a name="get-entity-framework-core"></a>Entity Framework Core 구하기
