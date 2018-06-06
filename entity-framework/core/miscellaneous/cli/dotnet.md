@@ -4,11 +4,13 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/6/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: d053d53bd50d2e7d16223c5b4e4009c9bb2298bb
-ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
+uid: core/miscellaneous/cli/dotnet
+ms.openlocfilehash: 721235b07e695efd8df43294e1f4e90c28ae83d7
+ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34754498"
 ---
 <a name="ef-core-net-command-line-tools"></a>EF 핵심.NET 명령줄 도구
 ===============================
@@ -130,9 +132,9 @@ DbContext 형식에 대 한 정보를 가져옵니다.
 
 인수:
 
-|               |                                                                     |
-|:--------------|:--------------------------------------------------------------------|
-| \<연결 &GT; | 데이터베이스에 연결 문자열입니다.                              |
+|               |                                                                             |
+|:--------------|:----------------------------------------------------------------------------|
+| \<연결 &GT; | 데이터베이스에 연결 문자열입니다.                                      |
 | \<공급자 &GT;   | 사용 하는 공급자입니다. (예: Microsoft.EntityFrameworkCore.SqlServer) |
 
 옵션:
