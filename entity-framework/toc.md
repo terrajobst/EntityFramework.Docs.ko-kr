@@ -14,8 +14,8 @@
 
 ### [EF Core의 새로운 기능](core/what-is-new/index.md)
 #### [EF Core 로드맵](core/what-is-new/roadmap.md)
-#### [EF Core 2.1(미리 보기 상태)](core/what-is-new/ef-core-2.1.md)
-#### [EF Core 2.0(최신 릴리스)](core/what-is-new/ef-core-2.0.md)
+#### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
+#### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
 #### [EF Core 1.1](core/what-is-new/ef-core-1.1.md)
 #### [EF Core 1.0](core/what-is-new/ef-core-1.0.md)
 
@@ -117,7 +117,7 @@
 
 ### 기타
 #### [연결 문자열](core/miscellaneous/connection-strings.md)
-#### 자세한 내용은[로깅](core/miscellaneous/logging.md)을 참고하시기 바랍니다.
+#### [로깅](core/miscellaneous/logging.md)
 #### [연결 복원력](core/miscellaneous/connection-resiliency.md)
 #### [테스트](core/miscellaneous/testing/index.md)
 ##### [SQLite 테스트](core/miscellaneous/testing/sqlite.md)
