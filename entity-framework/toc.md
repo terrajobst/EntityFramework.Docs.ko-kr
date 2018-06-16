@@ -127,7 +127,7 @@
 #### [1.0 RC2에서 RTM으로 업그레이드](core/miscellaneous/rc2-rtm-upgrade.md)
 #### [EF Core 2.0으로 업그레이드](core/miscellaneous/1x-2x-upgrade.md)
 
-### [API 참조](https://docs.microsoft.com/dotnet/api/?view=efcore-2.0)
+### [API 참조](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
 
 ## [Entity Framework 6](ef6/index.md)
 ### [설명서](http://msdn.com/data/ef)
