@@ -1,5 +1,5 @@
 ---
-title: "DbContext-EF 핵심 구성"
+title: DbContext-EF 핵심 구성
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 02/12/2018
+ms.locfileid: "29152392"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext를 구성합니다.
 

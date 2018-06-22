@@ -1,5 +1,5 @@
 ---
-title: "Microsoft SQL Server 데이터베이스-메모리 액세스에 최적화 된 테이블-공급자 EF 코어"
+title: Microsoft SQL Server 데이터베이스-메모리 액세스에 최적화 된 테이블-공급자 EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052643"
 ---
 # <a name="memory-optimized-tables-support-in-sql-server-ef-core-database-provider"></a>SQL Server EF 코어 데이터베이스 공급자에 메모리 액세스에 최적화 된 테이블을 지원합니다.
 

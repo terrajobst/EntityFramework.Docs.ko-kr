@@ -1,5 +1,5 @@
 ---
-title: "관계형 데이터베이스 모델링 - EF Core"
+title: 관계형 데이터베이스 모델링 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26048765"
 ---
 # <a name="relational-database-modeling"></a>관계형 데이터베이스 모델링
 

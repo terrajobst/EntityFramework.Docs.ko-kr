@@ -1,5 +1,5 @@
 ---
-title: "InMemory-EF 코어를 사용 하 여 테스트"
+title: InMemory-EF 코어를 사용 하 여 테스트
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: d096484dcf9eff73d9943fa60db7a418b10ca0b3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 01/22/2018
+ms.locfileid: "27995589"
 ---
 # <a name="testing-with-inmemory"></a>InMemory를 사용 하 여 테스트
 

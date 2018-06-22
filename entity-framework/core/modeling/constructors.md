@@ -11,6 +11,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812497"
 ---
 # <a name="entity-types-with-constructors"></a>생성자가 있는 엔터티 형식
 

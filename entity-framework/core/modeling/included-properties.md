@@ -1,5 +1,5 @@
 ---
-title: "포함 및 제외 속성-EF 코어"
+title: 포함 및 제외 속성-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052493"
 ---
 # <a name="including--excluding-properties"></a>포함 및 제외 속성
 

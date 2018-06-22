@@ -1,5 +1,5 @@
 ---
-title: "여러 공급자-EF 코어와 마이그레이션"
+title: 여러 공급자-EF 코어와 마이그레이션
 author: bricelam
 ms.author: bricelam
 ms.date: 11/8/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: 2ef0a4a90b01edd22b9206f8729b8de459ef8cab
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/20/2018
+ms.locfileid: "30002807"
 ---
 <a name="migrations-with-multiple-providers"></a>여러 공급자와 마이그레이션
 ==================================

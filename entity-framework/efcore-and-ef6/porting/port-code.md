@@ -1,5 +1,5 @@
 ---
-title: "EF6에서 EF 코어-코드 기반 모델을 포팅로 이식"
+title: EF6에서 EF 코어-코드 기반 모델을 포팅로 이식
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -10,6 +10,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052953"
 ---
 # <a name="porting-an-ef6-code-based-model-to-ef-core"></a>EF6 코드 기반 모델 EF 코어로 이식
 

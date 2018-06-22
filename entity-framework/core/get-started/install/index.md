@@ -1,5 +1,5 @@
 ---
-title: "EF Core 설치"
+title: EF Core 설치
 author: divega
 ms.author: divega
 ms.date: 08/06/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26049245"
 ---
 # <a name="installing-ef-core"></a>EF Core 설치
 

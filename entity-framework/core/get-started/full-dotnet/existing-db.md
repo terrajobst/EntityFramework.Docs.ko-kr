@@ -11,6 +11,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812627"
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>.NET Framework에서 기존 데이터베이스로 EF Core 시작
 

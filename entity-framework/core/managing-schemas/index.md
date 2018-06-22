@@ -1,5 +1,5 @@
 ---
-title: "데이터베이스 스키마 관리 - EF Core"
+title: 데이터베이스 스키마 관리 - EF Core
 author: bricelam
 ms.author: divega
 ms.date: 10/30/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26049385"
 ---
 # <a name="managing-database-schemas"></a>데이터베이스 스키마 관리
 EF Core는 EF Core 모델과 데이터베이스 스키마를 동기 상태로 유지하는 두 가지 기본 방법을 제공합니다. 두 방법 중에 하나를 선택하려면 EF Core 모델 또는 데이터베이스 스키마 중 어느 것이 올바른 원본인지 판단합니다.

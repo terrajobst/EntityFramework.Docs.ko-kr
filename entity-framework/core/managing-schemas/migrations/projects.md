@@ -1,5 +1,5 @@
 ---
-title: "여러 프로젝트-EF 코어 마이그레이션"
+title: 여러 프로젝트-EF 코어 마이그레이션
 author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: ced2637bf8cc5964c6daa6c7fcfce501bf9ef6e8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 12/22/2017
+ms.locfileid: "27161229"
 ---
 <a name="using-a-separate-project"></a>별도 프로젝트를 사용 하 여
 ========================

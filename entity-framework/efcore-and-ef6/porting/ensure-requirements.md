@@ -1,5 +1,5 @@
 ---
-title: "EF6에서 EF 코어-로 이식 요구 사항을 확인"
+title: EF6에서 EF 코어-로 이식 요구 사항을 확인
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -10,6 +10,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052863"
 ---
 # <a name="before-porting-from-ef6-to-ef-core-validate-your-applications-requirements"></a>EF 코어로 EF6에서 이식 하기 전에: 응용 프로그램의 요구 사항을 확인
 

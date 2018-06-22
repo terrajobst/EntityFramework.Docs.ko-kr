@@ -9,6 +9,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812666"
 ---
 # <a name="-reverse-engineering"></a>🔧 리버스 엔지니어링
 

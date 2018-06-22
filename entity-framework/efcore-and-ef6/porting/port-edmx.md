@@ -10,6 +10,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812692"
 ---
 # <a name="porting-an-ef6-edmx-based-model-to-ef-core"></a>EF6 EDMX 기반 모델 EF 코어로 이식
 

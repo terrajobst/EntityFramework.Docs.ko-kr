@@ -10,6 +10,7 @@ ms.sourcegitcommit: 7113e8675f26cbb546200824512078bf360225df
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/28/2018
+ms.locfileid: "30202486"
 ---
 <a name="design-time-dbcontext-creation"></a>디자인 타임 DbContext 만들기
 ==============================

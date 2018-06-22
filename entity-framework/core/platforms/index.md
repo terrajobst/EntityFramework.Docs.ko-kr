@@ -1,5 +1,5 @@
 ---
-title: "지원 되는 .NET 구현 - EF Core"
+title: 지원 되는 .NET 구현 - EF Core
 author: rowanmiller
 ms.author: divega
 ms.date: 08/30/2017
@@ -10,6 +10,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678678"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>EF Core에서 지원되는 .NET 구현
 

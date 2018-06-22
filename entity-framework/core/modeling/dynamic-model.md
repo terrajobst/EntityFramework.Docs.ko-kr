@@ -1,5 +1,5 @@
 ---
-title: "DbContext 유형-EF 코어 사용 하 여 여러 모델 간에 전환"
+title: DbContext 유형-EF 코어 사용 하 여 여러 모델 간에 전환
 author: AndriySvyryd
 ms.author: divega
 ms.date: 12/10/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678724"
 ---
 # <a name="alternating-between-multiple-models-with-the-same-dbcontext-type"></a>DbContext 형식이 같은 여러 모델 간에 전환
 

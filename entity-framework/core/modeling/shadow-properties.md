@@ -1,5 +1,5 @@
 ---
-title: "그림자 속성-EF 코어"
+title: 그림자 속성-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 860ec5d047342fbc4063a0de881c9861cc1f8813
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/05/2017
+ms.locfileid: "26053553"
 ---
 # <a name="shadow-properties"></a>그림자 속성
 

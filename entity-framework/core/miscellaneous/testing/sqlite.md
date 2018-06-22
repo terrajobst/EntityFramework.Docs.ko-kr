@@ -1,5 +1,5 @@
 ---
-title: "SQLite-EF 코어를 사용 하 여 테스트"
+title: SQLite-EF 코어를 사용 하 여 테스트
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052703"
 ---
 # <a name="testing-with-sqlite"></a>SQLite를 사용 하 여 테스트
 
