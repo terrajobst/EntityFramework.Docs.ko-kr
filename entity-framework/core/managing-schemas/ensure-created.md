@@ -1,5 +1,5 @@
 ---
-title: "Api-EF 코어를 만들고"
+title: "\U0001F527Api-EF 코어를 만들고"
 author: bricelam
 ms.author: bricelam
 ms.date: 11/10/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26053823"
 ---
 # <a name="-create-and-drop-apis"></a><span data-ttu-id="e9df4-102">🔧만들기 및 Api를 삭제 합니다.</span><span class="sxs-lookup"><span data-stu-id="e9df4-102">🔧 Create and Drop APIs</span></span>
 

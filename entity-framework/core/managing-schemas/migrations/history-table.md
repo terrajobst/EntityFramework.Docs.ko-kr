@@ -1,5 +1,5 @@
 ---
-title: "사용자 지정 마이그레이션 기록 테이블-EF 코어"
+title: 사용자 지정 마이그레이션 기록 테이블-EF 코어
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26053813"
 ---
 <a name="custom-migrations-history-table"></a><span data-ttu-id="281a3-102">사용자 지정 마이그레이션 기록 테이블</span><span class="sxs-lookup"><span data-stu-id="281a3-102">Custom Migrations History Table</span></span>
 ===============================

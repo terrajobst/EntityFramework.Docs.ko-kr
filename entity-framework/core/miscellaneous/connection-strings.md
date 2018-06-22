@@ -1,5 +1,5 @@
 ---
-title: "연결 문자열-EF 코어"
+title: 연결 문자열-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052533"
 ---
 # <a name="connection-strings"></a><span data-ttu-id="293f3-102">연결 문자열</span><span class="sxs-lookup"><span data-stu-id="293f3-102">Connection Strings</span></span>
 

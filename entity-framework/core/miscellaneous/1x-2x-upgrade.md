@@ -1,5 +1,5 @@
 ---
-title: "EF 코어 2-EF 코어를 이전 버전에서 업그레이드"
+title: EF 코어 2-EF 코어를 이전 버전에서 업그레이드
 author: divega
 ms.author: divega
 ms.date: 8/13/2017
@@ -11,6 +11,7 @@ ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 02/28/2018
+ms.locfileid: "29678616"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a><span data-ttu-id="1120b-102">EF 코어 2.0 이전 버전에서 응용 프로그램 업그레이드</span><span class="sxs-lookup"><span data-stu-id="1120b-102">Upgrading applications from previous versions to EF Core 2.0</span></span>
 

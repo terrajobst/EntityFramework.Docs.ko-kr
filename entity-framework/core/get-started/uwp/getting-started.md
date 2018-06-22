@@ -1,5 +1,5 @@
 ---
-title: "UWP에서 시작 - 새 데이터베이스 - EF 코어"
+title: UWP에서 시작 - 새 데이터베이스 - EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -12,6 +12,7 @@ ms.sourcegitcommit: 96324e58c02b97277395ed43173bf13ac80d2012
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 12/01/2017
+ms.locfileid: "26049836"
 ---
 # <a name="getting-started-with-ef-core-on-universal-windows-platform-uwp-with-a-new-database"></a><span data-ttu-id="34f8d-102">UWP(유니버설 Windows 플랫폼)에서 새 데이터베이스로 EF Core 시작</span><span class="sxs-lookup"><span data-stu-id="34f8d-102">Getting Started with EF Core on Universal Windows Platform (UWP) with a New Database</span></span>
 

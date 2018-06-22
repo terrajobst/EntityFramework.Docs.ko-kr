@@ -1,5 +1,5 @@
 ---
-title: "인덱스-EF 코어"
+title: 인덱스-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26054887"
 ---
 # <a name="indexes"></a><span data-ttu-id="88458-102">인덱스</span><span class="sxs-lookup"><span data-stu-id="88458-102">Indexes</span></span>
 

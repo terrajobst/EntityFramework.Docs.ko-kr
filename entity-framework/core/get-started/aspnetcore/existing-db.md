@@ -11,6 +11,7 @@ ms.sourcegitcommit: 90139dbd6f485473afda0788a5a314c9aa601ea0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/23/2018
+ms.locfileid: "30151016"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a><span data-ttu-id="3c4a3-102">ASP.NET Core에서 기존 데이터베이스로 EF Core 시작</span><span class="sxs-lookup"><span data-stu-id="3c4a3-102">Getting Started with EF Core on ASP.NET Core with an Existing Database</span></span>
 
@@ -56,7 +57,7 @@ ms.lasthandoff: 03/23/2018
 * <span data-ttu-id="3c4a3-129">**ASP.NET Core 웹 응용 프로그램(.NET Core)** 프로젝트 템플릿을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-129">Select the **ASP.NET Core Web Application (.NET Core)** project template</span></span>
 * <span data-ttu-id="3c4a3-130">이름으로 **EFGetStarted.AspNetCore.ExistingDb**를 입력하고 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-130">Enter **EFGetStarted.AspNetCore.ExistingDb** as the name and click **OK**</span></span>
 * <span data-ttu-id="3c4a3-131">**새 ASP.NET Core 웹 응용 프로그램** 대화 상자가 표시될 때까지 기다립니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-131">Wait for the **New ASP.NET Core Web Application** dialog to appear</span></span>
-* <span data-ttu-id="3c4a3-132">**ASP.NET Core 템플릿 2.0**에서 **웹 응용 프로그램(모델-뷰-컨트롤러)**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-132">Under **ASP.NET Core Templates 2.0** select the **Web Application (Model-View-Controller)**</span></span>
+* <span data-ttu-id="3c4a3-132">**ASP.NET Core 템플릿 2.0**에서 **웹 응용 프로그램(모델-뷰-컨트롤러)** 을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-132">Under **ASP.NET Core Templates 2.0** select the **Web Application (Model-View-Controller)**</span></span>
 * <span data-ttu-id="3c4a3-133">**인증**이 **인증 없음**으로 설정되었는지 확인합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-133">Ensure that **Authentication** is set to **No Authentication**</span></span>
 * <span data-ttu-id="3c4a3-134">**확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-134">Click **OK**</span></span>
 
@@ -178,13 +179,13 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 <span data-ttu-id="3c4a3-180">다음으로 프로젝트에서 스캐폴딩을 사용하도록 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-180">Next, we'll enable scaffolding in our project.</span></span>
 
-* <span data-ttu-id="3c4a3-181">**솔루션 탐색기**에서 **컨트롤러** 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 -> 컨트롤러...**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-181">Right-click on the **Controllers** folder in **Solution Explorer** and select **Add -> Controller...**</span></span>
+* <span data-ttu-id="3c4a3-181">**솔루션 탐색기**에서 **컨트롤러** 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 -> 컨트롤러...** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-181">Right-click on the **Controllers** folder in **Solution Explorer** and select **Add -> Controller...**</span></span>
 * <span data-ttu-id="3c4a3-182">**전체 종속성**을 선택하고 **추가**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-182">Select **Full Dependencies** and click **Add**</span></span>
 * <span data-ttu-id="3c4a3-183">열리는 `ScaffoldingReadMe.txt` 파일의 지침은 무시할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-183">You can ignore the instructions in the `ScaffoldingReadMe.txt` file that opens</span></span>
 
 <span data-ttu-id="3c4a3-184">이제 스캐폴딩이 사용 가능하므로 `Blog` 엔터티에 대한 컨트롤러를 스캐폴딩할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-184">Now that scaffolding is enabled, we can scaffold a controller for the `Blog` entity.</span></span>
 
-* <span data-ttu-id="3c4a3-185">**솔루션 탐색기**에서 **컨트롤러** 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 -> 컨트롤러...**를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-185">Right-click on the **Controllers** folder in **Solution Explorer** and select **Add -> Controller...**</span></span>
+* <span data-ttu-id="3c4a3-185">**솔루션 탐색기**에서 **컨트롤러** 폴더를 마우스 오른쪽 단추로 클릭하고 **추가 -> 컨트롤러...** 를 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-185">Right-click on the **Controllers** folder in **Solution Explorer** and select **Add -> Controller...**</span></span>
 * <span data-ttu-id="3c4a3-186">**보기 포함 MVC 컨트롤러, Entity Framework**를 선택하고 **확인**을 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-186">Select **MVC Controller with views, using Entity Framework** and click **Ok**</span></span>
 * <span data-ttu-id="3c4a3-187">**모델 클래스**를 **Blog**로 설정하고 **데이터 컨텍스트 클래스**를 **BloggingContext**로 설정합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-187">Set **Model class** to **Blog** and **Data context class** to **BloggingContext**</span></span>
 * <span data-ttu-id="3c4a3-188">**추가**를 클릭합니다.</span><span class="sxs-lookup"><span data-stu-id="3c4a3-188">Click **Add**</span></span>

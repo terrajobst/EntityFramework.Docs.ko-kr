@@ -1,5 +1,5 @@
 ---
-title: "EF Core 1.0의 새로운 기능 - EF Core"
+title: EF Core 1.0의 새로운 기능 - EF Core
 author: divega
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26049686"
 ---
 # <a name="features-included-in-ef-core-10"></a><span data-ttu-id="20258-102">EF Core 1.0에 포함된 기능</span><span class="sxs-lookup"><span data-stu-id="20258-102">Features included in EF Core 1.0</span></span>
 

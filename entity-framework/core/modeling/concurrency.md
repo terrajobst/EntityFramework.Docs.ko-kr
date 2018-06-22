@@ -1,5 +1,5 @@
 ---
-title: "동시성 토큰-EF 코어"
+title: 동시성 토큰-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 03/03/2018
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/05/2018
+ms.locfileid: "29745490"
 ---
 # <a name="concurrency-tokens"></a><span data-ttu-id="c2be8-102">동시성 토큰</span><span class="sxs-lookup"><span data-stu-id="c2be8-102">Concurrency Tokens</span></span>
 

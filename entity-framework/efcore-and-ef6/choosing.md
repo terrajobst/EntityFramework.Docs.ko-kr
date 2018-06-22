@@ -10,6 +10,7 @@ ms.sourcegitcommit: 2ef0a4a90b01edd22b9206f8729b8de459ef8cab
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 03/20/2018
+ms.locfileid: "30002823"
 ---
 # <a name="ef-core-and-ef6-which-one-is-right-for-you"></a><span data-ttu-id="61389-102">EF Core 및 EF6: 내게 적합한 항목</span><span class="sxs-lookup"><span data-stu-id="61389-102">EF Core and EF6: Which One Is Right for You</span></span>
 

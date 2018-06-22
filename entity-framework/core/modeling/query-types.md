@@ -11,6 +11,7 @@ ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/14/2018
+ms.locfileid: "34163176"
 ---
 # <a name="query-types"></a><span data-ttu-id="daf81-102">쿼리 유형</span><span class="sxs-lookup"><span data-stu-id="daf81-102">Query Types</span></span>
 > [!NOTE]

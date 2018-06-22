@@ -9,6 +9,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812562"
 ---
 <a name="ef-core-package-manager-console-tools"></a><span data-ttu-id="65801-102">EF 코어 패키지 관리자 콘솔 도구</span><span class="sxs-lookup"><span data-stu-id="65801-102">EF Core Package Manager Console Tools</span></span>
 =====================================

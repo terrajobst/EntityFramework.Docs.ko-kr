@@ -1,5 +1,5 @@
 ---
-title: "Foreign Key 제약 조건-EF 코어"
+title: Foreign Key 제약 조건-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052743"
 ---
 # <a name="foreign-key-constraints"></a><span data-ttu-id="18520-102">외래 키 제약 조건</span><span class="sxs-lookup"><span data-stu-id="18520-102">Foreign Key Constraints</span></span>
 

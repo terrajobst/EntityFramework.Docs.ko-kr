@@ -11,6 +11,7 @@ ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 04/26/2018
+ms.locfileid: "31812439"
 ---
 # <a name="creating-a-model"></a><span data-ttu-id="ae699-102">모델 만들기</span><span class="sxs-lookup"><span data-stu-id="ae699-102">Creating a Model</span></span>
 

@@ -1,5 +1,5 @@
 ---
-title: "최대 길이-EF 코어"
+title: 최대 길이-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052673"
 ---
 # <a name="maximum-length"></a><span data-ttu-id="f502d-102">최대 길이</span><span class="sxs-lookup"><span data-stu-id="f502d-102">Maximum Length</span></span>
 

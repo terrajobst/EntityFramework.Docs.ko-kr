@@ -1,5 +1,5 @@
 ---
-title: "팀 환경-EF 코어에서 마이그레이션"
+title: 팀 환경-EF 코어에서 마이그레이션
 author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
@@ -9,6 +9,7 @@ ms.sourcegitcommit: b467368cc350e6059fdc0949e042a41cb11e61d9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 11/15/2017
+ms.locfileid: "26053803"
 ---
 <a name="migrations-in-team-environments"></a><span data-ttu-id="03332-102">팀 환경에서 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="03332-102">Migrations in Team Environments</span></span>
 ===============================

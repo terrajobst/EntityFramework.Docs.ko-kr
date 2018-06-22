@@ -1,5 +1,5 @@
 ---
-title: "테이블 매핑-EF 코어"
+title: 테이블 매핑-EF 코어
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26052733"
 ---
 # <a name="table-mapping"></a><span data-ttu-id="39d3c-102">테이블 매핑</span><span class="sxs-lookup"><span data-stu-id="39d3c-102">Table Mapping</span></span>
 

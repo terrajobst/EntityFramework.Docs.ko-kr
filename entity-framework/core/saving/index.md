@@ -11,6 +11,7 @@ ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 10/27/2017
+ms.locfileid: "26048875"
 ---
 # <a name="saving-data"></a><span data-ttu-id="aeb9e-102">데이터 저장</span><span class="sxs-lookup"><span data-stu-id="aeb9e-102">Saving Data</span></span>
 
