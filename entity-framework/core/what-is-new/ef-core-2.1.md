@@ -6,15 +6,14 @@ ms.date: 2/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: db1648095aa4d612af53f4e10a30be36edc40da5
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: 2372a6b2e3f3b7b1d9214a6ea321fe28cea45fff
+ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34754427"
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
-> [!NOTE]  
-> 이 릴리스는 아직 미리 보기 상태입니다.
 
 수많은 버그 수정 및 작은 기능 및 성능 개선 사항 외에도 EF Core 2.1에는 몇 가지 놀라운 기능이 있습니다.
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 04/16/2018
 이 항목에 대한 자세한 내용은 [값 변환에 대한 섹션](xref:core/modeling/value-conversions)을 참고하세요.  
 
 ## <a name="linq-groupby-translation"></a>LINQ GroupBy 변환
-EF Core 버전 2.1 이전에 메모리에서 GroupBy LINQ 연산자를 평가할 수 있었습니다. 이제 대부분의 일반적인 경우에 SQL GROUP BY 절로 변환하도록 지원됩니다.
+EF Core 버전 2.1 이전에 메모리에서 GroupBy LINQ 연산자를 평가했습니다. 이제 대부분의 일반적인 경우에 SQL GROUP BY 절로 변환하도록 지원됩니다.
 
 이 예제에서는 다양한 집계 함수를 계산하는 데 사용되는 GroupBy를 포함하는 쿼리를 보여줍니다.
 
@@ -124,7 +123,7 @@ var query = context.Customers.Select(
 
 이 쿼리를 두 개의 SQL 쿼리로 변환할 수 있습니다. 하나는 고객, 다른 하나는 순서로 변환합니다.
 
-## <a name="ownedattribute"></a>OwnedAttribute
+## <a name="owned-attribute"></a>[Owned] 특성
 
 이제 형식에 `[Owned]`라는 주석을 달고 소유자 엔터티를 모델에 추가하여 [소유한 엔터티 형식](xref:core/modeling/owned-entities)을 구성할 수 있습니다.
 
@@ -143,12 +142,14 @@ public class Order
 }
 ```
 
-## <a name="new-dotnet-ef-global-tool"></a>새 dotnet-ef 전역 도구
+## <a name="command-line-tool-dotnet-ef-included-in-net-core-sdk"></a>.NET Core SDK에 포함된 명령줄 도구 dotnet-ef
 
-_dotnet-ef_ 명령은 .NET CLI 전역 도구로 변환되었으므로, 마이그레이션을 사용하거나 기존 데이터베이스에서 DbContext를 스캐폴딩하기 위해 더 이상 프로젝트에서 DotNetCliToolReference를 사용할 필요가 없습니다.
+_dotnet-ef_ 명령은 이제 .NET Core SDK의 일부이므로, 마이그레이션을 사용하거나 기존 데이터베이스에서 DbContext를 스캐폴딩하기 위해 더 이상 프로젝트에서 DotNetCliToolReference를 사용할 필요가 없습니다.
+
+다른 버전의 .NET Core SDK 및 EF Core에 명령줄 도구를 활성화하는 방법에 대한 자세한 내용은 [도구 설치](xref:core/miscellaneous/cli/dotnet#installing-the-tools)의 섹션을 참조하세요.
 
 ## <a name="microsoftentityframeworkcoreabstractions-package"></a>Microsoft.EntityFrameworkCore.Abstractions 패키지
-새 패키지에는 전체적으로 EF Core에 의존하지 않고 EF Core 기능을 강화하기 위해 프로젝트에서 사용할 수 있는 특성 및 인터페이스가 포함되어 있습니다. 예: 미리 보기 1에 도입된 [Owned] 특성이 여기로 이동되었습니다.
+새 패키지에는 전체적으로 EF Core에 의존하지 않고 EF Core 기능을 강화하기 위해 프로젝트에서 사용할 수 있는 특성 및 인터페이스가 포함되어 있습니다. 예를 들어 [Owned] 특성 및 ILazyLoader 인터페이스를 여기에서 확인할 수 있습니다.
 
 ## <a name="state-change-events"></a>상태 변경 이벤트
 
@@ -165,7 +166,7 @@ var query = context.People.FromSql(sql);
 
 ## <a name="database-provider-compatibility"></a>데이터베이스 공급자 호환성
 
-EF Core 2.1은 EF Core 2.0에 만든 데이터베이스 공급자와 호환되거나 최소한으로 변경되도록 디자인되었습니다. 위에서 설명한 일부 기능(예: 값 변환)에 업데이트된 공급자가 필요하지만 다른 기능(예: 지연된 로드)은 기존 공급자를 사용하여 작동합니다.
+EF Core 2.1과 작동하도록 업데이트되거나 테스트된 공급자로 EF Core 2.1을 사용하는 것이 좋습니다.
 
 > [!TIP]
 > 예상치 않은 호환성 또는 새로운 기능의 문제가 발생하거나 이에 대한 의견이 있는 경우 [문제 추적기](https://github.com/aspnet/EntityFrameworkCore/issues/new)를 사용하여 보고해주세요.
