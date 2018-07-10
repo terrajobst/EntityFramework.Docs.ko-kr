@@ -28,10 +28,16 @@
             - name: 데이터 저장
               tocHref: /ef/core/saving/
               topicHref: /ef/core/saving/index
+            - name: 지원되는 .NET 구현
+              tocHref: /ef/core/platforms/
+              topicHref: /ef/core/platofms/index
             - name: 데이터베이스 공급자
               tocHref: /ef/core/providers/
               topicHref: /ef/core/providers/index
-            - name: '명령줄 참조 '
+            - name: 데이터베이스 스키마 관리
+              tocHref: /ef/core/managing-schemas/
+              topicHref: /ef/core/managing-schemas/index
+            - name: 명령줄 참조
               tocHref: /ef/core/miscellaneous/cli/
               topicHref: /ef/core/miscellaneous/cli/index
             - name: 도구 및 확장
@@ -43,3 +49,25 @@
         - name: Entity Framework 6
           tocHref: /ef/ef6/
           topicHref: /ef/ef6/index
+          items:
+            - name: 새로운 기능
+              tocHref: /ef/ef6/what-is-new/
+              topicHref: /ef/ef6/what-is-new/index
+            - name: 시작
+              tocHref: /ef/ef6/get-started
+              topicHref: /ef/ef6/get-started
+            - name: 기본 사항
+              tocHref: /ef/ef6/fundamentals/
+              topicHref: /ef/ef6/fundamentals/index
+            - name: 모델 만들기
+              tocHref: /ef/ef6/modeling/
+              topicHref: /ef/ef6/modeling/index
+            - name: 데이터 쿼리
+              tocHref: /ef/ef6/querying/
+              topicHref: /ef/ef6/querying/index
+            - name: 데이터 저장
+              tocHref: /ef/ef6/saving/
+              topicHref: /ef/ef6/saving/index
+            - name: 추가 리소스
+              tocHref: /ef/ef6/resources/
+              topicHref: /ef/ef6/resources/index
