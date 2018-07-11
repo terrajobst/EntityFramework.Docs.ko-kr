@@ -6,12 +6,12 @@ ms.date: 2/26/2018
 ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
 ms.technology: entity-framework-core
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 768429b857b09c1974f4ade31b5bbb6b1c7e15c3
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 476a1dcaadcd99eba0cd4f5f0ac40c32a97af5c9
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911877"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949429"
 ---
 # <a name="owned-entity-types"></a>소유 된 엔터티 형식
 
@@ -155,7 +155,7 @@ modelBuilder.Entity<Order>().OwnsOne(p => p.OrderDetails, od =>
 
 사용 하 여 동일한 작업을 수행 하는 것이 불가능 `OwnedAttribute` OrderDetails와 StreetAdress 합니다.
 
-중첩 된 소유 된 형식 외에도 소유 된 형식에는 일반 엔터티를 참조할 수 있습니다. 다음 예에서 국가 일반 (즉, 소유 되지 않은) 엔터티입니다.
+중첩 된 소유 된 형식 외에도 소유 된 형식에는 일반 엔터티를 참조할 수 있습니다. 다음 예에서 국가 일반 소유 되지 않은 엔터티입니다.
 
 ``` csharp
 public class StreetAddress
@@ -182,7 +182,7 @@ modelBuilder.Entity<Order>().OwnsOne(p => p.OrderDetails, od =>
 
 ## <a name="querying-owned-types"></a>소유 된 형식 쿼리
 
-소유자를 쿼리할 때 소유된 형식은 기본적으로 포함됩니다. 사용 하는 데 필요한 것을 `Include` 메서드, 소유 된 형식은 별도 테이블에 저장 된 경우에 합니다. 설명 하기 전에 모델을 기반으로 다음 쿼리는 순서, OrderDetails 및 데이터베이스에서 모든 보류 중인 주문에 대 한 두 소유 StreeAddresses를 끌어옵니다.
+소유자를 쿼리할 때 소유된 형식은 기본적으로 포함됩니다. 사용 하는 데 필요한 것을 `Include` 메서드, 소유 된 형식은 별도 테이블에 저장 된 경우에 합니다. 설명 하기 전에 모델을 기반으로 다음 쿼리는 순서, OrderDetails 및 데이터베이스에서 모든 보류 중인 주문에 대 한 두 소유 StreetAddresses를 끌어옵니다.
 
 ``` csharp
 var orders = context.Orders.Where(o => o.Status == OrderStatus.Pending);
@@ -194,11 +194,11 @@ var orders = context.Orders.Where(o => o.Status == OrderStatus.Pending);
 
 ### <a name="shortcomings-in-previous-versions"></a>이전 버전의 단점
 - EF Core 2.0 탐색 소유한 엔터티 소유자 계층에서 별도 테이블에 매핑됩니다는 명시적으로 하지 않는 한 엔터티 형식이 파생된 엔터티 형식에서 선언할 수 없습니다 소유 합니다. EF Core 2.1에서이 제한이 제거 되었습니다.
- 
+
 ### <a name="current-shortcomings"></a>현재 단점
 - 포함 하는 상속 계층 구조에서 소유 하는 엔터티 형식은 지원 되지 않습니다.
 - 컬렉션 탐색 속성 (탐색은 현재 지원만 참조)에 의해 소유 된 엔터티 형식은 가리키는 수 없습니다.
-- 탐색 소유한 엔터티 형식 소유자에 게에서 별도 테이블에 명시적으로 매핑되는 경우가 아니면 null 일 수 없습니다. 
+- 탐색 소유한 엔터티 형식 소유자에 게에서 별도 테이블에 명시적으로 매핑되는 경우가 아니면 null 일 수 없습니다.
 - (이 소유 된 엔터티 형식을 사용 하 여 구현할 수 없는 값 개체에 대 한 잘 알려진 시나리오) 하는 여러 소유자가 소유 된 엔터티 형식의 인스턴스를 공유할 수 없습니다.
 
 ### <a name="by-design-restrictions"></a>디자인에 따라 제한
