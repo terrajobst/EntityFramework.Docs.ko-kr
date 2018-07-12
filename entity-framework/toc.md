@@ -29,7 +29,7 @@
 #### [ASP.NET Core](core/get-started/aspnetcore/index.md)
 ##### [ASP.NET Core - 새 데이터베이스](core/get-started/aspnetcore/new-db.md)
 ##### [ASP.NET Core - 기존 데이터베이스](core/get-started/aspnetcore/existing-db.md)
-##### [ASP.NET Core 사이트에 대한 EF Core 자습서](https://docs.asp.net/en/latest/data/ef-mvc/intro.html)
+##### [EF Core 및 Razor Pages](/aspnet/core/data/ef-rp/intro)
 #### [UWP(유니버설 Windows 플랫폼)](core/get-started/uwp/index.md)
 ##### [UWP - 새 데이터베이스](core/get-started/uwp/getting-started.md)
 
