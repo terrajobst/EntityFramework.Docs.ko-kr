@@ -6,16 +6,16 @@ ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 ms.technology: entity-framework-core
 uid: core/get-started/install/index
-ms.openlocfilehash: 31b96ebd0ae282b88be98988eff6263084dc5dd5
-ms.sourcegitcommit: 5e2d97e731f975cf3405ff3deab2a3c75ad1b969
+ms.openlocfilehash: 7bb2ee11940a4fd5736c7a23c16533ef53018f7b
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2017
-ms.locfileid: "26049245"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949194"
 ---
 # <a name="installing-ef-core"></a>EF Core 설치
 
-## <a name="prerequisites"></a>필수 구성 요소
+## <a name="prerequisites"></a>전제 조건
 
 .NET Core 2.0 응용 프로그램(.NET Core를 대상으로 하는 ASP.NET Core 2.0 응용 프로그램 포함)을 개발하기 위해서는 플랫폼에 맞는 [.NET Core 2.0 SDK](https://www.microsoft.com/net/download/core)를 다운로드하여 설치해야 합니다. **Visual Studio 2017 15.3 버전을 설치한 경우에도 마찬가지입니다.**
 
@@ -53,7 +53,7 @@ EF Core 런타임 라이브러리를 응용 프로그램에 추가하기 위해 
 [.NET Core](https://www.microsoft.com/net/download/core)를 대상으로 하는 응용 프로그램을 개발하기 위해 자주 사용하는 텍스트 편집기와 함께 [`dotnet` CLI 명령](https://docs.microsoft.com/dotnet/core/tools/)을 사용하거나, Visual Studio, Visual Studio for Mac 또는 Visual Studio Code 같은 IDE(Integrated Development Environment)를 사용할 수 있습니다.
 
 > [!IMPORTANT]  
-> .NET Core를 대상으로 하는 응용 프로그램은 특정 Visual Studio 버전이 필요합니다. 즉 .NET Core 1.x 개발에는 Visual Studio 2017이, .NET Core 2.0 개발에는 Visual Studio 2017 버전 15.3이 필요합니다.
+> .NET Core를 대상으로 하는 응용 프로그램에는 특정 버전의 Visual Studio가 필요합니다. 예를 들어 .NET Core 1.x 개발에는 Visual Studio 2017이 필요하지만, .NET Core 2.0 개발에는 Visual Studio 2017 버전 15.3이 필요합니다.
 
 플랫폼 간 .NET Core 응용 프로그램에서 SQL Server 공급자를 설치하거나 업그레이드하려면 응용 프로그램의 디렉터리로 전환한 다음 명령줄에서 다음을 실행합니다.
 
@@ -106,7 +106,7 @@ Visual Studio를 사용하여 .NET Core, .NET Framework 또는 기타 EF Core에
   ```
 * 이미 설치된 패키지를 더 최신 버전으로 업데이트하는 대신 `Update-Package` 명령을 사용할 수 있습니다.
 
-* 특정 버전을 지정하려면 `-Version` 한정자를 사용합니다. 즉 EF Core 2.0 패키지를 설치하려면 명령에 `-Version 2.0.0`을 추가합니다.
+* 특정 버전을 지정하려면 `-Version` 한정자를 사용할 수 있습니다. 예를 들어 EF Core 2.0 패키지를 설치하려면 명령에 `-Version 2.0.0`을 추가합니다.
 
 #### <a name="tools"></a>도구
 

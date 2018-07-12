@@ -6,18 +6,18 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 ms.technology: entity-framework-core
 uid: core/index
-ms.openlocfilehash: 3befcbd3ff3da5dd159e6e6cb5fe7140c81317c2
-ms.sourcegitcommit: a2b38dedc88ca3ccbfe7b1db9602ca02da8294cd
+ms.openlocfilehash: 103e5e069687950a8411f2d92c7b5a191844e0ae
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/31/2018
-ms.locfileid: "34686664"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37948992"
 ---
 # <a name="entity-framework-core-quick-overview"></a>Entity Framework Core 요약 개요
 
 EF(Entity Framework) Core는 널리 사용되는 Entity Framework 데이터 액세스 기술의 가볍고 확장 가능하며 플랫폼 교차적인 버전입니다.
 
-EF Core는 O/RM(개체 관계형 매퍼)으로 사용될 수 있으며, 이를 통해 .NET 개발자는 .NET 개체를 사용하여 데이터베이스를 작업할 수 있으며 일반적으로 써야 하는 대부분의 데이터 액세스 코드가 필요하지 않게 됩니다. 
+EF Core는 O/RM(개체 관계형 매퍼)으로 사용될 수 있으며, 이를 통해 .NET 개발자는 .NET 개체를 사용하여 데이터베이스를 작업할 수 있으며 일반적으로 써야 하는 대부분의 데이터 액세스 코드가 필요하지 않게 됩니다.
 
 EF Core 는 여러 데이터베이스 엔진을 지원합니다. 자세한 내용은 [데이터베이스 공급자](providers/index.md)를 참조하세요.
 
@@ -33,7 +33,7 @@ EF Core를 잘 알고 있고 최신 릴리스의 세부 정보로 직접 이동�
 
 ## <a name="get-entity-framework-core"></a>Entity Framework Core 구하기
 
-사용할 데이터베이스 공급자에 대한 [NuGet 패키지를 설치합니다](https://docs.nuget.org/ndocs/quickstart/use-a-package). 예: 명령줄에서 `dotnet` 도구를 사용하여 교차 플랫폼 개발에서 SQL Server 공급자를 설치하려면
+사용할 데이터베이스 공급자에 대한 [NuGet 패키지를 설치합니다](https://docs.nuget.org/ndocs/quickstart/use-a-package). 예를 들어 명령줄에서 `dotnet` 도구를 사용하여 교차 플랫폼 개발에서 SQL Server 공급자를 설치하려는 경우
 
 ``` Console
 dotnet add package Microsoft.EntityFrameworkCore.SqlServer
