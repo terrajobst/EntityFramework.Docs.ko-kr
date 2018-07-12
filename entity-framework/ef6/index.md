@@ -1,20 +1,56 @@
 ---
-title: Entity Framework 6
-author: rowanmiller
+title: Entity Framework 6 빠른 개요
+author: divega
+ms.date: 2016-10-23
+ms.prod: entity-framework
 ms.author: divega
-ms.date: 10/27/2016
-ms.assetid: d16eb5be-7e94-477a-84cd-e6dce25df12a
+ms.manager: avickers
 ms.technology: entity-framework-6
+ms.topic: article
+ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
+caps.latest.revision: 5
 uid: ef6/index
-ms.openlocfilehash: 235a1404e56b5a78a3ef4f85e37c84a8bde2c014
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: df661f19afdeef53257c86bdd32b1444737c9b0a
+ms.sourcegitcommit: 45494121254ad4fdcec613d1dd22d850068d6f39
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26048905"
+ms.lasthandoff: 07/08/2018
+ms.locfileid: "37913501"
 ---
-# <a name="entity-framework-6"></a>Entity Framework 6
+# <a name="entity-framework-6-quick-overview"></a>Entity Framework 6 빠른 개요
 
-Entity Framework 6(EF6)은 수년 간 기능 및 안정화를 통해 테스트와 시험을 거친 데이터 액세스 기술입니다. 2008년에 .NET Framework 3.5 SP1 및 Visual Studio 2008 SP1의 일부로 처음 릴리스되었습니다. EF4.1 릴리스부터는 현재 NuGet.org에서 가장 인기 있는 패키지 중 하나인 [EntityFramework NuGet 패키지](https://www.nuget.org/packages/EntityFramework/)가 탑재되었습니다.
+EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
 
-Entity Framework 6 설명서는 현재 [msdn.com/data/ef](http://msdn.com/data/ef)에서 제공합니다.
+EF6는 다양한 인기 O/RM 기능을 구현합니다.
+- EF 형식에 종속되지 않는 "지속성 무시"(POCO(Plain Old CLR Object)라고도 함) 엔터티 클래스 매핑
+- 자동 변경 내용 추적
+- ID 확인 및 작업 단위
+- 즉시 로드, 지연 로드 및 명시적 로드
+- LINQ(Language-Integrated Query)를 사용한 강력한 형식의 쿼리 변환 
+- 다음 지원을 포함한 풍부한 매핑 기능:
+  - 상속(계층 구조별 테이블, 형식별 테이블, 구체적인 클래스별 테이블)
+  - 복합 형식
+  - 저장 프로시저
+- 엔터티 모델을 만드는 시각적 디자이너.
+- 코드를 작성하여 엔터티 모델 만들기를 지원하는 "Code First" 환경.
+- 기존 데이터베이스로 모델을 생성한 후 직접 편집할 수도 있고, 처음부터 새로 만든 후 새 데이터베이스를 생성하는 데 사용할 수도 있습니다.
+- ASP.NET을 포함한 .NET Framework 응용 프로그램 모델과 통합, 데이터 바인딩을 통해 WPF 및 WinForms와 통합.
+- ADO.NET 및 SQL Server, Oracle, MySQL, SQLite, PostgreSQL, DB2 등에 연결할 수 있는 다양한 공급자를 기반으로 하는 데이터베이스 연결.
+
+O/RM으로써 EF6는 관계형 데이터베이스와 개체 중심 데이터베이스 사이의 불일치를 완화하고, 개발자가 응용 프로그램의 도메인을 나타내는 강력한 형식의 .NET 개체를 사용하여 관계형 데이터베이스에 저장된 데이터와 상호 작용할 수 있게 해주고, 일반적으로 개발자가 작성해야 하는 데이터 액세스 "내부" 코드의 많은 부분을 할 필요가 없게 만들어 줍니다.
+
+## <a name="should-i-use-ef6-or-ef-core"></a>EF6 또는 EF Core를 사용해야 하나요?
+
+EF Core는 가볍고 확장 가능한 최신 버전의 Entity Framework로, EF6와 매우 비슷한 기능을 제공합니다.
+EF Core는 완전히 다시 작성되었으며, EF6의 고급 매핑 기능 중 일부를 제공하지 않지만 EF6에 없는 여러 새 기능을 포함하고 있습니다.
+기능 집합이 요구 사항과 일치하는 한, 새 응용 프로그램에서 EF Core를 사용하는 것이 좋습니다.
+[EF Core & EF6 비교](xref:efcore-and-ef6/index)에서는 이 선택에 대해 자세히 살펴봅니다.
+
+## <a name="get-startedef6get-startedmd"></a>[시작](~/ef6/get-started.md)
+
+프로젝트에 EntityFramework NuGet 패키지를 추가하거나 Visual Studio용 Entity Framework Tools를 설치합니다. 그런 다음, Entity Framework 6를 최대한 활용하는 방법을 알려주는 비디오를 시청하고, 자습서 및 고급 설명서를 읽습니다.
+
+## <a name="past-entity-framework-versions"></a>이전 Entity Framework 버전
+
+Entity Framework 6 최신 버전에 대한 설명서지만, 많은 부분이 이전 릴리스에도 적용됩니다.
+EF 릴리스 및 포함된 기능의 전체 목록은 [새로운 기능](~/ef6/what-is-new/index.md) 및 [이전 릴리스](~/ef6/what-is-new/past-releases.md)를 확인하세요.

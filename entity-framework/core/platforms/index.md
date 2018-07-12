@@ -5,12 +5,12 @@ ms.author: divega
 ms.date: 08/30/2017
 ms.technology: entity-framework-core
 uid: core/platforms/index
-ms.openlocfilehash: 02e9450cb0ead1701da9f58c51bef3031a3be4ed
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 790628c407cc4374fee4ebde8201783955afdcc3
+ms.sourcegitcommit: fd50ac53b93a03825dcbb42ed2e7ca95ca858d5f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29678678"
+ms.lasthandoff: 07/07/2018
+ms.locfileid: "37900332"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>EF Core에서 지원되는 .NET 구현
 
@@ -29,7 +29,7 @@ ms.locfileid: "29678678"
 
 <sup>(2)</sup>올바른 기술을 선택하려면 [EF Core 및 EF6 비교](../../efcore-and-ef6/index.md)를 참조하세요.
 
-<sup>(3)</sup>Xamarin에는 EF Core 2.0을 사용하여 개발된 일부 응용 프로그램이 제대로 작동하지 않을 수 있는 문제 및 알려진 제한이 있습니다. 해결 방법은 [활성 문제]([](https://github.com/aspnet/entityframeworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin) 목록을 확인하세요.
+<sup>(3)</sup>Xamarin에는 EF Core 2.0을 사용하여 개발된 일부 응용 프로그램이 제대로 작동하지 않을 수 있는 문제 및 알려진 제한이 있습니다. 해결 방법은 [활성 문제](https://github.com/aspnet/entityframeworkCore/issues?q=is%3Aopen+is%3Aissue+label%3Aarea-xamarin) 목록을 확인하세요.
 
 <sup>(4)</sup>이전 버전의 EF Core 및 .NET UWP에는 여러 가지 호환성 문제가 있었습니다(특히 .NET 네이티브 도구 체인을 사용하여 컴파일된 응용 프로그램 관련). 새 .NET UWP 버전은 .NET Standard 2.0에 대한 지원을 추가하고 .NET 네이티브 2.0을 포함하여 이전에 보고된 호환성 문제 대부분을 해결했습니다. EF Core 2.0.1은 UWP와 함께 완벽하게 테스트되었지만 테스트가 자동화되지 않았습니다.
 
