@@ -9,14 +9,15 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 7BFB7763-CD6C-4520-93A2-7B265F5FA586
 caps.latest.revision: 3
-ms.openlocfilehash: 9ec7a83e8bdfde2f67b821bbe46dd688f64bc51d
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 8bd5a5a420d741accd1167845575e23c09579ae1
+ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911637"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37914299"
 ---
 # <a name="entity-framework-6-providers"></a>Entity Framework 6 공급자
+> [!NOTE]
 > **EF6 이상만** - 이 페이지에서 다루는 기능, API 등은 Entity Framework 6에 도입되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.
 
 현재 Entity Framework는 오픈 소스 라이선스 하에서 개발 중이며 EF6 이상은 .NET Framework의 일부로 제공되지 않을 것입니다. 이 방법은 여러 가지 장점이 있지만, EF6 어셈블리에 맞게 EF 공급자를 다시 빌드해야 합니다. 즉, EF5 이하의 EF 공급자는 다시 빌드될 때까지 EF6를 사용하지 않습니다.
