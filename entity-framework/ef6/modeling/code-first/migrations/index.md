@@ -9,12 +9,12 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
 caps.latest.revision: 3
-ms.openlocfilehash: 1941337da55e5bb63efba42360c87c1c0f6ee325
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 5c7431985e2e404060197615bf281fcf3b318403
+ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911717"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37914286"
 ---
 # <a name="code-first-migrations"></a>Code First 마이그레이션
 Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 응용 프로그램의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.
@@ -310,7 +310,7 @@ Code First 마이그레이션은 이러한 변경을 매우 효과적으로 스�
 
 Code First 마이그레이션은 마이그레이션 파이프라인을 실행하지만, 실제로 변경 내용을 적용하는 대신 .sql 파일에 변경 내용을 기록합니다. 스크립트가 생성되면 Visual Studio에서 열어서 보거나 저장할 수 있습니다.
 
-### <a name="generating-idempotent-scripts-ef6-onwards"></a>idempotent 스크립트 생성(EF6 이후)
+### <a name="generating-idempotent-scripts"></a>idempotent 스크립트 생성
 
 EF6부터 **–SourceMigration $InitialDatabase**를 지정하면 생성되는 스크립트가 'idempotent'(멱등원)가 됩니다. 현재 idempotent 스크립트는 모든 버전의 데이터베이스를 최신 버전(또는 **–TargetMigration**을 사용하는 경우 지정한 버전)으로 업그레이드할 수 있습니다. 생성된 스크립트에는 **\_\_MigrationsHistory** 테이블을 확인하고 이전에 적용되지 않은 변경 내용만 적용하는 논리가 포함됩니다.
 
