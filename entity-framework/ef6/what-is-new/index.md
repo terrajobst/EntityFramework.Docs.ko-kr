@@ -9,12 +9,12 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 caps.latest.revision: 3
-ms.openlocfilehash: 0da2ce778a765037ecacd0726cbb7cda08b5683f
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: dba6403fa341e1abfe8da488a19cf8520e3ea574
+ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911707"
+ms.lasthandoff: 07/09/2018
+ms.locfileid: "37914178"
 ---
 # <a name="whats-new-in-ef6"></a>EF6의 새로운 기능
 
@@ -28,14 +28,14 @@ EF 특정 버전을 설치하는 방법은 [Entity Framework 받기](~/ef6/funda
 
 ### <a name="ef-tools-update-in-visual-studio-2017-157"></a>Visual Studio 2017 15.7의 EF 도구 업데이트
 
-2018년 5월에 Visual Studio 2017 15.7의 업데이트된 EF6 도구 버전이 출시되었습니다.
-공통적인 불편 사항 몇 가지가 이 버전에서 개선되었습니다.
+2018년 5월에 Visual Studio 2017 15.7의 일부로 업데이트된 버전의 EF 도구가 릴리스되었습니다.
+공통적인 몇 가지 문제점이 이 버전에서 개선되었습니다.
 
-- 사용자 인터페이스의 접근성 점검
-- 리버스 엔지니어링에 대한 SQL Server 성능 저하 문제 해결 [#4](https://github.com/aspnet/entityframework6/issues/4)
-- SQL Server의 더 큰 모델을 위해 데이터베이스 지원에서 모델 업데이트 [#185](https://github.com/aspnet/EntityFramework6/issues/185)
+- 여러 사용자 인터페이스 접근성 버그 수정
+- 기존 데이터베이스에서 모델을 생성하는 경우 SQL Server 성능 회귀에 대한 해결 [#4](https://github.com/aspnet/entityframework6/issues/4)
+- SQL Server의 대규모 모델에 모델을 업데이트하는 지원 [#185](https://github.com/aspnet/EntityFramework6/issues/185)
 
-새 버전의 EF 도구는 새 프로젝트에서 모델을 만들 때 EF 6.2 런타임을 설치합니다. 이전 버전의 Visual Studio를 사용하는 경우 해당하는 NuGet 패키지 버전을 설치하여 EF 6.2 런타임(그리고 이전 버전의 EF)을 사용할 수 있습니다.
+또한 새 버전의 EF 도구는 새 프로젝트에서 모델을 만들 때 EF 6.2 런타임을 설치하도록 개선되었습니다. 이전 버전의 Visual Studio를 사용하는 경우 해당하는 NuGet 패키지 버전을 설치하여 EF 6.2 런타임(그리고 이전 버전의 EF)을 사용할 수 있습니다.
 
 ### <a name="ef-62-runtime"></a>EF 6.2 런타임
 
@@ -59,4 +59,4 @@ EF6 이후 버전에 대한 내용은 [로드맵](roadmap.md)을 참조하세요
 
 ## <a name="past-releases"></a>이전 릴리스
 
-[이전 릴리스](past-releases.md) 페이지에는 모든 EF 이전 버전 및 각 릴리스에 도입된 주요 기능 아카이브가 포함되어 있습니다. 
+[이전 릴리스](past-releases.md) 페이지에는 모든 EF 이전 버전 및 각 릴리스에 도입된 주요 기능 아카이브가 포함되어 있습니다.

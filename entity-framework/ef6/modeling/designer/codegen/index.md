@@ -9,12 +9,12 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 56e00fa2-f9f0-48b3-8006-f8266ca7e74b
 caps.latest.revision: 3
-ms.openlocfilehash: e06dc1c35f8d74772e5c7d69b29553288fd652d0
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 8a656ca73a7e1a628f4053ff7ad47f5c1b17d878
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911727"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949181"
 ---
 # <a name="designer-code-generation-templates"></a>디자이너 코드 생성 템플릿
 Entity Framework Designer를 사용하여 모델을 만들면 클래스와 파생된 컨텍스트가 자동으로 생성됩니다. 기본 코드 생성 외에도 생성된 코드를 사용자 지정하는 데 사용할 수 있는 다양한 템플릿을 제공합니다. 이러한 템플릿은 T4 텍스트 템플릿으로 제공되므로 필요한 경우 템플릿을 사용자 지정할 수 있습니다.
