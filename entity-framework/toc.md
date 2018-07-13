@@ -12,7 +12,7 @@
 
 ## [Entity Framework Core](core/index.md)
 
-### [EF Core의 새로운 기능](core/what-is-new/index.md)
+### [새로운 기능](core/what-is-new/index.md)
 #### [EF Core 로드맵](core/what-is-new/roadmap.md)
 #### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
 #### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
@@ -67,6 +67,16 @@
 ##### [대체 키(고유 제약 조건)](core/modeling/relational/unique-constraints.md)
 ##### [상속(관계형데이터베이스)](core/modeling/relational/inheritance.md)
 
+### [데이터베이스 스키마 관리](core/managing-schemas/index.md)
+#### [마이그레이션](core/managing-schemas/migrations/index.md)
+##### [팀 환경](core/managing-schemas/migrations/teams.md)
+##### [사용자 지정 작업](core/managing-schemas/migrations/operations.md)
+##### [별도 프로젝트 사용](core/managing-schemas/migrations/projects.md)
+##### [여러 공급자](core/managing-schemas/migrations/providers.md)
+##### [사용자 지정 기록 테이블](core/managing-schemas/migrations/history-table.md)
+#### [🔧API 만들기 및 삭제](core/managing-schemas/ensure-created.md)
+#### [🔧리버스 엔지니어링](core/managing-schemas/scaffolding.md)
+
 ### [데이터 쿼리](core/querying/index.md)
 #### [기본 쿼리](core/querying/basic.md)
 #### [관련 데이터 로드](core/querying/related-data.md)
@@ -97,23 +107,13 @@
 #### [InMemory(테스트용)](core/providers/in-memory/index.md)
 #### [데이터베이스 공급자 작성](core/providers/writing-a-provider.md)
 
-### [데이터베이스 스키마 관리](core/managing-schemas/index.md)
-#### [마이그레이션](core/managing-schemas/migrations/index.md)
-##### [팀 환경](core/managing-schemas/migrations/teams.md)
-##### [사용자 지정 작업](core/managing-schemas/migrations/operations.md)
-##### [별도 프로젝트 사용](core/managing-schemas/migrations/projects.md)
-##### [여러 공급자](core/managing-schemas/migrations/providers.md)
-##### [사용자 지정 기록 테이블](core/managing-schemas/migrations/history-table.md)
-#### [🔧API 만들기 및 삭제](core/managing-schemas/ensure-created.md)
-#### [🔧리버스 엔지니어링](core/managing-schemas/scaffolding.md)
+### [도구 및 확장](core/extensions/index.md)
 
 ### [명령줄 참조](core/miscellaneous/cli/index.md)
 #### [패키지 관리자 콘솔(Visual Studio)](core/miscellaneous/cli/powershell.md)
 #### [.NET Core CLI](core/miscellaneous/cli/dotnet.md)
 #### [디자인 타임 DbContext 만들기](core/miscellaneous/cli/dbcontext-creation.md)
 #### [디자인 타임 서비스](core/miscellaneous/cli/services.md)
-
-### [도구 및 확장](core/extensions/index.md)
 
 ### 기타
 #### [연결 문자열](core/miscellaneous/connection-strings.md)
@@ -127,8 +127,158 @@
 #### [1.0 RC2에서 RTM으로 업그레이드](core/miscellaneous/rc2-rtm-upgrade.md)
 #### [EF Core 2.0으로 업그레이드](core/miscellaneous/1x-2x-upgrade.md)
 
-### [API 참조](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
+### [⤤ EF Core API 참조](https://docs.microsoft.com/dotnet/api/?view=efcore-2.1)
 
 ## [Entity Framework 6](ef6/index.md)
-### [설명서](http://msdn.com/data/ef)
-### [API 참조](https://msdn.microsoft.com/library/dn223258.aspx)
+
+### [새로운 기능](ef6/what-is-new/index.md)
+#### [로드맵](ef6/what-is-new/roadmap.md)
+#### [이전 릴리스](ef6/what-is-new/past-releases.md)
+#### [EF6로 업그레이드](ef6/what-is-new/upgrading-to-ef6.md)
+#### [Visual Studio 릴리스](ef6/what-is-new/visual-studio.md)
+
+### [시작](ef6/get-started.md)
+
+### [기본 사항](ef6/fundamentals/index.md)
+#### [Entity Framework 가져오기](ef6/fundamentals/install.md)
+#### [DbContext 작업](ef6/fundamentals/working-with-dbcontext.md)
+#### [관계 이해](ef6/fundamentals/relationships.md)
+#### [비동기 쿼리 및 저장](ef6/fundamentals/async.md)
+#### 구성
+##### [코드 기반](ef6/fundamentals/configuring/code-based.md)
+##### [구성 파일](ef6/fundamentals/configuring/config-file.md)
+##### [연결 문자열](ef6/fundamentals/configuring/connection-strings.md)
+##### [종속성 확인](ef6/fundamentals/configuring/dependency-resolution.md)
+#### [연결 관리](ef6/fundamentals/connection-management.md)
+#### 연결 복원력
+##### [다시 시도 논리](ef6/fundamentals/connection-resiliency/retry-logic.md)
+##### [트랜잭션 커밋 오류](ef6/fundamentals/connection-resiliency/commit-failures.md)
+#### 데이터 바인딩
+##### [WinForms](ef6/fundamentals/databinding/winforms.md)
+##### [WPF](ef6/fundamentals/databinding/wpf.md)
+#### [연결이 끊긴 엔터티](ef6/fundamentals/disconnected-entities/index.md)
+##### [자체 추적 엔터티](ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md)
+###### [연습](ef6/fundamentals/disconnected-entities/self-tracking-entities/walkthrough.md)
+#### [로깅 및 인터셉션](ef6/fundamentals/logging-and-interception.md)
+#### 성능
+##### [성능 고려 사항(백서)](ef6/fundamentals/performance/perf-whitepaper.md)
+##### [NGEN 사용](ef6/fundamentals/performance/ngen.md)
+##### [미리 생성된 보기 사용](ef6/fundamentals/performance/pre-generated-views.md)
+#### [공급자](ef6/fundamentals/providers/index.md)
+##### [EF6 공급자 모델](ef6/fundamentals/providers/provider-model.md)
+##### [공급자의 공간 지원](ef6/fundamentals/providers/spatial-support.md)
+#### [프록시 사용](ef6/fundamentals/proxies.md)
+#### EF6를 사용한 테스트
+##### [모의 사용](ef6/fundamentals/testing/mocking.md)
+##### [고유한 이중 테스트 작성](ef6/fundamentals/testing/writing-test-doubles.md)
+##### [EF4를 사용한 테스트 용이성(아티클)](ef6/fundamentals/testing/testability-article.md)
+
+### [모델 만들기](ef6/modeling/index.md)
+#### Code First 사용
+##### 워크플로
+###### [새 데이터베이스 사용](ef6/modeling/code-first/workflows/new-database.md)
+###### [기존 데이터베이스 사용](ef6/modeling/code-first/workflows/existing-database.md)
+##### [데이터 주석](ef6/modeling/code-first/data-annotations.md)
+##### [DbSets](ef6/modeling/code-first/dbsets.md)
+##### 데이터 형식
+###### [열거형](ef6/modeling/code-first/data-types/enums.md)
+###### [공간](ef6/modeling/code-first/data-types/spatial.md)
+##### 규칙
+###### [기본 제공 규칙](ef6/modeling/code-first/conventions/built-in.md)
+###### [사용자 지정 규칙](ef6/modeling/code-first/conventions/custom.md)
+###### [모델 규칙](ef6/modeling/code-first/conventions/model.md)
+##### 흐름 구성
+###### [관계](ef6/modeling/code-first/fluent/relationships.md)
+###### [형식 및 속성](ef6/modeling/code-first/fluent/types-and-properties.md)
+###### [Visual Basic에서 사용](ef6/modeling/code-first/fluent/vb.md)
+###### [저장 프로시저 매핑](ef6/modeling/code-first/fluent/cud-stored-procedures.md)
+##### [마이그레이션](ef6/modeling/code-first/migrations/index.md)
+###### [자동 마이그레이션](ef6/modeling/code-first/migrations/automatic.md)
+###### [기존 데이터베이스 작업](ef6/modeling/code-first/migrations/existing-database.md)
+###### [마이그레이션 기록 사용자 지정](ef6/modeling/code-first/migrations/history-customization.md)
+###### [Migrate.exe 사용](ef6/modeling/code-first/migrations/migrate-exe.md)
+###### [팀 환경의 마이그레이션](ef6/modeling/code-first/migrations/teams.md)
+
+#### EF 디자이너 사용
+##### 워크플로
+###### [Model-First](ef6/modeling/designer/workflows/model-first.md)
+###### [Database-First](ef6/modeling/designer/workflows/database-first.md)
+##### 데이터 형식
+###### [복합 형식](ef6/modeling/designer/data-types/complex-types.md)
+###### [열거형](ef6/modeling/designer/data-types/enums.md)
+###### [공간](ef6/modeling/designer/data-types/spatial.md)
+##### 분할 매핑
+###### [엔터티 분할](ef6/modeling/designer/entity-splitting.md)
+###### [테이블 분할](ef6/modeling/designer/table-splitting.md)
+##### 상속 매핑
+###### [계층당 테이블](ef6/modeling/designer/inheritance/tph.md)
+###### [형식당 테이블](ef6/modeling/designer/inheritance/tpt.md)
+##### 저장 프로시저 매핑
+###### [쿼리](ef6/modeling/designer/stored-procedures/query.md)
+###### [업데이트](ef6/modeling/designer/stored-procedures/cud.md)
+##### [관계 매핑](ef6/modeling/designer/relationships.md)
+##### [다중 다이어그램](ef6/modeling/designer/multiple-diagrams.md)
+##### [런타임 버전 선택](ef6/modeling/designer/select-runtime-version.md)
+##### [코드 생성](ef6/modeling/designer/codegen/index.md)
+###### [레거시 ObjectContext ](ef6/modeling/designer/codegen/legacy-objectcontext.md)
+##### 고급
+###### EDMX 파일 형식
+####### [CSDL 사양](ef6/modeling/designer/advanced/edmx/csdl-spec.md)
+####### [MSL 사양](ef6/modeling/designer/advanced/edmx/msl-spec.md)
+####### [SSDL 사양](ef6/modeling/designer/advanced/edmx/ssdl-spec.md)
+###### [쿼리 정의](ef6/modeling/designer/advanced/defining-query.md)
+###### [다중 결과 집합](ef6/modeling/designer/advanced/multiple-result-sets.md)
+###### [테이블 반환 함수](ef6/modeling/designer/advanced/tvfs.md)
+##### [바로 가기 키](ef6/modeling/designer/keyboard-shortcuts.md)
+
+### [데이터 쿼리](ef6/querying/index.md)
+#### [Load 메서드](ef6/querying/load-method.md)
+#### [로컬 데이터](ef6/querying/local-data.md)
+#### [추적 및 추적 쿼리 없음](ef6/querying/no-tracking.md)
+#### [원시 SQL 쿼리 사용](ef6/querying/raw-sql.md)
+#### [관련 데이터 쿼리](ef6/querying/related-data.md)
+
+### [데이터 저장](ef6/saving/index.md)
+#### 변경 내용 추적
+##### [자동 변경 내용 검색](ef6/saving/change-tracking/auto-detect-changes.md)
+##### [엔터티 상태](ef6/saving/change-tracking/entity-state.md)
+##### [속성 값](ef6/saving/change-tracking/property-values.md)
+#### [동시성 충돌 처리](ef6/saving/concurrency.md)
+#### [트랜잭션 사용](ef6/saving/transactions.md)
+#### [데이터 유효성 검사](ef6/saving/validation.md)
+
+### [추가 리소스](ef6/resources/index.md)
+#### [Blogs](ef6/resources/blogs.md)
+#### [사례 연구](ef6/resources/case-studies.md)
+#### [도움말 보기](ef6/resources/get-help.md)
+#### [용어](ef6/resources/glossary.md)
+#### [School 샘플 데이터베이스](ef6/resources/school-database.md)
+#### [도구 및 확장](ef6/resources/tools.md)
+#### 라이선스
+##### EF5
+###### [중국어 간체](ef6/resources/licenses/ef5/chs.md)
+###### [중국어 번체](ef6/resources/licenses/ef5/cht.md)
+###### [독일어](ef6/resources/licenses/ef5/deu.md)
+###### [영어](ef6/resources/licenses/ef5/enu.md)
+###### [스페인어](ef6/resources/licenses/ef5/esn.md)
+###### [프랑스어](ef6/resources/licenses/ef5/fra.md)
+###### [이탈리아어](ef6/resources/licenses/ef5/ita.md)
+###### [일본어](ef6/resources/licenses/ef5/jpn.md)
+###### [한국어](ef6/resources/licenses/ef5/kor.md)
+###### [러시아어](ef6/resources/licenses/ef5/rus.md)
+##### EF6
+###### 시험판
+####### [알파](ef6/resources/licenses/ef6/prerelease/alpha.md)
+####### [Beta - 릴리스 후보](ef6/resources/licenses/ef6/prerelease/beta-rc.md)
+###### [중국어 간체](ef6/resources/licenses/ef6/chs.md)
+###### [중국어 번체](ef6/resources/licenses/ef6/cht.md)
+###### [독일어](ef6/resources/licenses/ef6/deu.md)
+###### [영어](ef6/resources/licenses/ef6/enu.md)
+###### [스페인어](ef6/resources/licenses/ef6/esn.md)
+###### [프랑스어](ef6/resources/licenses/ef6/fra.md)
+###### [이탈리아어](ef6/resources/licenses/ef6/ita.md)
+###### [일본어](ef6/resources/licenses/ef6/jpn.md)
+###### [한국어](ef6/resources/licenses/ef6/kor.md)
+###### [러시아어](ef6/resources/licenses/ef6/rus.md)
+
+### [⤤ EF6 API 참조](https://msdn.microsoft.com/library/dn223258.aspx)
