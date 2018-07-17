@@ -9,12 +9,12 @@ ms.technology: entity-framework-6
 ms.topic: article
 ms.assetid: 65bb3db2-2226-44af-8864-caa575cf1b46
 caps.latest.revision: 3
-ms.openlocfilehash: f0319e97d8ca8cfc9c90dac51d2ecbe7a29c1929
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 92467e1a93f576eca627cf7b7d2351054a882c2c
+ms.sourcegitcommit: 00cb52625b57c1ea339ded1454179fe89b6bcfea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "37911737"
+ms.lasthandoff: 07/16/2018
+ms.locfileid: "39067549"
 ---
 # <a name="querying-and-finding-entities"></a>엔터티 쿼리 및 찾기
 이 토픽에서는 LINQ 및 Find 메서드를 포함하여 Entity Framework를 사용하여 데이터를 쿼리할 수 있는 다양한 방법을 설명합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
@@ -41,7 +41,7 @@ using (var context = new BloggingContext())
 DbSet IDbSet는 항상 데이터베이스에 대한 쿼리 만들며 반환된 엔터티가 이미 컨텍스트에 있더라도 항상 데이터베이스에 대한 왕복이 포함됩니다. 다음과 같은 경우 데이터베이스에 대해 쿼리가 실행됩니다.  
 
 - **foreach**(C#) 또는 **For Each**(Visual Basic) 문에 의해 열거된 경우.  
-- [ToArray](https://msdn.microsoft.com/library/bb298736), [ToDictionary](https://msdn.microsoft.com/library/system.linq.enumerable.todictionary) 또는 ToList[enter link description here](https://msdn.microsoft.com/library/bb342261) 같은 컬렉션 작업에 의해 열거된 경우.  
+- [ToArray](https://msdn.microsoft.com/library/bb298736), [ToDictionary](https://msdn.microsoft.com/library/system.linq.enumerable.todictionary) 또는 [ToList](https://msdn.microsoft.com/library/bb342261)와 같은 컬렉션 작업에 의해 열거된 경우.  
 - 쿼리의 가장 바깥쪽 부분에 [First](https://msdn.microsoft.com/library/bb291976) 또는 [Any](https://msdn.microsoft.com/library/bb337697) 같은 LINQ 연산자가 지정된 경우.  
 - DbSet의 [Load](https://msdn.microsoft.com/library/system.data.entity.dbextensions.load) 확장 메서드, [DbEntityEntry.Reload](https://msdn.microsoft.com/library/system.data.entity.infrastructure.dbentityentry.reload.aspx) 메서드 및 Database.ExecuteSqlCommand 메서드가 호출됩니다.  
 
