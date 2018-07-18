@@ -6,12 +6,12 @@ ms.date: 2/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: 2372a6b2e3f3b7b1d9214a6ea321fe28cea45fff
-ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
+ms.openlocfilehash: 44cbbc965755a694772dc4336ca2c1efc51fd6cd
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34754427"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949233"
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
 
@@ -76,7 +76,7 @@ modelBuilder.Entity<Post>().HasData(new Post{ Id = 1, Text = "Hello World!" });
 이 항목에 대한 자세한 내용은 [데이터 시드에 대한 섹션](xref:core/modeling/data-seeding)을 참고하세요.  
 
 ## <a name="query-types"></a>쿼리 형식
-이제 EF Core 모델에는 쿼리 형식이 포함될 수 있습니다. 엔터티 형식과 달리 쿼리 형식에는 정의된 키가 없고, 삽입, 삭제 또는 업데이트될 수 없습니다(즉, 읽기 전용임). 하지만 쿼리에 의해 직접 반환될 수 있습니다. 쿼리 형식의 사용 시나리오는 다음과 같습니다.
+이제 EF Core 모델에는 쿼리 형식이 포함될 수 있습니다. 엔터티 형식과 달리 쿼리 형식에는 정의된 키가 없고 삽입, 삭제 또는 업데이트될 수 없습니다(즉, 읽기 전용임). 하지만 쿼리에 의해 직접 반환될 수 있습니다. 쿼리 형식의 사용 시나리오는 다음과 같습니다.
 
 - 기본 키가 없이 보기에 매핑
 - 기본 키가 없이 테이블에 매핑
@@ -157,7 +157,7 @@ _dotnet-ef_ 명령은 이제 .NET Core SDK의 일부이므로, 마이그레이�
 
 ## <a name="raw-sql-parameter-analyzer"></a>원시 SQL 매개 변수 분석기
 
-`FromSql` 또는 `ExecuteSqlCommand`와 같이 원시 SQL API의 잠재적으로 안전하지 않은 사용을 발견하는 새 코드 분석기가 EF Core와 함께 포함됩니다. 예: 다음 쿼리의 경우 _minAge_에 매개 변수가 없기 때문에 경고가 표시됩니다.
+`FromSql` 또는 `ExecuteSqlCommand`와 같이 원시 SQL API의 잠재적으로 안전하지 않은 사용을 발견하는 새 코드 분석기가 EF Core와 함께 포함됩니다. 예를 들어 다음 쿼리의 경우 _minAge_에 매개 변수가 없기 때문에 경고가 표시됩니다.
 
 ``` csharp
 var sql = $"SELECT * FROM People WHERE Age > {minAge}";

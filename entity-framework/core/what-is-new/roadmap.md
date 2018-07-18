@@ -6,12 +6,12 @@ ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 ms.technology: entity-framework-core
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: e23f5d7b1ff95bead310fa8e618a88c161a4e10c
-ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
+ms.openlocfilehash: f319aabb53019e0f153c911dde5814328423081b
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34754446"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949168"
 ---
 # <a name="entity-framework-core-roadmap"></a>Entity Framework Core 로드맵
 
@@ -54,4 +54,4 @@ EF Core에 대한 일정은 [.NET Core 일정](https://github.com/dotnet/core/bl
 
 6. **기능에 사용할 수 있는 사람들의 능력은 무엇이며 이러한 리소스를 가장 잘 활용하는 방법은 무엇인가요?** EF 팀의 각 멤버와 커뮤니티 참여자는 서로 다른 영역에서 다양한 수준의 경험을 가지고 있으며 그에 따라 계획해야 합니다. GroupBy 번역 또는 다대다와 같은 특정 기능에 대해 작업하기 위해 “모두 손을 모아 도와야 한다”는 것을 원했음에도 불구하고 이는 실용적이지 않습니다.
 
-이전에 언급했듯이 이 프로세스는 모든 릴리스를 진화시키고, 향후에 개발자 커뮤니티의 멤버를 위한 더 많은 기회를 추가하여 릴리스 계획에 대한 입력을 제공하려고 합니다(예: 기능 및 릴리스 계획 자체의 제안된 초안을 검토하기 쉽도록).
+이전에 언급했듯이 이 프로세스는 모든 릴리스를 진화시키고, 향후에 개발자 커뮤니티의 멤버를 위한 더 많은 기회를 추가하여 릴리스 계획에 대한 입력을 제공하려고 합니다(예: 기능 및 릴리스 계획 자체의 제안된 초안을 검토하기 쉽도록 함).

@@ -5,38 +5,35 @@ ms.author: riande
 ms.author2: tdykstra
 description: Entity Framework Core를 사용하여 .NET Core 시작
 keywords: .NET Core, Entity Framework Core, VS Code, Visual Studio Code, Mac, Linux
-ms.date: 04/05/2017
+ms.date: 06/05/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 ms.technology: entity-framework-core
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: fcace3c0f259b1a456d9ca1086e6a1549c070d57
-ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
+ms.openlocfilehash: e4eafed037325237345efbc3d7d42b32270a54e3
+ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31812536"
+ms.lasthandoff: 07/08/2018
+ms.locfileid: "37911504"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>.NET Core 콘솔 앱에서 새 데이터베이스로 EF Core 시작
 
-이 연습에서는 Entity Framework Core를 사용하여 SQLite 데이터베이스에 대해 기본 데이터 액세스를 수행하는 .NET Core 콘솔 앱을 만듭니다. 마이그레이션을 사용하여 모델에서 데이터베이스를 만듭니다. ASP.NET Core MVC를 사용하는 Visual Studio 버전에 대해서는 [ASP.NET Core - 새 데이터베이스](xref:core/get-started/aspnetcore/new-db)를 참조하세요.
+이 연습에서는 Entity Framework Core를 사용하여 SQLite 데이터베이스에 대해 데이터 액세스를 수행하는 .NET Core 콘솔 앱을 만듭니다. 마이그레이션을 사용하여 모델에서 데이터베이스를 만듭니다. ASP.NET Core MVC를 사용하는 Visual Studio 버전에 대해서는 [ASP.NET Core - 새 데이터베이스](xref:core/get-started/aspnetcore/new-db)를 참조하세요.
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite)을 볼 수 있습니다.
 
 ## <a name="prerequisites"></a>전제 조건
 
-이 연습을 완료하려면 다음 필수 구성 요소가 필요합니다.
-* .NET Core를 지원하는 운영 체제.
-* [.NET Core SDK](https://www.microsoft.com/net/core) 2.0(몇 가지 수정 사항이 있지만 이전 버전으로 응용 프로그램을 만드는 데 지침이 사용될 수 있음).
+[.NET Core SDK](https://www.microsoft.com/net/core) 2.1
 
 ## <a name="create-a-new-project"></a>새 프로젝트 만들기
 
-* 프로젝트에 대한 새로운 `ConsoleApp.SQLite` 폴더를 만들고 `dotnet` 명령을 사용하여 .NET Core 앱으로 채웁니다.
+* 새 콘솔 프로젝트를 만듭니다.
 
 ``` Console
-mkdir ConsoleApp.SQLite
+dotnet new console -o ConsoleApp.SQLite
 cd ConsoleApp.SQLite/
-dotnet new console
 ```
 
 ## <a name="install-entity-framework-core"></a>Entity Framework Core 설치
@@ -50,21 +47,7 @@ dotnet add package Microsoft.EntityFrameworkCore.Sqlite
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
-* `ConsoleApp.SQLite.csproj`를 수동으로 편집하여 DotNetCliToolReference를 Microsoft.EntityFrameworkCore.Tools.DotNet에 추가합니다.
-
-  ``` xml
-  <ItemGroup>
-    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
-  </ItemGroup>
-  ```
-
-이제 `ConsoleApp.SQLite.csproj`에 다음이 포함됩니다.
-
-[!code[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/ConsoleApp.SQLite.csproj)]
-
- 참고: 위에서 사용된 버전 번호는 게시 시에 올바른 것입니다.
-
-*  `dotnet restore`를 실행하여 새 패키지를 설치합니다.
+* `dotnet restore`를 실행하여 새 패키지를 설치합니다.
 
 ## <a name="create-the-model"></a>모델 만들기
 
@@ -74,17 +57,16 @@ dotnet add package Microsoft.EntityFrameworkCore.Design
 
 [!code-csharp[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/Model.cs)]
 
-실제 응용 프로그램에서는 각 클래스를 별도의 파일에 저장하고 구성 파일에 연결 문자열을 저장합니다. 자습서를 간단히 유지하기 위해 모든 항목을 하나의 파일에 저장합니다.
+팁: 실제 응용 프로그램에서는 각 클래스를 별도의 파일에 저장하고 구성 파일에 연결 문자열을 저장합니다. 자습서를 간단히 유지하기 위해 모든 항목이 하나의 파일에 포함되어 있습니다.
 
 ## <a name="create-the-database"></a>데이터베이스 만들기
 
-모델을 만든 후 [마이그레이션](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations)을 사용하여 데이터베이스를 만들 수 있습니다.
+모델을 만든 후 [마이그레이션](https://docs.microsoft.com/aspnet/core/data/ef-mvc/migrations#introduction-to-migrations)을 사용하여 데이터베이스를 만듭니다.
 
 * `dotnet ef migrations add InitialCreate`를 실행하여 마이그레이션을 스캐폴딩하고 모델에 대한 초기 테이블 집합을 만듭니다.
 * `dotnet ef database update`를 실행하여 새 마이그레이션을 데이터베이스에 적용합니다. 이 명령은 마이그레이션을 적용하기 전에 데이터베이스를 만듭니다.
 
-> [!NOTE]  
-> SQLite에서 상대 경로를 사용하는 경우 경로는 응용 프로그램의 주 어셈블리를 기준으로 합니다. 이 샘플에서는 기본 바이너리가 `bin/Debug/netcoreapp2.0/ConsoleApp.SQLite.dll`이므로 SQLite 데이터베이스가 `bin/Debug/netcoreapp2.0/blogging.db`에 있습니다.
+*blogging.db** SQLite DB는 프로젝트 디렉터리에 있습니다.
 
 ## <a name="use-your-model"></a>모델 사용
 

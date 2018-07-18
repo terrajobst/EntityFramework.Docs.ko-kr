@@ -5,12 +5,12 @@ ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 288f825b-b3e6-4096-971b-d0a1cb96770e
 uid: efcore-and-ef6/choosing
-ms.openlocfilehash: f0a632902384a65ea3cddf752ad262c7a2e89e2e
-ms.sourcegitcommit: 2ef0a4a90b01edd22b9206f8729b8de459ef8cab
+ms.openlocfilehash: 17c81e0d6c384c06e45f0cf4f338d4ba402788e1
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/20/2018
-ms.locfileid: "30002823"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949142"
 ---
 # <a name="ef-core-and-ef6-which-one-is-right-for-you"></a>EF Core 및 EF6: 내게 적합한 항목
 
@@ -20,7 +20,7 @@ ms.locfileid: "30002823"
 
 EF Core의 모든 기능을 활용하려는 경우 새 응용 프로그램에 대한 EF Core를 사용하는 것이 좋으며 응용 프로그램은 EF Core에서 아직 구현되지 않은 기능이 필요하지 않습니다.
 
-EF6은 .NET Framework 4.0(또는 이상 버전)이 필요하며 Windows에서만 지원되지만(즉, .NET Core에서 실행되지 않고 다른 운영 체제에서 지원되지 않음) 해당 제약 조건이 허용되는 한 새 응용 프로그램에 여전히 유용한 선택이며 응용 프로그램은 EF6에 사용할 수 없는 EF Core의 새 기능이 필요하지 않습니다.
+EF6은 .NET Framework 4.0(또는 이상 버전)이 필요하며 Windows에서만 지원되지만(즉, EF6은 현재 .NET Core에서 실행되지 않으며 다른 운영 체제에서 지원되지 않음) 해당 제약 조건이 허용되는 한 새 응용 프로그램에 여전히 유용한 선택이며 응용 프로그램은 EF6에 사용할 수 없는 EF Core의 새 기능이 필요하지 않습니다.
 
 [기능 비교](features.md)를 검토하여 EF Core가 응용 프로그램에 적합한 선택이 될 수 있는지 확인합니다.
 

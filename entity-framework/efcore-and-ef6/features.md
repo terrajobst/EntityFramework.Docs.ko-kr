@@ -1,15 +1,16 @@
 ---
-title: "기능 비교별 EF Core 및 EF6 기능"
+title: 기능 비교별 EF Core 및 EF6 기능
 author: rowanmiller
 ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: f22f29ef-efc0-475d-b0b2-12a054f80f95
 uid: efcore-and-ef6/features
-ms.openlocfilehash: 3f05fbe53439826a4e1e1b188a7c03951dc109ec
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 84b40f03cdab27fd6fc68c5bb65c6e3d238f226a
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37967144"
 ---
 # <a name="ef-core-and-ef6-feature-by-feature-comparison"></a>기능 비교별 EF Core 및 EF6 기능
 
@@ -60,10 +61,10 @@ EF Core 열에는 먼저 표시되는 기능의 제품 버전 번호가 포함�
 | 관련 데이터 로드: 지연                            | 예      | 2.1                                   |
 | 관련 데이터 로드: 명시적                        | 예      | 1.1                                   |
 | 원시 SQL 쿼리: 엔터티 형식                         | 예      | 1.0                                   |
-| 원시 SQL 쿼리: 비 엔터티 형식(예: 쿼리 형식)  | 예      | 2.1                                   |
+| 원시 SQL 쿼리: 비 엔터티 형식(쿼리 형식)       | 예      | 2.1                                   |
 | 원시 SQL 쿼리: LINQ로 작성                  |          | 1.0                                   |
 | 명시적으로 컴파일된 쿼리                           | 나쁨     | 2.0                                   |
-| 텍스트 기반 쿼리 언어(예: Entity SQL)           | 1.0      |                                       |
+| 텍스트 기반 쿼리 언어(Entity SQL)                | 예      |                                       |
 |                                                       |          |                                       |
 | **데이터 저장**                                       | **EF6**  | **EF Core**                           |
 | 변경 내용 추적: 스냅숏                             | 예      | 1.0                                   |
@@ -83,7 +84,7 @@ EF Core 열에는 먼저 표시되는 기능의 제품 버전 번호가 포함�
 | 시드 데이터                                             | 예      | 2.1                                   |
 | 연결 복원력                                 | 예      | 1.1                                   |
 | 수명 주기 후크(이벤트, 인터셉션)                | 예      |                                       |
-| 간단한 로깅(예: Database.Log)                    | 예      |                                       |
+| 간단한 로깅(Database.Log)                         | 예      |                                       |
 | DbContext 풀링                                     |          | 2.0                                   |
 |                                                       |          |                                       |
 | **데이터베이스 공급자**                                | **EF6**  | **EF Core**                           |

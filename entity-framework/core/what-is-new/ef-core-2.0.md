@@ -6,12 +6,12 @@ ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 02d0b6fe2956e819e08e08c9a0658008abd36c34
-ms.sourcegitcommit: b2d94cebdc32edad4fecb07e53fece66437d1b04
+ms.openlocfilehash: 538458cf49ee86b9a5cba2f606adc04e583605e2
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29680024"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949129"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
@@ -93,7 +93,7 @@ public class BloggingContext : DbContext
     }
 }
 ```
-```Post``` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 ```TenantId```의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스의 값을 사용합니다. 즉 해당 쿼리를 실행하는 항목입니다.
+```Post``` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 ```TenantId```의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
 
 IgnoreQueryFilters() 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않게 설정할 수 있습니다.
 
@@ -134,7 +134,7 @@ var query =
 
 - 규칙에 따라, SQL을 생성할 때 메서드 이름은 함수 이름으로 사용되나(이 경우 사용자 정의 함수) 메서드 이름 중에 이 이름과 스키마를 재정의할 수 있습니다.
 - 현재 스칼라 함수만 지원됩니다.
-- 데이터베이스에서 매핑된 함수를 만들어야 합니다. 즉 EF Core 마이그레이션에서는 만들기가 처리되지 않습니다.
+- 데이터베이스에 매핑된 함수를 만들어야 합니다. EF Core 마이그레이션을 생성할 필요가 없음
 
 ### <a name="self-contained-type-configuration-for-code-first"></a>코드 우선에 대해 자체 포함된 형식 구성
 
@@ -259,7 +259,7 @@ EF Core 또는 공급자가 데이터베이스 함수나 연산자에 매핑되�
 ``` csharp
 var aCustomers =
     from c in context.Customers
-    where EF.Functions.Like(c.Name, "a%");
+    where EF.Functions.Like(c.Name, "a%")
     select c;
 ```
 

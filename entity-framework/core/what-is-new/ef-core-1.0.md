@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: 20A25111-AEBE-4BC2-83A5-3F651952DF72
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-1.0
-ms.openlocfilehash: e5b9e57a01ff302b1d7bd0fc5419aa5b8213865e
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: af7cf490ef2b04afb02461279fbe67c1c7fa3d95
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26049686"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "37949024"
 ---
 # <a name="features-included-in-ef-core-10"></a>EF Core 1.0에 포함된 기능
 
@@ -28,10 +28,10 @@ Windows, OSX 및 Linux에서 .NET Framework 및 .NET Core를 둘 다 대상으�
 외래 키를 기반으로 모델에서 일 대 다 및 일 대 영/일 관계를 지정할 수 있습니다. 단순 컬렉션 또는 참조 형식의 탐색 속성은 이러한 관계와 연결될 수 있습니다.
 ### <a name="built-in-conventions"></a>기본 제공 규칙
 이러한 기능은 엔터티 클래스의 모양을 기반으로 초기 모델을 빌드합니다.
-### <a name="fluent-api"></a>흐름 API
+### <a name="fluent-api"></a>Fluent API
 컨텍스트에서 `OnModelCreating` 메서드를 재정의하여 규칙에 의해 발견된 모델을 추가로 구성할 수 있습니다.
 ### <a name="data-annotations"></a>데이터 주석
-엔터티 클래스/속성에 추가할 수 있고 EF 모델에 영향을 주는 속성입니다([필수]를 추가하여 EF에 속성이 추가임을 알림).
+엔터티 클래스/속성에 추가할 수 있고 EF 모델에 영향을 주는 특성입니다. 예를 들어 `[Required]`를 추가하면 EF 속성이 필수임을 알 수 있습니다.
 ### <a name="relational-table-mapping"></a>관계형 테이블 매핑
 엔터티를 테이블/열에 매핑할 수 있습니다.
 ### <a name="key-value-generation"></a>키 값 생성
@@ -79,7 +79,7 @@ LINQ를 사용하여 데이터베이스에서 데이터를 검색하는 기능�
 ### <a name="mixed-clientserver-evaluation"></a>혼합 클라이언트/서버 평가
 데이터베이스에서 평가할 수 없는 논리를 쿼리에 포함할 수 있으므로 데이터가 메모리로 검색된 후 평가되어야 합니다.
 ### <a name="notracking"></a>NoTracking
-쿼리를 사용하면 컨텍스트가 엔터티 인스턴스의 변경 내용을 모니터링할 필요가 없을 경우(결과가 읽기 전용일 경우) 쿼리 실행이 빨라집니다.
+쿼리를 사용하면 컨텍스트가 엔터티 인스턴스의 변경 내용을 모니터링할 필요가 없을 경우(결과가 읽기 전용인 경우 유용함) 쿼리 실행이 빨라집니다.
 ### <a name="eager-loading"></a>즉시 로드
 쿼리 시 페치해야하는 관련 데이터를 식별하는 `Include` 및 `ThenInclude` 메서드를 제공합니다.
 ### <a name="async-query"></a>비동기 쿼리
