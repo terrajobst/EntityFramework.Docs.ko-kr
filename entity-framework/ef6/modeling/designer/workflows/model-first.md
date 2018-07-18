@@ -1,0 +1,211 @@
+---
+title: EF6 먼저 모델
+author: divega
+ms.date: 2016-10-23
+ms.prod: entity-framework
+ms.author: divega
+ms.manager: avickers
+ms.technology: entity-framework-6
+ms.topic: article
+ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
+caps.latest.revision: 3
+ms.openlocfilehash: e7876776ed0dee764d5ced97b863a3580e02e20b
+ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.translationtype: MT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 07/08/2018
+ms.locfileid: "39122269"
+---
+# <a name="model-first"></a><span data-ttu-id="e2228-102">먼저 모델</span><span class="sxs-lookup"><span data-stu-id="e2228-102">Model First</span></span>
+<span data-ttu-id="e2228-103">이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-103">This video and step-by-step walkthrough provide an introduction to Model First development using Entity Framework.</span></span> <span data-ttu-id="e2228-104">먼저 모델을 사용 하면 Entity Framework 디자이너를 사용 하 여 새 모델을 만들고 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-104">Model First allows you to create a new model using the Entity Framework Designer and then generate a database schema from the model.</span></span> <span data-ttu-id="e2228-105">모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-105">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="e2228-106">응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-106">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
+
+## <a name="watch-the-video"></a><span data-ttu-id="e2228-107">비디오를 시청 하세요.</span><span class="sxs-lookup"><span data-stu-id="e2228-107">Watch the video</span></span>
+<span data-ttu-id="e2228-108">이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-108">This video and step-by-step walkthrough provide an introduction to Model First development using Entity Framework.</span></span> <span data-ttu-id="e2228-109">먼저 모델을 사용 하면 Entity Framework 디자이너를 사용 하 여 새 모델을 만들고 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-109">Model First allows you to create a new model using the Entity Framework Designer and then generate a database schema from the model.</span></span> <span data-ttu-id="e2228-110">모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-110">The model is stored in an EDMX file (.edmx extension) and can be viewed and edited in the Entity Framework Designer.</span></span> <span data-ttu-id="e2228-111">응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-111">The classes that you interact with in your application are automatically generated from the EDMX file.</span></span>
+
+<span data-ttu-id="e2228-112">**작성자**: [Rowan Miller](http://romiller.com/)</span><span class="sxs-lookup"><span data-stu-id="e2228-112">**Presented By**: [Rowan Miller](http://romiller.com/)</span></span>
+
+<span data-ttu-id="e2228-113">**비디오**: [WMV](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv) | [MP4](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)</span><span class="sxs-lookup"><span data-stu-id="e2228-113">**Video**: [WMV](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv) | [MP4](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)</span></span>
+
+## <a name="pre-requisites"></a><span data-ttu-id="e2228-114">필수 조건</span><span class="sxs-lookup"><span data-stu-id="e2228-114">Pre-Requisites</span></span>
+
+<span data-ttu-id="e2228-115">Visual Studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-115">You will need to have Visual Studio 2010 or Visual Studio 2012 installed to complete this walkthrough.</span></span>
+
+<span data-ttu-id="e2228-116">Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-116">If you are using Visual Studio 2010, you will also need to have [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) installed.</span></span>
+
+## <a name="1-create-the-application"></a><span data-ttu-id="e2228-117">1. 응용 프로그램 만들기</span><span class="sxs-lookup"><span data-stu-id="e2228-117">1. Create the Application</span></span>
+
+<span data-ttu-id="e2228-118">간단 하 게 데이터 액세스를 수행 하 여 Model First를 사용 하는 기본적인 콘솔 응용 프로그램을 빌드 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-118">To keep things simple we’re going to build a basic console application that uses the Model First to perform data access:</span></span>
+
+-   <span data-ttu-id="e2228-119">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-119">Open Visual Studio</span></span>
+-   <span data-ttu-id="e2228-120">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="e2228-120">**File -&gt; New -&gt; Project…**</span></span>
+-   <span data-ttu-id="e2228-121">선택 **Windows** 왼쪽된 메뉴에서 및 **콘솔 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="e2228-121">Select **Windows** from the left menu and **Console Application**</span></span>
+-   <span data-ttu-id="e2228-122">입력 **ModelFirstSample** 이름으로</span><span class="sxs-lookup"><span data-stu-id="e2228-122">Enter **ModelFirstSample** as the name</span></span>
+-   <span data-ttu-id="e2228-123">**확인**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-123">Select **OK**</span></span>
+
+## <a name="2-create-model"></a><span data-ttu-id="e2228-124">2. 모델 만들기</span><span class="sxs-lookup"><span data-stu-id="e2228-124">2. Create Model</span></span>
+
+<span data-ttu-id="e2228-125">모델을 만들려면 Visual Studio의 일부로 포함 된 Entity Framework Designer를 사용 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-125">We’re going to make use of Entity Framework Designer, which is included as part of Visual Studio, to create our model.</span></span>
+
+-   <span data-ttu-id="e2228-126">**프로젝트-&gt; 새 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="e2228-126">**Project -&gt; Add New Item…**</span></span>
+-   <span data-ttu-id="e2228-127">선택 **데이터** 왼쪽된 메뉴에서 차례로 **ADO.NET 엔터티 데이터 모델**</span><span class="sxs-lookup"><span data-stu-id="e2228-127">Select **Data** from the left menu and then **ADO.NET Entity Data Model**</span></span>
+-   <span data-ttu-id="e2228-128">입력 **BloggingModel** 이름과 클릭 **확인**, 엔터티 데이터 모델 마법사가 시작 됩니다</span><span class="sxs-lookup"><span data-stu-id="e2228-128">Enter **BloggingModel** as the name and click **OK**, this launches the Entity Data Model Wizard</span></span>
+-   <span data-ttu-id="e2228-129">선택 **빈 모델** 를 클릭 하 고 **마침**</span><span class="sxs-lookup"><span data-stu-id="e2228-129">Select **Empty Model** and click **Finish**</span></span>
+
+    ![CreateEmptyModel](~/ef6/media/createemptymodel.png)
+
+<span data-ttu-id="e2228-131">빈 모델을 사용 하 여 Entity Framework 디자이너 열려 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-131">The Entity Framework Designer is opened with a blank model.</span></span> <span data-ttu-id="e2228-132">이제 모델에 엔터티, 속성 및 연결 추가 시작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-132">Now we can start adding entities, properties and associations to the model.</span></span>
+
+-   <span data-ttu-id="e2228-133">디자인 화면을 마우스 오른쪽 단추로 클릭 **속성**</span><span class="sxs-lookup"><span data-stu-id="e2228-133">Right-click on the design surface and select **Properties**</span></span>
+-   <span data-ttu-id="e2228-134">속성 창 변경에서 합니다 **엔터티 컨테이너 이름을** 하 **BloggingContext**
+    *컨텍스트에 자동으로 생성 되는 파생 컨텍스트의 이름입니다 데이터베이스를 쿼리하고 데이터를 저장할 수 있어를 사용 하 여 세션을 나타냅니다.*</span><span class="sxs-lookup"><span data-stu-id="e2228-134">In the Properties window change the **Entity Container Name** to **BloggingContext**
+*This is the name of the derived context that will be generated for you, the context represents a session with the database, allowing us to query and save data*</span></span>
+-   <span data-ttu-id="e2228-135">디자인 화면을 마우스 오른쪽 단추로 클릭 **새로 추가-&gt; 엔터티 중...**</span><span class="sxs-lookup"><span data-stu-id="e2228-135">Right-click on the design surface and select **Add New -&gt; Entity…**</span></span>
+-   <span data-ttu-id="e2228-136">입력 **블로그** 엔터티 이름으로 및 **BlogId** 키 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="e2228-136">Enter **Blog** as the entity name and **BlogId** as the key name and click **OK**</span></span>
+
+    ![AddBlogEntity](~/ef6/media/addblogentity.png)
+
+-   <span data-ttu-id="e2228-138">디자인 화면에 새 엔터티를 마우스 오른쪽 단추로 클릭 **새로 추가-&gt; 스칼라 속성**를 입력 **이름** 속성의 이름으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-138">Right-click on the new entity on the design surface and select **Add New -&gt; Scalar Property**, enter **Name** as the name of the property.</span></span>
+-   <span data-ttu-id="e2228-139">추가 하는이 프로세스를 반복 하는 **Url** 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-139">Repeat this process to add a **Url** property.</span></span>
+-   <span data-ttu-id="e2228-140">마우스 오른쪽 단추로 클릭 합니다 **Url** 디자인 화면에 속성 **속성**, 속성 창 변경에서를 **Nullable** 설정을 **True** 
+     *Url을 할당 하지 않고 데이터베이스에 블로그를 저장할 수 있도록*</span><span class="sxs-lookup"><span data-stu-id="e2228-140">Right-click on the **Url** property on the design surface and select **Properties**, in the Properties window change the **Nullable** setting to **True**
+*This allows us to save a Blog to the database without assigning it a Url*</span></span>
+-   <span data-ttu-id="e2228-141">방금 학습 기법을 사용 하 여 추가 **게시물** 사용 하 여 엔터티를 **PostId** 키 속성</span><span class="sxs-lookup"><span data-stu-id="e2228-141">Using the techniques you just learnt, add a **Post** entity with a **PostId** key property</span></span>
+-   <span data-ttu-id="e2228-142">추가 **제목** 및 **콘텐츠** 스칼라 속성을 **Post** 엔터티</span><span class="sxs-lookup"><span data-stu-id="e2228-142">Add **Title** and **Content** scalar properties to the **Post** entity</span></span>
+
+<span data-ttu-id="e2228-143">엔터티의 몇 만들었으므로 서로 연결 (또는 관계)을 추가할 시간 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-143">Now that we have a couple of entities, it’s time to add an association (or relationship) between them.</span></span>
+
+-   <span data-ttu-id="e2228-144">디자인 화면을 마우스 오른쪽 단추로 클릭 **새로 추가-&gt; 연결 하는 중...**</span><span class="sxs-lookup"><span data-stu-id="e2228-144">Right-click on the design surface and select **Add New -&gt; Association…**</span></span>
+-   <span data-ttu-id="e2228-145">확인 하는 관계의 한쪽 끝 **블로그** 복합성을 사용 하 여 **하나** 이 고 다른 끝점에 **Post** 복합성을 사용 하 여 **많은** 
+     *즉 블로그 많은 게시물에 블로그 게시물 속해*</span><span class="sxs-lookup"><span data-stu-id="e2228-145">Make one end of the relationship point to **Blog** with a multiplicity of **One** and the other end point to **Post** with a multiplicity of **Many**
+*This means that a Blog has many Posts and a Post belongs to one Blog*</span></span>
+-   <span data-ttu-id="e2228-146">확인 합니다 **외래 키 속성 'Post' 엔터티에 추가할** 상자 체크 인 되 고 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="e2228-146">Ensure the **Add foreign key properties to 'Post' Entity** box is checked and click **OK**</span></span>
+
+    ![AddAssociationMF](~/ef6/media/addassociationmf.png)
+
+<span data-ttu-id="e2228-148">이제 것에서 데이터베이스를 생성 하 고 데이터 읽기 및 쓰기에 사용할 수 있는 간단한 모델입니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-148">We now have a simple model that we can generate a database from and use to read and write data.</span></span>
+
+![ModelInitial](~/ef6/media/modelinitial.png)
+
+### <a name="additional-steps-in-visual-studio-2010"></a><span data-ttu-id="e2228-150">Visual Studio 2010의 추가 단계</span><span class="sxs-lookup"><span data-stu-id="e2228-150">Additional Steps in Visual Studio 2010</span></span>
+
+<span data-ttu-id="e2228-151">Visual Studio 2010에서 작업 하는 경우 Entity Framework의 최신 버전으로 업그레이드 하기 위해 수행 해야 할 몇 가지 추가 단계가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-151">If you are working in Visual Studio 2010 there are some additional steps you need to follow to upgrade to the latest version of Entity Framework.</span></span> <span data-ttu-id="e2228-152">최신 버그 픽스 뿐만 아니라 훨씬 쉽게 사용할 수 있는 향상 된 API 화면 액세스를 제공 하기 때문에 업그레이드 하는 것이 중요 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-152">Upgrading is important because it gives you access to an improved API surface, that is much easier to use, as well as the latest bug fixes.</span></span>
+
+<span data-ttu-id="e2228-153">먼저를 해야 NuGet에서 최신 버전의 Entity Framework를 가져오려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-153">First up, we need to get the latest version of Entity Framework from NuGet.</span></span>
+
+-   <span data-ttu-id="e2228-154">**프로젝트&gt; NuGet 패키지 관리... ** 
+     *없다면는 **NuGet 패키지 관리... ** 를 설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*</span><span class="sxs-lookup"><span data-stu-id="e2228-154">**Project –&gt; Manage NuGet Packages…**
+*If you don’t have the **Manage NuGet Packages…** option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*</span></span>
+-   <span data-ttu-id="e2228-155">선택 된 **Online** 탭</span><span class="sxs-lookup"><span data-stu-id="e2228-155">Select the **Online** tab</span></span>
+-   <span data-ttu-id="e2228-156">선택 된 **EntityFramework** 패키지</span><span class="sxs-lookup"><span data-stu-id="e2228-156">Select the **EntityFramework** package</span></span>
+-   <span data-ttu-id="e2228-157">클릭 **설치**</span><span class="sxs-lookup"><span data-stu-id="e2228-157">Click **Install**</span></span>
+
+<span data-ttu-id="e2228-158">다음으로, Entity Framework의 이후 버전에서 도입 된 DbContext api를 사용 하는 코드를 생성할 모델 교환 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-158">Next, we need to swap our model to generate code that makes use of the DbContext API, which was introduced in later versions of Entity Framework.</span></span>
+
+-   <span data-ttu-id="e2228-159">EF 디자이너에서 모델의 빈 영역을 마우스 오른쪽 단추로 클릭 하 고 선택 **코드 생성 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="e2228-159">Right-click on an empty spot of your model in the EF Designer and select **Add Code Generation Item…**</span></span>
+-   <span data-ttu-id="e2228-160">선택 **온라인 템플릿을** 검색에 대 한 확인 하 고 왼쪽된 메뉴에서 **DbContext**</span><span class="sxs-lookup"><span data-stu-id="e2228-160">Select **Online Templates** from the left menu and search for **DbContext**</span></span>
+-   <span data-ttu-id="e2228-161">선택 된 EF **5.x C에 대 한 DbContext 생성기\#** 를 입력 **BloggingModel** 이름과 클릭 **추가**</span><span class="sxs-lookup"><span data-stu-id="e2228-161">Select the EF **5.x DbContext Generator for C\#**, enter **BloggingModel** as the name and click **Add**</span></span>
+
+    ![DbContextTemplate](~/ef6/media/dbcontexttemplate.png)
+
+## <a name="3-generating-the-database"></a><span data-ttu-id="e2228-163">3. 데이터베이스를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-163">3. Generating the Database</span></span>
+
+<span data-ttu-id="e2228-164">Entity Framework 모델 지정 되 면 저장 하 고 모델을 사용 하 여 데이터를 검색할 수 있도록 하는 데이터베이스 스키마를 계산할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-164">Given our model, Entity Framework can calculate a database schema that will allow us to store and retrieve data using the model.</span></span>
+
+<span data-ttu-id="e2228-165">Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual Studio의 버전에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-165">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
+
+-   <span data-ttu-id="e2228-166">Visual Studio 2010을 사용 하는 경우 SQL Express 데이터베이스를 만드는 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-166">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
+-   <span data-ttu-id="e2228-167">Visual Studio 2012를 사용 하는 경우를 만들 수는 [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) 데이터베이스입니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-167">If you are using Visual Studio 2012 then you'll be creating a [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) database.</span></span>
+
+<span data-ttu-id="e2228-168">데이터베이스를 생성 해 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-168">Let's go ahead and generate the database.</span></span>
+
+-   <span data-ttu-id="e2228-169">디자인 화면을 마우스 오른쪽 단추로 클릭 **모델에서 데이터베이스 생성 중...**</span><span class="sxs-lookup"><span data-stu-id="e2228-169">Right-click on the design surface and select **Generate Database from Model…**</span></span>
+-   <span data-ttu-id="e2228-170">클릭 **새 연결...**</span><span class="sxs-lookup"><span data-stu-id="e2228-170">Click **New Connection…**</span></span> <span data-ttu-id="e2228-171">LocalDB 또는 SQL Express를 사용 중인 Visual Studio 버전을 지정 하 고 입력 **ModelFirst.Blogging** 데이터베이스 이름으로 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-171">and specify either LocalDB or SQL Express, depending on which version of Visual Studio you are using, enter **ModelFirst.Blogging** as the database name.</span></span>
+
+    ![LocalDBConnectionMF](~/ef6/media/localdbconnectionmf.png)
+
+    ![SqlExpressConnectionMF](~/ef6/media/sqlexpressconnectionmf.png)
+
+-   <span data-ttu-id="e2228-174">선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**</span><span class="sxs-lookup"><span data-stu-id="e2228-174">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
+-   <span data-ttu-id="e2228-175">선택 **다음** 및 Entity Framework 디자이너는 데이터베이스 스키마를 만드는 스크립트를 계산 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-175">Select **Next** and the Entity Framework Designer will calculate a script to create the database schema</span></span>
+-   <span data-ttu-id="e2228-176">스크립트 표시 되 면 클릭 **완료** 및 스크립트 프로젝트에 추가 되며 열</span><span class="sxs-lookup"><span data-stu-id="e2228-176">Once the script is displayed, click **Finish** and the script will be added to your project and opened</span></span>
+-   <span data-ttu-id="e2228-177">선택한 스크립트를 마우스 오른쪽 단추로 클릭 **Execute**LocalDB 지정 연결할 데이터베이스를 지정 하 라는 메시지가 표시 됩니다, SQL Server Express를 사용 하는 Visual Studio의 버전에 따라</span><span class="sxs-lookup"><span data-stu-id="e2228-177">Right-click on the script and select **Execute**, you will be prompted to specify the database to connect to, specify LocalDB or SQL Server Express, depending on which version of Visual Studio you are using</span></span>
+
+## <a name="4-reading--writing-data"></a><span data-ttu-id="e2228-178">4. 읽기 및 데이터 쓰기</span><span class="sxs-lookup"><span data-stu-id="e2228-178">4. Reading & Writing Data</span></span>
+
+<span data-ttu-id="e2228-179">이제 모델이 준비 일부 데이터 액세스를 사용 하는 시간입니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-179">Now that we have a model it’s time to use it to access some data.</span></span> <span data-ttu-id="e2228-180">클래스를 예정 하는 데 데이터에 액세스 되 고 자동으로 생성 된 EDMX 파일에 따라 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-180">The classes we are going to use to access data are being automatically generated for you based on the EDMX file.</span></span>
+
+<span data-ttu-id="e2228-181">*이 스크린 샷에서 Visual Studio 2012, Visual Studio 2010을 사용 하는 경우는 BloggingModel.tt 이며 BloggingModel.Context.tt 파일 프로젝트 아래에 직접 EDMX 파일 아래에 중첩 하지 않고입니다.*</span><span class="sxs-lookup"><span data-stu-id="e2228-181">*This screen shot is from Visual Studio 2012, if you are using Visual Studio 2010 the BloggingModel.tt and BloggingModel.Context.tt files will be directly under your project rather than nested under the EDMX file.*</span></span>
+
+![GeneratedClasses](~/ef6/media/generatedclasses.png)
+
+<span data-ttu-id="e2228-183">아래 표시 된 것과 같이 Program.cs의 Main 메서드를 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-183">Implement the Main method in Program.cs as shown below.</span></span> <span data-ttu-id="e2228-184">이 코드는이 컨텍스트의 새 인스턴스를 만듭니다 및 다음 새 블로그 삽입을 사용 하 여 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-184">This code creates a new instance of our context and then uses it to insert a new Blog.</span></span> <span data-ttu-id="e2228-185">다음 LINQ 쿼리를 사용 하 여 제목으로 사전순으로 정렬 하는 데이터베이스에서 모든 블로그를 검색 하려면.</span><span class="sxs-lookup"><span data-stu-id="e2228-185">Then it uses a LINQ query to retrieve all Blogs from the database ordered alphabetically by Title.</span></span>
+
+``` csharp
+class Program
+{
+    static void Main(string[] args)
+    {
+        using (var db = new BloggingContext())
+        {
+            // Create and save a new Blog
+            Console.Write("Enter a name for a new Blog: ");
+            var name = Console.ReadLine();
+
+            var blog = new Blog { Name = name };
+            db.Blogs.Add(blog);
+            db.SaveChanges();
+
+            // Display all Blogs from the database
+            var query = from b in db.Blogs
+                        orderby b.Name
+                        select b;
+
+            Console.WriteLine("All blogs in the database:");
+            foreach (var item in query)
+            {
+                Console.WriteLine(item.Name);
+            }
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
+        }
+    }
+}
+```
+
+<span data-ttu-id="e2228-186">이제 응용 프로그램을 실행 하 고 테스트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-186">You can now run the application and test it out.</span></span>
+
+```
+Enter a name for a new Blog: ADO.NET Blog
+All blogs in the database:
+ADO.NET Blog
+Press any key to exit...
+```
+
+## <a name="5-dealing-with-model-changes"></a><span data-ttu-id="e2228-187">5. 모델 변경 처리</span><span class="sxs-lookup"><span data-stu-id="e2228-187">5. Dealing with Model Changes</span></span>
+
+<span data-ttu-id="e2228-188">이제 데이터베이스 스키마를 업데이트 해야 하는 이러한 변경을 수행 하는 경우 모델을를 일부 변경 하는 시간입니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-188">Now it’s time to make some changes to our model, when we make these changes we also need to update the database schema.</span></span>
+
+<span data-ttu-id="e2228-189">모델에 새 사용자 엔터티를 추가 하 여 시작 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-189">We’ll start by adding a new User entity to our model.</span></span>
+
+-   <span data-ttu-id="e2228-190">새 **사용자** 엔터티 이름의 **Username** 키 이름으로 및 **문자열** 키에 대 한 속성 형식으로</span><span class="sxs-lookup"><span data-stu-id="e2228-190">Add a new **User** entity name with **Username** as the key name and **String** as the property type for the key</span></span>
+
+    ![AddUserEntity](~/ef6/media/adduserentity.png)
+
+-   <span data-ttu-id="e2228-192">마우스 오른쪽 단추로 클릭는 **사용자 이름** 디자인 화면에 속성 **속성**에서 속성 창 변경 합니다 **MaxLength** 로 설정 **50 ** 
+     *50 자로 사용자 이름을 저장할 수 있는 데이터 제한*</span><span class="sxs-lookup"><span data-stu-id="e2228-192">Right-click on the **Username** property on the design surface and select **Properties**, In the Properties window change the **MaxLength** setting to **50**
+*This restricts the data that can be stored in username to 50 characters*</span></span>
+-   <span data-ttu-id="e2228-193">추가 된 **DisplayName** 스칼라 속성을 합니다 **사용자** 엔터티</span><span class="sxs-lookup"><span data-stu-id="e2228-193">Add a **DisplayName** scalar property to the **User** entity</span></span>
+
+<span data-ttu-id="e2228-194">이제 업데이트 된 모델을 하 고이 새 사용자 엔터티 형식에 맞게 데이터베이스를 업데이트할 준비가 완료 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-194">We now have an updated model and we are ready to update the database to accommodate our new User entity type.</span></span>
+
+-   <span data-ttu-id="e2228-195">디자인 화면을 마우스 오른쪽 단추로 클릭 **모델에서 데이터베이스 생성 중...** , Entity Framework에는 스크립트를 업데이트 된 모델을 기반으로 하는 스키마를 다시 계산 됩니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-195">Right-click on the design surface and select **Generate Database from Model…**, Entity Framework will calculate a script to recreate a schema based on the updated model.</span></span>
+-   <span data-ttu-id="e2228-196">클릭 **마침**</span><span class="sxs-lookup"><span data-stu-id="e2228-196">Click **Finish**</span></span>
+-   <span data-ttu-id="e2228-197">기존 DDL 스크립트 및 모델의 매핑 및 저장소 부분을 덮어쓰기에 대 한 경고를 수신, 클릭 수 있습니다 **예** 모두 이러한 경고에 대 한</span><span class="sxs-lookup"><span data-stu-id="e2228-197">You may receive warnings about overwriting the existing DDL script and the mapping and storage parts of the model, click **Yes** for both these warnings</span></span>
+-   <span data-ttu-id="e2228-198">데이터베이스를 만드는 업데이트 된 SQL 스크립트를 열</span><span class="sxs-lookup"><span data-stu-id="e2228-198">The updated SQL script to create the database is opened for you</span></span>  
+    <span data-ttu-id="e2228-199">*생성 되는 스크립트를 기존 테이블을 모두 삭제 하 고 스키마를 처음부터 다시 합니다. 이 로컬 개발에 대해 작동할 수 있지만 이미 배포 된 데이터베이스에 변경 내용을 푸시하기 위한 실행 가능한 아닙니다. 이미 배포 된 데이터베이스에 변경 내용을 게시 해야 할 경우 스크립트를 편집 하거나 스키마 비교 도구를 사용 하 여 마이그레이션 스크립트를 계산 해야 합니다.*</span><span class="sxs-lookup"><span data-stu-id="e2228-199">*The script that is generated will drop all existing tables and then recreate the schema from scratch. This may work for local development but is not a viable for pushing changes to a database that has already been deployed. If you need to publish changes to a database that has already been deployed, you will need to edit the script or use a schema compare tool to calculate a migration script.*</span></span>
+-   <span data-ttu-id="e2228-200">선택한 스크립트를 마우스 오른쪽 단추로 클릭 **Execute**LocalDB 지정 연결할 데이터베이스를 지정 하 라는 메시지가 표시 됩니다, SQL Server Express를 사용 하는 Visual Studio의 버전에 따라</span><span class="sxs-lookup"><span data-stu-id="e2228-200">Right-click on the script and select **Execute**, you will be prompted to specify the database to connect to, specify LocalDB or SQL Server Express, depending on which version of Visual Studio you are using</span></span>
+
+## <a name="summary"></a><span data-ttu-id="e2228-201">요약</span><span class="sxs-lookup"><span data-stu-id="e2228-201">Summary</span></span>
+
+<span data-ttu-id="e2228-202">이 연습의 첫 번째 모델 개발에 살펴보았습니다는 수 있었습니다 EF 디자이너에서 모델을 만들고 해당 모델에서 데이터베이스를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-202">In this walkthrough we looked at Model First development, which allowed us to create a model in the EF Designer and then generate a database from that model.</span></span> <span data-ttu-id="e2228-203">그런 다음 데이터베이스에서 일부 데이터를 쓰고 읽기 모델을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-203">We then used the model to read and write some data from the database.</span></span> <span data-ttu-id="e2228-204">마지막으로 모델을 업데이트 하 고 모델과 일치 하도록 데이터베이스 스키마를 다시 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="e2228-204">Finally, we updated the model and then recreated the database schema to match the model.</span></span>
