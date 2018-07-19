@@ -6,12 +6,12 @@ ms.date: 2/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 ms.technology: entity-framework-core
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: 44cbbc965755a694772dc4336ca2c1efc51fd6cd
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 660e2a9787b0a6d2544da785827caa20d51626c1
+ms.sourcegitcommit: 00cb52625b57c1ea339ded1454179fe89b6bcfea
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949233"
+ms.lasthandoff: 07/16/2018
+ms.locfileid: "39067562"
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
 
@@ -105,7 +105,7 @@ TransactionScope 등의 System.Transactions 기능에서 작동하는 기능을 
 고객의 의견에 따라 처음부터 클래스에 선언된 속성과 동일한 순서대로 테이블의 열을 생성하도록 마이그레이션을 업데이트했습니다. 초기 테이블 작성 후에 새 멤버를 추가할 경우 EF Core는 순서를 변경할 수 없습니다.
 
 ## <a name="optimization-of-correlated-subqueries"></a>상관 관계 있는 하위 쿼리의 최적화
-여러 가지 일반적인 시나리오에서 "N + 1" SQL 쿼리를 실행하지 않도록 이 쿼리 변환을 개선했습니다. 여기서는 프로젝션에서 탐색 속성의 사용량에 따라 상관 관계 있는 하위 쿼리의 데이터를 사용하여 루트 쿼리의 데이터를 조인하게 됩니다. 최적화에는 결과가 하위 쿼리를 형성하는 버퍼링이 필요하고 쿼리를 수정하여 새로운 동작을 옵트인해야 합니다.
+여러 가지 일반적인 시나리오에서 "N + 1" SQL 쿼리를 실행하지 않도록 이 쿼리 변환을 개선했습니다. 여기서는 프로젝션에서 탐색 속성의 사용량에 따라 상관 관계 있는 하위 쿼리의 데이터를 사용하여 루트 쿼리의 데이터를 조인하게 됩니다. 최적화는 하위 쿼리에서 결과의 버퍼링이 필요하고 쿼리를 수정하여 새로운 동작을 옵트인해야 합니다.
 
 예를 들어 다음 쿼리는 정상적으로 고객에 대한 쿼리로 변환됩니다. 또한 N("N"은 반환된 고객의 수)은 순서에 대한 쿼리를 구분합니다.
 
