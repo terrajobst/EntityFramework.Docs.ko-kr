@@ -6,12 +6,12 @@ ms.date: 2/26/2018
 ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
 ms.technology: entity-framework-core
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 476a1dcaadcd99eba0cd4f5f0ac40c32a97af5c9
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 3eb7480625db4ebc3ce0b7a18d042139f888dab8
+ms.sourcegitcommit: 0935ff275ae739243297f5b97eb21414398125c6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949429"
+ms.lasthandoff: 07/23/2018
+ms.locfileid: "39201895"
 ---
 # <a name="owned-entity-types"></a>소유 된 엔터티 형식
 
@@ -70,7 +70,7 @@ public class Order
 
 EF Core 2.0 및 2.1에서 소유 된 형식은 참조 탐색 속성에 대해서만 가리킬 수 있습니다. 소유 된 형식의 컬렉션을 사용 하는 것이 없습니다. 이러한 참조 형식을 항상 일대일 관계가 소유자와, 키 값을 직접 필요 하지 않으므로 소유 합니다. 앞의 예에서 StreetAddress 형식은 키 속성을 정의할 필요가 없습니다.  
 
-EF Core에서 이러한 개체를 추적 하는 방법을 이해 하려면에서 기본 키로 만들어졌는지 생각 하면 편리 것을 [섀도 속성](xref:core/modeling/shadow-properties) 소유 된 형식에 대 한 합니다. 소유 된 형식의 인스턴스 키의 값은 소유자 인스턴스 키의 값과 동일 하 게 됩니다.      
+EF Core에서 이러한 개체를 추적 하는 방법을 이해 하려면 기본 키로 만들어졌는지 생각 하면 편리 것을 [섀도 속성](xref:core/modeling/shadow-properties) 소유 된 형식에 대 한 합니다. 소유 된 형식의 인스턴스 키의 값은 소유자 인스턴스 키의 값과 동일 하 게 됩니다.      
 
 ## <a name="mapping-owned-types-with-table-splitting"></a>테이블 분할 형식과 소유 하는 매핑
 
