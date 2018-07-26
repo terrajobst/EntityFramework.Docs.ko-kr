@@ -250,6 +250,7 @@
 ### [추가 리소스](ef6/resources/index.md)
 #### [Blogs](ef6/resources/blogs.md)
 #### [사례 연구](ef6/resources/case-studies.md)
+#### [참가](ef6/resources/contribute.md)
 #### [도움말 보기](ef6/resources/get-help.md)
 #### [용어](ef6/resources/glossary.md)
 #### [School 샘플 데이터베이스](ef6/resources/school-database.md)
