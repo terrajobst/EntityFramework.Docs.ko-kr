@@ -6,12 +6,12 @@ ms.date: 8/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 ms.technology: entity-framework-core
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: dca9a3fb9e514b6eb22281a0f0140539681efb71
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 9be2368159fe7ab7b6951cc14a84ee63762ce90c
+ms.sourcegitcommit: 4467032fd6ca223e5965b59912d74cf88a1dd77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949258"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39388454"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>응용 프로그램을 이전 버전에서 EF Core 2.0으로 업그레이드
 
@@ -154,7 +154,7 @@ optionsBuilder.UseInMemoryDatabase("MyDatabase");
 
 ### <a name="read-only-api-changes"></a>읽기 전용 API 변경 내용
 
-`IsReadOnlyBeforeSave`를 `IsReadOnlyAferSave`, 및 `IsStoreGeneratedAlways` 사용 되지 않습니다 및로 대체 되었습니다 [BeforeSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L39) 하 고 [AfterSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L55)합니다. 이러한 동작은 모든 속성 (뿐만 아니라 저장소 생성 속성)에 적용 하 고 데이터베이스 행을 삽입 하는 경우 속성의 값을 사용할지 어떻게 결정 (`BeforeSaveBehavior`) 또는 때 행을 데이터베이스 기존 업데이트 (`AfterSaveBehavior`).
+`IsReadOnlyBeforeSave`를 `IsReadOnlyAfterSave`, 및 `IsStoreGeneratedAlways` 사용 되지 않습니다 및로 대체 되었습니다 [BeforeSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L39) 하 고 [AfterSaveBehavior](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IProperty.cs#L55)합니다. 이러한 동작은 모든 속성 (뿐만 아니라 저장소 생성 속성)에 적용 하 고 데이터베이스 행을 삽입 하는 경우 속성의 값을 사용할지 어떻게 결정 (`BeforeSaveBehavior`) 또는 때 행을 데이터베이스 기존 업데이트 (`AfterSaveBehavior`).
 
 속성으로 표시 [ValueGenerated.OnAddOrUpdate](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/ValueGenerated.cs) (예: 계산 된 열)는 기본적으로 모든 값을 무시 현재 속성을 설정 합니다. 즉, 저장소 생성 값은 항상 값 설정 또는 추적 된 엔터티의 수정 된 여부에 관계 없이 얻을 수 있습니다. 다른 설정 하 여 변경할 수 있습니다 `Before\AfterSaveBehavior`합니다.
 
