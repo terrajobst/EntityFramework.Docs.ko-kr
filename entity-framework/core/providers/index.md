@@ -6,12 +6,12 @@ ms.date: 2/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 ms.technology: entity-framework-core
 uid: core/providers/index
-ms.openlocfilehash: 6f058698f78c787fc6c313486874b0af2183f97a
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: f51304a20bab2c80d2d546fc4685da0fa28d5f92
+ms.sourcegitcommit: 5c2634c546720902fe01935f4fc031d73aa3ebde
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949318"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39393752"
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 
@@ -53,7 +53,7 @@ Cosmos DB에서 DocumentDB API용 EF Core 공급자를 개발하고 있습니다
 Oracle .NET 팀은 대략 2018년 3분기에 EF Core 2.0용 타사 공급자를 릴리스할 계획이라고 발표했습니다. 자세한 정보는 [.NET Core 및 Entity Framework Core의 방향 선언](http://www.oracle.com/technetwork/topics/dotnet/tech-info/odpnet-dotnet-ef-core-sod-4395108.pdf)을 참조하세요.
 릴리스 시점 등을 비롯한 이 공급자에 대한 질문은 [Oracle 커뮤니티 사이트](https://community.oracle.com/)에 직접 남겨 주세요.
 
-한편, EF 팀은 [Oracle 데이터베이스용 샘플 EF Core 공급자](https://github.com/aspnet/EntityFrameworkCore/blob/dev/samples/OracleProvider/README.md)를 개발했습니다. 프로젝트의 목적은 Microsoft에서 소유하는 EF Core 공급자를 개발하는 것이 아니라 EF Core 관계형 및 기본 기능의 차이를 식별하는 것입니다. 이 과제는 Oracle을 지원하고, Oracle 또는 타사 공급자에 의한 다른 EF Core용 Oracle 공급자의 개발을 시작하기 위해 해결해야 합니다.
+한편, EF 팀은 [Oracle 데이터베이스용 샘플 EF Core 공급자](https://github.com/aspnet/EntityFrameworkCore/tree/master/samples/OracleProvider)를 개발했습니다. 프로젝트의 목적은 Microsoft에서 소유하는 EF Core 공급자를 개발하는 것이 아니라 EF Core 관계형 및 기본 기능의 차이를 식별하는 것입니다. 이 과제는 Oracle을 지원하고, Oracle 또는 타사 공급자에 의한 다른 EF Core용 Oracle 공급자의 개발을 시작하기 위해 해결해야 합니다.
 
 샘플 구현을 개선했다고 생각합니다. 또한 이 샘플을 시작점으로 사용하여 EF Core용 오픈 소스 Oracle 공급자를 만들기 위해 커뮤니티가 매진하기 시작할 것을 권장합니다.
 
