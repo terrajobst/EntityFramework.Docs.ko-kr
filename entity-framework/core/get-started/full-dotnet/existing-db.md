@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: a29a3d97-b2d8-4d33-9475-40ac67b3b2c6
 ms.technology: entity-framework-core
 uid: core/get-started/full-dotnet/existing-db
-ms.openlocfilehash: 3cd69109e3cf8dbc103f9eea6e2553df17f29a98
-ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
+ms.openlocfilehash: 39e77ab8c124df67458cc5fa6db2882b65943ebe
+ms.sourcegitcommit: 4467032fd6ca223e5965b59912d74cf88a1dd77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31812627"
+ms.lasthandoff: 08/01/2018
+ms.locfileid: "39388470"
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>.NET Framework에서 기존 데이터베이스로 EF Core 시작
 
@@ -24,7 +24,7 @@ ms.locfileid: "31812627"
 
 이 연습을 완료하려면 다음 필수 구성 요소가 필요합니다.
 
-* [Visual Studio 2017](https://www.visualstudio.com/downloads/)
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) - 최소 15.3 버전
 
 * [NuGet 패키지 관리자의 최신 버전](https://dist.nuget.org/index.html)
 
@@ -69,7 +69,7 @@ ms.locfileid: "31812627"
 
 * **콘솔 응용 프로그램** 프로젝트 템플릿을 선택합니다.
 
-* **.NET Framework 4.5.1** 이상을 대상으로 하는지 확인합니다.
+* **.NET Framework 4.6.1** 이상을 대상으로 하는지 확인합니다.
 
 * 프로젝트에 이름을 지정하고 **확인**을 클릭합니다.
 
