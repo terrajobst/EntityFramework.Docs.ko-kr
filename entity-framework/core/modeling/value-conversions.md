@@ -6,12 +6,12 @@ ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 ms.technology: entity-framework-core
 uid: core/modeling/value-conversions
-ms.openlocfilehash: 5bfb6111ac450db91f3f1a7074a924a1c8400ce7
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: d5189cef6d44fdf3fd6116a2952ce07ff3a389d4
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949094"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614401"
 ---
 # <a name="value-conversions"></a>값 변환
 
@@ -28,7 +28,7 @@ ms.locfileid: "37949094"
 
 ## <a name="configuring-a-value-converter"></a>값 변환기를 구성합니다.
 
-값 변환에 DbContext의 OnModelCreating의 속성에 정의 됩니다. 예를 들어으로 정의 하는 열거형 및 엔터티 형식:
+값 변환의 속성에 정의 된 합니다 `OnModelCreating` 의 프로그램 `DbContext`합니다. 예를 들어으로 정의 하는 열거형 및 엔터티 형식:
 ```Csharp
 public class Rider
 {
@@ -44,7 +44,7 @@ public enum EquineBeast
     Unicorn
 }
 ```
-다음은 데이터베이스에서 문자열 (예: "당나귀", "노새",...)으로 열거형 값을 저장 하는 OnModelCreating 변환을 정의할 수 있습니다.
+변환을 정의할 수 있습니다 다음 `OnModelCreating` 열거형 값 문자열 (예: "당나귀", "노새",...) 데이터베이스에 저장 합니다.
 ```Csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
@@ -115,7 +115,7 @@ modelBuilder
 
 ## <a name="pre-defined-conversions"></a>미리 정의 된 변환
 
-기본 제공 변환기 존재 하는 일반적인 변환에 대 한 변환기를 명시적으로 지정할 필요가 없습니다 있습니다. 대신 공급자 형식을 사용 해야만 구성 하 고 EF는 자동으로 적절 한 빌드-변환기를 사용 합니다. 문자열 변환 하는 열거형은 위의 예제로 사용 하지만 EF에서는 실제로이 자동으로 수행 된 공급자 형식을 구성 된 경우:
+기본 제공 변환기 존재 하는 일반적인 변환에 대 한 변환기를 명시적으로 지정할 필요가 없습니다 있습니다. 대신 공급자 형식을 사용 해야만 구성 하 고 EF는 자동으로 적절 한 기본 제공 변환기를 사용 합니다. 문자열 변환 하는 열거형은 위의 예제로 사용 하지만 EF에서는 실제로이 자동으로 수행 된 공급자 형식을 구성 된 경우:
 ```Csharp
 modelBuilder
     .Entity<Rider>()
@@ -132,7 +132,7 @@ public class Rider
     public EquineBeast Mount { get; set; }
 }
 ```
-다음 열거형 값은 OnModelCreating 추가 구성 없이 데이터베이스에 문자열로 저장 됩니다.
+열거형 값의 추가 구성 없이 데이터베이스에서 문자열로 저장한 다음 `OnModelCreating`합니다.
 
 ## <a name="limitations"></a>제한 사항
 
