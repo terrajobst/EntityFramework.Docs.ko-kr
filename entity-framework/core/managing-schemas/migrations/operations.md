@@ -1,30 +1,30 @@
 ---
-title: 사용자 지정 마이그레이션 작업-EF 코어
+title: 사용자 지정 마이그레이션 작업-EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/7/2017
 ms.technology: entity-framework-core
-ms.openlocfilehash: 84d80175e719c950844b13688e1a4992614f25d8
-ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
+ms.openlocfilehash: 510d585534b4809179c905ee5b77cab4209a2b8f
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34163144"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614287"
 ---
-<a name="custom-migrations-operations"></a><span data-ttu-id="b2eb5-102">사용자 지정 마이그레이션 작업</span><span class="sxs-lookup"><span data-stu-id="b2eb5-102">Custom Migrations Operations</span></span>
+<a name="custom-migrations-operations"></a><span data-ttu-id="746e5-102">사용자 지정 마이그레이션 작업</span><span class="sxs-lookup"><span data-stu-id="746e5-102">Custom Migrations Operations</span></span>
 ============================
-<span data-ttu-id="b2eb5-103">MigrationBuilder API를 사용 하면 마이그레이션하는 동안 다양 한 종류의 작업을 수행할 수 있습니다 하지만 비록 쉽습니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-103">The MigrationBuilder API allows you to perform many different kinds of operations during a migration, but it's far from exhaustive.</span></span> <span data-ttu-id="b2eb5-104">그러나 API 사용자 작업을 정의할 수 있도록 확장 가능한 이기도 합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-104">However, the API is also extensible allowing you to define your own operations.</span></span> <span data-ttu-id="b2eb5-105">API를 확장 하는 방법은 두 가지가:를 사용 하는 `Sql()` 메서드, 또는 사용자 지정을 정의 하 여 `MigrationOperation` 개체입니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-105">There are two ways to extend the API: Using the `Sql()` method, or by defining custom `MigrationOperation` objects.</span></span>
+<span data-ttu-id="746e5-103">MigrationBuilder API를 사용 하면 마이그레이션 중 다양 한 작업을 수행할 수 있습니다 하지만 비록 것입니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-103">The MigrationBuilder API allows you to perform many different kinds of operations during a migration, but it's far from exhaustive.</span></span> <span data-ttu-id="746e5-104">그러나 API도 가능 사용자 고유의 작업을 정의할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-104">However, the API is also extensible allowing you to define your own operations.</span></span> <span data-ttu-id="746e5-105">API를 확장 하는 방법은 두 가지:를 사용 하는 `Sql()` 메서드 또는 사용자 지정을 정의 하 여 `MigrationOperation` 개체.</span><span class="sxs-lookup"><span data-stu-id="746e5-105">There are two ways to extend the API: Using the `Sql()` method, or by defining custom `MigrationOperation` objects.</span></span>
 
-<span data-ttu-id="b2eb5-106">을 설명 하기 위해 살펴보겠습니다 각 방법을 사용 하는 데이터베이스 사용자를 만드는 작업을 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-106">To illustrate, let's look at implementing an operation that creates a database user using each approach.</span></span> <span data-ttu-id="b2eb5-107">우리의 마이그레이션에 다음 코드를 작성할 수 있도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-107">In our migrations, we want to enable writing the following code:</span></span>
+<span data-ttu-id="746e5-106">예를 들어 살펴보겠습니다 각 방법을 사용 하 여 데이터베이스 사용자를 만드는 작업을 구현 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-106">To illustrate, let's look at implementing an operation that creates a database user using each approach.</span></span> <span data-ttu-id="746e5-107">이 마이그레이션에 다음 코드를 작성 하는 사용 하도록 설정 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-107">In our migrations, we want to enable writing the following code:</span></span>
 
 ``` csharp
 migrationBuilder.CreateUser("SQLUser1", "Password");
 ```
 
-<a name="using-migrationbuildersql"></a><span data-ttu-id="b2eb5-108">MigrationBuilder.Sql()를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="b2eb5-108">Using MigrationBuilder.Sql()</span></span>
+<a name="using-migrationbuildersql"></a><span data-ttu-id="746e5-108">MigrationBuilder.Sql()를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="746e5-108">Using MigrationBuilder.Sql()</span></span>
 ----------------------------
-<span data-ttu-id="b2eb5-109">호출 하는 확장 메서드를 정의 하는 사용자 지정 작업을 구현 하는 가장 쉬운 방법은 것 `MigrationBuilder.Sql()`합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-109">The easiest way to implement a custom operation is to define an extension method that calls `MigrationBuilder.Sql()`.</span></span>
-<span data-ttu-id="b2eb5-110">적절 한 Transact SQL을 생성 하는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-110">Here is an example that generates the appropriate Transact-SQL.</span></span>
+<span data-ttu-id="746e5-109">호출 하는 확장 메서드를 정의 하는 사용자 지정 작업을 구현 하는 가장 쉬운 방법은 `MigrationBuilder.Sql()`합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-109">The easiest way to implement a custom operation is to define an extension method that calls `MigrationBuilder.Sql()`.</span></span>
+<span data-ttu-id="746e5-110">적절 한 Transact SQL을 생성 하는 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-110">Here is an example that generates the appropriate Transact-SQL.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -34,7 +34,7 @@ static MigrationBuilder CreateUser(
     => migrationBuilder.Sql($"CREATE USER {name} WITH PASSWORD '{password}';");
 ```
 
-<span data-ttu-id="b2eb5-111">마이그레이션을 여러 데이터베이스 공급자를 지원 해야 하는 경우 사용할 수 있습니다는 `MigrationBuilder.ActiveProvider` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-111">If your migrations need to support multiple database providers, you can use the `MigrationBuilder.ActiveProvider` property.</span></span> <span data-ttu-id="b2eb5-112">Microsoft SQL Server와 PostgreSQL 모두 지 원하는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-112">Here's an example supporting both Microsoft SQL Server and PostgreSQL.</span></span>
+<span data-ttu-id="746e5-111">마이그레이션을 여러 데이터베이스 공급자를 지원 해야 하는 경우 사용할 수 있습니다는 `MigrationBuilder.ActiveProvider` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-111">If your migrations need to support multiple database providers, you can use the `MigrationBuilder.ActiveProvider` property.</span></span> <span data-ttu-id="746e5-112">Microsoft SQL Server 및 PostgreSQL을 모두 지 원하는 예는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-112">Here's an example supporting both Microsoft SQL Server and PostgreSQL.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -52,14 +52,16 @@ static MigrationBuilder CreateUser(
             return migrationBuilder
                 .Sql($"CREATE USER {name} WITH PASSWORD = '{password}';");
     }
+
+    return migrationBuilder;
 }
 ```
 
-<span data-ttu-id="b2eb5-113">이 방법은 작동 모든 공급자를 알고 있는 경우 사용자 지정 작업을 적용할 위치 합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-113">This approach only works if you know every provider where your custom operation will be applied.</span></span>
+<span data-ttu-id="746e5-113">이 방법은 작동 모든 공급자를 알고 있는 경우 사용자 지정 작업을 적용할 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-113">This approach only works if you know every provider where your custom operation will be applied.</span></span>
 
-<a name="using-a-migrationoperation"></a><span data-ttu-id="b2eb5-114">MigrationOperation를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="b2eb5-114">Using a MigrationOperation</span></span>
+<a name="using-a-migrationoperation"></a><span data-ttu-id="746e5-114">MigrationOperation를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="746e5-114">Using a MigrationOperation</span></span>
 ---------------------------
-<span data-ttu-id="b2eb5-115">SQL에서 사용자 지정 작업을 분리할를 정의할 수 있습니다 직접 `MigrationOperation` 나타냅니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-115">To decouple the custom operation from the SQL, you can define your own `MigrationOperation` to represent it.</span></span> <span data-ttu-id="b2eb5-116">그러면 생성 하려면 적절 한 SQL을 결정할 수 있도록 작업을 공급자에 전달 됩니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-116">The operation is then passed to the provider so it can determine the appropriate SQL to generate.</span></span>
+<span data-ttu-id="746e5-115">SQL에서 사용자 지정 작업을 분리를 정의할 수 있습니다 고유한 `MigrationOperation` 나타내야 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-115">To decouple the custom operation from the SQL, you can define your own `MigrationOperation` to represent it.</span></span> <span data-ttu-id="746e5-116">그러면 생성 하기 위해 적절 한 SQL을 확인할 수 있도록 작업 공급자에 게 전달 됩니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-116">The operation is then passed to the provider so it can determine the appropriate SQL to generate.</span></span>
 
 ``` csharp
 class CreateUserOperation : MigrationOperation
@@ -69,7 +71,7 @@ class CreateUserOperation : MigrationOperation
 }
 ```
 
-<span data-ttu-id="b2eb5-117">이 방법에서는 확장 메서드 하기만 하려면 이러한 작업 중 하나를 추가 `MigrationBuilder.Operations`합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-117">With this approach, the extension method just needs to add one of these operations to `MigrationBuilder.Operations`.</span></span>
+<span data-ttu-id="746e5-117">이 방법을 사용 하 여 확장 메서드 하기만 하려면 이러한 작업 중 하나를 추가 하려면 `MigrationBuilder.Operations`합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-117">With this approach, the extension method just needs to add one of these operations to `MigrationBuilder.Operations`.</span></span>
 
 ``` csharp
 static MigrationBuilder CreateUser(
@@ -88,7 +90,7 @@ static MigrationBuilder CreateUser(
 }
 ```
 
-<span data-ttu-id="b2eb5-118">이 접근 방식에서는 각 공급자에이 작업에 대 한 SQL을 생성 하는 방법에 알아야 자신의 `IMigrationsSqlGenerator` 서비스입니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-118">This approach requires each provider to know how to generate SQL for this operation in their `IMigrationsSqlGenerator` service.</span></span> <span data-ttu-id="b2eb5-119">새 작업을 처리 하는 SQL Server의 생성기를 재정의 하는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-119">Here is an example overriding the SQL Server's generator to handle the new operation.</span></span>
+<span data-ttu-id="746e5-118">이 접근 방식에서는 각 공급자에서이 작업에 대 한 SQL을 생성 하는 방법만 알면 해당 `IMigrationsSqlGenerator` 서비스입니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-118">This approach requires each provider to know how to generate SQL for this operation in their `IMigrationsSqlGenerator` service.</span></span> <span data-ttu-id="746e5-119">SQL Server의 새 작업을 처리 하는 생성기를 재정의 하는 예제는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-119">Here is an example overriding the SQL Server's generator to handle the new operation.</span></span>
 
 ``` csharp
 class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
@@ -133,7 +135,7 @@ class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
 }
 ```
 
-<span data-ttu-id="b2eb5-120">업데이트 된 기본 마이그레이션 sql 생성기 서비스를 대체 합니다.</span><span class="sxs-lookup"><span data-stu-id="b2eb5-120">Replace the default migrations sql generator service with the updated one.</span></span>
+<span data-ttu-id="746e5-120">업데이트 된 기본 마이그레이션 sql 생성기 서비스를 대체 합니다.</span><span class="sxs-lookup"><span data-stu-id="746e5-120">Replace the default migrations sql generator service with the updated one.</span></span>
 
 ``` csharp
 protected override void OnConfiguring(DbContextOptionsBuilder options)
