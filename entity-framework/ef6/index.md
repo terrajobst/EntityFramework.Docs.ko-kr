@@ -1,5 +1,5 @@
 ---
-title: Entity Framework 6 빠른 개요
+title: 개요 - EF6
 author: divega
 ms.date: 2016-10-23
 ms.prod: entity-framework
@@ -10,14 +10,14 @@ ms.topic: article
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
 caps.latest.revision: 5
 uid: ef6/index
-ms.openlocfilehash: 7bb51ea82640ef29bb376c2320ea29a81eeb175e
-ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
+ms.openlocfilehash: c74626593c4109badd75f2a0a4f051c840f7bc7f
+ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37914343"
+ms.lasthandoff: 08/07/2018
+ms.locfileid: "39614381"
 ---
-# <a name="entity-framework-6-quick-overview"></a>Entity Framework 6 빠른 개요
+# <a name="entity-framework-6"></a>Entity Framework 6
 EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
 
 O/RM으로써 EF6는 관계형 데이터베이스와 개체 중심 데이터베이스 사이의 불일치를 완화하고, 개발자가 응용 프로그램의 도메인을 나타내는 강력한 형식의 .NET 개체를 사용하여 관계형 데이터베이스에 저장된 데이터와 상호 작용할 수 있게 해주고, 일반적으로 개발자가 작성해야 하는 데이터 액세스 "내부" 코드의 많은 부분을 할 필요가 없게 만들어 줍니다.
