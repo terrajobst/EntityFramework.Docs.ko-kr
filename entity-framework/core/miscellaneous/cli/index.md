@@ -3,13 +3,12 @@ title: 명령줄 참조 - EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/6/2017
-ms.technology: entity-framework-core
-ms.openlocfilehash: db25ed55e3724ee71743e563f39a6e4b16c17589
-ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
+ms.openlocfilehash: 757d6562f5d3bcd4f026def02f208f5827786873
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29769417"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997072"
 ---
 <a name="entity-framework-core-tools"></a>Entity Framework Core 도구
 ===========================
@@ -37,7 +36,7 @@ Entity Framework Core 도구를 사용하면 EF Core 앱 개발 과정에 도움
 
 시작 프로젝트는 프로젝트 코드를 실행할 때 도구가 에뮬레이트하는 프로젝트입니다.
 
-대상 프로젝트와 시작 프로젝트가 동일할 수 있습니다.
+대상 프로젝트와 시작 포르젝트가 동일할 수 있습니다.
 
 
   [1]: powershell.md

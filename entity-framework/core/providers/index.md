@@ -1,17 +1,15 @@
 ---
 title: 데이터베이스 공급자 - EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 2/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
-ms.technology: entity-framework-core
 uid: core/providers/index
-ms.openlocfilehash: f51304a20bab2c80d2d546fc4685da0fa28d5f92
-ms.sourcegitcommit: 5c2634c546720902fe01935f4fc031d73aa3ebde
+ms.openlocfilehash: ebb0c2cae0bf83084fe9e80cbdac87623cb12529
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39393752"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994170"
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 

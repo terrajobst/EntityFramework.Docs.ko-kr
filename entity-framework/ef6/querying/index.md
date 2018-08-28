@@ -2,19 +2,13 @@
 title: 엔터티 쿼리 및 찾기 - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 65bb3db2-2226-44af-8864-caa575cf1b46
-caps.latest.revision: 3
-ms.openlocfilehash: 92467e1a93f576eca627cf7b7d2351054a882c2c
-ms.sourcegitcommit: 00cb52625b57c1ea339ded1454179fe89b6bcfea
+ms.openlocfilehash: 19e70bc5bcfdd0c81186c6139661395ebb1ee61f
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/16/2018
-ms.locfileid: "39067549"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993283"
 ---
 # <a name="querying-and-finding-entities"></a>엔터티 쿼리 및 찾기
 이 토픽에서는 LINQ 및 Find 메서드를 포함하여 Entity Framework를 사용하여 데이터를 쿼리할 수 있는 다양한 방법을 설명합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

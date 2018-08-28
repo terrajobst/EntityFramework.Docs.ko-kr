@@ -2,20 +2,14 @@
 title: 개요 - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
-caps.latest.revision: 5
 uid: ef6/index
-ms.openlocfilehash: c74626593c4109badd75f2a0a4f051c840f7bc7f
-ms.sourcegitcommit: 902257be9c63c427dc793750a2b827d6feb8e38c
+ms.openlocfilehash: 00e5f36788be599ea2e2b44480107f14e2f026c3
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39614381"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998031"
 ---
 # <a name="entity-framework-6"></a>Entity Framework 6
 EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
