@@ -1,32 +1,30 @@
 ---
-title: 기본 키-EF 코어
+title: 기본 키-EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: c78f8f42-564a-45a4-aca7-3ede9f7ed2bc
-ms.technology: entity-framework-core
 uid: core/modeling/relational/primary-keys
-ms.openlocfilehash: fcb1871149c0f20a2576864028b4171904de1982
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 916f3adbcd08cb1037c7fbf68e99630feb321a61
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052723"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998070"
 ---
 # <a name="primary-keys"></a>기본 키
 
 > [!NOTE]  
-> 이 섹션의 구성을 일반적 관계형 데이터베이스에 적용 됩니다. 여기에 표시 된 확장 메서드를 사용할 수 있는 관계형 데이터베이스 공급자를 설치할 때 (공유 인해 *Microsoft.EntityFrameworkCore.Relational* 패키지).
+> 이 섹션의 구성은 일반적인 관계형 데이터베이스에 적용됩니다. 여기서 나오는 확장 메서드는 관계형 데이터베이스 공급자를 설치할 때 사용 가능할 것입니다(공유 *Microsoft.EntityFrameworkCore.Relational* 패키지 때문).
 
-각 엔터티 형식의 키에 대 한 기본 키 제약 조건 도입 되었습니다.
+각 엔터티 형식의 키에 대 한 기본 키 제약 조건을 도입 되었습니다.
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 데이터베이스의 기본 키로 이름이 지정 됩니다 `PK_<type name>`합니다.
+규칙에 따라 데이터베이스의 기본 키 이름은 `PK_<type name>`합니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
-데이터 주석을 사용 하는 기본 키의 없음 관계형 데이터베이스 특정 측면을 구성할 수 있습니다.
+데이터 주석을 사용 하 여 기본 키의 없습니다 관계형 데이터베이스 특정 측면을 구성할 수 있습니다.
 
 ## <a name="fluent-api"></a>Fluent API
 

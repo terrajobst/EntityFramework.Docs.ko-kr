@@ -2,19 +2,13 @@
 title: EF6 먼저 데이터베이스
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-caps.latest.revision: 3
-ms.openlocfilehash: 17bba5fe9883a1bee0f8b9624dfa35da889e6005
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: c60108c09fcbaaa1f86e77fa52cb13fe018975e1
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121925"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995912"
 ---
 # <a name="database-first"></a>먼저 데이터베이스
 이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. 데이터베이스 먼저를 통해 리버스 엔지니어링 하려면 기존 데이터베이스에서 모델입니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.

@@ -2,19 +2,13 @@
 title: 미리 생성 된 매핑 보기-EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
-caps.latest.revision: 3
-ms.openlocfilehash: 9e74176d02afc424118219eec8e016843333cbb8
-ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
+ms.openlocfilehash: 397569ef374cb44d4938f9e201b588a26c408f6e
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "39122589"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996474"
 ---
 # <a name="pre-generated-mapping-views"></a>미리 생성 된 매핑 보기
 Entity Framework 쿼리 실행 수 또는 데이터 원본에 변경 내용을 저장 하기 전에 데이터베이스에 액세스 하는 매핑 뷰 집합을 생성 해야 합니다 것입니다. 이러한 매핑 뷰 추상 방식으로 데이터베이스를 나타내는 Entity SQL 문 집합이 되며 응용 프로그램 도메인 별로 캐시 되는 메타 데이터의 일부입니다. 동일한 응용 프로그램 도메인에서 동일한 컨텍스트의 여러 인스턴스를 만들면 매핑을 뷰 다시 생성 하는 것이 아니라 캐시 된 메타 데이터를 다시 사용 됩니다. 첫 번째 쿼리를 실행 하는 전체 비용의 큰 부분을 매핑 뷰 생성 되므로, Entity Framework를 사용 하면 매핑 뷰를 미리 생성 하 고 컴파일된 프로젝트에 포함할 수 있습니다. 자세한 내용은 [성능 고려 사항 (Entity Framework)](~/ef6/fundamentals/performance/perf-whitepaper.md)합니다.

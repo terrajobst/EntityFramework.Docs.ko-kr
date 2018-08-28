@@ -2,19 +2,13 @@
 title: EF6 먼저 모델
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
-caps.latest.revision: 3
-ms.openlocfilehash: e7876776ed0dee764d5ced97b863a3580e02e20b
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: c21592b27fa752532f5ede5923d0bd751f0bf372
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122269"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998117"
 ---
 # <a name="model-first"></a>먼저 모델
 이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다. 먼저 모델을 사용 하면 Entity Framework 디자이너를 사용 하 여 새 모델을 만들고 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.

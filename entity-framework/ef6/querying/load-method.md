@@ -2,19 +2,13 @@
 title: EF6-Load 메서드
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 03c5a069-b7b4-455f-a16f-ee3b96cc4e28
-caps.latest.revision: 3
-ms.openlocfilehash: 83af79220b52de6e3063868fd9bdac56867d49cb
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: f7e8410b8fb8b5c3e86c51cd61868604a7566d0c
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122314"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996653"
 ---
 # <a name="the-load-method"></a>로드 메서드
 데이터베이스에서 즉시 해당 엔터티를 사용 하 여 아무 것도 수행 하지 않고 컨텍스트에 엔터티를 로드 하려는 여러 시나리오가 있습니다. 에 설명 된 대로이 좋은 예가 데이터 바인딩에 대 한 엔터티를 로드 [로컬 데이터](~/ef6/querying/local-data.md)입니다. 이 작업을 수행 하는 하나의 일반적인 방법은 LINQ 쿼리를 작성 한 다음 만든된 목록을 즉시 삭제 하는 데에이 ToList를 호출 하는 경우 Load 확장 메서드를 제외 하 고 완전히 목록 만들기를 방지 하기 ToList 처럼 작동 합니다.  

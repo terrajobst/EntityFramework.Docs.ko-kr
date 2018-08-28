@@ -2,19 +2,13 @@
 title: 자동 변경 내용-EF6를 검색 합니다.
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: a8d1488d-9a54-4623-a76b-e81329ff2756
-caps.latest.revision: 3
-ms.openlocfilehash: 62f2f026426346fc1230a2f5743c8cb7d232ec7f
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: bca33e12674c47cc7e047e85b11746c8e39246b4
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121826"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998101"
 ---
 # <a name="automatic-detect-changes"></a>자동 변경 내용 검색
 대부분의 POCO 엔터티를 사용 하는 경우 엔터티의 어떻게 변경 되었는지 (및 따라서 데이터베이스를 전송할 수 있도록 해야 하는 업데이트) 결정 변경 감지 알고리즘을 통해 처리 됩니다. 엔터티의 현재 속성 값 및 엔터티 쿼리 또는 연결 된 경우 스냅숏에 저장 된 원래 속성 값 간의 차이 감지 하 여 변경 내용을 작동을 검색 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

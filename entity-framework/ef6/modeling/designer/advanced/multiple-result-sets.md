@@ -2,19 +2,13 @@
 title: 여러 결과 집합-EF6 사용 하 여 프로시저를 저장합니다.
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 1b3797f9-cd3d-4752-a55e-47b84b399dc1
-caps.latest.revision: 3
-ms.openlocfilehash: 68d544b0c553868ad1ff36cd24db19cff08db073
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: bb104ac5f584d26d279259a173de9afe3f018968
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122389"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996177"
 ---
 # <a name="stored-procedures-with-multiple-result-sets"></a>여러 결과 집합을 사용 하 여 저장된 프로시저
 사용 하 여 저장 하는 경우에 따라 둘 이상의 결과 반환 해야 하는 프로시저 설정 합니다. 이 시나리오는 데이터베이스의 수를 줄이는 데 일반적으로 단일 화면을 구성 하는 데 필요한 왕복 합니다. EF5, 이전 Entity Framework 저장된 프로시저를 호출할 수 있지만 첫 번째 결과 집합 호출 코드에만 반환 합니다.

@@ -2,19 +2,13 @@
 title: 속성 값-EF6 사용
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: e3278b4b-9378-4fdb-923d-f64d80aaae70
-caps.latest.revision: 3
-ms.openlocfilehash: 07b71c9efe4e1fc3fd25a52c9cfb25f61e92f859
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: a9b969950ec7dcfb86a2abc9c8bd6cc24899948c
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121917"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998305"
 ---
 # <a name="working-with-property-values"></a>속성 값을 사용 하 여 작업
 대부분의 경우 Entity Framework 상태, 원래 값 및 엔터티 인스턴스 속성의 현재 값을 추적 하는 처리 됩니다. 그러나 보거나 속성에 대 한 EF에서 정보 조작 하려는 연결이 끊긴된 시나리오와 같은 경우도 있을 수 있습니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

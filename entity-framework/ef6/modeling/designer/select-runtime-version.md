@@ -2,19 +2,13 @@
 title: EF6에서 EF 디자이너 모델에 대 한 엔터티 프레임 워크 런타임 버전 선택
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 7ace90a6-46f8-4f55-a88c-7cad9620085c
-caps.latest.revision: 3
-ms.openlocfilehash: 75f7b4ed81528683801893c31de490ce15be6733
-ms.sourcegitcommit: 390f3a37bc55105ed7cc5b0e0925b7f9c9e80ba6
+ms.openlocfilehash: 8864bb8166a7c16455d5c3bebe91e2ce8d142685
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "39122605"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998244"
 ---
 # <a name="selecting-entity-framework-runtime-version-for-ef-designer-models"></a>EF 디자이너 모델에 대 한 엔터티 프레임 워크 런타임 버전 선택
 > [!NOTE]

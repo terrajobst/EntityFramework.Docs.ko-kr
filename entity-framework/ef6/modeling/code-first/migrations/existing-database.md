@@ -2,19 +2,13 @@
 title: 기존 데이터베이스-EF6 사용 하 여 code First 마이그레이션
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: f0cc4f93-67dd-4664-9753-0a9f913814db
-caps.latest.revision: 3
-ms.openlocfilehash: 77e139a29bb4708b00fc6198a57780ce75197252
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 06aabf3f57ca451f4d9cba469f6de40fd9aa8f23
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "39122773"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998199"
 ---
 # <a name="code-first-migrations-with-an-existing-database"></a>기존 데이터베이스를 사용 하 여 code First 마이그레이션
 > [!NOTE]

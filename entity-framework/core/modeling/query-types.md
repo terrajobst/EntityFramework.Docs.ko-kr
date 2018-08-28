@@ -1,17 +1,15 @@
 ---
 title: 쿼리 유형-EF Core
 author: anpete
-ms.author: anpete
 ms.date: 2/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
-ms.technology: entity-framework-core
 uid: core/modeling/query-types
-ms.openlocfilehash: 5a2cd451da8833daf2c315419559eb4a2c705b13
-ms.sourcegitcommit: 4467032fd6ca223e5965b59912d74cf88a1dd77f
+ms.openlocfilehash: bacb121ca00a9b0aa00bfe201de4f95113472d70
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39388483"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996701"
 ---
 # <a name="query-types"></a>쿼리 형식
 > [!NOTE]
@@ -48,7 +46,7 @@ ms.locfileid: "39388483"
 > [!TIP]
 > 사용 하 여 이루어집니다 쿼리 형식 데이터베이스 개체에 매핑하는 `ToView` fluent API. 이 메서드에 지정 된 데이터베이스 개체는 EF Core의 관점에서을 _보기_, 읽기 전용 쿼리 원본으로 처리 됩니다 의미 및 없습니다 업데이트의 대상이 될, 삽입 또는 삭제 작업입니다. 그러나 데이터베이스 개체가 실제로 데이터베이스 뷰를 사용할 필요가-읽기 전용으로 처리 될 데이터베이스 테이블 또는 수는이 아닙니다. 반대로 엔터티 형식에 대 한 EF Core는 데이터베이스 개체에서 지정한으로 가정 합니다 `ToTable` 방법으로 처리 될 수는 _테이블_, 즉 쿼리 원본으로 사용할 수 있지만 업데이트도 대상인 삭제 및 삽입 작업입니다. 데이터베이스 뷰 이름을 지정할 수는 사실 `ToTable` 뷰는 구성 데이터베이스에서 업데이트할 수 있는으로 정상적으로 작동 해야 모든 합니다.
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 다음 예제에서는 쿼리 유형을 사용 하 여 데이터베이스 뷰를 쿼리 하는 방법을 보여 줍니다.
 

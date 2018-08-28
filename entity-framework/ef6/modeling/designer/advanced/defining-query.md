@@ -2,19 +2,13 @@
 title: 쿼리-EF 디자이너-EF6를 정의합니다.
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: e52a297e-85aa-42f6-a922-ba960f8a4b22
-caps.latest.revision: 3
-ms.openlocfilehash: 593fb9925a7a0b59a69b8c8dc4846640627756aa
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 60d5310589bb9bc3fdb971673422e80537357e55
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122282"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996309"
 ---
 # <a name="defining-query---ef-designer"></a>정의 쿼리-EF 디자이너
 이 연습에서는 정의 추가 하는 방법을 보여 줍니다. 쿼리 및 해당 엔터티를 EF 디자이너를 사용 하 여 모델에 입력 합니다. 정의 쿼리는 일반적으로 데이터베이스 뷰를 제공 하는 유사한 기능을 제공 하는 데 사용 됩니다 있지만 뷰는 데이터베이스가 아닌 모델에서 정의 됩니다. 정의 쿼리를 사용 하면 지정 된 SQL 문을 실행 하는 **DefiningQuery** .edmx 파일의 요소입니다. 자세한 내용은 **DefiningQuery** 에 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md)합니다.

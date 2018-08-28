@@ -1,29 +1,27 @@
 ---
-title: 포함 및 제외 속성-EF 코어
+title: 속성-EF Core 포함 및 제외
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: e9dff604-3469-4a05-8f9e-18ac281d82a9
-ms.technology: entity-framework-core
 uid: core/modeling/included-properties
-ms.openlocfilehash: a6eaea4319f6a4d30c223265bf75a88731a38443
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 07b70e4517b67490e04a9ec9fa22b9b5d5217681
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052493"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42998257"
 ---
-# <a name="including--excluding-properties"></a>포함 및 제외 속성
+# <a name="including--excluding-properties"></a>속성 포함 및 제외
 
-모델의 속성을 포함 하 여 EF에 해당 속성에 대 한 메타 데이터를 의미 하 고 읽기 / 쓰기 데이터베이스에서 /에 값을 하려고 합니다.
+모델의 속성을 포함 하 여 EF에 해당 속성에 대 한 메타 데이터를 의미 하 고 읽기 및 쓰기를 데이터베이스 값을 하려고 합니다.
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 공용 속성 getter 및 setter를 모델에 포함 됩니다.
+규칙에 따라 공용 속성 getter 및 setter를 사용 하 여 모델에 포함 됩니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
-모델에서 속성을 제외 하려면 데이터 주석을 사용할 수 있습니다.
+데이터 주석 모델에서 속성을 제외를 사용할 수 있습니다.
 
 <!-- [!code-csharp[Main](samples/core/Modeling/DataAnnotations/Samples/IgnoreProperty.cs?highlight=6)] -->
 ``` csharp

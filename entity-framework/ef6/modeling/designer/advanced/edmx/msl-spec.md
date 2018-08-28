@@ -2,19 +2,13 @@
 title: EF6-MSL 사양
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 13ae7bc1-74b4-4ee4-8d73-c337be841467
-caps.latest.revision: 4
-ms.openlocfilehash: 7448efc99f9fd9c6cdf930256a26347376fb354c
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 77dc7072c70b104188cd23974f32308960daebb6
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122338"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42996033"
 ---
 # <a name="msl-specification"></a>XML 사양
 매핑 사양 언어 (MSL)은 개념적 모델 및 Entity Framework 응용 프로그램의 저장소 모델 간의 매핑을 설명 하는 XML 기반 언어입니다.
@@ -48,7 +42,7 @@ MSL의 버전은 XML 네임 스페이스로 식별 됩니다.
 | **키**        | 예         | 지정 된 네임 스페이스에 대 한 별칭을 **값** 특성입니다. |
 | **값**      | 예         | 네임 스페이스의 값을 **키** 요소는 별칭입니다.     |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **별칭** 별칭을 정의 하는 요소 `c`, 개념적 모델에 정의 된 형식에 대 한 합니다.
 
@@ -103,7 +97,7 @@ MSL의 버전은 XML 네임 스페이스로 식별 됩니다.
 | **From**           | 예         | 값을 **FromRole** 매핑되는 연결에 해당 하는 탐색 속성의 특성입니다. 자세한 내용은 NavigationProperty 요소 (CSDL)을 참조 하세요. |
 | **대상**             | 예         | 값을 **ToRole** 매핑되는 연결에 해당 하는 탐색 속성의 특성입니다. 자세한 내용은 NavigationProperty 요소 (CSDL)을 참조 하세요.   |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음과 같은 개념적 모델 엔터티 형식이 있다고 가정합니다.
 
@@ -210,7 +204,7 @@ MSL의 버전은 XML 네임 스페이스로 식별 됩니다.
 | **TypeName**       | 아니요          | 매핑되는 개념적 모델 연결 형식의 네임스페이스로 한정된 이름 |
 | **StoreEntitySet** | 아니요          | 매핑되는 테이블의 이름                                                 |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **AssociationSetMapping** 요소를 **FK\_과정\_부서** 개념적 모델의 연결 집합은 매핑되 **과정** 데이터베이스의 테이블입니다. 자식에서 연결 형식 속성과 테이블 열 간의 매핑을 지정 된 **EndProperty** 요소입니다.
 
@@ -247,7 +241,7 @@ A **ComplexProperty** MSL (매핑 사양 언어)의 요소에는 기본 데이�
 | **이름**       | 예         | 개념적 모델에서 매핑되는 엔터티 형식의 복합 속성 이름입니다. |
 | **TypeName**   | 아니요          | 개념적 모델 속성 형식의 네임스페이스로 한정된 이름입니다.                              |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 합니다. 다음 복합 형식이 개념적 모델에 추가되었습니다.
 
@@ -316,7 +310,7 @@ A **ComplexProperty** MSL (매핑 사양 언어)의 요소에는 기본 데이�
 |:---------------|:------------|:-----------------------------------------------------------------------|
 | **TypeName**   | 예         | 매핑되는 복합 형식의 네임스페이스로 한정된 이름입니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음과 같은 저장 프로시저가 있다고 가정합니다.
 
@@ -390,7 +384,7 @@ A **ComplexProperty** MSL (매핑 사양 언어)의 요소에는 기본 데이�
 | **값**      | 아니요          | 열 값과 비교할 값입니다. 값이 동일하면 조건이 true입니다. 그렇지 않으면 조건이 false입니다. <br/> 합니다 **IsNull** 하 고 **값** 동시에 특성을 사용할 수 없습니다.                                                                       |
 | **이름**       | 아니요          | 조건을 확인하는 데 사용되는 값이 있는 개념적 모델 엔터티 속성의 이름입니다. <br/> 이 특성을 적용할 수 없는 경우는 **조건을** FunctionImportMapping 요소 내의 요소를 사용 합니다.                                                                           |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예와 **조건을** 요소의 자식인 **MappingFragment** 요소입니다. 때 **HireDate** isnotnull 및 **EnrollmentDate** 는 null 간에 데이터가 매핑되는 합니다 **SchoolModel.Instructor** 형식 및 **PersonID**하 고 **HireDate** 열의 합니다 **Person** 테이블. 때 **EnrollmentDate** isnotnull 및 **HireDate** 는 null 간에 데이터가 매핑되는 합니다 **SchoolModel.Student** 형식 및 **PersonID** 및 **등록** 의 열을 **Person** 테이블입니다.
 
@@ -449,7 +443,7 @@ EntityTypeMapping 요소에 적용할 경우 합니다 **DeleteFunction** 요소
 | **FunctionName**          | 예         | 삭제 함수가 매핑되는 저장 프로시저의 네임스페이스로 한정된 이름입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다. |
 | **RowsAffectedParameter** | 아니요          | 영향을 받는 행 수를 반환하는 출력 매개 변수의 이름입니다.                                                                               |
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시를 **DeleteFunction** 대 한 삭제 함수 매핑 요소를 **Person** 엔터티 형식을 **DeletePerson** 저장된 프로시저입니다. 합니다 **DeletePerson** 저장된 프로시저는 저장소 모델에서 선언 됩니다.
 
@@ -513,7 +507,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 | **FunctionName**          | 예         | 삭제 함수가 매핑되는 저장 프로시저의 네임스페이스로 한정된 이름입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다. |
 | **RowsAffectedParameter** | 아니요          | 영향을 받는 행 수를 반환하는 출력 매개 변수의 이름입니다.                                                                               |
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시를 **DeleteFunction** 대 한 삭제 함수를 매핑하는 데 사용 되는 요소는 **CourseInstructor** 연결을  **DeleteCourseInstructor** 저장 프로시저입니다. 합니다 **DeleteCourseInstructor** 저장된 프로시저는 저장소 모델에서 선언 됩니다.
 
@@ -566,7 +560,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 |:---------------|:------------|:------------------------------------------------------|
 | name           | 예         | 매핑되는 연결 끝의 이름 |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **AssociationSetMapping** 요소를 **FK\_과정\_부서** 합니다 매핑되는개념적모델의연결**과정** 데이터베이스의 테이블입니다. 자식에서 연결 형식 속성과 테이블 열 간의 매핑을 지정 된 **EndProperty** 요소입니다.
 
@@ -583,7 +577,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
  </AssociationSetMapping>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 합니다 **EndProperty** 요소는 연결의 삽입 및 삭제 함수 매핑 (**CourseInstructor**) 기본 데이터베이스의 저장된 프로시저에 합니다. 매핑되는 함수는 저장소 모델에서 선언됩니다.
 
@@ -638,7 +632,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 | **CdmEntityContainer**    | 예         | 매핑되는 개념적 모델 엔터티 컨테이너의 이름입니다.                                                                                                                                                                                  |
 | **GenerateUpdateViews**   | 아니요          | **True 이면** 나 **False**합니다. 하는 경우 **False**, 업데이트 보기가 생성 됩니다. 이 특성에 설정할 **False** 는 유효 하지 않게 데이터가 올바르게 라운드트립되지 않기 때문에 읽기 전용 매핑이 있는 경우. <br/> 기본값은 **True**합니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **EntityContainerMapping** 매핑되는 요소는 **SchoolModelEntities** 컨테이너 (개념적 모델 엔터티 컨테이너)를  **SchoolModelStoreContainer** 컨테이너 (저장소 모델 엔터티 컨테이너):
 
@@ -694,7 +688,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 
 **1** 는 **TypeName** 하 고 **StoreEntitySet** 특성 단일 엔터티 형식을 단일 테이블에 매핑할 EntityTypeMapping 및 MappingFragment 자식 요소를 대신 사용할 수 있습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **EntitySetMapping** 의 세 가지 형식 (기본 형식 및 두 개의 파생된 형식)를 매핑하는 요소는 **과정** 개념적 모델에서 서로 다른 세 테이블의 엔터티 집합을 기본 데이터베이스입니다. 테이블에서 지정 된 된 **StoreEntitySet** 각각의 특성 **MappingFragment** 요소입니다.
 
@@ -753,7 +747,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 |:---------------|:------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | **TypeName**   | 예         | 매핑되는 개념적 모델 엔터티 형식의 네임스페이스로 한정된 이름입니다. <br/> 해당 형식이 추상 또는 파생 형식이면 이 값은 `IsOfType(Namespace-qualified_type_name)`이어야 합니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 두 개의 자식 EntitySetMapping 요소를 보여 줍니다 **EntityTypeMapping** 요소입니다. 첫 번째에서 **EntityTypeMapping** 요소를 **SchoolModel.Person** 엔터티 형식에 매핑되는 **Person** 테이블입니다. 두 번째에서 **EntityTypeMapping** 요소, 업데이트 기능을 **SchoolModel.Person** 형식이 저장된 프로시저에 매핑되는 **UpdatePerson**, 데이터베이스에서 .
 
@@ -787,7 +781,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
  </EntitySetMapping>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 루트 형식이 추상인 형식 계층 구조의 매핑을 보여 줍니다. 사용 된 `IsOfType` 구문에 대 한는 **TypeName** 특성.
 
@@ -840,7 +834,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 | **FunctionImportName** | 예         | 매핑되는 개념적 모델의 Function Import 이름           |
 | **FunctionName**       | 예         | 매핑되는 저장소 모델 함수의 네임스페이스로 한정된 이름 |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 합니다. 다음은 저장소 모델의 함수입니다.
 
@@ -898,7 +892,7 @@ EntityTypeMapping 요소에 적용할 경우 합니다 **InsertFunction** 요소
 | **FunctionName**          | 예         | 삽입 함수가 매핑되는 저장 프로시저의 네임스페이스로 한정된 이름입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다. |
 | **RowsAffectedParameter** | 아니요          | 영향을 받는 행 수를 반환하는 출력 매개 변수의 이름입니다.                                                                               |
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시 합니다 **InsertFunction** 에 Person 엔터티 형식의 삽입 함수를 매핑하는 데 사용 되는 요소는 **InsertPerson** 저장 프로시저입니다. 합니다 **InsertPerson** 저장된 프로시저는 저장소 모델에서 선언 됩니다.
 
@@ -949,7 +943,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **InsertFunction** �
 | **FunctionName**          | 예         | 삽입 함수가 매핑되는 저장 프로시저의 네임스페이스로 한정된 이름입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다. |
 | **RowsAffectedParameter** | 아니요          | 영향을 받는 행 수를 반환하는 출력 매개 변수의 이름입니다.                                                                               |
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시를 **InsertFunction** 대 한 삽입 함수를 매핑하는 데 사용 되는 요소는 **CourseInstructor** 연결을  **InsertCourseInstructor** 저장 프로시저입니다. 합니다 **InsertCourseInstructor** 저장된 프로시저는 저장소 모델에서 선언 됩니다.
 
@@ -1005,7 +999,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 |:---------------|:------------|:------------------------------------------------------|
 | **스페이스바**      | 예         | **C-S**합니다. 이 값은 고정된 값이므로 변경할 수 없습니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **매핑** School 모델의 일부를 기반으로 하는 요소입니다. School 모델에 대 한 자세한 내용은 빠른 시작 (Entity Framework)를 참조 하세요.
 
@@ -1059,7 +1053,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 | **StoreEntitySet**      | 예         | 매핑되는 테이블 또는 뷰의 이름입니다.                                                                                                                                                                           |
 | **MakeColumnsDistinct** | 아니요          | **True 이면** 나 **False** 고유한 행만 반환 되는지 여부에 따라 합니다. <br/> 이 특성이로 설정 된 경우 **True**서 **GenerateUpdateViews** EntityContainerMapping 요소의 특성으로 설정 되어 있어야 **False**. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **MappingFragment** 의 자식 요소를 **EntityTypeMapping** 요소입니다. 이 예제에서는 속성을를 **과정** 개념적 모델의 열에 매핑되는 **과정** 데이터베이스의 테이블.
 
@@ -1076,7 +1070,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
  </EntitySetMapping>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **MappingFragment** 의 자식 요소를 **EntitySetMapping** 요소입니다. 속성을 위의 예제와 같이 **과정** 개념적 모델의 열에 매핑되는 **과정** 데이터베이스의 테이블입니다.
 
@@ -1112,7 +1106,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 
 적용할 수 없는 특성을 **ModificationFunctionMapping** 요소입니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 엔터티 집합에 대 한 매핑을 합니다 **사람** School 모델의 엔터티 집합입니다. 에 대 한 열 매핑 외에도 합니다 **Person** 엔터티 형식 매핑의 삽입, 업데이트 및 삭제 함수를 **사용자** 형식이 표시 됩니다. 매핑되는 함수는 저장소 모델에서 선언됩니다.
 
@@ -1159,7 +1153,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
  </EntitySetMapping>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 연결에 대 한 매핑 집합을 **CourseInstructor** School 모델의 연결 집합입니다. 에 대 한 열 매핑 외에도 합니다 **CourseInstructor** 연결의 삽입 및 삭제 함수 매핑 합니다 **CourseInstructor** 연결 표시 됩니다. 매핑되는 함수는 저장소 모델에서 선언됩니다.
 
@@ -1221,7 +1215,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 |:---------------|:------------|:------------------------------------------------------------------------------|
 | **TypeName**   | 아니요          | 쿼리 뷰에 의해 매핑되는 개념적 모델 형식의 이름입니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **QueryView** 의 자식 요소로 합니다 **EntitySetMapping** 요소에 대 한 쿼리 뷰 매핑을 정의 하 고는 **부서** 엔터티 형식에는 School 모델입니다.
 
@@ -1257,7 +1251,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
  </EntityType>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에 나와 있는 **QueryView** 의 자식 요소로 **AssociationSetMapping** 요소에 대 한 읽기 전용 매핑을 정의 하 고는 `FK_Course_Department` School 모델에 연결 합니다.
 
@@ -1336,7 +1330,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 | **이름**       | 예         | 매핑되는 개념적 모델의 엔터티 속성 이름입니다. |
 | **ColumnName** | 예         | 매핑되는 열의 이름입니다.                                          |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시를 **InsertFunction** 대 한 삽입 함수를 매핑하는 데 사용 되는 요소는 **Person** 엔터티 형식을 **InsertPerson** 저장된 프로시저입니다. (합니다 **InsertPerson** 저장된 프로시저는 아래 및 저장소 모델에서 선언 됩니다.) A **ResultBinding** 요소는 저장된 프로시저에서 반환 되는 열 값에 매핑할 때 사용 됩니다 (**NewPersonID**)을 엔터티 형식 속성 (**PersonID**).
 
@@ -1409,7 +1403,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 
 적용할 수 없는 특성을 **ResultMapping** 요소입니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음과 같은 저장 프로시저가 있다고 가정합니다.
 
@@ -1496,7 +1490,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 | **ParameterName** | 예         | 매핑되는 매개 변수의 이름입니다.                                                                                                 |
 | **Version**       | 아니요          | **현재** 나 **원래** 동시성 검사에 대 한 현재 값 또는 속성의 원래 값은 사용 하는 여부에 따라 합니다. |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **ScalarProperty** 두 가지 방법으로 사용 되는 요소:
 
@@ -1546,7 +1540,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
  </EntitySetMapping>
 ```
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **ScalarProperty** 삽입 매핑 및 데이터베이스의 저장된 프로시저를 개념적 모델 연결의 함수를 삭제 하는 데 사용 되는 요소입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다.
 
@@ -1606,7 +1600,7 @@ MSL에서 참조하는 개념적 모델 형식과 저장소 모델 형식의 이
 | **FunctionName**          | 예         | 업데이트 함수가 매핑되는 저장 프로시저의 네임스페이스로 한정된 이름입니다. 저장 프로시저는 저장소 모델에서 선언해야 합니다. |
 | **RowsAffectedParameter** | 아니요          | 영향을 받는 행 수를 반환하는 출력 매개 변수의 이름입니다.                                                                               |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 School 모델을 기반으로 하며 표시를 **UpdateFunction** 업데이트 함수를 매핑하는 데 사용 되는 요소는 **Person** 엔터티 형식을 **UpdatePerson** 저장된 프로시저입니다. 합니다 **UpdatePerson** 저장된 프로시저는 저장소 모델에서 선언 됩니다.
 
