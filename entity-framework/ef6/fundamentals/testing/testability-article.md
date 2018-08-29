@@ -2,19 +2,13 @@
 title: 테스트 용이성 및 Entity Framework 4.0
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 9430e2ab-261c-4e8e-8545-2ebc52d7a247
-caps.latest.revision: 3
-ms.openlocfilehash: 61773f8a23ff54ddb78aeeb5656c669b12f91478
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 17a9f09022531a81042979464de05fbbd2570759
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122370"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995231"
 ---
 # <a name="testability-and-entity-framework-40"></a>테스트 용이성 및 Entity Framework 4.0
 Scott Allen
@@ -979,8 +973,8 @@ Mock 또는 fake 간의 선택 하느냐에 달려 테스트 중인 시스템과
 -   Martin Fowler " [스텁 아닌 모의](http://martinfowler.com/articles/mocksArentStubs.html)"
 -   Martin Fowler " [이중 테스트](http://martinfowler.com/bliki/TestDouble.html)"
 -   Jeremy Miller, " [상호 작용 테스트와 상태](http://codebetter.com/blogs/jeremy.miller/articles/129544.aspx)"
--   Moq, \<http://code.google.com/p/moq/>
+-   [Moq](http://code.google.com/p/moq/)
 
 ### <a name="biography"></a>약력
 
-Scott Allen Pluralsight의 기술 담당자의 멤버 이며 OdeToCode.com의 창립자입니다. 상용 소프트웨어 개발의 15 년 동안에서 Scott 8 비트 뛰어난 ASP.NET 웹 응용 프로그램에 포함 된 장치에서 모든 항목에 대 한 솔루션에서 일 했습니다. 그의 블로그인 OdeToCode, 또는 Twitter Scott에 도달할 수 있습니다 \< http://twitter.com/OdeToCode>합니다.
+Scott Allen Pluralsight의 기술 담당자의 멤버 이며 OdeToCode.com의 창립자입니다. 상용 소프트웨어 개발의 15 년 동안에서 Scott 8 비트 뛰어난 ASP.NET 웹 응용 프로그램에 포함 된 장치에서 모든 항목에 대 한 솔루션에서 일 했습니다. 그의 블로그인 OdeToCode, 또는 Twitter Scott에 도달할 수 있습니다 [ http://twitter.com/OdeToCode ](http://twitter.com/OdeToCode)합니다.
