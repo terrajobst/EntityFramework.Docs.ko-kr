@@ -2,19 +2,13 @@
 title: Migrate.exe-EF6을 사용 하 여
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 989ea862-e936-4c85-926a-8cfbef5df5b8
-caps.latest.revision: 3
-ms.openlocfilehash: 3a9bc47d2c18abe6ca70b92a8758b4d95010a464
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 39740578e4a8c2d5400bcabbcb107baf0648fba5
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121869"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993501"
 ---
 # <a name="using-migrateexe"></a>Migrate.exe를 사용 하 여
 Code First 마이그레이션을에서 데이터베이스를 업데이트할 수 visual studio 내에서 명령줄 도구 migrate.exe 통해 실행할 수 있습니다. 이 페이지 migrate.exe를 사용 하 여 데이터베이스에 대해 마이그레이션을 실행 하는 방법에 대 한 빠른 개요를 제공 합니다.

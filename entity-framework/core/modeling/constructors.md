@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 02/23/2018
 ms.assetid: 420AFFE7-B709-4A68-9149-F06F8746FB33
 uid: core/modeling/constructors
-ms.openlocfilehash: 0536393d074d82583f47faae13cc22498193cb7e
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
-ms.translationtype: HT
+ms.openlocfilehash: 1b36197465fb9a6571a306d36eb1e9d885a5399e
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994895"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152467"
 ---
 # <a name="entity-types-with-constructors"></a>생성자를 사용 하 여 엔터티 형식
 
@@ -25,7 +25,7 @@ EF Core 2.1부터 있기 이제 엔터티의 인스턴스를 만들 때이 생�
 
 일반적인 블로그/Post 모델이 있다고 가정 합니다.
 
-```Csharp
+``` csharp
 public class Blog
 {
     public int Id { get; set; }
@@ -50,7 +50,7 @@ public class Post
 
 EF Core는 이러한 형식의 인스턴스를 만들 때와 같은 쿼리 결과 대 한 기본 매개 변수가 없는 생성자를 호출 하 고 데이터베이스에서 각 속성 값을 설정 합니다. 그러나 EF Core에서 사용 하 여 매개 변수가 있는 생성자를 발견 한 경우 매개 변수 이름과 일치 하는 매핑된 속성을 다음 해당 속성 값을 사용 하 여 매개 변수가 있는 생성자를 대신 호출 됩니다 하 고 각 속성을 명시적으로 설정 하지 것입니다. 예를 들어:
 
-```Csharp
+``` csharp
 public class Blog
 {
     public Blog(int id, string name, string author)
@@ -99,7 +99,7 @@ public class Post
 * 자동으로 생성 된 키 값을 사용 하 여 키 값을 새 엔터티를 삽입 하는 경우 키 생성기에서 설정 해야 하므로 읽기 전용을 사용 하는 키 속성이 필요 합니다.
 
 이러한 것을 방지 하는 간편한 방법은 private setter를 사용 하는 것입니다. 예를 들어:
-```Csharp
+``` csharp
 public class Blog
 {
     public Blog(int id, string name, string author)
@@ -139,7 +139,7 @@ EF Core를 읽기 / 쓰기, 즉, 모든 속성이 이전과 매핑되는 키 수
 
 Private setter를 사용 하는 대신 실제로 읽기 전용 속성을 확인 하 고 OnModelCreating에 명시적 매핑을 추가 하는 것입니다. 마찬가지로, 일부 속성이 완전히 제거 고 필드만 바꿀 수 있습니다. 예를 들어 이러한 엔터티 형식:
 
-```Csharp
+``` csharp
 public class Blog
 {
     private int _id;
@@ -174,7 +174,7 @@ public class Post
 }
 ```
 및 OnModelCreating에서이 구성:
-```Csharp
+``` csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<Blog>(
@@ -215,7 +215,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 예를 들어, 선택적으로 모두 로드 하지 않고 관련된 엔터티에 대 한 정보를 가져오려면 데이터베이스에 액세스 하는 삽입 된 DbContext은 사용할 수 있습니다. 아래 예제에서 게시물을 로드 하지 않고 블로그 게시물의 번호를 가져오려면이 사용 됩니다.
 
-```Csharp
+``` csharp
 public class Blog
 {
     public Blog()

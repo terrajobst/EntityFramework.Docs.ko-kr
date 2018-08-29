@@ -2,19 +2,13 @@
 title: 디자이너 코드 생성 템플릿 - EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 56e00fa2-f9f0-48b3-8006-f8266ca7e74b
-caps.latest.revision: 3
-ms.openlocfilehash: 8a656ca73a7e1a628f4053ff7ad47f5c1b17d878
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 29e28dd4ebe0e5e6e3cddacb1d34202c2010f389
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37949181"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994873"
 ---
 # <a name="designer-code-generation-templates"></a>디자이너 코드 생성 템플릿
 Entity Framework Designer를 사용하여 모델을 만들면 클래스와 파생된 컨텍스트가 자동으로 생성됩니다. 기본 코드 생성 외에도 생성된 코드를 사용자 지정하는 데 사용할 수 있는 다양한 템플릿을 제공합니다. 이러한 템플릿은 T4 텍스트 템플릿으로 제공되므로 필요한 경우 템플릿을 사용자 지정할 수 있습니다.
@@ -151,7 +145,7 @@ DbContext 생성기는 이제 새 응용 프로그램에서 POCO 클래스를 �
 
 ### <a name="what-are-the-web-sites-templates"></a>"웹 사이트" 템플릿이란?
 
-"웹 사이트"(예: **C\#용 EF 5.x DbContext 생성기 웹 사이트**) 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 웹 사이트...** 를 통해 만든 [웹 사이트] 프로젝트에서 사용됩니다. 이러한 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 프로젝트...** 를 통해 만든 [웹 응용 프로그램](표준 템플릿 사용)과 다릅니다. Visual Studio의 항목 템플릿 시스템에 필요하므로 별도의 템플릿이 제공됩니다.
+"웹 사이트"(예: **C\#용 EF 5.x DbContext 생성기 웹 사이트**) 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 웹 사이트...** 를 통해 만든 [웹 사이트] 프로젝트에서 사용됩니다. 이러한 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 프로젝트...** 를 통해 만든 [웹 응용 프로그램]\(표준 템플릿 사용)과 다릅니다. Visual Studio의 항목 템플릿 시스템에 필요하므로 별도의 템플릿이 제공됩니다.
 
 ## <a name="using-a-template"></a>템플릿 사용
 

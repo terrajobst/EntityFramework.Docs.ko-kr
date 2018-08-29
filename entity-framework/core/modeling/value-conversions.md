@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/value-conversions
-ms.openlocfilehash: d6b51a0a70ee527844b6fe995f39bec534dbaba8
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2a1956221ecc920feba796e4d95cc97259e89c53
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996290"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152512"
 ---
 # <a name="value-conversions"></a>값 변환
 
@@ -27,7 +27,7 @@ ms.locfileid: "42996290"
 ## <a name="configuring-a-value-converter"></a>값 변환기를 구성합니다.
 
 값 변환의 속성에 정의 된 합니다 `OnModelCreating` 의 프로그램 `DbContext`합니다. 예를 들어으로 정의 하는 열거형 및 엔터티 형식:
-```Csharp
+``` csharp
 public class Rider
 {
     public int Id { get; set; }
@@ -43,7 +43,7 @@ public enum EquineBeast
 }
 ```
 변환을 정의할 수 있습니다 다음 `OnModelCreating` 열거형 값 문자열 (예: "당나귀", "노새",...) 데이터베이스에 저장 합니다.
-```Csharp
+``` csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder
@@ -60,7 +60,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 ## <a name="the-valueconverter-class"></a>ValueConverter 클래스
 
 호출 `HasConversion` 만들어집니다 위에 표시 된 대로 `ValueConverter` 인스턴스 및 속성에 설정 합니다. `ValueConverter` 대신 명시적으로 만들 수 있습니다. 예를 들어:
-```Csharp
+``` csharp
 var converter = new ValueConverter<EquineBeast, string>(
     v => v.ToString(),
     v => (EquineBeast)Enum.Parse(typeof(EquineBeast), v));
@@ -82,7 +82,7 @@ modelBuilder
 * `BoolToStringConverter` -"Y"와 "N"와 같은 문자열에 Bool
 * `BoolToTwoValuesConverter` -두 값을 Bool
 * `BytesToStringConverter` 바이트 배열을 Base64로 인코딩된 문자열로
-* `CastingConverter` -Csharp 캐스팅만 필요로 하는 변환
+* `CastingConverter` -형식 캐스팅만 필요로 하는 변환
 * `CharToStringConverter` -단일 문자 문자열에 문자
 * `DateTimeOffsetToBinaryConverter` -64 비트 값 이진 인코딩된 DateTimeOffset
 * `DateTimeOffsetToBytesConverter` -DateTimeOffset 바이트 배열
@@ -101,7 +101,7 @@ modelBuilder
 * `TimeSpanToTicksConverter` -틱 TimeSpan
 
 있음을 `EnumToStringConverter` 이 목록에 포함 됩니다. 이 변환 위에 표시 된 대로 명시적으로 지정할 필요가 없습니다 임을 의미 합니다. 기본 제공 변환기를 사용 합니다.
-```Csharp
+``` csharp
 var converter = new EnumToStringConverter<EquineBeast>();
 
 modelBuilder
@@ -114,14 +114,14 @@ modelBuilder
 ## <a name="pre-defined-conversions"></a>미리 정의 된 변환
 
 기본 제공 변환기 존재 하는 일반적인 변환에 대 한 변환기를 명시적으로 지정할 필요가 없습니다 있습니다. 대신 공급자 형식을 사용 해야만 구성 하 고 EF는 자동으로 적절 한 기본 제공 변환기를 사용 합니다. 문자열 변환 하는 열거형은 위의 예제로 사용 하지만 EF에서는 실제로이 자동으로 수행 된 공급자 형식을 구성 된 경우:
-```Csharp
+``` csharp
 modelBuilder
     .Entity<Rider>()
     .Property(e => e.Mount)
     .HasConversion<string>();
 ```
 명시적으로 열 형식을 지정 하 여 동일한 작업을 수행할 수 있습니다. 엔터티 형식이 정의 되어 있는 경우와 같은 예를 들어 있으므로:
-```Csharp
+``` csharp
 public class Rider
 {
     public int Id { get; set; }

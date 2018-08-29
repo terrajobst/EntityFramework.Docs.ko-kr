@@ -1,28 +1,26 @@
 ---
-title: 계산된 열-EF 코어
+title: 계산된 열-EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: e9d81f06-805d-45c9-97c2-3546df654829
-ms.technology: entity-framework-core
 uid: core/modeling/relational/computed-columns
-ms.openlocfilehash: 95312504286bd34cc666b5a21273835c4b35d379
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: b88efdf69e5100e4eff55f3a41925d2d8e7c3178
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052483"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993955"
 ---
-# <a name="computed-columns"></a>계산 열
+# <a name="computed-columns"></a>계산된 열
 
 > [!NOTE]  
-> 이 섹션의 구성을 일반적 관계형 데이터베이스에 적용 됩니다. 여기에 표시 된 확장 메서드를 사용할 수 있는 관계형 데이터베이스 공급자를 설치할 때 (공유 인해 *Microsoft.EntityFrameworkCore.Relational* 패키지).
+> 이 섹션의 구성은 일반적인 관계형 데이터베이스에 적용됩니다. 여기서 나오는 확장 메서드는 관계형 데이터베이스 공급자를 설치할 때 사용 가능할 것입니다(공유 *Microsoft.EntityFrameworkCore.Relational* 패키지 때문).
 
-계산된 열은 열 값은 데이터베이스에서 계산 됩니다. 계산된 열 해당 값을 계산 테이블의 다른 열을 사용할 수 있습니다.
+계산된 열은 데이터베이스의 값은 계산 열. 계산된 열 해당 값을 계산 테이블의 다른 열을 사용할 수 있습니다.
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 계산된 열은 모델에서 만들어지지 않습니다.
+규칙에 따라 계산 된 열은 모델에서 만들어지지 않습니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
@@ -30,7 +28,7 @@ ms.locfileid: "26052483"
 
 ## <a name="fluent-api"></a>Fluent API
 
-속성을 계산된 열에 매핑해야 지정 하려면 Fluent API를 사용할 수 있습니다.
+속성을 계산된 열일 매핑되어야 지정 Fluent API를 사용할 수 있습니다.
 
 <!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/ComputedColumn.cs?highlight=9)] -->
 ``` csharp

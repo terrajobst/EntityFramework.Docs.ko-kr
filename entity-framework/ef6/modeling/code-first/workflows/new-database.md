@@ -3,18 +3,18 @@ title: 새 데이터베이스-EF6 대 한 code First
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: bb44a3300bc8ffc9d7050c4784e7b76b29c61796
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
-ms.translationtype: HT
+ms.openlocfilehash: 50c6a4710bc50879304f64e781a46c4836f86882
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994620"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152480"
 ---
 # <a name="code-first-to-a-new-database"></a>새 데이터베이스에 대 한 code First
-이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 하 고 Code First는 만들거나 추가 하는 Code First는 새 빈 데이터베이스 테이블에 너무입니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
+이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
 
 ## <a name="watch-the-video"></a>비디오를 시청 하세요.
-이 비디오에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 하 고 Code First는 만들거나 추가 하는 Code First는 새 빈 데이터베이스 테이블에 너무입니다. 먼저 코드를 사용 하면 C# 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
+이 비디오에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. 먼저 코드를 사용 하면 C# 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
 
 **작성자**: [Rowan Miller](http://romiller.com/)
 
