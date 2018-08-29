@@ -1,17 +1,15 @@
 ---
 title: 도구 및 확장 - EF Core
 author: ErikEJ
-ms.author: divega
 ms.date: 7/3/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
-ms.technology: entity-framework-core
 uid: core/extensions/index
-ms.openlocfilehash: 6c8cb3e0d8552f274118e4020b7e2e8009af7e11
-ms.sourcegitcommit: fc68321c211aca38f7b9dc3a75677c6ca1b2524b
+ms.openlocfilehash: e9f9a6cbbceeb0379ddb5588b564b0d2a962795f
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/08/2018
-ms.locfileid: "29769441"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995515"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -131,3 +129,9 @@ EF Core 1.1에 대한 지연 로드
 대량 작업(삽입, 업데이트, 삭제)를 위한 EntityFrameworkCore 확장입니다.
 
 [GitHub 리포지토리](https://github.com/borisdj/EFCore.BulkExtensions)
+
+### <a name="bricelamentityframeworkcorepluralizer"></a>Bricelam.EntityFrameworkCore.Pluralizer
+
+EF Core에 디자인 타임 복수화를 추가합니다.
+
+[GitHub 리포지토리](https://github.com/bricelam/EFCore.Pluralizer)

@@ -2,19 +2,13 @@
 title: 저장 프로시저-EF6 디자이너 CUD
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 1e773972-2da5-45e0-85a2-3cf3fbcfa5cf
-caps.latest.revision: 3
-ms.openlocfilehash: 6b6a1f843142713153fa86309ef55f9d6e804766
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 7a3176e1057816dd11ced5fc545aa3baa672bd03
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121930"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993891"
 ---
 # <a name="designer-cud-stored-procedures"></a>디자이너 CUD 저장 프로시저
 이 단계별 연습 만들기를 매핑하는 방법을 보여 줍니다\\삽입, 업데이트 및 삭제 작업 (CUD) Entity Framework Designer (EF 디자이너)를 사용 하 여 저장된 프로시저에 엔터티 형식입니다.  기본적으로 Entity Framework에 CUD 작업에 대 한 SQL 문을 자동으로 생성 되지만 이러한 작업에 저장된 프로시저도 매핑할 수 있습니다.  
