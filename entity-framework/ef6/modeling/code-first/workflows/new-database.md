@@ -2,19 +2,13 @@
 title: 새 데이터베이스-EF6 대 한 code First
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-caps.latest.revision: 3
-ms.openlocfilehash: 75057fc73b082f4c745171ed77cddc358229a130
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
-ms.translationtype: MT
+ms.openlocfilehash: bb44a3300bc8ffc9d7050c4784e7b76b29c61796
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121922"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994620"
 ---
 # <a name="code-first-to-a-new-database"></a>새 데이터베이스에 대 한 code First
 이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 하 고 Code First는 만들거나 추가 하는 Code First는 새 빈 데이터베이스 테이블에 너무입니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.

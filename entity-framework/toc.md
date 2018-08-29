@@ -106,6 +106,7 @@
 ##### [SQLite 제한 사항](core/providers/sqlite/limitations.md) 
 #### [InMemory(테스트용)](core/providers/in-memory/index.md)
 #### [데이터베이스 공급자 작성](core/providers/writing-a-provider.md)
+#### [공급자에게 영향을 미치는 변경 내용](core/providers/provider-log.md)
 
 ### [도구 및 확장](core/extensions/index.md)
 

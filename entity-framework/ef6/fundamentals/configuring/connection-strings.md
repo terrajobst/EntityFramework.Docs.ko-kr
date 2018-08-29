@@ -2,19 +2,13 @@
 title: 연결 문자열 및 EF6-모델
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 294bb138-978f-4fe2-8491-fdf3cd3c60c4
-caps.latest.revision: 3
-ms.openlocfilehash: ca597e68a5b3e2085612669ee81da10ba6969eeb
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: dce414ea84f13235691abf0dcadef5c743d90f9d
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "39122758"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994961"
 ---
 # <a name="connection-strings-and-models"></a>연결 문자열 및 모델
 이 항목에서는 Entity Framework를 사용 하려면 데이터베이스 연결을 검색 하는 방법 및이 변경 하는 방법을 설명 합니다. Code First 및 EF 디자이너를 사용 하 여 만든 모델은 모두이 항목에서 설명 됩니다.  

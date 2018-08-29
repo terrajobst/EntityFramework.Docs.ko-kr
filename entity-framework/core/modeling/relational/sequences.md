@@ -1,32 +1,30 @@
 ---
-title: 순서-EF 코어
+title: 순서-EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 94f81a92-3c72-4e14-912a-f99310374e42
-ms.technology: entity-framework-core
 uid: core/modeling/relational/sequences
-ms.openlocfilehash: 98a40aeecbec0fd9fb9cc108d6b5f98178dea403
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: eb9d9896966af0ad6b778047a1ed6af7358e8eb2
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052713"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994518"
 ---
 # <a name="sequences"></a>시퀀스
 
 > [!NOTE]  
-> 이 섹션의 구성을 일반적 관계형 데이터베이스에 적용 됩니다. 여기에 표시 된 확장 메서드를 사용할 수 있는 관계형 데이터베이스 공급자를 설치할 때 (공유 인해 *Microsoft.EntityFrameworkCore.Relational* 패키지).
+> 이 섹션의 구성은 일반적인 관계형 데이터베이스에 적용됩니다. 여기서 나오는 확장 메서드는 관계형 데이터베이스 공급자를 설치할 때 사용 가능할 것입니다(공유 *Microsoft.EntityFrameworkCore.Relational* 패키지 때문).
 
-시퀀스는 데이터베이스에 연속 숫자 값을 생성합니다. 시퀀스 된 특정 테이블에 연결 되지 않습니다.
+시퀀스는 데이터베이스의 순차적 숫자 값을 생성합니다. 시퀀스는 특정 테이블을 사용 하 여 연결 되지 않습니다.
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 시퀀스에 모델에 제공 되지 됩니다.
+규칙에 따라 시퀀스에서 모델에 도입 되지 됩니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
-하지 데이터 주석을 사용 하는 순서를 구성할 수 있습니다.
+하지 데이터 주석을 사용 하 여 시퀀스를 구성할 수 있습니다.
 
 ## <a name="fluent-api"></a>Fluent API
 
@@ -69,7 +67,7 @@ class MyContext : DbContext
 }
 ```
 
-시퀀스 도입 되 면 모델의 속성에 대 한 값을 생성 하려면 사용할 수 있습니다. 사용할 수는 예를 들어 [기본값](default-values.md) 를 시퀀스에서 다음 값을 삽입 합니다.
+시퀀스에 도입 되 면 모델의 속성에 대 한 값을 생성에 사용할 수 있습니다. 예를 들어 사용할 수 있습니다 [기본값](default-values.md) 시퀀스에서 다음 값을 삽입 합니다.
 
 <!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Samples/Relational/SequenceUsed.cs?highlight=11,12,13)] -->
 ``` csharp

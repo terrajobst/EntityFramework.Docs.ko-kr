@@ -2,19 +2,13 @@
 title: 디자이너 엔터티에 분할 EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: aa2dd48a-1f0e-49dd-863d-d6b4f5834832
-caps.latest.revision: 3
-ms.openlocfilehash: 386b739363fb78641d5ebd8130fd19008bc8c9f6
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 214561f0a0381bced3ceae0b6acfcd45f5dd65c5
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122266"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995621"
 ---
 # <a name="designer-entity-splitting"></a>디자이너 엔터티 분
 이 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델을 수정 하 여 엔터티 형식을 두 테이블에 매핑하는 방법을 보여 줍니다. 테이블이 공통 키를 공유하는 경우 한 엔터티를 여러 테이블에 매핑할 수 있습니다. 두 개의 테이블에 한 엔터티 형식 매핑에 적용되는 개념은 셋 이상의 테이블에 한 엔터티 형식 매핑으로 쉽게 확장됩니다.

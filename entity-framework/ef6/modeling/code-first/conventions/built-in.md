@@ -2,19 +2,13 @@
 title: 첫 번째 규칙-EF6 코드
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: bc644573-c2b2-4ed7-8745-3c37c41058ad
-caps.latest.revision: 4
-ms.openlocfilehash: b124a034ba900780cc4d7e1354408cd3995e874e
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: c5fa580879a4b53fed34d94b737988875f38c62c
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121874"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995528"
 ---
 # <a name="code-first-conventions"></a>코드의 첫 번째 규칙
 먼저 코드를 사용 하면 C# 또는 Visual Basic.NET 클래스를 사용 하 여 모델을 설명할 수 있습니다. 모델의 기본 셰이프 규칙을 사용 하 여 검색 됩니다. 규칙은 자동으로 Code First를 사용 하 여 작업 하는 경우 클래스 정의 기반으로 개념적 모델을 구성 하는 데 사용 되는 규칙의 집합입니다. 규칙은 System.Data.Entity.ModelConfiguration.Conventions 네임 스페이스에 정의 됩니다.  

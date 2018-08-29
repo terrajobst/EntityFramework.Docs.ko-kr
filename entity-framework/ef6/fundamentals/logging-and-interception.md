@@ -2,19 +2,13 @@
 title: 로깅 및 데이터베이스 작업-EF6 가로채기
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: b5ee7eb1-88cc-456e-b53c-c67e24c3f8ca
-caps.latest.revision: 3
-ms.openlocfilehash: 1d0e953309f3c81a2941d6850e169aaa31ae8de0
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 2e16502abf54be3f3b2f63fe69d2605ef13dea27
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "39122798"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994637"
 ---
 # <a name="logging-and-intercepting-database-operations"></a>로깅 및 데이터베이스 작업 가로채기
 > [!NOTE]

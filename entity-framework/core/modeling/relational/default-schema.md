@@ -1,28 +1,26 @@
 ---
-title: 기본 스키마-EF 코어
+title: 기본 스키마-EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: e6e58473-9f5e-4a1f-ac0f-b87d2cbb667e
-ms.technology: entity-framework-core
 uid: core/modeling/relational/default-schema
-ms.openlocfilehash: 26106deb2d4e35ecf33e97790a83f9af77991aed
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 800551bbadd0a9e8b5eb7070a8ccf6ed2407e3d2
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052753"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995368"
 ---
 # <a name="default-schema"></a>기본 스키마
 
 > [!NOTE]  
-> 이 섹션의 구성을 일반적 관계형 데이터베이스에 적용 됩니다. 여기에 표시 된 확장 메서드를 사용할 수 있는 관계형 데이터베이스 공급자를 설치할 때 (공유 인해 *Microsoft.EntityFrameworkCore.Relational* 패키지).
+> 이 섹션의 구성은 일반적인 관계형 데이터베이스에 적용됩니다. 여기서 나오는 확장 메서드는 관계형 데이터베이스 공급자를 설치할 때 사용 가능할 것입니다(공유 *Microsoft.EntityFrameworkCore.Relational* 패키지 때문).
 
-기본 스키마는 만들어지는 개체에 스키마 해당 개체에 대해 명시적으로 구성 되지 않은 경우 데이터베이스 스키마를 사용 합니다.
+기본 스키마에 만들어지는 개체에서 해당 개체에 대 한 스키마를 명시적으로 구성 되지 않은 경우 데이터베이스 스키마가입니다.
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 데이터베이스 공급자는 가장 적합 한 기본 스키마를 선택 합니다. Microsoft SQL Server에서 사용 하는 예를 들어는 `dbo` 스키마 및 SQLite는 있으므로 사용 하지는 스키마 (스키마 SQLite에서는 지원 되지 않습니다).
+규칙에 따라 데이터베이스 공급자는 가장 적합 한 기본 스키마를 선택 합니다. Microsoft SQL Server가 사용 하는 예를 들어를 `dbo` 스키마 및 SQLite를 있으므로 사용 하지는 스키마 (스키마 SQLite에서 지원 되지 않습니다).
 
 ## <a name="data-annotations"></a>데이터 주석
 

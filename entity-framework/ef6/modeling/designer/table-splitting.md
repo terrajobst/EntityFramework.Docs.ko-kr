@@ -2,19 +2,13 @@
 title: 디자이너 테이블 분할 EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
-caps.latest.revision: 3
-ms.openlocfilehash: 6ecf9a77f7c6a743e3902de65bb75349c6ef799f
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 87b6e1bd0374f77dfffab342c659cf4e16c8a337
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39121885"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994505"
 ---
 # <a name="designer-table-splitting"></a>디자이너의 테이블 분
 이 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델을 수정 하 여 여러 엔터티 형식을 단일 테이블에 매핑하는 방법을 보여 줍니다.

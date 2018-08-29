@@ -2,19 +2,13 @@
 title: 저장 프로시저-EF6 디자이너 쿼리
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
-caps.latest.revision: 3
-ms.openlocfilehash: a08c1afc02266b35372a49fca1e829963e4785b2
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 29b7745c2229ce4a38ad81e11406474424adfa24
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122309"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994974"
 ---
 # <a name="designer-query-stored-procedures"></a>디자이너 쿼리 저장 프로시저
 이 단계별 연습에는 저장된 프로시저를 가져오려는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델에 다음 결과 검색 하 고 가져온된 저장된 프로시저를 호출 하는 방법을 보여 줍니다. 
