@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: 850d842e-3fad-4ef2-be17-053768e97b9e
 ms.technology: entity-framework-core
 uid: core/saving/basic
-ms.openlocfilehash: deead323301dc4a0ee0748b4536ddff4596b99e6
-ms.sourcegitcommit: 4997314356118d0d97b04ad82e433e49bb9420a2
+ms.openlocfilehash: ecf8f344a5baae37a5e7255a4affb1085f1b3ff3
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31006665"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "42447745"
 ---
 # <a name="basic-save"></a>기본 저장
 
@@ -41,7 +41,7 @@ EF는 컨텍스트에서 추적하는 기존 엔터티의 변경 내용을 자�
 
 *DbSet.Remove* 메서드를 사용하여 엔터티 클래스의 인스턴스를 삭제하세요.
 
-엔터티가 데이터베이스에 이미 있는 경우 *SaveChanges* 중에 삭제됩니다. 엔터티가 아직 데이터베이스에 저장되지 않은 경우(예: 추가됨으로 추적되는 경우) 컨텍스트에서 제거되고 *SaveChanges*가 호출될 때 더 이상 삽입되지 않습니다.
+엔터티가 데이터베이스에 이미 있는 경우 *SaveChanges* 중에 삭제됩니다. 엔터티가 아직 데이터베이스에 저장되지 않은 경우(즉, 추가됨으로 추적되는 경우) 컨텍스트에서 제거되고 *SaveChanges*가 호출될 때 더 이상 삽입되지 않습니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Saving/Basics/Sample.cs#Remove)]
 

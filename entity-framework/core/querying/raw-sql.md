@@ -6,16 +6,16 @@ ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 ms.technology: entity-framework-core
 uid: core/querying/raw-sql
-ms.openlocfilehash: 29b7e20e875bf791a88a92636c1df4bc4e31656b
-ms.sourcegitcommit: 038acd91ce2f5a28d76dcd2eab72eeba225e366d
+ms.openlocfilehash: a1d554795dcd8a3e5b44e89ac014f538598461cc
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34163215"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "42447706"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
-Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 때 원시 SQL 쿼리로 드롭다운할 수 있습니다. 이는 수행하려는 쿼리를 LINQ를 사용하여 표현할 수 없거나 LINQ 쿼리를 사용하면 비효율적인 SQL이 데이터베이스로 전송되는 경우 유용할 수 있습니다.
+Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 때 원시 SQL 쿼리로 드롭다운할 수 있습니다. 이는 수행하려는 쿼리를 LINQ를 사용하여 표현할 수 없거나 LINQ 쿼리를 사용하면 비효율적인 SQL이 데이터베이스로 전송되는 경우 유용할 수 있습니다. 원시 SQL 쿼리는 엔터티 형식을 반환하거나 EF Core 2.1부터 모델에 포함된 [쿼리 형식](xref:core/modeling/query-types)을 반환할 수 있습니다.
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
@@ -23,7 +23,6 @@ Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 
 ## <a name="limitations"></a>제한 사항
 
 원시 SQL 쿼리를 사용할 때는 몇 가지 제한 사항에 유의해야 합니다.
-* SQL 쿼리는 모델의 일부인 엔터티 형식을 반환하는 데에만 사용할 수 있습니다. [원시 SQL 쿼리에서 임시 형식을 반환할 수 있도록 ](https://github.com/aspnet/EntityFramework/issues/1862) 향상된 백로그 기능이 있습니다.
 
 * SQL 쿼리는 엔터티 또는 쿼리 형식의 모든 속성에 대해 데이터를 반환해야 합니다.
 
@@ -36,7 +35,7 @@ Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 
   * SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)
   * SQL Server의 `SELECT` 절에서 `TOP 100 PERCENT`와 함께 제공되지 않는 `ORDER BY` 절
 
-* `SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다. 따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다. 
+* `SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다. 따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.
 
 ## <a name="basic-raw-sql-queries"></a>기본 원시 SQL 쿼리
 

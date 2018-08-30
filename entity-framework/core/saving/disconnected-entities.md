@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 ms.technology: entity-framework-core
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 0b145217d40027c4b8e4746e9c5651652a28c9eb
-ms.sourcegitcommit: d2434edbfa6fbcee7287e33b4915033b796e417e
+ms.openlocfilehash: a81b0a26fe98dcc1ddedc11aba2673338c8991e8
+ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/12/2018
-ms.locfileid: "29152418"
+ms.lasthandoff: 07/10/2018
+ms.locfileid: "42447630"
 ---
 # <a name="disconnected-entities"></a>연결이 끊긴 엔터티
 
@@ -35,7 +35,7 @@ DbContext 인스턴스는 데이터베이스에서 반환된 엔터티를 자동
 
 ### <a name="with-auto-generated-keys"></a>자동 생성 키 사용
 
-종종 자동으로 생성된 키 값을 사용하여 엔터티를 삽입해야 하는지 업데이트해야 하는지를 확인할 수 있습니다. 키가 설정되지 않은 경우(예: 아직 null, 0 등의 CLR 기본값이 있는 경우) 새 엔터티이며 삽입해야 합니다. 반면 키 값이 설정된 경우 이전에 이미 저장되었으므로 업데이트해야 합니다. 즉, 키에 값이 있으면 엔터티를 쿼리하고 클라이언트로 전송했으며 이제 다시 돌아가 업데이트해야 합니다.
+종종 자동으로 생성된 키 값을 사용하여 엔터티를 삽입해야 하는지 업데이트해야 하는지를 확인할 수 있습니다. 키가 설정되지 않은 경우(즉, 아직 null, 0 등의 CLR 기본값이 있는 경우) 새 엔터티여야 하며 삽입해야 합니다. 반면 키 값이 설정된 경우 이전에 이미 저장되었으므로 업데이트해야 합니다. 즉, 키에 값이 있으면 엔터티를 쿼리하고 클라이언트로 전송했으며 이제 다시 돌아가 업데이트해야 합니다.
 
 엔터티 형식을 알고 있으면 설정 해제된 키를 쉽게 확인할 수 있습니다.
 

@@ -5,12 +5,12 @@ ms.author: divega
 ms.date: 03/03/2018
 ms.technology: entity-framework-core
 uid: core/saving/concurrency
-ms.openlocfilehash: 288d9c6fced5ebbaa2c366248c68547502c3698e
-ms.sourcegitcommit: 8f3be0a2a394253efb653388ec66bda964e5ee1b
+ms.openlocfilehash: 2d8909585201a45eb020537847800f125b3b0120
+ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/05/2018
-ms.locfileid: "29745489"
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "42447766"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 
@@ -48,7 +48,7 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 ## <a name="resolving-concurrency-conflicts"></a>동시성 충돌 해결
 
-앞의 예제에서 한 사용자는 `Person`의 일부 변경 내용을 저장하려고 하는데 다른 사용자는 `LastName`을 이미 변경한 경우 예외가 throw됩니다.
+이전 예제에서 한 사용자는 `Person`의 일부 변경 내용을 저장하려고 하는데 다른 사용자는 `LastName`을 이미 변경한 경우 예외가 throw됩니다.
 
 이때 응용 프로그램은 충돌하는 변경 내용으로 인해 업데이트가 실패했음을 사용자에게 알리기만 하고 계속 진행할 수 있습니다. 그러나 이 레코드가 여전히 동일한 실제 사람을 나타내도록 하고 작업을 다시 시도하도록 사용자에게 메시지를 표시하는 것이 좋습니다.
 

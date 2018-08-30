@@ -6,12 +6,12 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 ms.technology: entity-framework-core
 uid: core/querying/related-data
-ms.openlocfilehash: 5f1fb9376300739ab0e306d9d60e7ec71aa2d2e7
-ms.sourcegitcommit: 507a40ed050fee957bcf8cf05f6e0ec8a3b1a363
+ms.openlocfilehash: 05833055f4744940364da4fdea7ded9a90d67508
+ms.sourcegitcommit: a3aec015e0ad7ee31e0f75f00bbf2d286a3ac5c1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/26/2018
-ms.locfileid: "31812653"
+ms.lasthandoff: 07/18/2018
+ms.locfileid: "42447696"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -64,52 +64,52 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 다음과 같은 모델을 가정합니다.
 
-```Csharp
-    public class SchoolContext : DbContext
+```csharp
+public class SchoolContext : DbContext
+{
+    public DbSet<Person> People { get; set; }
+    public DbSet<School> Schools { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        public DbSet<Person> People { get; set; }
-        public DbSet<School> Schools { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
-        }
+        modelBuilder.Entity<School>().HasMany(s => s.Students).WithOne(s => s.School);
     }
+}
 
-    public class Person
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+public class Person
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
+}
 
-    public class Student : Person
-    {
-        public School School { get; set; }
-    }
+public class Student : Person
+{
+    public School School { get; set; }
+}
 
-    public class School
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
+public class School
+{
+    public int Id { get; set; }
+    public string Name { get; set; }
 
-        public List<Student> Students { get; set; }
-    }
+    public List<Student> Students { get; set; }
+}
 ```
 
 다양한 패턴을 사용하여 학생인 모든 사람의 `School` 탐색 콘텐츠를 로드할 수 있습니다.
 
 - 캐스트 사용
-  ```Csharp
+  ```csharp
   context.People.Include(person => ((Student)person).School).ToList()
   ```
 
 - `as` 연산자 사용
-  ```Csharp
+  ```csharp
   context.People.Include(person => (person as Student).School).ToList()
   ```
 
 - `string` 형식의 매개 변수를 사용하는 `Include`의 오버로드 사용
-  ```Csharp
+  ```csharp
   context.People.Include("Student").ToList()
   ```
 
@@ -154,20 +154,20 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 > 이 기능은 EF Core 2.1에서 도입되었습니다.
 
 지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예:
-```Csharp
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .UseLazyLoadingProxies()
         .UseSqlServer(myConnectionString);
 ```
 또는 AddDbContext를 사용하는 경우:
-```Csharp
-    .AddDbContext<BloggingContext>(
-        b => b.UseLazyLoadingProxies()
-              .UseSqlServer(myConnectionString));
+```csharp
+.AddDbContext<BloggingContext>(
+    b => b.UseLazyLoadingProxies()
+          .UseSqlServer(myConnectionString));
 ```
 EF Core에서 재정의할 수 있는 모든 탐색 속성에 대해 지연 로드를 사용합니다. 즉, `virtual`이어야 하고 상속될 수 있는 클래스에 있어야 합니다. 예를 들어 다음 엔터티에서 `Post.Blog` 및 `Blog.Posts` 탐색 속성은 지연 로드됩니다.
-```Csharp
+```csharp
 public class Blog
 {
     public int Id { get; set; }
@@ -188,7 +188,7 @@ public class Post
 ### <a name="lazy-loading-without-proxies"></a>프록시 없는 지연 로드
 
 지연 로드 프록시는 [엔터티 형식 생성자](../modeling/constructors.md)에 설명된 대로 `ILazyLoader` 서비스를 엔터티에 삽입하여 작동합니다. 예:
-```Csharp
+```csharp
 public class Blog
 {
     private ICollection<Post> _posts;
@@ -209,7 +209,7 @@ public class Blog
 
     public ICollection<Post> Posts
     {
-        get => LazyLoader?.Load(this, ref _posts);
+        get => LazyLoader.Load(this, ref _posts);
         set => _posts = value;
     }
 }
@@ -235,13 +235,13 @@ public class Post
 
     public Blog Blog
     {
-        get => LazyLoader?.Load(this, ref _blog);
+        get => LazyLoader.Load(this, ref _blog);
         set => _blog = value;
     }
 }
 ```
-이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 그러나 엔터티 형식을 EF Core 어셈블리에 결합하는 `ILazyLoader` 서비스에 대한 참조는 필요합니다. 이렇게 하지 않으려면 EF Core에서 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예:
-```Csharp
+이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 패키지에 정의된 `ILazyLoader` 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예:
+```csharp
 public class Blog
 {
     private ICollection<Post> _posts;
@@ -262,7 +262,7 @@ public class Blog
 
     public ICollection<Post> Posts
     {
-        get => LazyLoader?.Load(this, ref _posts);
+        get => LazyLoader.Load(this, ref _posts);
         set => _posts = value;
     }
 }
@@ -288,13 +288,13 @@ public class Post
 
     public Blog Blog
     {
-        get => LazyLoader?.Load(this, ref _blog);
+        get => LazyLoader.Load(this, ref _blog);
         set => _blog = value;
     }
 }
 ```
 위의 코드에서는 `Load` 확장 메서드를 사용하여 대리자 사용을 좀 더 깔끔하게 합니다.
-```Csharp
+```csharp
 public static class PocoLoadingExtensions
 {
     public static TRelated Load<TRelated>(
@@ -311,7 +311,7 @@ public static class PocoLoadingExtensions
 }
 ```
 > [!NOTE]  
-> 지연 로드 대리자에 대한 생성자 매개 변수를 “lazyLoader”라고 합니다. 다른 이름을 사용하는 구성은 향후 릴리스에 포함될 예정입니다.
+> 지연 로드 대리자에 대한 생성자 매개 변수를 “lazyLoader”라고 합니다. 이와 다른 이름을 사용하는 구성은 향후 릴리스에 포함될 예정입니다.
 
 ## <a name="related-data-and-serialization"></a>관련 데이터 및 serialization
 
@@ -323,7 +323,7 @@ EF Core는 탐색 속성을 자동으로 수정하므로 개체 그래프의 주
 
 ASP.NET Core를 사용하는 경우 개체 그래프에서 찾은 주기를 무시하도록 Json.NET을 구성할 수 있습니다. 이 작업은 `Startup.cs`의 `ConfigureServices(...)` 메서드에서 수행됩니다.
 
-``` csharp
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     ...
