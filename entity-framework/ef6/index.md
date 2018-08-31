@@ -4,12 +4,12 @@ author: divega
 ms.date: 2016-10-23
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
 uid: ef6/index
-ms.openlocfilehash: 00e5f36788be599ea2e2b44480107f14e2f026c3
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 5218f3f8149b15cb5ad3a14779dfa9c23eb71a0e
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998031"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152496"
 ---
 # <a name="entity-framework-6"></a>Entity Framework 6
 EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
@@ -29,7 +29,7 @@ EF6는 다양한 인기 O/RM 기능을 구현합니다.
   - 저장 프로시저
 - 엔터티 모델을 만드는 시각적 디자이너.
 - 코드를 작성하여 엔터티 모델을 만드는 "Code First" 환경
-- 기존 데이터베이스로 모델을 생성한 후 직접 편집할 수도 있고, 처음부터 새로 만든 후 새 데이터베이스를 생성하는 데 사용할 수도 있습니다.
+- 기존 데이터베이스에서 모델을 생성한 후 직접 편집할 수도 있고, 처음부터 새로 만든 후 새 데이터베이스를 생성하는 데 사용할 수도 있습니다.
 - ASP.NET을 포함한 .NET Framework 응용 프로그램 모델과 통합, 데이터 바인딩을 통해 WPF 및 WinForms와 통합.
 - ADO.NET 및 SQL Server, Oracle, MySQL, SQLite, PostgreSQL, DB2 등에 연결할 수 있는 다양한 공급자를 기반으로 하는 데이터베이스 연결.
 

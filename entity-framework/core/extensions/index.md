@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 7/3/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: e9f9a6cbbceeb0379ddb5588b564b0d2a962795f
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e88bd01f79e05a9a3b0c0bbeecca89df178098a6
+ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995515"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43152454"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -37,6 +37,12 @@ Entity Developer는 ADO.NET Entity Framework, NHibernate, LinqConnect, Telerik D
 Visual Studio 2017+ 확장. 데이터베이스 또는 SQL Server 데이터베이스 프로젝트에서 DbContext 및 POCO 클래스를 리버스 엔지니어링하고 DbContext를 다양한 방법으로 시각화 및 검사할 수 있습니다.
 
 [GitHub Wiki](https://github.com/ErikEJ/SqlCeToolbox/wiki/EF-Core-Power-Tools)
+
+### <a name="entity-framework-visual-editor"></a>Entity Framework Visual Editor
+
+Entity Framework 6, Core 2.0 및 Core 2.1 클래스의 시각적 디자인을 위한 ORM 디자이너가 추가된 Visual Studio 2017 확장입니다. 코드는 T4 템플릿을 사용하여 생성되므로 필요에 맞게 완전히 사용자 지정할 수 있습니다. 열거형 및 클래스를 색으로 구분하는 기능처럼 상속, 단방향 및 양방향 연결이 모두 지원되며 디자인의 잠재적으로 난해한 부분을 설명하기 위한 텍스트 블록이 추가됩니다.
+
+[Marketplace](https://marketplace.visualstudio.com/items?itemName=michaelsawczyn.EFDesigner)
 
 ## <a name="extensions"></a>확장
 
