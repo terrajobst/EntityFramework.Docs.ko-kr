@@ -1,45 +1,43 @@
 ---
 title: 원시 SQL 쿼리 - EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
-ms.technology: entity-framework-core
 uid: core/querying/raw-sql
-ms.openlocfilehash: a1d554795dcd8a3e5b44e89ac014f538598461cc
-ms.sourcegitcommit: bdd06c9a591ba5e6d6a3ec046c80de98f598f3f3
+ms.openlocfilehash: 21cb688d6775039def3b0be12768da71b5d96531
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "42447706"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997146"
 ---
-# <a name="raw-sql-queries"></a><span data-ttu-id="f3fd2-102">원시 SQL 쿼리</span><span class="sxs-lookup"><span data-stu-id="f3fd2-102">Raw SQL Queries</span></span>
+# <a name="raw-sql-queries"></a><span data-ttu-id="770e6-102">원시 SQL 쿼리</span><span class="sxs-lookup"><span data-stu-id="770e6-102">Raw SQL Queries</span></span>
 
-<span data-ttu-id="f3fd2-103">Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 때 원시 SQL 쿼리로 드롭다운할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-103">Entity Framework Core allows you to drop down to raw SQL queries when working with a relational database.</span></span> <span data-ttu-id="f3fd2-104">이는 수행하려는 쿼리를 LINQ를 사용하여 표현할 수 없거나 LINQ 쿼리를 사용하면 비효율적인 SQL이 데이터베이스로 전송되는 경우 유용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-104">This can be useful if the query you want to perform can't be expressed using LINQ, or if using a LINQ query is resulting in inefficient SQL being sent to the database.</span></span> <span data-ttu-id="f3fd2-105">원시 SQL 쿼리는 엔터티 형식을 반환하거나 EF Core 2.1부터 모델에 포함된 [쿼리 형식](xref:core/modeling/query-types)을 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-105">Raw SQL queries can return entity types or, starting with EF Core 2.1, [query types](xref:core/modeling/query-types) that are part of your model.</span></span>
+<span data-ttu-id="770e6-103">Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 때 원시 SQL 쿼리로 드롭다운할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-103">Entity Framework Core allows you to drop down to raw SQL queries when working with a relational database.</span></span> <span data-ttu-id="770e6-104">이는 수행하려는 쿼리를 LINQ를 사용하여 표현할 수 없거나 LINQ 쿼리를 사용하면 비효율적인 SQL이 데이터베이스로 전송되는 경우 유용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-104">This can be useful if the query you want to perform can't be expressed using LINQ, or if using a LINQ query is resulting in inefficient SQL being sent to the database.</span></span> <span data-ttu-id="770e6-105">원시 SQL 쿼리는 엔터티 형식을 반환하거나 EF Core 2.1부터 모델에 포함된 [쿼리 형식](xref:core/modeling/query-types)을 반환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-105">Raw SQL queries can return entity types or, starting with EF Core 2.1, [query types](xref:core/modeling/query-types) that are part of your model.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="f3fd2-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
+> <span data-ttu-id="770e6-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
 
-## <a name="limitations"></a><span data-ttu-id="f3fd2-107">제한 사항</span><span class="sxs-lookup"><span data-stu-id="f3fd2-107">Limitations</span></span>
+## <a name="limitations"></a><span data-ttu-id="770e6-107">제한 사항</span><span class="sxs-lookup"><span data-stu-id="770e6-107">Limitations</span></span>
 
-<span data-ttu-id="f3fd2-108">원시 SQL 쿼리를 사용할 때는 몇 가지 제한 사항에 유의해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-108">There are a few limitations to be aware of when using raw SQL queries:</span></span>
+<span data-ttu-id="770e6-108">원시 SQL 쿼리를 사용할 때는 몇 가지 제한 사항에 유의해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-108">There are a few limitations to be aware of when using raw SQL queries:</span></span>
 
-* <span data-ttu-id="f3fd2-109">SQL 쿼리는 엔터티 또는 쿼리 형식의 모든 속성에 대해 데이터를 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-109">The SQL query must return data for all properties of the entity or query type.</span></span>
+* <span data-ttu-id="770e6-109">SQL 쿼리는 엔터티 또는 쿼리 형식의 모든 속성에 대해 데이터를 반환해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-109">The SQL query must return data for all properties of the entity or query type.</span></span>
 
-* <span data-ttu-id="f3fd2-110">결과 집합의 열 이름은 속성이 매핑되는 열 이름과 일치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-110">The column names in the result set must match the column names that properties are mapped to.</span></span> <span data-ttu-id="f3fd2-111">속성/열 매핑이 원시 SQL 쿼리에 대해 무시되고 결과 집합 열 이름이 속성 이름과 일치해야 한다는 점에서 EF6와 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-111">Note this is different from EF6 where property/column mapping was ignored for raw SQL queries and result set column names had to match the property names.</span></span>
+* <span data-ttu-id="770e6-110">결과 집합의 열 이름은 속성이 매핑되는 열 이름과 일치해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-110">The column names in the result set must match the column names that properties are mapped to.</span></span> <span data-ttu-id="770e6-111">속성/열 매핑이 원시 SQL 쿼리에 대해 무시되고 결과 집합 열 이름이 속성 이름과 일치해야 한다는 점에서 EF6와 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-111">Note this is different from EF6 where property/column mapping was ignored for raw SQL queries and result set column names had to match the property names.</span></span>
 
-* <span data-ttu-id="f3fd2-112">SQL 쿼리에 관련 데이터가 포함될 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-112">The SQL query cannot contain related data.</span></span> <span data-ttu-id="f3fd2-113">그러나 대부분의 경우 쿼리의 맨 위에서 `Include` 연산자를 사용하여 관련 데이터를 반환하도록 작성할 수 있습니다([관련 데이터 포함](#including-related-data) 참조).</span><span class="sxs-lookup"><span data-stu-id="f3fd2-113">However, in many cases you can compose on top of the query using the `Include` operator to return related data (see [Including related data](#including-related-data)).</span></span>
+* <span data-ttu-id="770e6-112">SQL 쿼리에 관련 데이터가 포함될 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-112">The SQL query cannot contain related data.</span></span> <span data-ttu-id="770e6-113">그러나 대부분의 경우 쿼리의 맨 위에서 `Include` 연산자를 사용하여 관련 데이터를 반환하도록 작성할 수 있습니다([관련 데이터 포함](#including-related-data) 참조).</span><span class="sxs-lookup"><span data-stu-id="770e6-113">However, in many cases you can compose on top of the query using the `Include` operator to return related data (see [Including related data](#including-related-data)).</span></span>
 
-* <span data-ttu-id="f3fd2-114">이 메서드에 전달된 `SELECT` 문은 일반적으로 구성 가능해야 합니다. EF Core가 서버에서 추가 쿼리 연산자를 평가해야 하는 경우(예: `FromSql` 다음에 적용된 LINQ 연산자를 변환해야 하는 경우) 제공된 SQL은 하위 쿼리로 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-114">`SELECT` statements passed to this method should generally be composable: If EF Core needs to evaluate additional query operators on the server (for example, to translate LINQ operators applied after `FromSql`), the supplied SQL will be treated as a subquery.</span></span> <span data-ttu-id="f3fd2-115">즉, 전달된 SQL에는 다음과 같이 하위 쿼리에서 유효하지 않은 문자나 옵션을 포함할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-115">This means that the SQL passed should not contain any characters or options that are not valid on a subquery, such as:</span></span>
-  * <span data-ttu-id="f3fd2-116">후행 세미콜론</span><span class="sxs-lookup"><span data-stu-id="f3fd2-116">a trailing semicolon</span></span>
-  * <span data-ttu-id="f3fd2-117">SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)</span><span class="sxs-lookup"><span data-stu-id="f3fd2-117">On SQL Server, a trailing query-level hint (for example, `OPTION (HASH JOIN)`)</span></span>
-  * <span data-ttu-id="f3fd2-118">SQL Server의 `SELECT` 절에서 `TOP 100 PERCENT`와 함께 제공되지 않는 `ORDER BY` 절</span><span class="sxs-lookup"><span data-stu-id="f3fd2-118">On SQL Server, an `ORDER BY` clause that is not accompanied of `TOP 100 PERCENT` in the `SELECT` clause</span></span>
+* <span data-ttu-id="770e6-114">이 메서드에 전달된 `SELECT` 문은 일반적으로 구성 가능해야 합니다. EF Core가 서버에서 추가 쿼리 연산자를 평가해야 하는 경우(예: `FromSql` 다음에 적용된 LINQ 연산자를 변환해야 하는 경우) 제공된 SQL은 하위 쿼리로 처리됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-114">`SELECT` statements passed to this method should generally be composable: If EF Core needs to evaluate additional query operators on the server (for example, to translate LINQ operators applied after `FromSql`), the supplied SQL will be treated as a subquery.</span></span> <span data-ttu-id="770e6-115">즉, 전달된 SQL에는 다음과 같이 하위 쿼리에서 유효하지 않은 문자나 옵션을 포함할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-115">This means that the SQL passed should not contain any characters or options that are not valid on a subquery, such as:</span></span>
+  * <span data-ttu-id="770e6-116">후행 세미콜론</span><span class="sxs-lookup"><span data-stu-id="770e6-116">a trailing semicolon</span></span>
+  * <span data-ttu-id="770e6-117">SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)</span><span class="sxs-lookup"><span data-stu-id="770e6-117">On SQL Server, a trailing query-level hint (for example, `OPTION (HASH JOIN)`)</span></span>
+  * <span data-ttu-id="770e6-118">SQL Server의 `SELECT` 절에서 `TOP 100 PERCENT`와 함께 제공되지 않는 `ORDER BY` 절</span><span class="sxs-lookup"><span data-stu-id="770e6-118">On SQL Server, an `ORDER BY` clause that is not accompanied of `TOP 100 PERCENT` in the `SELECT` clause</span></span>
 
-* <span data-ttu-id="f3fd2-119">`SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-119">SQL statements other than `SELECT` are recognized automatically as non-composable.</span></span> <span data-ttu-id="f3fd2-120">따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-120">As a consequence, the full results of stored procedures are always returned to the client and any LINQ operators applied after `FromSql` are evaluated in-memory.</span></span>
+* <span data-ttu-id="770e6-119">`SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-119">SQL statements other than `SELECT` are recognized automatically as non-composable.</span></span> <span data-ttu-id="770e6-120">따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-120">As a consequence, the full results of stored procedures are always returned to the client and any LINQ operators applied after `FromSql` are evaluated in-memory.</span></span>
 
-## <a name="basic-raw-sql-queries"></a><span data-ttu-id="f3fd2-121">기본 원시 SQL 쿼리</span><span class="sxs-lookup"><span data-stu-id="f3fd2-121">Basic raw SQL queries</span></span>
+## <a name="basic-raw-sql-queries"></a><span data-ttu-id="770e6-121">기본 원시 SQL 쿼리</span><span class="sxs-lookup"><span data-stu-id="770e6-121">Basic raw SQL queries</span></span>
 
-<span data-ttu-id="f3fd2-122">*FromSql* 확장 메서드를 사용하여 원시 SQL 쿼리를 기반으로 한 LINQ 쿼리를 시작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-122">You can use the *FromSql* extension method to begin a LINQ query based on a raw SQL query.</span></span>
+<span data-ttu-id="770e6-122">*FromSql* 확장 메서드를 사용하여 원시 SQL 쿼리를 기반으로 한 LINQ 쿼리를 시작할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-122">You can use the *FromSql* extension method to begin a LINQ query based on a raw SQL query.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -48,7 +46,7 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-<span data-ttu-id="f3fd2-123">원시 SQL 쿼리를 사용하여 저장 프로시저를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-123">Raw SQL queries can be used to execute a stored procedure.</span></span>
+<span data-ttu-id="770e6-123">원시 SQL 쿼리를 사용하여 저장 프로시저를 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-123">Raw SQL queries can be used to execute a stored procedure.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -57,11 +55,11 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-## <a name="passing-parameters"></a><span data-ttu-id="f3fd2-124">매개 변수 전달</span><span class="sxs-lookup"><span data-stu-id="f3fd2-124">Passing parameters</span></span>
+## <a name="passing-parameters"></a><span data-ttu-id="770e6-124">매개 변수 전달</span><span class="sxs-lookup"><span data-stu-id="770e6-124">Passing parameters</span></span>
 
-<span data-ttu-id="f3fd2-125">SQL을 허용하는 API와 마찬가지로 사용자 입력을 매개 변수화하여 SQL 삽입 공격으로부터 보호해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-125">As with any API that accepts SQL, it is important to parameterize any user input to protect against a SQL injection attack.</span></span> <span data-ttu-id="f3fd2-126">SQL 쿼리 문자열에 매개 변수 자리 표시자를 포함한 다음, 매개 변수 값을 추가 인수로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-126">You can include parameter placeholders in the SQL query string and then supply parameter values as additional arguments.</span></span> <span data-ttu-id="f3fd2-127">제공하는 매개 변수 값은 모두 `DbParameter`로 자동 변환됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-127">Any parameter values you supply will automatically be converted to a `DbParameter`.</span></span>
+<span data-ttu-id="770e6-125">SQL을 허용하는 API와 마찬가지로 사용자 입력을 매개 변수화하여 SQL 삽입 공격으로부터 보호해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-125">As with any API that accepts SQL, it is important to parameterize any user input to protect against a SQL injection attack.</span></span> <span data-ttu-id="770e6-126">SQL 쿼리 문자열에 매개 변수 자리 표시자를 포함한 다음, 매개 변수 값을 추가 인수로 제공할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-126">You can include parameter placeholders in the SQL query string and then supply parameter values as additional arguments.</span></span> <span data-ttu-id="770e6-127">제공하는 매개 변수 값은 모두 `DbParameter`로 자동 변환됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-127">Any parameter values you supply will automatically be converted to a `DbParameter`.</span></span>
 
-<span data-ttu-id="f3fd2-128">다음 예제에서는 저장 프로시저에 단일 매개 변수를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-128">The following example passes a single parameter to a stored procedure.</span></span> <span data-ttu-id="f3fd2-129">`String.Format` 구문처럼 보일 수 있지만 제공된 값은 매개 변수로 래핑되고 생성된 매개 변수 이름은 `{0}` 자리 표시자가 지정된 위치에 삽입됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-129">While this may look like `String.Format` syntax, the supplied value is wrapped in a parameter and the generated parameter name inserted where the `{0}` placeholder was specified.</span></span>
+<span data-ttu-id="770e6-128">다음 예제에서는 저장 프로시저에 단일 매개 변수를 전달합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-128">The following example passes a single parameter to a stored procedure.</span></span> <span data-ttu-id="770e6-129">`String.Format` 구문처럼 보일 수 있지만 제공된 값은 매개 변수로 래핑되고 생성된 매개 변수 이름은 `{0}` 자리 표시자가 지정된 위치에 삽입됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-129">While this may look like `String.Format` syntax, the supplied value is wrapped in a parameter and the generated parameter name inserted where the `{0}` placeholder was specified.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -72,7 +70,7 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-<span data-ttu-id="f3fd2-130">동일한 쿼리이지만 문자열 보간 구문을 사용하면 EF Core 2.0 이상에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-130">This is the same query but using string interpolation syntax, which is supported in EF Core 2.0 and above:</span></span>
+<span data-ttu-id="770e6-130">동일한 쿼리이지만 문자열 보간 구문을 사용하면 EF Core 2.0 이상에서 지원됩니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-130">This is the same query but using string interpolation syntax, which is supported in EF Core 2.0 and above:</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -83,7 +81,7 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-<span data-ttu-id="f3fd2-131">DbParameter를 생성하고 매개 변수 값으로 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-131">You can also construct a DbParameter and supply it as a parameter value.</span></span> <span data-ttu-id="f3fd2-132">그러면 SQL 쿼리 문자열에 명명된 매개 변수를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-132">This allows you to use named parameters in the SQL query string</span></span>
+<span data-ttu-id="770e6-131">DbParameter를 생성하고 매개 변수 값으로 제공할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-131">You can also construct a DbParameter and supply it as a parameter value.</span></span> <span data-ttu-id="770e6-132">그러면 SQL 쿼리 문자열에 명명된 매개 변수를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-132">This allows you to use named parameters in the SQL query string</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -94,11 +92,11 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-## <a name="composing-with-linq"></a><span data-ttu-id="f3fd2-133">LINQ로 작성</span><span class="sxs-lookup"><span data-stu-id="f3fd2-133">Composing with LINQ</span></span>
+## <a name="composing-with-linq"></a><span data-ttu-id="770e6-133">LINQ로 작성</span><span class="sxs-lookup"><span data-stu-id="770e6-133">Composing with LINQ</span></span>
 
-<span data-ttu-id="f3fd2-134">SQL 쿼리를 데이터베이스에서 작성할 수 있는 경우 LINQ 연산자를 사용하여 초기 원시 SQL 쿼리의 맨 위에 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-134">If the SQL query can be composed on in the database, then you can compose on top of the initial raw SQL query using LINQ operators.</span></span> <span data-ttu-id="f3fd2-135">SQL 쿼리는 `SELECT` 키워드로 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-135">SQL queries that can be composed on being with the `SELECT` keyword.</span></span>
+<span data-ttu-id="770e6-134">SQL 쿼리를 데이터베이스에서 작성할 수 있는 경우 LINQ 연산자를 사용하여 초기 원시 SQL 쿼리의 맨 위에 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-134">If the SQL query can be composed on in the database, then you can compose on top of the initial raw SQL query using LINQ operators.</span></span> <span data-ttu-id="770e6-135">SQL 쿼리는 `SELECT` 키워드로 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-135">SQL queries that can be composed on being with the `SELECT` keyword.</span></span>
 
-<span data-ttu-id="f3fd2-136">다음 예제에서는 TVF(테이블 반환 함수)에서 선택한 다음, LINQ로 이를 작성하여 필터링 및 정렬을 수행하는 원시 SQL 쿼리를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-136">The following example uses a raw SQL query that selects from a Table-Valued Function (TVF) and then composes on it using LINQ to perform filtering and sorting.</span></span>
+<span data-ttu-id="770e6-136">다음 예제에서는 TVF(테이블 반환 함수)에서 선택한 다음, LINQ로 이를 작성하여 필터링 및 정렬을 수행하는 원시 SQL 쿼리를 사용합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-136">The following example uses a raw SQL query that selects from a Table-Valued Function (TVF) and then composes on it using LINQ to perform filtering and sorting.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -111,9 +109,9 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-### <a name="including-related-data"></a><span data-ttu-id="f3fd2-137">관련 데이터 포함</span><span class="sxs-lookup"><span data-stu-id="f3fd2-137">Including related data</span></span>
+### <a name="including-related-data"></a><span data-ttu-id="770e6-137">관련 데이터 포함</span><span class="sxs-lookup"><span data-stu-id="770e6-137">Including related data</span></span>
 
-<span data-ttu-id="f3fd2-138">LINQ 연산자로 작성하면 쿼리에 관련 데이터를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-138">Composing with LINQ operators can be used to include related data in the query.</span></span>
+<span data-ttu-id="770e6-138">LINQ 연산자로 작성하면 쿼리에 관련 데이터를 포함할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-138">Composing with LINQ operators can be used to include related data in the query.</span></span>
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -126,4 +124,4 @@ var blogs = context.Blogs
 ```
 
 > [!WARNING]  
-> <span data-ttu-id="f3fd2-139">**원시 SQL 쿼리에 항상 매개 변수화를 사용하세요.** `FromSql` 및 `ExecuteSqlCommand`와 같이 원시 SQL 문자열을 허용하는 API에서는 값을 매개 변수로 쉽게 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-139">**Always use parameterization for raw SQL queries:** APIs that accept a raw SQL string such as `FromSql` and `ExecuteSqlCommand` allow values to be easily passed as parameters.</span></span> <span data-ttu-id="f3fd2-140">사용자 입력의 유효성을 검사할 뿐만 아니라 원시 SQL 쿼리/명령에서 사용되는 모든 값에 항상 매개 변수화를 사용하세요.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-140">In addition to validating user input, always use parameterization for any values used in a raw SQL query/command.</span></span> <span data-ttu-id="f3fd2-141">문자열 연결을 사용하여 쿼리 문자열의 일부를 동적으로 작성하는 경우 모든 입력의 유효성을 검사하여 SQL 삽입 공격으로부터 보호해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="f3fd2-141">If you are using string concatenation to dynamically build any part of the query string then you are responsible for validating any input to protect against SQL injection attacks.</span></span>
+> <span data-ttu-id="770e6-139">**원시 SQL 쿼리에 항상 매개 변수화를 사용하세요.** `FromSql` 및 `ExecuteSqlCommand`와 같이 원시 SQL 문자열을 허용하는 API에서는 값을 매개 변수로 쉽게 전달할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-139">**Always use parameterization for raw SQL queries:** APIs that accept a raw SQL string such as `FromSql` and `ExecuteSqlCommand` allow values to be easily passed as parameters.</span></span> <span data-ttu-id="770e6-140">사용자 입력의 유효성을 검사할 뿐만 아니라 원시 SQL 쿼리/명령에서 사용되는 모든 값에 항상 매개 변수화를 사용하세요.</span><span class="sxs-lookup"><span data-stu-id="770e6-140">In addition to validating user input, always use parameterization for any values used in a raw SQL query/command.</span></span> <span data-ttu-id="770e6-141">문자열 연결을 사용하여 쿼리 문자열의 일부를 동적으로 작성하는 경우 모든 입력의 유효성을 검사하여 SQL 삽입 공격으로부터 보호해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="770e6-141">If you are using string concatenation to dynamically build any part of the query string then you are responsible for validating any input to protect against SQL injection attacks.</span></span>
