@@ -1,16 +1,14 @@
 ---
 title: 동시성 충돌 처리 - EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 03/03/2018
-ms.technology: entity-framework-core
 uid: core/saving/concurrency
-ms.openlocfilehash: 2d8909585201a45eb020537847800f125b3b0120
-ms.sourcegitcommit: 72e59e6af86b568653e1b29727529dfd7f65d312
+ms.openlocfilehash: e050b17bfa31a4785161c700bc0355e83162b405
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "42447766"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42993114"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 

@@ -1,17 +1,15 @@
 ---
 title: 클라이언트 및 서버 평가 - EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 10/27/2016
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
-ms.technology: entity-framework-core
 uid: core/querying/client-eval
-ms.openlocfilehash: e1852b780041e9e92fb4d25129175346e3a601a3
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 78f8d9576748a725634665f915def80b5a13820c
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052653"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997879"
 ---
 # <a name="client-vs-server-evaluation"></a>클라이언트 및 서버 평가
 

@@ -1,17 +1,15 @@
 ---
 title: 비동기 저장 - EF Core
 author: rowanmiller
-ms.author: divega
 ms.date: 01/24/2017
 ms.assetid: b64a606e-ecd9-4807-829a-b6ec05ade33f
-ms.technology: entity-framework-core
 uid: core/saving/async
-ms.openlocfilehash: 640e5f131b0e9ef4e5028d1dcaf80f3e5bbd9d9b
-ms.sourcegitcommit: 01a75cd483c1943ddd6f82af971f07abde20912e
+ms.openlocfilehash: 6f482a77300ff2930953686751a579b022bf6f77
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/27/2017
-ms.locfileid: "26052623"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42997284"
 ---
 # <a name="asynchronous-saving"></a>비동기 저장
 
