@@ -2,19 +2,13 @@
 title: CSDL 사양-EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: c54255f4-253f-49eb-bec8-ad7927ac2fa3
-caps.latest.revision: 3
-ms.openlocfilehash: 0ece73a19fe7ea244905bccb728ab2a104c5179f
-ms.sourcegitcommit: f05e7b62584cf228f17390bb086a61d505712e1b
+ms.openlocfilehash: 88669cf80f9a792fda7d191d9f6be2b1734691df
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/08/2018
-ms.locfileid: "39122397"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42994731"
 ---
 # <a name="csdl-specification"></a>CSDL 사양
 CSDL(개념 스키마 정의 언어)은 데이터 기반 응용 프로그램의 개념적 모델을 구성하는 엔터티, 관계 및 함수를 설명하는 XML 기반 언어입니다. 이 개념적 모델은 Entity Framework 또는 WCF Data Services에서 사용할 수 있습니다. CSDL을 사용 하 여 설명 하는 메타 데이터 엔터티 및 데이터 원본에 개념적 모델에 정의 된 관계를 매핑할 Entity Framework에서 사용 됩니다. 자세한 내용은 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md) 하 고 [MSL 사양](~/ef6/modeling/designer/advanced/edmx/msl-spec.md)합니다.
@@ -64,7 +58,7 @@ CSDL 버전은 XML 네임스페이스로 식별됩니다.
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **연결** 정의 하는 요소는 **CustomerOrders** 외래 키에서 노출 되지 않는 하는 경우 연결을 **고객** 및  **순서** 엔터티 형식입니다. **복합성** 각각에 대 한 값 **끝** 나타내려면 연결의 많은 **주문** 에 연결할 수 있는 **고객**, 하지만 하나만 **고객** 와 연결 될 수는 **순서**합니다. 또한 합니다 **OnDelete** 요소에서 나타내는 모든 **주문** 특정 관련 된 **고객** 로 로드 된 및 ObjectContext 삭제할 경우는 **고객** 삭제 됩니다.
 
@@ -128,7 +122,7 @@ CSDL 버전은 XML 네임스페이스로 식별됩니다.
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityContainer** 요소 두 개가 **AssociationSet** 요소:
 
@@ -190,7 +184,7 @@ CSDL 버전은 XML 네임스페이스로 식별됩니다.
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제를 사용 하는 모델 정의 함수를 보여 줍니다.는 **CollectionType** 함수의 컬렉션을 반환 하는지 지정 하는 요소 **Person** 엔터티 형식 (합니다 를사용하여지정된대로**ElementType** 특성).
 
@@ -281,7 +275,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 복합 형식을 보여 줍니다 **주소**를 사용 하 여 합니다 **EdmSimpleType** 속성 **StreetAddress**, **City**,  **StateOrProvince**하십시오 **국가**, 및 **PostalCode**합니다.
 
@@ -327,7 +321,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **DefiningExpression** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 한 **DefiningExpression** 출판 된 이후 지난 연도 수를 반환 하는 함수를 정의 하는 요소입니다. 콘텐츠를 **DefiningExpression** Entity SQL에서 요소가 기록 됩니다.
 
@@ -367,7 +361,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **ReferentialConstraint** 요소 정의의 일부로 사용 되는 **PublishedBy** 연결 합니다. **PublisherId** 의 속성을 **책** 엔터티 형식 참조 제약 조건의 종속 끝 이루어집니다.
 
@@ -404,7 +398,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **설명서** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **설명서** EntityType 요소의 자식 요소로 요소입니다. 아래 코드 조각에에서 있던 경우 CSDL 콘텐츠를.edmx 파일의 내용을 합니다 **요약** 하 고 **LongDescription** 요소는 Visual Studio에 나타납니다 **속성** 클릭할 때 창이 `Customer` 엔터티 형식입니다.
 
@@ -456,7 +450,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **연결** 정의 하는 요소는 **CustomerOrders** 연결 합니다. **복합성** 각각에 대 한 값 **끝** 나타내려면 연결의 많은 **주문** 에 연결할 수 있는 **고객**, 하지만 하나만 **고객** 와 연결 될 수는 **순서**합니다. 또한 합니다 **OnDelete** 요소에서 나타내는 모든 **주문** 관련 된 특정 **고객** 는 로드 된 ObjectContext 됩니다 삭제 된 경우에는 **고객** 삭제 됩니다.
 
@@ -500,7 +494,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **EntityContainer** 요소 두 개가 **AssociationSet** 요소 두 개의 각 **끝** 요소:
 
@@ -554,7 +548,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityContainer** 세 개의 엔터티 집합과 두 개의 연결 집합을 정의 하는 요소입니다.
 
@@ -609,7 +603,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityContainer** 3 개 요소 **EntitySet** 요소:
 
@@ -692,7 +686,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 3 개 요소 **속성** 요소 및 두 개의 **NavigationProperty** 요소:
 
@@ -741,7 +735,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EnumType** 3 개 요소 **멤버** 요소:
 
@@ -786,7 +780,7 @@ A **함수** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할 
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 한 **함수** 강사가 고용 된 이후 지난 연도 수를 반환 하는 함수를 정의 하는 요소입니다.
 
@@ -835,7 +829,7 @@ A **함수** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할 
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **FunctionImport** 하나의 매개 변수를 받아들이고 엔터티 형식의 컬렉션을 반환 하는 요소:
 
@@ -863,7 +857,7 @@ A **함수** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할 
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **키** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 아래 예제에서는 명명 된 엔터티 형식을 정의 **책**합니다. 엔터티 키가 참조 하 여 정의 된 **ISBN** 엔터티 형식의 속성입니다.
 
@@ -925,7 +919,7 @@ A **함수** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할 
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EnumType** 3 개 요소 **멤버** 요소:
 
@@ -971,7 +965,7 @@ A **NavigationProperty** 요소 (나열 된 순서로)는 다음 자식 요소�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 엔터티 형식 정의 (**Book**) 두 개의 탐색 속성 (**PublishedBy** 하 고 **WrittenBy**):
 
@@ -1022,7 +1016,7 @@ A **NavigationProperty** 요소 (나열 된 순서로)는 다음 자식 요소�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **연결** 정의 하는 요소는 **CustomerOrders** 연결 합니다. **OnDelete** 요소에서 나타내는 모든 **주문** 관련 된 특정 **고객** ObjectContext에 로드 되어 및 삭제 될 때 합니다  **고객** 삭제 됩니다.
 
@@ -1072,7 +1066,7 @@ A **매개 변수** 요소 (자식으로는 **FunctionImport** 요소) csdl로 �
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **FunctionImport** 하나를 사용 하 여 요소 **매개 변수** 자식 요소입니다. 함수는 하나의 입력 매개 변수를 받아들이고 엔터티 형식의 컬렉션을 반환합니다.
 
@@ -1133,7 +1127,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **함수** 하나를 사용 하는 요소 **매개 변수** 자식 요소를 함수 매개 변수를 정의 합니다.
 
@@ -1172,7 +1166,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **ReferentialConstraint** 정의의 일부인 요소를 **PublishedBy** 연결 합니다. **Id** 의 속성을 **게시자** 엔터티 형식 참조 제약 조건의 주 끝 이루어집니다.
 
@@ -1242,7 +1236,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 3 개 요소 **속성** 요소:
 
@@ -1318,7 +1312,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
 
  
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 다음 예와 **속성** 모델 정의 함수 반환 형식의 모양을 정의 하는 데 사용 되는 요소입니다.
 
@@ -1373,7 +1367,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 아래 예제에서는 엔터티 형식 정의 (**책**). 엔터티 키가 참조 하 여 정의 된 **ISBN** 엔터티 형식의 속성입니다.
 
@@ -1444,7 +1438,7 @@ A **ReferenceType** 요소 (나열 된 순서로)는 다음 자식 요소를 포
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **ReferenceType** 의 자식으로 사용 되는 요소는 **매개 변수** 요소에 대 한 참조를 받아들이는 모델 정의 함수에는 **Person** 엔터티 형식:
 
@@ -1496,7 +1490,7 @@ A **ReferentialConstraint** 요소 (나열 된 순서로)는 다음 자식 요�
 
 합니다 **ReferentialConstraint** 요소는 원하는 수의 주석 특성 (사용자 지정 XML 특성)를 포함할 수 있습니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **ReferentialConstraint** 요소 정의의 일부로 사용 되는 **PublishedBy** 연결 합니다.
 
@@ -1551,7 +1545,7 @@ A **ReferentialConstraint** 요소 (나열 된 순서로)는 다음 자식 요�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 한 **함수** 책이 인쇄 된 연수를 반환 하는 함수를 정의 하는 요소입니다. 반환 형식으로 지정 된 참고 합니다 **형식** 특성을 **ReturnType** (Function) 요소.
 
@@ -1592,7 +1586,7 @@ A **ReferentialConstraint** 요소 (나열 된 순서로)는 다음 자식 요�
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 한 **FunctionImport** 서적과 게시자를 반환 하는 합니다. 함수는 두 개의 결과 집합 및 두 개의 반환 **ReturnType** (FunctionImport) 요소가 지정 되어 있습니다.
 
@@ -1625,7 +1619,7 @@ A **RowType** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **RowType** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 모델 정의 함수를 **CollectionType** 는 반환 행 컬렉션을 지정 하는 요소 (에 지정 된 대로 합니다 **RowType** 요소).
 
@@ -1689,7 +1683,7 @@ A **스키마** 요소 0 개 이상의 Annotation 요소를 포함할 수 있습
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **스키마** 포함 하는 요소는 **EntityContainer** 요소, 두 **EntityType** 요소와 **연결** 요소입니다.
 
@@ -1787,7 +1781,7 @@ A **TypeRef** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 모델 정의 함수를 **TypeRef** 요소 (자식으로는 **CollectionType** 요소) 함수 컬렉션을 허용 하는지 지정  **부서** 엔터티 형식입니다.
 
@@ -1838,7 +1832,7 @@ A **TypeRef** 요소 (나열 된 순서로)는 다음 자식 요소를 포함할
 
  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **사용 하 여** 다른 곳에 정의 된 네임 스페이스를 가져오는 데 사용 되는 요소입니다. 네임 스페이스는 **스키마** 표시 된 요소는 `BooksModel`합니다. `Address` 속성에는 `Publisher` **EntityType** 에 정의 된 복합 형식인는 `ExtendedBooksModel` 네임 스페이스 (사용 하 여 가져온를 **사용 하 여** 요소).
 
@@ -1879,7 +1873,7 @@ CSDL(개념 스키마 정의 언어)의 주석 특성은 개념적 모델의 사
 
 주석 특성을 사용하여 개념적 모델의 요소에 대한 추가 메타데이터를 제공할 수 있습니다. Annotation 요소에 포함 된 메타 데이터 System.Data.Metadata.Edm 네임 스페이스의 클래스를 사용 하 여 런타임에 액세스할 수 있습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 주석 특성을 사용 하 여 요소 (**CustomAttribute**). 이 예제에서는 엔터티 형식 요소에 적용된 Annotation 요소도 보여 줍니다.
 
@@ -1949,7 +1943,7 @@ CSDL(개념 스키마 정의 언어)의 Annotation 요소는 개념적 모델의
 
 Annotation 요소를 사용하여 개념적 모델의 요소에 대한 추가 메타데이터를 제공할 수 있습니다. .NET Framework 버전 4부터 annotation 요소에 포함 된 메타 데이터에 액세스할 수 있습니다 런타임 System.Data.Metadata.Edm 네임 스페이스의 클래스를 사용 하 여 합니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 주석 요소를 사용 하 여 요소 (**CustomElement**). 다음 예제에서는 엔터티 형식 요소에 적용된 주석 특성도 보여 줍니다.
 
@@ -2077,7 +2071,7 @@ CSDL(개념 스키마 정의 언어)의 패싯은 엔터티 형식 및 복합 �
 >[!NOTE]
 > 개념적 모델에서 데이터베이스를 생성 하는 경우 데이터베이스 생성 마법사의 값을 인식 합니다 **StoreGeneratedPattern** 특성을 **속성** 요소 다음의 경우 네임 스페이스: http://schemas.microsoft.com/ado/2009/02/edm/annotation합니다. 특성에 대해 지원 되는 값은 **Identity** 하 고 **계산 됨**합니다. 값이 **Identity** 는 데이터베이스에서 생성 된 id 값을 사용 하 여 데이터베이스 열을 만듭니다. 값이 **계산 됨** 는 데이터베이스에서 계산 되는 값을 사용 하 여 열을 만듭니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 엔터티 형식의 속성에 적용된 패싯을 보여 줍니다.
 

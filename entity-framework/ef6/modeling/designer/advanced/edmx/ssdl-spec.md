@@ -2,19 +2,13 @@
 title: SSDL 사양-EF6
 author: divega
 ms.date: 2016-10-23
-ms.prod: entity-framework
-ms.author: divega
-ms.manager: avickers
-ms.technology: entity-framework-6
-ms.topic: article
 ms.assetid: a4af4b1a-40f4-48cc-b2e0-fa8f5d9d5419
-caps.latest.revision: 3
-ms.openlocfilehash: a9977c80d9a9401afdcad2284a705bcb28790fb8
-ms.sourcegitcommit: 9ae4473425c5e76337c9d032b0e5dbfedf1fcf57
+ms.openlocfilehash: 35c560d88e5078a7fc4c07b76020f3ad7d0735e1
+ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "39122722"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "42995281"
 ---
 # <a name="ssdl-specification"></a>SSDL 사양
 SSDL(저장소 스키마 정의 언어)은 Entity Framework 응용 프로그램의 저장소 모델을 설명하는 XML 기반 언어입니다.
@@ -53,7 +47,7 @@ SSDL 버전은 XML 네임스페이스로 식별됩니다.
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **연결** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **연결** 사용 하는 요소를 **ReferentialConstraint** 참여 하는 열을 지정 하는 요소는 **FK\_CustomerOrders**  foreign key 제약 조건:
 
@@ -100,7 +94,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **AssociationSet** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **AssociationSet** 나타내는 요소는 `FK_CustomerOrders` 기본 데이터베이스의 외래 키 제약 조건:
 
@@ -119,7 +113,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **CollectionType** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 함수를 **CollectionType** 함수 행 컬렉션을 반환 하는지 지정 하는 요소입니다.
 
@@ -147,7 +141,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 
 적용할 수 없는 특성을 **CommandText** 요소입니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **함수** 자식 요소 **CommandText** 요소입니다. 노출 된 **UpdateProductInOrder** ObjectContext의 메서드를 개념적 모델로 가져와서 역할도 합니다.  
 
@@ -210,7 +204,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **종속** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 연결 요소를 **ReferentialConstraint** 참여 하는 열을 지정 하는 요소는 **FK\_CustomerOrders** 외래 키 제약 조건입니다. **종속** 요소를 지정 합니다 **CustomerId** 열의 합니다 **순서** 테이블 제약 조건의 종속 끝으로.
 
@@ -246,7 +240,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **설명서** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **설명서** EntityType 요소의 자식 요소로 요소입니다.
 
@@ -291,7 +285,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **최종** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **연결** 정의 하는 요소는 **FK\_CustomerOrders** foreign key 제약 조건. **복합성** 각각에 지정 된 값 **끝** 요소에는 많은 행을 나타내는 **주문** 테이블의 행과 연결할 수 있습니다는 **고객**  테이블에 있지만 하나의 행에는 **고객** 테이블의 행과 연결할 수 있습니다는 **주문** 테이블. 또한 합니다 **OnDelete** 요소에서 모든 행을 나타냅니다는 **주문** 테이블에서 특정 행을 참조 하는 **고객** 경우 테이블은 삭제 됩니다의 행을 합니다 **고객** 테이블이 삭제 됩니다.
 
@@ -335,7 +329,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **최종** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-#### <a name="example"></a>예
+#### <a name="example"></a>예제
 
 에서는 다음 예제는 **EntityContainer** 요소를 **AssociationSet** 요소 두 개가 **끝** 요소:
 
@@ -378,7 +372,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **EntityContainer** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityContainer** 두 엔터티 집합 및 하나의 연결 집합을 정의 하는 요소입니다. 엔터티 형식 및 연결 형식 이름은 개념적 모델 네임스페이스 이름으로 정규화됩니다.
 
@@ -425,7 +419,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **EntitySet** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **EntityContainer** 를 가진 두 요소가 **EntitySet** 요소와 하나 **AssociationSet** 요소:
 
@@ -466,7 +460,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **EntityType** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 두 속성이 있는 요소:
 
@@ -528,7 +522,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **함수** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **함수** 해당 하는 요소는 **UpdateOrderQuantity** 저장 프로시저. 저장 프로시저는 두 매개 변수를 받아들이며 값을 반환하지 않습니다.
 
@@ -556,7 +550,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 
 적용할 수 없는 특성을 **키** 요소입니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 요소 하나의 속성을 참조 하는 키를 사용 하 여:
 
@@ -594,7 +588,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **OnDelete** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **연결** 정의 하는 요소는 **FK\_CustomerOrders** foreign key 제약 조건. **OnDelete** 요소에서 모든 행을 나타냅니다는 **주문** 테이블에서 특정 행을 참조 하는 합니다 **고객** 경우 테이블은 삭제 됩니다 합니다 행**고객** 테이블이 삭제 됩니다.
 
@@ -643,7 +637,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **매개 변수** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **함수** 를 가진 두 요소가 **매개 변수** 입력된 매개 변수를 지정 하는 요소:
 
@@ -680,7 +674,7 @@ SSDL 연결 집합 AssociationSetMapping 요소 CSDL 연결 집합에 매핑됩�
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **주** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 연결 요소를 **ReferentialConstraint** 참여 하는 열을 지정 하는 요소는 **FK\_CustomerOrders** 외래 키 제약 조건입니다. **주** 요소를 지정 합니다 **CustomerId** 열의 **고객** 테이블 제약 조건의 주 끝으로 합니다.
 
@@ -731,7 +725,7 @@ A **속성** 요소는 모든 자식 요소를 포함할 수 없습니다.
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **속성** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제는 **EntityType** 두 개의 자식 **속성** 요소:
 
@@ -772,7 +766,7 @@ A **속성** 요소는 모든 자식 요소를 포함할 수 없습니다.
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **PropertyRef** 요소입니다. 그러나 사용자 지정 특성은 CSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 에서는 다음 예제는 **PropertyRef** 에 정의 된 속성을 참조 하 여 기본 키를 정의 하는 데 사용 되는 요소는 **EntityType** 요소.
 
@@ -807,7 +801,7 @@ A **속성** 요소는 모든 자식 요소를 포함할 수 없습니다.
 
 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **ReferentialConstraint** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **연결** 사용 하는 요소를 **ReferentialConstraint** 참여 하는 열을 지정 하는 요소는 **FK\_CustomerOrders**  foreign key 제약 조건:
 
@@ -843,7 +837,7 @@ A **속성** 요소는 모든 자식 요소를 포함할 수 없습니다.
 > [!NOTE]
 > 주석 특성 (사용자 지정 XML 특성)을 개수에 관계 없이 적용할 수 있습니다 합니다 **ReturnType** 요소입니다. 그러나 사용자 지정 특성은 SSDL에 예약된 XML 네임스페이스에 속할 수 없습니다. 두 사용자 지정 특성의 정규화된 이름은 서로 같을 수 없습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예에서는 **함수** 는 행의 컬렉션을 반환 합니다.
 
@@ -874,7 +868,7 @@ A **RowType** 요소는 다음 자식 요소를 포함할 수 있습니다.
 
 - 속성 (하나 이상)  
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 사용 하는 저장소 함수를 **CollectionType** 는 반환 행 컬렉션을 지정 하는 요소 (에 지정 된 대로 합니다 **RowType** 요소).
 
@@ -921,7 +915,7 @@ A **RowType** 요소는 다음 자식 요소를 포함할 수 있습니다.
 | **공급자**              | 예         | 데이터 공급자입니다.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
 | **ProviderManifestToken** | 예         | 반환할 공급자 매니페스트를 공급자에게 나타내는 토큰입니다. 정의된 토큰의 형식은 없으며 토큰의 값은 공급자가 정의합니다. SQL Server 공급자 매니페스트 토큰에 대 한 자세한 내용은 Entity Framework 용 SqlClient를 참조 하세요.                                                                                                                                                                                                                                                                                                                        |
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제와 **스키마** 포함 하는 요소는 **EntityContainer** 요소, 두 **EntityType** 요소와 **연결** 요소입니다.
 
@@ -1018,7 +1012,7 @@ SSDL(저장소 스키마 정의 언어)의 주석 특성은 저장소 모델의 
 
 두 개 이상의 주석 특성을 지정된 SSDL 요소에 적용할 수 있습니다. Annotation 요소에 포함 된 메타 데이터 System.Data.Metadata.Edm 네임 스페이스의 클래스를 사용 하 여 런타임에 액세스할 수 있습니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 주석 특성이 적용 하는 EntityType 요소는 **OrderId** 속성입니다. 예제도 추가 되는 주석 요소를 표시 합니다 **EntityType** 요소입니다.
 
@@ -1048,7 +1042,7 @@ SSDL(저장소 스키마 정의 언어)의 Annotation 요소는 저장소 모델
 
 두 개 이상의 Annotation 요소가 제공된 SSDL 요소의 자식이 될 수 있습니다. .NET Framework 버전 4부터 annotation 요소에 포함 된 메타 데이터에 액세스할 수 있습니다 런타임 System.Data.Metadata.Edm 네임 스페이스의 클래스를 사용 하 여 합니다.
 
-### <a name="example"></a>예
+### <a name="example"></a>예제
 
 다음 예제에서는 주석 요소에는 EntityType 요소를 보여 줍니다 (**CustomElement**). 또한이 예제에서는 주석 특성을 적용 합니다 **OrderId** 속성입니다.
 
