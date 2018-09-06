@@ -3,12 +3,12 @@ title: EF6-Entity Framework 6 공급자 모델을
 author: divega
 ms.date: 2018-06-27
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: ebe9b426b164f619b716ac221d1d94354f8b1fe5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e8b0552ec083d8ab276aa9de109650f423160269
+ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997739"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43821389"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Entity Framework 6 공급자 모델
 
@@ -34,7 +34,7 @@ EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProv
 
 EF는 ADO.NET 공급자가 이미 제공 하는 기능을 기반으로 EF에 필요한 추가 기능을 제공 하는 데 DbProviderServices에서 파생 된 형식에 따라 달라 집니다. 이전 버전의 EF DbProviderServices 클래스의.NET Framework 구성 요소 였으며 System.Data.Common 네임 스페이스에서 찾을 수 있습니다. EF6을 사용 하 여이 클래스는 이제 EntityFramework.dll의 일부 시작한 System.Data.Entity.Core.Common 네임 스페이스.
 
-DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은에서 확인할 수 있습니다 [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx)합니다. 그러나이 정보를 작성 하는 시간을 기준으로 업데이트 되지 않았다는 EF6에 대 한 대부분의 개념은 여전히 유효 하지만 note 합니다. DbProviderServices의 SQL Server 및 SQL Server Compact 구현도 확인 됩니다에 [오픈 소스 코드 베이스](https://gihtub.com/aspnet/EntityFramework6/) 및 다른 구현에 대 한 유용한 참조로 사용할 수 있습니다.
+DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은에서 확인할 수 있습니다 [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx)합니다. 그러나이 정보를 작성 하는 시간을 기준으로 업데이트 되지 않았다는 EF6에 대 한 대부분의 개념은 여전히 유효 하지만 note 합니다. DbProviderServices의 SQL Server 및 SQL Server Compact 구현도 확인 됩니다에 [오픈 소스 코드 베이스](https://github.com/aspnet/EntityFramework6/) 및 다른 구현에 대 한 유용한 참조로 사용할 수 있습니다.
 
 이전 버전의 EF DbProviderServices 구현은 사용 하는 ADO.NET 공급자에서 직접 가져온 합니다. 이 작업은 DbProviderFactory를 IServiceProvider로 캐스팅 하 고 GetService 메서드를 호출 하 여 수행 되었습니다. 이 DbProviderFactory를 EF 공급자 긴밀 하 게 결합 합니다. 이 결합에서.NET Framework 외부로 이동 되 고 EF를 차단 하 고 따라서 EF6에 대 한 밀접 한 결합이 제거 되었습니다 DbProviderServices 구현의 응용 프로그램의 구성 파일에서 직접 또는 코드 기반에 지금 등록 좀 더 자세히 설명 된 대로 구성 합니다 _DbProviderServices 등록_ 아래의 섹션입니다.
 

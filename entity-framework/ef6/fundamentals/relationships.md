@@ -3,12 +3,12 @@ title: 관계, 탐색 속성 및 EF6 외래 키
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: c1d48f18a7dd25a6a48537f0de5379f861bf447a
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a1653afd609280ab572ef88a9fcf8a6275b79fd6
+ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998003"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43821402"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
 이 항목에서는 Entity Framework는 엔터티 간의 관계를 관리 하는 방법의 개요를 제공 합니다. 또한 매핑 관계를 조작 하는 방법에 대 한 지침을 제공 합니다.
@@ -71,59 +71,60 @@ public class Department
 
 ## <a name="creating-and-modifying-relationships"></a>관계 만들기 및 수정
 
-에 *외래 키 연결*관계를 상태가 EntityState.Modified로 변경 하는 EntityState.Unchanged 종속 개체의 상태를 변경 하는 경우. 독립적 관계에 관계 변경는 종속 개체의 상태를 업데이트 되지 않습니다.
+에 *외래 키 연결*관계를 포함 하는 종속 개체의 상태를 변경 하는 경우는 `EntityState.Unchanged` 상태가 변경 `EntityState.Modified`합니다. 독립적 관계에 관계 변경는 종속 개체의 상태를 업데이트 되지 않습니다.
 
 다음 예제에서는 관련된 개체를 연결 하는 외래 키 속성과 탐색 속성을 사용 하는 방법을 보여 줍니다. 외래 키 연결을 사용 하 여 변경, 생성 또는 관계를 수정 하려면 두 방법 중 하나를 사용할 수 있습니다. 독립 연결을 사용할 경우에는 외래 키 속성을 사용할 수 없습니다.
 
--   다음 예제와 같이 외래 키 속성에 새 값을 할당 합니다.  
-    ``` csharp
-    course.DepartmentID = newCourse.DepartmentID;
-    ```
+- 다음 예제와 같이 외래 키 속성에 새 값을 할당 합니다.  
+  ``` csharp
+  course.DepartmentID = newCourse.DepartmentID;
+  ```
 
--   다음 코드는 외래 키를 설정 하 여 관계를 제거 **null**합니다. 참고, 외래 키 속성이 null을 허용 해야 합니다.  
-    ``` csharp
-    course.DepartmentID = null;
-    ```  
-    >[!NOTE]
-    > (이 예에서는 과정 개체)에 추가 된 상태에 대 한 참조 인 경우 참조 탐색 속성이 동기화 되지 않습니다는 새 개체의 키 값을 사용 하 여 SaveChanges가 호출 될 때까지 합니다. 개체 컨텍스트에는 추가된 개체에 대한 영구 키가 포함되어 있지 않으므로 해당 개체가 저장되기 전까지는 동기화가 수행되지 않습니다. 관계를 설정 하는 즉시 완전 하 게 동기화 하는 새 개체를 해야 하는 경우 다음 methods.* 중 하나 사용
+- 다음 코드는 외래 키를 설정 하 여 관계를 제거 **null**합니다. 참고, 외래 키 속성이 null을 허용 해야 합니다.  
+  ``` csharp
+  course.DepartmentID = null;
+  ```
 
--   탐색 속성에 새 개체를 할당합니다. 다음 코드는 과정을 사이의 관계를 만듭니다 및 `department`합니다. 개체 컨텍스트에 연결 하는 경우는 `course` 에 추가 됩니다는 `department.Courses` 컬렉션 및 해당 외래 키 속성에는 `course` 개체의 키 속성 값을로 설정 됩니다.  
-    ``` csharp
-    course.Department = department;
-    ```
+  >[!NOTE]
+  > (이 예에서는 과정 개체)에 추가 된 상태에 대 한 참조 인 경우 참조 탐색 속성이 동기화 되지 않습니다는 새 개체의 키 값을 사용 하 여 SaveChanges가 호출 될 때까지 합니다. 개체 컨텍스트에는 추가된 개체에 대한 영구 키가 포함되어 있지 않으므로 해당 개체가 저장되기 전까지는 동기화가 수행되지 않습니다. 관계를 설정 하는 즉시 완전 하 게 동기화 하는 새 개체를 해야 하는 경우 다음 methods.* 중 하나 사용
 
- -   관계를 삭제 하려면 탐색 속성을 설정 `null`합니다. .NET 4.0을 기반으로 하는 Entity Framework를 사용 하 여 작업 하는 경우 관련된 end를 null로 설정 하기 전에 로드 되도록 해야 합니다. 예를 들어:  
-    ``` chsarp
-    context.Entry(course).Reference(c => c.Department).Load();  
-    course.Department = null;
-    ```  
-    .NET 4.5를 기반으로 하는 Entity Framework 5.0부터 관련된 end를 로드 하지 않고 null로 관계를 설정할 수 있습니다. 또한 다음 메서드를 사용 하 여 null로 현재 값을 설정할 수 있습니다.  
-    ``` csharp
-    context.Entry(course).Reference(c => c.Department).CurrentValue = null;
-    ```
+- 탐색 속성에 새 개체를 할당합니다. 다음 코드는 과정을 사이의 관계를 만듭니다 및 `department`합니다. 개체 컨텍스트에 연결 하는 경우는 `course` 에 추가 됩니다는 `department.Courses` 컬렉션 및 해당 외래 키 속성에는 `course` 개체의 키 속성 값을로 설정 됩니다.  
+  ``` csharp
+  course.Department = department;
+  ```
 
--   엔터티 컬렉션에서 개체를 삭제하거나 추가합니다. 예를 들어 형식의 개체를 추가할 수 있습니다 `Course` 에 `department.Courses` 컬렉션입니다. 이 작업은 특정 간의 관계를 만듭니다 **코스** 및 특정 `department`합니다. 개체 컨텍스트, 부서 참조 및 외래 키 속성에 연결 되어 있으면 합니다 **코스** 적절 한 개체를 설정할 `department`합니다.  
-    ``` csharp
-    department.Courses.Add(newCourse);
-    ```
+- 관계를 삭제 하려면 탐색 속성을 설정 `null`합니다. .NET 4.0을 기반으로 하는 Entity Framework를 사용 하 여 작업 하는 경우 관련된 end를 null로 설정 하기 전에 로드 되도록 해야 합니다. 예를 들어:   
+  ``` csharp
+  context.Entry(course).Reference(c => c.Department).Load();
+  course.Department = null;
+  ```
+
+  .NET 4.5를 기반으로 하는 Entity Framework 5.0부터 관련된 end를 로드 하지 않고 null로 관계를 설정할 수 있습니다. 또한 다음 메서드를 사용 하 여 null로 현재 값을 설정할 수 있습니다.   
+  ``` csharp
+  context.Entry(course).Reference(c => c.Department).CurrentValue = null;
+  ```
+
+- 엔터티 컬렉션에서 개체를 삭제하거나 추가합니다. 예를 들어 형식의 개체를 추가할 수 있습니다 `Course` 에 `department.Courses` 컬렉션입니다. 이 작업은 특정 간의 관계를 만듭니다 **코스** 및 특정 `department`합니다. 개체 컨텍스트, 부서 참조 및 외래 키 속성에 연결 되어 있으면 합니다 **코스** 적절 한 개체를 설정할 `department`합니다.  
+  ``` csharp
+  department.Courses.Add(newCourse);
+  ```
 
 - 사용 하 여는 `ChangeRelationshipState` 두 엔터티 개체 간 관계의 상태를 변경 하는 방법입니다. N 계층 응용 프로그램을 사용 하 여 작업 하는 경우에 가장 일반적으로이 메서드는 및 *독립 연결* (사용할 수 없습니다는 외래 키 연결을 사용 하 여). 또한이 방법을 사용 하려면 삭제 해야 합니다 아래로 `ObjectContext`아래 예제에 나와 있는 것 처럼 합니다.  
 다음 예제에서는 강사 및 강좌 다 대 다 관계가 있습니다. 호출을 `ChangeRelationshipState` 메서드와 전달을 `EntityState.Added` 매개 변수 수는 `SchoolContext` 두 개체 간의 관계 추가 된 것을 알고:
+  ``` csharp
 
-``` csharp
+  ((IObjectContextAdapter)context).ObjectContext.
+    ObjectStateManager.
+    ChangeRelationshipState(course, instructor, c => c.Instructor, EntityState.Added);
+  ```
 
-       ((IObjectContextAdapter)context).ObjectContext.
-                 ObjectStateManager.
-                  ChangeRelationshipState(course, instructor, c => c.Instructor, EntityState.Added);
-```
+  (뿐 아니라 추가)을 업데이트 하는 경우 관계를 새로 추가한 후 기존 관계를 삭제 해야 합니다.
 
-    Note that if you are updating (not just adding) a relationship, you must delete the old relationship after adding the new one:
-
-``` csharp
-       ((IObjectContextAdapter)context).ObjectContext.
-                  ObjectStateManager.
-                  ChangeRelationshipState(course, oldInstructor, c => c.Instructor, EntityState.Deleted);
-```
+  ``` csharp
+  ((IObjectContextAdapter)context).ObjectContext.
+    ObjectStateManager.
+    ChangeRelationshipState(course, oldInstructor, c => c.Instructor, EntityState.Deleted);
+  ```
 
 ## <a name="synchronizing-the-changes-between-the-foreign-keys-and-navigation-properties"></a>외래 키 속성과 탐색 간에 변경 내용 동기화
 
