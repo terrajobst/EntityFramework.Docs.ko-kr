@@ -3,12 +3,12 @@ title: Entity Framework Designer-EF6에서에서 ObjectContext 되돌리기
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 36550569-a1de-47cb-ba6d-544794ffd500
-ms.openlocfilehash: b52bfc36c97e1a3c7cd2d3716feb1ae48c68a56e
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e90af3e973c71e2ce872e3edc24aafc1b2ccce0f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997314"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250337"
 ---
 # <a name="reverting-to-objectcontext-in-entity-framework-designer"></a>Entity Framework Designer에서 ObjectContext 되돌리기
 ObjectContext에서 파생 된 컨텍스트 및 엔터티 클래스는 EntityObject에서 파생 된 이전 버전의 Entity Framework의 EF 디자이너를 사용 하 여 만든 모델을 사용 하 여 생성 됩니다.
@@ -23,11 +23,11 @@ Visual Studio 2012의 EF 디자이너를 사용 하 여 만든 모든 새 모델
 
 파생 된 DbContext 및 POCO 클래스를 생성 하면 프로젝트에서 두 개의.tt 파일에 의해 처리 됩니다, 그리고 솔루션 탐색기에서.edmx 파일을 확장 하는 경우 이러한 파일이 나타납니다. 프로젝트에서 이러한 파일은 모두를 삭제 합니다.
 
-![CodeGenFiles](~/ef6/media/codegenfiles.png)
+![코드 생성 파일](~/ef6/media/codegenfiles.png)
 
 VB.NET를 사용 하는 경우 선택 해야 합니다는 **모든 파일 표시** 단추에 중첩 된 파일을 참조 하세요.
 
-![ShowAllFiles](~/ef6/media/showallfiles.png)
+![모든 파일 표시](~/ef6/media/showallfiles.png)
 
 ### <a name="2-re-enable-objectcontext-code-generation"></a>2. 다시 ObjectContext 코드 생성을 사용 하도록 설정
 
@@ -35,4 +35,4 @@ EF 디자이너에서 모델 열기 화면 디자인의 빈 부분에서 마우�
 
 속성 창 변경에서 합니다 **Code Generation Strategy** 에서 **없음** 하 **기본**합니다.
 
-![CodeGenStrategy](~/ef6/media/codegenstrategy.png)
+![코드 생성 전략](~/ef6/media/codegenstrategy.png)

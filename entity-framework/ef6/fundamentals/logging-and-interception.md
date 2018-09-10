@@ -3,12 +3,12 @@ title: 로깅 및 데이터베이스 작업-EF6 가로채기
 author: divega
 ms.date: 2016-10-23
 ms.assetid: b5ee7eb1-88cc-456e-b53c-c67e24c3f8ca
-ms.openlocfilehash: 2e16502abf54be3f3b2f63fe69d2605ef13dea27
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 9a8be81af45d9f27caa8c26f66d219dc568b6604
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994637"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251273"
 ---
 # <a name="logging-and-intercepting-database-operations"></a>로깅 및 데이터베이스 작업 가로채기
 > [!NOTE]
@@ -36,8 +36,6 @@ using (var context = new BlogContext())
 ```  
 
 해당 컨텍스트를 확인 합니다. Database.Log은 Console.Write로 설정 됩니다. 이것이 SQL 콘솔에 로그인 하는 데 필요한 모든입니다.  
-
-### <a name="example-output"></a>예제 출력  
 
 일부 출력을 볼 수 있도록 몇 가지 간단한 쿼리/삽입/업데이트 코드를 추가 해 보겠습니다.  
 
@@ -98,7 +96,7 @@ WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
 
 (이 모든 데이터베이스 초기화 이미 발생 한 것으로 가정 하는 출력 note 합니다. 데이터베이스 초기화 있을 것을 이미 오류가 발생 하지 하는 경우 모든 작업 마이그레이션을 보여 주는 더 많은 출력은 내부적으로 확인 하거나 새 데이터베이스를 만듭니다.)  
 
-### <a name="what-gets-logged"></a>로그를 가져옵니다.  
+## <a name="what-gets-logged"></a>로그를 가져옵니다.  
 
 다음의 모든 로그 속성이 설정 된 경우 기록 됩니다.  
 
@@ -124,7 +122,7 @@ WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
     - FK 및 Title 속성에 대 한 매개 변수 세부 정보를 확인 합니다.  
     - 이러한 명령을 비동기적으로 실행 되는 알 수 있습니다.  
 
-### <a name="logging-to-different-places"></a>다른 위치에 로깅  
+## <a name="logging-to-different-places"></a>다른 위치에 로깅  
 
 로깅이 위에 표시 된 대로 콘솔은 아주 간단 합니다. 메모리, 파일 등 다양 한 종류를 사용 하 여 로그인에 쉽습니다입니다 [TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx)합니다.  
 
@@ -147,7 +145,7 @@ var logger = new MyLogger();
 context.Database.Log = s => logger.Log("EFApp", s);
 ```  
 
-### <a name="result-logging"></a>결과 로깅  
+## <a name="result-logging"></a>결과 로깅  
 
 기본으로 거 명령이 데이터베이스에 전송 되기 전에 타임 스탬프를 사용 하 여 SQL 명령 텍스트, 매개 변수 및 "실행" 줄 기록 합니다. 경과 된 시간을 포함 하 "완료 됨된" 줄이 기록 된 다음 명령 실행 합니다.  
 
@@ -155,11 +153,11 @@ context.Database.Log = s => logger.Log("EFApp", s);
 
 "완료 됨된" 줄 유형 명령 및 실행 성공 여부에 따라 다른 정보를 포함 합니다.  
 
-#### <a name="successful-execution"></a>성공적으로 실행  
+### <a name="successful-execution"></a>성공적으로 실행  
 
 명령의 출력을 성공적으로 완료 하는 디렉터리는 "결과 사용 하 여 ms x에서 완료:" 뒤에 결과 표시 합니다. 결과 데이터 판독기를 반환 하는 명령 표시의 형식인 [DbDataReader](https://msdn.microsoft.com/library/system.data.common.dbdatareader.aspx) 반환 합니다. 업데이트와 같은 정수 값을 반환 하는 명령에 대 한 표시 된 것 처럼 위에 표시 된 명령에는 해당 정수입니다.  
 
-#### <a name="failed-execution"></a>실패 한 실행  
+### <a name="failed-execution"></a>실패 한 실행  
 
 예외가 발생 하면 실패 하는 명령에 대 한 출력 메시지는 예외를 포함 합니다. 예를 들어, SqlQuery 존재 하는 테이블에 대해 쿼리를 사용 하 여 결과 로그에서 출력 같이:  
 
@@ -169,7 +167,7 @@ SELECT * from ThisTableIsMissing
 -- Failed in 1 ms with error: Invalid object name 'ThisTableIsMissing'.
 ```  
 
-#### <a name="canceled-execution"></a>취소 된 실행  
+### <a name="canceled-execution"></a>취소 된 실행  
 
 작업이 취소 되는 비동기 명령에 대 한 기본 ADO.NET 공급자 자주 수행 취소 하려고 시도 하는 경우 이므로 결과 예외를 사용 하 여 오류를 수 있습니다. 그렇지 않은 경우 출력은 다음과 같아야 하는 다음 작업이 정상적으로 취소 되:  
 
@@ -180,8 +178,6 @@ update Blogs set Title = 'No' where Id = -1
 ```  
 
 ## <a name="changing-log-content-and-formatting"></a>변경 로그 콘텐츠 및 서식 지정  
-
-### <a name="databaselogformatter"></a>DatabaseLogFormatter  
 
 내부적으로 속성을 사용 하면 Database.Log DatabaseLogFormatter 개체를 사용 합니다. 이 개체는 효과적으로 문자열 및 DbContext를 허용 하는 대리자를 IDbCommandInterceptor 구현을 (아래 참조)를 바인딩합니다. 즉, DatabaseLogFormatter 메서드는 호출 명령이 실행 전후 EF에서. 이러한 DatabaseLogFormatter 메서드 수집 로그 출력 형식 및 대리자에 게 보냅니다.  
 

@@ -3,12 +3,12 @@ title: EF6에서 EF 디자이너-관계
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 402fe960-754b-470f-976b-e5de3e9986b5
-ms.openlocfilehash: 72efe76956c930a787449e6cce453ab0317adc7c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e1912a5e00e51b4f07b1ac83848fdbe0aa4755aa
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994650"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250714"
 ---
 # <a name="relationships---ef-designer"></a>관계-EF 디자이너
 > [!NOTE]
@@ -16,7 +16,7 @@ ms.locfileid: "42994650"
 
 연결 모델의 엔터티 형식 간의 관계를 정의 합니다. 이 항목에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 연결을 매핑하는 방법을 보여 줍니다. 다음 이미지에서는 EF 디자이너를 사용 하 여 작업할 때 사용 되는 기본 windows를 보여 줍니다.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![EF 디자이너](~/ef6/media/efdesigner.png)
 
 > [!NOTE]
 > 개념적 모델을 빌드하면 매핑되지 않은 엔터티 및 연결에 대 한 경고는 오류 목록에 나타날 수 있습니다. 오류 사라집니다을 모델에서 데이터베이스를 생성 하도록 선택 하기 때문에 이러한 경고를 무시할 수 있습니다.
@@ -41,10 +41,10 @@ EF 디자이너 업데이트와 연결 하 여.edmx 파일의 모델 콘텐츠�
 
 ### <a name="to-create-an-association"></a>연결을 만들려면
 
-1.  디자인 화면의 빈 영역을 마우스 오른쪽 **새로 추가**, 선택한 **연결 하는 중...** .
+1.  디자인 화면의 빈 영역을 마우스 오른쪽 **새로 추가**, 선택한 **연결 하는 중... **.
 2.  연결에 대 한 설정을 입력 합니다 **연결 추가** 대화 합니다.
 
-    ![AddAssociation](~/ef6/media/addassociation.png)
+    ![연결 추가](~/ef6/media/addassociation.png)
 
     > [!NOTE]
     > 하지 탐색 속성 또는 외래 키 속성에 추가할 연결의 end에서 엔터티 선택을 취소 하 여 선택할 수 있습니다는 * * 탐색 속성 * * 및 * *에 외래 키 속성을 추가 합니다 &lt;엔터티 형식 이름&gt; 엔터티 * * 확인란 합니다. 탐색 속성을 하나만 추가하는 경우 연결은 한 방향으로만 통과할 수 있습니다. 탐색 속성을 추가하지 않는 경우 연결 End에 있는 엔터티에 액세스하기 위해 외래 키 속성을 추가하도록 선택해야 합니다.
@@ -76,7 +76,7 @@ EF 디자이너를 사용 하 여 추가 하거나 참조 제약 조건을 편�
 -   **종속** 드롭 다운 목록에서 참조 제약 조건의 종속 엔터티를 선택 합니다.
 -   종속 키가 있는 각 주 키에 대해 해당 하는 종속 키에서 드롭 다운 목록에서 선택 합니다 **종속 키** 열입니다.
 
-    ![RefConstraint](~/ef6/media/refconstraint.png)
+    ![Ref 제약 조건](~/ef6/media/refconstraint.png)
 
 -   **확인**을 클릭합니다.
 
@@ -97,7 +97,7 @@ EF 디자이너를 사용 하 여 추가 하거나 참조 제약 조건을 편�
     합니다 **매핑 정보** 창에서 각 엔터티 형식의 키 속성과 연결의 양쪽에 표시 됩니다 **끝**합니다.
 -   각 키 속성을 클릭 합니다 **열** 필드 및 속성이 매핑될 열을 선택 합니다.
 
-    ![MappingDetails4](~/ef6/media/mappingdetails4.png)
+    ![매핑 정보 4](~/ef6/media/mappingdetails4.png)
 
 ### <a name="edit-an-association-mapping"></a>연결 매핑을 편집합니다
 

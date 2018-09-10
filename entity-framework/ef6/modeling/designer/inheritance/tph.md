@@ -3,12 +3,12 @@ title: 디자이너 TPH 상속-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 72d26a8e-20ab-4500-bd13-394a08e73394
-ms.openlocfilehash: 9a546f6450b5aa3b03c062d1ab2c6f9257ba8292
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 1eb935414b20d6e93e9d470ccc845bc13626ed3a
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995006"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250846"
 ---
 # <a name="designer-tph-inheritance"></a>디자이너 TPH 상속
 이 단계별 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 개념적 모델에서 계층당 하나의 테이블 (TPH) 상속을 구현 하는 방법을 보여 줍니다. TPH 상속 상속 계층 구조의 엔터티 형식의 모든 데이터를 유지 하기 위해 하나의 데이터베이스 테이블을 사용 합니다.
@@ -54,7 +54,7 @@ Model First를 사용 하 여 TPH 상속을 매핑할 수 있지만 복잡 하�
 
 즉 하는 방법을 **Person** 테이블 데이터베이스에서 검색 합니다.
 
-![PersonTable](~/ef6/media/persontable.png) 
+![Person 테이블](~/ef6/media/persontable.png) 
 
 ## <a name="implement-table-per-hierarchy-inheritance"></a>계층당 하나의 테이블 상속 구현
 
@@ -94,14 +94,14 @@ Model First를 사용 하 여 TPH 상속을 매핑할 수 있지만 복잡 하�
 -   에 **연산자** 열의 합니다 **매핑 정보** 창에서 드롭 다운 목록에서 =.
 -   에 **값/속성** 열, 형식 **강사**합니다. 최종 결과 다음과 같습니다.
 
-    ![MappingDetails2](~/ef6/media/mappingdetails2.png)
+    ![매핑 정보](~/ef6/media/mappingdetails2.png)
 
 -   에 대 한 이러한 단계를 반복 합니다 **학생** 엔터티 형식 이지만 같음 조건 확인 **학생** 값입니다.  
     *제거 하려는 이유는 **판별자** 속성은 테이블 열을 두 번 매핑할 수 없습니다 때문입니다. 이 열에 사용할 조건부 매핑 속성으로 매핑하기 위한 사용할 수 없습니다. 조건을 사용 하는 경우 둘 다 사용할 수 있습니다 하는 유일한 방법은 **Is Null** 하거나 **Is Not Null** 비교 합니다.*
 
 이제 계층당 하나의 테이블 상속이 구현되었습니다.
 
-![FinalTPH](~/ef6/media/finaltph.png)
+![최종 TPH](~/ef6/media/finaltph.png)
 
 ## <a name="use-the-model"></a>모델 사용
 

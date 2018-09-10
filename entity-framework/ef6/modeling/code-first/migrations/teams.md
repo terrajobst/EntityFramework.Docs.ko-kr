@@ -3,12 +3,12 @@ title: 팀 환경-EF6에서에서 code First 마이그레이션
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 4c2d9a95-de6f-4e97-9738-c1f8043eff69
-ms.openlocfilehash: 42f52e63fd6cfc1f02d6a721594f4a161eea9a7b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 31f8476c64d36d4d1cf3d18deb59ebc482dcc975
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997301"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251234"
 ---
 # <a name="code-first-migrations-in-team-environments"></a>팀 환경에서 code First 마이그레이션
 > [!NOTE]
@@ -54,7 +54,7 @@ ms.locfileid: "42997301"
 
 첫 번째 마이그레이션 프로젝트에 추가할 때 같은 실행할 **Add-migration을 첫 번째** 패키지 관리자 콘솔에서. 이 명령을 수행 하는 대략적인 단계는 아래 그림으로 표시 됩니다.
 
-![FirstMigration](~/ef6/media/firstmigration.png)
+![첫 번째 마이그레이션](~/ef6/media/firstmigration.png)
 
 현재 모델 (1) 코드에서 계산 됩니다. 필요한 데이터베이스 개체는 모델의 차이점 (2)에서 다음 계산 된 – 첫 번째 마이그레이션 모델 이므로 사용 하 여 비교에 대 한 빈 모델을 다릅니다. 필요한 변경 작업을 Visual Studio 솔루션 (4)에 추가 됩니다는 필요한 마이그레이션 코드 (3)를 빌드하려면 코드 생성기에 전달 됩니다.
 
@@ -66,7 +66,7 @@ ms.locfileid: "42997301"
 
 이 예제에서는 추가 복구 되 고 모델에 일부 변경을 수행 – 나중에 **Url** 속성을 **블로그**합니다. 다음 명령을 실행 하와 같은 **Add-migration AddUrl** 해당 데이터베이스에 적용할 마이그레이션을 스 캐 폴딩 변경 합니다. 이 명령을 수행 하는 대략적인 단계는 아래 그림으로 표시 됩니다.
 
-![SecondMigration](~/ef6/media/secondmigration.png)
+![두 번째 마이그레이션](~/ef6/media/secondmigration.png)
 
 이전과 마찬가지로, 현재 모델 (1) 코드에서 계산 됩니다. 그러나이 이번 많습니다 기존 마이그레이션 이전 모델 최신 마이그레이션 (2)에서 검색 됩니다. 이러한 두 모델은 필요한 데이터베이스 변경 (3)을 찾으려고의 차이점을 비교 하 고 프로세스가 이전과 같이 완료 합니다.
 
@@ -96,14 +96,14 @@ EF는 관련 모델 스냅숏을 유지 하는 이유는 여러 가지:
 
 EF 모델 및 다양 한 변경 내용을 통해 마이그레이션을 추적 합니다. 시작 지점에 대 한 개발자는 다음 그림에 표시 된 대로 소스 제어 리포지토리에 동기화 된 합니다.
 
-![StartingPoint](~/ef6/media/startingpoint.png)
+![시작 지점](~/ef6/media/startingpoint.png)
 
 개발자 \#1 및 개발자 \#2 이제를 사용 하면 일부 변경 내용이 로컬 코드에서 EF 모델에 기본입니다. 개발자 \#1 추가 **등급** 속성을 **블로그** – 생성을 **AddRating** 마이그레이션 변경 내용을 데이터베이스에 적용할 합니다. 개발자 \#2 추가 된 **판독기** 속성을 **블로그** – 해당 생성 **AddReaders** 마이그레이션. 모두 개발자는 실행할 **Update-database**하는 로컬 데이터베이스에 변경 내용을 적용 하 고 다음 응용 프로그램 개발을 계속 합니다.
 
 > [!NOTE]
 > 하므로 그래픽 나타냅니다는 마이그레이션 타임 스탬프를 접두사로 개발자에서 AddReaders 마이그레이션을 \#2 개발자에서 AddRating 마이그레이션 오는 \#1입니다. 여부를 개발자 \#1 또는 \#2 생성 마이그레이션 첫 번째는 팀 또는 다음 섹션에서 살펴보겠습니다 있는 병합 프로세스에서 작업 하는 문제에 차이가 없습니다.
 
-![LocalChanges](~/ef6/media/localchanges.png)
+![로컬 변경 내용](~/ef6/media/localchanges.png)
 
 개발자를 위한 운이 일인지 \#1 먼저 해당 변경 내용을 제출 하는 즉시 합니다. 다른 사용자가 체크 인할 해당 리포지토리를 동기화는, 때문에 모든 병합을 수행 하지 않고 변경 사항을 전송할 수 있도록 합니다.
 
@@ -147,7 +147,7 @@ EF 모델 및 다양 한 변경 내용을 통해 마이그레이션을 추적 �
 
 다음은 개발자의 상태 \#2의 로컬이 방법을 사용 하 여 기본 코드입니다.
 
-![MergeMigration](~/ef6/media/mergemigration.png)
+![마이그레이션에 병합](~/ef6/media/mergemigration.png)
 
 ### <a name="option-2-update-the-model-snapshot-in-the-last-migration"></a>옵션 2: 마지막 마이그레이션 모델 스냅숏에 업데이트
 
@@ -176,7 +176,7 @@ EF 모델 및 다양 한 변경 내용을 통해 마이그레이션을 추적 �
 
 다음은 개발자의 상태 \#2의 로컬이 방법을 사용 하 여 기본 코드입니다.
 
-![UpdatedMetadata](~/ef6/media/updatedmetadata.png)
+![업데이트 된 메타 데이터](~/ef6/media/updatedmetadata.png)
 
 ## <a name="summary"></a>요약
 

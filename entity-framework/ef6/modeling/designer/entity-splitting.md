@@ -3,19 +3,19 @@ title: 디자이너 엔터티에 분할 EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: aa2dd48a-1f0e-49dd-863d-d6b4f5834832
-ms.openlocfilehash: 214561f0a0381bced3ceae0b6acfcd45f5dd65c5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 06199be977276cd3656e2550df79bac24276ec51
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995621"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250600"
 ---
 # <a name="designer-entity-splitting"></a>디자이너 엔터티 분
 이 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델을 수정 하 여 엔터티 형식을 두 테이블에 매핑하는 방법을 보여 줍니다. 테이블이 공통 키를 공유하는 경우 한 엔터티를 여러 테이블에 매핑할 수 있습니다. 두 개의 테이블에 한 엔터티 형식 매핑에 적용되는 개념은 셋 이상의 테이블에 한 엔터티 형식 매핑으로 쉽게 확장됩니다.
 
 다음 이미지에서는 EF 디자이너를 사용 하 여 작업할 때 사용 되는 기본 windows를 보여 줍니다.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![EF 디자이너](~/ef6/media/efdesigner.png)
 
 ## <a name="prerequisites"></a>전제 조건
 
@@ -93,7 +93,7 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 -   디자인 화면에서 선택 합니다 **PersonInfo** 엔터티와 키를 눌러 **삭제** 키보드에서 단추입니다.
 -   클릭 **없음** 제거 하려는 경우 메시지가 표시 되 면를 **PersonInfo** 테이블 모델에서 여기에 매핑할 합니다 **Person** 엔터티.
 
-    ![DeleteTables](~/ef6/media/deletetables.png)
+    ![테이블 삭제](~/ef6/media/deletetables.png)
 
 다음 단계는 필요 합니다 **매핑 정보** 창입니다. 이 창에 표시 되지 않으면 디자인 화면을 마우스 오른쪽 단추로 **매핑 정보**합니다.
 
@@ -103,7 +103,7 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 
 **Person** 엔터티 형식이 매핑되는 합니다 **Person** 및 **PersonInfo** 테이블.
 
-![Mapping2](~/ef6/media/mapping2.png)
+![2 매핑](~/ef6/media/mapping2.png)
 
 ## <a name="use-the-model"></a>모델 사용
 
@@ -136,9 +136,9 @@ CONSTRAINT [FK_Person_PersonInfo] FOREIGN KEY ([PersonId]) REFERENCES [dbo].[Per
 
 -   다음 두 **삽입** 문이 컨텍스트를 실행 한 결과로 실행 되었습니다. Savechanges ()입니다. 데이터를 차지 합니다 **사용자** 엔터티 간의 분할 및는 **사용자** 및 **PersonInfo** 테이블.
 
-    ![Insert1](~/ef6/media/insert1.png)
+    ![1 삽입](~/ef6/media/insert1.png)
 
-    ![Insert2](~/ef6/media/insert2.png)
+    ![2 삽입](~/ef6/media/insert2.png)
 -   다음 **선택** 데이터베이스에 사용자를 열거 하는 결과로 실행 되었습니다. 데이터를 결합 하는 **Person** 및 **PersonInfo** 테이블입니다.
 
     ![선택](~/ef6/media/select.png)

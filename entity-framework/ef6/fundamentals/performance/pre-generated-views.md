@@ -3,12 +3,12 @@ title: 미리 생성 된 매핑 보기-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
-ms.openlocfilehash: 397569ef374cb44d4938f9e201b588a26c408f6e
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: c2ad7125122c04af238e8fdd07da2c6c308a2756
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996474"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250766"
 ---
 # <a name="pre-generated-mapping-views"></a>미리 생성 된 매핑 보기
 Entity Framework 쿼리 실행 수 또는 데이터 원본에 변경 내용을 저장 하기 전에 데이터베이스에 액세스 하는 매핑 뷰 집합을 생성 해야 합니다 것입니다. 이러한 매핑 뷰 추상 방식으로 데이터베이스를 나타내는 Entity SQL 문 집합이 되며 응용 프로그램 도메인 별로 캐시 되는 메타 데이터의 일부입니다. 동일한 응용 프로그램 도메인에서 동일한 컨텍스트의 여러 인스턴스를 만들면 매핑을 뷰 다시 생성 하는 것이 아니라 캐시 된 메타 데이터를 다시 사용 됩니다. 첫 번째 쿼리를 실행 하는 전체 비용의 큰 부분을 매핑 뷰 생성 되므로, Entity Framework를 사용 하면 매핑 뷰를 미리 생성 하 고 컴파일된 프로젝트에 포함할 수 있습니다. 자세한 내용은 [성능 고려 사항 (Entity Framework)](~/ef6/fundamentals/performance/perf-whitepaper.md)합니다.
@@ -20,11 +20,11 @@ Entity Framework 쿼리 실행 수 또는 데이터 원본에 변경 내용을 �
 -   에 대 한 **Code First** 모델 DbContext 클래스를 포함 하는 코드 파일에는 마우스 오른쪽 단추로 클릭 합니다.
 -   에 대 한 **EF 디자이너** 모델 EDMX 파일에는 마우스 오른쪽 단추로 클릭 합니다.
 
-![generateViews](~/ef6/media/generateviews.png)
+![뷰 생성](~/ef6/media/generateviews.png)
 
 생성 된 다음과 같은 클래스가 있다고는 프로세스가 완료 되 면
 
-![generatedViews](~/ef6/media/generatedviews.png)
+![생성 된 뷰](~/ef6/media/generatedviews.png)
 
 이제 실행 하면 EF 응용 프로그램 필요에 따라 보기를 로드 하려면이 클래스가 사용 됩니다. 모델이 변경 하 고 다시를 생성 하지 않습니다이 클래스는 경우 EF에서 예외가 throw 됩니다.
 

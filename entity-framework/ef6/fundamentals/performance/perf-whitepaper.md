@@ -3,12 +3,12 @@ title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
 ms.date: 2016-10-23
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: f71a13ec06ad46259b3f33216367723b53314a5c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 3ec061559f6ad7cbdce59118c13543d9993ec5a5
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996750"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251312"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서
@@ -181,7 +181,7 @@ Entity Framework는 다음과 같은 캐싱 기본 제공 합니다.
 
 성능 고려 사항 찾기를 사용할 때 수행할 수 있습니다. 기본적으로이 메서드를 호출 데이터베이스에 대 한 커밋 보류 중인 변경 내용을 감지 하기 위해 개체 캐시의 유효성 검사를 트리거할 수 있습니다. 이 프로세스는 매우 개체 또는 개체 캐시에 추가 되 고 큰 개체 그래프를 개체 캐시에 매우 많은 경우에 비용이 많이 들 수 있지만 해제할 수도 있습니다. 특정 경우에 메서드 자동을 사용 하지 않도록 설정 하는 경우 검색 찾기 호출 차이의 규모를 통해 변경 인식할 수 있습니다. 아직 실제로 개체가 때와 캐시에서 개체를 데이터베이스에서 검색 해야 하는 경우 두 번째 규모 인식 됩니다. 5000 엔터티의 부하를 사용 하 여 밀리초 단위로 표시 하는 microbenchmarks 중 일부를 사용 하 여 측정을 사용 하 여 예제 그래프는 다음과 같습니다.
 
-![Net45LogScale](~/ef6/media/net45logscale.png ".NET 4.5-로그 눈금 간격")
+![.NET 4.5 눈금](~/ef6/media/net45logscale.png ".NET 4.5-로그 눈금 간격")
 
 사용 하지 않도록 설정 하는 자동 검색 변경 내용 찾기 예제:
 
@@ -825,9 +825,9 @@ var q = context.InvokeProductsForCategoryCQ("Beverages");
 | EF6 | DbContext Linq 쿼리                 | 3420      | 47652864 |
 | EF6 | ObjectContext Linq 쿼리 추적 안 함 | 3593      | 45260800 |
 
-![EF5Micro5000Warm](~/ef6/media/ef5micro5000warm.png)
+![EF5 마이크로 벤치 마크를 5000 웜 반복](~/ef6/media/ef5micro5000warm.png)
 
-![EF6Micro5000Warm](~/ef6/media/ef6micro5000warm.png)
+![EF6 마이크로 벤치 마크를 5000 웜 반복](~/ef6/media/ef6micro5000warm.png)
 
 Microbenchmarks은 코드의 작은 변화에 매우 민감합니다. 추가 인해 Entity Framework 5의 비용 및 Entity Framework 6의 차이점은이 예에서 [인터 셉 션](~/ef6/fundamentals/logging-and-interception.md) 하 고 [트랜잭션 향상](~/ef6/saving/transactions.md)합니다. 그러나 이러한 microbenchmarks 숫자 Entity Framework 수행 하는 매우 작은 조각으로 증폭 되는 시각을 됩니다. Entity Framework 6에서 Entity Framework 5로 업그레이드 하는 경우 실제 시나리오 웜 쿼리의 성능 회귀를 나타나지 않습니다.
 
@@ -858,9 +858,9 @@ Microbenchmarks은 코드의 작은 변화에 매우 민감합니다. 추가 인
 | EF6 | DbContext Linq 쿼리                        | 1290      | 47529984 |
 
 
-![EF5WarmQuery1000](~/ef6/media/ef5warmquery1000.png)
+![EF5 웜 쿼리 1000 반복](~/ef6/media/ef5warmquery1000.png)
 
-![EF6WarmQuery1000](~/ef6/media/ef6warmquery1000.png)
+![EF6 웜 쿼리 1000 반복](~/ef6/media/ef6warmquery1000.png)
 
 > [!NOTE]
 > 완성도 위해는 EntityCommand에 Entity SQL 쿼리를 실행 했습니다 변형 포함 되어 있습니다. 그러나 이러한 쿼리의 결과 구체화 되지 않은, 때문에 비교 반드시 사과-사과입니다. 테스트 비교 공평한 만들어 볼 구체화 대 한 근사치를 포함 합니다.

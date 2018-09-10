@@ -3,12 +3,12 @@ title: 연결 복원 력 및 다시 시도 논리-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 47d68ac1-927e-4842-ab8c-ed8c8698dff2
-ms.openlocfilehash: 47181292873009c7bce2047787503258ffa35d9d
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: d7e58abfa17c5537cdc9b0068e7c2a3c2e390038
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997487"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250520"
 ---
 # <a name="connection-resiliency-and-retry-logic"></a>연결 복원 력 및 다시 시도 논리
 > [!NOTE]
@@ -68,11 +68,9 @@ SqlAzureExecutionStrategy 일시적인 오류가 발생 하지만 더 이상 다
 
 실행 전략 제한 된 수의 예외는 일반적으로 tansient만 다시 시도 해결 하려면 오류가 일시적이 지 또는 시간이 너무 오래 걸리는 있는 경우 RetryLimitExceeded 예외 catch 할 뿐만 아니라 다른 오류를 처리 해야 자체입니다.  
 
-## <a name="limitations"></a>제한 사항  
-
 다시 시도 실행 전략을 사용 하는 경우 몇 가지 알려진 제한 사항을 가지 있습니다.  
 
-### <a name="streaming-queries-are-not-supported"></a>스트리밍 쿼리가 지원 되지 않습니다.  
+## <a name="streaming-queries-are-not-supported"></a>스트리밍 쿼리가 지원 되지 않습니다.  
 
 기본적으로 EF6 및 이후 버전 스트리밍 하는 것이 아니라 쿼리 결과 버퍼링 됩니다. 결과 수를 스트리밍 하려는 경우 LINQ to Entities 쿼리의 스트리밍 변경 하려면 AsStreaming 메서드를 사용할 수 있습니다.  
 
@@ -88,11 +86,9 @@ using (var db = new BloggingContext())
 
 다시 시도 실행 전략을 등록 하는 경우 스트리밍 지원 되지 않습니다. 이 제한은 연결 되 고 반환 된 결과 통해 도중 삭제할 수 없습니다 때문에 존재 합니다. 이 문제가 발생 하면 EF 전체 쿼리를 다시 실행 해야 하는 경우 되었지만 신뢰할 수 있는 이미 어떤 결과가 반환 된 알 수 없습니다 (데이터 변경한 초기 쿼리가 전송 된 결과 다른 순서로 다시 가져올 수 있습니다, 결과 고유 식별자가 없을 수 있으므로 등.).  
 
-### <a name="user-initiated-transactions-not-supported"></a>사용자가 지원 되지 않는 트랜잭션 시작  
+## <a name="user-initiated-transactions-are-not-supported"></a>사용자가 시작한 트랜잭션은 지원 되지 않습니다.  
 
 다시 시도에서 발생 하는 실행 전략을 구성한 경우 트랜잭션 사용과 관련 한 몇 가지 제한이 있습니다.  
-
-#### <a name="whats-supported-efs-default-transaction-behavior"></a>지원 되는 기능: EF의 기본 트랜잭션 동작  
 
 기본적으로 EF는 트랜잭션 내에서 모든 데이터베이스 업데이트를 수행 합니다. 이렇게 하려면 아무 작업도 수행할 필요가 없습니다, 그리고 EF 항상이 자동으로 수행 합니다.  
 
@@ -106,8 +102,6 @@ using (var db = new BloggingContext())
     db.SaveChanges();
 }
 ```  
-
-#### <a name="whats-not-supported-user-initiated-transactions"></a>지원 되지않는 사항: 사용자 트랜잭션 시작  
 
 다시 시도 실행 전략을 사용 하지 않는 경우에 단일 트랜잭션에서 여러 작업을 래핑할 수 있습니다. 예를 들어, 다음 코드는 단일 트랜잭션에서 두 SaveChanges 호출을 래핑합니다. 두 작업의 일부가 실패 하면 변경 하는 경우 적용 됩니다.  
 
@@ -130,9 +124,7 @@ using (var db = new BloggingContext())
 
 EF 모든 이전 작업을 다시 시도 하는 방법을 인식 하지 않기 때문에 다시 시도 실행 전략을 사용 하는 경우에 지원 되지 않습니다. 예를 들어, 두 번째 SaveChanges 실패 한 경우 다음 EF 더 이상 첫 번째 SaveChanges 호출을 다시 시도 하는 데 필요한 정보를 없습니다.  
 
-#### <a name="possible-workarounds"></a>가능한 해결 방법  
-
-##### <a name="suspend-execution-strategy"></a>실행 전략 일시 중단  
+### <a name="workaround-suspend-execution-strategy"></a>해결 방법: 실행 전략 일시 중단  
 
 해결 방법 중 하나 트랜잭션 시작 사용자를 사용 해야 하는 코드 부분에 대 한 다시 시도 실행 전략 일시 중단 됩니다. 이 작업을 수행 하는 가장 쉬운 방법은 코드 SuspendExecutionStrategy 플래그 구성 클래스 및 변경 플래그를 설정 하는 경우 기본 (retying 아닌) 실행 전략을 반환할 실행 전략 람다를 추가 하는 것입니다.  
 
@@ -193,7 +185,7 @@ using (var db = new BloggingContext())
 }
 ```  
 
-##### <a name="manually-call-execution-strategy"></a>실행 전략을 직접 호출  
+### <a name="workaround-manually-call-execution-strategy"></a>해결 방법: 실행 전략을 직접 호출  
 
 다른 옵션은 수동으로 실행 전략을 사용 하 고 작업 중 하나가 실패 하면 모든 재시도 수 있도록 실행 논리의 전체 집합을 제공 하는 것입니다. -기술을 사용 하 여 실행 전략 일시 중단 작업을 계속 합니다 위의-재시도 가능한 코드 블록 내에서 사용 되는 컨텍스트 다시 시도 하지 않도록 되도록 합니다.  
 

@@ -3,12 +3,12 @@ title: EF6 유효성 검사
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 77d6a095-c0d0-471e-80b9-8f9aea6108b2
-ms.openlocfilehash: eec834888e2e3efaadc8acf9d4f64307f394ea4a
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 65639b0f91f54ee2cd1336f6b6cd4caf45ede680
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994447"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251026"
 ---
 # <a name="data-validation"></a>데이터 유효성 검사
 > [!NOTE]
@@ -54,7 +54,7 @@ Entity Framework는 다양 한 클라이언트 쪽 유효성 검사에 대 한 �
 
 추가 코드 또는 응용 프로그램에서 태그 변경 없이 기존 MVC 응용 프로그램에는 클라이언트 쪽 유효성 검사, 속성 및 주석 이름을 사용 하 여 메시지를 동적으로 작성을 수행 합니다.
 
-![figure01](~/ef6/media/figure01.png)
+![그림 1](~/ef6/media/figure01.png)
 
 게시물에 Create view이 메서드의 백업할 Entity Framework는 새 블로그가 데이터베이스에 저장 하는 데 사용 되는 있지만 MVC의 클라이언트 쪽 유효성 검사는 응용 프로그램 코드에 도달 하기 전에 트리거됩니다.
 
@@ -153,7 +153,7 @@ ValidationResult 생성자 오류 메시지와 유효성 검사와 연관 된 �
 
 Fluent API에서 제공 되는 유효성 검사와는 달리이 유효성 검사 결과 보기에서 인식 됩니다 및 ModelState에 오류를 추가 하려면 이전 사용 하는 예외 처리기 필요 하지 않습니다. ValidationResult의 두 속성 이름이 설정, 때문에 MVC HtmlHelpers 해당 속성을 모두에 대 한 오류 메시지를 표시 합니다.
 
-![figure02](~/ef6/media/figure02.png)
+![그림 2](~/ef6/media/figure02.png)
 
 ## <a name="dbcontextvalidateentity"></a>DbContext.ValidateEntity
 

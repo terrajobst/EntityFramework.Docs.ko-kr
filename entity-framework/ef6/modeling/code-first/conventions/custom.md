@@ -3,12 +3,12 @@ title: 사용자 지정 코드 첫 번째 규칙-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: dd2bdbd9-ae9e-470a-aeb8-d0ba160499b7
-ms.openlocfilehash: 79450790c6d3c8ce7fad209e3946e81d3fad4b75
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a0e8080037cf86640275f498ed159c847ff5c057
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995830"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251065"
 ---
 # <a name="custom-code-first-conventions"></a>사용자 지정 코드의 첫 번째 규칙
 > [!NOTE]
@@ -115,7 +115,7 @@ IsKey 메서드는 흥미로운 기능은 것은 가산적입니다. 즉, 여러
 
 이 코드에서 int 키 열과 문자열 이름 열으로 구성 된 복합 키를 갖는 모델 유형을 구성 합니다. 디자이너에서 모델을 보면 다음과 같이 표시 됩니다.
 
-![compositeKey](~/ef6/media/compositekey.png)
+![복합 키](~/ef6/media/compositekey.png)
 
 속성 규칙의 또 다른 예로 날짜/시간 대신 SQL server에서 datetime2 형식에 매핑할 모델 내에서 모든 날짜/시간 속성을 구성 하는 것입니다. 다음을 사용 하 여이 얻을 수 있습니다.
 
@@ -292,7 +292,7 @@ ToTable의 또 다른 중요 한 측면에 있으면는 명시적으로 형식�
 
 위의 코드는 다음과 같이 표시 된 테이블 구조에 매핑합니다.
 
-![tptExample](~/ef6/media/tptexample.jpg)
+![tpt 예제](~/ef6/media/tptexample.jpg)
 
 이 문제를 방지 하 고 기본 TPH 매핑이 두 가지 방법으로 유지할 수 있습니다.
 

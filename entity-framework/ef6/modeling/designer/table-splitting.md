@@ -3,12 +3,12 @@ title: 디자이너 테이블 분할 EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
-ms.openlocfilehash: 87b6e1bd0374f77dfffab342c659cf4e16c8a337
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f07aeb0aa679f6fa8131c667ac808f17c3f03f20
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994505"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250987"
 ---
 # <a name="designer-table-splitting"></a>디자이너의 테이블 분
 이 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델을 수정 하 여 여러 엔터티 형식을 단일 테이블에 매핑하는 방법을 보여 줍니다.
@@ -17,7 +17,7 @@ ms.locfileid: "42994505"
 
 다음 이미지에서는 EF 디자이너를 사용 하 여 작업할 때 사용 되는 기본 windows를 보여 줍니다.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![EF 디자이너](~/ef6/media/efdesigner.png)
 
 ## <a name="prerequisites"></a>전제 조건
 
@@ -130,8 +130,8 @@ ms.locfileid: "42994505"
 
 -   다음 **선택** 컨텍스트를 실행 한 결과로 실행 되었습니다. 에 매핑된 열만 선택 하 고 People.FirstOrDefault() **사람**
 
-    ![Select1](~/ef6/media/select1.png)
+    ![1 선택](~/ef6/media/select1.png)
 
 -   다음 **선택** 탐색 속성 existingPerson.Instructor 액세스의 결과로 실행 되 고에 매핑된 열만 선택 **HireInfo**
 
-    ![Select2](~/ef6/media/select2.png)
+    ![2를 선택 합니다.](~/ef6/media/select2.png)

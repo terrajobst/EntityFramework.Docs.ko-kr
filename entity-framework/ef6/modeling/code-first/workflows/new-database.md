@@ -3,12 +3,12 @@ title: 새 데이터베이스-EF6 대 한 code First
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: 50c6a4710bc50879304f64e781a46c4836f86882
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 8ed1bfbc3536acc0d83b9c8ecdd180aeb44eff83
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152480"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251052"
 ---
 # <a name="code-first-to-a-new-database"></a>새 데이터베이스에 대 한 code First
 이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
@@ -199,13 +199,13 @@ Visual Studio에서 서버 탐색기를 사용 하 여이 데이터베이스에 
 -   마우스 오른쪽 단추로 클릭 **데이터 연결** 선택한 **연결 추가 중...**
 -   Microsoft SQL Server 데이터 원본으로 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않은 경우
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![데이터 원본 선택](~/ef6/media/selectdatasource.png)
 
 -   LocalDB 또는 어느에 따라 설치한 SQL Express에 연결
 
 이제 Code First에서 만든 스키마를 검사 수 있습니다.
 
-![SchemaInitial](~/ef6/media/schemainitial.png)
+![초기 스키마](~/ef6/media/schemainitial.png)
 
 DbContext에 정의한 DbSet 속성을 확인 하 여 모델에 포함할 어떤 클래스를 산출 합니다. 다음 테이블 및 열 이름을 결정, 데이터 형식을 결정 하 고, 기본 키 등을 찾을 Code First 규칙의 기본 집합을 사용 합니다. 이 연습의 뒷부분에서 이러한 규칙을 재정의할 수 있습니다 하는 방법을 살펴보겠습니다.
 
@@ -266,7 +266,7 @@ namespace CodeFirstNewDatabaseSample.Migrations
 
 새 Url 열이 이제 블로그 테이블 데이터베이스에 추가 됩니다.
 
-![SchemaWithUrl](~/ef6/media/schemawithurl.png)
+![Url 사용 하 여 스키마](~/ef6/media/schemawithurl.png)
 
 ## <a name="6-data-annotations"></a>6. 데이터 주석
 
@@ -316,7 +316,7 @@ public class User
 
 이제 새 테이블은 데이터베이스에 추가 됩니다.
 
-![SchemaWithUsers](~/ef6/media/schemawithusers.png)
+![사용자와 스키마](~/ef6/media/schemawithusers.png)
 
 EF에서 지원 되는 주석의 전체 목록은 다음과 같습니다.
 
@@ -365,7 +365,7 @@ public class BloggingContext : DbContext
 
 표시할 DisplayName 열 이름이 이제\_이름:
 
-![SchemaWithDisplayNameRenamed](~/ef6/media/schemawithdisplaynamerenamed.png)
+![이름을 바꿀 표시 이름과 함께 스키마](~/ef6/media/schemawithdisplaynamerenamed.png)
 
 ## <a name="summary"></a>요약
 

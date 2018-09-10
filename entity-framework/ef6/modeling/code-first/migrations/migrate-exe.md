@@ -3,12 +3,12 @@ title: Migrate.exe-EF6을 사용 하 여
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 989ea862-e936-4c85-926a-8cfbef5df5b8
-ms.openlocfilehash: 39740578e4a8c2d5400bcabbcb107baf0648fba5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8f0ff6d472c39eaf000c31783fe7a769c8746fec
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993501"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251117"
 ---
 # <a name="using-migrateexe"></a>Migrate.exe를 사용 하 여
 Code First 마이그레이션을에서 데이터베이스를 업데이트할 수 visual studio 내에서 명령줄 도구 migrate.exe 통해 실행할 수 있습니다. 이 페이지 migrate.exe를 사용 하 여 데이터베이스에 대해 마이그레이션을 실행 하는 방법에 대 한 빠른 개요를 제공 합니다.
@@ -26,16 +26,14 @@ Migrate.exe를 만든 후 마이그레이션을 포함 하는 어셈블리의 �
 
 | .NET 4.5                                   | .NET 4.0                                   |
 |:-------------------------------------------|:-------------------------------------------|
-| ![Net45Files](~/ef6/media/net45files.png)  | ![Net40Files](~/ef6/media/net40files.png)  |
+| ![.NET 4.5 파일](~/ef6/media/net45files.png)  | ![.NET 4.0 파일](~/ef6/media/net40files.png)  |
 
 > [!NOTE]
 > migrate.exe x64를 지원 하지 않습니다 어셈블리입니다.
 
-## <a name="using-migrateexe"></a>Migrate.exe를 사용 하 여
-
 Migrate.exe 올바른 폴더에 이동 하면 마이그레이션을 데이터베이스에 대해 실행에 사용할 수 있습니다. 마이그레이션을 실행 유틸리티는 수행 하도록 디자인 됩니다. 마이그레이션을 생성 하거나 SQL 스크립트를 만들 수 없습니다.
 
-### <a name="see-options"></a>옵션을 보려면
+## <a name="see-options"></a>옵션을 보려면
 
 ``` console
 Migrate.exe /?
@@ -43,7 +41,7 @@ Migrate.exe /?
 
 위의 참고를 EntityFramework.dll migrate.exe이 작업을 위해에서 실행 중인 동일한 위치에 해야 하는이 유틸리티를 사용 하 여 연결 된 도움말 페이지가 표시 됩니다.
 
-### <a name="migrate-to-the-latest-migration"></a>위해 최신 마이그레이션으로 마이그레이션
+## <a name="migrate-to-the-latest-migration"></a>위해 최신 마이그레이션으로 마이그레이션
 
 ``` console
 Migrate.exe MyMvcApplication.dll /startupConfigurationFile=”..\\web.config”
@@ -51,7 +49,7 @@ Migrate.exe MyMvcApplication.dll /startupConfigurationFile=”..\\web.config”
 
 구성 파일을 지정 하지 않으면 경우 migrate.exe 유일한 필수 매개 변수를 실행 중인 실행 하려고 하는 마이그레이션을 포함 하는 어셈블리는 어셈블리 이지만 모든 규칙을 사용할지 기반 설정 합니다.
 
-### <a name="migrate-to-a-specific-migration"></a>마이그레이션할 특정 마이그레이션
+## <a name="migrate-to-a-specific-migration"></a>마이그레이션할 특정 마이그레이션
 
 ``` console
 Migrate.exe MyApp.exe /startupConfigurationFile=”MyApp.exe.config” /targetMigration=”AddTitle”
@@ -59,7 +57,7 @@ Migrate.exe MyApp.exe /startupConfigurationFile=”MyApp.exe.config” /targetMi
 
 특정 마이그레이션까지 마이그레이션을 실행 하려는 경우 마이그레이션의 이름을 지정할 수 있습니다. 모든 이전 마이그레이션 필요에 따라 실행될지이 지정 된 마이그레이션 시작 될 때까지 합니다.
 
-### <a name="specify-working-directory"></a>작업 디렉터리를 지정 합니다.
+## <a name="specify-working-directory"></a>작업 디렉터리를 지정 합니다.
 
 ``` console
 Migrate.exe MyApp.exe /startupConfigurationFile=”MyApp.exe.config” /startupDirectory=”c:\\MyApp”
@@ -67,7 +65,7 @@ Migrate.exe MyApp.exe /startupConfigurationFile=”MyApp.exe.config” /startupD
 
 어셈블리가 있습니다 종속성 또는 작업 디렉터리를 기준으로 파일을 읽고 경우 startupDirectory 설정 해야 합니다.
 
-### <a name="specify-migration-configuration-to-use"></a>사용할 마이그레이션 구성 지정
+## <a name="specify-migration-configuration-to-use"></a>사용할 마이그레이션 구성 지정
 
 ``` console
 Migrate.exe MyAssembly CustomConfig /startupConfigurationFile=”..\\web.config”
@@ -75,7 +73,7 @@ Migrate.exe MyAssembly CustomConfig /startupConfigurationFile=”..\\web.config�
 
 여러 마이그레이션 구성 클래스에 있는 경우 DbMigrationConfiguration에서 상속 클래스를 다음 지정 해야이 실행에 사용 하는 것입니다. 이 위에서 스위치 없이 선택적 두 번째 매개 변수를 제공 하 여 지정 됩니다.
 
-### <a name="provide-connection-string"></a>연결 문자열 제공
+## <a name="provide-connection-string"></a>연결 문자열 제공
 
 ``` console
 Migrate.exe BlogDemo.dll /connectionString=”Data Source=localhost;Initial Catalog=BlogDemo;Integrated Security=SSPI” /connectionProviderName=”System.Data.SqlClient”

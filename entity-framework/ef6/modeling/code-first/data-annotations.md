@@ -3,29 +3,29 @@ title: First 데이터 주석-EF6 코드
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: 0ab66afa3babafe657b3ddb32c02c3fba0ae310e
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 57e2b988f81d9c82e10a07a5cd4f3a1decfd838a
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994588"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251208"
 ---
 # <a name="code-first-data-annotations"></a>Code First 데이터 주석
 > [!NOTE]
-> **EF4.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 4.1에서 도입 되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.
+> **EF4.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 4.1에서 도입 되었습니다. 이전 버전을 사용 하는 경우이 정보 중 일부나 전부 적용 되지 않습니다.
 
-이 페이지에 있는 콘텐츠는 및 Julie lerman 작성 원래 작성 된 문서 (\<http://thedatafarm.com>)합니다.
+Julie lerman 작성 원래 작성 된 문서에서이 페이지에 있는 콘텐츠는 (\<http://thedatafarm.com>)합니다.
 
-Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나타내는 사용자 고유의 도메인 클래스를 사용 하면 추적 및 업데이트 함수 변경 됩니다. 코드는 먼저 구성 보다 규칙으로 참조 하는 프로그래밍 패턴을 활용 합니다. 즉, 해당 코드는 먼저 가정 클래스 EF를 사용 하는 규칙에 따라 합니다. 이런 경우 EF가 작업을 수행 해야 하는 세부 정보를 파악 하는 일을 할 수 합니다. 그러나 클래스에서 이러한 규칙을 따르지 않으면 경우 구성이 필요한 정보를 사용 하 여 EF 수 있도록 클래스에 추가할 수가 있습니다.
+Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나타내는 사용자 고유의 도메인 클래스를 사용 하면 추적 하 고 함수를 업데이트 하는 중 변경 됩니다. 코드는 먼저 '구성 보다 규칙입니다.' 라고 하는 프로그래밍 패턴을 활용 먼저 코드 클래스 Entity Framework의 규칙을 따르고이 경우 자동으로 작동의 작업을 수행 하는 방법에 대해 간주 합니다. 그러나 클래스 해당 규칙을 따르지 않으면 구성 필수 정보를 사용 하 여 EF 수 있도록 클래스에 추가할 수가 있습니다.
 
-먼저 코드는 클래스에 다음이 구성을 추가 하려면 두 가지 방법으로 제공 합니다. DataAnnotations를 호출 하는 단순한 특성 하나 사용 하 고 다른 하나는 코드에서 명령적으로 구성을 설명 하는 방법을 제공 하는 Fluent API는 먼저 코드를 사용 합니다.
+먼저 코드는 클래스에 다음이 구성을 추가 하려면 두 가지 방법으로 제공 합니다. DataAnnotations를 호출 하는 단순한 특성을 사용 하는 하나 및 두 번째 코드에서 명령적으로 구성을 설명 하는 방법을 제공 하는 Code First의 Fluent API를 사용 하는 합니다.
 
 이 문서에서는 중점적으로 DataAnnotations (System.ComponentModel.DataAnnotations 네임 스페이스)에서 사용 하 여 구성 클래스-가장 일반적으로 필요한 구성이 강조 표시 합니다. DataAnnotations 다양 한 클라이언트 쪽 유효성 검사에 대 한 동일한 주석을 활용 하 여 이러한 응용 프로그램을 허용 하는 ASP.NET MVC와 같은.NET 응용 프로그램에서 인식 됩니다.
 
 
 ## <a name="the-model"></a>모델
 
-설명 하겠습니다 코드 클래스의 간단한 쌍을 사용 하 여 첫 번째 DataAnnotations: 블로그 및 게시물.
+코드의 첫 번째 DataAnnotations는 클래스의 간단한 쌍을 사용 하 여 설명 하겠습니다: 블로그 및 게시물.
 
 ``` csharp
     public class Blog
@@ -47,15 +47,15 @@ Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나�
     }
 ```
 
-있는 그대로 블로그 및 게시물 클래스를 편리 하 게 코드 첫 번째 규칙 따르고 없습니다 조정 EF를 사용 하는 데 필요 합니다. 하지만 EF에 클래스 및 동의어가 매핑되는 데이터베이스에 대 한 자세한 정보를 제공 하는 주석을 사용할 수도 있습니다.
+있는 그대로 블로그 및 게시물 클래스를 편리 하 게 코드의 첫 번째 규칙 따르고 없습니다 조정 EF 호환성을 사용 하도록 설정 해야 합니다. 그러나 EF에 클래스 및 매핑되는 데이터베이스에 대 한 자세한 정보를 제공 하려면 주석을 사용할 수 있습니다.
 
  
 
 ## <a name="key"></a>Key
 
-Entity Framework는 엔터티를 추적에 사용 되는 키 값을 가진 모든 엔터티를 사용 합니다. 코드는 처음에 의존 하는 규칙 중 하나는 각 코드 첫 번째 클래스의 키 속성이 의미 하는 방법입니다. 명명 된 클래스 이름과 같은 "BlogId" "Id"를 결합 하는 하나 또는 "Id" 속성에 대해 확인 하는 것입니다. 속성은 데이터베이스의 기본 키 열에 매핑됩니다.
+Entity Framework는 엔터티 추적에 사용 되는 키 값을 가진 모든 엔터티를 사용 합니다. Code First의 한 규칙은 암시적 키 속성 먼저 코드 "Id", 또는 조합 클래스 이름과 "Id", 예: "BlogId" 라는 속성에 대해 살펴보겠습니다. 이 속성은 데이터베이스의 기본 키 열에 매핑됩니다.
 
-블로그 및 게시물 클래스는 모두이 규칙을 따릅니다. 그러나 않은 될까요? 블로그 name을 사용 하는 경우에 어떻게 *PrimaryTrackingKey* 심지어 대신 *foo*? 코드 먼저 찾을 수 없는 경우이 규칙과 일치 하는 속성을 키 속성이 있어야 하는 Entity Framework의 요구 사항으로 인해 예외가 throw 됩니다. EntityKey로 사용할 속성을 지정 하려면 키 주석을 사용할 수 있습니다.
+블로그 및 게시물 클래스는 모두이 규칙을 따릅니다. 하지 될까요? 블로그 name을 사용 하는 경우에 어떻게 *PrimaryTrackingKey* 심지어 대신 *foo*? 코드 먼저 찾을 수 없는 경우이 규칙과 일치 하는 속성을 키 속성이 있어야 하는 Entity Framework의 요구 사항으로 인해 예외가 throw 됩니다. EntityKey로 사용할 속성을 지정 하려면 키 주석을 사용할 수 있습니다.
 
 ``` csharp
     public class Blog
@@ -70,11 +70,11 @@ Entity Framework는 엔터티를 추적에 사용 되는 키 값을 가진 모�
 
 접하는 경우 먼저 코드를 사용 하는 것은 데이터베이스 생성 기능, 블로그 테이블 PrimaryTrackingKey 기본적으로 Id로도 정의 되어 있는 기본 키 열을 갖습니다.
 
-![jj591583_figure01](~/ef6/media/jj591583-figure01.png)
+![기본 키를 사용 하 여 블로그 테이블](~/ef6/media/jj591583-figure01.png)
 
 ### <a name="composite-keys"></a>복합 키
 
-Entity Framework는 복합 키-둘 이상의 속성으로 구성 된 기본 키를 지원 합니다. 예를 들어에 기본 키가 PassportNumber 및 IssuingCountry 조합을 Passport 클래스가 있을 수 있습니다.
+Entity Framework는 복합 키-둘 이상의 속성으로 구성 된 기본 키를 지원 합니다. 예를 들어, 기본 키가 PassportNumber 및 IssuingCountry 조합을 Passport 클래스가 있을 수 있습니다.
 
 ``` csharp
     public class Passport
@@ -88,11 +88,11 @@ Entity Framework는 복합 키-둘 이상의 속성으로 구성 된 기본 키�
     }
 ```
 
-위 클래스 InvalidOperationExceptions 내용의; 얻게 EF 모델에 사용 하려는 경우
+위의 클래스를 사용 하 여 EF 모델에는 묶으면는 `InvalidOperationException`:
 
 *복합 기본 키 순서 지정 'Passport' 형식에 대 한 알 수 없습니다. 복합 기본 키에 대 한 순서를 지정 하는 ColumnAttribute 또는 HasKey 메서드를 사용 합니다.*
 
-복합 키에 있는 경우 Entity Framework를 사용 하면 키 속성 순서를 정의 해야 합니다. 순서를 지정 하는 열 주석을 사용 하 여 수행할 수 있습니다.
+복합 키를 사용 하려면 Entity Framework를 사용 하면 키 속성에 대 한 주문을 정의 해야 합니다. 열 주석의 순서를 지정 하 여이 수행할 수 있습니다.
 
 >[!NOTE]
 > 순서 값은 상대 (대신 인덱스 기반) 값을 사용할 수 있습니다. 예를 들어 100과 200 허용 되 1과 2를 대신 합니다.
@@ -111,7 +111,7 @@ Entity Framework는 복합 키-둘 이상의 속성으로 구성 된 기본 키�
     }
 ```
 
-복합 외래 키를 가진 엔터티가 있는 경우 해당 기본 키 속성에 사용 하는 순서는 동일한 열을 지정 해야 합니다.
+엔터티 복합 외래 키가 있는 경우 해당 기본 키 속성에 사용 하는 순서는 동일한 열을 지정 해야 합니다.
 
 동일 정확한 값에 할당 해야만 상대적 순서 외래 키 속성 내의 **순서** 일치 필요가 없습니다. 예를 들어, 다음 클래스에 3-4 사용할 수 있습니다 1 및 2 대신.
 
@@ -148,7 +148,7 @@ Title 속성에 필요한 추가 하면 EF 및 MVC가 속성에 데이터가 있
 
 없는 추가 하지 않은 코드 또는 태그 변경 내용을 응용 프로그램에서 MVC 응용 프로그램이 실행 클라이언트 쪽 유효성 검사, 속성 및 주석 이름을 사용 하 여 메시지를 동적으로 작성 합니다.
 
-![jj591583_figure02](~/ef6/media/jj591583-figure02.png)
+![만들 제목으로 페이지는 필요한 오류](~/ef6/media/jj591583-figure02.png)
 
 Required 특성 매핑된 속성을 nullable이 아닌 만들어 생성된 된 데이터베이스를 변경 됩니다. "Null 아님" 제목 필드 변경 되었는지 확인 합니다.
 
@@ -157,7 +157,7 @@ Required 특성 매핑된 속성을 nullable이 아닌 만들어 생성된 된 �
 
  
 
-![jj591583_figure03](~/ef6/media/jj591583-figure03.png)
+![블로그 테이블](~/ef6/media/jj591583-figure03.png)
 
  
 
@@ -174,7 +174,7 @@ MinLength 및 MaxLength 특성을 방금 수행한 것 처럼 사용 하 여 필
 
 MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향이 있습니다.
 
-![jj591583_figure04](~/ef6/media/jj591583-figure04.png)
+![BloggerName 열의 최대 길이 표시 하는 블로그 테이블](~/ef6/media/jj591583-figure04.png)
 
 클라이언트 쪽 주석 MVC 및 EF 4.1 서버 쪽 주석 둘 다 적용 됩니다는 오류 메시지를 동적으로 다시 작성이 유효성 검사: "필드 BloggerName '10'의 최대 길이 사용 하 여 문자열 또는 배열 형식 이어야 합니다." 해당 메시지가 약간 깁니다. 여러 주석 ErrorMessage 특성을 사용 하 여 오류 메시지를 지정할 수 있습니다.
 
@@ -185,7 +185,7 @@ MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향
 
 또한 필요한 주석 ErrorMessage를 지정할 수 있습니다.
 
-![jj591583_figure05](~/ef6/media/jj591583-figure05.png)
+![사용자 지정 오류 메시지를 사용 하 여 페이지 만들기](~/ef6/media/jj591583-figure05.png)
 
  
 
@@ -243,7 +243,7 @@ BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메
 
 데이터베이스의 블로그 테이블 블로그 BlogDetail 속성에 포함 된 속성을 포함 하 여 속성을 모두 포함 됩니다. 기본적으로 각 앞 BlogDetail 복합 형식의 이름을 사용 합니다.
 
-![jj591583_figure06](~/ef6/media/jj591583-figure06.png)
+![복합 형식 가진 블로그 테이블](~/ef6/media/jj591583-figure06.png)
 
 또 다른 흥미로운 점은 DateCreated 속성 클래스는 nullable이 아닌 날짜/시간으로 정의 했지만, 관련 데이터베이스 필드는 null을 허용 됩니다. 데이터베이스 스키마를 적용 하려는 경우 필요한 주석을 사용 해야 합니다.
 
@@ -284,7 +284,7 @@ BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 �
 
 먼저 데이터베이스 테이블에서 null이 아닌 타임 스탬프 열을 생성 하는 코드의 결과입니다.
 
-![jj591583_figure07](~/ef6/media/jj591583-figure07.png)
+![타임 스탬프 열을 사용 하 여 블로그 테이블](~/ef6/media/jj591583-figure07.png)
 
  
 
@@ -310,7 +310,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 가 다시 생성 된 후 표에서 다음과 같습니다. InternalBlogs 테이블 이름 변경 되었습니다 및 복합 형식에서 설명 열 BlogDescription 되었습니다. 주석에서 이름을 지정 하기 때문에 코드 먼저 사용 하지 않습니다 열 이름이 복합 형식의 이름으로 시작 하는 규칙.
 
-![jj591583_figure08](~/ef6/media/jj591583-figure08.png)
+![블로그 테이블 및 열 변경](~/ef6/media/jj591583-figure08.png)
 
  
 
@@ -418,7 +418,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 데이터베이스에서 제약 조건을 InternalBlogs.PrimaryTrackingKey Posts.BlogId 사이의 관계를 보여 줍니다. 
 
-![jj591583_figure09](~/ef6/media/jj591583-figure09.png)
+![InternalBlogs.PrimaryTrackingKey Posts.BlogId 간의 관계](~/ef6/media/jj591583-figure09.png)
 
 InverseProperty 클래스 간에 여러 관계가 있는 경우 사용 됩니다.
 
@@ -443,7 +443,7 @@ Post 클래스의 블로그 게시물을 작성 하는 한 추적 하려는 편�
 
 먼저 코드는 자체적으로 두 개의 클래스에서 속성을 일치 시킬 수 없습니다. 게시물에 대 한 데이터베이스 테이블 CreatedBy 사용자에 대 한 하나의 외래 키를 있어야 하 고 4 개는 외래 키 속성 만듭니다 먼저 UpdatedBy 상대방이 했지만 코드에 대 한: Person\_Id, Person\_Id1, CreatedBy\_Id 및 UpdatedBy\_id입니다.
 
-![jj591583_figure10](~/ef6/media/jj591583-figure10.png)
+![추가 외래 키를 사용 하 여 테이블을 게시](~/ef6/media/jj591583-figure10.png)
 
 이러한 문제를 해결 하려면 속성의 맞춤을 지정 하려면 InverseProperty 주석을 사용할 수 있습니다.
 
@@ -457,7 +457,7 @@ Post 클래스의 블로그 게시물을 작성 하는 한 추적 하려는 편�
 
 직접에서 PostsWritten 속성 알고는이 형식을 참조 하는 게시물에 있기 때문에 Post.CreatedBy 관계가 빌드됩니다. 마찬가지로, PostsUpdated Post.UpdatedBy에 연결 됩니다. 및 코드 추가 외래 키를 먼저 만듭니다 하지 않습니다.
 
-![jj591583_figure11](~/ef6/media/jj591583-figure11.png)
+![추가 외래 키가 없는 테이블을 게시](~/ef6/media/jj591583-figure11.png)
 
  
 

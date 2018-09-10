@@ -3,12 +3,12 @@ title: 테스트 용이성 및 Entity Framework 4.0
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 9430e2ab-261c-4e8e-8545-2ebc52d7a247
-ms.openlocfilehash: 17a9f09022531a81042979464de05fbbd2570759
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2a2384c7868ae3cf6af4f915c06ae9fdb622634c
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995231"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251325"
 ---
 # <a name="testability-and-entity-framework-40"></a>테스트 용이성 및 Entity Framework 4.0
 Scott Allen
@@ -194,13 +194,13 @@ Fowler 이름 지연 로드를 사용 하 여 "의 모든 데이터를 포함 �
 
 현재 위치에서 Poco를 사용 하 여 Visual Studio에서 엔터티 데이터 모델 (EDM) 만들 수 있습니다 (그림 1 참조). EDM이 엔터티에 대 한 코드 생성을 사용 하지 않습니다. 대신, 우리 답게 만드는 손으로 엔터티를 사용 하려고 합니다. 데이터베이스 스키마를 생성 하 고 EF4 데이터베이스로 개체를 매핑하는 데 필요한 메타 데이터를 제공 하는 EDM만 사용 됩니다.
 
-![eftest_01](~/ef6/media/eftest-01.jpg)
+![ef test_01](~/ef6/media/eftest-01.jpg)
 
 **그림 1**
 
 참고: 먼저 EDM 모델을 개발 하려는 경우 있기을 깨끗 하 고 EDM에서 POCO 코드를 생성 합니다. 데이터 프로그래밍 팀에서 제공 하는 Visual Studio 2010 확장을 사용 하 여이 수행할 수 있습니다. 확장을 다운로드 하려면 Visual Studio의 도구 메뉴에서 확장 관리자를 시작 하 고 "POCO" (그림 2 참조)에 대 한 온라인 템플릿 갤러리를 검색 합니다. EF에 대 한 사용 가능한 여러 POCO 템플릿이 있습니다. 템플릿 사용에 대 한 자세한 내용은 참조 하세요. " [연습: Entity Framework에 대 한 POCO 템플릿을](http://blogs.msdn.com/adonet/pages/walkthrough-poco-template-for-the-entity-framework.aspx)"입니다.
 
-![eftest_02](~/ef6/media/eftest-02.png)
+![ef test_02](~/ef6/media/eftest-02.png)
 
 **그림 2**
 
@@ -415,13 +415,13 @@ I o b j&lt;T&gt; 개체의 컬렉션 유사 하므로 리포지토리에 대 한
 
 테스트 픽스 쳐 (그림 3 참조)의 수에 대 한 기본 클래스로 EmployeeControllerTestBase 사용할 수 있습니다. 각 테스트 픽스 쳐를 특정 컨트롤러 작업을 테스트 합니다. 예를 들어, 하나의 테스트 픽스 쳐는 테스트 (직원을 만들기 위한 뷰를 표시)를 HTTP GET 요청 중 사용 되는 만들기 작업을 집중 하 고 다양 한 fixture HTTP POST 요청에 사용 되는 만들기 작업을 중점적 (제출한 정보에 직원 만들기 사용자)입니다. 각 파생된 클래스는 특정 상황에서 특정 테스트 상황에 대 한 결과 확인 하는 데 필요한 어설션을 제공 하는 데 필요한 설치만 합니다.
 
-![eftest_03](~/ef6/media/eftest-03.png)
+![ef test_03](~/ef6/media/eftest-03.png)
 
 **그림 3**
 
 여기에 제시 된 명명 규칙 및 테스트 스타일에는 테스트 가능한 코드에 대 한 필요 하지 않습니다. 즉,이 방법 중 하나일 뿐입니다. 그림 4에서는 Jet 수렵과 Resharper에서 실행 중인 테스트는 runner 플러그 인 Visual Studio 2010에 대 한 테스트 보여 줍니다.
 
-![eftest_04](~/ef6/media/eftest-04.png)
+![ef test_04](~/ef6/media/eftest-04.png)
 
 **그림 4**
 

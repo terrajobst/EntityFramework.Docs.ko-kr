@@ -3,12 +3,12 @@ title: 저장 프로시저-EF6 디자이너 CUD
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 1e773972-2da5-45e0-85a2-3cf3fbcfa5cf
-ms.openlocfilehash: 7a3176e1057816dd11ced5fc545aa3baa672bd03
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 36c9b97b77fec30136cba1d850a0259c689e69ae
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993891"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250922"
 ---
 # <a name="designer-cud-stored-procedures"></a>디자이너 CUD 저장 프로시저
 이 단계별 연습 만들기를 매핑하는 방법을 보여 줍니다\\삽입, 업데이트 및 삭제 작업 (CUD) Entity Framework Designer (EF 디자이너)를 사용 하 여 저장된 프로시저에 엔터티 형식입니다.  기본적으로 Entity Framework에 CUD 작업에 대 한 SQL 문을 자동으로 생성 되지만 이러한 작업에 저장된 프로시저도 매핑할 수 있습니다.  
@@ -54,7 +54,7 @@ CUD 작업 저장된 프로시저를 매핑할 경우 다음 사항을 고려해
 -   또한 아래에 있는 다음 저장된 프로시저를 선택 합니다 **저장 프로시저 및 함수** 노드: **DeletePerson**합니다 **InsertPerson**, 및 **UpdatePerson** . 
 -   Visual Studio 2012를 사용한 EF 디자이너 시작 저장된 프로시저의 대량 가져오기를 지원 합니다. 합니다 **엔터티 모델에 저장된 프로시저 및 함수를 선택 하는 가져오기** 기본적으로 선택 됩니다. 이 예제에서 삽입, 업데이트 및 엔터티 형식을 삭제 하는 프로시저 저장를 있으므로 가져와야 하지 않으려는 하 고이 확인란의 선택을 취소 합니다. 
 
-    ![ImportSProcs](~/ef6/media/importsprocs.jpg)
+    ![S 프로시저 가져오기](~/ef6/media/importsprocs.jpg)
 
 -   **마침**을 클릭합니다.
     모델 편집을 위해 디자인 화면을 제공 하는 EF 디자이너 표시 됩니다.
@@ -72,7 +72,7 @@ CUD 작업 저장된 프로시저를 매핑할 경우 다음 사항을 고려해
 -   **Enter** 키를 누릅니다.
 -   기본적으로 **NewPersonID** 엔터티 키에 매핑되어 **PersonID**합니다. 화살표는 매핑 방향을 나타냅니다. 즉, 결과 열의 값이 속성에 제공됩니다.
 
-    ![MappingDetails](~/ef6/media/mappingdetails.png)
+    ![매핑 정보](~/ef6/media/mappingdetails.png)
 
 -   클릭 **&lt;Update Function 선택&gt;** 선택한 **UpdatePerson** 결과 드롭다운 목록에서.
 -   저장 프로시저 매개 변수와 엔터티 속성 간의 기본 매핑이 나타납니다.

@@ -3,12 +3,12 @@ title: EF6 먼저 모델
 author: divega
 ms.date: 2016-10-23
 ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
-ms.openlocfilehash: c21592b27fa752532f5ede5923d0bd751f0bf372
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 3dd0eba29619f09995d7009dd29462c14bde98c4
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998117"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251143"
 ---
 # <a name="model-first"></a>먼저 모델
 이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다. 먼저 모델을 사용 하면 Entity Framework 디자이너를 사용 하 여 새 모델을 만들고 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.
@@ -45,7 +45,7 @@ Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudi
 -   입력 **BloggingModel** 이름과 클릭 **확인**, 엔터티 데이터 모델 마법사가 시작 됩니다
 -   선택 **빈 모델** 를 클릭 하 고 **마침**
 
-    ![CreateEmptyModel](~/ef6/media/createemptymodel.png)
+    ![빈 모델 만들기](~/ef6/media/createemptymodel.png)
 
 빈 모델을 사용 하 여 Entity Framework 디자이너 열려 있습니다. 이제 모델에 엔터티, 속성 및 연결 추가 시작할 수 있습니다.
 
@@ -55,7 +55,7 @@ Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudi
 -   디자인 화면을 마우스 오른쪽 단추로 클릭 **새로 추가-&gt; 엔터티 중...**
 -   입력 **블로그** 엔터티 이름으로 및 **BlogId** 키 이름과 클릭 **확인**
 
-    ![AddBlogEntity](~/ef6/media/addblogentity.png)
+    ![블로그 엔터티 추가](~/ef6/media/addblogentity.png)
 
 -   디자인 화면에 새 엔터티를 마우스 오른쪽 단추로 클릭 **새로 추가-&gt; 스칼라 속성**를 입력 **이름** 속성의 이름으로 합니다.
 -   추가 하는이 프로세스를 반복 하는 **Url** 속성입니다.
@@ -71,11 +71,11 @@ Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudi
      *즉 블로그 많은 게시물에 블로그 게시물 속해*
 -   확인 합니다 **외래 키 속성 'Post' 엔터티에 추가할** 상자 체크 인 되 고 클릭 **확인**
 
-    ![AddAssociationMF](~/ef6/media/addassociationmf.png)
+    ![MF 연결 추가](~/ef6/media/addassociationmf.png)
 
 이제 것에서 데이터베이스를 생성 하 고 데이터 읽기 및 쓰기에 사용할 수 있는 간단한 모델입니다.
 
-![ModelInitial](~/ef6/media/modelinitial.png)
+![초기 모델](~/ef6/media/modelinitial.png)
 
 ### <a name="additional-steps-in-visual-studio-2010"></a>Visual Studio 2010의 추가 단계
 
@@ -95,7 +95,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework의 최신 버전�
 -   선택 **온라인 템플릿을** 검색에 대 한 확인 하 고 왼쪽된 메뉴에서 **DbContext**
 -   선택 된 EF **5.x C에 대 한 DbContext 생성기\#** 를 입력 **BloggingModel** 이름과 클릭 **추가**
 
-    ![DbContextTemplate](~/ef6/media/dbcontexttemplate.png)
+    ![DbContext 템플릿](~/ef6/media/dbcontexttemplate.png)
 
 ## <a name="3-generating-the-database"></a>3. 데이터베이스를 생성합니다.
 
@@ -111,9 +111,9 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 -   디자인 화면을 마우스 오른쪽 단추로 클릭 **모델에서 데이터베이스 생성 중...**
 -   클릭 **새 연결...** LocalDB 또는 SQL Express를 사용 중인 Visual Studio 버전을 지정 하 고 입력 **ModelFirst.Blogging** 데이터베이스 이름으로 합니다.
 
-    ![LocalDBConnectionMF](~/ef6/media/localdbconnectionmf.png)
+    ![LocalDB 연결 MF](~/ef6/media/localdbconnectionmf.png)
 
-    ![SqlExpressConnectionMF](~/ef6/media/sqlexpressconnectionmf.png)
+    ![Sql Express 연결 MF](~/ef6/media/sqlexpressconnectionmf.png)
 
 -   선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**
 -   선택 **다음** 및 Entity Framework 디자이너는 데이터베이스 스키마를 만드는 스크립트를 계산 합니다.
@@ -126,7 +126,7 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 
 *이 스크린 샷에서 Visual Studio 2012, Visual Studio 2010을 사용 하는 경우는 BloggingModel.tt 이며 BloggingModel.Context.tt 파일 프로젝트 아래에 직접 EDMX 파일 아래에 중첩 하지 않고입니다.*
 
-![GeneratedClasses](~/ef6/media/generatedclasses.png)
+![생성 된 클래스](~/ef6/media/generatedclasses.png)
 
 아래 표시 된 것과 같이 Program.cs의 Main 메서드를 구현 합니다. 이 코드는이 컨텍스트의 새 인스턴스를 만듭니다 및 다음 새 블로그 삽입을 사용 하 여 합니다. 다음 LINQ 쿼리를 사용 하 여 제목으로 사전순으로 정렬 하는 데이터베이스에서 모든 블로그를 검색 하려면.
 
@@ -180,7 +180,7 @@ Press any key to exit...
 
 -   새 **사용자** 엔터티 이름의 **Username** 키 이름으로 및 **문자열** 키에 대 한 속성 형식으로
 
-    ![AddUserEntity](~/ef6/media/adduserentity.png)
+    ![사용자 엔터티를 추가 합니다.](~/ef6/media/adduserentity.png)
 
 -   마우스 오른쪽 단추로 클릭는 **사용자 이름** 디자인 화면에 속성 **속성**에서 속성 창 변경 합니다 **MaxLength** 로 설정 **50 ** 
      *50 자로 사용자 이름을 저장할 수 있는 데이터 제한*

@@ -3,12 +3,12 @@ title: 관계, 탐색 속성 및 EF6 외래 키
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: a1653afd609280ab572ef88a9fcf8a6275b79fd6
-ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
+ms.openlocfilehash: 53f428360be4ea2e11a42676d22e584633ceedbc
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43821402"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251221"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
 이 항목에서는 Entity Framework는 엔터티 간의 관계를 관리 하는 방법의 개요를 제공 합니다. 또한 매핑 관계를 조작 하는 방법에 대 한 지침을 제공 합니다.
@@ -19,7 +19,7 @@ ms.locfileid: "43821402"
 
 다음 이미지에 일 대 다 관계에 참여 하는 두 테이블을 보여 줍니다. **과정** 있기 때문에 테이블은 종속 테이블 합니다 **DepartmentID** 에 연결 하는 열을 **부서** 테이블.
 
-![Database2](~/ef6/media/database2.png)
+![부서 및 강좌 테이블](~/ef6/media/database2.png)
 
 Entity Framework의 엔터티 연결 또는 관계를 통해 다른 엔터티와 연결할 수 있습니다. 각 관계는 엔터티 형식 및 해당 관계의 두 엔터티 형식 (1, 0 또는 1 인 이상의)의 다중성에 설명 하는 두 개의 끝을 포함 합니다. 관계는 주 역할 관계의 끝을 설명 하는 참조 제약 조건에 의해 관리 되기도 종속 역할 인지 합니다.
 
@@ -33,7 +33,7 @@ Entity Framework의 엔터티 연결 또는 관계를 통해 다른 엔터티와
 
 다음 이미지에서는 Entity Framework 디자이너를 사용 하 여 생성 된 개념적 모델을 보여 줍니다. 모델에 일 대 다 관계에 참여 하는 두 개의 엔터티가 포함 되어 있습니다. 두 엔터티는 탐색 속성입니다. **코스** 종속 엔터티가 있고 합니다 **DepartmentID** 외래 키 속성을 정의 합니다.
 
-![RelationshipEFDesigner](~/ef6/media/relationshipefdesigner.png)
+![탐색 속성을 사용 하 여 부서 및 강좌 테이블](~/ef6/media/relationshipefdesigner.png)
 
 다음 코드 조각은 Code First를 사용 하 여 만든 동일한 모델을 보여 줍니다.
 

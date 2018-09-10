@@ -3,12 +3,12 @@ title: 자동 추적 엔터티 연습-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: b21207c9-1d95-4aa3-ae05-bc5fe300dab0
-ms.openlocfilehash: 64ca9ae42df1a1c740131e254b8f80f67b2f9f97
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 1c450bbb20c246d9b9d58707ac03eb48eadfa970
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995423"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251286"
 ---
 # <a name="self-tracking-entities-walkthrough"></a>자동 추적 엔터티 연습
 > [!IMPORTANT]
@@ -142,7 +142,7 @@ Up,에서는 먼저 모델에 삽입할 프로젝트입니다.
 -   선택 된 **STETemplate.tt** 파일
 -   옆에 드롭다운 화살표를 클릭 합니다 **추가** 단추를 선택 **링크로 추가**
 
-    ![AddLinkedTemplate](~/ef6/media/addlinkedtemplate.png)
+    ![연결 된 템플릿 추가](~/ef6/media/addlinkedtemplate.png)
 
 또한 엔터티 클래스에는 동일한 컨텍스트에서 네임 스페이스에 생성 되도록 것입니다. 이 바로 응용 프로그램 전체에서 추가 해야 하는 문을 사용 하 여의 수를 줄입니다.
 
@@ -552,4 +552,4 @@ WCF 서비스에 대 한 서비스 참조 필요
 -   마우스 오른쪽 단추로 클릭 합니다 **STESample.WPFTest** 프로젝트 **솔루션 탐색기** 선택한 **디버그-&gt; 새 인스턴스 시작**
 -   화면을 사용 하 여 데이터를 조작 하 고 사용 하 여 서비스를 통해 저장 된 **저장할** 단추
 
-![WPF](~/ef6/media/wpf.png)
+![WPF 주 창](~/ef6/media/wpf.png)

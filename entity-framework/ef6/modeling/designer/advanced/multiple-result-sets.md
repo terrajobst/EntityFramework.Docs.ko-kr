@@ -3,12 +3,12 @@ title: 여러 결과 집합-EF6 사용 하 여 프로시저를 저장합니다.
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 1b3797f9-cd3d-4752-a55e-47b84b399dc1
-ms.openlocfilehash: bb104ac5f584d26d279259a173de9afe3f018968
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 56c28f05bd7efe1b54d6cadd32afe0e9c6cf38b5
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996177"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251013"
 ---
 # <a name="stored-procedures-with-multiple-result-sets"></a>여러 결과 집합을 사용 하 여 저장된 프로시저
 사용 하 여 저장 하는 경우에 따라 둘 이상의 결과 반환 해야 하는 프로시저 설정 합니다. 이 시나리오는 데이터베이스의 수를 줄이는 데 일반적으로 단일 화면을 구성 하는 데 필요한 왕복 합니다. EF5, 이전 Entity Framework 저장된 프로시저를 호출할 수 있지만 첫 번째 결과 집합 호출 코드에만 반환 합니다.
@@ -104,7 +104,7 @@ EF 디자이너를 사용 하는 경우 반환 되는 다양 한 결과 집합�
 -   이 작업을 수행 하기 위해 단일 결과 집합 쿼리 방식으로 모델에 저장된 프로시저를 추가 해야 합니다.
 -   만든 후이 모델을 마우스 오른쪽 단추로 클릭 하 고 선택 해야 **연결 프로그램...** 그런 다음 **Xml**
 
-    ![OpenAs](~/ef6/media/openas.png)
+    ![열린](~/ef6/media/openas.png)
 
 있다면 다음 단계를 수행 해야 하는 다음 XML로 열린 모델.
 

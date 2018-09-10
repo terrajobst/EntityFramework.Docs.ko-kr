@@ -3,12 +3,12 @@ title: EF6 먼저 데이터베이스
 author: divega
 ms.date: 2016-10-23
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-ms.openlocfilehash: c60108c09fcbaaa1f86e77fa52cb13fe018975e1
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 93ae5729e487ed9be3972ac78d599dbea19ed458
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995912"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251091"
 ---
 # <a name="database-first"></a>먼저 데이터베이스
 이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. 데이터베이스 먼저를 통해 리버스 엔지니어링 하려면 기존 데이터베이스에서 모델입니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.
@@ -46,17 +46,17 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 -   마우스 오른쪽 단추로 클릭 **데이터 연결-&gt; 연결 추가 중...**
 -   Microsoft SQL Server 데이터 원본으로 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않은 경우
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![데이터 원본 선택](~/ef6/media/selectdatasource.png)
 
 -   LocalDB 또는 어느에 따라 설치한 SQL Express에 연결 하 고 입력 **DatabaseFirst.Blogging** 데이터베이스 이름으로
 
-    ![SqlExpressConnectionDF](~/ef6/media/sqlexpressconnectiondf.png)
+    ![Sql Express 연결 DF](~/ef6/media/sqlexpressconnectiondf.png)
 
-    ![LocalDBConnectionDF](~/ef6/media/localdbconnectiondf.png)
+    ![LocalDB 연결 DF](~/ef6/media/localdbconnectiondf.png)
 
 -   선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**
 
-    ![CreateDatabaseDialog](~/ef6/media/createdatabasedialog.png)
+    ![데이터베이스 대화 상자 만들기](~/ef6/media/createdatabasedialog.png)
 
 -   새 데이터베이스 이제 서버 탐색기에서 마우스 나타나고 선택 **새 쿼리**
 -   새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**
@@ -101,21 +101,21 @@ CREATE TABLE [dbo].[Posts] (
 -   그러면는 **엔터티 데이터 모델 마법사**
 -   선택 **데이터베이스에서 생성** 를 클릭 하 고 **다음**
 
-    ![WizardStep1](~/ef6/media/wizardstep1.png)
+    ![마법사 단계 1](~/ef6/media/wizardstep1.png)
 
 -   첫 번째 섹션에서 만든 데이터베이스에 연결을 선택, 입력 **BloggingContext** 연결 문자열 및 클릭의 이름으로 **다음**
 
-    ![WizardStep2](~/ef6/media/wizardstep2.png)
+    ![마법사 단계 2](~/ef6/media/wizardstep2.png)
 
 -   모든 테이블을 가져오고 '마침' 클릭 '테이블' 옆의 확인란을 클릭 합니다.
 
-    ![WizardStep3](~/ef6/media/wizardstep3.png)
+    ![마법사 단계 3](~/ef6/media/wizardstep3.png)
 
  
 
 리버스 엔지니어링 프로세스가 완료 되 면 새 모델 프로젝트에 추가 되 고 Entity Framework 디자이너에서 확인할 수 있게 합니다. 또한 App.config 파일을 데이터베이스에 대 한 연결 세부 정보를 사용 하 여 프로젝트에 추가 되었습니다.
 
-![ModelInitial](~/ef6/media/modelinitial.png)
+![초기 모델](~/ef6/media/modelinitial.png)
 
 ### <a name="additional-steps-in-visual-studio-2010"></a>Visual Studio 2010의 추가 단계
 
@@ -135,7 +135,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework의 최신 버전�
 -   선택 **온라인 템플릿을** 검색에 대 한 확인 하 고 왼쪽된 메뉴에서 **DbContext**
 -   선택 된 EF **5.x C에 대 한 DbContext 생성기\#** 를 입력 **BloggingModel** 이름과 클릭 **추가**
 
-    ![DbContextTemplate](~/ef6/media/dbcontexttemplate.png)
+    ![DbContext 템플릿](~/ef6/media/dbcontexttemplate.png)
 
  
 
@@ -145,7 +145,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework의 최신 버전�
 
 *이 스크린 샷에서 Visual Studio 2012, Visual Studio 2010을 사용 하는 경우는 BloggingModel.tt 이며 BloggingModel.Context.tt 파일 프로젝트 아래에 직접 EDMX 파일 아래에 중첩 하지 않고입니다.*
 
-![GeneratedClassesDF](~/ef6/media/generatedclassesdf.png)
+![생성 된 클래스 DF](~/ef6/media/generatedclassesdf.png)
 
  
 
@@ -217,7 +217,7 @@ CREATE TABLE [dbo].[Users]
 -   추가 탭 업데이트 마법사 확인 테이블 옆의 상자에서 스키마에서 새 테이블을 추가 하려고 한다는 것을 나타냅니다.
     *새로 고침 탭을 업데이트 하는 동안 변경 내용에 대 한 확인 되는 모델의 모든 기존 테이블을 보여 줍니다. 탭 삭제 스키마에서 제거 된 업데이트의 일부로 모델에서도 제거 됩니다 하는 모든 테이블을 표시 합니다. 이 두 탭의 정보를 자동으로 검색 및 정보 제공의 목적 으로만 제공 됩니다 모든 설정을 변경할 수 없습니다.*
 
-    ![RefreshWizard](~/ef6/media/refreshwizard.png)
+    ![마법사를 새로 고칩니다.](~/ef6/media/refreshwizard.png)
 
 -   업데이트 마법사에서 마침을 클릭합니다
 
@@ -225,7 +225,7 @@ CREATE TABLE [dbo].[Users]
 
 모델은 데이터베이스에 추가한 사용자 테이블에 매핑되는 새 사용자 엔터티를 포함 하도록 업데이트 되었습니다.
 
-![ModelUpdated](~/ef6/media/modelupdated.png)
+![모델 업데이트](~/ef6/media/modelupdated.png)
 
 ## <a name="summary"></a>요약
 

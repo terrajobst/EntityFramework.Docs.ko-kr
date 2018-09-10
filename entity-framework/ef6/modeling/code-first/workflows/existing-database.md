@@ -3,12 +3,12 @@ title: 기존 데이터베이스-EF6에 code First
 author: divega
 ms.date: 2016-10-23
 ms.assetid: a7e60b74-973d-4480-868f-500a3899932e
-ms.openlocfilehash: 29f959265e0fd0d5e14c156519e6931fd8da0677
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: fedfb921919582e2cdb5f3bc497f11889b972ad6
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995092"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251078"
 ---
 # <a name="code-first-to-an-existing-database"></a>기존 데이터베이스에 대 한 code First
 이 비디오 및 단계별 연습에서는 기존 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 필요에 따라 추가 구성을 수행할 수 있습니다.
@@ -33,15 +33,15 @@ ms.locfileid: "42995092"
 -   마우스 오른쪽 단추로 클릭 **데이터 연결-&gt; 연결 추가 중...**
 -   데이터베이스에 연결 하지 않았으면 **서버 탐색기** 를 선택 해야 하기 전에 **Microsoft SQL Server** 데이터 원본으로
 
-    ![SelectDataSource](~/ef6/media/selectdatasource.png)
+    ![데이터 원본 선택](~/ef6/media/selectdatasource.png)
 
 -   LocalDB 인스턴스에 연결 하 고 입력 **블로깅** 데이터베이스 이름으로
 
-    ![LocalDBConnection](~/ef6/media/localdbconnection.png)
+    ![LocalDB 연결](~/ef6/media/localdbconnection.png)
 
 -   선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**
 
-    ![CreateDatabaseDialog](~/ef6/media/createdatabasedialog.png)
+    ![데이터베이스 대화 상자 만들기](~/ef6/media/createdatabasedialog.png)
 
 -   새 데이터베이스 이제 서버 탐색기에서 마우스 나타나고 선택 **새 쿼리**
 -   새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**
@@ -92,15 +92,15 @@ VALUES ('.NET Framework Blog', 'http://blogs.msdn.com/dotnet/')
 -   그러면는 **엔터티 데이터 모델 마법사**
 -   선택 **데이터베이스에서 Code First** 를 클릭 하 고 **다음**
 
-    ![WizardOneCFE](~/ef6/media/wizardonecfe.png)
+    ![하나의 CFE 마법사](~/ef6/media/wizardonecfe.png)
 
 -   첫 번째 섹션에서 만든 데이터베이스에 연결을 선택 하 고 클릭 **다음**
 
-    ![WizardTwoCFE](~/ef6/media/wizardtwocfe.png)
+    ![두 CFE 마법사](~/ef6/media/wizardtwocfe.png)
 
 -   옆에 있는 확인란을 클릭 **테이블** 모든 테이블을 가져오고 클릭 **마침**
 
-    ![WizardThreeCFE](~/ef6/media/wizardthreecfe.png)
+    ![마법사의 세 가지 CFE](~/ef6/media/wizardthreecfe.png)
 
 리버스 엔지니어링 프로세스에는 항목 수가 완료 되 면를 추가한 프로젝트에 보겠습니다 추가 된 기능을 확인해 보세요.
 

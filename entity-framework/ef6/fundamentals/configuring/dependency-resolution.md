@@ -3,12 +3,12 @@ title: EF6-종속성 확인
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 32d19ac6-9186-4ae1-8655-64ee49da55d0
-ms.openlocfilehash: 45681bb0cedecd502b1968b90b7f682d3257dd23
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: c6c56c3048e17a5c888ffe564e7606abf8b0c4ed
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998164"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251247"
 ---
 # <a name="dependency-resolution"></a>종속성 확인
 > [!NOTE]
@@ -25,13 +25,11 @@ public interface IDbDependencyResolver
 
 GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응용 프로그램에서 제공 하는 IDbDependencyResolver의 구현에 의해 처리 됩니다. 형식 인수는 요청 되는 서비스의 인터페이스 또는 기본 클래스 형식을 호출 하는 경우 및 키 개체가 null 이거나 요청된 된 서비스에 대 한 컨텍스트 정보를 제공 하는 개체입니다.  
 
-이 문서에서는 IDbDependencyResolver를 구현 하는 방법에 대 한 자세한 내용은 포함 하지 않지만 대신 담아 두는 EF GetService 및 키 개체의 의미 체계에 대 한 호출의 이러한 각 서비스 형식 (즉, 인터페이스 및 기본 클래스 형식)에 대 한 참조 호출합니다. 이 문서는 추가 서비스를 추가할 때 최신 상태로 유지 됩니다.  
+언급이 단일 항목으로 사용할 수 있으므로 반환 되는 모든 개체 스레드로부터 안전 해야 합니다. 대부분의 경우에 팩터리 개체를 반환 팩터리 자체 스레드로부터 안전 해야 하지만 공장에서 반환 되는 개체 스레드로부터 안전한 새 인스턴스는 각 사용에 대 한 공장에서 요청한 이후의 되도록 필요는 없습니다.
 
-## <a name="services-resolved"></a>서비스 확인  
+이 문서에서는 IDbDependencyResolver를 구현 하는 방법에 대 한 자세한 내용은 포함 하지 않지만 대신 담아 두는 EF GetService 및 키 개체의 의미 체계에 대 한 호출의 이러한 각 서비스 형식 (즉, 인터페이스 및 기본 클래스 형식)에 대 한 참조 호출합니다.
 
-언급이 단일 항목으로 사용할 수 있으므로 반환 되는 모든 개체 스레드로부터 안전 해야 합니다. 대부분의 경우에 팩터리 개체를 반환 팩터리 자체 스레드로부터 안전 해야 하지만 공장에서 반환 되는 개체 스레드로부터 안전한 새 인스턴스는 각 사용에 대 한 공장에서 요청한 이후의 되도록 필요는 없습니다.  
-
-### <a name="systemdataentityidatabaseinitializertcontext"></a>것과 < TContext\>  
+## <a name="systemdataentityidatabaseinitializertcontext"></a>것과 < TContext\>  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -39,7 +37,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="funcsystemdataentitymigrationssqlmigrationsqlgenerator"></a>Func < System.Data.Entity.Migrations.Sql.MigrationSqlGenerator\>  
+## <a name="funcsystemdataentitymigrationssqlmigrationsqlgenerator"></a>Func < System.Data.Entity.Migrations.Sql.MigrationSqlGenerator\>  
 
 **도입 된 버전**: EF6.0.0
 
@@ -50,7 +48,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdataentitycorecommondbproviderservices"></a>System.Data.Entity.Core.Common.DbProviderServices  
+## <a name="systemdataentitycorecommondbproviderservices"></a>System.Data.Entity.Core.Common.DbProviderServices  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -61,7 +59,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdataentityinfrastructureidbconnectionfactory"></a>System.Data.Entity.Infrastructure.IDbConnectionFactory  
+## <a name="systemdataentityinfrastructureidbconnectionfactory"></a>System.Data.Entity.Infrastructure.IDbConnectionFactory  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -72,7 +70,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdataentityinfrastructureimanifesttokenservice"></a>System.Data.Entity.Infrastructure.IManifestTokenService  
+## <a name="systemdataentityinfrastructureimanifesttokenservice"></a>System.Data.Entity.Infrastructure.IManifestTokenService  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -82,7 +80,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="systemdataentityinfrastructureidbproviderfactoryservice"></a>System.Data.Entity.Infrastructure.IDbProviderFactoryService  
+## <a name="systemdataentityinfrastructureidbproviderfactoryservice"></a>System.Data.Entity.Infrastructure.IDbProviderFactoryService  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -90,7 +88,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="funcdbcontext-systemdataentityinfrastructureidbmodelcachekey"></a>Func < DbContext, System.Data.Entity.Infrastructure.IDbModelCacheKey\>  
+## <a name="funcdbcontext-systemdataentityinfrastructureidbmodelcachekey"></a>Func < DbContext, System.Data.Entity.Infrastructure.IDbModelCacheKey\>  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -98,7 +96,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="systemdataentityspatialdbspatialservices"></a>System.Data.Entity.Spatial.DbSpatialServices  
+## <a name="systemdataentityspatialdbspatialservices"></a>System.Data.Entity.Spatial.DbSpatialServices  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -109,7 +107,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="funcsystemdataentityinfrastructureidbexecutionstrategy"></a>Func < System.Data.Entity.Infrastructure.IDbExecutionStrategy\>  
+## <a name="funcsystemdataentityinfrastructureidbexecutionstrategy"></a>Func < System.Data.Entity.Infrastructure.IDbExecutionStrategy\>  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -120,7 +118,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="funcdbconnection-string-systemdataentitymigrationshistoryhistorycontext"></a>Func < DbConnection, 문자열, System.Data.Entity.Migrations.History.HistoryContext\>  
+## <a name="funcdbconnection-string-systemdataentitymigrationshistoryhistorycontext"></a>Func < DbConnection, 문자열, System.Data.Entity.Migrations.History.HistoryContext\>  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -131,7 +129,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdatacommondbproviderfactory"></a>System.Data.Common.DbProviderFactory  
+## <a name="systemdatacommondbproviderfactory"></a>System.Data.Common.DbProviderFactory  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -142,7 +140,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > 이 서비스는 일반적으로 변경 되지 직접 기본 구현에서는 일반 ADO.NET 공급자 등록을 사용 하기 때문입니다. EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdataentityinfrastructureiproviderinvariantname"></a>System.Data.Entity.Infrastructure.IProviderInvariantName  
+## <a name="systemdataentityinfrastructureiproviderinvariantname"></a>System.Data.Entity.Infrastructure.IProviderInvariantName  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -153,7 +151,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 >[!NOTE]
 > EF6에서 공급자 관련 서비스에 대 한 자세한 내용은 참조는 [EF6 공급자 모델](~/ef6/fundamentals/providers/provider-model.md) 섹션입니다.  
 
-### <a name="systemdataentitycoremappingviewgenerationiviewassemblycache"></a>System.Data.Entity.Core.Mapping.ViewGeneration.IViewAssemblyCache  
+## <a name="systemdataentitycoremappingviewgenerationiviewassemblycache"></a>System.Data.Entity.Core.Mapping.ViewGeneration.IViewAssemblyCache  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -161,7 +159,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="systemdataentityinfrastructurepluralizationipluralizationservice"></a>System.Data.Entity.Infrastructure.Pluralization.IPluralizationService
+## <a name="systemdataentityinfrastructurepluralizationipluralizationservice"></a>System.Data.Entity.Infrastructure.Pluralization.IPluralizationService
 
 **도입 된 버전**: EF6.0.0  
 
@@ -169,7 +167,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null  
 
-### <a name="systemdataentityinfrastructureinterceptionidbinterceptor"></a>System.Data.Entity.Infrastructure.Interception.IDbInterceptor  
+## <a name="systemdataentityinfrastructureinterceptionidbinterceptor"></a>System.Data.Entity.Infrastructure.Interception.IDbInterceptor  
 
 **도입 된 버전**: EF6.0.0
 
@@ -177,7 +175,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null이 됩니다.  
 
-### <a name="funcsystemdataentitydbcontext-actionstring-systemdataentityinfrastructureinterceptiondatabaselogformatter"></a>Func < System.Data.Entity.DbContext, 작업 < 문자열\>, System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter\>  
+## <a name="funcsystemdataentitydbcontext-actionstring-systemdataentityinfrastructureinterceptiondatabaselogformatter"></a>Func < System.Data.Entity.DbContext, 작업 < 문자열\>, System.Data.Entity.Infrastructure.Interception.DatabaseLogFormatter\>  
 
 **도입 된 버전**: EF6.0.0  
 
@@ -185,7 +183,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 하지 사용; null이 됩니다.  
 
-### <a name="funcsystemdataentitydbcontext"></a>Func < System.Data.Entity.DbContext\>  
+## <a name="funcsystemdataentitydbcontext"></a>Func < System.Data.Entity.DbContext\>  
 
 **도입 된 버전**: EF6.1.0  
 
@@ -193,7 +191,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 파생 된 DbContext에는 팩터리를 필요한 형식의 Type 개체입니다.  
 
-### <a name="funcsystemdataentitycoremetadataedmimetadataannotationserializer"></a>Func < System.Data.Entity.Core.Metadata.Edm.IMetadataAnnotationSerializer\>  
+## <a name="funcsystemdataentitycoremetadataedmimetadataannotationserializer"></a>Func < System.Data.Entity.Core.Metadata.Edm.IMetadataAnnotationSerializer\>  
 
 **도입 된 버전**: EF6.1.0  
 
@@ -201,7 +199,7 @@ GetService 메서드는 일반적으로 EF에서 호출 및 EF에서 또는 응�
 
 **키**: 되는 주석의 이름을 serialize 하거나 deserialize 합니다.  
 
-### <a name="funcsystemdataentityinfrastructuretransactionhandler"></a>Func < System.Data.Entity.Infrastructure.TransactionHandler\>  
+## <a name="funcsystemdataentityinfrastructuretransactionhandler"></a>Func < System.Data.Entity.Infrastructure.TransactionHandler\>  
 
 **도입 된 버전**: EF6.1.0  
 

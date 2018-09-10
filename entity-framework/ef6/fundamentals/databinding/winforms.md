@@ -3,12 +3,12 @@ title: WinForms-EF6 사용 하 여 데이터 바인딩
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 80fc5062-2f1c-4dbd-ab6e-b99496784b36
-ms.openlocfilehash: 7ceb8e85fe3d8f5ab9a5e58ef9c84599585d8f77
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 071172810f7dac45f42aca0efa7f329bac31e9cd
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994531"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251195"
 ---
 # <a name="databinding-with-winforms"></a>WinForms 사용 하 여 데이터 바인딩
 이 단계별 연습에는 POCO 형식 "마스터-세부 정보" 형태로 Window Forms (WinForms) 컨트롤에 바인딩하는 방법을 보여 줍니다. Entity Framework를 사용 하 여 데이터베이스에서 데이터를 사용 하 여 개체를 채우기, 변경 내용 추적 및 데이터베이스에 데이터를 유지 하는 응용 프로그램입니다.
@@ -179,17 +179,17 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 -   마우스 오른쪽 단추로 클릭 **데이터 연결-&gt; 연결 추가 중...**
 -   Microsoft SQL Server 데이터 원본으로 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않은 경우
 
-    ![ChangeDataSource](~/ef6/media/changedatasource.png)
+    ![데이터 소스 변경](~/ef6/media/changedatasource.png)
 
 -   LocalDB 또는 어느에 따라 설치한 SQL Express에 연결 하 고 입력 **제품** 데이터베이스 이름으로
 
-    ![AddConnectionLocalDB](~/ef6/media/addconnectionlocaldb.png)
+    ![연결 LocalDB를 추가 합니다.](~/ef6/media/addconnectionlocaldb.png)
 
-    ![AddConnectionExpress](~/ef6/media/addconnectionexpress.png)
+    ![연결 Express 추가](~/ef6/media/addconnectionexpress.png)
 
 -   선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**
 
-    ![CreateDatabase](~/ef6/media/createdatabase.png)
+    ![데이터베이스 만들기](~/ef6/media/createdatabase.png)
 
 -   새 데이터베이스 이제 서버 탐색기에서 마우스 나타나고 선택 **새 쿼리**
 -   새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**
@@ -227,11 +227,11 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 
 -   첫 번째 섹션에서 만든 데이터베이스에 연결을 선택, 입력 **ProductContext** 연결 문자열 및 클릭의 이름으로 **다음**
 
-    ![ChooseYourConnection](~/ef6/media/chooseyourconnection.png)
+    ![연결 선택](~/ef6/media/chooseyourconnection.png)
 
 -   모든 테이블을 가져오고 '마침' 클릭 '테이블' 옆의 확인란을 클릭 합니다.
 
-    ![ChooseYourObjects](~/ef6/media/chooseyourobjects.png)
+    ![개체 선택](~/ef6/media/chooseyourobjects.png)
 
 리버스 엔지니어링 프로세스가 완료 되 면 새 모델 프로젝트에 추가 되 고 Entity Framework 디자이너에서 확인할 수 있게 합니다. 또한 App.config 파일을 데이터베이스에 대 한 연결 세부 정보를 사용 하 여 프로젝트에 추가 되었습니다.
 
@@ -250,7 +250,7 @@ EF T4 템플릿을 사용 하 여 모델에서 코드를 생성 합니다. Visua
 -   엽니다는 **솔루션 탐색기** 찾고 **ProductModel.edmx** 파일
 -   찾을 합니다 **ProductModel.tt** ProductModel.edmx 파일 아래에 중첩 될는 파일
 
-    ![ProductModelTemplate](~/ef6/media/productmodeltemplate.png)
+    ![제품 모델 템플릿](~/ef6/media/productmodeltemplate.png)
 
 -   Visual Studio 편집기에서 열려는 ProductModel.tt 파일을 두 번 클릭
 -   찾기 및 바꾸기 2 개 "**ICollection**"with"**ObservableListSource**"입니다. 이들은 296 및 484 약 줄 위치입니다.
@@ -278,13 +278,13 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 -   데이터 원본 유형 창에서 선택 **개체** 를 클릭 하 고 **다음**
 -   데이터 개체 대화 상자 선택에서 펼침 합니다 **WinFormswithEFSample** 두 시간과 선택 **범주** 있습니다 이므로 제품 데이터 원본을 선택 하지 않아도 제품의 진행 과정을 살펴보겠습니다 범주 데이터 원본에 대 한 속성입니다.
 
-    ![DataSource](~/ef6/media/datasource.png)
+    ![데이터 원본](~/ef6/media/datasource.png)
 
 -   클릭 **완료.** 
      *데이터 소스 창에서 표시 되지 않으면, 선택 * * * 보기-&gt; 다른 Windows-&gt; 데이터 원본**
 -   고정 아이콘을 하므로 데이터 소스 창에서는 자동 숨기기 단추를 누릅니다. 창의 창이 이미 열려 있는 경우 새로 고침 단추를 적중 해야 합니다.
 
-    ![DataSource2](~/ef6/media/datasource2.png)
+    ![데이터 원본 2](~/ef6/media/datasource2.png)
 
 -   솔루션 탐색기에서 두 번 클릭 합니다 **Form1.cs** 파일을 기본 폼 디자이너에서 엽니다.
 -   선택 된 **범주** 데이터 원본 및 폼에 놓습니다. 기본적으로 새 DataGridView (**categoryDataGridView**) 탐색 도구 모음 컨트롤 디자이너에 추가 됩니다. 이러한 컨트롤은 BindingSource에 바인딩됩니다 (**categoryBindingSource**) 및 바인딩 Navigator (**categoryBindingNavigator**)도 생성 된 구성 요소입니다.
@@ -302,7 +302,7 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
     지금 DataGridView 컨트롤이 BindingSource 구성 요소 디자이너를 사용 하 여 연결 합니다. 다음 섹션에서는 categoryBindingSource.DataSource DbContext에서 현재 추적 되는 엔터티의 컬렉션을 설정 하려면 코드를 코드 숨김에 추가 합니다. 때 끌어 놓은 제품 범주에는 WinForms에서 수행한 할까요 productsBindingSource.DataSource 속성 제품 categoryBindingSource 및 productsBindingSource.DataMember 속성을 설정 하는 합니다. 이 바인딩 때문에 현재 선택 된 범주에 속하는 제품만 productDataGridView에 표시 됩니다.
 -   사용 하도록 설정 합니다 **저장** 마우스 오른쪽 단추를 클릭 하 고 선택 하 여 탐색 도구 모음 단추 **Enabled**.
 
-    ![Form1 디자이너](~/ef6/media/form1-designer.png)
+    ![1 폼 디자이너](~/ef6/media/form1-designer.png)
 
 -   저장에 대 한 이벤트 처리기를 추가 단추를 두 번 클릭 하면 단추입니다. 이벤트 처리기를 추가 되 고 폼의 코드 숨김 표시 됩니다. 에 대 한 코드를 **categoryBindingNavigatorSaveItem\_클릭** 이벤트 처리기는 다음 섹션에 추가 됩니다.
 
@@ -401,12 +401,12 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 
 -   컴파일 및 실행 하는 응용 프로그램 기능을 테스트할 수 있습니다.
 
-    ![Form1BeforeSave](~/ef6/media/form1beforesave.png)
+    ![1을 구성 하기 전에 저장](~/ef6/media/form1beforesave.png)
 
 -   저장 한 후 저장소 생성 키를 화면에 표시 됩니다.
 
-    ![Form1AfterSave](~/ef6/media/form1aftersave.png)
+    ![1 후 저장을 형성 합니다.](~/ef6/media/form1aftersave.png)
 
 -   Code First에서 사용 되는 경우 표시 됩니다는 **WinFormswithEFSample.ProductContext** 데이터베이스 생성 됩니다.
 
-    ![ServerObjExplorer](~/ef6/media/serverobjexplorer.png)
+    ![Server 개체 탐색기](~/ef6/media/serverobjexplorer.png)

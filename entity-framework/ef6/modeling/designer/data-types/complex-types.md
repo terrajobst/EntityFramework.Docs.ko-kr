@@ -3,19 +3,19 @@ title: 복합 형식-EF 디자이너-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 9a8228ef-acfd-4575-860d-769d2c0e18a1
-ms.openlocfilehash: d35504cbe60823249d54385962568802b3e41308
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2a516bd14131fd035a4d005e0fdf140f7ff4d65f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994855"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250831"
 ---
 # <a name="complex-types---ef-designer"></a>복합 형식-EF 디자이너
 이 항목에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 복합 형식을 매핑하는 방법 및 복합 형식의 속성을 포함 하는 엔터티에 대 한 쿼리 하는 방법을 보여 줍니다.
 
 다음 이미지에서는 EF 디자이너를 사용 하 여 작업할 때 사용 되는 기본 windows를 보여 줍니다.
 
-![EFDesigner](~/ef6/media/efdesigner.png)
+![EF 디자이너](~/ef6/media/efdesigner.png)
 
 > [!NOTE]
 > 개념적 모델을 빌드하면 매핑되지 않은 엔터티 및 연결에 대 한 경고는 오류 목록에 나타날 수 있습니다. 오류 사라집니다을 모델에서 데이터베이스를 생성 하도록 선택 하기 때문에 이러한 경고를 무시할 수 있습니다.
@@ -45,7 +45,7 @@ ms.locfileid: "42994855"
 
 새로 만든 형식의 복합 속성이 선택된 속성을 대체합니다. 모든 속성 매핑은 유지됩니다.
 
-![Refactor2](~/ef6/media/refactor2.png)
+![2 리팩터링](~/ef6/media/refactor2.png)
 
 ## <a name="create-a-new-complex-type"></a>새 복합 형식을 만들려면
 
@@ -53,7 +53,7 @@ ms.locfileid: "42994855"
 
 마우스 오른쪽 단추로 클릭 합니다 **복합 형식** 폴더 Model 브라우저에서 가리키고 **AddNew 복합 형식...** . 선택할 수 있습니다 합니다 **복합 형식** 누릅니다 폴더를 **삽입** 키보드의 키입니다.
 
-![AddNewComplextype](~/ef6/media/addnewcomplextype.png)
+![새 복합 형식 추가](~/ef6/media/addnewcomplextype.png)
 
 새 복합 형식이 기본 이름의 폴더에 추가됩니다. 이제 형식에 속성을 추가할 수 있습니다.
 
@@ -65,7 +65,7 @@ ms.locfileid: "42994855"
 
 -   Model 브라우저에서 복합 형식을 마우스 오른쪽 **추가**, 가리킨 **스칼라 속성** 하거나 **복합 속성**, desired 속성 형식을 선택 합니다. 복합 형식을 선택 하 고 다음 키를 누릅니다 수 또는 합니다 **삽입** 키보드의 키입니다.  
 
-    ![AddPropertiestoComplexType](~/ef6/media/addpropertiestocomplextype.png)
+    ![복합 형식 속성을 추가 합니다.](~/ef6/media/addpropertiestocomplextype.png)
 
     새 속성이 기본 이름의 복합 형식에 추가됩니다.
 
@@ -108,7 +108,7 @@ ms.locfileid: "42994855"
     모든 스칼라 속성을 나열한 드롭다운 목록이 표시됩니다.
 7.  적절한 속성을 선택합니다.
 
-    ![MapComplexType](~/ef6/media/mapcomplextype.png)
+    ![복합 형식 매핑](~/ef6/media/mapcomplextype.png)
 
 8.  각 테이블 열별로 6 ~ 7단계를 반복합니다.
 
@@ -121,14 +121,14 @@ Function Import는 저장 프로시저를 기반으로 합니다. Function Impor
 
 -   복합 형식에 매핑하려는 가져온된 함수가 두 번 클릭 합니다.
 
-    ![FunctionImports](~/ef6/media/functionimports.png)
+    ![함수 가져오기](~/ef6/media/functionimports.png)
 
 -   다음과 같이 새 Function Import에 대한 설정을 입력합니다.
     -   function import를 만드는 저장된 프로시저를 지정 합니다 **저장 프로시저 이름** 필드입니다. 이 필드는 저장소 모델의 모든 저장 프로시저가 표시되는 드롭다운 목록입니다.
     -   function import의 이름을 지정 합니다 **Function Import 이름** 필드입니다.
     -   선택 **복잡 한** 반환으로 입력 한 다음 드롭다운 목록에서 적절 한 유형을 선택 하 여 특정 복합 반환 형식을 지정 합니다.
 
-        ![EditFunctionImport](~/ef6/media/editfunctionimport.png)
+        ![Function Import 편집](~/ef6/media/editfunctionimport.png)
 
 -   **확인**을 클릭합니다.
     Function Import 항목이 개념적 모델에 만들어집니다.

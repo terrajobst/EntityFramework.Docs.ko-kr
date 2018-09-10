@@ -3,12 +3,12 @@ title: 쿼리-EF 디자이너-EF6를 정의합니다.
 author: divega
 ms.date: 2016-10-23
 ms.assetid: e52a297e-85aa-42f6-a922-ba960f8a4b22
-ms.openlocfilehash: 60d5310589bb9bc3fdb971673422e80537357e55
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8415a265cdbe078422e0467ee97da955a81b873d
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996309"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250974"
 ---
 # <a name="defining-query---ef-designer"></a>정의 쿼리-EF 디자이너
 이 연습에서는 정의 추가 하는 방법을 보여 줍니다. 쿼리 및 해당 엔터티를 EF 디자이너를 사용 하 여 모델에 입력 합니다. 정의 쿼리는 일반적으로 데이터베이스 뷰를 제공 하는 유사한 기능을 제공 하는 데 사용 됩니다 있지만 뷰는 데이터베이스가 아닌 모델에서 정의 됩니다. 정의 쿼리를 사용 하면 지정 된 SQL 문을 실행 하는 **DefiningQuery** .edmx 파일의 요소입니다. 자세한 내용은 **DefiningQuery** 에 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md)합니다.
@@ -54,11 +54,11 @@ ms.locfileid: "42996309"
 -   솔루션 탐색기에서 마우스 오른쪽 단추로 클릭 합니다 **DefiningQueryModel.edmx** 파일을 선택 **연결 프로그램...** .
 -   선택 **XML (텍스트) 편집기**합니다.
 
-    ![XMLEditor](~/ef6/media/xmleditor.png)
+    ![XML 편집기](~/ef6/media/xmleditor.png)
 
 -   클릭 **예** 다음 메시지와 함께 메시지가 표시 되 면:
 
-    ![Warning2](~/ef6/media/warning2.png)
+    ![경고 2](~/ef6/media/warning2.png)
 
  
 
@@ -136,7 +136,7 @@ EF 디자이너에서 모델을 엽니다.
 -   DefiningQueryModel.edmx를 두 번 클릭 합니다.
 -   예를 들어 **예** 다음 메시지:
 
-    ![Warning2](~/ef6/media/warning2.png)
+    ![경고 2](~/ef6/media/warning2.png)
 
  
 
@@ -172,7 +172,7 @@ EF 디자이너에서 모델을 엽니다.
     합니다 **매핑 정보** 창이 표시 됩니다.
 -   선택 **GradeReport** 에서 합니다 **&lt;테이블이 나 뷰 추가&gt;** 드롭다운 목록 (아래에 있는 **테이블**s).  
     기본 개념 간의 매핑 및 저장소 **GradeReport** 엔터티 형식을 표시 합니다.  
-    ![MappingDetails3](~/ef6/media/mappingdetails.png)
+    ![Details3 매핑](~/ef6/media/mappingdetails.png)
 
 결과적으로 **EntitySetMapping** 요소가.edmx 파일의 매핑 섹션에 추가 됩니다. 
 

@@ -3,12 +3,12 @@ title: Entity Framework-EF6 가져오기
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 122c38a2-f9e8-4ecc-9c72-a83bc9af7814
-ms.openlocfilehash: 91b78e56f60edf7ebc8769b1c385f8547f63cd3d
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 601f8d123d5494be6a658da1c4ad3743ed50385c
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152390"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250883"
 ---
 # <a name="get-entity-framework"></a>Entity Framework 가져오기
 Entity Framework는 Visual Studio 및 EF 런타임에 대 한 EF 도구 구성 됩니다.
@@ -27,7 +27,7 @@ Entity Framework의 최신 버전은 제공 된 [EntityFramework NuGet 패키지
 
 마우스 오른쪽 단추로 클릭 하 여 EntityFramework 패키지를 설치할 수 있습니다 합니다 **참조가** 프로젝트의 폴더를 선택 하 고 **NuGet 패키지 관리...**
 
-![ManageNuGetPackages](~/ef6/media/managenugetpackages.png)
+![NuGet 패키지 관리](~/ef6/media/managenugetpackages.png)
 
 ### <a name="installing-from-package-manager-console"></a>패키지 관리자 콘솔에서 설치
 
@@ -55,7 +55,7 @@ EF 런타임 전에 4.1.NET Framework의 일부인 것을 별도로 설치할 �
 
 EntityFramework 선택할 수 있습니다의 최신 미리 보기를 설치 하려면 **시험판 포함** NuGet 패키지 관리 창에서. 자동으로 최신 시험판 버전을 사용할 수 있는 경우 받습니다 완벽 하 게 지원 되는 Entity Framework의 버전입니다.
 
-![IncludePreRelease](~/ef6/media/includeprerelease.png)
+![시험판 포함](~/ef6/media/includeprerelease.png)
 
 다음 명령을 실행할 수는 또는 [패키지 관리자 콘솔](http://docs.nuget.org/docs/start-here/using-the-package-manager-console)합니다.
 

@@ -3,12 +3,12 @@ title: EF6-Entity Framework 6 공급자 모델을
 author: divega
 ms.date: 2018-06-27
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: e8b0552ec083d8ab276aa9de109650f423160269
-ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
+ms.openlocfilehash: 7d9e2f49b9ef59fb63b024646911ec0d8dfcfc60
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43821389"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251106"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Entity Framework 6 공급자 모델
 
@@ -24,13 +24,13 @@ EF6을 사용 하 여 아웃 외 (OOB) 어셈블리와 이전에.NET Framework�
 
 EF 공급자로 실제로 이러한 서비스 (대 한 기본 클래스)에서 확장 하거나 (인터페이스)를 구현 하는 CLR 형식으로 정의 하는 공급자 관련 서비스의 컬렉션. 이러한 서비스의 두 가지 기본적인 및 EF 전혀 작동 하는 데 필요한입니다. 다른 선택 사항이 며 특정 기능은 필수 및/또는 대상으로 지정 되는 특정 데이터베이스 서버에 이러한 서비스의 기본 구현이 작동 하지 않습니다 하는 경우에 구현 해야 합니다.
 
-### <a name="fundamental-provider-types"></a>기본 공급자 형식
+## <a name="fundamental-provider-types"></a>기본 공급자 형식
 
-#### <a name="dbproviderfactory"></a>DbProviderFactory
+### <a name="dbproviderfactory"></a>DbProviderFactory
 
 EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProviderFactory](http://msdn.microsoft.com/en-us/library/system.data.common.dbproviderfactory.aspx) 기본적인 수준의 데이터베이스에 대 한 모든 액세스를 수행 합니다. DbProviderFactory EF에 실제로 포함 되지 않지만 대신 클래스는 ADO.NET 공급자에 대 한 진입점을 제공 하는.NET Framework에 사용할 수 있습니다 다른 O/RMs EF 또는 응용 프로그램에서 직접 연결, 명령, 매개 변수 인스턴스를 얻는 및 공급자의 다른 ADO.NET 추상화 알 수 없는 방식으로 합니다. DbProviderFactory에 대 한 자세한 정보는에서 찾을 수 합니다 [ADO.NET에 대 한 MSDN 설명서](http://msdn.microsoft.com/en-us/library/a6cd7c08.aspx)합니다.
 
-#### <a name="dbproviderservices"></a>DbProviderServices
+### <a name="dbproviderservices"></a>DbProviderServices
 
 EF는 ADO.NET 공급자가 이미 제공 하는 기능을 기반으로 EF에 필요한 추가 기능을 제공 하는 데 DbProviderServices에서 파생 된 형식에 따라 달라 집니다. 이전 버전의 EF DbProviderServices 클래스의.NET Framework 구성 요소 였으며 System.Data.Common 네임 스페이스에서 찾을 수 있습니다. EF6을 사용 하 여이 클래스는 이제 EntityFramework.dll의 일부 시작한 System.Data.Entity.Core.Common 네임 스페이스.
 
@@ -38,33 +38,33 @@ DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은에서 
 
 이전 버전의 EF DbProviderServices 구현은 사용 하는 ADO.NET 공급자에서 직접 가져온 합니다. 이 작업은 DbProviderFactory를 IServiceProvider로 캐스팅 하 고 GetService 메서드를 호출 하 여 수행 되었습니다. 이 DbProviderFactory를 EF 공급자 긴밀 하 게 결합 합니다. 이 결합에서.NET Framework 외부로 이동 되 고 EF를 차단 하 고 따라서 EF6에 대 한 밀접 한 결합이 제거 되었습니다 DbProviderServices 구현의 응용 프로그램의 구성 파일에서 직접 또는 코드 기반에 지금 등록 좀 더 자세히 설명 된 대로 구성 합니다 _DbProviderServices 등록_ 아래의 섹션입니다.
 
-### <a name="additional-services"></a>추가 서비스
+## <a name="additional-services"></a>추가 서비스
 
 위에서 설명한 기본적인 서비스 외에도 많은 다른 서비스 EF에서 사용 하는 경우에 따라 또는 항상 공급자별도 있습니다. 이러한 서비스의 기본 공급자별 구현은 DbProviderServices 구현으로 제공할 수 있습니다. 응용 프로그램도 이러한 서비스의 구현 재정의 하거나 DbProviderServices 형식 기본값을 제공 하지 않는 경우에 구현할 수 있습니다. 자세히 설명 되어이 _추가 서비스 확인_ 아래의 섹션입니다.
 
 공급자 공급자에 유용할 수 있는 추가 서비스 형식은 다음과 같습니다. 이러한 각 유형의 서비스에 대 한 자세한 내용은 API 설명서에서 찾을 수 있습니다.
 
-#### <a name="idbexecutionstrategy"></a>IDbExecutionStrategy
+### <a name="idbexecutionstrategy"></a>IDbExecutionStrategy
 
 이 쿼리와 명령을 데이터베이스에 대해 실행 될 때 다시 시도 하거나 다른 동작을 구현 하는 공급자 수 있는 선택적 서비스입니다. 구현이 제공 하는 경우 다음 EF 단순히 명령을 실행 하 여를 throw 된 예외를 전파 합니다. SQL Server에 대 한이 서비스는 SQL Azure 같은 클라우드 기반 데이터베이스 서버에 대해 실행할 때 특히 유용 하며 재시도 정책을 제공에 사용 됩니다.
 
-#### <a name="idbconnectionfactory"></a>IDbConnectionFactory
+### <a name="idbconnectionfactory"></a>IDbConnectionFactory
 
 이 공급자는 데이터베이스 이름만 지정 하는 경우 규칙에 따라 DbConnection 개체를 만들 수 있도록 하는 선택적 서비스입니다. 이 서비스 하는 동안 DbProviderServices 구현 EF 4.1 이후 제공 된 고도 설정할 수 있습니다 명시적으로 구성 파일 또는 코드에서 확인할 수 있는 참고 합니다. 공급자만을 기본 공급자로 등록 하는 경우이 서비스를 해결할 기회 받습니다 (참조 _기본 공급자_ 아래) 기본 연결 팩터리가 설정 되어 있지 않은 다른 곳에서 하는 경우.
 
-#### <a name="dbspatialservices"></a>DbSpatialServices
+### <a name="dbspatialservices"></a>DbSpatialServices
 
 Geography 및 geometry 공간 형식에 대 한 지원을 추가할 공급자를 허용 하는 선택적 서비스입니다. 이 서비스의 구현은 공간 형식을 사용 하 여 EF를 사용 하도록 응용 프로그램에 대 한 순서로 제공 되어야 합니다. DbSptialServices에 대 한 두 가지 방식에서 하 라는 메시지가 표시 됩니다. 첫째, 공급자별 공간 서비스 DbProviderInfo 개체를 사용 하 여 요청 된 (invariant를 포함 하는 이름 및 매니페스트 토큰) 키로 합니다. 둘째, 키가 없는 DbSpatialServices에 요청할 수 있습니다. 해결 "전역 공간 공급자" 독립 실행형 DbGeography 또는 DbGeometry 유형을 만들 때 사용 되는 데 사용 됩니다.
 
-#### <a name="migrationsqlgenerator"></a>MigrationSqlGenerator
+### <a name="migrationsqlgenerator"></a>MigrationSqlGenerator
 
 이것이 EF 마이그레이션을 만들고 데이터베이스 스키마 수정에 사용 되는 SQL 생성에 대 한 Code First에서 사용할 수 있는 선택적 서비스입니다. 구현을은 마이그레이션을 지원 하기 위해 필요 합니다. 구현을 제공 하는 경우 다음 것도 사용 됩니다 Database.Create 메서드나 데이터베이스 이니셜라이저를 사용 하 여 데이터베이스를 만들 때.
 
-#### <a name="funcdbconnection-string-historycontextfactory"></a>Func < DbConnection, HistoryContextFactory 문자열 >
+### <a name="funcdbconnection-string-historycontextfactory"></a>Func < DbConnection, HistoryContextFactory 문자열 >
 
 이 공급자를 HistoryContext의 매핑을 구성할 수 있도록 하는 선택적 서비스를 `__MigrationHistory` EF 마이그레이션을 사용 하는 테이블입니다. HistoryContext 코드 첫 번째 DbContext 되며 테이블 및 열 매핑 사양 이름과 같은 항목을 변경 하려면 일반 흐름 API를 사용 하 여 구성할 수 있습니다. 해당 공급자에서 모든 기본 테이블 및 열 매핑을 지 원하는 경우 지정 된 데이터베이스 서버에 대 한 모든 공급자에 대 한 EF를 반환한이 서비스의 기본 구현을 작동할 수 있습니다. 이 경우 공급자는이 서비스의 구현을 제공 필요가 없습니다.
 
-#### <a name="idbproviderfactoryresolver"></a>IDbProviderFactoryResolver
+### <a name="idbproviderfactoryresolver"></a>IDbProviderFactoryResolver
 
 이것이 지정된 DbConnection 개체에서 올바른 dbproviderfactory에 대 한 선택적 서비스입니다. 모든 공급자에 대 한 EF를 반환한이 서비스의 기본 구현은 모든 공급자에 대해 작동 됩니다. 그러나.NET 4를 실행 하는 경우는 DbProviderFactory 공개적으로 액세스할 수 없는 경우 1에서 해당 DbConnections 합니다. 따라서 EF 일부 추론을 사용 하 여 일치 하는 것에 등록된 된 공급자를 검색 합니다. 일부 공급자에 대 한 이러한 추론이 실패 하 고 이러한 상황에서는 공급자에는 새 구현을 제공 해야는 가능성이 있습니다.
 

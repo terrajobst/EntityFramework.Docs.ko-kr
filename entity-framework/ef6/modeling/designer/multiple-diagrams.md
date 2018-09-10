@@ -3,12 +3,12 @@ title: 모델-EF6 당 여러 다이어그램
 author: divega
 ms.date: 2016-10-23
 ms.assetid: b95db5c8-de8d-43bd-9ccc-5df6a5e25e1b
-ms.openlocfilehash: f27afbd3b44ff3eb8044ab960f10b2856a603ee3
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e23bf92ce3199b2162ca9a42bd0f797375179d77
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993780"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250961"
 ---
 # <a name="multiple-diagrams-per-model"></a>모델에 대해 여러 다이어그램
 > [!NOTE]
@@ -39,7 +39,7 @@ EF 디자이너 다음 구성 요소로 구성 됩니다.
 
 다음 스크린샷은 EF 디자이너에서 열린.edmx 파일을 보여 줍니다. 스크린샷은 시각적 디자인 화면 (왼쪽) 및 **Model 브라우저** (오른쪽)에 창입니다.
 
-![EFDesigner2](~/ef6/media/efdesigner2.png)
+![EF 디자이너 2](~/ef6/media/efdesigner2.png)
 
 EF 디자이너에서 수행할 작업을 실행 취소 하려면 Ctrl + Z를 클릭 합니다.
 

@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: 64051dea740b2183cb904d7fb4293d7048c218ca
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 35604fc16ea37415d39801831aa162d0d42c2a2f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152439"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250753"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -145,7 +145,7 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
 4.  쿼리를 반환 하 고 결과에 기록 되며 **콘솔**
 5.  날짜의 견적에 쓸 때 **콘솔**
 
-![SyncOutput](~/ef6/media/syncoutput.png) 
+![동기화 출력](~/ef6/media/syncoutput.png) 
 
  
 
@@ -227,7 +227,7 @@ System.Data.Entity 네임 스페이스에서 사용 가능한 확장 메서드�
 4.  모든 쿼리 **블로그** 데이터베이스로 전송 됩니다 *다시 관리 되는 스레드는 데이터베이스의 쿼리 처리 되는 동안 다른 작업을 수행할 수 있습니다. 다른 모든 실행 완료 후 스레드가 대기 호출 하지만 중단만 됩니다.*
 5.  쿼리를 반환 하 고 결과에 기록 되며 **콘솔**
 
-![AsyncOutput](~/ef6/media/asyncoutput.png) 
+![비동기 출력](~/ef6/media/asyncoutput.png) 
 
  
 

@@ -3,12 +3,12 @@ title: Entity Framework 디자이너 바로 가기 키-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 3c76cdd5-17c5-4c54-a6a5-cf21b974636b
-ms.openlocfilehash: 70c9705956b58f4d00908dd9cca6ad0e0a078fc6
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e3a9d968c26841c143b1b7b0ba9a168ecd13f469
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997765"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251130"
 ---
 # <a name="entity-framework-designer-keyboard-shortcuts"></a>Entity Framework 디자이너 바로 가기 키
 이 페이지에는 Entity Framework Tools for Visual Studio의 다양 한 화면에서 사용할 수 있는 키보드 shorcuts 목록을 제공 합니다.
@@ -17,7 +17,7 @@ ms.locfileid: "42997765"
 
 ### <a name="step-one-choose-model-contents"></a>1 단계: Model 콘텐츠 선택
 
-![WizardOne](~/ef6/media/wizardone.png)
+![마법사 1](~/ef6/media/wizardone.png)
 
 | 바로 가기  | 작업                                                     | 노트                                               |
 |:----------|:-----------------------------------------------------------|:----------------------------------------------------|
@@ -27,7 +27,7 @@ ms.locfileid: "42997765"
 
 ### <a name="step-two-choose-your-connection"></a>2 단계: 연결 선택
 
-![WizardTwo](~/ef6/media/wizardtwo.png)
+![마법사 2](~/ef6/media/wizardtwo.png)
 
 | 바로 가기  | 작업                                                     | 노트                                                   |
 |:----------|:-----------------------------------------------------------|:--------------------------------------------------------|
@@ -41,7 +41,7 @@ ms.locfileid: "42997765"
 
 ### <a name="step-three-choose-your-version"></a>3 단계: 버전 선택
 
-![WizardThree](~/ef6/media/wizardthree.png)
+![마법사 3](~/ef6/media/wizardthree.png)
 
 | 바로 가기  | 작업                                             | 노트                                                                                 |
 |:----------|:---------------------------------------------------|:--------------------------------------------------------------------------------------|
@@ -51,7 +51,7 @@ ms.locfileid: "42997765"
 
 ### <a name="step-four-choose-your-database-objects-and-settings"></a>4 단계: 데이터베이스 개체 및 설정 선택
 
-![WizardFour](~/ef6/media/wizardfour.png)
+![마법사 4](~/ef6/media/wizardfour.png)
 
 | 바로 가기  | 작업                                                                                    | 노트                                                               |
 |:----------|:------------------------------------------------------------------------------------------|:--------------------------------------------------------------------|
@@ -70,7 +70,7 @@ ms.locfileid: "42997765"
 
 ## <a name="ef-designer-surface"></a>EF 디자이너 화면
 
-![DesignerSurface](~/ef6/media/designersurface.png)
+![디자이너 화면](~/ef6/media/designersurface.png)
 
 | 바로 가기                                                                                | 작업                      | 노트                                                                                                                                                                                                                               |
 |:----------------------------------------------------------------------------------------|:----------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -113,7 +113,7 @@ ms.locfileid: "42997765"
 
 ## <a name="mapping-details-window"></a>매핑 정보 창
 
-![MappingDetailsShortcuts](~/ef6/media/mappingdetailsshortcuts.png)
+![매핑 정보 바로 가기](~/ef6/media/mappingdetailsshortcuts.png)
 
 | 바로 가기                  | 작업         | 노트                                                                                                                                 |
 |:--------------------------|:---------------|:--------------------------------------------------------------------------------------------------------------------------------------|

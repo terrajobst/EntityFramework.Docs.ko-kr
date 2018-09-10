@@ -3,12 +3,12 @@ title: WPF-EF6 사용 하 여 데이터 바인딩
 author: divega
 ms.date: 2016-10-23
 ms.assetid: e90d48e6-bea5-47ef-b756-7b89cce4daf0
-ms.openlocfilehash: 0b1f4d5ea204cd80acf42caa499732610daa0e31
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e6df90db17d39d3aa91275800a6414fed40fb5db
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994825"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44251156"
 ---
 # <a name="databinding-with-wpf"></a>WPF 사용 하 여 데이터 바인딩
 이 단계별 연습에는 POCO 형식 "마스터-세부 정보" 폼에 WPF 컨트롤에 바인딩하는 방법을 보여 줍니다. Entity Framework Api를 사용 하 여 데이터베이스에서 데이터를 사용 하 여 개체를 채우기, 변경 내용 추적 및 데이터베이스에 데이터를 유지 하는 응용 프로그램.
@@ -142,17 +142,17 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 -   마우스 오른쪽 단추로 클릭 **데이터 연결-&gt; 연결 추가 중...**
 -   Microsoft SQL Server 데이터 원본으로 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않은 경우
 
-    ![ChangeDataSource](~/ef6/media/changedatasource.png)
+    ![데이터 소스 변경](~/ef6/media/changedatasource.png)
 
 -   LocalDB 또는 어느에 따라 설치한 SQL Express에 연결 하 고 입력 **제품** 데이터베이스 이름으로
 
-    ![AddConnectionLocalDB](~/ef6/media/addconnectionlocaldb.png)
+    ![연결 LocalDB를 추가 합니다.](~/ef6/media/addconnectionlocaldb.png)
 
-    ![AddConnectionExpress](~/ef6/media/addconnectionexpress.png)
+    ![연결 Express 추가](~/ef6/media/addconnectionexpress.png)
 
 -   선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**
 
-    ![CreateDatabase](~/ef6/media/createdatabase.png)
+    ![데이터베이스 만들기](~/ef6/media/createdatabase.png)
 
 -   새 데이터베이스 이제 서버 탐색기에서 마우스 나타나고 선택 **새 쿼리**
 -   새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**
@@ -186,15 +186,15 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual
 -   그러면는 **엔터티 데이터 모델 마법사**
 -   선택 **데이터베이스에서 생성** 를 클릭 하 고 **다음**
 
-    ![ChooseModelContents](~/ef6/media/choosemodelcontents.png)
+    ![모델 콘텐츠 선택](~/ef6/media/choosemodelcontents.png)
 
 -   첫 번째 섹션에서 만든 데이터베이스에 연결을 선택, 입력 **ProductContext** 연결 문자열 및 클릭의 이름으로 **다음**
 
-    ![ChooseYourConnection](~/ef6/media/chooseyourconnection.png)
+    ![연결 선택](~/ef6/media/chooseyourconnection.png)
 
 -   모든 테이블을 가져오고 '마침' 클릭 '테이블' 옆의 확인란을 클릭 합니다.
 
-    ![ChooseYourObjects](~/ef6/media/chooseyourobjects.png)
+    ![개체 선택](~/ef6/media/chooseyourobjects.png)
 
 리버스 엔지니어링 프로세스가 완료 되 면 새 모델 프로젝트에 추가 되 고 Entity Framework 디자이너에서 확인할 수 있게 합니다. 또한 App.config 파일을 데이터베이스에 대 한 연결 세부 정보를 사용 하 여 프로젝트에 추가 되었습니다.
 
@@ -213,7 +213,7 @@ EF T4 템플릿을 사용 하 여 모델에서 코드를 생성 합니다. Visua
 -   엽니다는 **솔루션 탐색기** 찾고 **ProductModel.edmx** 파일
 -   찾을 합니다 **ProductModel.tt** ProductModel.edmx 파일 아래에 중첩 될는 파일
 
-    ![WpfProductModelTemplate](~/ef6/media/wpfproductmodeltemplate.png)
+    ![WPF 제품 모델 템플릿](~/ef6/media/wpfproductmodeltemplate.png)
 
 -   Visual Studio 편집기에서 열려는 ProductModel.tt 파일을 두 번 클릭
 -   찾기 및 바꾸기 2 개 "**ICollection**"with"**ObservableCollection**"입니다. 이러한 줄 296 및 484에서 대략적으로 나와 있습니다.
@@ -244,13 +244,13 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 -   데이터 개체 대화 상자 선택에서 펼침 합니다 **WPFwithEFSample** 두 시간과 선택 **범주**  
     *선택 하지 않아도 됩니다는 **제품** 데이터 원본을 통해 얻게 되므로 **제품**의 속성에는 **범주** 데이터 원본*  
 
-    ![SelectDataObjects](~/ef6/media/selectdataobjects.png)
+    ![데이터 개체를 선택 합니다.](~/ef6/media/selectdataobjects.png)
 
 -   클릭 **완료 합니다.**
 -   데이터 소스 창 MainWindow.xaml 창 옆에 있는 열릴 *데이터 소스 창에서 표시 되지 않으면, 선택 **뷰-&gt; 다른 Windows-&gt; 데이터 원본***
 -   고정 아이콘을 하므로 데이터 소스 창에서는 자동 숨기기 단추를 누릅니다. 창의 창이 이미 열려 있는 경우 새로 고침 단추를 적중 해야 합니다.
 
-    ![DataSources](~/ef6/media/datasources.png)
+    ![Data Sources](~/ef6/media/datasources.png)
 
 -   선택 된 * * 범주 * * 데이터 원본 및 폼에 놓습니다.
 
@@ -299,7 +299,7 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 -   XAML 창에서 클릭 합니다  **&lt;창** 요소인 주 창 선택
 -   에 **속성** 창 **이벤트** 오른쪽 위에 있는 다음 두 번 클릭의 오른쪽에 있는 텍스트 상자를 **Loaded** 레이블
 
-    ![MainWindowProperties](~/ef6/media/mainwindowproperties.png)
+    ![주 창 속성](~/ef6/media/mainwindowproperties.png)
 
 -   추가할 수도 **클릭** 에 대 한 이벤트를 **저장** 단추는 디자이너의 저장 단추를 두 번 클릭 합니다. 
 
@@ -385,10 +385,10 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 -   응용 프로그램을 컴파일하고 실행합니다. Code First에서 사용 되는 경우 확인할 수 있습니다는 **WPFwithEFSample.ProductContext** 데이터베이스 생성 됩니다.
 -   아래 표의 위쪽 표 및 제품 이름에 범주 이름 입력 *입력 하지 않으면 아무 것도 ID 열에 데이터베이스에서 기본 키를 생성 하기 때문에*
 
-    ![Screen1](~/ef6/media/screen1.png)
+    ![새 범주 및 제품을 사용 하 여 주 창](~/ef6/media/screen1.png)
 
 -   키를 눌러 합니다 **저장할** 데이터베이스로 데이터를 저장 하려면 단추
 
 DbContext의를 호출한 후 **SaveChanges**Id ()는 데이터베이스에서 생성 된 값으로 채워집니다. 호출 했으므로 **새로 고침**한 후 () **SaveChanges**()를 **DataGrid** 컨트롤도 새 값으로 업데이트 됩니다.
 
-![Screen2](~/ef6/media/screen2.png)
+![입력 Id 사용 하 여 주 창](~/ef6/media/screen2.png)

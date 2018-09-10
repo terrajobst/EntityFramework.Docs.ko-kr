@@ -3,12 +3,12 @@ title: 자동 Code First 마이그레이션을-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: f358a4df04b03399e9e54ffdf0389e43d715af1c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 256d1c774a2165dc12daf3d04550566c1a44b751
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996097"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250454"
 ---
 # <a name="automatic-code-first-migrations"></a>자동 Code First 마이그레이션
 자동 마이그레이션은 사용 하면 각 변경에 대 한 프로젝트에서 코드 파일을 사용 하지 않고도 Code First 마이그레이션을 사용 수 있습니다. 모든 변경 내용을 자동으로 적용할 수 있습니다-열 이름 바꾸기 코드 기반 마이그레이션 사용 해야 하는 예를 들어 있습니다.
@@ -85,7 +85,7 @@ ms.locfileid: "42996097"
 
 -   응용 프로그램을 실행 하 고 확인할 수 있습니다는 **MigrationsAutomaticCodeDemo.BlogContext** 데이터베이스 생성 됩니다.
 
-    ![DatabaseLocalDB](~/ef6/media/databaselocaldb.png)
+    ![LocalDB 데이터베이스](~/ef6/media/databaselocaldb.png)
 
 ## <a name="enabling-migrations"></a>마이그레이션을 사용하도록 설정
 
