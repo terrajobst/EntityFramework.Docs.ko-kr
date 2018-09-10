@@ -4,14 +4,14 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 88253ff3-174e-485c-b3f8-768243d01ee1
 uid: core/modeling/index
-ms.openlocfilehash: 9f702d5833b88e6eb77c0afefdae0ed3bc162ec8
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e4eed480178ce43cbc5ece8db8e584032da7b2b9
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993935"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250350"
 ---
-# <a name="creating-a-model"></a>모델 만들기
+# <a name="creating-and-configuring-a-model"></a>모델 만들기 및 구성
 
 Entity Framework는 엔터티 클래스의 형태에 따라 규칙 집합을 사용하여 모델을 작성합니다. 규칙에서 발견한 항목을 보충 및/또는 재정의하기 위해 추가적인 구성을 지정할 수 있습니다.
 
@@ -20,9 +20,7 @@ Entity Framework는 엔터티 클래스의 형태에 따라 규칙 집합을 사
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples)을 볼 수 있습니다.
 
-## <a name="methods-of-configuration"></a>구성의 메서드
-
-### <a name="fluent-api"></a>Fluent API
+## <a name="use-fluent-api-to-configure-a-model"></a>Fluent API를 사용하여 모델 구성
 
 파생된 컨텍스트에서 `OnModelCreating` 메서드를 재정의하고 `ModelBuilder API`를 사용하여 모델을 구성할 수 있습니다. 이것은 가장 강력한 구성 방법으로, 엔터티 클래스를 수정하지 않고도 구성을 지정할 수 있습니다. Fluent API 구성은 우선 순위가 가장 높으며 규칙과 데이터 주석을 재정의합니다.
 
@@ -42,7 +40,7 @@ Entity Framework는 엔터티 클래스의 형태에 따라 규칙 집합을 사
     }
 ```
 
-### <a name="data-annotations"></a>데이터 주석
+## <a name="use-data-annotations-to-configure-a-model"></a>데이터 주석을 사용하여 모델 구성
 
 특성(데이터 주석이라고 함)을 클래스와 속성에 정의할 수도 있습니다. 데이터 주석은 규칙을 재정의하지만 Fluent API 구성이 데이터 주석을 재정의합니다.
 

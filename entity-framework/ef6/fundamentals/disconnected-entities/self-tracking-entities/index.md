@@ -3,12 +3,12 @@ title: 자동 추적 엔터티 - EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: 5e60f5be-7bbb-4bf8-835e-0ac808d6c84a
-ms.openlocfilehash: 8b555d211facd737aedf120a1ecfdc88d3903107
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: bd22df9e14fe71ae065baf1d747b1642dd7bafce
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998018"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250869"
 ---
 # <a name="self-tracking-entities"></a>자동 추적 엔터티
 
@@ -28,7 +28,7 @@ Entity Framework 기반 응용 프로그램에서 컨텍스트는 개체의 변�
 
 시작하려면 [자동 추적 엔터티 연습](walkthrough.md) 페이지를 방문하세요.  
 
-## <a name="considerations-when-working-with-self-tracking-entities"></a>자동 추적 엔터티로 작업하는 경우의 고려 사항  
+## <a name="functional-considerations-when-working-with-self-tracking-entities"></a>자동 추적 엔터티로 작업하는 경우의 기능 고려 사항  
 > [!IMPORTANT]
 > 자동 추적 엔터티 템플릿을 더 이상 권장하지 않습니다. 이 템플릿은 기존 응용 프로그램을 지원하는 용도로만 제공될 것입니다. 응용 프로그램에서 연결이 끊긴 엔터티 그래프를 사용해야 하는 경우 커뮤니티에서 적극적으로 개발한 자동 추적 엔터티와 비슷한 기술인 [추적 가능 엔터티](http://trackableentities.github.io/) 같은 다른 대안을 고려하거나 하위 수준 변경 내용 추적 API를 사용하여 사용자 지정 코드를 작성하는 방법을 고려해 보세요.
 
@@ -46,7 +46,7 @@ Entity Framework 기반 응용 프로그램에서 컨텍스트는 개체의 변�
 - 자동 추적 엔터티는 지연 로드를 수행할 수 있도록 설정되지 않습니다.  
 - ASP.NET 상태 관리 개체로의 이진 serialization 및 serialization은 자동 추적 엔터티에서 지원되지 않습니다. 하지만 템플릿을 사용자 지정하여 이진 serialization 지원을 추가할 수 있습니다. 자세한 내용은 [자동 추적 엔터티에서 이진 serialization 및 ViewState 사용](http://go.microsoft.com/fwlink/?LinkId=199208)을 참조하세요.  
 
-### <a name="security-considerations"></a>보안 고려 사항  
+## <a name="security-considerations"></a>보안 고려 사항  
 
 자동 추적 엔터티를 사용할 때 다음과 같은 보안 사항을 고려해야 합니다.  
 

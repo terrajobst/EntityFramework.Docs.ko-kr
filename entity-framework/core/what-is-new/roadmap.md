@@ -4,21 +4,33 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: cd4b7ddaafe9501c4bb9f2496e87f619d239ab62
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: fd9086c9911cdb0890117d44c2787780aad9a7cb
+ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995262"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43821363"
 ---
 # <a name="entity-framework-core-roadmap"></a>Entity Framework Core 로드맵
 
 > [!IMPORTANT]
 > 이후 릴리스의 기능 집합 및 일정은 항상 변경될 수 있으며 이 페이지를 최신 상태로 유지하려고 노력함에도 불구하고 최신 계획을 항상 반영할 수 없을 수도 있습니다.
 
+## <a name="last-release-ef-core-21"></a>마지막 릴리스: EF Core 2.1
+
 EF Core 2.1의 안정적인 버전은 2018년 5월 30일에 릴리스되었습니다. [EF Core 2.1의 새로운 기능](xref:core/what-is-new/ef-core-2.1)에서 이 릴리스에 대한 자세한 정보를 찾을 수 있습니다.
 
-2.1 이후의 다음 릴리스에 대한 [릴리스 계획 프로세스](#release-planning-process)를 완료하지 않았습니다.
+## <a name="future-releases"></a>이후 릴리스
+
+### <a name="ef-core-22"></a>EF Core 2.2
+
+이 릴리스에는 여러 버그 수정 및 일부 새로운 기능이 포함됩니다. 이 릴리스에 대한 세부 정보는 [EF Core 2.2 로드맵 발표](https://github.com/aspnet/Announcements/issues/308)에 포함되어 있습니다. 
+
+### <a name="ef-core-30"></a>EF Core 3.0
+
+2.2 이후 릴리스에 대한 [릴리스 계획 프로세스](#release-planning-process)가 아직 완료되지 않았지만, 현재 .NET Core 3.0 및 ASP.NET 3.0을 지원하는 주 릴리스가 계획 중에 있습니다. 
+
+[Issue Tracker에서 이 쿼리](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+milestone%3A3.0.0+sort%3Areactions-%2B1-desc)를 사용하여 이 미래 릴리스에 할당된 작업 항목을 임시로 확인할 수 있습니다.
 
 ## <a name="schedule"></a>일정
 

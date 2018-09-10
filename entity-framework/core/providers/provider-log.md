@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 44b200223153fca44cb2cfa3e78b3bedc7b4a552
-ms.sourcegitcommit: a81aed575372637997b18a0f9466d8fefb33350a
+ms.openlocfilehash: 5da1043310e2858638c81a0654a9cab23e39c220
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43821337"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250818"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -19,9 +19,9 @@ ms.locfileid: "43821337"
 
 이 로그 2.1에서 2.2로 변경 내용과 시작 했습니다. 2.1 이전 버전에서는 사용 된 [ `providers-beware` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) 및 [ `providers-fyi` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) 당사의 문제 및 끌어오기 요청에는 레이블.
 
-### <a name="21-----22"></a>2.1 2.2--->
+## <a name="21-----22"></a>2.1 2.2--->
 
-#### <a name="test-only-changes"></a>테스트 전용 변경 내용
+### <a name="test-only-changes"></a>테스트 전용 변경 내용
 
 * https://github.com/aspnet/EntityFrameworkCore/pull/12057 -테스트의 사용자 지정 가능한 SQL 구분 기호를 허용 합니다.
   * 엄격한 비 부동 지점 비교 BuiltInDataTypesTestBase 허용 하는 변경 내용을 테스트합니다
@@ -40,7 +40,7 @@ ms.locfileid: "43821337"
   * 이 변경 리팩터링 반응 하는 공급자가 필요할 수 있는 몇 가지 테스트 포함
 
 
-#### <a name="test-and-product-code-changes"></a>테스트 및 제품 코드 변경 내용
+### <a name="test-and-product-code-changes"></a>테스트 및 제품 코드 변경 내용
 
 * https://github.com/aspnet/EntityFrameworkCore/pull/12109 --RelationalTypeMapping.Clone 메서드를 통합 하는 중
   * 파생된 클래스에서 간소화 하기 위해 허용 RelationalTypeMapping 2.1에서 변경 됩니다. 에서는 실감이 잘 나 공급자에 중단 된이 있지만 공급자 활용이 변경의 파생된 형식에 클래스 매핑.
@@ -50,4 +50,5 @@ ms.locfileid: "43821337"
   * 형식 매핑 및 멤버를 사용 하면 외부 공급자를 등록 하는 변환기
     * 공급자는 기본 호출 해야 합니다. 작동 하도록 하기 위해 ITypeMappingSource 구현에서 FindMapping()
   * 공급자에서 일관 된 공급자에 공간 지원을 추가 하려면이 패턴을 따릅니다.
-
+* https://github.com/aspnet/EntityFrameworkCore/pull/13199 추가 서비스 공급자 만들기에 대 한 향상 된 디버깅
+  * DbContextOptionsExtensions를 내부 서비스 공급자를 다시 작성 되는 이유를 이해 하는 데 도움이 되는 새 인터페이스를 구현할 수 있습니다.

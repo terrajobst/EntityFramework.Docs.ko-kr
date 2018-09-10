@@ -3,12 +3,12 @@ title: 열거형 지원-EF 디자이너-EF6
 author: divega
 ms.date: 2016-10-23
 ms.assetid: c6ae6d8f-1ace-47db-ad47-b1718f1ba082
-ms.openlocfilehash: d4c5528c4dc13ab7189421feebf84c2cb2f4b2bb
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a94a497e8c5b3213dd7eb4215de90164d437507d
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995639"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250637"
 ---
 # <a name="enum-support---ef-designer"></a>열거형 지원-EF 디자이너
 > [!NOTE]
@@ -70,11 +70,11 @@ Visual Studio 2012 Ultimate, Premium, Professional, Web Express edition이 연�
 
 1.  Entity Framework 디자이너에서 Name 속성을 단추로 **열거형으로 변환**
 
-    ![ConvertToEnum](~/ef6/media/converttoenum.png)
+    ![열거형으로 변환](~/ef6/media/converttoenum.png)
 
 2.  에 **추가 열거형** 대화 상자 유형을 **DepartmentNames** 열거형 형식 이름에 대 한 기본 유형을 변경 하 여 **Int32**, 다음 형식으로 다음 멤버를 추가 하 고: 영어 수치 연산 및 경제성
 
-    ![AddEnumType](~/ef6/media/addenumtype.png)
+    ![열거형 형식 추가](~/ef6/media/addenumtype.png)
 
 3.  키를 눌러 **확인**
 4.  모델을 저장 하 고 프로젝트를 빌드하십시오
@@ -85,7 +85,7 @@ Visual Studio 2012 Ultimate, Premium, Professional, Web Express edition이 연�
 
 모델 브라우저 창으로 전환 하면 형식에서 열거형 형식 노드를 추가한 표시 메시지가 표시 됩니다.
 
-![ModelBrowser](~/ef6/media/modelbrowser.png)
+![모델 브라우저](~/ef6/media/modelbrowser.png)
 
 >[!NOTE]
 > 또한 새 열거형이이 창에서 마우스 오른쪽 단추를 클릭 하 고 선택 하 여 추가할 수 있습니다 **열거형 형식 추가**합니다. 형식이 생성 되 면 형식 목록에 표시 됩니다 및 속성을 사용 하 여 연결할 수 있습니다.
