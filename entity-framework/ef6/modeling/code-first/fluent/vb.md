@@ -1,45 +1,45 @@
 ---
 title: VB.NET-EF6 사용 하 여 Fluent API
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: b21ee872034ca3c82ec793835476d79585a1018b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: cbdd32696fb88d3de6cf1966040e5dda49fe19cd
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993483"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489474"
 ---
-# <a name="fluent-api-with-vbnet"></a><span data-ttu-id="542f9-102">VB.NET 사용 하 여 Fluent API</span><span class="sxs-lookup"><span data-stu-id="542f9-102">Fluent API with VB.NET</span></span>
-<span data-ttu-id="542f9-103">C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-103">Code First allows you to define your model using C\# or VB.NET classes.</span></span> <span data-ttu-id="542f9-104">클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-104">Additional configuration can optionally be performed using attributes on your classes and properties or by using a fluent API.</span></span> <span data-ttu-id="542f9-105">이 연습에서는 fluent API 구성은 VB.NET를 사용 하 여 수행 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-105">This walkthrough shows how to perform fluent API configuration using VB.NET.</span></span>
+# <a name="fluent-api-with-vbnet"></a><span data-ttu-id="8d7c7-102">VB.NET 사용 하 여 Fluent API</span><span class="sxs-lookup"><span data-stu-id="8d7c7-102">Fluent API with VB.NET</span></span>
+<span data-ttu-id="8d7c7-103">C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-103">Code First allows you to define your model using C\# or VB.NET classes.</span></span> <span data-ttu-id="8d7c7-104">클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-104">Additional configuration can optionally be performed using attributes on your classes and properties or by using a fluent API.</span></span> <span data-ttu-id="8d7c7-105">이 연습에서는 fluent API 구성은 VB.NET를 사용 하 여 수행 하는 방법을 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-105">This walkthrough shows how to perform fluent API configuration using VB.NET.</span></span>
 
-<span data-ttu-id="542f9-106">이 페이지에서는 Code First에 대 한 기본적인 지식이 있다고 가정 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-106">This page assumes you have a basic understanding of Code First.</span></span> <span data-ttu-id="542f9-107">Code First에 대 한 자세한 내용은 다음 연습을 확인해 보십시오.</span><span class="sxs-lookup"><span data-stu-id="542f9-107">Check out the following walkthroughs for more information on Code First:</span></span>
+<span data-ttu-id="8d7c7-106">이 페이지에서는 Code First에 대 한 기본적인 지식이 있다고 가정 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-106">This page assumes you have a basic understanding of Code First.</span></span> <span data-ttu-id="8d7c7-107">Code First에 대 한 자세한 내용은 다음 연습을 확인해 보십시오.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-107">Check out the following walkthroughs for more information on Code First:</span></span>
 
--   [<span data-ttu-id="542f9-108">새 데이터베이스에 대 한 code First</span><span class="sxs-lookup"><span data-stu-id="542f9-108">Code First to a New Database</span></span>](~/ef6/modeling/code-first/workflows/new-database.md)
--   [<span data-ttu-id="542f9-109">기존 데이터베이스에 대 한 code First</span><span class="sxs-lookup"><span data-stu-id="542f9-109">Code First to an Existing Database</span></span>](~/ef6/modeling/code-first/workflows/existing-database.md)
+-   [<span data-ttu-id="8d7c7-108">새 데이터베이스에 대 한 code First</span><span class="sxs-lookup"><span data-stu-id="8d7c7-108">Code First to a New Database</span></span>](~/ef6/modeling/code-first/workflows/new-database.md)
+-   [<span data-ttu-id="8d7c7-109">기존 데이터베이스에 대 한 code First</span><span class="sxs-lookup"><span data-stu-id="8d7c7-109">Code First to an Existing Database</span></span>](~/ef6/modeling/code-first/workflows/existing-database.md)
 
-## <a name="pre-requisites"></a><span data-ttu-id="542f9-110">필수 조건</span><span class="sxs-lookup"><span data-stu-id="542f9-110">Pre-Requisites</span></span>
+## <a name="pre-requisites"></a><span data-ttu-id="8d7c7-110">필수 조건</span><span class="sxs-lookup"><span data-stu-id="8d7c7-110">Pre-Requisites</span></span>
 
-<span data-ttu-id="542f9-111">적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-111">You will need to have at least Visual Studio 2010 or Visual Studio 2012 installed to complete this walkthrough.</span></span>
+<span data-ttu-id="8d7c7-111">적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-111">You will need to have at least Visual Studio 2010 or Visual Studio 2012 installed to complete this walkthrough.</span></span>
 
-<span data-ttu-id="542f9-112">Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치</span><span class="sxs-lookup"><span data-stu-id="542f9-112">If you are using Visual Studio 2010, you will also need to have [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) installed</span></span>
+<span data-ttu-id="8d7c7-112">Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치</span><span class="sxs-lookup"><span data-stu-id="8d7c7-112">If you are using Visual Studio 2010, you will also need to have [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) installed</span></span>
 
-## <a name="create-the-application"></a><span data-ttu-id="542f9-113">응용 프로그램 만들기</span><span class="sxs-lookup"><span data-stu-id="542f9-113">Create the Application</span></span>
+## <a name="create-the-application"></a><span data-ttu-id="8d7c7-113">응용 프로그램 만들기</span><span class="sxs-lookup"><span data-stu-id="8d7c7-113">Create the Application</span></span>
 
-<span data-ttu-id="542f9-114">간단 하 게 데이터 액세스를 수행 하려면 Code First를 사용 하는 기본적인 콘솔 응용 프로그램을 빌드하는 것이 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-114">To keep things simple we’re going to build a basic console application that uses Code First to perform data access.</span></span>
+<span data-ttu-id="8d7c7-114">간단 하 게 데이터 액세스를 수행 하려면 Code First를 사용 하는 기본적인 콘솔 응용 프로그램을 빌드하는 것이 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-114">To keep things simple we’re going to build a basic console application that uses Code First to perform data access.</span></span>
 
--   <span data-ttu-id="542f9-115">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-115">Open Visual Studio</span></span>
--   <span data-ttu-id="542f9-116">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="542f9-116">**File -&gt; New -&gt; Project…**</span></span>
--   <span data-ttu-id="542f9-117">선택 **Windows** 왼쪽된 메뉴에서 및 **콘솔 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="542f9-117">Select **Windows** from the left menu and **Console Application**</span></span>
--   <span data-ttu-id="542f9-118">입력 **CodeFirstVBSample** 이름으로</span><span class="sxs-lookup"><span data-stu-id="542f9-118">Enter **CodeFirstVBSample** as the name</span></span>
--   <span data-ttu-id="542f9-119">**확인**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-119">Select **OK**</span></span>
+-   <span data-ttu-id="8d7c7-115">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-115">Open Visual Studio</span></span>
+-   <span data-ttu-id="8d7c7-116">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="8d7c7-116">**File -&gt; New -&gt; Project…**</span></span>
+-   <span data-ttu-id="8d7c7-117">선택 **Windows** 왼쪽된 메뉴에서 및 **콘솔 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="8d7c7-117">Select **Windows** from the left menu and **Console Application**</span></span>
+-   <span data-ttu-id="8d7c7-118">입력 **CodeFirstVBSample** 이름으로</span><span class="sxs-lookup"><span data-stu-id="8d7c7-118">Enter **CodeFirstVBSample** as the name</span></span>
+-   <span data-ttu-id="8d7c7-119">**확인**을 선택합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-119">Select **OK**</span></span>
 
-## <a name="define-the-model"></a><span data-ttu-id="542f9-120">모델 정의</span><span class="sxs-lookup"><span data-stu-id="542f9-120">Define the Model</span></span>
+## <a name="define-the-model"></a><span data-ttu-id="8d7c7-120">모델 정의</span><span class="sxs-lookup"><span data-stu-id="8d7c7-120">Define the Model</span></span>
 
-<span data-ttu-id="542f9-121">이 단계에서는 개념적 모델을 나타내는 엔터티 형식 VB.NET POCO를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-121">In this step you will define VB.NET POCO entity types that represent the conceptual model.</span></span> <span data-ttu-id="542f9-122">클래스는 기본 클래스에서 파생 되거나 모든 인터페이스를 구현할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-122">The classes do not need to derive from any base classes or implement any interfaces.</span></span>
+<span data-ttu-id="8d7c7-121">이 단계에서는 개념적 모델을 나타내는 엔터티 형식 VB.NET POCO를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-121">In this step you will define VB.NET POCO entity types that represent the conceptual model.</span></span> <span data-ttu-id="8d7c7-122">클래스는 기본 클래스에서 파생 되거나 모든 인터페이스를 구현할 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-122">The classes do not need to derive from any base classes or implement any interfaces.</span></span>
 
--   <span data-ttu-id="542f9-123">입력을 프로젝트에 새 클래스를 추가 **SchoolModel** 클래스 이름</span><span class="sxs-lookup"><span data-stu-id="542f9-123">Add a new class to the project, enter **SchoolModel** for the class name</span></span>
--   <span data-ttu-id="542f9-124">새 클래스의 내용을 다음 코드로 대체</span><span class="sxs-lookup"><span data-stu-id="542f9-124">Replace the contents of the new class with the following code</span></span>
+-   <span data-ttu-id="8d7c7-123">입력을 프로젝트에 새 클래스를 추가 **SchoolModel** 클래스 이름</span><span class="sxs-lookup"><span data-stu-id="8d7c7-123">Add a new class to the project, enter **SchoolModel** for the class name</span></span>
+-   <span data-ttu-id="8d7c7-124">새 클래스의 내용을 다음 코드로 대체</span><span class="sxs-lookup"><span data-stu-id="8d7c7-124">Replace the contents of the new class with the following code</span></span>
 
 ``` vb
    Public Class Department
@@ -133,21 +133,21 @@ ms.locfileid: "42993483"
     End Class
 ```
 
-## <a name="define-a-derived-context"></a><span data-ttu-id="542f9-125">파생된 컨텍스트를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-125">Define a Derived Context</span></span>
+## <a name="define-a-derived-context"></a><span data-ttu-id="8d7c7-125">파생된 컨텍스트를 정의 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-125">Define a Derived Context</span></span>
 
-<span data-ttu-id="542f9-126">EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에서 형식을 사용 하 여 시작 하려고 합니다. 죄송 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-126">We’re about to start to using types from the Entity Framework so we need to add the EntityFramework NuGet package.</span></span>
+<span data-ttu-id="8d7c7-126">EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에서 형식을 사용 하 여 시작 하려고 합니다. 죄송 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-126">We’re about to start to using types from the Entity Framework so we need to add the EntityFramework NuGet package.</span></span>
 
--   <span data-ttu-id="542f9-127">* * 프로젝트&gt; **NuGet 패키지 관리...**</span><span class="sxs-lookup"><span data-stu-id="542f9-127">**Project –&gt; **Manage NuGet Packages…**</span></span>
+-   <span data-ttu-id="8d7c7-127">\* \* 프로젝트&gt; **NuGet 패키지 관리...**</span><span class="sxs-lookup"><span data-stu-id="8d7c7-127">\*\*Project –&gt; **Manage NuGet Packages…**</span></span>
 > [!NOTE]
-> <span data-ttu-id="542f9-128">없는 경우는 **NuGet 패키지 관리...**</span><span class="sxs-lookup"><span data-stu-id="542f9-128">If you don’t have the **Manage NuGet Packages…**</span></span> <span data-ttu-id="542f9-129">설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)</span><span class="sxs-lookup"><span data-stu-id="542f9-129">option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)</span></span>
--   <span data-ttu-id="542f9-130">선택 된 **Online** 탭</span><span class="sxs-lookup"><span data-stu-id="542f9-130">Select the **Online** tab</span></span>
--   <span data-ttu-id="542f9-131">선택 된 **EntityFramework** 패키지</span><span class="sxs-lookup"><span data-stu-id="542f9-131">Select the **EntityFramework** package</span></span>
--   <span data-ttu-id="542f9-132">클릭 **설치**</span><span class="sxs-lookup"><span data-stu-id="542f9-132">Click **Install**</span></span>
+> <span data-ttu-id="8d7c7-128">없는 경우는 **NuGet 패키지 관리...**</span><span class="sxs-lookup"><span data-stu-id="8d7c7-128">If you don’t have the **Manage NuGet Packages…**</span></span> <span data-ttu-id="8d7c7-129">설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)</span><span class="sxs-lookup"><span data-stu-id="8d7c7-129">option you should install the [latest version of NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)</span></span>
+-   <span data-ttu-id="8d7c7-130">선택 된 **Online** 탭</span><span class="sxs-lookup"><span data-stu-id="8d7c7-130">Select the **Online** tab</span></span>
+-   <span data-ttu-id="8d7c7-131">선택 된 **EntityFramework** 패키지</span><span class="sxs-lookup"><span data-stu-id="8d7c7-131">Select the **EntityFramework** package</span></span>
+-   <span data-ttu-id="8d7c7-132">클릭 **설치**</span><span class="sxs-lookup"><span data-stu-id="8d7c7-132">Click **Install**</span></span>
 
-<span data-ttu-id="542f9-133">이제 데이터베이스를 쿼리하고 데이터를 저장할 수 있어를 사용 하 여 세션을 나타내는 파생된 컨텍스트를 정의 하는 시간입니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-133">Now it’s time to define a derived context, which represents a session with the database, allowing us to query and save data.</span></span> <span data-ttu-id="542f9-134">System.Data.Entity.DbContext에서 파생 되 고 형식화 된 DbSet을 노출 하는 컨텍스트를 정의 했습니다&lt;TEntity&gt; 모델의 각 클래스에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-134">We define a context that derives from System.Data.Entity.DbContext and exposes a typed DbSet&lt;TEntity&gt; for each class in our model.</span></span>
+<span data-ttu-id="8d7c7-133">이제 데이터베이스를 쿼리하고 데이터를 저장할 수 있어를 사용 하 여 세션을 나타내는 파생된 컨텍스트를 정의 하는 시간입니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-133">Now it’s time to define a derived context, which represents a session with the database, allowing us to query and save data.</span></span> <span data-ttu-id="8d7c7-134">System.Data.Entity.DbContext에서 파생 되 고 형식화 된 DbSet을 노출 하는 컨텍스트를 정의 했습니다&lt;TEntity&gt; 모델의 각 클래스에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-134">We define a context that derives from System.Data.Entity.DbContext and exposes a typed DbSet&lt;TEntity&gt; for each class in our model.</span></span>
 
--   <span data-ttu-id="542f9-135">입력을 프로젝트에 새 클래스를 추가 **SchoolContext** 클래스 이름</span><span class="sxs-lookup"><span data-stu-id="542f9-135">Add a new class to the project, enter **SchoolContext** for the class name</span></span>
--   <span data-ttu-id="542f9-136">새 클래스의 내용을 다음 코드로 대체</span><span class="sxs-lookup"><span data-stu-id="542f9-136">Replace the contents of the new class with the following code</span></span>
+-   <span data-ttu-id="8d7c7-135">입력을 프로젝트에 새 클래스를 추가 **SchoolContext** 클래스 이름</span><span class="sxs-lookup"><span data-stu-id="8d7c7-135">Add a new class to the project, enter **SchoolContext** for the class name</span></span>
+-   <span data-ttu-id="8d7c7-136">새 클래스의 내용을 다음 코드로 대체</span><span class="sxs-lookup"><span data-stu-id="8d7c7-136">Replace the contents of the new class with the following code</span></span>
 
 ``` vb
     Imports System.Data.Entity
@@ -169,11 +169,11 @@ ms.locfileid: "42993483"
     End Class
 ```
 
-## <a name="configuring-with-the-fluent-api"></a><span data-ttu-id="542f9-137">Fluent API를 사용 하 여 구성</span><span class="sxs-lookup"><span data-stu-id="542f9-137">Configuring with the Fluent API</span></span>
+## <a name="configuring-with-the-fluent-api"></a><span data-ttu-id="8d7c7-137">Fluent API를 사용 하 여 구성</span><span class="sxs-lookup"><span data-stu-id="8d7c7-137">Configuring with the Fluent API</span></span>
 
-<span data-ttu-id="542f9-138">이 섹션에서는 fluent Api를 사용 하 여 테이블 열 매핑 및 테이블 간의 관계에는 속성을 매핑할 형식을 구성 하는 방법에 설명\\모델의 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-138">This section demonstrates how to use the fluent APIs to configure types to tables mapping, properties to columns mapping, and relationships between tables\\type in your model.</span></span> <span data-ttu-id="542f9-139">Fluent API를 통해 노출 되는 **DbModelBuilder** 입력 하 고 가장 일반적으로 재정의 하 여 액세스 합니다 **OnModelCreating** 메서드를 **DbContext**합니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-139">The fluent API is exposed through the **DbModelBuilder** type and is most commonly accessed by overriding the **OnModelCreating** method on **DbContext**.</span></span>
+<span data-ttu-id="8d7c7-138">이 섹션에서는 fluent Api를 사용 하 여 테이블 열 매핑 및 테이블 간의 관계에는 속성을 매핑할 형식을 구성 하는 방법에 설명\\모델의 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-138">This section demonstrates how to use the fluent APIs to configure types to tables mapping, properties to columns mapping, and relationships between tables\\type in your model.</span></span> <span data-ttu-id="8d7c7-139">Fluent API를 통해 노출 되는 **DbModelBuilder** 입력 하 고 가장 일반적으로 재정의 하 여 액세스 합니다 **OnModelCreating** 메서드를 **DbContext**합니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-139">The fluent API is exposed through the **DbModelBuilder** type and is most commonly accessed by overriding the **OnModelCreating** method on **DbContext**.</span></span>
 
--   <span data-ttu-id="542f9-140">다음 코드를 복사 하 고 추가 합니다 **OnModelCreating** 에 정의 된 메서드는 **SchoolContext** 클래스 주석은 각 매핑 수행</span><span class="sxs-lookup"><span data-stu-id="542f9-140">Copy the following code and add it to the **OnModelCreating** method defined on the **SchoolContext** class The comments explain what each mapping does</span></span>
+-   <span data-ttu-id="8d7c7-140">다음 코드를 복사 하 고 추가 합니다 **OnModelCreating** 에 정의 된 메서드는 **SchoolContext** 클래스 주석은 각 매핑 수행</span><span class="sxs-lookup"><span data-stu-id="8d7c7-140">Copy the following code and add it to the **OnModelCreating** method defined on the **SchoolContext** class The comments explain what each mapping does</span></span>
 
 ``` vb
 ' Configure Code First to ignore PluralizingTableName convention
@@ -363,12 +363,12 @@ modelBuilder.Entity(Of Course)().
     WillCascadeOnDelete(False)
 ```
 
-## <a name="using-the-model"></a><span data-ttu-id="542f9-141">모델을 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="542f9-141">Using the Model</span></span>
+## <a name="using-the-model"></a><span data-ttu-id="8d7c7-141">모델을 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="8d7c7-141">Using the Model</span></span>
 
-<span data-ttu-id="542f9-142">사용 하 여 일부 데이터 액세스를 수행해 보겠습니다를 **SchoolContext** 작업에서 모델을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-142">Let's perform some data access using the **SchoolContext** to see out model in action.</span></span>
+<span data-ttu-id="8d7c7-142">사용 하 여 일부 데이터 액세스를 수행해 보겠습니다를 **SchoolContext** 작업에서 모델을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-142">Let's perform some data access using the **SchoolContext** to see out model in action.</span></span>
 
--   <span data-ttu-id="542f9-143">Main 함수 정의 되어 있는 Module1.vb 파일을 열으십시오</span><span class="sxs-lookup"><span data-stu-id="542f9-143">Open the Module1.vb file where the Main function is defined</span></span>
--   <span data-ttu-id="542f9-144">복사 및 붙여넣기 다음 Module1 정의</span><span class="sxs-lookup"><span data-stu-id="542f9-144">Copy and paste the following Module1 definition</span></span>
+-   <span data-ttu-id="8d7c7-143">Main 함수 정의 되어 있는 Module1.vb 파일을 열으십시오</span><span class="sxs-lookup"><span data-stu-id="8d7c7-143">Open the Module1.vb file where the Main function is defined</span></span>
+-   <span data-ttu-id="8d7c7-144">복사 및 붙여넣기 다음 Module1 정의</span><span class="sxs-lookup"><span data-stu-id="8d7c7-144">Copy and paste the following Module1 definition</span></span>
 
 ``` vb
 Imports System.Data.Entity
@@ -408,7 +408,7 @@ Module Module1
 End Module
 ```
 
-<span data-ttu-id="542f9-145">이제 응용 프로그램을 실행 하 고 테스트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="542f9-145">You can now run the application and test it out.</span></span>
+<span data-ttu-id="8d7c7-145">이제 응용 프로그램을 실행 하 고 테스트할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="8d7c7-145">You can now run the application and test it out.</span></span>
 
 ```
 Enter a name for a new Department: Computing
