@@ -1,14 +1,14 @@
 ---
 title: EF6에서 EF 디자이너-관계
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 402fe960-754b-470f-976b-e5de3e9986b5
-ms.openlocfilehash: e1912a5e00e51b4f07b1ac83848fdbe0aa4755aa
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: d429c39dafbf183caabdc85748c188deb8dd6f66
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250714"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490684"
 ---
 # <a name="relationships---ef-designer"></a>관계-EF 디자이너
 > [!NOTE]
@@ -41,7 +41,7 @@ EF 디자이너 업데이트와 연결 하 여.edmx 파일의 모델 콘텐츠�
 
 ### <a name="to-create-an-association"></a>연결을 만들려면
 
-1.  디자인 화면의 빈 영역을 마우스 오른쪽 **새로 추가**, 선택한 **연결 하는 중... **.
+1.  디자인 화면의 빈 영역을 마우스 오른쪽 **새로 추가**, 선택한 **연결 하는 중...** .
 2.  연결에 대 한 설정을 입력 합니다 **연결 추가** 대화 합니다.
 
     ![연결 추가](~/ef6/media/addassociation.png)
