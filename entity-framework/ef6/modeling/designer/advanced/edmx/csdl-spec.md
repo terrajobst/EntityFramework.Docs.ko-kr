@@ -1,14 +1,14 @@
 ---
 title: CSDL 사양-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: c54255f4-253f-49eb-bec8-ad7927ac2fa3
-ms.openlocfilehash: 88669cf80f9a792fda7d191d9f6be2b1734691df
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f5bf0dc75a8195e9af979c9e044f36171f46c9b7
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994731"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490521"
 ---
 # <a name="csdl-specification"></a>CSDL 사양
 CSDL(개념 스키마 정의 언어)은 데이터 기반 응용 프로그램의 개념적 모델을 구성하는 엔터티, 관계 및 함수를 설명하는 XML 기반 언어입니다. 이 개념적 모델은 Entity Framework 또는 WCF Data Services에서 사용할 수 있습니다. CSDL을 사용 하 여 설명 하는 메타 데이터 엔터티 및 데이터 원본에 개념적 모델에 정의 된 관계를 매핑할 Entity Framework에서 사용 됩니다. 자세한 내용은 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md) 하 고 [MSL 사양](~/ef6/modeling/designer/advanced/edmx/msl-spec.md)합니다.
@@ -262,7 +262,7 @@ A **ComplexType** 요소 (나열 된 순서로)는 다음 자식 요소를 포�
 
 | 특성 이름                                                                                                 | 필수 여부 | 값                                                                                                                                                                               |
 |:---------------------------------------------------------------------------------------------------------------|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| name                                                                                                           | 예         | 복합 형식의 이름입니다. 복합 형식의 이름은 모델 범위 내에 있는 다른 복합 형식, 엔터티 형식 또는 연결의 이름과 같을 수 없습니다. |
+| 이름                                                                                                           | 예         | 복합 형식의 이름입니다. 복합 형식의 이름은 모델 범위 내에 있는 다른 복합 형식, 엔터티 형식 또는 연결의 이름과 같을 수 없습니다. |
 | BaseType                                                                                                       | 아니요          | 정의되는 복합 형식의 기본 형식인 다른 복합 형식의 이름입니다. <br/> [!NOTE]                                                                     |
 | >이 특성은 CSDL v1에 적용할 수 없습니다. 복합 형식에 대한 상속은 해당 버전에서 지원되지 않습니다. |             |                                                                                                                                                                                     |
 | 추상                                                                                                       | 아니요          | **True 이면** 나 **False** (기본값) 복합 형식이 추상 형식 인지에 따라 합니다. <br/> [!NOTE]                                                                  |

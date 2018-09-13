@@ -1,14 +1,14 @@
 ---
 title: EF6-MSL 사양
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 13ae7bc1-74b4-4ee4-8d73-c337be841467
-ms.openlocfilehash: 77dc7072c70b104188cd23974f32308960daebb6
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 9519155422d8542d4a14bc1c612e91ebc22bf15e
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996033"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490560"
 ---
 # <a name="msl-specification"></a>XML 사양
 매핑 사양 언어 (MSL)은 개념적 모델 및 Entity Framework 응용 프로그램의 저장소 모델 간의 매핑을 설명 하는 XML 기반 언어입니다.
@@ -558,7 +558,7 @@ AssociationSetMapping 요소에 적용할 경우 합니다 **DeleteFunction** �
 
 | 특성 이름 | 필수 여부 | 값                                                 |
 |:---------------|:------------|:------------------------------------------------------|
-| name           | 예         | 매핑되는 연결 끝의 이름 |
+| 이름           | 예         | 매핑되는 연결 끝의 이름 |
 
 ### <a name="example"></a>예제
 

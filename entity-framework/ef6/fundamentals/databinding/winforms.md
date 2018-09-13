@@ -1,14 +1,14 @@
 ---
 title: WinForms-EF6 사용 하 여 데이터 바인딩
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 80fc5062-2f1c-4dbd-ab6e-b99496784b36
-ms.openlocfilehash: 48e6d997875a25a5954484f854953df69a267d05
-ms.sourcegitcommit: 8d04a2ad98036f32ca70c77ce3040c5edb1cdf82
+ms.openlocfilehash: 8da5bf653221b7919abb89d6d33bc8ed172828a4
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44384854"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490157"
 ---
 # <a name="databinding-with-winforms"></a>WinForms 사용 하 여 데이터 바인딩
 이 단계별 연습에는 POCO 형식 "마스터-세부 정보" 형태로 Window Forms (WinForms) 컨트롤에 바인딩하는 방법을 보여 줍니다. Entity Framework를 사용 하 여 데이터베이스에서 데이터를 사용 하 여 개체를 채우기, 변경 내용 추적 및 데이터베이스에 데이터를 유지 하는 응용 프로그램입니다.

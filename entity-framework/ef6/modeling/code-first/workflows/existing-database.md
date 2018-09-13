@@ -1,14 +1,14 @@
 ---
 title: 기존 데이터베이스-EF6에 code First
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: a7e60b74-973d-4480-868f-500a3899932e
-ms.openlocfilehash: fedfb921919582e2cdb5f3bc497f11889b972ad6
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: f05420beb3dff2d632151fcbf48986b0d9cd18ff
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251078"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490612"
 ---
 # <a name="code-first-to-an-existing-database"></a>기존 데이터베이스에 대 한 code First
 이 비디오 및 단계별 연습에서는 기존 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 필요에 따라 추가 구성을 수행할 수 있습니다.

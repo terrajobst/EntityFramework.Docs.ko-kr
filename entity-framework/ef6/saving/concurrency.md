@@ -1,14 +1,14 @@
 ---
 title: 동시성 충돌 처리-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 2318e4d3-f561-4720-bbc3-921556806476
-ms.openlocfilehash: f233af217287dd6bf35e5b7fea8e44974168b312
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 81ae186201fdfac331b1d4e7836b222545fe78b5
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997812"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489156"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 낙관적 동시성은 낙관적으로 로드 된 데이터베이스 데이터 엔터티 이후 변경 되지 않은 기대에 엔터티를 저장 하려고 합니다. 것으로 확인 되는 경우 예외가 발생 하 고 다시 저장 하기 전에 충돌을 해결 해야 하는 데이터가 변경 되었습니다. 이 항목에서는 Entity Framework에서 이러한 예외를 처리 하는 방법에 설명 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

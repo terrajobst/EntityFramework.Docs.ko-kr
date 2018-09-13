@@ -1,14 +1,14 @@
 ---
 title: EF6 로컬 데이터
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 2eda668b-1e5d-487d-9a8c-0e3beef03fcb
-ms.openlocfilehash: dac1a1de20398501c706b118443743d47970df17
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 400b9e1337edac1b9fa4f0ec9e1384ca58aa2fbc
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994276"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490456"
 ---
 # <a name="local-data"></a>로컬 데이터
 DbSet에 대해 직접 LINQ 쿼리를 실행는 항상 보낼 쿼리를 데이터베이스에 있지만 현재 메모리 내 DbSet.Local 속성을 사용 하는 데이터에 액세스할 수 있습니다. 또한 DbContext.Entry 및 DbContext.ChangeTracker.Entries 메서드를 사용 하 여 엔터티에 대 한 EF가 추적 하는 추가 정보를 액세스할 수 있습니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

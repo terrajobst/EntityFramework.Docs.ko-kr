@@ -1,14 +1,14 @@
 ---
 title: Entity Framework Designer-EF6에서에서 ObjectContext 되돌리기
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 36550569-a1de-47cb-ba6d-544794ffd500
-ms.openlocfilehash: e90af3e973c71e2ce872e3edc24aafc1b2ccce0f
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 3e436f0d9cf94720be9c424b327816438d571ae8
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250337"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45488949"
 ---
 # <a name="reverting-to-objectcontext-in-entity-framework-designer"></a>Entity Framework Designer에서 ObjectContext 되돌리기
 ObjectContext에서 파생 된 컨텍스트 및 엔터티 클래스는 EntityObject에서 파생 된 이전 버전의 Entity Framework의 EF 디자이너를 사용 하 여 만든 모델을 사용 하 여 생성 됩니다.

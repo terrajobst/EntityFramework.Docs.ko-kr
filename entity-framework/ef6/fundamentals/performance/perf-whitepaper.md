@@ -1,14 +1,14 @@
 ---
 title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: 3ec061559f6ad7cbdce59118c13543d9993ec5a5
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: a58461a6d18d9d53c002b5d45cecbff7b0cdf81e
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251312"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490261"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서

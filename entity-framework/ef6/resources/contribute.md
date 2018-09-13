@@ -1,14 +1,14 @@
 ---
 title: Entity Framework-EF6에 참여
 author: divega
-ms.date: 2018-07-05
+ms.date: 07/05/2018
 ms.assetid: EFA3C3F5-79A4-4A0A-BB37-035C31FC7372
-ms.openlocfilehash: c784e4dc3cac39b4ed534a5e1fbd25217a1fd0b1
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: fef724c33d5a21d71f266986c0b15ff370b63382
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997826"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45488961"
 ---
 # <a name="contribute-to-entity-framework-6"></a>Entity Framework 6에 참여
 Entity Framework 6은 GitHub에서 오픈 소스 모델을 사용 하 여 개발 됩니다. Microsoft Entity Framework 팀의 주요 초점은 Entity Framework Core에 새로운 기능을 추가 하는 방법 이며 Entity Framework 6에 추가할 모든 주요 기능을 기대 하지 않습니다, 하지만 여전히 기여한 내용을 수락 합니다.

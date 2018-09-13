@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 5da1043310e2858638c81a0654a9cab23e39c220
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: a637e5e2f75e16bc7b11b1a51abcbe16274a1c75
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250818"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490774"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -52,3 +52,7 @@ ms.locfileid: "44250818"
   * 공급자에서 일관 된 공급자에 공간 지원을 추가 하려면이 패턴을 따릅니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/13199 추가 서비스 공급자 만들기에 대 한 향상 된 디버깅
   * DbContextOptionsExtensions를 내부 서비스 공급자를 다시 작성 되는 이유를 이해 하는 데 도움이 되는 새 인터페이스를 구현할 수 있습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/13289 -추가 CanConnect API 사용에 대 한 상태 검사 하 여
+  * 개념을 추가 하는이 PR이 `CanConnect` 를 사용할 경우 결정 하기 위해 확인 하는 ASP.NET Core 상태에서 사용 됩니다. 기본적으로 관계형 구현을 호출 `Exist`, 하지만 공급자 필요에 따라 다르게 구현할 수 있습니다. 비관계형 공급자를 사용할 수 있으려면 상태 검사를 위해 새 API를 구현 해야 합니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/13306 --DbParameter 크기를 설정 하지 않아도 기본 RelationalTypeMapping를 업데이트 하는 중
+  * 중지 잘릴 수 있으므로 기본적으로 크기를 설정 합니다. 공급자는 크기를 설정 해야 하는 경우 자체 논리를 추가 해야 합니다.

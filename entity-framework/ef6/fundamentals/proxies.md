@@ -1,14 +1,14 @@
 ---
 title: 프록시-EF6 사용
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 869ee4dc-06f1-471d-8e0e-0a1a2bc59c30
-ms.openlocfilehash: 7b82dd370e67d1622fc00ff5e5275721d0fc4fe1
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8f7d2e8b41ece28efe8d1df3b0679e6e4510d64a
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997205"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489819"
 ---
 # <a name="working-with-proxies"></a>프록시 사용
 POCO 엔터티 형식 인스턴스를 만들 때 Entity Framework는 종종 엔터티에 대 한 프록시로 작동 하는 동적으로 생성 된 파생 형식의 인스턴스를 만듭니다. 이 프록시 속성에 액세스할 때 자동으로 작업을 수행 하는 것에 대 한 후크를 삽입할 엔터티의 일부 가상 속성을 재정의 합니다. 예를 들어,이 메커니즘은 관계의 지연 로드를 지원 하기 위해 사용 됩니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

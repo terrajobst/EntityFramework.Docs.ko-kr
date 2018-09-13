@@ -1,14 +1,14 @@
 ---
 title: VB.NET-EF6 사용 하 여 Fluent API
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: b21ee872034ca3c82ec793835476d79585a1018b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: cbdd32696fb88d3de6cf1966040e5dda49fe19cd
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993483"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489474"
 ---
 # <a name="fluent-api-with-vbnet"></a>VB.NET 사용 하 여 Fluent API
 C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다. 이 연습에서는 fluent API 구성은 VB.NET를 사용 하 여 수행 하는 방법을 보여 줍니다.

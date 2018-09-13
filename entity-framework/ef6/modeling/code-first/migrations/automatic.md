@@ -1,14 +1,14 @@
 ---
 title: 자동 Code First 마이그레이션을-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: 256d1c774a2165dc12daf3d04550566c1a44b751
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 21f77ef49db2485047292b3928b4f63d49dbb180
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250454"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489988"
 ---
 # <a name="automatic-code-first-migrations"></a>자동 Code First 마이그레이션
 자동 마이그레이션은 사용 하면 각 변경에 대 한 프로젝트에서 코드 파일을 사용 하지 않고도 Code First 마이그레이션을 사용 수 있습니다. 모든 변경 내용을 자동으로 적용할 수 있습니다-열 이름 바꾸기 코드 기반 마이그레이션 사용 해야 하는 예를 들어 있습니다.

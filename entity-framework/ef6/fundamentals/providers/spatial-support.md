@@ -1,14 +1,14 @@
 ---
 title: 공간 형식-EF6에 대 한 공급자 지원
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 1097cb00-15f5-453d-90ed-bff9403d23e3
-ms.openlocfilehash: 07eeecb5f5e3e3eab8548c4c7c0ed55c5ffb4f31
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: ffd22222f59a541d8135d3738d37a7e8f5dc5d7c
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42998289"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489754"
 ---
 # <a name="provider-support-for-spatial-types"></a>공간 형식에 대 한 공급자 지원
 Entity Framework DbGeography 또는 DbGeometry 클래스를 통해 공간 데이터 사용을 지원합니다. 이러한 클래스는 Entity Framework 공급자에서 제공 하는 데이터베이스 관련 기능을 사용 합니다. 공간 데이터를 지원 하지 않는 공급자 및 않는 공간 형식 어셈블리의 설치와 같은 추가 필수 구성 요소에 있을 수 있습니다. 공간 형식에 대 한 공급자 지원에 대 한 자세한 내용은 아래에 제공 됩니다.  

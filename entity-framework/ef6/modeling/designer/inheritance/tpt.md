@@ -1,14 +1,14 @@
 ---
 title: 디자이너 TPT 상속-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: efc78c31-b4ea-4ea3-a0cd-c69eb507020e
-ms.openlocfilehash: 68980fa89446940b8b7f5f73c519d38e727a9039
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 84330fba4807620aa242a70cd8ac76a60284416d
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996350"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489455"
 ---
 # <a name="designer-tpt-inheritance"></a>디자이너 TPT 상속
 이 단계별 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델에서 형식당 하나의 테이블 (TPT) 상속을 구현 하는 방법을 보여 줍니다. 형식당 하나의 테이블 상속에서는 데이터베이스의 별도 테이블을 사용하여 상속 계층 구조에 있는 각 형식의 상속되지 않는 속성 및 키 속성 데이터를 유지합니다.

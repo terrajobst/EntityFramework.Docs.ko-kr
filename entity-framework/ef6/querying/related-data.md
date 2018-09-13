@@ -1,14 +1,14 @@
 ---
 title: 관련 엔터티-EF6 로드
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: c8417e18-a2ee-499c-9ce9-2a48cc5b468a
-ms.openlocfilehash: 091493f60c732573ca63adb8c65bc28606453d34
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 1d59e6c079e306158ed918cde16e69c9cb084711
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995927"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489052"
 ---
 # <a name="loading-related-entities"></a>관련된 엔터티 로드
 Entity Framework는 선행 로딩, 지연 된 로드 및 명시적 로드 관련 된 데이터를 로드 하는 세 가지를 지원 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  

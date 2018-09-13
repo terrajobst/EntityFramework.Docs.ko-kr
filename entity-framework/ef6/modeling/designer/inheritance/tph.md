@@ -1,14 +1,14 @@
 ---
 title: 디자이너 TPH 상속-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 72d26a8e-20ab-4500-bd13-394a08e73394
-ms.openlocfilehash: 1eb935414b20d6e93e9d470ccc845bc13626ed3a
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 43ba34a98c3960a7a3052a00e2ed2751c2f2b121
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250846"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490127"
 ---
 # <a name="designer-tph-inheritance"></a>디자이너 TPH 상속
 이 단계별 연습에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 개념적 모델에서 계층당 하나의 테이블 (TPH) 상속을 구현 하는 방법을 보여 줍니다. TPH 상속 상속 계층 구조의 엔터티 형식의 모든 데이터를 유지 하기 위해 하나의 데이터베이스 테이블을 사용 합니다.

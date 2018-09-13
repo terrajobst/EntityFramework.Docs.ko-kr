@@ -1,14 +1,14 @@
 ---
 title: 복합 형식-EF 디자이너-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 9a8228ef-acfd-4575-860d-769d2c0e18a1
-ms.openlocfilehash: 2a516bd14131fd035a4d005e0fdf140f7ff4d65f
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: a3c5578acee23688c04772d2dd0a2221779af562
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44250831"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45489910"
 ---
 # <a name="complex-types---ef-designer"></a>복합 형식-EF 디자이너
 이 항목에서는 Entity Framework Designer (EF 디자이너)를 사용 하 여 복합 형식을 매핑하는 방법 및 복합 형식의 속성을 포함 하는 엔터티에 대 한 쿼리 하는 방법을 보여 줍니다.

@@ -1,14 +1,14 @@
 ---
 title: School 샘플 데이터베이스-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: e83a6a06-e63b-4530-8656-614bf609b12b
-ms.openlocfilehash: 4d113a7a3159edfa3d586e571c69b05b35434edf
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 1e9dc98edb8590021bbf3393e9edda1929d505e0
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997752"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490716"
 ---
 # <a name="school-sample-database"></a>School 샘플 데이터베이스
 이 항목에서는 스키마 및 School 데이터베이스에 대 한 데이터를 포함합니다. 샘플 School 데이터베이스는 Entity Framework 설명서의 여러 위치에서 사용 됩니다.  

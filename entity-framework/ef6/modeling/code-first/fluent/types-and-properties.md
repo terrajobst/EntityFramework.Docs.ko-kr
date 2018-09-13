@@ -1,14 +1,14 @@
 ---
 title: Fluent API 구성 및 등록 정보 및 형식 매핑-EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 648ed274-c501-4630-88e0-d728ab5c4057
-ms.openlocfilehash: e65a3f4721e5c28de63d143e1143f3584e145477
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 031376d2fc4778e6f0fa2434ab7ccfd45d436c4a
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996989"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490201"
 ---
 # <a name="fluent-api---configuring-and-mapping-properties-and-types"></a>Fluent API-구성 하 고 속성 및 형식 매핑
 Entity Framework Code First를 사용 하 여 작업 하는 경우 기본 동작은 POCO 클래스는 EF에 포함 하는 규칙 집합을 사용 하 여 테이블에 매핑할 합니다. 그러나 경우에 따라 없거나 하지 않으려는 해당 규칙을 따르는 및 규칙을 지정 하는 새로운 이외의에 엔터티를 매핑해야 합니다.  
