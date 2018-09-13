@@ -1,14 +1,14 @@
 ---
 title: 디자이너 코드 생성 템플릿 - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 56e00fa2-f9f0-48b3-8006-f8266ca7e74b
-ms.openlocfilehash: e4d4aaa647baca9f85b85db1aadaade37abd6ff2
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 8479d4e76e6db43072c382792c69250ae032af62
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251169"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490198"
 ---
 # <a name="designer-code-generation-templates"></a>디자이너 코드 생성 템플릿
 Entity Framework Designer를 사용하여 모델을 만들면 클래스와 파생된 컨텍스트가 자동으로 생성됩니다. 기본 코드 생성 외에도 생성된 코드를 사용자 지정하는 데 사용할 수 있는 다양한 템플릿을 제공합니다. 이러한 템플릿은 T4 텍스트 템플릿으로 제공되므로 필요한 경우 템플릿을 사용자 지정할 수 있습니다.
