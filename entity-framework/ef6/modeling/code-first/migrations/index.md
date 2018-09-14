@@ -1,14 +1,14 @@
 ---
 title: Code First 마이그레이션 - EF6
 author: divega
-ms.date: 2016-10-23
+ms.date: 10/23/2016
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
-ms.openlocfilehash: 6c530545968a26d13051d1e682557092bde13bb0
-ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
+ms.openlocfilehash: 0e2f33d3402929c93a339ea26dcade875da52a61
+ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/09/2018
-ms.locfileid: "44251039"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45490289"
 ---
 # <a name="code-first-migrations"></a>Code First 마이그레이션
 Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 응용 프로그램의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.
@@ -96,7 +96,7 @@ Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 
     public string Url { get; set; }
 ```
 
-응용 프로그램을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.* 라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](http://go.microsoft.com/fwlink/?LinkId=238269)*).
+응용 프로그램을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](http://go.microsoft.com/fwlink/?LinkId=238269)*).*
 
 예외에서 암시하듯이 이제 Code First 마이그레이션 사용을 시작할 시간입니다. 첫 번째 단계는 컨텍스트에 맞게 마이그레이션을 사용하도록 설정하는 것입니다.
 
