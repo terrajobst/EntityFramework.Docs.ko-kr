@@ -4,45 +4,38 @@ author: divega
 ms.date: 08/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 uid: core/miscellaneous/1x-2x-upgrade
-ms.openlocfilehash: f0d85b3ba22c09d2bd48e8b34ed628a7474322d3
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 5371c8f3b7c6102c621296bbae145d13779e0c6e
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490495"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283773"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>응용 프로그램을 이전 버전에서 EF Core 2.0으로 업그레이드
 
 기존 Api 및 2.0의 동작이 크게 구체화할 수를 이동 있습니다. 기존 응용 프로그램 코드 수정 필요할 수 있는 몇 가지 향상 된 기능는 대부분의 응용 프로그램에 대 한 생각 하지만 영향을 다시 컴파일 및 사용 되지 않는 Api를 바꾸려면 단계별된 최소한의 변경만 필요한 대부분의 경우 낮은 지정 됩니다.
 
-## <a name="procedures-common-to-all-applications"></a>모든 응용 프로그램에 공통 된 프로시저
-
 EF Core 2.0으로 기존 응용 프로그램을 업데이트 해야 할 수 있습니다.
 
-1. .NET Standard 2.0을 지 원하는 드라이버로 응용 프로그램의 대상.NET 플랫폼을 업그레이드 합니다. 참조 [지원 되는 플랫폼](../platforms/index.md) 대 한 자세한 내용은 합니다.
+1. .NET Standard 2.0을 지 원하는 드라이버로 응용 프로그램의 대상.NET 구현은 업그레이드 합니다. 참조 [지원 되는.NET 구현](../platforms/index.md) 대 한 자세한 내용은 합니다.
 
 2. EF Core 2.0 호환 되는 대상 데이터베이스에 대 한 공급자를 식별 합니다. 참조 [2.0 데이터베이스 공급자를 필요로 하는 EF Core 2.0](#ef-core-20-requires-a-20-database-provider) 아래.
 
 3. 모든 EF Core 패키지 (런타임 및 도구) 2.0으로 업그레이드 합니다. 가리킵니다 [EF Core 설치](../get-started/install/index.md) 대 한 자세한 내용은 합니다.
 
-4. 주요 변경 내용에 대 한 보정을 위해 필요한 코드를 변경 합니다. 참조 된 [주요 변경 내용](#breaking-changes) 대 한 자세한 내용은 아래 섹션입니다.
+4. 이 문서의 나머지 부분에 설명 된 주요 변경 내용에 대 한 보정을 위해 필요한 코드를 변경 합니다.
 
-## <a name="aspnet-core-applications"></a>ASP.NET Core 응용 프로그램
+## <a name="aspnet-core-now-includes-ef-core"></a>ASP.NET Core에는 이제 EF Core
 
-1. 특히 참조를 [응용 프로그램의 서비스 공급자를 초기화 하기 위한 새로운 패턴](#new-way-of-getting-application-services) 아래에서 설명 합니다.
+ASP.NET Core 2.0을 대상으로 하는 응용 프로그램은 추가적인 종속성 없이 타사 데이터베이스 공급자와 함께 EF Core 2.0을 사용할 수 있습니다. 그러나 이전 버전의 ASP.NET Core를 대상으로 하는 응용 프로그램을 EF Core 2.0을 사용 하려면 ASP.NET Core 2.0으로 업그레이드 해야 합니다. ASP.NET Core 2.0 응용 프로그램 업그레이드에 대 한 자세한 내용은 참조 하세요 [주제에 대 한 ASP.NET Core 설명서](https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/)합니다.
 
-> [!TIP]  
-> 적극 권장 되며 Entity Framework Core 마이그레이션은 같은 제품 기능 작동 하려면에서 반드시 2.0 응용 프로그램을 업데이트 하는 경우이 새 패턴의 도입은 합니다. 다른 일반적인 대체 방법은 [구현 *IDesignTimeDbContextFactory\<TContext >*](xref:core/miscellaneous/cli/dbcontext-creation#from-a-design-time-factory)합니다.
-
-2. ASP.NET Core 2.0을 대상으로 하는 응용 프로그램은 추가적인 종속성 없이 타사 데이터베이스 공급자와 함께 EF Core 2.0을 사용할 수 있습니다. 그러나 이전 버전의 ASP.NET Core를 대상으로 하는 응용 프로그램을 EF Core 2.0을 사용 하려면 ASP.NET Core 2.0으로 업그레이드 해야 합니다. ASP.NET Core 2.0 응용 프로그램 업그레이드에 대 한 자세한 내용은 참조 하세요 [주제에 대 한 ASP.NET Core 설명서](https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/)합니다.
-
-## <a name="new-way-of-getting-application-services"></a>새 응용 프로그램 서비스를 가져오는 방법
+## <a name="new-way-of-getting-application-services-in-aspnet-core"></a>새 ASP.NET Core에서 응용 프로그램 서비스를 가져오는 방법
 
 ASP.NET Core 웹 응용 프로그램에 대 한 권장된 패턴 2.0 EF Core 1.x에서 사용 되는 디자인 타임 논리를 중단 하는 방식에서에 대 한 업데이트 되었습니다. 이전에 디자인 타임에 EF Core 하려고 호출 `Startup.ConfigureServices` 응용 프로그램의 서비스 공급자에 액세스 하기 위해 직접. 외부의 ASP.NET Core 2.0에서 구성 초기화 되는 `Startup` 클래스입니다. 일반적으로 EF Core를 사용 하 여 응용 프로그램 구성에서 하므로 해당 연결 문자열을 액세스할 `Startup` 자체적으로 충분 하지 않습니다. ASP.NET Core 1.x 응용 프로그램을 업그레이드 하는 경우 EF Core 도구를 사용 하는 경우 다음 오류가 나타날 수 있습니다.
 
 > 매개 변수가 없는 생성자가 없습니다 'ApplicationContext'에서 찾을 수 있습니다. 'ApplicationContext' 매개 변수가 없는 생성자를 추가 하거나 구현 추가 ' IDesignTimeDbContextFactory&lt;ApplicationContext&gt;' 'ApplicationContext'와 동일한 어셈블리에서
 
-새 디자인 타임 후크를 ASP.NET Core 2.0의 기본 서식 파일에 추가 되었습니다. 정적 `Program.BuildWebHost` 메서드는 디자인 타임에 응용 프로그램의 서비스 공급자에 액세스 하는 EF Core를 사용 합니다. ASP.NET Core 1.x 응용 프로그램을 업그레이드 하는 경우 업데이트 해야 합니다 `Program` 클래스는 다음과 유사 합니다.
+새 디자인 타임 후크를 ASP.NET Core 2.0의 기본 서식 파일에 추가 되었습니다. 정적 `Program.BuildWebHost` 메서드는 디자인 타임에 응용 프로그램의 서비스 공급자에 액세스 하는 EF Core를 사용 합니다. ASP.NET Core 1.x 응용 프로그램을 업그레이드 하는 경우 업데이트 해야 합니다는 `Program` 클래스는 다음과 유사 합니다.
 
 ``` csharp
 using Microsoft.AspNetCore;
@@ -64,6 +57,8 @@ namespace AspNetCoreDotNetCore2._0App
     }
 }
 ```
+
+적극 권장 되며 Entity Framework Core 마이그레이션은 같은 제품 기능 작동 하려면에서 반드시 2.0 응용 프로그램을 업데이트 하는 경우이 새 패턴의 도입은 합니다. 다른 일반적인 대체 방법은 [구현 *IDesignTimeDbContextFactory\<TContext >*](xref:core/miscellaneous/cli/dbcontext-creation#from-a-design-time-factory)합니다.
 
 ## <a name="idbcontextfactory-renamed"></a>이름을 바꿀 IDbContextFactory
 

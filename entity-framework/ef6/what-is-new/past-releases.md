@@ -3,12 +3,12 @@ title: Entity Framework-EF6의 이전 릴리스
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 1060bb99-765f-4f32-aaeb-d6635d3dbd3e
-ms.openlocfilehash: 4c711bb48938e5c0432881c61766b0bff66498f2
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 4fa27f8259ecc011d9d30080aee3c44353ef533d
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490145"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283994"
 ---
 # <a name="past-releases-of-entity-framework"></a>Entity Framework의 이전 릴리스
 
@@ -127,7 +127,7 @@ Visual Studio 2012에서 Entity Framework 디자이너에는 또한 모델에 �
 
 에서는 EF 5 릴리스를 위해 특별히 마련 하는 콘텐츠의 목록을 다음과 같습니다.
 
--   [EF 5 릴리스 게시물](http://blogs.msdn.com/b/adonet/archive/2012/08/15/ef5-released.aspx)
+-   [EF 5 릴리스 게시물](https://blogs.msdn.com/b/adonet/archive/2012/08/15/ef5-released.aspx)
 -   EF5의 새로운 기능
     -   [먼저 코드에서 열거형 지원](~/ef6/modeling/code-first/data-types/enums.md)
     -   [EF 디자이너에서 열거형 지원](~/ef6/modeling/designer/data-types/enums.md)
@@ -194,16 +194,16 @@ EF 4.3.1 런타임은 nuget 4.3.0 EF 직후 2012 년 2 월에에서 출시 되�
 
 다음은 하겠습니다 함께 EF 4.3.1 릴리스 위해 콘텐츠 목록, EF 4.1에 대 한 제공 되는 콘텐츠의 대부분 여전히에 적용 됩니다 EF 4.3.
 
--   [EF 4.3.1 릴리스 블로그 게시물](http://blogs.msdn.com/b/adonet/archive/2012/02/29/ef4-3-1-and-ef5-beta-1-available-on-nuget.aspx)
+-   [EF 4.3.1 릴리스 블로그 게시물](https://blogs.msdn.com/b/adonet/archive/2012/02/29/ef4-3-1-and-ef5-beta-1-available-on-nuget.aspx)
 
 ## <a name="ef-43"></a>EF 4.3
 EF 4.3.0 런타임은 NuGet에 2012 년 2 월에에서 출시 되었습니다.
 이 릴리스는 Code First 모델 발전 함에 따라 증분 방식으로 변경할 Code First에서 생성 된 데이터베이스를 허용 하는 Code First 마이그레이션 기능이 포함 되어 있습니다.
 
 여기에서는 EF 4.3 릴리스에 대 한 구체적으로 결합 하는 콘텐츠의 목록을 EF 4.1에 대 한 제공 되는 콘텐츠의 대부분 여전히에 적용 됩니다 EF 4.3:
--   [EF 4.3 릴리스 게시물](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-released.aspx)
--   [EF 4.3 코드 기반 마이그레이션 연습](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
--   [EF 4.3 자동 마이그레이션 연습](http://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx)
+-   [EF 4.3 릴리스 게시물](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-released.aspx)
+-   [EF 4.3 코드 기반 마이그레이션 연습](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-code-based-migrations-walkthrough.aspx)
+-   [EF 4.3 자동 마이그레이션 연습](https://blogs.msdn.com/b/adonet/archive/2012/02/09/ef-4-3-automatic-migrations-walkthrough.aspx)
 
 ## <a name="ef-42"></a>EF 4.2
 EF 4.2.0 런타임 2011 년 11 월에에서 nuget 릴리스 되었습니다.
@@ -212,9 +212,9 @@ EF 4.2.0 런타임 2011 년 11 월에에서 nuget 릴리스 되었습니다.
 
 여기에서는 EF 4.2 릴리스를 위해 특별히 마련 하는 콘텐츠의 목록을 이면 EF 4.1 제공 된 콘텐츠가 계속 적용 됩니다 EF 4.2도 합니다.
 
--   [EF 4.2 릴리스 게시물](http://blogs.msdn.com/b/adonet/archive/2011/11/01/ef-4-2-released.aspx)
--   [Code First 연습](http://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-code-first-walkthrough.aspx)
--   [모델 및 데이터베이스 첫 번째 연습](http://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-model-amp-database-first-walkthrough.aspx)
+-   [EF 4.2 릴리스 게시물](https://blogs.msdn.com/b/adonet/archive/2011/11/01/ef-4-2-released.aspx)
+-   [Code First 연습](https://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-code-first-walkthrough.aspx)
+-   [모델 및 데이터베이스 첫 번째 연습](https://blogs.msdn.com/b/adonet/archive/2011/09/28/ef-4-2-model-amp-database-first-walkthrough.aspx)
 
 ## <a name="ef-411"></a>EF 4.1.1
 EF 4.1.10715 런타임 2011 년 7 월에에서 nuget 릴리스 되었습니다.
@@ -227,7 +227,7 @@ EF 4.1.10715 런타임 2011 년 7 월에에서 nuget 릴리스 되었습니다.
 
 다음은 우리가 마련 된 4.1.1 콘텐츠의 목록 릴리스:
 
--   [4.1.1 EF 릴리스 게시물](http://blogs.msdn.com/b/adonet/archive/2011/07/25/ef-4-1-update-1-released.aspx)
+-   [4.1.1 EF 릴리스 게시물](https://blogs.msdn.com/b/adonet/archive/2011/07/25/ef-4-1-update-1-released.aspx)
 
 ## <a name="ef-41"></a>EF 4.1
 EF 4.1.10331 런타임을 가져온 첫 번째 2011 년 4 월에에서 NuGet에 게시 합니다.
@@ -238,10 +238,10 @@ EF 4.1.10331 런타임을 가져온 첫 번째 2011 년 4 월에에서 NuGet에 
 
 콘텐츠에서는 4.1 릴리스에 대 한 결합의 목록을 다음과 같습니다. 대부분의 Entity Framework의 이후 릴리스를 여전히 적용 됩니다.
 
--   [EF 4.1 릴리스 게시물](http://blogs.msdn.com/b/adonet/archive/2011/04/11/ef-4-1-released.aspx)
--   [Code First 연습](http://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-code-first-walkthrough.aspx)
--   [모델 및 데이터베이스 첫 번째 연습](http://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-model-amp-database-first-walkthrough.aspx)
--   [SQL Azure 페더레이션 및 Entity Framework](http://blogs.msdn.com/b/adonet/archive/2012/01/10/sql-azure-federations-and-the-entity-framework.aspx)
+-   [EF 4.1 릴리스 게시물](https://blogs.msdn.com/b/adonet/archive/2011/04/11/ef-4-1-released.aspx)
+-   [Code First 연습](https://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-code-first-walkthrough.aspx)
+-   [모델 및 데이터베이스 첫 번째 연습](https://blogs.msdn.com/b/adonet/archive/2011/03/15/ef-4-1-model-amp-database-first-walkthrough.aspx)
+-   [SQL Azure 페더레이션 및 Entity Framework](https://blogs.msdn.com/b/adonet/archive/2012/01/10/sql-azure-federations-and-the-entity-framework.aspx)
 
 ## <a name="ef-40"></a>EF 4.0
 이 릴리스에서 2010 년 4 월.NET Framework 4 및 Visual Studio 2010에 포함 되었습니다.

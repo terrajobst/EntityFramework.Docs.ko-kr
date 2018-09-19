@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: a6f49f3c31601ab04a3c04c074ce8fddfc6fe301
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 4ed4f5c13341f33ccff8325a5ddacd8f7b195a76
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489689"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283825"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -28,7 +28,7 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
 
 몇 가지 추가 비동기에 대 한 학습 리소스는 다음과 같습니다.
 
--   [Brandon Bray의 async/await.NET 4.5 개요](http://blogs.msdn.com/b/dotnet/archive/2012/04/03/async-in-4-5-worth-the-await.aspx)
+-   [Brandon Bray의 async/await.NET 4.5 개요](https://blogs.msdn.com/b/dotnet/archive/2012/04/03/async-in-4-5-worth-the-await.aspx)
 -   [비동기 프로그래밍](https://msdn.microsoft.com/library/hh191443.aspx) MSDN 라이브러리에서 페이지
 -   [비동기를 사용 하 여 ASP.NET 웹 응용 프로그램 빌드 방법](http://channel9.msdn.com/events/teched/northamerica/2013/dev-b337) (향상 된 서버 처리량 데모 포함)
 

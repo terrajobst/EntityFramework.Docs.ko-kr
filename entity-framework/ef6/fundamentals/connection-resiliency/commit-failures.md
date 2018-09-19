@@ -3,18 +3,18 @@ title: 트랜잭션 커밋 오류-EF6를 처리합니다.
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 5b1f7a7d-1b24-4645-95ec-5608a31ef577
-ms.openlocfilehash: 71d5649dd993bb95e24165a55d812c71a37f03f3
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 27e75e6a1919ee2300fe76cfcdf67cceaad887b3
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489390"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283656"
 ---
 # <a name="handling-transaction-commit-failures"></a>트랜잭션 커밋 오류 처리
 > [!NOTE]
 > **EF6.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 6.1에서 도입 되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.  
 
-6.1 일부로 EF에 대 한 새 연결 복원 력 기능 도입 됩니다: 검색 하 고 일시적인 연결 오류가 발생할 트랜잭션 커밋 승인을 영향을 주는 경우 자동으로 복구 하는 기능입니다. 시나리오의 전체 세부 정보는 블로그 게시물에 잘 설명 [SQL Database 연결 및 멱 등 성 문제가](http://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx)합니다.  요약 하자면, 시나리오의 트랜잭션 커밋하는 동안 예외가 발생 하는 경우는 두 가지 가능한 원인:  
+6.1 일부로 EF에 대 한 새 연결 복원 력 기능 도입 됩니다: 검색 하 고 일시적인 연결 오류가 발생할 트랜잭션 커밋 승인을 영향을 주는 경우 자동으로 복구 하는 기능입니다. 시나리오의 전체 세부 정보는 블로그 게시물에 잘 설명 [SQL Database 연결 및 멱 등 성 문제가](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx)합니다.  요약 하자면, 시나리오의 트랜잭션 커밋하는 동안 예외가 발생 하는 경우는 두 가지 가능한 원인:  
 
 1. 서버에서 트랜잭션 커밋이 실패 했습니다.
 2. 서버에서 트랜잭션 커밋에 성공 했지만 연결 문제를 방지 클라이언트에 도달 하에서 성공 알림  
@@ -69,4 +69,4 @@ EF 6.1 이전 EF 제품에 커밋 실패를 처리 하는 메커니즘 하지 �
      - 행이 없으면 실행 전략을 사용 하 여 현재 작업을 다시 시도 합니다.  
   4. 커밋이 성공 하면 테이블의 증가 방지 하려면 해당 행을 삭제 합니다.  
 
-[이 블로그 게시물](http://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) SQL Azure이 작업을 수행 하는 것에 대 한 샘플 코드가 포함 되어 있습니다.  
+[이 블로그 게시물](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) SQL Azure이 작업을 수행 하는 것에 대 한 샘플 코드가 포함 되어 있습니다.  

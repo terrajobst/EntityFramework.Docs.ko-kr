@@ -3,12 +3,12 @@ title: 테스트 용이성 및 Entity Framework 4.0
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 9430e2ab-261c-4e8e-8545-2ebc52d7a247
-ms.openlocfilehash: 0ddf72ab46e2d67dc8a9cf75cbd40430352c5210
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: aec177438004fd255bef85a5e5047cf6b5a6f782
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490534"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284046"
 ---
 # <a name="testability-and-entity-framework-40"></a>테스트 용이성 및 Entity Framework 4.0
 Scott Allen
@@ -198,7 +198,7 @@ Fowler 이름 지연 로드를 사용 하 여 "의 모든 데이터를 포함 �
 
 **그림 1**
 
-참고: 먼저 EDM 모델을 개발 하려는 경우 있기을 깨끗 하 고 EDM에서 POCO 코드를 생성 합니다. 데이터 프로그래밍 팀에서 제공 하는 Visual Studio 2010 확장을 사용 하 여이 수행할 수 있습니다. 확장을 다운로드 하려면 Visual Studio의 도구 메뉴에서 확장 관리자를 시작 하 고 "POCO" (그림 2 참조)에 대 한 온라인 템플릿 갤러리를 검색 합니다. EF에 대 한 사용 가능한 여러 POCO 템플릿이 있습니다. 템플릿 사용에 대 한 자세한 내용은 참조 하세요. " [연습: Entity Framework에 대 한 POCO 템플릿을](http://blogs.msdn.com/adonet/pages/walkthrough-poco-template-for-the-entity-framework.aspx)"입니다.
+참고: 먼저 EDM 모델을 개발 하려는 경우 있기을 깨끗 하 고 EDM에서 POCO 코드를 생성 합니다. 데이터 프로그래밍 팀에서 제공 하는 Visual Studio 2010 확장을 사용 하 여이 수행할 수 있습니다. 확장을 다운로드 하려면 Visual Studio의 도구 메뉴에서 확장 관리자를 시작 하 고 "POCO" (그림 2 참조)에 대 한 온라인 템플릿 갤러리를 검색 합니다. EF에 대 한 사용 가능한 여러 POCO 템플릿이 있습니다. 템플릿 사용에 대 한 자세한 내용은 참조 하세요. " [연습: Entity Framework에 대 한 POCO 템플릿을](https://blogs.msdn.com/adonet/pages/walkthrough-poco-template-for-the-entity-framework.aspx)"입니다.
 
 ![ef test_02](~/ef6/media/eftest-02.png)
 
@@ -964,11 +964,11 @@ Mock 또는 fake 간의 선택 하느냐에 달려 테스트 중인 시스템과
 -   Robert C. Martin " [단일 책임 원칙을](http://www.objectmentor.com/resources/articles/srp.pdf)"
 -   Martin Fowler [패턴 카탈로그](http://www.martinfowler.com/eaaCatalog/index.html) 에서 *엔터프라이즈 응용 프로그램 아키텍처 패턴*
 -   Griffin Caprio " [종속성 주입](https://msdn.microsoft.com/magazine/cc163739.aspx)"
--   Data Programmability 블로그 " [연습: Entity Framework 4.0 사용한 테스트 기반 개발](http://blogs.msdn.com/adonet/pages/walkthrough-test-driven-development-with-the-entity-framework-4-0.aspx)"입니다.
--   Data Programmability 블로그 " [Entity Framework 4.0을 사용 하 여 사용 하 여 리포지토리 및 작업 단위 패턴](http://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx)"
+-   Data Programmability 블로그 " [연습: Entity Framework 4.0 사용한 테스트 기반 개발](https://blogs.msdn.com/adonet/pages/walkthrough-test-driven-development-with-the-entity-framework-4-0.aspx)"입니다.
+-   Data Programmability 블로그 " [Entity Framework 4.0을 사용 하 여 사용 하 여 리포지토리 및 작업 단위 패턴](https://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx)"
 -   Dave Astels " [BDD 소개](http://blog.daveastels.com/files/BDD_Intro.pdf)"
 -   Aaron Jensen " [컴퓨터 사양 소개](http://codebetter.com/blogs/aaron.jensen/archive/2008/05/08/introducing-machine-specifications-or-mspec-for-short.aspx)"
--   Eric Lee, " [MSTest 사용 하 여 BDD](http://blogs.msdn.com/elee/archive/2009/01/20/bdd-with-mstest.aspx)"
+-   Eric Lee, " [MSTest 사용 하 여 BDD](https://blogs.msdn.com/elee/archive/2009/01/20/bdd-with-mstest.aspx)"
 -   Eric Evans " [도메인 기반 디자인](http://books.google.com/books?id=7dlaMs0SECsC&printsec=frontcover&dq=evans%20domain%20driven%20design&hl=en&ei=cHztS6C8KIaglAfA_dS1CA&sa=X&oi=book_result&ct=result&resnum=1&ved=0CCoQ6AEwAA)"
 -   Martin Fowler " [스텁 아닌 모의](http://martinfowler.com/articles/mocksArentStubs.html)"
 -   Martin Fowler " [이중 테스트](http://martinfowler.com/bliki/TestDouble.html)"

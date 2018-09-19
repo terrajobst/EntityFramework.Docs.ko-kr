@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 11/15/2016
 ms.assetid: e079d4af-c455-4a14-8e15-a8471516d748
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: d6e31cf2b9b783ea503703536d159b34bf2e18c0
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: d5101d0622ddc2c90ddded16b9ec6cc4eb814c36
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997192"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283838"
 ---
 # <a name="connection-resiliency"></a>연결 복원력
 
@@ -49,7 +49,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ## <a name="transaction-commit-failure-and-the-idempotency-issue"></a>멱 등 성 문제와 트랜잭션 커밋 실패
 
-일반적으로 연결 오류가 발생 하는 경우 현재 트랜잭션이 롤백됩니다. 그러나 트랜잭션 동안 연결이 삭제 되 면 되 고 커밋된 결과 트랜잭션 상태를 알 수 없는 합니다. 이 참조 하세요 [블로그 게시물](http://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) 대 한 자세한 내용은 합니다.
+일반적으로 연결 오류가 발생 하는 경우 현재 트랜잭션이 롤백됩니다. 그러나 트랜잭션 동안 연결이 삭제 되 면 되 고 커밋된 결과 트랜잭션 상태를 알 수 없는 합니다. 이 참조 하세요 [블로그 게시물](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) 대 한 자세한 내용은 합니다.
 
 기본적으로 실행 전략은 작업을 다시 시도 트랜잭션이 롤백된 하지만 경우 없는 경우이 예외가 새로운 데이터베이스 상태를 호환 되지 않거나 발생할 수 있습니다 하는 경우 처럼 **데이터가 손상** 경우는 작업, 예를 들어 자동으로 생성 된 키 값을 사용 하 여 새 행을 삽입 하는 경우 특정 상태에 의존 하지 않습니다.
 

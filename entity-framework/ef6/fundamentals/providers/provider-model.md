@@ -3,12 +3,12 @@ title: EF6-Entity Framework 6 공급자 모델을
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: 13276feb0b22ea8068d7e1f645d48a3d41d77cdf
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: de2e0a24f1b5f67d28cb831491b50d32f45af60a
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490184"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283929"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Entity Framework 6 공급자 모델
 
@@ -28,13 +28,13 @@ EF 공급자로 실제로 이러한 서비스 (대 한 기본 클래스)에서 �
 
 ### <a name="dbproviderfactory"></a>DbProviderFactory
 
-EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProviderFactory](http://msdn.microsoft.com/en-us/library/system.data.common.dbproviderfactory.aspx) 기본적인 수준의 데이터베이스에 대 한 모든 액세스를 수행 합니다. DbProviderFactory EF에 실제로 포함 되지 않지만 대신 클래스는 ADO.NET 공급자에 대 한 진입점을 제공 하는.NET Framework에 사용할 수 있습니다 다른 O/RMs EF 또는 응용 프로그램에서 직접 연결, 명령, 매개 변수 인스턴스를 얻는 및 공급자의 다른 ADO.NET 추상화 알 수 없는 방식으로 합니다. DbProviderFactory에 대 한 자세한 정보는에서 찾을 수 합니다 [ADO.NET에 대 한 MSDN 설명서](http://msdn.microsoft.com/en-us/library/a6cd7c08.aspx)합니다.
+EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/en-us/library/system.data.common.dbproviderfactory.aspx) 기본적인 수준의 데이터베이스에 대 한 모든 액세스를 수행 합니다. DbProviderFactory EF에 실제로 포함 되지 않지만 대신 클래스는 ADO.NET 공급자에 대 한 진입점을 제공 하는.NET Framework에 사용할 수 있습니다 다른 O/RMs EF 또는 응용 프로그램에서 직접 연결, 명령, 매개 변수 인스턴스를 얻는 및 공급자의 다른 ADO.NET 추상화 알 수 없는 방식으로 합니다. DbProviderFactory에 대 한 자세한 정보는에서 찾을 수 합니다 [ADO.NET에 대 한 MSDN 설명서](https://msdn.microsoft.com/en-us/library/a6cd7c08.aspx)합니다.
 
 ### <a name="dbproviderservices"></a>DbProviderServices
 
 EF는 ADO.NET 공급자가 이미 제공 하는 기능을 기반으로 EF에 필요한 추가 기능을 제공 하는 데 DbProviderServices에서 파생 된 형식에 따라 달라 집니다. 이전 버전의 EF DbProviderServices 클래스의.NET Framework 구성 요소 였으며 System.Data.Common 네임 스페이스에서 찾을 수 있습니다. EF6을 사용 하 여이 클래스는 이제 EntityFramework.dll의 일부 시작한 System.Data.Entity.Core.Common 네임 스페이스.
 
-DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은에서 확인할 수 있습니다 [MSDN](http://msdn.microsoft.com/en-us/library/ee789835.aspx)합니다. 그러나이 정보를 작성 하는 시간을 기준으로 업데이트 되지 않았다는 EF6에 대 한 대부분의 개념은 여전히 유효 하지만 note 합니다. DbProviderServices의 SQL Server 및 SQL Server Compact 구현도 확인 됩니다에 [오픈 소스 코드 베이스](https://github.com/aspnet/EntityFramework6/) 및 다른 구현에 대 한 유용한 참조로 사용할 수 있습니다.
+DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은에서 확인할 수 있습니다 [MSDN](https://msdn.microsoft.com/en-us/library/ee789835.aspx)합니다. 그러나이 정보를 작성 하는 시간을 기준으로 업데이트 되지 않았다는 EF6에 대 한 대부분의 개념은 여전히 유효 하지만 note 합니다. DbProviderServices의 SQL Server 및 SQL Server Compact 구현도 확인 됩니다에 [오픈 소스 코드 베이스](https://github.com/aspnet/EntityFramework6/) 및 다른 구현에 대 한 유용한 참조로 사용할 수 있습니다.
 
 이전 버전의 EF DbProviderServices 구현은 사용 하는 ADO.NET 공급자에서 직접 가져온 합니다. 이 작업은 DbProviderFactory를 IServiceProvider로 캐스팅 하 고 GetService 메서드를 호출 하 여 수행 되었습니다. 이 DbProviderFactory를 EF 공급자 긴밀 하 게 결합 합니다. 이 결합에서.NET Framework 외부로 이동 되 고 EF를 차단 하 고 따라서 EF6에 대 한 밀접 한 결합이 제거 되었습니다 DbProviderServices 구현의 응용 프로그램의 구성 파일에서 직접 또는 코드 기반에 지금 등록 좀 더 자세히 설명 된 대로 구성 합니다 _DbProviderServices 등록_ 아래의 섹션입니다.
 
@@ -88,7 +88,7 @@ DbProviderServices 형식은 사용 하는 응용 프로그램의 구성 파일�
 
 ### <a name="code-based-registration"></a>코드 기반 등록
 
-EF6 공급자를 사용 하 여 시작 수 등록 코드를 사용 하 여. 이렇게 하면 EF 공급자를 응용 프로그램의 구성 파일을 변경 하지 않고 사용할 수 있습니다. 코드 기반 구성을 사용 하려면 응용 프로그램 클래스를 만들어야 DbConfiguration에 설명 된 대로 합니다 [코드 기반 구성 설명서](http://msdn.com/data/jj680699)합니다. DbConfiguration 클래스의 생성자 EF 공급자를 등록 하는 SetProviderServices 호출 해야 합니다. 예를 들어:
+EF6 공급자를 사용 하 여 시작 수 등록 코드를 사용 하 여. 이렇게 하면 EF 공급자를 응용 프로그램의 구성 파일을 변경 하지 않고 사용할 수 있습니다. 코드 기반 구성을 사용 하려면 응용 프로그램 클래스를 만들어야 DbConfiguration에 설명 된 대로 합니다 [코드 기반 구성 설명서](https://msdn.com/data/jj680699)합니다. DbConfiguration 클래스의 생성자 EF 공급자를 등록 하는 SetProviderServices 호출 해야 합니다. 예를 들어:
 
 ``` csharp
 public class MyConfiguration : DbConfiguration

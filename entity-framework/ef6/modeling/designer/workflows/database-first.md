@@ -3,12 +3,12 @@ title: EF6 먼저 데이터베이스
 author: divega
 ms.date: 10/23/2016
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
-ms.openlocfilehash: b499dea02cbeaa64f6ef87bf89cc739110c8b560
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: c81025fe7c3ad6398f003f7be2a3f9f072eec327
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490924"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284085"
 ---
 # <a name="database-first"></a>먼저 데이터베이스
 이 비디오 및 단계별 연습에서는 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. 데이터베이스 먼저를 통해 리버스 엔지니어링 하려면 기존 데이터베이스에서 모델입니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 됩니다 및 보고 Entity Framework 디자이너에서 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스는 EDMX 파일에서 자동으로 생성 됩니다.
@@ -18,13 +18,13 @@ ms.locfileid: "45490924"
 
 **작성자**: [Rowan Miller](http://romiller.com/)
 
-**비디오**: [WMV](http://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](http://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)
+**비디오**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)
 
 ## <a name="pre-requisites"></a>필수 조건
 
 적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.
 
-Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.
+Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.
 
  
 
@@ -124,7 +124,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework의 최신 버전�
 먼저를 해야 NuGet에서 최신 버전의 Entity Framework를 가져오려고 합니다.
 
 -   **프로젝트&gt; NuGet 패키지 관리... ** 
-     *없다면는 **NuGet 패키지 관리... ** 를 설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
+     *없다면는 **NuGet 패키지 관리... ** 를 설치 해야 하는 옵션을 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)*
 -   선택 된 **Online** 탭
 -   선택 된 **EntityFramework** 패키지
 -   클릭 **설치**

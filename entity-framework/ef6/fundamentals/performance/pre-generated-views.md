@@ -3,19 +3,19 @@ title: 미리 생성 된 매핑 보기-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 917ba9c8-6ddf-4631-ab8c-c4fb378c2fcd
-ms.openlocfilehash: cb374d007252710b42c31061bf15d7d32af0db27
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: da5d59ba5a899a0ee3a1eec3db0da1b4ece871d8
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489247"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284111"
 ---
 # <a name="pre-generated-mapping-views"></a>미리 생성 된 매핑 보기
 Entity Framework 쿼리 실행 수 또는 데이터 원본에 변경 내용을 저장 하기 전에 데이터베이스에 액세스 하는 매핑 뷰 집합을 생성 해야 합니다 것입니다. 이러한 매핑 뷰 추상 방식으로 데이터베이스를 나타내는 Entity SQL 문 집합이 되며 응용 프로그램 도메인 별로 캐시 되는 메타 데이터의 일부입니다. 동일한 응용 프로그램 도메인에서 동일한 컨텍스트의 여러 인스턴스를 만들면 매핑을 뷰 다시 생성 하는 것이 아니라 캐시 된 메타 데이터를 다시 사용 됩니다. 첫 번째 쿼리를 실행 하는 전체 비용의 큰 부분을 매핑 뷰 생성 되므로, Entity Framework를 사용 하면 매핑 뷰를 미리 생성 하 고 컴파일된 프로젝트에 포함할 수 있습니다. 자세한 내용은 [성능 고려 사항 (Entity Framework)](~/ef6/fundamentals/performance/perf-whitepaper.md)합니다.
 
 ## <a name="generating-mapping-views-with-the-ef-power-tools"></a>EF Power Tools 사용 하 여 뷰 매핑 생성
 
-미리 보기를 생성 하는 가장 쉬운 방법은 사용 하는 것은 [EF Power Tools](http://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d)합니다. 설치 된 Power 도구를 만든 후에 뷰를 생성 하는 메뉴 옵션을 아래와 같이 해야 합니다.
+미리 보기를 생성 하는 가장 쉬운 방법은 사용 하는 것은 [EF Power Tools](https://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d)합니다. 설치 된 Power 도구를 만든 후에 뷰를 생성 하는 메뉴 옵션을 아래와 같이 해야 합니다.
 
 -   에 대 한 **Code First** 모델 DbContext 클래스를 포함 하는 코드 파일에는 마우스 오른쪽 단추로 클릭 합니다.
 -   에 대 한 **EF 디자이너** 모델 EDMX 파일에는 마우스 오른쪽 단추로 클릭 합니다.

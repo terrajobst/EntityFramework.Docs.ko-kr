@@ -3,12 +3,12 @@ title: 새 데이터베이스-EF6 대 한 code First
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: 6572574ad36094ac0960c429cfa8606b6aebb492
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: a19db575b685cde98509fff4a0efaf26106b26bc
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490752"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284124"
 ---
 # <a name="code-first-to-a-new-database"></a>새 데이터베이스에 대 한 code First
 이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
@@ -18,13 +18,13 @@ ms.locfileid: "45490752"
 
 **작성자**: [Rowan Miller](http://romiller.com/)
 
-**비디오**: [WMV](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.wmv) | [MP4](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-mp4Video-CodeFirstNewDatabase.m4v) | [WMV (ZIP)](http://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.zip)
+**비디오**: [WMV](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.wmv) | [MP4](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-mp4Video-CodeFirstNewDatabase.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.zip)
 
 ## <a name="pre-requisites"></a>필수 조건
 
 적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.
 
-Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.
+Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.
 
 ## <a name="1-create-the-application"></a>1. 응용 프로그램 만들기
 
@@ -71,7 +71,7 @@ public class Post
 이제 EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에서 형식 사용 하기 시작 합니다.
 
 -   **프로젝트&gt; NuGet 패키지 관리...**
-    참고: 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
+    참고: 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
 -   선택 된 **Online** 탭
 -   선택 된 **EntityFramework** 패키지
 -   클릭 **설치**

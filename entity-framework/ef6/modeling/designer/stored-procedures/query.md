@@ -3,12 +3,12 @@ title: 저장 프로시저-EF6 디자이너 쿼리
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
-ms.openlocfilehash: 6284b10261e6f3b9bf69d1c15e121988e4976d48
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 04478ea1c8cd43a7ba4ee788e464992af3de7f64
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489949"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283903"
 ---
 # <a name="designer-query-stored-procedures"></a>디자이너 쿼리 저장 프로시저
 이 단계별 연습에는 저장된 프로시저를 가져오려는 Entity Framework Designer (EF 디자이너)를 사용 하 여 모델에 다음 결과 검색 하 고 가져온된 저장된 프로시저를 호출 하는 방법을 보여 줍니다. 
@@ -100,4 +100,4 @@ The department name is Engineering
 <a name="output-parameters"></a>출력 매개 변수
 -----------------
 
-출력 매개 변수를 사용 하는 경우 결과 완전히 읽을 때까지 해당 값은 사용할 수 없습니다. 내용은 DbDataReader의 기본 동작으로 인해 이것이 [DataReader를 사용 하 여 데이터 검색](http://go.microsoft.com/fwlink/?LinkID=398589) 대 한 자세한 내용은 합니다.
+출력 매개 변수를 사용 하는 경우 결과 완전히 읽을 때까지 해당 값은 사용할 수 없습니다. 내용은 DbDataReader의 기본 동작으로 인해 이것이 [DataReader를 사용 하 여 데이터 검색](https://go.microsoft.com/fwlink/?LinkID=398589) 대 한 자세한 내용은 합니다.

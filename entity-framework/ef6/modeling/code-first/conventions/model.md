@@ -3,12 +3,12 @@ title: 모델 기반 규칙-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0fc4eef8-29b8-4192-9c77-08fd33d3db3a
-ms.openlocfilehash: fb79164f71cb3afff705a83f5078a13d043abca8
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 80b722730b4ca6c9d00a8611b6c9027e8bc9fe61
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490937"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283709"
 ---
 # <a name="model-based-conventions"></a>모델 기반 규칙
 > [!NOTE]
@@ -146,7 +146,7 @@ public class ForeignKeyNamingConvention : IStoreModelConvention<AssociationType>
 
 ## <a name="extending-existing-conventions"></a>기존 규칙 확장   
 
-Entity Framework는 이미 모델에 적용 되는 규칙 중 하나에 유사한 규칙을 작성 하는 경우에 항상 처음부터 다시 작성 하지 않으려면 해당 규칙을 확장할 수 있습니다.  이 예제를 사용자 지정 규칙을 일치 하는 기존 Id를 바꾸는 것입니다.   주요 규칙을 재정의 하는 추가 혜택은 키가 없는 이미 있거나 명시적으로 구성 하는 경우에 재정의 된 메서드는 호출 됩니다. 규칙의 목록을 Entity Framework에서 사용 하는 사용할 수 있는 여기: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  
+Entity Framework는 이미 모델에 적용 되는 규칙 중 하나에 유사한 규칙을 작성 하는 경우에 항상 처음부터 다시 작성 하지 않으려면 해당 규칙을 확장할 수 있습니다.  이 예제를 사용자 지정 규칙을 일치 하는 기존 Id를 바꾸는 것입니다.   주요 규칙을 재정의 하는 추가 혜택은 키가 없는 이미 있거나 명시적으로 구성 하는 경우에 재정의 된 메서드는 호출 됩니다. 규칙의 목록을 Entity Framework에서 사용 하는 사용할 수 있는 여기: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -209,4 +209,4 @@ public class BlogContext : DbContext
 
 ## <a name="notes"></a>노트  
 
-현재 Entity Framework에서 적용 되는 규칙 목록은 MSDN 설명서를 여기에서 사용할 수 있습니다: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  이 목록은 소스 코드에서 직접 가져옵니다.  Entity Framework 6에 대 한 소스 코드는에서 사용할 수 있습니다 [GitHub](https://github.com/aspnet/entityframework6/) 좋은 다양 한 Entity Framework에서 사용 하는 규칙 및 규칙 기반 사용자 지정 모델에 대 한 시작점입니다.  
+현재 Entity Framework에서 적용 되는 규칙 목록은 MSDN 설명서를 여기에서 사용할 수 있습니다: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  이 목록은 소스 코드에서 직접 가져옵니다.  Entity Framework 6에 대 한 소스 코드는에서 사용할 수 있습니다 [GitHub](https://github.com/aspnet/entityframework6/) 좋은 다양 한 Entity Framework에서 사용 하는 규칙 및 규칙 기반 사용자 지정 모델에 대 한 시작점입니다.  

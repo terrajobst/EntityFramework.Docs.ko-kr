@@ -3,12 +3,12 @@ title: 모의 프레임 워크-EF6 사용 하 여 테스트
 author: divega
 ms.date: 10/23/2016
 ms.assetid: bd66a638-d245-44d4-8e71-b9c6cb335cc7
-ms.openlocfilehash: b50d0afb52ae1c496f2734ecc015cdaaa060aff7
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 20799b55b2dffe27637c4fb84df06cee174e6dd9
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489975"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284098"
 ---
 # <a name="testing-with-a-mocking-framework"></a>모의 프레임 워크를 사용 하 여 테스트
 > [!NOTE]
@@ -235,7 +235,7 @@ Entity Framework 6에는 비동기적으로 쿼리를 실행 하는 데 사용�
 
 Entity Framework 쿼리에서 LINQ를 사용 하므로, 확장 메서드는 IQueryable 및 IEnumerable에 정의 됩니다. 그러나는 Entity Framework와 함께 사용할만 디자인 되어 있으므로 LINQ 쿼리는 Entity Framework 쿼리 없는에서 크레딧을 사용 하려고 하면 다음 오류가 나타날 수 있습니다.
 
-> 소스 IQueryable IDbAsyncEnumerable를 구현 하지 않는{0}합니다. 비동기 작업의 Entity Framework IDbAsyncEnumerable를 구현 하는 원본만 사용할 수 있습니다. 자세한 내용은 참조 하세요 [ http://go.microsoft.com/fwlink/?LinkId=287068 ](http://go.microsoft.com/fwlink/?LinkId=287068)합니다.  
+> 소스 IQueryable IDbAsyncEnumerable를 구현 하지 않는{0}합니다. 비동기 작업의 Entity Framework IDbAsyncEnumerable를 구현 하는 원본만 사용할 수 있습니다. 자세한 내용은 참조 하세요 [ http://go.microsoft.com/fwlink/?LinkId=287068 ](https://go.microsoft.com/fwlink/?LinkId=287068)합니다.  
 
 비동기 메서드는 EF 쿼리를 실행 하는 경우에 지원 됩니다을 하는 동안에 메모리 내에 대해 실행 되는 DbSet의 double을 테스트할 때 단위 테스트에서 사용 하는 것이 좋습니다.  
 

@@ -3,12 +3,12 @@ title: VB.NET-EF6 사용 하 여 Fluent API
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: cbdd32696fb88d3de6cf1966040e5dda49fe19cd
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 6aa74fa72296f66f0b069b9b5ee7e2e016570525
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489474"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283747"
 ---
 # <a name="fluent-api-with-vbnet"></a>VB.NET 사용 하 여 Fluent API
 C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다. 이 연습에서는 fluent API 구성은 VB.NET를 사용 하 여 수행 하는 방법을 보여 줍니다.
@@ -22,7 +22,7 @@ C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET
 
 적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.
 
-Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치
+Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치
 
 ## <a name="create-the-application"></a>응용 프로그램 만들기
 
@@ -139,7 +139,7 @@ EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에�
 
 -   * * 프로젝트&gt; **NuGet 패키지 관리...**
 > [!NOTE]
-> 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](http://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
+> 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
 -   선택 된 **Online** 탭
 -   선택 된 **EntityFramework** 패키지
 -   클릭 **설치**

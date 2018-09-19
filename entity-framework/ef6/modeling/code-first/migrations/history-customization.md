@@ -3,12 +3,12 @@ title: 마이그레이션 기록 테이블-EF6를 사용자 지정
 author: divega
 ms.date: 10/23/2016
 ms.assetid: ed5518f0-a9a6-454e-9e98-a4fa7748c8d0
-ms.openlocfilehash: 6644bf2b0ac703a9f3a779b17b31d79d40cc5b69
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: e3faefc4b812ec4bc440ed2bb48747053d8cb1b3
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489214"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283695"
 ---
 # <a name="customizing-the-migrations-history-table"></a>마이그레이션 기록 테이블을 사용자 지정
 > [!NOTE]
@@ -69,7 +69,7 @@ ms.locfileid: "45489214"
     }
 ```
 
-EF를 통해 등록 하 여 인식 확인 해야 하는 사용자 지정 프로그램 HistoryContext 준비 되 면 [코드 기반 구성](http://msdn.com/data/jj680699):
+EF를 통해 등록 하 여 인식 확인 해야 하는 사용자 지정 프로그램 HistoryContext 준비 되 면 [코드 기반 구성](https://msdn.com/data/jj680699):
 
 ``` csharp
     using System.Data.Entity;

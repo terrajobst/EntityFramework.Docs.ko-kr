@@ -3,12 +3,12 @@ title: 원시 SQL 쿼리-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 9e1ee76e-2499-408c-81e8-9b6c5d1945a0
-ms.openlocfilehash: 6b00648939ccedffeed09b4e1d6e8d70fa262a36
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 168aee67186535bf2a50705e86bfc5a88147e369
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490586"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283786"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 Entity Framework를 사용 하면 LINQ를 사용 하 여 엔터티 클래스를 사용 하 여 쿼리할 수 있습니다. 그러나 데이터베이스에 대해 직접 원시 SQL을 사용 하 여 쿼리를 실행 하려는 경우가 있을 수 있습니다. 여기에 현재 저장된 프로시저 매핑을 지원 하지 않는 Code First 모델에 대 한 도움이 될 수 있는 저장된 프로시저를 호출 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
@@ -82,4 +82,4 @@ using (var context = new BloggingContext())
 
 ### <a name="output-parameters"></a>출력 매개 변수  
 
-출력 매개 변수를 사용 하는 경우 결과 완전히 읽을 때까지 해당 값은 사용할 수 없습니다. 내용은 DbDataReader의 기본 동작으로 인해 이것이 [DataReader를 사용 하 여 데이터 검색](http://go.microsoft.com/fwlink/?LinkID=398589) 대 한 자세한 내용은 합니다.  
+출력 매개 변수를 사용 하는 경우 결과 완전히 읽을 때까지 해당 값은 사용할 수 없습니다. 내용은 DbDataReader의 기본 동작으로 인해 이것이 [DataReader를 사용 하 여 데이터 검색](https://go.microsoft.com/fwlink/?LinkID=398589) 대 한 자세한 내용은 합니다.  

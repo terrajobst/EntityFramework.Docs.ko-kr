@@ -3,12 +3,12 @@ title: 자동 Code First 마이그레이션을-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0eb86787-2161-4cb4-9cb8-67c5d6e95650
-ms.openlocfilehash: 21f77ef49db2485047292b3928b4f63d49dbb180
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 2713afaf09707b7696e90464aac9945c2d82d274
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489988"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46283916"
 ---
 # <a name="automatic-code-first-migrations"></a>자동 Code First 마이그레이션
 자동 마이그레이션은 사용 하면 각 변경에 대 한 프로젝트에서 코드 파일을 사용 하지 않고도 Code First 마이그레이션을 사용 수 있습니다. 모든 변경 내용을 자동으로 적용할 수 있습니다-열 이름 바꾸기 코드 기반 마이그레이션 사용 해야 하는 예를 들어 있습니다.
@@ -97,7 +97,7 @@ ms.locfileid: "45489988"
     public string Url { get; set; }
 ```
 
-응용 프로그램을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.* 라고 나타냅니다([*http://go.microsoft.com/fwlink/?LinkId=238269*](http://go.microsoft.com/fwlink/?LinkId=238269)*).*
+응용 프로그램을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269)*).*
 
 예외에서 암시하듯이 이제 Code First 마이그레이션 사용을 시작할 시간입니다. 자동 마이그레이션을 사용 하려고 하므로 여기서을 지정 합니다 **– EnableAutomaticMigrations** 전환 합니다.
 

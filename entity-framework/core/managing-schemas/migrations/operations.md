@@ -3,12 +3,12 @@ title: 사용자 지정 마이그레이션 작업-EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/07/2017
-ms.openlocfilehash: dcf11c44dcc9f6008b8290a89dd8c042e5ec5771
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: d715fe0408f25eb75c3160af79bb98fc87e41b17
+ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489143"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46284072"
 ---
 <a name="custom-migrations-operations"></a>사용자 지정 마이그레이션 작업
 ============================
@@ -121,13 +121,13 @@ class MyMigrationsSqlGenerator : SqlServerMigrationsSqlGenerator
         MigrationCommandListBuilder builder)
     {
         var sqlHelper = Dependencies.SqlGenerationHelper;
-        var stringMapping = Dependencies.TypeMapper.GetMapping(typeof(string));
+        var stringMapping = Dependencies.TypeMappingSource.FindMapping(typeof(string));
 
         builder
             .Append("CREATE USER ")
-            .Append(sqlHelper.DelimitIdentifier(name))
+            .Append(sqlHelper.DelimitIdentifier(operation.Name))
             .Append(" WITH PASSWORD = ")
-            .Append(stringMapping.GenerateSqlLiteral(password))
+            .Append(stringMapping.GenerateSqlLiteral(operation.Password))
             .AppendLine(sqlHelper.StatementTerminator)
             .EndCommand();
     }
