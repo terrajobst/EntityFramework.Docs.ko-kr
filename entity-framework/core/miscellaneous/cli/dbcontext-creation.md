@@ -26,11 +26,11 @@ EF Core 도구 명령 중 일부 (예를 들어,를 [마이그레이션] [ 1] �
 > [!NOTE]
 > 새 ASP.NET Core 2.0 응용 프로그램을 만들면 기본적으로이 연결 고리 포함 됩니다. EF Core 및 ASP.NET Core의 이전 버전에서는 도구를 호출 하려고 `Startup.ConfigureServices` 더 이상 응용 프로그램의 서비스 공급자에 있지만이 패턴을 얻기 위해 제대로 작동 ASP.NET Core 2.0 응용 프로그램에서 직접. 2.0에는 ASP.NET Core 1.x 응용 프로그램을 업그레이드 하는 경우 [수정 하 `Program` 새 패턴을 따르는 클래스][3]합니다.
 
-`DbContext` 자체 및 해당 생성자에서 종속성 서비스 응용 프로그램의 서비스 공급자에 등록 해야 합니다. 함으로써 쉽게 수행할 수 있습니다 [에 있는 생성자는 `DbContext` 의 인스턴스를 사용 하 `DbContextOptions<TContext>` 인수로] [ 4] 사용 하는 [ `AddDbContext<TContext>` 메서드] [5].
+`DbContext` 자체 및 해당 생성자에서 종속성 서비스 응용 프로그램의 서비스 공급자에 등록 해야 합니다. 함으로써 쉽게 수행할 수 있습니다 [에 있는 생성자는 `DbContext` 의 인스턴스를 사용 하 `DbContextOptions<TContext>` 인수로][4] 사용 하는 [`AddDbContext<TContext>` 메서드][5].
 
 <a name="using-a-constructor-with-no-parameters"></a>매개 변수가 없는 생성자를 사용 하 여
 --------------------------------------
-DbContext를 응용 프로그램 서비스 공급자에서 가져올 수 없습니다. 도구를 찾아보십시오 파생 `DbContext` 프로젝트 형식. 다음 매개 변수가 없는 생성자를 사용 하 여 인스턴스를 만들려고 시도 합니다. 이 경우 기본 생성자를 수 있습니다 합니다 `DbContext` 을 사용 하도록 구성 합니다 [ `OnConfiguring` ] [ 6] 메서드.
+DbContext를 응용 프로그램 서비스 공급자에서 가져올 수 없습니다. 도구를 찾아보십시오 파생 `DbContext` 프로젝트 형식. 다음 매개 변수가 없는 생성자를 사용 하 여 인스턴스를 만들려고 시도 합니다. 이 경우 기본 생성자를 수 있습니다 합니다 `DbContext` 을 사용 하도록 구성 합니다 [`OnConfiguring`][6] 메서드.
 
 <a name="from-a-design-time-factory"></a>디자인 타임 팩터리에서
 --------------------------
@@ -57,7 +57,7 @@ namespace MyProject
 ```
 
 > [!NOTE]
-> `args` 매개 변수가 현재 사용 되지 않습니다. 있기 [문제일] [ 7] 도구에서 디자인 타임에 인수를 지정 하는 기능을 추적 합니다.
+> `args` 매개 변수가 현재 사용 되지 않습니다. 있기 [문제일][7] 도구에서 디자인 타임에 인수를 지정 하는 기능을 추적 합니다.
 
 디자인 타임 팩터리 경우 런타임 시 보다 디자인 타임에 대 한 DbContext를 다르게 구성 해야 하는 경우에 특히 유용할 수 있습니다는 `DbContext` 생성자는 DI를 전혀 사용 하지 않는 경우 추가 매개 변수 DI를에 등록 되지 않은 또는 일부에 대 한 경우 유지할 필요가 없으며 하려는 이유는 `BuildWebHost` ASP.NET Core 응용 프로그램의 메서드 `Main` 클래스입니다.
 
