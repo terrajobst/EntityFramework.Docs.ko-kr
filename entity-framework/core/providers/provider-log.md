@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: a637e5e2f75e16bc7b11b1a51abcbe16274a1c75
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: fa1362c84cb1954360d337670fb5fef21e5cf165
+ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490774"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47415746"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -56,3 +56,6 @@ ms.locfileid: "45490774"
   * 개념을 추가 하는이 PR이 `CanConnect` 를 사용할 경우 결정 하기 위해 확인 하는 ASP.NET Core 상태에서 사용 됩니다. 기본적으로 관계형 구현을 호출 `Exist`, 하지만 공급자 필요에 따라 다르게 구현할 수 있습니다. 비관계형 공급자를 사용할 수 있으려면 상태 검사를 위해 새 API를 구현 해야 합니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/13306 --DbParameter 크기를 설정 하지 않아도 기본 RelationalTypeMapping를 업데이트 하는 중
   * 중지 잘릴 수 있으므로 기본적으로 크기를 설정 합니다. 공급자는 크기를 설정 해야 하는 경우 자체 논리를 추가 해야 합니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/13372 -RevEng:는 항상 10 진수 열에 대 한 열 형식 지정
+  * 항상 10 진수 열에 대 한 열 형식 규칙에 따라 구성 하는 것이 아니라 스 캐 폴드 된 코드에서 구성 합니다.
+  * 공급자 종료의 모든 변경 내용이 필요 하지 않습니다.

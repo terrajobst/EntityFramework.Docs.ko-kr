@@ -3,12 +3,12 @@ title: First 데이터 주석-EF6 코드
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: 38ae52543ed99e5a1c1da7d19a2e15d168e3a1bd
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 54e27f1b866da14d68db66ca5eca5a6dde819e26
+ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490117"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47415811"
 ---
 # <a name="code-first-data-annotations"></a>Code First 데이터 주석
 > [!NOTE]
@@ -319,13 +319,13 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 중요 한 데이터베이스 기능은 속성 계산 하는 기능입니다. Code First 클래스에 매핑하는 경우 계산 열을 포함 하는 테이블, 해당 열을 업데이트 하려면 Entity Framework를 표시 하지 않으려면입니다. 하지만 EF 삽입 하거나 데이터를 업데이트 한 후 데이터베이스에서 해당 값을 반환 합니다. DatabaseGenerated 주석을 함께 계산 됨 열거형 클래스에서 해당 속성 플래그를 사용할 수 있습니다. 다른 열거형은 None 및 Id입니다.
 
 ``` csharp
-    [DatabaseGenerated(DatabaseGenerationOption.Computed)]
+    [DatabaseGenerated(DatabaseGeneratedOption.Computed)]
     public DateTime DateCreated { get; set; }
 ```
 
 그렇지 않은 경우에 사용 해야이 코드 먼저 수 없기 때문에 계산된 열에 대 한 수식을 확인 하려면 기존 데이터베이스를 가리키는 경우, 코드 먼저 생성 되는 데이터베이스 바이트 또는 타임 스탬프 열에 생성 된 데이터베이스를 사용할 수 있습니다.
 
-기본적으로 위에 읽기는 정수가 키 속성을 데이터베이스의 id 키가 됩니다. 되는 동일한 방식으로 DatabaseGenerated DatabaseGenerationOption.Identity를 설정 합니다. 원하지 않는 id 키 수, 하는 경우에 DatabaseGenerationOption.None에 값을 설정할 수 있습니다.
+기본적으로 위에 읽기는 정수가 키 속성을 데이터베이스의 id 키가 됩니다. 되는 동일한 방식으로 DatabaseGenerated DatabaseGeneratedOption.Identity를 설정 합니다. 원하지 않는 id 키 수, 하는 경우에 DatabaseGeneratedOption.None에 값을 설정할 수 있습니다.
 
  
 
