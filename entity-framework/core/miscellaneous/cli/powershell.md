@@ -1,154 +1,259 @@
 ---
-title: 패키지 관리자 콘솔 (Visual Studio)-EF Core
+title: EF Core 도구 참조 (패키지 관리자 콘솔)-EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 11/06/2017
-ms.openlocfilehash: 3d57a1665da2c94c55981d17e041b0ef74282496
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.date: 09/18/2018
+uid: core/miscellaneous/cli/powershell
+ms.openlocfilehash: cde3c1f75d33808259654dfd9e1de51e662e8092
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490854"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447198"
 ---
-<a name="ef-core-package-manager-console-tools"></a><span data-ttu-id="93516-102">EF Core 패키지 관리자 콘솔 도구</span><span class="sxs-lookup"><span data-stu-id="93516-102">EF Core Package Manager Console Tools</span></span>
-=====================================
-<span data-ttu-id="93516-103">NuGet의를 사용 하 여 Visual Studio 내에서 EF Core 패키지 관리자 콘솔 (PMC) 도구를 실행할 [패키지 관리자 콘솔][2]합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-103">The EF Core Package Manager Console (PMC) Tools run inside of Visual Studio using NuGet's [Package Manager Console][2].</span></span>
-<span data-ttu-id="93516-104">이러한 도구는 .NET Core와 .NET Framework 프로젝트 모두에서 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-104">These tools work with both .NET Framework and .NET Core projects.</span></span>
+# <a name="entity-framework-core-tools-reference---package-manager-console-in-visual-studio"></a><span data-ttu-id="5ebc3-102">Entity Framework Core 도구 참조-Visual Studio에서 패키지 관리자 콘솔</span><span class="sxs-lookup"><span data-stu-id="5ebc3-102">Entity Framework Core tools reference - Package Manager Console in Visual Studio</span></span>
 
-> [!TIP]
-> <span data-ttu-id="93516-105">Visual Studio를 사용 하지 않나요?</span><span class="sxs-lookup"><span data-stu-id="93516-105">Not using Visual Studio?</span></span> <span data-ttu-id="93516-106">합니다 [EF Core 명령줄 도구] [ 1] 크로스 플랫폼 및 명령 프롬프트 내에서 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93516-106">The [EF Core Command-line Tools][1] are cross-platform and run inside a command prompt.</span></span>
+<span data-ttu-id="5ebc3-103">Entity Framework Core에 대 한 패키지 관리자 콘솔 (PMC) 도구는 디자인 타임 개발 작업을 수행 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-103">The Package Manager Console (PMC) tools for Entity Framework Core perform design-time development tasks.</span></span> <span data-ttu-id="5ebc3-104">만드는 예를 들어 [마이그레이션을](/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-2.0#introduction-to-migrations)마이그레이션을 적용 하 고 기존 데이터베이스를 기반으로 모델에 대 한 코드를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-104">For example, they create [migrations](/aspnet/core/data/ef-mvc/migrations?view=aspnetcore-2.0#introduction-to-migrations), apply migrations, and generate code for a model based on an existing database.</span></span> <span data-ttu-id="5ebc3-105">명령을 사용 하 여 Visual Studio 내부에서 실행 합니다 [패키지 관리자 콘솔](/nuget/tools/package-manager-console)합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-105">The commands run inside of Visual Studio using the [Package Manager Console](/nuget/tools/package-manager-console).</span></span> <span data-ttu-id="5ebc3-106">이러한 도구는 .NET Core와 .NET Framework 프로젝트 모두에서 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-106">These tools work with both .NET Framework and .NET Core projects.</span></span>
 
-<a name="installing-the-tools"></a><span data-ttu-id="93516-107">도구 설치</span><span class="sxs-lookup"><span data-stu-id="93516-107">Installing the tools</span></span>
---------------------
-<span data-ttu-id="93516-108">Microsoft.EntityFrameworkCore.Tools NuGet 패키지를 설치 하 여 EF Core 패키지 관리자 콘솔 도구를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-108">Install the EF Core Package Manager Console Tools by installing the Microsoft.EntityFrameworkCore.Tools NuGet package.</span></span>
-<span data-ttu-id="93516-109">내에서 다음 명령을 실행 하 여 설치할 수 있습니다 [패키지 관리자 콘솔][2]합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-109">You can install it by executing the following command inside [Package Manager Console][2].</span></span>
+<span data-ttu-id="5ebc3-107">권장 하는 경우에 Visual Studio를 사용 하지 않는, 합니다 [EF Core 명령줄 도구](dotnet.md) 대신 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-107">If you aren't using Visual Studio, we recommend the [EF Core Command-line Tools](dotnet.md) instead.</span></span> <span data-ttu-id="5ebc3-108">CLI 도구는 크로스 플랫폼 및 명령 프롬프트 내에서 실행 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-108">The CLI tools are cross-platform and run inside a command prompt.</span></span>
+
+## <a name="installing-the-tools"></a><span data-ttu-id="5ebc3-109">도구 설치</span><span class="sxs-lookup"><span data-stu-id="5ebc3-109">Installing the tools</span></span>
+
+<span data-ttu-id="5ebc3-110">설치 및 업데이트 된 도구에 대 한 절차에서는 ASP.NET Core 2.1 이상 및 이전 버전 또는 기타 프로젝트 형식에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-110">The procedures for installing and updating the tools differ between ASP.NET Core 2.1+ and earlier versions or other project types.</span></span>
+
+### <a name="aspnet-core-version-21-and-later"></a><span data-ttu-id="5ebc3-111">ASP.NET Core 2.1 이상 버전</span><span class="sxs-lookup"><span data-stu-id="5ebc3-111">ASP.NET Core version 2.1 and later</span></span>
+
+<span data-ttu-id="5ebc3-112">때문에 ASP.NET Core 2.1 이상 프로젝트에서 도구를 자동으로 포함 됩니다는 `Microsoft.EntityFrameworkCore.Tools` 패키지에 포함 됩니다 합니다 [Microsoft.AspNetCore.App 메타 패키지](/aspnet/core/fundamentals/metapackage-app)합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-112">The tools are automatically included in an ASP.NET Core 2.1+ project because the `Microsoft.EntityFrameworkCore.Tools` package is included in the [Microsoft.AspNetCore.App metapackage](/aspnet/core/fundamentals/metapackage-app).</span></span>
+
+<span data-ttu-id="5ebc3-113">따라서 tools를 설치 하려면 아무 작업도 수행할 필요가 없습니다 있지만 필요가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-113">Therefore, you don't have to do anything to install the tools, but you do have to:</span></span>
+* <span data-ttu-id="5ebc3-114">새 프로젝트의 도구를 사용 하기 전에 패키지를 복원 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-114">Restore packages before using the tools in a new project.</span></span>
+* <span data-ttu-id="5ebc3-115">도구를 최신 버전으로 업데이트 하는 패키지를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-115">Install a package to update the tools to a newer version.</span></span>
+
+<span data-ttu-id="5ebc3-116">를 최신 버전의 도구를 보시기 했는지 확인 하려면 다음 단계를 수행할 수도 하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-116">To make sure that you're getting the latest version of the tools, we recommend that you also do the following step:</span></span>
+
+* <span data-ttu-id="5ebc3-117">편집 하 *.csproj* 파일을 최신 버전을 지정 하는 줄을 추가 합니다 [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/) 패키지 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-117">Edit your *.csproj* file and add a line specifying the latest version of the [Microsoft.EntityFrameworkCore.Tools](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Tools/) package.</span></span> <span data-ttu-id="5ebc3-118">예를 들어, 합니다 *.csproj* 파일이 포함 될 수 있습니다는 `ItemGroup` 다음과 유사 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-118">For example, the *.csproj* file might include an `ItemGroup` that looks like this:</span></span>
+
+  ```xml
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.3" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+  </ItemGroup>
+  ```
+
+<span data-ttu-id="5ebc3-119">다음 예제와 같이 메시지가 표시 되 면 도구를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-119">Update the tools when you get a message like the following example:</span></span>
+
+> <span data-ttu-id="5ebc3-120">EF Core 도구 버전 '2.1.1-rtm-30846' 런타임 '2.1.3-rtm-32065' 보다 오래 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-120">The EF Core tools version '2.1.1-rtm-30846' is older than that of the runtime '2.1.3-rtm-32065'.</span></span> <span data-ttu-id="5ebc3-121">최신 기능 및 버그 수정에 대 한 도구를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-121">Update the tools for the latest features and bug fixes.</span></span>
+
+<span data-ttu-id="5ebc3-122">도구를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-122">To update the tools:</span></span>
+* <span data-ttu-id="5ebc3-123">최신.NET Core SDK를 설치 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-123">Install the latest .NET Core SDK.</span></span>
+* <span data-ttu-id="5ebc3-124">Visual Studio 최신 버전으로 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-124">Update Visual Studio to the latest version.</span></span>
+* <span data-ttu-id="5ebc3-125">편집 된 *.csproj* 앞에 표시 된 것 처럼 최신 도구 패키지에 대 한 패키지 참조를 포함 하도록 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-125">Edit the *.csproj* file so that it includes a package reference to the latest tools package, as shown earlier.</span></span>
+
+### <a name="other-versions-and-project-types"></a><span data-ttu-id="5ebc3-126">다른 버전 및 프로젝트 형식</span><span class="sxs-lookup"><span data-stu-id="5ebc3-126">Other versions and project types</span></span>
+
+<span data-ttu-id="5ebc3-127">다음 명령을 실행 하 여 패키지 관리자 콘솔 도구를 설치 **패키지 관리자 콘솔**:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-127">Install the Package Manager Console tools by running the following command in **Package Manager Console**:</span></span>
 
 ``` powershell
 Install-Package Microsoft.EntityFrameworkCore.Tools
 ```
 
-<span data-ttu-id="93516-110">모든 항목이 제대로 작동 하는 경우이 명령을 실행 하려면 수 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-110">If everything worked correctly, you should be able to run this command:</span></span>
+<span data-ttu-id="5ebc3-128">다음 명령을 실행 하 여 도구를 업데이트 **패키지 관리자 콘솔**합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-128">Update the tools by running the following command in **Package Manager Console**.</span></span>
+
+``` powershell
+Update-Package Microsoft.EntityFrameworkCore.Tools
+```
+
+### <a name="verify-the-installation"></a><span data-ttu-id="5ebc3-129">설치 확인</span><span class="sxs-lookup"><span data-stu-id="5ebc3-129">Verify the installation</span></span>
+
+<span data-ttu-id="5ebc3-130">이 명령을 실행 하 여 도구 설치 되어 있는지 확인 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-130">Verify that the tools are installed by running this command:</span></span>
 
 ``` powershell
 Get-Help about_EntityFrameworkCore
 ```
-> [!TIP]
-> <span data-ttu-id="93516-111">시작 프로젝트를.NET Standard를 대상으로 하는 경우 [교차 대상을 지원 되는 프레임 워크] [ 3] 도구를 사용 하기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-111">If your startup project targets .NET Standard, [cross-target a supported framework][3] before using the tools.</span></span>
 
-> [!IMPORTANT]
-> <span data-ttu-id="93516-112">사용 중인 경우 **유니버설 Windows** 또는 **Xamarin**, EF 코드를.NET Standard 클래스 라이브러리를 이동 하 고 [교차 대상을 지원 되는 프레임 워크] [ 3] 도구를 사용 하기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-112">If you're using **Universal Windows** or **Xamarin**, move your EF code to a .NET Standard class library and [cross-target a supported framework][3] before using the tools.</span></span> <span data-ttu-id="93516-113">시작 프로젝트로 클래스 라이브러리를 지정 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-113">Specify the class library as your startup project.</span></span>
+<span data-ttu-id="5ebc3-131">출력은 다음과 같습니다 (이 알 수 없는 버전을 사용 하는 도구):</span><span class="sxs-lookup"><span data-stu-id="5ebc3-131">The output looks like this (it doesn't tell you which version of the tools you're using):</span></span>
 
-<a name="using-the-tools"></a><span data-ttu-id="93516-114">도구를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="93516-114">Using the tools</span></span>
----------------
-<span data-ttu-id="93516-115">명령을 호출할 때마다 두 개의 프로젝트가 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93516-115">Whenever you invoke a command, there are two projects involved:</span></span>
+```console
 
-<span data-ttu-id="93516-116">대상 프로젝트에는 모든 파일이 추가됩니다(또는 일부 경우 제거됨).</span><span class="sxs-lookup"><span data-stu-id="93516-116">The target project is where any files are added (or in some cases removed).</span></span> <span data-ttu-id="93516-117">기본값은 대상 프로젝트를 **기본 프로젝트** 패키지 관리자 콘솔에서 선택 되었지만 사용 하 여 지정할 수 있습니다-프로젝트 매개 변수입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-117">The target project defaults to the **Default project** selected in Package Manager Console, but can also be specified using the -Project parameter.</span></span>
+                     _/\__
+               ---==/    \\
+         ___  ___   |.    \|\
+        | __|| __|  |  )   \\\
+        | _| | _|   \_/ |  //|\\
+        |___||_|       /   \\\/\\
 
-<span data-ttu-id="93516-118">시작 프로젝트는 프로젝트 코드를 실행할 때 도구가 에뮬레이트하는 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-118">The startup project is the one emulated by the tools when executing your project's code.</span></span> <span data-ttu-id="93516-119">하나 기본값으로 **시작 프로젝트로 설정** 솔루션 탐색기에서.</span><span class="sxs-lookup"><span data-stu-id="93516-119">It defaults to one **Set as StartUp Project** in Solution Explorer.</span></span> <span data-ttu-id="93516-120">도 지정할 수 있습니다-StartupProject 매개 변수를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-120">It can also be specified using the -StartupProject parameter.</span></span>
+TOPIC
+    about_EntityFrameworkCore
 
-<span data-ttu-id="93516-121">일반 매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-121">Common parameters:</span></span>
+SHORT DESCRIPTION
+    Provides information about the Entity Framework Core Package Manager Console Tools.
 
-|                           |                             |
-|:--------------------------|:----------------------------|
-| <span data-ttu-id="93516-122">상황에 맞는 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-122">-Context \<String></span></span>        | <span data-ttu-id="93516-123">사용 하 여 DbContext 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-123">The DbContext to use.</span></span>       |
-| <span data-ttu-id="93516-124">-프로젝트 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-124">-Project \<String></span></span>        | <span data-ttu-id="93516-125">프로젝트를 사용 하는입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-125">The project to use.</span></span>         |
-| <span data-ttu-id="93516-126">-StartupProject \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-126">-StartupProject \<String></span></span> | <span data-ttu-id="93516-127">시작 프로젝트 사용입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-127">The startup project to use.</span></span> |
-| <span data-ttu-id="93516-128">-Verbose</span><span class="sxs-lookup"><span data-stu-id="93516-128">-Verbose</span></span>                  | <span data-ttu-id="93516-129">자세한 정보 출력을 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-129">Show verbose output.</span></span>        |
+<A list of available commands follows, omitted here.>
+```
 
-<span data-ttu-id="93516-130">명령에 대 한 도움말 정보를 표시 하려면 PowerShell의 사용 하 여 `Get-Help` 명령입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-130">To show help information about a command, use PowerShell's `Get-Help` command.</span></span>
+## <a name="using-the-tools"></a><span data-ttu-id="5ebc3-132">도구를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="5ebc3-132">Using the tools</span></span>
 
-> [!TIP]
-> <span data-ttu-id="93516-131">상황에 맞는, 프로젝트 및 StartupProject 매개 변수 탭 확장을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-131">The Context, Project, and StartupProject parameters support tab-expansion.</span></span>
+<span data-ttu-id="5ebc3-133">도구 사용 하기 전에:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-133">Before using the tools:</span></span>
+* <span data-ttu-id="5ebc3-134">대상 및 시작 프로젝트 간의 차이점을 이해 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-134">Understand the difference between target and startup project.</span></span>
+* <span data-ttu-id="5ebc3-135">.NET Standard 클래스 라이브러리와 도구를 사용 하는 방법에 알아봅니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-135">Learn how to use the tools with .NET Standard class libraries.</span></span>
+* <span data-ttu-id="5ebc3-136">ASP.NET Core 프로젝트에 대 한 환경을 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-136">For ASP.NET Core projects, set the environment.</span></span>
 
-> [!TIP]
-> <span data-ttu-id="93516-132">설정할 **env:ASPNETCORE_ENVIRONMENT** ASP.NET Core 환경을 지정을 실행 하기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-132">Set **env:ASPNETCORE_ENVIRONMENT** before running to specify the ASP.NET Core environment.</span></span>
+### <a name="target-and-startup-project"></a><span data-ttu-id="5ebc3-137">대상 및 시작 프로젝트</span><span class="sxs-lookup"><span data-stu-id="5ebc3-137">Target and startup project</span></span>
 
-<a name="commands"></a><span data-ttu-id="93516-133">명령</span><span class="sxs-lookup"><span data-stu-id="93516-133">Commands</span></span>
---------
+<span data-ttu-id="5ebc3-138">명령 참조는 *프로젝트* 와 *시작 프로젝트*합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-138">The commands refer to a *project* and a *startup project*.</span></span>
 
-### <a name="add-migration"></a><span data-ttu-id="93516-134">추가 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="93516-134">Add-Migration</span></span>
+* <span data-ttu-id="5ebc3-139">합니다 *프로젝트* 이 라고도 합니다 *대상 프로젝트* 명령을 추가 하거나 파일을 제거할 위치 이기 때문에 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-139">The *project* is also known as the *target project* because it's where the commands add or remove files.</span></span> <span data-ttu-id="5ebc3-140">기본적으로 **기본 프로젝트** 에서 선택한 **패키지 관리자 콘솔** 대상 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-140">By default, the **Default project** selected in **Package Manager Console** is the target project.</span></span> <span data-ttu-id="5ebc3-141">사용 하 여 대상 프로젝트로 다른 프로젝트를 지정할 수 있습니다 합니다 <nobr> `--project` </nobr> 옵션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-141">You can specify a different project as target project by using the <nobr>`--project`</nobr> option.</span></span>
 
-<span data-ttu-id="93516-135">새 마이그레이션을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-135">Adds a new migration.</span></span>
+* <span data-ttu-id="5ebc3-142">합니다 *시작 프로젝트* 도구 빌드 및 실행 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-142">The *startup project* is the one that the tools build and run.</span></span> <span data-ttu-id="5ebc3-143">도구는 데이터베이스 연결 문자열 및 모델의 구성 등 프로젝트에 대 한 정보를 가져오려면 디자인 타임에 응용 프로그램 코드를 실행 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-143">The tools have to execute application code at design time to get information about the project, such as the database connection string and the configuration of the model.</span></span> <span data-ttu-id="5ebc3-144">기본적으로 **시작 프로젝트** 에 **솔루션 탐색기** 시작 프로젝트 인지 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-144">By default, the **Startup Project** in **Solution Explorer** is the startup project.</span></span> <span data-ttu-id="5ebc3-145">사용 하 여 시작 프로젝트로 다른 프로젝트를 지정할 수 있습니다 합니다 <nobr> `--startup-project` </nobr> 옵션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-145">You can specify a different project as startup project by using the <nobr>`--startup-project`</nobr> option.</span></span>
 
-<span data-ttu-id="93516-136">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-136">Parameters:</span></span>
+<span data-ttu-id="5ebc3-146">시작 프로젝트 및 대상 프로젝트에서 동일한 프로젝트 많습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-146">The startup project and target project are often the same project.</span></span> <span data-ttu-id="5ebc3-147">일반적인 시나리오를 별도 프로젝트 되는 경우:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-147">A typical scenario where they are separate projects is when:</span></span>
 
-|                                   |                                                                                                                  |
-|:----------------------------------|:-----------------------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="93516-137">***-Name*** \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-137">***-Name*** \<String></span></span>             | <span data-ttu-id="93516-138">마이그레이션 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-138">The name of the migration.</span></span>                                                                                       |
-| <span data-ttu-id="93516-139"><nobr>-OutputDir \<String></nobr></span><span class="sxs-lookup"><span data-stu-id="93516-139"><nobr>-OutputDir \<String></nobr></span></span> | <span data-ttu-id="93516-140">사용 하 여 디렉터리 (및 하위 네임 스페이스).</span><span class="sxs-lookup"><span data-stu-id="93516-140">The directory (and sub-namespace) to use.</span></span> <span data-ttu-id="93516-141">프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-141">Paths are relative to the project directory.</span></span> <span data-ttu-id="93516-142">기본값은 "마이그레이션"입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-142">Defaults to "Migrations".</span></span> |
+* <span data-ttu-id="5ebc3-148">EF Core 컨텍스트 및 엔터티 클래스는.NET Core 클래스 라이브러리에는.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-148">The EF Core context and entity classes are in a .NET Core class library.</span></span>
+* <span data-ttu-id="5ebc3-149">.NET Core 콘솔 앱 또는 웹 앱을 클래스 라이브러리를 참조 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-149">A .NET Core console app or web app references the class library.</span></span>
 
-> [!NOTE]
-> <span data-ttu-id="93516-143">매개 변수 **굵게** 필요에 및 *기울임꼴* 위치는입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-143">Parameters in **bold** are required, and ones in *italics* are positional.</span></span>
+<span data-ttu-id="5ebc3-150">수 이기도 [EF Core 컨텍스트를 별도 클래스 라이브러리에 마이그레이션 코드를 배치](xref:core/managing-schemas/migrations/projects)합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-150">It's also possible to [put migrations code in a class library separate from the EF Core context](xref:core/managing-schemas/migrations/projects).</span></span>
 
-### <a name="drop-database"></a><span data-ttu-id="93516-144">데이터베이스 삭제</span><span class="sxs-lookup"><span data-stu-id="93516-144">Drop-Database</span></span>
+### <a name="other-target-frameworks"></a><span data-ttu-id="5ebc3-151">다른 대상 프레임 워크</span><span class="sxs-lookup"><span data-stu-id="5ebc3-151">Other target frameworks</span></span>
 
-<span data-ttu-id="93516-145">데이터베이스를 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-145">Drops the database.</span></span>
+<span data-ttu-id="5ebc3-152">패키지 관리자 콘솔 도구는.NET Core 또는.NET Framework 프로젝트를 사용 하 여 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-152">The Package Manager Console tools work with .NET Core or .NET Framework projects.</span></span> <span data-ttu-id="5ebc3-153">.NET Core 또는.NET Framework 프로젝트를.NET Standard 클래스 라이브러리는 EF Core 모델에 있는 앱 없을 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-153">Apps that have the EF Core model in a .NET Standard class library might not have a .NET Core or .NET Framework project.</span></span> <span data-ttu-id="5ebc3-154">예를 들어, Xamarin 및 유니버설 Windows 플랫폼 앱의 마찬가지입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-154">For example, this is true of Xamarin and Universal Windows Platform apps.</span></span> <span data-ttu-id="5ebc3-155">이러한 경우를 도구용 시작 프로젝트 역할을 위해서만 사용 되는.NET Core 또는.net 콘솔 앱 프로젝트를 만들 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-155">In such cases, you can create a .NET Core or .NET Framework console app project whose only purpose is to act as startup project for the tools.</span></span> <span data-ttu-id="5ebc3-156">프로젝트는 실제 코드가 없는 임시 프로젝트 일 수 &mdash; 는 도구에 대 한 대상을 제공에 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-156">The project can be a dummy project with no real code &mdash; it is only needed to provide a target for the tooling.</span></span>
 
-<span data-ttu-id="93516-146">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-146">Parameters:</span></span>
+<span data-ttu-id="5ebc3-157">필요한 더미 프로젝트 이유는 무엇입니까?</span><span class="sxs-lookup"><span data-stu-id="5ebc3-157">Why is a dummy project required?</span></span> <span data-ttu-id="5ebc3-158">앞에서 설명한 대로 도구는 디자인 타임에 응용 프로그램 코드를 실행 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-158">As mentioned earlier, the tools have to execute application code at design time.</span></span> <span data-ttu-id="5ebc3-159">이렇게 하려면.NET Core 또는.NET Framework 런타임을 사용 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-159">To do that, they need to use the .NET Core or .NET Framework runtime.</span></span> <span data-ttu-id="5ebc3-160">EF Core 모델 프로젝트를.NET Core 또는.NET Framework를 대상으로 하는 경우 EF Core 도구는 프로젝트에서 런타임에 차용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-160">When the EF Core model is in a project that targets .NET Core or .NET Framework, the EF Core tools borrow the runtime from the project.</span></span> <span data-ttu-id="5ebc3-161">EF Core 모델은.NET Standard 클래스 라이브러리에 해당 하는 수행할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-161">They can't do that if the EF Core model is in a .NET Standard class library.</span></span> <span data-ttu-id="5ebc3-162">.NET Standard는 실제.NET 구현이 아닙니다. 이.NET 구현에서 지원 해야 하는 Api 집합의 사양.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-162">The .NET Standard is not an actual .NET implementation; it's a specification of a set of APIs that .NET implementations must support.</span></span> <span data-ttu-id="5ebc3-163">따라서.NET Standard 부족 응용 프로그램 코드를 실행 하는 EF Core 도구에 대 한 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-163">Therefore .NET Standard is not sufficient for the EF Core tools to execute application code.</span></span> <span data-ttu-id="5ebc3-164">시작 프로젝트로 사용 하기 위해 만든 더미 프로젝트 도구는.NET Standard 클래스 라이브러리를 로드할 수 구체적인 대상 플랫폼을 제공 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-164">The dummy project you create to use as startup project provides a concrete target platform into which the tools can load the .NET Standard class library.</span></span> 
 
-|         |                                                          |
-|:--------|:---------------------------------------------------------|
-| <span data-ttu-id="93516-147">-WhatIf</span><span class="sxs-lookup"><span data-stu-id="93516-147">-WhatIf</span></span> | <span data-ttu-id="93516-148">데이터베이스는 삭제할 수 있지만 삭제 하지는 마세요 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="93516-148">Show which database would be dropped, but don't drop it.</span></span> |
+### <a name="aspnet-core-environment"></a><span data-ttu-id="5ebc3-165">ASP.NET Core 환경</span><span class="sxs-lookup"><span data-stu-id="5ebc3-165">ASP.NET Core environment</span></span>
 
-### <a name="get-dbcontext"></a><span data-ttu-id="93516-149">Get-DbContext</span><span class="sxs-lookup"><span data-stu-id="93516-149">Get-DbContext</span></span>
+<span data-ttu-id="5ebc3-166">ASP.NET Core 프로젝트에 대 한 환경에 지정 하려면 **env:ASPNETCORE_ENVIRONMENT** 명령을 실행 하기 전에 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-166">To specify the environment for ASP.NET Core projects, set **env:ASPNETCORE_ENVIRONMENT** before running commands.</span></span>
 
-<span data-ttu-id="93516-150">DbContext 유형에 대 한 정보를 가져옵니다.</span><span class="sxs-lookup"><span data-stu-id="93516-150">Gets information about a DbContext type.</span></span>
+## <a name="common-parameters"></a><span data-ttu-id="5ebc3-167">일반 매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-167">Common parameters</span></span>
 
-### <a name="remove-migration"></a><span data-ttu-id="93516-151">마이그레이션 제거</span><span class="sxs-lookup"><span data-stu-id="93516-151">Remove-Migration</span></span>
+<span data-ttu-id="5ebc3-168">다음 표에서 EF Core 명령은 모두에 공통 되는 매개 변수를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-168">The following table shows parameters that are common to all of the EF Core commands:</span></span>
 
-<span data-ttu-id="93516-152">마지막 마이그레이션을 제거합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-152">Removes the last migration.</span></span>
+| <span data-ttu-id="5ebc3-169">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-169">Parameter</span></span>                 | <span data-ttu-id="5ebc3-170">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-170">Description</span></span>                                                                                                                                                                                                          |
+|---------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-171">상황에 맞는 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-171">-Context \<String></span></span>        | <span data-ttu-id="5ebc3-172">`DbContext` 클래스를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-172">The `DbContext` class to use.</span></span> <span data-ttu-id="5ebc3-173">유일한 또는 정규화 된 네임 스페이스의 클래스 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-173">Class name only or fully qualified with namespaces.</span></span>  <span data-ttu-id="5ebc3-174">이 매개 변수를 생략 하면 EF Core 컨텍스트 클래스를 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-174">If this parameter is omitted, EF Core finds the context class.</span></span> <span data-ttu-id="5ebc3-175">여러 컨텍스트 클래스의 경우이 매개 변수는 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-175">If there are multiple context classes, this parameter is required.</span></span> |
+| <span data-ttu-id="5ebc3-176">-프로젝트 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-176">-Project \<String></span></span>        | <span data-ttu-id="5ebc3-177">대상 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-177">The target project.</span></span> <span data-ttu-id="5ebc3-178">이 매개 변수를 생략 합니다 **기본 프로젝트** 에 대 한 **패키지 관리자 콘솔** 대상 프로젝트로 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-178">If this parameter is omitted, the **Default project** for **Package Manager Console** is used as the target project.</span></span>                                                                             |
+| <span data-ttu-id="5ebc3-179">-StartupProject \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-179">-StartupProject \<String></span></span> | <span data-ttu-id="5ebc3-180">시작 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-180">The startup project.</span></span> <span data-ttu-id="5ebc3-181">이 매개 변수를 생략 합니다 **시작 프로젝트** 에 **솔루션 속성** 대상 프로젝트로 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-181">If this parameter is omitted, the **Startup project** in **Solution properties** is used as the target project.</span></span>                                                                                 |
+| <span data-ttu-id="5ebc3-182">-Verbose</span><span class="sxs-lookup"><span data-stu-id="5ebc3-182">-Verbose</span></span>                  | <span data-ttu-id="5ebc3-183">자세한 정보 출력을 표시 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-183">Show verbose output.</span></span>                                                                                                                                                                                                 |
 
-<span data-ttu-id="93516-153">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-153">Parameters:</span></span>
-
-|        |                                                              |
-|:-------|:-------------------------------------------------------------|
-| <span data-ttu-id="93516-154">-Force</span><span class="sxs-lookup"><span data-stu-id="93516-154">-Force</span></span> | <span data-ttu-id="93516-155">데이터베이스에 적용 한 경우 마이그레이션을 되돌립니다.</span><span class="sxs-lookup"><span data-stu-id="93516-155">Revert the migration if it has been applied to the database.</span></span> |
-
-### <a name="scaffold-dbcontext"></a><span data-ttu-id="93516-156">DbContext 스 캐 폴드</span><span class="sxs-lookup"><span data-stu-id="93516-156">Scaffold-DbContext</span></span>
-
-<span data-ttu-id="93516-157">데이터베이스는 DbContext와 엔터티 형식을 스 캐 폴딩 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-157">Scaffolds a DbContext and entity types for a database.</span></span>
-
-<span data-ttu-id="93516-158">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-158">Parameters:</span></span>
-
-|                                          |                                                                                                  |
-|:-----------------------------------------|:-------------------------------------------------------------------------------------------------|
-| <span data-ttu-id="93516-159"><nobr>***-연결*** \<문자열 ></nobr></span><span class="sxs-lookup"><span data-stu-id="93516-159"><nobr>***-Connection*** \<String></nobr></span></span> | <span data-ttu-id="93516-160">데이터베이스에 연결 문자열입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-160">The connection string to the database.</span></span>                                                           |
-| <span data-ttu-id="93516-161">***공급자*** \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-161">***-Provider*** \<String></span></span>                | <span data-ttu-id="93516-162">공급자에서 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-162">The provider to use.</span></span> <span data-ttu-id="93516-163">(예: Microsoft.EntityFrameworkCore.SqlServer)</span><span class="sxs-lookup"><span data-stu-id="93516-163">(for example, Microsoft.EntityFrameworkCore.SqlServer)</span></span>                      |
-| <span data-ttu-id="93516-164">-OutputDir \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-164">-OutputDir \<String></span></span>                     | <span data-ttu-id="93516-165">디렉터리에 파일 보관입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-165">The directory to put files in.</span></span> <span data-ttu-id="93516-166">프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-166">Paths are relative to the project directory.</span></span>                      |
-| <span data-ttu-id="93516-167">-ContextDir \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-167">-ContextDir \<String></span></span>                    | <span data-ttu-id="93516-168">에 DbContext 파일을 배치할 디렉터리입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-168">The directory to put DbContext file in.</span></span> <span data-ttu-id="93516-169">프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-169">Paths are relative to the project directory.</span></span>             |
-| <span data-ttu-id="93516-170">상황에 맞는 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-170">-Context \<String></span></span>                       | <span data-ttu-id="93516-171">생성할 DbContext의 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-171">The name of the DbContext to generate.</span></span>                                                           |
-| <span data-ttu-id="93516-172">-스키마 \<String ></span><span class="sxs-lookup"><span data-stu-id="93516-172">-Schemas \<String[]></span></span>                     | <span data-ttu-id="93516-173">에 대 한 엔터티 형식을 생성 하는 테이블의 스키마입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-173">The schemas of tables to generate entity types for.</span></span>                                              |
-| <span data-ttu-id="93516-174">-테이블 \<String ></span><span class="sxs-lookup"><span data-stu-id="93516-174">-Tables \<String[]></span></span>                      | <span data-ttu-id="93516-175">에 대 한 엔터티 형식을 생성 하는 테이블입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-175">The tables to generate entity types for.</span></span>                                                         |
-| <span data-ttu-id="93516-176">-DataAnnotations</span><span class="sxs-lookup"><span data-stu-id="93516-176">-DataAnnotations</span></span>                         | <span data-ttu-id="93516-177">(가능한 한) 경우 모델을 구성 하려면 특성을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-177">Use attributes to configure the model (where possible).</span></span> <span data-ttu-id="93516-178">생략 하면 fluent API만 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="93516-178">If omitted, only the fluent API is used.</span></span> |
-| <span data-ttu-id="93516-179">-UseDatabaseNames</span><span class="sxs-lookup"><span data-stu-id="93516-179">-UseDatabaseNames</span></span>                        | <span data-ttu-id="93516-180">데이터베이스에서 직접 테이블 및 열 이름을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-180">Use table and column names directly from the database.</span></span>                                           |
-| <span data-ttu-id="93516-181">-Force</span><span class="sxs-lookup"><span data-stu-id="93516-181">-Force</span></span>                                   | <span data-ttu-id="93516-182">기존 파일을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="93516-182">Overwrite existing files.</span></span>                                                                        |
-
-### <a name="script-migration"></a><span data-ttu-id="93516-183">스크립트 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="93516-183">Script-Migration</span></span>
-
-<span data-ttu-id="93516-184">마이그레이션에서 SQL 스크립트를 생성합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-184">Generates a SQL script from migrations.</span></span>
-
-<span data-ttu-id="93516-185">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="93516-185">Parameters:</span></span>
-
-|                   |                                                                    |
-|:------------------|:-------------------------------------------------------------------|
-| <span data-ttu-id="93516-186"> \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-186">*-From* \<String></span></span> | <span data-ttu-id="93516-187">마이그레이션을 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-187">The starting migration.</span></span> <span data-ttu-id="93516-188">기본값은 0 (초기 데이터베이스)입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-188">Defaults to 0 (the initial database).</span></span>      |
-| <span data-ttu-id="93516-189">*-에* \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-189">*-To* \<String></span></span>   | <span data-ttu-id="93516-190">끝 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-190">The ending migration.</span></span> <span data-ttu-id="93516-191">기본값 마지막 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-191">Defaults to the last migration.</span></span>              |
-| <span data-ttu-id="93516-192">멱 등</span><span class="sxs-lookup"><span data-stu-id="93516-192">-Idempotent</span></span>       | <span data-ttu-id="93516-193">모든 마이그레이션 데이터베이스에서 사용할 수 있는 스크립트를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-193">Generate a script that can be used on a database at any migration.</span></span> |
-| <span data-ttu-id="93516-194">-출력 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="93516-194">-Output \<String></span></span> | <span data-ttu-id="93516-195">결과를 쓸 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-195">The file to write the result to.</span></span>                                   |
+<span data-ttu-id="5ebc3-184">명령에 대 한 도움말 정보를 표시 하려면 PowerShell의 사용 하 여 `Get-Help` 명령입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-184">To show help information about a command, use PowerShell's `Get-Help` command.</span></span>
 
 > [!TIP]
-> <span data-ttu-id="93516-196">및 출력 매개 변수 탭 확장을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-196">The To, From, and Output parameters support tab-expansion.</span></span>
+> <span data-ttu-id="5ebc3-185">상황에 맞는, 프로젝트 및 StartupProject 매개 변수 탭 확장을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-185">The Context, Project, and StartupProject parameters support tab-expansion.</span></span>
 
-### <a name="update-database"></a><span data-ttu-id="93516-197">데이터베이스 업데이트</span><span class="sxs-lookup"><span data-stu-id="93516-197">Update-Database</span></span>
+## <a name="add-migration"></a><span data-ttu-id="5ebc3-186">추가 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="5ebc3-186">Add-Migration</span></span>
 
-|                                     |                                                                                                |
-|:------------------------------------|:-----------------------------------------------------------------------------------------------|
-| <span data-ttu-id="93516-198"><nobr>*마이그레이션* \<문자열 ></nobr></span><span class="sxs-lookup"><span data-stu-id="93516-198"><nobr>*-Migration* \<String></nobr></span></span> | <span data-ttu-id="93516-199">대상 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-199">The target migration.</span></span> <span data-ttu-id="93516-200">'0' 인 경우 모든 마이그레이션 되돌려집니다.</span><span class="sxs-lookup"><span data-stu-id="93516-200">If '0', all migrations will be reverted.</span></span> <span data-ttu-id="93516-201">기본값 마지막 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="93516-201">Defaults to the last migration.</span></span> |
+<span data-ttu-id="5ebc3-187">새 마이그레이션을 추가합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-187">Adds a new migration.</span></span>
+
+<span data-ttu-id="5ebc3-188">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-188">Parameters:</span></span>
+
+| <span data-ttu-id="5ebc3-189">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-189">Parameter</span></span>                         | <span data-ttu-id="5ebc3-190">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-190">Description</span></span>                                                                                                             |
+|-----------------------------------|-------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-191"><nobr>-Name \<문자열 ><nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-191"><nobr>-Name \<String><nobr></span></span>       | <span data-ttu-id="5ebc3-192">마이그레이션 이름입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-192">The name of the migration.</span></span> <span data-ttu-id="5ebc3-193">위치 매개 변수 이며 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-193">This is a positional parameter and is required.</span></span>                                              |
+| <span data-ttu-id="5ebc3-194"><nobr>-OutputDir \<String></nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-194"><nobr>-OutputDir \<String></nobr></span></span> | <span data-ttu-id="5ebc3-195">사용 하 여 디렉터리 (및 하위 네임 스페이스).</span><span class="sxs-lookup"><span data-stu-id="5ebc3-195">The directory (and sub-namespace) to use.</span></span> <span data-ttu-id="5ebc3-196">대상 프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-196">Paths are relative to the target project directory.</span></span> <span data-ttu-id="5ebc3-197">기본값은 "마이그레이션"입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-197">Defaults to "Migrations".</span></span> |
+
+## <a name="drop-database"></a><span data-ttu-id="5ebc3-198">데이터베이스 삭제</span><span class="sxs-lookup"><span data-stu-id="5ebc3-198">Drop-Database</span></span>
+
+<span data-ttu-id="5ebc3-199">데이터베이스를 삭제합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-199">Drops the database.</span></span>
+
+<span data-ttu-id="5ebc3-200">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-200">Parameters:</span></span>
+
+| <span data-ttu-id="5ebc3-201">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-201">Parameter</span></span> | <span data-ttu-id="5ebc3-202">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-202">Description</span></span>                                                |
+|-----------|------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-203">-WhatIf</span><span class="sxs-lookup"><span data-stu-id="5ebc3-203">-WhatIf</span></span>   | <span data-ttu-id="5ebc3-204">데이터베이스는 삭제할 수 있지만 삭제 하지는 마세요 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-204">Show which database would be dropped, but don't drop it.</span></span>   |
+
+## <a name="get-dbcontext"></a><span data-ttu-id="5ebc3-205">Get-DbContext</span><span class="sxs-lookup"><span data-stu-id="5ebc3-205">Get-DbContext</span></span>
+
+<span data-ttu-id="5ebc3-206">사용 가능한 목록 `DbContext` 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-206">Lists available `DbContext` types.</span></span>
+
+## <a name="remove-migration"></a><span data-ttu-id="5ebc3-207">마이그레이션 제거</span><span class="sxs-lookup"><span data-stu-id="5ebc3-207">Remove-Migration</span></span>
+
+<span data-ttu-id="5ebc3-208">마지막으로 마이그레이션 (마이그레이션에 대해 수행 된 코드 변경 내용을 롤백)를 제거 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-208">Removes the last migration (rolls back the code changes that were done for the migration).</span></span> 
+
+<span data-ttu-id="5ebc3-209">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-209">Parameters:</span></span>
+
+| <span data-ttu-id="5ebc3-210">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-210">Parameter</span></span> | <span data-ttu-id="5ebc3-211">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-211">Description</span></span>                                                                     |
+|-----------|---------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-212">-Force</span><span class="sxs-lookup"><span data-stu-id="5ebc3-212">-Force</span></span>    | <span data-ttu-id="5ebc3-213">마이그레이션 되돌리기 (데이터베이스에 적용 된 변경 내용 롤백).</span><span class="sxs-lookup"><span data-stu-id="5ebc3-213">Revert the migration (roll back the changes that were applied to the database).</span></span> |
+
+## <a name="scaffold-dbcontext"></a><span data-ttu-id="5ebc3-214">DbContext 스 캐 폴드</span><span class="sxs-lookup"><span data-stu-id="5ebc3-214">Scaffold-DbContext</span></span>
+
+<span data-ttu-id="5ebc3-215">에 대 한 코드 생성을 `DbContext` 및 데이터베이스에 대 한 엔터티 형식입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-215">Generates code for a `DbContext` and entity types for a database.</span></span>
+
+<span data-ttu-id="5ebc3-216">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-216">Parameters:</span></span>
+
+| <span data-ttu-id="5ebc3-217">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-217">Parameter</span></span>                                  | <span data-ttu-id="5ebc3-218">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-218">Description</span></span>                                                                                                                                                                                                                                                             |
+|--------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-219"><nobr>연결 \<문자열 ></nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-219"><nobr>-Connection \<String></nobr></span></span>         | <span data-ttu-id="5ebc3-220">데이터베이스에 연결 문자열입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-220">The connection string to the database.</span></span> <span data-ttu-id="5ebc3-221">ASP.NET Core 2.x 프로젝트에 대 한 값이 될 수 있습니다 *이름 =\<연결 문자열의 이름 >* 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-221">For ASP.NET Core 2.x projects, the value can be *name=\<name of connection string>*.</span></span> <span data-ttu-id="5ebc3-222">이 경우 이름을 프로젝트에 대해 설정 된 구성 소스에서 제공 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-222">In that case the name comes from the configuration sources that are set up for the project.</span></span> <span data-ttu-id="5ebc3-223">위치 매개 변수 이며 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-223">This is a positional parameter and is required.</span></span> |
+| <span data-ttu-id="5ebc3-224"><nobr>공급자 \<문자열 ></nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-224"><nobr>-Provider \<String></nobr></span></span>           | <span data-ttu-id="5ebc3-225">공급자에서 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-225">The provider to use.</span></span> <span data-ttu-id="5ebc3-226">일반적으로이 NuGet 패키지의 이름 예: `Microsoft.EntityFrameworkCore.SqlServer`합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-226">Typically this is the name of the NuGet package, for example: `Microsoft.EntityFrameworkCore.SqlServer`.</span></span> <span data-ttu-id="5ebc3-227">위치 매개 변수 이며 필수입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-227">This is a positional parameter and is required.</span></span>                                                                                           |
+| <span data-ttu-id="5ebc3-228">-OutputDir \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-228">-OutputDir \<String></span></span>                       | <span data-ttu-id="5ebc3-229">디렉터리에 파일 보관입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-229">The directory to put files in.</span></span> <span data-ttu-id="5ebc3-230">프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-230">Paths are relative to the project directory.</span></span>                                                                                                                                                                                             |
+| <span data-ttu-id="5ebc3-231">-ContextDir \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-231">-ContextDir \<String></span></span>                      | <span data-ttu-id="5ebc3-232">적용할 디렉터리는 `DbContext` 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-232">The directory to put the `DbContext` file in.</span></span> <span data-ttu-id="5ebc3-233">프로젝트 디렉터리를 기준으로 경로입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-233">Paths are relative to the project directory.</span></span>                                                                                                                                                                              |
+| <span data-ttu-id="5ebc3-234">상황에 맞는 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-234">-Context \<String></span></span>                         | <span data-ttu-id="5ebc3-235">이름을 합니다 `DbContext` 클래스를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-235">The name of the `DbContext` class to generate.</span></span>                                                                                                                                                                                                                          |
+| <span data-ttu-id="5ebc3-236">-스키마 \<String ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-236">-Schemas \<String[]></span></span>                       | <span data-ttu-id="5ebc3-237">에 대 한 엔터티 형식을 생성 하는 테이블의 스키마입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-237">The schemas of tables to generate entity types for.</span></span> <span data-ttu-id="5ebc3-238">이 매개 변수를 생략 하면 모든 스키마 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-238">If this parameter is omitted, all schemas are included.</span></span>                                                                                                                                                             |
+| <span data-ttu-id="5ebc3-239">-테이블 \<String ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-239">-Tables \<String[]></span></span>                        | <span data-ttu-id="5ebc3-240">에 대 한 엔터티 형식을 생성 하는 테이블입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-240">The tables to generate entity types for.</span></span> <span data-ttu-id="5ebc3-241">이 매개 변수를 생략 하면 테이블을 모두 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-241">If this parameter is omitted, all tables are included.</span></span>                                                                                                                                                                         |
+| <span data-ttu-id="5ebc3-242">-DataAnnotations</span><span class="sxs-lookup"><span data-stu-id="5ebc3-242">-DataAnnotations</span></span>                           | <span data-ttu-id="5ebc3-243">(가능한 한) 경우 모델을 구성 하려면 특성을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-243">Use attributes to configure the model (where possible).</span></span> <span data-ttu-id="5ebc3-244">이 매개 변수를 생략 하면 fluent API만 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-244">If this parameter is omitted, only the fluent API is used.</span></span>                                                                                                                                                      |
+| <span data-ttu-id="5ebc3-245">-UseDatabaseNames</span><span class="sxs-lookup"><span data-stu-id="5ebc3-245">-UseDatabaseNames</span></span>                          | <span data-ttu-id="5ebc3-246">데이터베이스에 표시 된 대로 테이블 및 열 이름을 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-246">Use table and column names exactly as they appear in the database.</span></span> <span data-ttu-id="5ebc3-247">이 매개 변수를 생략 하면 더욱 긴밀 하 게 C# 이름 스타일 규칙에 맞게 데이터베이스 이름이 변경 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-247">If this parameter is omitted, database names are changed to more closely conform to C# name style conventions.</span></span>                                                                                       |
+| <span data-ttu-id="5ebc3-248">-Force</span><span class="sxs-lookup"><span data-stu-id="5ebc3-248">-Force</span></span>                                     | <span data-ttu-id="5ebc3-249">기존 파일을 덮어씁니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-249">Overwrite existing files.</span></span>                                                                                                                                                                                                                                               |
+
+<span data-ttu-id="5ebc3-250">예제:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-250">Example:</span></span>
+
+```powershell
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
+```
+
+<span data-ttu-id="5ebc3-251">지정한 이름 가진 별도 폴더에 컨텍스트를 만들고 선택한 테이블만 스 캐 폴딩 하는 예제:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-251">Example that scaffolds only selected tables and creates the context in a separate folder with a specified name:</span></span>
+
+```powershell
+Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Tables "Blog","Post" -ContextDir Context -Context BlogContext
+```
+
+## <a name="script-migration"></a><span data-ttu-id="5ebc3-252">스크립트 마이그레이션</span><span class="sxs-lookup"><span data-stu-id="5ebc3-252">Script-Migration</span></span>
+
+<span data-ttu-id="5ebc3-253">에 적용 되는 모든 변경 내용을 하나 선택한 마이그레이션에서 선택한 마이그레이션 다른 SQL 스크립트를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-253">Generates a SQL script that applies all of the changes from one selected migration to another selected migration.</span></span>
+
+<span data-ttu-id="5ebc3-254">매개 변수:</span><span class="sxs-lookup"><span data-stu-id="5ebc3-254">Parameters:</span></span>
+
+| <span data-ttu-id="5ebc3-255">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-255">Parameter</span></span>           | <span data-ttu-id="5ebc3-256">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-256">Description</span></span>                                                                                                                                                                                                                |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-257"> \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-257">*-From* \<String></span></span>   | <span data-ttu-id="5ebc3-258">마이그레이션을 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-258">The starting migration.</span></span> <span data-ttu-id="5ebc3-259">마이그레이션은 식별 이름 또는 id입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-259">Migrations may be identified by name or by ID.</span></span> <span data-ttu-id="5ebc3-260">숫자 0는 특별 한 의미 *첫 번째 마이그레이션 전에*입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-260">The number 0 is a special case that means *before the first migration*.</span></span> <span data-ttu-id="5ebc3-261">기본값은 0입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-261">Defaults to 0.</span></span>                                                              |
+| <span data-ttu-id="5ebc3-262">*-에* \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-262">*-To* \<String></span></span>     | <span data-ttu-id="5ebc3-263">끝 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-263">The ending migration.</span></span> <span data-ttu-id="5ebc3-264">기본값 마지막 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-264">Defaults to the last migration.</span></span>                                                                                                                                                                      |
+| <span data-ttu-id="5ebc3-265"><nobr>멱 등</nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-265"><nobr>-Idempotent</nobr></span></span>         | <span data-ttu-id="5ebc3-266">모든 마이그레이션 데이터베이스에서 사용할 수 있는 스크립트를 생성 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-266">Generate a script that can be used on a database at any migration.</span></span>                                                                                                                                                         |
+| <span data-ttu-id="5ebc3-267">-출력 \<문자열 ></span><span class="sxs-lookup"><span data-stu-id="5ebc3-267">-Output \<String></span></span>   | <span data-ttu-id="5ebc3-268">결과를 쓸 파일입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-268">The file to write the result to.</span></span> <span data-ttu-id="5ebc3-269">예를 들어 앱의 런타임 파일이 생성 될 때 파일이 동일한 폴더에 생성 된 이름으로 만들어집니다이 매개 변수를 생략 합니다. */obj/Debug/netcoreapp2.1/ghbkztfz.sql/* 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-269">IF this parameter is omitted, the file is created with a generated name in the same folder as the app's runtime files are created, for example: */obj/Debug/netcoreapp2.1/ghbkztfz.sql/*.</span></span> |
 
 > [!TIP]
-> <span data-ttu-id="93516-202">마이그레이션 매개 변수 탭 확장을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="93516-202">The Migration parameter supports tab-expansion.</span></span>
+> <span data-ttu-id="5ebc3-270">및 출력 매개 변수 탭 확장을 지원 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-270">The To, From, and Output parameters support tab-expansion.</span></span>
 
+<span data-ttu-id="5ebc3-271">다음 예제에서는 마이그레이션 이름을 사용 하 여 InitialCreate 마이그레이션에 대 한 스크립트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-271">The following example creates a script for the InitialCreate migration, using the migration name.</span></span>
 
-  [1]: dotnet.md
-  [2]: https://docs.microsoft.com/nuget/tools/package-manager-console
-  [3]: index.md#frameworks
+```powershell
+Script-Migration -To InitialCreate
+```
+
+<span data-ttu-id="5ebc3-272">다음 예제에서는 마이그레이션 ID를 사용 하 여 InitialCreate 마이그레이션 후 모든 마이그레이션에 대 한 스크립트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-272">The following example creates a script for all migrations after the InitialCreate migration, using the migration ID.</span></span>
+
+```powershell
+Script-Migration -From 20180904195021_InitialCreate
+```
+
+## <a name="update-database"></a><span data-ttu-id="5ebc3-273">데이터베이스 업데이트</span><span class="sxs-lookup"><span data-stu-id="5ebc3-273">Update-Database</span></span>
+
+<span data-ttu-id="5ebc3-274">지정 된 마이그레이션 또는 마지막 마이그레이션을 위해 데이터베이스를 업데이트합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-274">Updates the database to the last migration or to a specified migration.</span></span>
+
+| <span data-ttu-id="5ebc3-275">매개 변수</span><span class="sxs-lookup"><span data-stu-id="5ebc3-275">Parameter</span></span>                             | <span data-ttu-id="5ebc3-276">설명</span><span class="sxs-lookup"><span data-stu-id="5ebc3-276">Description</span></span>                                                                                                                                                                                                                                                     |
+|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| <span data-ttu-id="5ebc3-277"><nobr>*마이그레이션* \<문자열 ></nobr></span><span class="sxs-lookup"><span data-stu-id="5ebc3-277"><nobr>*-Migration* \<String></nobr></span></span>   | <span data-ttu-id="5ebc3-278">대상 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-278">The target migration.</span></span> <span data-ttu-id="5ebc3-279">마이그레이션은 식별 이름 또는 id입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-279">Migrations may be identified by name or by ID.</span></span> <span data-ttu-id="5ebc3-280">숫자 0는 특별 한 의미 *첫 번째 마이그레이션을 시작 하기 전에* 하 고 모든 마이그레이션에 되돌릴 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-280">The number 0 is a special case that means *before the first migration* and causes all migrations to be reverted.</span></span> <span data-ttu-id="5ebc3-281">마이그레이션 없음이 지정 된 경우 명령을 기본값은 마지막 마이그레이션입니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-281">If no migration is specified, the command defaults to the last migration.</span></span> |
+
+> [!TIP]
+> <span data-ttu-id="5ebc3-282">마이그레이션 매개 변수 탭 확장을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-282">The Migration parameter supports tab-expansion.</span></span>
+
+<span data-ttu-id="5ebc3-283">다음 예제에서는 모든 마이그레이션 되돌립니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-283">The following example reverts all migrations.</span></span>
+
+```powershell
+Update-Database -Migration 0
+```
+
+<span data-ttu-id="5ebc3-284">다음 예제에서는 지정 된 마이그레이션에 데이터베이스를 업데이트 합니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-284">The following examples update the database to a specified migration.</span></span> <span data-ttu-id="5ebc3-285">첫 번째 마이그레이션 이름을 사용 하 고 마이그레이션 ID를 사용 하 여 두 번째 키를 누릅니다.</span><span class="sxs-lookup"><span data-stu-id="5ebc3-285">The first uses the migration name and the second uses the migration ID:</span></span>
+
+```powershell
+Update-Database -Migration InitialCreate
+Update-Database -Migration 20180904195021_InitialCreate
+```
