@@ -3,12 +3,12 @@ title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: a58461a6d18d9d53c002b5d45cecbff7b0cdf81e
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: fb184fe8720b552a2050607bb17648f0413c31d1
+ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490261"
+ms.lasthandoff: 09/30/2018
+ms.locfileid: "47459593"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서
@@ -88,11 +88,11 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 된 
 
 ### <a name="23-using-pre-generated-views-to-decrease-model-load-time"></a>모델을 줄이기 위해 있는 2.3를 사용 하 여 Pre-Generated 보기 로드 시간
 
-#### <a name="231-pre-generated-views-using-the-entity-framework-power-tools"></a>2.3.1 Entity Framework 파워 도구를 사용 하 여 미리 생성 된 뷰
+Entity Framework 6에서 미리 생성 된 뷰를 사용 하는 방법에 대 한 자세한 내용은 방문 [Pre-Generated 매핑 보기](~/ef6/fundamentals/performance/pre-generated-views.md)
 
-Entity Framework 파워 도구를 사용 하 여 모델 클래스 파일을 마우스 오른쪽 단추로 클릭 하 고 "뷰 생성"을 선택 하는 Entity Framework 메뉴를 사용 하 여 EDMX 및 Code First 모델의 뷰를 생성할 수도 있습니다. Entity Framework 파워 도구가 DbContext에서 파생 된 컨텍스트 에서만 작동 하 고에서 찾을 수 있습니다 \< http://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d>합니다.
+#### <a name="231-pre-generated-views-using-the-entity-framework-power-tools-community-edition"></a>2.3.1 Entity Framework Power Tools Community Edition을 사용 하 여 미리 생성 된 뷰
 
-Entity Framework 6에서 미리 생성 된 뷰를 사용 하는 방법에 대 한 자세한 내용은 방문 [Pre-Generated 매핑 뷰](~/ef6/fundamentals/performance/pre-generated-views.md)합니다.
+사용할 수는 [Entity Framework 6 Power Tools Community Edition](https://marketplace.visualstudio.com/items?itemName=ErikEJ.EntityFramework6PowerToolsCommunityEdition) 모델 클래스 파일을 마우스 오른쪽 단추로 클릭 하 고 "뷰 생성"을 선택 하는 Entity Framework 메뉴를 사용 하 여 EDMX 및 Code First 모델의 뷰를 생성할 수 있습니다. Entity Framework Power Tools Community Edition DbContext에서 파생 된 컨텍스트 에서만 작동 합니다.
 
 #### <a name="232-how-to-use-pre-generated-views-with-a-model-created-by-edmgen"></a>2.3.2 EDMGen에 의해 생성 된 모델을 사용 하 여 미리 생성 된 뷰를 사용 하는 방법
 
@@ -100,26 +100,20 @@ EDMGen는.NET과 함께 제공 하 고 Entity Framework 6 있지만 Entity Frame
 
 하는 경우 수동으로 편집 모델에 대 한 스키마 파일을 뷰 파일을 다시 생성 해야 합니다. 사용 하 여 EDMGen을 실행 하 여 이렇게 합니다 **/mode:ViewGeneration** 플래그입니다.
 
-추가 참조를 참조 하십시오 [방법: 쿼리 성능 향상을 Pre-Generate 뷰](https://msdn.microsoft.com/library/bb896240.aspx)합니다.
-
 #### <a name="233-how-to-use-pre-generated-views-with-an-edmx-file"></a>2.3.3 EDMX 파일을 사용 하 여 Pre-Generated 뷰를 사용 하는 방법
 
 EDMX 파일에 대 한 보기를 생성 하려면 EDMGen을 사용할 수도 있습니다-이전에 참조 된 MSDN 항목-이 작업을 수행 하려면 빌드 전 이벤트를 추가 하는 방법에 설명 하지만이 복잡 한 및 수는 없는 경우도 있습니다. 일반적으로 T4 템플릿을 사용 하 여 모델 edmx 파일의 때 뷰를 생성 하는 것이 쉽습니다.
 
-ADO.NET 팀 블로그는 뷰를 생성 하기 위해 T4 템플릿을 사용 하는 방법에 설명 하는 게시물 ( \< http://blogs.msdn.com/b/adonet/archive/2008/06/20/how-to-use-a-t4-template-for-view-generation.aspx>)합니다. 이 게시물에 다운로드 하 고 프로젝트에 추가할 수 있는 템플릿을 포함 합니다. 최신 버전의 Entity Framework를 사용 하는 보장 되지 않습니다 있도록 Entity Framework의 첫 번째 버전에 대 한 템플릿을 작성 되었습니다. 그러나 Visual Studio 갤러리 Entity Framework 4 및 5from 뷰 생성 템플릿 집합을 좀 더 최신를 다운로드할 수 있습니다.
+ADO.NET 팀 블로그는 뷰를 생성 하기 위해 T4 템플릿을 사용 하는 방법에 설명 하는 게시물 ( \<http://blogs.msdn.com/b/adonet/archive/2008/06/20/how-to-use-a-t4-template-for-view-generation.aspx>)합니다. 이 게시물에 다운로드 하 고 프로젝트에 추가할 수 있는 템플릿을 포함 합니다. 최신 버전의 Entity Framework를 사용 하는 보장 되지 않습니다 있도록 Entity Framework의 첫 번째 버전에 대 한 템플릿을 작성 되었습니다. 그러나 Visual Studio 갤러리 Entity Framework 4 및 5from 뷰 생성 템플릿 집합을 좀 더 최신를 다운로드할 수 있습니다.
 
 -   VB.NET의 경우: \<http://visualstudiogallery.msdn.microsoft.com/118b44f2-1b91-4de2-a584-7a680418941d>
 -   C\#: \<http://visualstudiogallery.msdn.microsoft.com/ae7730ce-ddab-470f-8456-1b313cd2c44d>
 
-Entity Framework 6을 사용 하는 경우에서 가져올 수 있습니다 뷰 생성 T4 템플릿 아래에 있는 Visual Studio 갤러리 \< http://visualstudiogallery.msdn.microsoft.com/18a7db90-6705-4d19-9dd1-0a6c23d0751f>합니다.
-
-#### <a name="234-how-to-use-pre-generated-views-with-a-code-first-model"></a>2.3.4 Pre-Generated 뷰를 사용 하 여 Code First 모델을 사용 하는 방법
-
-도 프로젝트를 Code First를 사용 하 여 미리 생성 된 보기를 사용 하는 것이 가능 합니다. Entity Framework 파워 도구에는 Code First 프로젝트에 대 한 뷰 파일을 생성할 수가 있습니다. 아래에 있는 Visual Studio 갤러리에서 Entity Framework 파워 도구를 찾을 수 있습니다 \< http://visualstudiogallery.msdn.microsoft.com/72a60b14-1581-4b9b-89f2-846072eff19d/>합니다.
+Entity Framework 6을 사용 하는 경우에서 가져올 수 있습니다 뷰 생성 T4 템플릿 아래에 있는 Visual Studio 갤러리 \<http://visualstudiogallery.msdn.microsoft.com/18a7db90-6705-4d19-9dd1-0a6c23d0751f>합니다.
 
 ### <a name="24-reducing-the-cost-of-view-generation"></a>2.4 보기 생성의 비용을 절감
 
-미리 생성 된 뷰를 사용 하 여 보기 생성의 비용 모델 로드 (런타임)에서 컴파일 시간에 이동 합니다. 런타임 시 시작 성능이 향상 됩니다을 하는 동안 개발 하는 동안에 보기 생성의 어려움을 여전히 발생할 수 있습니다. 뷰 생성, 컴파일 시간 및 런타임 모두 비용을 절감 하는 데 도움이 되는 몇 가지 추가 요령 있습니다.
+디자인 타임 미리 생성 된 뷰를 사용 하 여 이동 비용 (런타임에) 로드 하는 모델에서 뷰 생성을 합니다. 런타임 시 시작 성능이 향상 됩니다을 하는 동안 개발 하는 동안에 보기 생성의 어려움을 여전히 발생할 수 있습니다. 뷰 생성, 컴파일 시간 및 런타임 모두 비용을 절감 하는 데 도움이 되는 몇 가지 추가 요령 있습니다.
 
 #### <a name="241-using-foreign-key-associations-to-reduce-view-generation-cost"></a>2.4.1 외래 키 연결을 사용 하 여 뷰 생성 비용을 줄일 수
 
@@ -139,12 +133,12 @@ EDMGen 또는 Entity Framework 파워 도구를 사용 하 여 Entity Framework 
 
 기본적으로 Fk 얻게 EDMGen 또는 Entity Designer에서 Visual Studio를 사용 하면 메시지를 Fk 및 IAs 전환 하려면 단일 확인란을 선택 하거나 명령줄 플래그입니다.
 
-큰 Code First 모델에 있는 경우 독립 연결을 사용 하 여 해야 동일한 미치는 뷰 생성 합니다. 일부 개발자는이 해당 개체 모델이 오염 시 키 지 수를 고려 하는 경우 종속 개체에 대 한 클래스의 외래 키 속성을 포함 하 여이 영향을 방지할 수 있습니다. 이 주제에 대 한 자세한 정보를 찾을 수 있습니다 \< http://blog.oneunicorn.com/2011/12/11/whats-the-deal-with-mapping-foreign-keys-using-the-entity-framework/>합니다.
+큰 Code First 모델에 있는 경우 독립 연결을 사용 하 여 해야 동일한 미치는 뷰 생성 합니다. 일부 개발자는이 해당 개체 모델이 오염 시 키 지 수를 고려 하는 경우 종속 개체에 대 한 클래스의 외래 키 속성을 포함 하 여이 영향을 방지할 수 있습니다. 이 주제에 대 한 자세한 정보를 찾을 수 있습니다 \<http://blog.oneunicorn.com/2011/12/11/whats-the-deal-with-mapping-foreign-keys-using-the-entity-framework/>합니다.
 
 | 사용 하는 경우      | 방법                                                                                                                                                                                                                                                                                                                              |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Entity Designer | 두 엔터티 간의 연결을 추가한 후 참조 제약 조건이 있는지 확인 합니다. 참조 제약 조건에는 Entity Framework 독립 연결 대신 외래 키를 사용 하도록 알려 줍니다. 추가 세부 정보를 참조 하세요 \< http://blogs.msdn.com/b/efdesign/archive/2009/03/16/foreign-keys-in-the-entity-framework.aspx>합니다. |
-| EDMGen          | EDMGen을 사용 하 여 데이터베이스에서 파일을 생성를 외래 키를 적용 하 고 같이 모델에 추가 됩니다. EDMGen에 의해 노출 된 다양 한 옵션에 대 한 자세한 내용은 방문 [ http://msdn.microsoft.com/library/bb387165.aspx ](https://msdn.microsoft.com/library/bb387165.aspx)합니다.                           |
+| Entity Designer | 두 엔터티 간의 연결을 추가한 후 참조 제약 조건이 있는지 확인 합니다. 참조 제약 조건에는 Entity Framework 독립 연결 대신 외래 키를 사용 하도록 알려 줍니다. 추가 세부 정보를 참조 하세요 \<http://blogs.msdn.com/b/efdesign/archive/2009/03/16/foreign-keys-in-the-entity-framework.aspx>합니다. |
+| EDMGen          | EDMGen을 사용 하 여 데이터베이스에서 파일을 생성를 외래 키를 적용 하 고 같이 모델에 추가 됩니다. EDMGen에 의해 노출 된 다양 한 옵션에 대 한 자세한 내용은 방문 [http://msdn.microsoft.com/library/bb387165.aspx](https://msdn.microsoft.com/library/bb387165.aspx)합니다.                           |
 | Code First      | "관계 규칙" 섹션을 참조 합니다 [코드의 첫 번째 규칙](~/ef6/modeling/code-first/conventions/built-in.md) Code First를 사용 하는 경우 종속 개체에 대 한 외래 키 속성을 포함 하는 방법에 대 한 정보에 대 한 항목입니다.                                                                                              |
 
 #### <a name="242-moving-your-model-to-a-separate-assembly"></a>2.4.2 별도 어셈블리 모델 이동
@@ -404,7 +398,7 @@ Entity Framework 메타 데이터 캐싱도 지원합니다. 이 오류는 기�
 4.  ItemCollection 사용 하기 위해 주기적으로 확인 됩니다. 판단 되는 작업 영역에 액세스 하지 않은 최근에, 다음 캐시 비우기에 정리를 위해 표시 됩니다.
 5.  EntityConnection을 만드는 것 만으로는 (항목 컬렉션에 연결이 열릴 때까지 초기화 되지 것입니다) 하지만 만들 메타 데이터 캐시를 하면 됩니다. 이 작업 영역 "에 사용 하 여" 없는 캐싱 알고리즘이 결정 될 때까지 메모리에 남아 있습니다.
 
-고객 자문 팀 설명 큰 모델을 사용 하는 경우 "사용 중단"를 방지 하기 위해 ItemCollection에 대 한 참조를 보유 하는 블로그 게시물을 작성 했습니다: \< http://blogs.msdn.com/b/appfabriccat/archive/2010/10/22/metadataworkspace-reference-in-wcf-services.aspx>합니다.
+고객 자문 팀 설명 큰 모델을 사용 하는 경우 "사용 중단"를 방지 하기 위해 ItemCollection에 대 한 참조를 보유 하는 블로그 게시물을 작성 했습니다: \<http://blogs.msdn.com/b/appfabriccat/archive/2010/10/22/metadataworkspace-reference-in-wcf-services.aspx>합니다.
 
 #### <a name="342-the-relationship-between-metadata-caching-and-query-plan-caching"></a>3.4.2 메타 데이터 캐싱 및 쿼리 계획 캐싱 간의 관계
 
@@ -419,7 +413,7 @@ Entity Framework 메타 데이터 캐싱도 지원합니다. 이 오류는 기�
 #### <a name="351-additional-references-for-results-caching-with-the-wrapping-provider"></a>3.5.1 결과 래핑 공급자를 사용 하 여 캐싱 추가 참조
 
 -   Julie Lerman Windows Server AppFabric caching을 사용 하도록 샘플 래핑 공급자를 업데이트 하는 방법을 포함 하는 "두 번째 수준 캐싱 Entity Framework 및 Windows Azure의" MSDN 문서를 작성 했습니다. [https://msdn.microsoft.com/magazine/hh394143.aspx](https://msdn.microsoft.com/magazine/hh394143.aspx)
--   팀 블로그 Entity Framework 5에 대 한 캐싱 공급자와 함께 실행 하는 방법을 설명 하는 게시물에 Entity Framework 5를 사용 하 여 작업 하는 경우: \< http://blogs.msdn.com/b/adonet/archive/2010/09/13/ef-caching-with-jarek-kowalski-s-provider.aspx>합니다. 또한 프로젝트에 두 번째 수준 캐싱 추가 자동화 하기 위해 T4 템플릿을 포함 합니다.
+-   팀 블로그 Entity Framework 5에 대 한 캐싱 공급자와 함께 실행 하는 방법을 설명 하는 게시물에 Entity Framework 5를 사용 하 여 작업 하는 경우: \<http://blogs.msdn.com/b/adonet/archive/2010/09/13/ef-caching-with-jarek-kowalski-s-provider.aspx>합니다. 또한 프로젝트에 두 번째 수준 캐싱 추가 자동화 하기 위해 T4 템플릿을 포함 합니다.
 
 ## <a name="4-autocompiled-queries"></a>4 Autocompiled 쿼리
 
@@ -879,15 +873,15 @@ Entity Framework를 사용 하는 경우 다른 성능 고려 사항에 사용�
 
 TPT 상속을 사용 하는 모델에서 생성 되는 쿼리를 다른 상속 전략을 저장소에서 긴 실행 시간에 발생할 수 있습니다를 사용 하 여 생성 되는 것 보다 더 복잡 한 됩니다.  일반적으로 TPT 모델에 대해 쿼리를 생성 하 고 결과 개체를 구체화 하려면 시간이 오래 걸립니다.
 
-"성능 고려 사항을 참조 Entity Framework에서 TPT (형식당 하나의 테이블) 상속을 사용 하는 경우" MSDN 블로그 게시: \< http://blogs.msdn.com/b/adonet/archive/2010/08/17/performance-considerations-when-using-tpt-table-per-type-inheritance-in-the-entity-framework.aspx>합니다.
+"성능 고려 사항을 참조 Entity Framework에서 TPT (형식당 하나의 테이블) 상속을 사용 하는 경우" MSDN 블로그 게시: \<http://blogs.msdn.com/b/adonet/archive/2010/08/17/performance-considerations-when-using-tpt-table-per-type-inheritance-in-the-entity-framework.aspx>합니다.
 
 #### <a name="711-------avoiding-tpt-in-model-first-or-code-first-applications"></a>7.1.1 Model First 또는 Code First 응용 프로그램에서 TPT 방지
 
 TPT 스키마가 있는 기존 데이터베이스 모델을 만들 때 다양 한 옵션 않아도 됩니다. 하지만 성능 문제에 대 한 TPT 상속 Model First 또는 Code First를 사용 하 여 응용 프로그램을 만들 때 피해 야 합니다.
 
-엔터티 디자이너 마법사의 첫 번째 모델을 사용 하는 경우 모델의 모든 상속 TPT를 발생 합니다. Model First를 사용 하 여 TPH 상속 전략으로 전환 하려는 경우 Visual Studio 갤러리에서 "엔터티 디자이너 데이터베이스 생성 전원 팩" 사용 가능한를 사용할 수 있습니다 ( \< http://visualstudiogallery.msdn.microsoft.com/df3541c3-d833-4b65-b942-989e7ec74c87/>)합니다.
+엔터티 디자이너 마법사의 첫 번째 모델을 사용 하는 경우 모델의 모든 상속 TPT를 발생 합니다. Model First를 사용 하 여 TPH 상속 전략으로 전환 하려는 경우 Visual Studio 갤러리에서 "엔터티 디자이너 데이터베이스 생성 전원 팩" 사용 가능한를 사용할 수 있습니다 ( \<http://visualstudiogallery.msdn.microsoft.com/df3541c3-d833-4b65-b942-989e7ec74c87/>)합니다.
 
-Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하는 경우 EF는 기본적으로 TPH를 사용 하는, 않아 상속 계층의 모든 엔터티에 동일한 테이블에 매핑할 수 됩니다. MSDN Magazine의 "코드 엔터티 Framework4.1에서 첫 번째." 문서 "매핑 Fluent API를 사용한" 섹션을 참조 하세요 ( [ http://msdn.microsoft.com/magazine/hh126815.aspx ](https://msdn.microsoft.com/magazine/hh126815.aspx)) 대 한 자세한 내용은 합니다.
+Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하는 경우 EF는 기본적으로 TPH를 사용 하는, 않아 상속 계층의 모든 엔터티에 동일한 테이블에 매핑할 수 됩니다. MSDN Magazine의 "코드 엔터티 Framework4.1에서 첫 번째." 문서 "매핑 Fluent API를 사용한" 섹션을 참조 하세요 ( [http://msdn.microsoft.com/magazine/hh126815.aspx](https://msdn.microsoft.com/magazine/hh126815.aspx)) 대 한 자세한 내용은 합니다.
 
 ### <a name="72-------upgrading-from-ef4-to-improve-model-generation-time"></a>7.2 모델 생성을 개선 하기 위해 EF4에서 업그레이드 시간
 
@@ -907,7 +901,7 @@ Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하�
 
 ### <a name="73-------splitting-large-models-with-database-first-and-model-first"></a>7.3 데이터베이스를 사용 하 여 큰 모델을 먼저 분할 및 Model First
 
-모델 크기 증가, 디자이너 화면에 복잡 하 고 사용 하기 어려운 됩니다. 일반적으로 효과적으로 디자이너를 사용 하는 너무 큰 300 개 이상의 엔터티를 사용 하 여 모델을 살펴봅니다. 큰 모델을 분할 하기 위한 여러 옵션을 설명 하는 다음 블로그 게시물: \< http://blogs.msdn.com/b/adonet/archive/2008/11/25/working-with-large-models-in-entity-framework-part-2.aspx>합니다.
+모델 크기 증가, 디자이너 화면에 복잡 하 고 사용 하기 어려운 됩니다. 일반적으로 효과적으로 디자이너를 사용 하는 너무 큰 300 개 이상의 엔터티를 사용 하 여 모델을 살펴봅니다. 큰 모델을 분할 하기 위한 여러 옵션을 설명 하는 다음 블로그 게시물: \<http://blogs.msdn.com/b/adonet/archive/2008/11/25/working-with-large-models-in-entity-framework-part-2.aspx>합니다.
 
 Entity Framework의 첫 번째 버전에 대 한 게시물 쓴 있지만 단계는 여전히 적용 됩니다.
 
@@ -923,7 +917,7 @@ EntityDataSource 컨트롤을 사용 하 여 웹 응용 프로그램의 성능�
 
 Entity Framework를 사용 하면 데이터 클래스 자체를 수정 하지 않고 데이터 모델과 함께 사용자 지정 데이터 클래스를 사용할 수 있습니다. 즉, 기존 도메인 개체 등의 POCO(Plain Old CLR Object)를 데이터 모델과 함께 사용할 수 있습니다. 데이터 모델에서 정의 된 엔터티에 매핑되는 이러한 POCO 데이터 클래스 (지 속성 무시 개체 라고도), 대부분의 동일한 쿼리를 지 원하는, 삽입, 업데이트 및 삭제 동작 엔터티 데이터 모델 도구에서 생성 되는 엔터티 형식으로 합니다.
 
-Entity Framework에서 POCO 엔터티의 추적 변경 내용을 자동 지연 로딩 등의 기능을 사용 하도록 설정할 때 사용 되는 POCO 형식에서 파생 된 프록시 클래스를 만들 수도 있습니다. POCO 클래스에는 여기에 설명 된 대로 Entity Framework 프록시를 사용할 수 있도록 특정 요구 사항을 충족 해야 합니다. [ http://msdn.microsoft.com/library/dd468057.aspx ](https://msdn.microsoft.com/library/dd468057.aspx)합니다.
+Entity Framework에서 POCO 엔터티의 추적 변경 내용을 자동 지연 로딩 등의 기능을 사용 하도록 설정할 때 사용 되는 POCO 형식에서 파생 된 프록시 클래스를 만들 수도 있습니다. POCO 클래스에는 여기에 설명 된 대로 Entity Framework 프록시를 사용할 수 있도록 특정 요구 사항을 충족 해야 합니다. [http://msdn.microsoft.com/library/dd468057.aspx](https://msdn.microsoft.com/library/dd468057.aspx)합니다.
 
 기회 추적 프록시는 엔터티의 속성에 해당 값이 변경, Entity Framework 엔터티의 실제 상태를 항상 알 수 있도록 때마다 개체 상태 관리자를 알림 나타납니다. 이렇게 하려면 속성의 setter 메서드 본문에 알림 이벤트를 추가 하 고 이러한 이벤트를 처리 하는 개체 상태 관리자입니다. 프록시 만들기 엔터티는 일반적으로 Entity Framework에서 생성 되는 이벤트의 추가 집합으로 인해 프록시가 아닌 POCO 엔터티를 만드는 것 보다 더 비쌉니다.
 
@@ -1149,7 +1143,7 @@ using (NorthwindEntities context = new NorthwindEntities())
 
 현재 entity Framework는 스칼라 또는 복합 속성을 지연 로드를 지원 하지 않습니다. 그러나 BLOB와 같은 큰 개체를 포함 하는 테이블 해야 하는 경우에 사용할 수 있습니다 테이블 분할 큰 속성 별도 엔터티로 구분 하려면. 예를 들어, varbinary photo 열이 포함 된 제품 테이블이 있다고 가정 합니다. 쿼리에서이 속성에 액세스 하려면 자주 필요 하지 않으면, 일반적으로 해야 하는 엔터티의 부품만를 분할 하는 테이블을 사용할 수 있습니다. 제품 사진을 나타내는 엔터티는 명시적으로 필요한 경우에 로드 됩니다.
 
-테이블 분할을 사용 하도록 설정 하는 방법을 보여주는 좋은 리소스는 Gil Fink "테이블 분할에서 Entity Framework" 블로그 게시물: \< http://blogs.microsoft.co.il/blogs/gilf/archive/2009/10/13/table-splitting-in-entity-framework.aspx>합니다.
+테이블 분할을 사용 하도록 설정 하는 방법을 보여주는 좋은 리소스는 Gil Fink "테이블 분할에서 Entity Framework" 블로그 게시물: \<http://blogs.microsoft.co.il/blogs/gilf/archive/2009/10/13/table-splitting-in-entity-framework.aspx>합니다.
 
 ## <a name="9-other-considerations"></a>9 기타 고려 사항
 
@@ -1187,7 +1181,7 @@ finally
 }
 ```
 
-AutoDetectChanges를 끄기 전에 것이 좋습니다 이해는 Entity Framework 엔터티에서 수행 되는 변경에 대 한 특정 정보를 추적할 수 없게 발생할 수 있습니다. 잘못 처리 하는 경우 응용 프로그램에서 데이터 불일치가 발생할 수 있습니다. AutoDetectChanges 해제에 대 한 자세한 내용은 읽을 \< http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/>합니다.
+AutoDetectChanges를 끄기 전에 것이 좋습니다 이해는 Entity Framework 엔터티에서 수행 되는 변경에 대 한 특정 정보를 추적할 수 없게 발생할 수 있습니다. 잘못 처리 하는 경우 응용 프로그램에서 데이터 불일치가 발생할 수 있습니다. AutoDetectChanges 해제에 대 한 자세한 내용은 읽을 \<http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/>합니다.
 
 ### <a name="93------context-per-request"></a>9.3 요청당 컨텍스트
 
@@ -1234,7 +1228,7 @@ Entity Framework 컨텍스트는 최적의 성능을 제공 하기 위해 단기
 
 .NET 4.5 이상을 실행 하는 경우 비동기 작업의 entity Framework 6 도입 된 지원. 대부분의 경우 IO 있는 응용 프로그램 관련 경합 비동기 쿼리를 사용 하 여에서 가장 많은 혜택을 작업을 저장 합니다. 응용 프로그램 IO 경합에서 문제가 발생 하지 않는, 경우 비동기 사용은 최상의 경우에서 동기적으로 실행 최악의 경우 또는 비동기 호출, 처럼 동일한 기간에서 결과 반환, 단순히 비동기 작업 실행을 지연 및 추가 tim 추가 e 시나리오의 완료를 합니다.
 
-방문 비동기 응용 프로그램의 성능이 향상 됩니다 하는 경우를 결정 하는 데 도움이 되는 비동기 프로그래밍 작업에 대 한 내용은 [ http://msdn.microsoft.com/library/hh191443.aspx ](https://msdn.microsoft.com/library/hh191443.aspx)합니다. Entity Framework에서 비동기 작업의 자세한 사용 방법은 참조 하세요 [비동기 쿼리 및 저장](~/ef6/fundamentals/async.md
+방문 비동기 응용 프로그램의 성능이 향상 됩니다 하는 경우를 결정 하는 데 도움이 되는 비동기 프로그래밍 작업에 대 한 내용은 [http://msdn.microsoft.com/library/hh191443.aspx ](https://msdn.microsoft.com/library/hh191443.aspx)합니다. Entity Framework에서 비동기 작업의 자세한 사용 방법은 참조 하세요 [비동기 쿼리 및 저장](~/ef6/fundamentals/async.md
 )합니다.
 
 ### <a name="96------ngen"></a>9.6 NGEN
@@ -1255,17 +1249,17 @@ EDMX와 Code First를 사용 하도록 선택 때 Code First에서 도입 된 �
 
 ### <a name="101-using-the-visual-studio-profiler"></a>10.1 Visual Studio Profiler를 사용 하 여
 
-Entity Framework를 사용 하 여 성능 문제를 발생 하는 경우에 응용 프로그램은 해당 시간을 소모 하는 상황을 확인 하려면 Visual Studio에 기본 제공 하는 것 처럼 프로파일러를 사용할 수 있습니다. "ADO.NET Entity Framework-1 부의 성능 알아보기" 블로그 게시물에서 원형 차트를 생성 하는 데에서는 도구입니다 ( \< http://blogs.msdn.com/b/adonet/archive/2008/02/04/exploring-the-performance-of-the-ado-net-entity-framework-part-1.aspx>) Entity Framework 동작 콜드 및 웜 쿼리 중의 시간을 소모 하는 위치를 보여 주는 합니다.
+Entity Framework를 사용 하 여 성능 문제를 발생 하는 경우에 응용 프로그램은 해당 시간을 소모 하는 상황을 확인 하려면 Visual Studio에 기본 제공 하는 것 처럼 프로파일러를 사용할 수 있습니다. "ADO.NET Entity Framework-1 부의 성능 알아보기" 블로그 게시물에서 원형 차트를 생성 하는 데에서는 도구입니다 ( \<http://blogs.msdn.com/b/adonet/archive/2008/02/04/exploring-the-performance-of-the-ado-net-entity-framework-part-1.aspx>) Entity Framework 동작 콜드 및 웜 쿼리 중의 시간을 소모 하는 위치를 보여 주는 합니다.
 
-데이터 및 모델링 고객 자문 팀에서 작성 된 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 성능 문제를 조사 하는 프로파일러 사용 방법의 실제 예제를 보여 줍니다.  \<http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>. Windows 응용 프로그램에 대 한이 게시물 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 하는 경우 Windows 성능 레코더 WPR () 및 Windows 성능 분석기 (WPA) 도구를 Visual Studio에서 작업 보다 더 잘 작동할 수 있습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [ http://www.microsoft.com/en-US/download/details.aspx?id=39982 ](https://www.microsoft.com/en-US/download/details.aspx?id=39982)).
+데이터 및 모델링 고객 자문 팀에서 작성 된 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 성능 문제를 조사 하는 프로파일러 사용 방법의 실제 예제를 보여 줍니다.  \<http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>. Windows 응용 프로그램에 대 한이 게시물 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 하는 경우 Windows 성능 레코더 WPR () 및 Windows 성능 분석기 (WPA) 도구를 Visual Studio에서 작업 보다 더 잘 작동할 수 있습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [http://www.microsoft.com/en-US/download/details.aspx?id=39982](https://www.microsoft.com/en-US/download/details.aspx?id=39982)).
 
 ### <a name="102-applicationdatabase-profiling"></a>10.2 응용 프로그램/데이터베이스 프로 파일링
 
 Visual Studio에 기본 제공 profiler와 같은 도구는 응용 프로그램은 시간을 소모 하는 상황을 알려 줍니다.  다른 유형의 프로파일러는 사용 가능한 프로덕션 또는 요구 사항에 따라 사전 프로덕션에서 실행 중인 응용 프로그램의 동적 분석을 수행 하 고 일반적인 문제 및 데이터베이스 액세스의 안티 패턴을 찾습니다.
 
-상업적으로 사용할 수 있는 두 가지 프로파일러는 Entity Framework Profiler ( \< http://efprof.com>) ORMProfiler 및 ( \< http://ormprofiler.com>)합니다.
+상업적으로 사용할 수 있는 두 가지 프로파일러는 Entity Framework Profiler ( \<http://efprof.com>) ORMProfiler 및 ( \<http://ormprofiler.com>)합니다.
 
-Code First를 사용 하 여 MVC 응용 프로그램을 응용 프로그램을 사용 하는 경우에 StackExchange의 MiniProfiler를 사용할 수 있습니다. Scott Hanselman 블로그가이 도구 설명: \< http://www.hanselman.com/blog/NuGetPackageOfTheWeek9ASPNETMiniProfilerFromStackExchangeRocksYourWorld.aspx>합니다.
+Code First를 사용 하 여 MVC 응용 프로그램을 응용 프로그램을 사용 하는 경우에 StackExchange의 MiniProfiler를 사용할 수 있습니다. Scott Hanselman 블로그가이 도구 설명: \<http://www.hanselman.com/blog/NuGetPackageOfTheWeek9ASPNETMiniProfilerFromStackExchangeRocksYourWorld.aspx>합니다.
 
 Julie Lerman의 MSDN Magazine 기사 라는 참조 응용 프로그램의 데이터베이스 작업 프로 파일링 하는 방법은 [Entity Framework에서 데이터베이스 작업 프로 파일링](https://msdn.microsoft.com/magazine/gg490349.aspx)합니다.
 
@@ -1296,7 +1290,7 @@ Entity Framework 6을 사용 하는 경우 또한 기본 제공 로깅 기능을
   </interceptors>
 ```
 
-이동 다시 컴파일하지 않고도 로깅을 추가 하는 방법에 대 한 자세한 내용은 \< http://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/>합니다.
+이동 다시 컴파일하지 않고도 로깅을 추가 하는 방법에 대 한 자세한 내용은 \<http://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/>합니다.
 
 ## <a name="11-appendix"></a>11 부록
 

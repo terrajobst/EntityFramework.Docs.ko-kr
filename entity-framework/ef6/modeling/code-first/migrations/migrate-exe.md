@@ -3,12 +3,12 @@ title: Migrate.exe-EF6을 사용 하 여
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 989ea862-e936-4c85-926a-8cfbef5df5b8
-ms.openlocfilehash: 6e9880523bbcf2fe55390a447241e59723a0967f
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: cf6c3a0a256730b24addf1012d6ff53b17035cd4
+ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490227"
+ms.lasthandoff: 09/30/2018
+ms.locfileid: "47459541"
 ---
 # <a name="using-migrateexe"></a>Migrate.exe를 사용 하 여
 Code First 마이그레이션을에서 데이터베이스를 업데이트할 수 visual studio 내에서 명령줄 도구 migrate.exe 통해 실행할 수 있습니다. 이 페이지 migrate.exe를 사용 하 여 데이터베이스에 대해 마이그레이션을 실행 하는 방법에 대 한 빠른 개요를 제공 합니다.
@@ -24,9 +24,9 @@ Migrate.exe를 만든 후 마이그레이션을 포함 하는 어셈블리의 �
 
 응용 프로그램에.NET 4를 대상으로 하지 4.5 다음 해야 복사할 경우 합니다 **Redirect.config** 위치로 및 바꾸거나 **migrate.exe.config**합니다. 이 migrate.exe 올바른 바인딩 리디렉션을 Entity Framework 어셈블리를 찾을 수 있도록 합니다.
 
-| .NET 4.5                                   | .NET 4.0                                   |
-|:-------------------------------------------|:-------------------------------------------|
-| ![.NET 4.5 파일](~/ef6/media/net45files.png)  | ![.NET 4.0 파일](~/ef6/media/net40files.png)  |
+| .NET 4.5                                      | .NET 4.0                                      |
+|:----------------------------------------------|:----------------------------------------------|
+| ![.NET 4.5 파일](~/ef6/media/net45files.png) | ![.NET 4.0 파일](~/ef6/media/net40files.png) |
 
 > [!NOTE]
 > migrate.exe x64를 지원 하지 않습니다 어셈블리입니다.
