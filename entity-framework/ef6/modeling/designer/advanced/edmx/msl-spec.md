@@ -3,12 +3,12 @@ title: EF6-MSL 사양
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 13ae7bc1-74b4-4ee4-8d73-c337be841467
-ms.openlocfilehash: 9519155422d8542d4a14bc1c612e91ebc22bf15e
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 6bff1f5407bc0546e60b5bee1178be9aa4748bd8
+ms.sourcegitcommit: 29f928a6116771fe78f306846e6f2d45cbe8d1f4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490560"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47460139"
 ---
 # <a name="msl-specification"></a>XML 사양
 매핑 사양 언어 (MSL)은 개념적 모델 및 Entity Framework 응용 프로그램의 저장소 모델 간의 매핑을 설명 하는 XML 기반 언어입니다.
@@ -219,7 +219,7 @@ MSL의 버전은 XML 네임 스페이스로 식별 됩니다.
      <ScalarProperty Name="CourseID" ColumnName="CourseID" />
    </EndProperty>
  </AssociationSetMapping>
-``` 
+```
 
 ## <a name="complexproperty-element-msl"></a>ComplexProperty 요소(MSL)
 

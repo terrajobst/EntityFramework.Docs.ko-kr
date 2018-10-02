@@ -3,12 +3,12 @@ title: CSDL 사양-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: c54255f4-253f-49eb-bec8-ad7927ac2fa3
-ms.openlocfilehash: f5bf0dc75a8195e9af979c9e044f36171f46c9b7
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 438af83b8a1ad51ee8414341181412e950d0e117
+ms.sourcegitcommit: 29f928a6116771fe78f306846e6f2d45cbe8d1f4
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490521"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47460152"
 ---
 # <a name="csdl-specification"></a>CSDL 사양
 CSDL(개념 스키마 정의 언어)은 데이터 기반 응용 프로그램의 개념적 모델을 구성하는 엔터티, 관계 및 함수를 설명하는 XML 기반 언어입니다. 이 개념적 모델은 Entity Framework 또는 WCF Data Services에서 사용할 수 있습니다. CSDL을 사용 하 여 설명 하는 메타 데이터 엔터티 및 데이터 원본에 개념적 모델에 정의 된 관계를 매핑할 Entity Framework에서 사용 됩니다. 자세한 내용은 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md) 하 고 [MSL 사양](~/ef6/modeling/designer/advanced/edmx/msl-spec.md)합니다.
@@ -1138,7 +1138,7 @@ A **매개 변수** 요소 (자식으로는 **함수** 요소) 개념적 모델�
    Year(CurrentDateTime()) - Year(cast(Instructor.HireDate as DateTime))
    </DefiningExpression>
  </Function>
-``` 
+```
 
  
 
