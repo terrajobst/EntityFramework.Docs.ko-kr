@@ -3,12 +3,12 @@ title: WPF-EF6 사용 하 여 데이터 바인딩
 author: divega
 ms.date: 10/23/2016
 ms.assetid: e90d48e6-bea5-47ef-b756-7b89cce4daf0
-ms.openlocfilehash: 5bd4a9b98a12de41e4ec37c2cc7dbdc537210893
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 1933988277d3be8fecc02fced3293f2b7f80c901
+ms.sourcegitcommit: ae399f9f3d1bae2c446b552247bd3af3ca5a2cf9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490235"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48575667"
 ---
 # <a name="databinding-with-wpf"></a>WPF 사용 하 여 데이터 바인딩
 이 단계별 연습에는 POCO 형식 "마스터-세부 정보" 폼에 WPF 컨트롤에 바인딩하는 방법을 보여 줍니다. Entity Framework Api를 사용 하 여 데이터베이스에서 데이터를 사용 하 여 개체를 채우기, 변경 내용 추적 및 데이터베이스에 데이터를 유지 하는 응용 프로그램.
@@ -31,7 +31,7 @@ DbContext API 화면을 사용 하는 경우 사용 해야 합니다 **개체** 
 
 이 연습을 완료 하려면 Visual Studio 2012 또는 Visual Studio 2010 설치, Visual Studio 2013이 설치 해야 합니다.
 
-Visual Studio 2010을 사용 하는 경우 NuGet을 설치 하려면 수도 있습니다. 자세한 내용은 [NuGet 설치](http://docs.nuget.org/docs/start-here/installing-nuget)합니다.  
+Visual Studio 2010을 사용 하는 경우 NuGet을 설치 하려면 수도 있습니다. 자세한 내용은 [NuGet 설치](https://docs.microsoft.com/nuget/install-nuget-client-tools)합니다.  
 
 ## <a name="create-the-application"></a>응용 프로그램 만들기
 
@@ -252,12 +252,12 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 
     ![Data Sources](~/ef6/media/datasources.png)
 
--   선택 된 * * 범주 * * 데이터 원본 및 폼에 놓습니다.
+-   선택 된 **범주** 데이터 원본 및 폼에 놓습니다.
 
 다음에서는이 소스를 끌 때 발생 했습니다.
 
--   합니다 **categoryViewSource** 리소스 및 * * categoryDataGrid * * 컨트롤이 XAML에 추가 되었습니다. DataViewSources에 대 한 자세한 내용은 참조 하세요. http://bea.stollnitz.com/blog/?p=387합니다.
--   부모 모눈 요소의 DataContext 속성 설정 된 "{StaticResource **categoryViewSource** }".  합니다 **categoryViewSource** 외부를 바인딩 소스로 사용 되는 리소스\\부모 Grid 요소입니다. 내부 Grid 요소는 다음 부모 표 (categoryDataGrid의 ItemsSource 속성 "{Binding}"로 설정 됨)에서 DataContext 값을 상속 합니다. 
+-   합니다 **categoryViewSource** 리소스와 **categoryDataGrid** 컨트롤이 XAML에 추가 된 
+-   부모 모눈 요소의 DataContext 속성 설정 된 "{StaticResource **categoryViewSource** }". 합니다 **categoryViewSource** 외부를 바인딩 소스로 사용 되는 리소스\\부모 Grid 요소입니다. 내부 Grid 요소가 부모 표 (categoryDataGrid의 ItemsSource 속성 "{Binding}"로 설정 됨)에서 DataContext 값 상속
 
 ``` xml
     <Window.Resources>
@@ -282,7 +282,7 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 
 이제 표 보겠습니다 범주를 표시 하려면 연결 된 제품을 표시 하려면 세부 정보 표를 추가 합니다.
 
--   선택 합니다 * * 제품 * * 아래에서 속성을 * * 범주 * * 데이터 원본 및 폼에 놓습니다.
+-   선택 합니다 **제품** 아래에서 속성을 **범주** 데이터 원본 및 폼에 놓습니다.
     -   합니다 **categoryProductsViewSource** 리소스와 **productDataGrid** 표 XAML에 추가 됩니다
     -   이 리소스에 대 한 바인딩 경로 Products로 설정
     -   WPF 데이터 바인딩 프레임 워크는 선택한 범주와 관련 된 제품만 표시 되도록 **productDataGrid**
@@ -305,7 +305,7 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 
 그러면 코드 숨김 양식,에서는 이제는 ProductContext를 사용 하 여 데이터 액세스를 수행 하는 코드를 편집 합니다. 아래와 같이 MainWindow에 대 한 코드를 업데이트 합니다.
 
-코드의 장기 실행 인스턴스를 선언 **ProductContext**합니다. 합니다 **ProductContext** 개체는 쿼리 및 데이터베이스에 데이터를 저장 하는 데 사용 됩니다. 합니다 **Dispose**()는 **ProductContext** 인스턴스 이라고 재정의 된 **OnClosing** 메서드. 코드 주석을 코드 수행 작업에 대 한 세부 정보를 제공 합니다.
+코드의 장기 실행 인스턴스를 선언 **ProductContext**합니다. 합니다 **ProductContext** 개체는 쿼리 및 데이터베이스에 데이터를 저장 하는 데 사용 됩니다. 합니다 **dispose ()** 에 **ProductContext** 인스턴스 이라고 재정의 된 **OnClosing** 메서드. 코드 주석을 코드 수행 작업에 대 한 세부 정보를 제공 합니다.
 
 ``` csharp
     using System.Data.Entity;
@@ -389,6 +389,10 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임에 파생된 프�
 
 -   키를 눌러 합니다 **저장할** 데이터베이스로 데이터를 저장 하려면 단추
 
-DbContext의를 호출한 후 **SaveChanges**Id ()는 데이터베이스에서 생성 된 값으로 채워집니다. 호출 했으므로 **새로 고침**한 후 () **SaveChanges**()를 **DataGrid** 컨트롤도 새 값으로 업데이트 됩니다.
+DbContext의를 호출한 후 **savechanges ()**, Id는 데이터베이스에서 생성 된 값으로 채워집니다. 호출 했으므로 **Refresh()** 한 후 **savechanges ()** 는 **DataGrid** 컨트롤도 새 값으로 업데이트 됩니다.
 
 ![입력 Id 사용 하 여 주 창](~/ef6/media/screen2.png)
+
+## <a name="additional-resources"></a>추가 리소스
+
+WPF를 사용 하 여 컬렉션을 데이터 바인딩에 대 한 자세한 내용은 참조 하세요 [이 항목에서는](https://docs.microsoft.com/dotnet/framework/wpf/data/data-binding-overview#binding-to-collections) WPF 설명서에 있습니다.  
