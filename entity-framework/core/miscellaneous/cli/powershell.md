@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 09/18/2018
 uid: core/miscellaneous/cli/powershell
-ms.openlocfilehash: db4d89b6a0babe01bccbeadc51381a309ad8ca0f
-ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
+ms.openlocfilehash: 9a57b58f8569ee1241e40c3809b03487d1d88e02
+ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/30/2018
-ms.locfileid: "47459564"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48834762"
 ---
 # <a name="entity-framework-core-tools-reference---package-manager-console-in-visual-studio"></a>Entity Framework Core 도구 참조-Visual Studio에서 패키지 관리자 콘솔
 
@@ -177,7 +177,7 @@ ASP.NET Core 프로젝트에 대 한 환경에 지정 하려면 **env:ASPNETCORE
 
 ## <a name="scaffold-dbcontext"></a>DbContext 스 캐 폴드
 
-에 대 한 코드 생성을 `DbContext` 및 데이터베이스에 대 한 엔터티 형식입니다.
+에 대 한 코드 생성을 `DbContext` 및 데이터베이스에 대 한 엔터티 형식입니다. 에 대 한 순서로 `Scaffold-DbContext` 엔터티 형식으로 생성 하려면 데이터베이스 테이블에는 기본 키가 있어야 합니다.
 
 매개 변수:
 

@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 09/20/2018
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: fad64c692273f58580c4b986e10f481402a222d8
-ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
+ms.openlocfilehash: 87b9c73e32eddbf48cd3408de93245d9974efdce
+ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/30/2018
-ms.locfileid: "47459561"
+ms.lasthandoff: 10/06/2018
+ms.locfileid: "48834788"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Entity Framework Core 참조-.NET CLI 도구
 
@@ -189,7 +189,7 @@ dotnet ef database update 20180904195021_InitialCreate
 
 ## <a name="dotnet-ef-dbcontext-scaffold"></a>dotnet ef dbcontext 스 캐 폴드
 
-에 대 한 코드 생성을 `DbContext` 및 데이터베이스에 대 한 엔터티 형식입니다.
+에 대 한 코드 생성을 `DbContext` 및 데이터베이스에 대 한 엔터티 형식입니다. 엔터티 형식을 생성 하려면이 명령에 대 한 순서 대로 기본 키를 데이터베이스 테이블에 있어야 합니다.
 
 인수:
 
