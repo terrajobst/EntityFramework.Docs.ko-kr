@@ -3,12 +3,12 @@ title: Entity Framework 용어-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 3f05ffdd-49bc-499c-9732-4a368bf5d2d7
-ms.openlocfilehash: 298913891fb372bf57d7504c5a54f1dc83ea1a80
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 9ed7a2d841c625de35de57edb4e57e69b89a3db9
+ms.sourcegitcommit: 5d74ac575f813110db6d870720f50dd7606446bc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490698"
+ms.lasthandoff: 10/09/2018
+ms.locfileid: "48881269"
 ---
 # <a name="entity-framework-glossary"></a>Entity Framework 용어집
 ## <a name="code-first"></a>Code First
@@ -60,7 +60,7 @@ EF 디자이너를 사용 하 여 Entity Framework 모델을 만드는 다음 �
 다른 엔터티를 참조 하는 엔터티는 속성입니다. 예를 들어 제품 범주 탐색 속성을 포함 및 범주 제품 탐색 속성을 포함 합니다.
 
 ## <a name="poco"></a>POCO
-Plain Old CLR 개체에 대 한 머리글자어입니다. 간단한 사용자 정의 클래스에서 임의 프레임 워크 종속성이 없는입니다. EF의 컨텍스트에서 EntityObject에서 파생 되지 않은 엔터티 클래스 인터페이스를 구현 하거나 EF에 정의 된 모든 특성을 전달 합니다. 지 속성 프레임 워크에서 분리 되는 이러한 엔터티 클래스는 "지 속성 무시" 있다고도 합니다.  
+Plain Old CLR 개체에 대 한 머리글자어입니다. 간단한 사용자 정의 클래스에서 임의 프레임 워크 종속성이 없는입니다. EF EntityObject에서 파생 되지 않은 모든 인터페이스를 구현, EF에 정의 된 모든 특성을 전달 하는 엔터티 클래스의 컨텍스트에서 합니다. 지 속성 프레임 워크에서 분리 되는 이러한 엔터티 클래스는 "지 속성 무시" 있다고도 합니다.  
 
 ## <a name="relationship-inverse"></a>관계 역
 예를 들어 제품 관계의 반대쪽 끝에 있습니다. 범주 및 범주입니다. 제품입니다.
