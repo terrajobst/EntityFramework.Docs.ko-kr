@@ -3,12 +3,12 @@ title: Code First 마이그레이션 - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
-ms.openlocfilehash: 389da6c54e063a5dc598f98f8ac92cfc0e686019
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: f408ef861a2992783142fa1483d1433ca710399a
+ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283851"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47415798"
 ---
 # <a name="code-first-migrations"></a>Code First 마이그레이션
 Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 응용 프로그램의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.

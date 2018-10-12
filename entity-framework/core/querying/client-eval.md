@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 78f8d9576748a725634665f915def80b5a13820c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 47e22be274d02b5221c638d07151d9607aa7e24f
+ms.sourcegitcommit: 0d36e8ff0892b7f034b765b15e041f375f88579a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997879"
+ms.lasthandoff: 09/09/2018
+ms.locfileid: "44250805"
 ---
 # <a name="client-vs-server-evaluation"></a>클라이언트 및 서버 평가
 
@@ -49,7 +49,7 @@ public static string StandardizeUrl(string url)
 }
 ```
 
-## <a name="disabling-client-evaluation"></a>클라이언트 평가 사용 안 함
+## <a name="client-evaluation-performance-issues"></a>클라이언트 평가 성능 문제
 
 클라이언트 평가는 매우 유용할 수 있지만 경우에 따라 성능이 저하될 수 있습니다. 이제 도우미 메서드가 필터에서 사용되는 다음 쿼리를 살펴보겠습니다. 데이터베이스에서는 이 작업을 수행할 수 없으므로 모든 데이터를 메모리로 풀한 다음, 클라이언트에서 필터를 적용합니다. 데이터양과 해당 데이터가 필터링되는 양에 따라 성능이 저하될 수 있습니다.
 
@@ -60,7 +60,13 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-기본적으로 EF Core는 클라이언트 평가가 수행될 때 표시되는 경고를 로깅합니다. 로깅 출력 보기에 대한 자세한 내용은 [로깅](../miscellaneous/logging.md)을 참조하세요. 클라이언트 평가가 수행될 때 동작을 throw나 아무 작업도 하지 않음으로 변경할 수 있습니다. 이 작업은 컨텍스트에 대한 옵션을 설정할 때 수행하며, 일반적으로 `DbContext.OnConfiguring`에서나 `Startup.cs`(ASP.NET Core를 사용하는 경우)에서 수행합니다.
+## <a name="client-evaluation-logging"></a>클라이언트 평가 로깅
+
+기본적으로 EF Core는 클라이언트 평가가 수행될 때 표시되는 경고를 로깅합니다. 로깅 출력 보기에 대한 자세한 내용은 [로깅](../miscellaneous/logging.md)을 참조하세요. 
+
+## <a name="optional-behavior-throw-an-exception-for-client-evaluation"></a>선택적 동작: 클라이언트 평가에 대한 예외를 발생시킵니다.
+
+클라이언트 평가가 수행될 때 동작을 throw나 아무 작업도 하지 않음으로 변경할 수 있습니다. 이 작업은 컨텍스트에 대한 옵션을 설정할 때 수행하며, 일반적으로 `DbContext.OnConfiguring`에서나 `Startup.cs`(ASP.NET Core를 사용하는 경우)에서 수행합니다.
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/ClientEval/ThrowOnClientEval/BloggingContext.cs?highlight=5)] -->
 ``` csharp

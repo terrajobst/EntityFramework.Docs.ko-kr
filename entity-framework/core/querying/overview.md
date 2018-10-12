@@ -1,15 +1,15 @@
 ---
 title: 쿼리 작동 방식 - EF Core
 author: rowanmiller
-ms.date: 10/27/2016
+ms.date: 09/26/2018
 ms.assetid: de2e34cd-659b-4cab-b5ed-7a979c6bf120
 uid: core/querying/overview
-ms.openlocfilehash: f1c23471bfbc998b2d4f9dc579d1404d6202e109
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 23d26f9c0ac17fc0df744f5339946947ea366911
+ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993205"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47415733"
 ---
 # <a name="how-queries-work"></a>쿼리 작동 방식
 
@@ -45,4 +45,4 @@ LINQ 연산자를 호출할 때는 쿼리의 메모리 내 표현을 작성하�
 * 쿼리 결과를 UI에 데이터 바인딩
 
 > [!WARNING]  
-> **항상 사용자 입력의 유효성 검사:** EF는 SQL 삽입 공격으로부터 보호를 제공하지만 입력의 일반적인 유효성 검사는 수행하지 않습니다. 따라서 값이 API에 전달되거나, LINQ 쿼리에서 사용되거나, 엔터티 속성에 할당되는 경우 신뢰할 수 없는 소스에서 가져오면 응용 프로그램 요구 사항에 따라 적절한 유효성 검사를 수행해야 합니다. 여기에는 쿼리를 동적으로 생성하는 데 사용되는 사용자 입력이 포함됩니다. LINQ를 사용하는 경우에도 식을 작성하는 사용자 입력을 허용하려면 의도한 식만 생성되도록 해야 합니다.
+> **항상 사용자 입력의 유효성 검사:** EF Core는 매개 변수를 사용하고 쿼리에서 리터럴을 이스케이프하여 SQL 공격을 방어하지만 입력의 유효성을 검사하지 않습니다. 신뢰할 수 없는 소스의 값이 LINQ 쿼리에서 사용되거나, 엔터티 속성에 할당되거나, 다른 EF Core API에 전달되기 전에 응용 프로그램의 요구 사항에 따라 적절한 유효성 검사를 수행해야 합니다. 여기에는 쿼리를 동적으로 생성하는 데 사용되는 사용자 입력이 포함됩니다. LINQ를 사용하는 경우에도 식을 작성하는 사용자 입력을 허용하려면 의도한 식만 생성되도록 해야 합니다.

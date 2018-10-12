@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/06/2018
 ms.assetid: a29a3d97-b2d8-4d33-9475-40ac67b3b2c6
 uid: core/get-started/full-dotnet/existing-db
-ms.openlocfilehash: edcdc0b76394c4d604cf43fc170424e474532b17
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: b9e079f88dd35016407b19bb627f8bd46edb3d4c
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993420"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447159"
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>.NET Framework에서 기존 데이터베이스로 EF Core 시작
 
@@ -117,7 +117,8 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 
   ![이미지](_static/output-existing-db.png)
 
-## <a name="additional-resources"></a>추가 리소스
+## <a name="next-steps"></a>다음 단계
 
-* [새 데이터베이스를 포함한 .NET Framework의 EF Core](xref:core/get-started/full-dotnet/new-db)
-* [새 데이터베이스를 포함한 .NET Core의 EF Core - SQLite](xref:core/get-started/netcore/new-db-sqlite) - 플랫폼 간 콘솔 EF 자습서.
+컨텍스트 및 엔터티 클래스를 스캐폴드하는 방법에 대한 자세한 내용은 다음 문서를 참조하세요.
+* [Entity Framework Core 도구 참조 - .NET CLI](xref:core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold)
+* [Entity Framework Core 도구 참조 - 패키지 관리자 콘솔](xref:core/miscellaneous/cli/powershell#scaffold-dbcontext)

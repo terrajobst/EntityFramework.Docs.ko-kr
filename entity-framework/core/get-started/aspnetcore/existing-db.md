@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: 79a73e38fdc9c4268c21de66571d6272f33e9457
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 84e2e4bc1bdc774fa059fa893e0f8ac128931feb
+ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997038"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47447185"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
 
@@ -171,6 +171,12 @@ public partial class BloggingContext : DbContext
 * **새로 만들기**를 클릭합니다.
 * 새 블로그의 **URL**을 입력하고 **만들기**를 클릭합니다.
 
-![이미지](_static/create.png)
+  ![페이지 만들기](_static/create.png)
 
-![이미지](_static/index-existing-db.png)
+  ![인덱스 페이지](_static/index-existing-db.png)
+
+## <a name="next-steps"></a>다음 단계
+
+컨텍스트 및 엔터티 클래스를 스캐폴드하는 방법에 대한 자세한 내용은 다음 문서를 참조하세요.
+* [Entity Framework Core 도구 참조 - .NET CLI](xref:core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold)
+* [Entity Framework Core 도구 참조 - 패키지 관리자 콘솔](xref:core/miscellaneous/cli/powershell#scaffold-dbcontext)
