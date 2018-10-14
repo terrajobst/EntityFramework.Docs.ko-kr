@@ -2,8 +2,6 @@
 
 ## [EF Core & EF6 비교](efcore-and-ef6/index.md)
 
-### [내게 적합한 항목](efcore-and-ef6/choosing.md)
-### [기능 비교](efcore-and-ef6/features.md)
 ### [동일한 응용 프로그램의 EF6 및 EF Core](efcore-and-ef6/side-by-side.md)
 ### [EF6에서 EF Core로 이식](efcore-and-ef6/porting/index.md)
 #### [요구 사항 유효성 검사](efcore-and-ef6/porting/ensure-requirements.md)
