@@ -3,12 +3,12 @@ title: 관계, 탐색 속성 및 EF6 외래 키
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: a98c1bf798a8a6d2c748408d7363d5f884e7e6e9
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 46c2d11b5704ec7ae82a423ae042b87f5efe436f
+ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490547"
+ms.lasthandoff: 10/14/2018
+ms.locfileid: "49315661"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
 이 항목에서는 Entity Framework는 엔터티 간의 관계를 관리 하는 방법의 개요를 제공 합니다. 또한 매핑 관계를 조작 하는 방법에 대 한 지침을 제공 합니다.
@@ -153,7 +153,7 @@ public class Department
 > 외래 키 연결에서 종속 개체의 관련된 끝을 로드하면 현재 메모리에 있는 종속 개체의 외래 키 값에 따라 관련 개체가 로드됩니다.
 
 ``` csharp
-    // Get the course where currently DepartmentID = 1.
+    // Get the course where currently DepartmentID = 2.
     Course course2 = context.Courses.First(c=>c.DepartmentID == 2);
 
     // Use DepartmentID foreign key property
