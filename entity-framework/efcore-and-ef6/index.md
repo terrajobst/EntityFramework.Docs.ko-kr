@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 8568f0a3c6c4585c4fe05508fd610614107c8f66
-ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
+ms.openlocfilehash: 0f9f0d4708fa283855eddf2cfc231b37356e413e
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2018
-ms.locfileid: "49315648"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022352"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
@@ -73,7 +73,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 
 ### <a name="querying-data"></a>데이터 쿼리
 
-| **기능                                             | **EF6**  | **EF Core**                           |
+| **기능**                                           | **EF6**  | **EF Core**                           |
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | LINQ 쿼리                                          | 예      | 1.0(복합 쿼리에 대해 진행 중) |
 | 읽기 가능한 생성된 SQL                                | 나쁨     | 1.0                                   |
@@ -147,7 +147,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 ## <a name="guidance-for-new-applications"></a>새 응용 프로그램에 대한 지침
 
 다음 조건이 모두 충족되면 새 응용 프로그램에 EF Core를 사용해 보세요.
-* 이 앱을 사용하려면 .NET Core의 기능이 필요합니다. 자세한 내용은 [서버 앱에 대해 .NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/en-us/dotnet/standard/choosing-core-framework-server)을 참조하세요.
+* 이 앱을 사용하려면 .NET Core의 기능이 필요합니다. 자세한 내용은 [서버 앱에 대해 .NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)을 참조하세요.
 * EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/roadmap)을 확인하여 나중에 지원할 계획이 있는지 확인하세요. 
 
 다음 조건이 모두 충족되면 EF6를 사용해 보세요.

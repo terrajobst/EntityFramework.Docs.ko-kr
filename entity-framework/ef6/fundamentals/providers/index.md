@@ -3,12 +3,12 @@ title: Entity Framework 공급자 - EF6
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 7BFB7763-CD6C-4520-93A2-7B265F5FA586
-ms.openlocfilehash: c9afb32caeeef5111b32251c62019460b62f48b3
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 0cfe6c30d6533b0207f78a031d342847a7f68632
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489442"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022225"
 ---
 # <a name="entity-framework-6-providers"></a>Entity Framework 6 공급자
 > [!NOTE]
@@ -68,7 +68,7 @@ EF 공급자가 NuGet에서 설치되는 경우 종종 NuGet 패키지가 자동
 
 ### <a name="code-based-registration"></a>코드 기반 등록
 
-Entity Framework 6부터 EF에 대한 응용 프로그램 수준 구성을 코드에서 지정할 수 있습니다. 자세한 내용은 _[Entity Framework 코드 기반 구성](https://msdn.microsoft.com/en-us/data/jj680699)_ 을 참조하세요. 코드 기반 구성을 사용하여 EF 공급자를 등록하는 일반적인 방법은 System.Data.Entity.DbConfiguration에서 파생되는 새 클래스를 만들어서 DbContext 클래스와 동일한 어셈블리에 배치하는 것입니다. 그러면 DbConfiguration 클래스가 공급자를 생성자에 등록합니다. 예를 들어 SQL Compact 공급자를 등록하려는 경우 DbConfiguration 클래스는 다음과 비슷합니다.
+Entity Framework 6부터 EF에 대한 응용 프로그램 수준 구성을 코드에서 지정할 수 있습니다. 자세한 내용은 _[Entity Framework 코드 기반 구성](https://msdn.microsoft.com/data/jj680699)_ 을 참조하세요. 코드 기반 구성을 사용하여 EF 공급자를 등록하는 일반적인 방법은 System.Data.Entity.DbConfiguration에서 파생되는 새 클래스를 만들어서 DbContext 클래스와 동일한 어셈블리에 배치하는 것입니다. 그러면 DbConfiguration 클래스가 공급자를 생성자에 등록합니다. 예를 들어 SQL Compact 공급자를 등록하려는 경우 DbConfiguration 클래스는 다음과 비슷합니다.
 
 ``` csharp
     public class MyConfiguration : DbConfiguration

@@ -3,12 +3,12 @@ title: 지원 되는 .NET 구현 - EF Core
 author: rowanmiller
 ms.date: 08/30/2017
 uid: core/platforms/index
-ms.openlocfilehash: 347965818f0eab9a86411f66eaaf10cb3aa8d652
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8fc25f4a35794162c92fd292990c24e977d1bf1b
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996440"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022264"
 ---
 # <a name="net-implementations-supported-by-ef-core"></a>EF Core에서 지원되는 .NET 구현
 
@@ -41,7 +41,7 @@ UWP에서 EF Core를 사용하는 경우:
 
 * 쿼리 성능을 최적화하려면 LINQ 쿼리에서 무명 형식을 사용하지 않습니다. UWP 응용 프로그램을 앱 스토어에 배포하려면 .NET 네이티브로 응용 프로그램을 컴파일해야 합니다. 익명 형식의 쿼리는 .NET 네이티브에서 성능이 저하됩니다.
 
-* `SaveChanges()` 성능을 최적화하려면 [ChangeTrackingStrategy.ChangingAndChangedNotifications](/dotnet/api/microsoft.entityframeworkcore.changetrackingstrategy)를 사용하고 엔터티 형식에서 [INotifyPropertyChanged](https://msdn.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanged.aspx), [INotifyPropertyChanging](https://msdn.microsoft.com/en-us/library/system.componentmodel.inotifypropertychanging.aspx) 및 [INotifyCollectionChanged](https://msdn.microsoft.com/en-us/library/system.collections.specialized.inotifycollectionchanged.aspx)를 구현하세요.
+* `SaveChanges()` 성능을 최적화하려면 [ChangeTrackingStrategy.ChangingAndChangedNotifications](/dotnet/api/microsoft.entityframeworkcore.changetrackingstrategy)를 사용하고 엔터티 형식에서 [INotifyPropertyChanged](https://msdn.microsoft.com/library/system.componentmodel.inotifypropertychanged.aspx), [INotifyPropertyChanging](https://msdn.microsoft.com/library/system.componentmodel.inotifypropertychanging.aspx) 및 [INotifyCollectionChanged](https://msdn.microsoft.com/library/system.collections.specialized.inotifycollectionchanged.aspx)를 구현하세요.
 
 ## <a name="report-issues"></a>문제 보고
 
