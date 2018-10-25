@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 11/15/2016
 ms.assetid: e079d4af-c455-4a14-8e15-a8471516d748
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: d5101d0622ddc2c90ddded16b9ec6cc4eb814c36
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: 729cf9b8c038ea2adba8c79c68d9f6fb1676fefa
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283838"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022186"
 ---
 # <a name="connection-resiliency"></a>연결 복원력
 
@@ -46,6 +46,10 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 솔루션이 수동으로 실행 해야 하는 모든 항목을 나타내는 대리자를 사용 하 여 실행 전략을 호출 하는 것입니다. 일시적인 오류가 발생하면, 실행 전략에서 대리자를 다시 호출합니다.
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/ConnectionResiliency/Program.cs#ManualTransaction)]
+
+이 방법은 앰비언트 트랜잭션을 사용 하 여 사용할 수도 있습니다.
+
+[!code-csharp[Main](../../../samples/core/Miscellaneous/ConnectionResiliency/Program.cs#AmbientTransaction)]
 
 ## <a name="transaction-commit-failure-and-the-idempotency-issue"></a>멱 등 성 문제와 트랜잭션 커밋 실패
 

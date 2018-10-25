@@ -3,12 +3,12 @@ title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: fb184fe8720b552a2050607bb17648f0413c31d1
-ms.sourcegitcommit: c568d33214fc25c76e02c8529a29da7a356b37b4
+ms.openlocfilehash: c87c1412cb23abf232663d7e4f44eef5f7818ea2
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/30/2018
-ms.locfileid: "47459593"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022391"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서
@@ -33,7 +33,7 @@ Entity Framework 6 대역 외 릴리스의 부족 이며.NET과 함께 제공 �
 
 ## <a name="2-cold-vs-warm-query-execution"></a>2. 콜드 vs입니다. 웜 쿼리 실행
 
-처음으로 지정된 된 모델에 대 한 모든 쿼리를 실행 하는 Entity Framework는 많은 로드 하 고 모델 유효성 검사는 백그라운드 작업을 수행 합니다. 자주 "콜드" 쿼리로이 첫 번째 쿼리를 참조합니다.  이미 로드 된 모델에 대해 추가 쿼리 "웜" 쿼리로 알려져 및 훨씬 더 빠릅니다.
+처음으로 지정된 된 모델에 대 한 모든 쿼리를 실행 하는 Entity Framework는 많은 로드 하 고 모델 유효성 검사는 백그라운드 작업을 수행 합니다. 자주 "콜드" 쿼리로이 첫 번째 쿼리를 참조합니다.  이미 로드 된 모델에 대해 추가 쿼리 "웜" 쿼리로 알려져 및 훨씬 더 빠릅니다.
 
 Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 된 위치를 간략하게 해 작업 Entity Framework 6에서 개선 되 고 있는 참조 보겠습니다.
 
@@ -145,7 +145,7 @@ EDMGen 또는 Entity Framework 파워 도구를 사용 하 여 Entity Framework 
 
 모델에는 응용 프로그램의 프로젝트에 직접 포함 하 고 빌드 전 이벤트 또는 T4 템플릿을 통해 뷰를 생성 하는 경우 뷰 생성 및 유효성 검사 수행 됩니다 프로젝트를 다시 작성 될 때마다 모델이 변경 되지 않은 경우에 합니다. 모델을 별도 어셈블리를 이동 하 고 응용 프로그램의 프로젝트에서 참조 하는 경우 할 수 있습니다 다른 변경 내용을 응용 프로그램 모델을 포함 하는 프로젝트를 다시 빌드하지 않고도.
 
-*참고:* 어셈블리를 클라이언트 프로젝트의 응용 프로그램 구성 파일에 모델에 대 한 연결 문자열을 복사 해야 구분 하 여 모델을 이동할 때.
+*참고:*  어셈블리를 클라이언트 프로젝트의 응용 프로그램 구성 파일에 모델에 대 한 연결 문자열을 복사 해야 구분 하 여 모델을 이동할 때.
 
 #### <a name="243-disable-validation-of-an-edmx-based-model"></a>2.4.3 edmx 기반 모델의 유효성 검사를 사용 하지 않도록 설정
 
@@ -180,10 +180,10 @@ Entity Framework는 다음과 같은 캐싱 기본 제공 합니다.
 사용 하지 않도록 설정 하는 자동 검색 변경 내용 찾기 예제:
 
 ``` csharp
-    context.Configuration.AutoDetectChangesEnabled = false;
-    var product = context.Products.Find(productId);
-    context.Configuration.AutoDetectChangesEnabled = true;
-    ...
+    context.Configuration.AutoDetectChangesEnabled = false;
+    var product = context.Products.Find(productId);
+    context.Configuration.AutoDetectChangesEnabled = true;
+    ...
 ```
 
 Find 메서드를 사용 하는 경우를 고려해 야 할 것 같습니다.
@@ -201,7 +201,7 @@ Entity Framework 6을 사용할 경우 개발자는 AddRange와 RemoveRange 컬�
 
 ### <a name="32-query-plan-caching"></a>3.2 쿼리 계획 캐싱
 
-쿼리를 실행 하 고, 처음으로 거치 내부 계획 컴파일러 개념적 쿼리 저장소 명령 (예를 들어 T-SQL을 SQL Server를 실행할 때 실행 되는)으로 변환 합니다.  쿼리 계획 캐싱을 사용 하는 경우 쿼리는 다음에 저장소를 실행 하는 명령 실행, 계획 컴파일러 무시에 대 한 쿼리 계획 캐시에서 직접 검색 됩니다.
+쿼리를 실행 하 고, 처음으로 거치 내부 계획 컴파일러 개념적 쿼리 저장소 명령 (예를 들어 T-SQL을 SQL Server를 실행할 때 실행 되는)으로 변환 합니다.  쿼리 계획 캐싱을 사용 하는 경우 쿼리는 다음에 저장소를 실행 하는 명령 실행, 계획 컴파일러 무시에 대 한 쿼리 계획 캐시에서 직접 검색 됩니다.
 
 쿼리 계획 캐시는 동일한 AppDomain 내에서 ObjectContext 인스턴스 간에 공유 됩니다. 쿼리 계획 캐싱을 활용 하려면 ObjectContext 인스턴스에 저장할 필요가 없습니다.
 
@@ -211,22 +211,22 @@ Entity Framework 6을 사용할 경우 개발자는 AddRange와 RemoveRange 컬�
 -   기본적으로 쿼리 계획 캐싱을 사용할 Entity SQL 쿼리에서 ObjectQuery 또는 EntityCommand를 통해 실행 여부를 합니다. 또한 기본적으로에 사용 LINQ to Entities 쿼리에서.NET 4.5에서 Entity Framework 및 Entity Framework 6
     -   쿼리 계획 캐싱 (EntityCommand에 ObjectQuery) EnablePlanCaching 속성을 false로 설정 하 여 비활성화할 수 있습니다. 예를 들어:
 ``` csharp
-                    var query = from customer in context.Customer
-                                where customer.CustomerId == id
-                                select new
-                                {
-                                    customer.CustomerId,
-                                    customer.Name
-                                };
-                    ObjectQuery oQuery = query as ObjectQuery;
-                    oQuery.EnablePlanCaching = false;
+                    var query = from customer in context.Customer
+                                where customer.CustomerId == id
+                                select new
+                                {
+                                    customer.CustomerId,
+                                    customer.Name
+                                };
+                    ObjectQuery oQuery = query as ObjectQuery;
+                    oQuery.EnablePlanCaching = false;
 ```
 -   매개 변수가 있는 쿼리에 대 한 매개 변수의 값을 변경도 소진 캐시 된 쿼리. 하지만 캐시에서 다른 항목을 소진 매개 변수 패싯 (예를 들어, 크기, 전체 자릿수 또는 소수)을 변경 합니다.
 -   Entity SQL을 사용 하 여 키의 일부인 쿼리 문자열에 표시 합니다. 쿼리를 전혀 변경 기능적으로 동일 쿼리 하는 경우에 다양 한 캐시 항목을 발생 합니다. 여기에 공백 또는 대/소문자를 변경 합니다.
 -   LINQ를 사용 하는 경우 키의 일부를 생성 하는 쿼리가 처리 됩니다. LINQ 식을 변경 하는 다른 키를 생성 하므로 됩니다.
 -   기타 기술적 제한이 적용 될 수 있습니다. 자세한 내용은 Autocompiled 쿼리를 참조 하세요.
 
-#### <a name="322------cache-eviction-algorithm"></a>3.2.2 캐시 제거 알고리즘
+#### <a name="322-cache-eviction-algorithm"></a>3.2.2 캐시 제거 알고리즘
 
 내부 알고리즘 작동 됩니다 하는 방법을 파악 해야 하는 경우 쿼리 계획 캐시 사용 안 함 또는 사용을 이해 합니다. 정리 알고리즘은 다음과 같습니다.
 
@@ -238,11 +238,11 @@ Entity Framework 6을 사용할 경우 개발자는 AddRange와 RemoveRange 컬�
 
 800 엔터티를 캐시 하지만 캐시의 경우 캐시 제거 타이머 시작 되는 60 초가이 타이머가 시작 된 후 스윕만 됩니다. 즉, 최대 60 초 동안 매우 큰 캐시 커질 수 있습니다.
 
-#### <a name="323-------test-metrics-demonstrating-query-plan-caching-performance"></a>3.2.3 테스트 메트릭을 쿼리 계획 캐싱 성능 데모
+#### <a name="323-test-metrics-demonstrating-query-plan-caching-performance"></a>3.2.3 테스트 메트릭을 쿼리 계획 캐싱 성능 데모
 
 쿼리 계획 캐싱 응용 프로그램의 성능에 영향을 보여 주기 위해 수행한 테스트 여기 Navision 모델에 대 한 Entity SQL 쿼리 횟수를 실행 했습니다. Navision 모델과 실행 된 쿼리의 종류에 대 한 부록을 참조 하세요. 이 테스트에서는 먼저 쿼리 목록을 반복 하 고 (캐싱 사용) 하는 경우 캐시에 추가 하려면 각각 두 번 실행 합니다. 이 단계가 시간 초과 하지 않습니다. 캐시 비우기; 수행 하도록 허용 하려면 60 초 이상의 주 스레드가 절전 모드에서는 다음으로, 마지막으로 캐시 된 쿼리를 실행 하는 두 번째 목록에 통해 반복 합니다. 또한 쿼리의 각 집합은 정확 하 게 구한 시간 쿼리 계획 캐시에서 지정 된 혜택을 반영 되도록 실행 되기 전에 플러시 그 SQL Server 계획 캐시 합니다.
 
-##### <a name="3231-------test-results"></a>3.2.3.1 테스트 결과
+##### <a name="3231-test-results"></a>3.2.3.1 테스트 결과
 
 | 테스트                                                                   | EF5 캐시 없음 | EF5 캐시 | EF6 캐시 없음 | EF6 캐시 |
 |:-----------------------------------------------------------------------|:-------------|:-----------|:-------------|:-----------|
@@ -266,7 +266,7 @@ CompiledQuery는 계획 캐시를 사용 하 여 LINQ 쿼리를 실제로 이기
 
 CompiledQuery, 즉 사용 요구 사항이 정적 인스턴스 하 고 문제를 작성 한다면를 사용 하는 경우 수행 해야 하는 두 가지 고려 사항이 있습니다. 여기서 이러한 두 가지 고려 사항에 대 한 자세한 설명은 다음과 같습니다.
 
-#### <a name="331-------use-static-compiledquery-instances"></a>3.3.1 정적 CompiledQuery 인스턴스를 사용 합니다.
+#### <a name="331-use-static-compiledquery-instances"></a>3.3.1 정적 CompiledQuery 인스턴스를 사용 합니다.
 
 LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데이터베이스에서 데이터를 인출 해야 할 때마다 작업을 수행 하려고 하지 않습니다. CompiledQuery 인스턴스 한 번 컴파일하고 여러 번 실행 수 있지만 주의 기울여야 하 고 확보 될 때마다 반복 해 서이 컴파일하는 대신 동일한 CompiledQuery 인스턴스를 다시 사용 합니다. CompiledQuery 인스턴스를 저장 하는 정적 멤버를 사용 하 되 필요 합니다. 그렇지 않으면 모든 혜택을 볼 수 없습니다.
 
@@ -292,7 +292,7 @@ LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데�
 
 이 경우 메서드가 호출 될 때마다 즉석에서 새 CompiledQuery 인스턴스를 만들가 있습니다. 저장소 명령은 쿼리 계획 캐시에서 검색 하 여 성능을 표시 하는 대신 새 인스턴스를 만들 때마다는 CompiledQuery 계획 컴파일러를 통해 전환 됩니다. 사실, 있습니다 됩니다 수 오염 시 키 지 새 CompiledQuery 항목을 사용 하 여 쿼리 계획 캐시 될 때마다 호출 됩니다.
 
-메서드가 호출 될 때마다 동일한 컴파일된 쿼리를 호출 하는 컴파일된 쿼리를 정적 인스턴스를 만들어 원하는 대신 합니다. 한 가지 방법은 개체 컨텍스트의 멤버로 CompiledQuery 인스턴스를 추가 하 여 이기 때문입니다.  할 수 있습니다 다음 가지 작은 클리너를 CompiledQuery 도우미 메서드를 통해 액세스 하 여:
+메서드가 호출 될 때마다 동일한 컴파일된 쿼리를 호출 하는 컴파일된 쿼리를 정적 인스턴스를 만들어 원하는 대신 합니다. 한 가지 방법은 개체 컨텍스트의 멤버로 CompiledQuery 인스턴스를 추가 하 여 이기 때문입니다.  할 수 있습니다 다음 가지 작은 클리너를 CompiledQuery 도우미 메서드를 통해 액세스 하 여:
 
 ``` csharp
     public partial class NorthwindEntities : ObjectContext
@@ -311,10 +311,10 @@ LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데�
 이 도우미 메서드를 다음과 같이 호출할 수는:
 
 ``` csharp
-    this.productsGrid.DataSource = context.GetProductsForCategory(selectedCategory);
+    this.productsGrid.DataSource = context.GetProductsForCategory(selectedCategory);
 ```
 
-#### <a name="332-------composing-over-a-compiledquery"></a>3.3.2 CompiledQuery를 통해 작성
+#### <a name="332-composing-over-a-compiledquery"></a>3.3.2 CompiledQuery를 통해 작성
 
 모든 LINQ 쿼리를 작성 하는 기능은 매우 유용 합니다. 이렇게 하려면 단순히 메서드를 호출 하면 IQueryable 후와 같은 *skip ()* 하거나 *count ()* 합니다. 그러나 수행 하므로 기본적으로 새 IQueryable 개체를 반환 합니다. 기술적으로 CompiledQuery 위에 작성에서 중지 하는 것은, 이렇게 하면 새 IQueryable 개체를 생성 하는 계획 컴파일러를 통해 전달이 다시 필요 합니다.
 
@@ -345,7 +345,7 @@ LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데�
     }
 ```
 
- 다시이 컴파일이이 방지 하려면 가능한 필터를 고려해 야 할 CompiledQuery 다시 작성할 수 있습니다.
+ 다시이 컴파일이이 방지 하려면 가능한 필터를 고려해 야 할 CompiledQuery 다시 작성할 수 있습니다.
 
 ``` csharp
     private static readonly Func<NorthwindEntities, int, int?, string, IQueryable<Customer>> customersForEmployeeWithFiltersCQ = CompiledQuery.Compile(
@@ -377,7 +377,7 @@ LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데�
     }
 ```
 
- 여기 단점은 생성 된 저장소 명령은 항상 null 확인을 사용 하 여 필터는 있지만 최적화 하기 위해 데이터베이스 서버에 대 한 간단한 여야 합니다.
+ 여기 단점은 생성 된 저장소 명령은 항상 null 확인을 사용 하 여 필터는 있지만 최적화 하기 위해 데이터베이스 서버에 대 한 간단한 여야 합니다.
 
 ``` SQL
 ...
@@ -572,7 +572,7 @@ using (var context = new MyContext())
 
 ### <a name="51-disabling-change-tracking-to-reduce-state-management-overhead"></a>5.1 변경 내용 추적을 상태 관리 오버 헤드를 줄이고 사용 하지 않도록 설정
 
-읽기 전용 시나리오에는 ObjectStateManager에 개체를 로드 하는 오버 헤드를 방지 하려면 하는 경우 "No 추적" 쿼리를 실행할 수 있습니다.  쿼리 수준에서 변경 내용 추적을 해제할 수 있습니다.
+읽기 전용 시나리오에는 ObjectStateManager에 개체를 로드 하는 오버 헤드를 방지 하려면 하는 경우 "No 추적" 쿼리를 실행할 수 있습니다.  쿼리 수준에서 변경 내용 추적을 해제할 수 있습니다.
 
 그러나는 변경 추적을 사용 하지 않도록 설정 하 여 효과적으로 끄는 개체 캐시 note 합니다. 엔터티를 쿼리 하는 경우 materialization ObjectStateManager를 이전에 구체화 된 쿼리 결과 풀링 하 여 건너뛸 수 없습니다 했습니다. 동일한 컨텍스트에서 동일한 엔터티에 대 한 반복적으로 쿼리 하는 경우 성능 변경 내용 추적 사용의 이점이 실제로 표시 될 수 있습니다.
 
@@ -610,7 +610,7 @@ NoTracking를 쿼리에서 AsNoTracking() 메서드에 대 한 호출을 연결 
                                 select p;
 ```
 
-### <a name="52-test-metrics-demonstrating-the-performance-benefit-of-notracking-queries"></a>5.2 NoTracking 쿼리의 성능 이점을 보여 주는 테스트 메트릭
+### <a name="52test-metrics-demonstrating-the-performance-benefit-of-notracking-queries"></a>5.2 NoTracking 쿼리의 성능 이점을 보여 주는 테스트 메트릭
 
 이 테스트는 ObjectStateManager Navision 모델에 대 한 NoTracking 쿼리에 대 한 추적을 비교 하 여 입력 하는 대신 살펴봅니다. Navision 모델과 실행 된 쿼리의 종류에 대 한 부록을 참조 하세요. 이 테스트에서는 쿼리 목록을 반복 하 고 각각 두 번 실행 합니다. "AppendOnly"의 기본 병합 옵션을 사용 하 여 테스트, NoTracking 쿼리를 사용 하 여 한 번 및 한 번의 두 가지 변형이 발생 했습니다. 각 변형 3 번 실행 하 고 실행의 평균 값을 사용 합니다. 테스트 간에 SQL Server에서 쿼리 캐시의 선택을 취소 하 고 다음 명령을 실행 하 여 tempdb를 축소:
 
@@ -643,7 +643,7 @@ Entity Framework는 여러 가지 방법으로 쿼리를 제공 합니다. 다�
 -   SqlQuery 합니다.
 -   CompiledQuery 합니다.
 
-### <a name="61-------linq-to-entities-queries"></a>6.1 LINQ to Entities 쿼리
+### <a name="61-linq-to-entities-queries"></a>6.1 LINQ to Entities 쿼리
 
 ``` csharp
 var q = context.Products.Where(p => p.Category.CategoryName == "Beverages");
@@ -662,7 +662,7 @@ var q = context.Products.Where(p => p.Category.CategoryName == "Beverages");
     -   Entity SQL에서 간단한 OUTER JOIN 문 보다 더 복잡 한 쿼리 패턴 DefaultIfEmpty OUTER JOIN 쿼리를 사용 하 여 발생 합니다.
     -   여전히 사용할 수 없는 일반 패턴 일치와 유사 합니다.
 
-### <a name="62-------no-tracking-linq-to-entities-queries"></a>6.2 추적 안 함 LINQ to Entities 쿼리에서
+### <a name="62-no-tracking-linq-to-entities-queries"></a>6.2 추적 안 함 LINQ to Entities 쿼리에서
 
 경우 컨텍스트는 ObjectContext 파생 됩니다.
 
@@ -699,7 +699,7 @@ var q = context.Products.Where(p => p.Category.CategoryName == "Beverages").Sele
 
 이 특정 쿼리 NoTracking, 되 고 명시적으로 지정 하지 않습니다 하지만를 구체화 하지는 때문으로 알려진 개체 상태 관리자 다음 구체화 된 결과 형식 추적 되지 않습니다.
 
-### <a name="63-------entity-sql-over-an-objectquery"></a>6.3 엔터티는 ObjectQuery 상의 SQL
+### <a name="63-entity-sql-over-an-objectquery"></a>6.3 엔터티는 ObjectQuery 상의 SQL
 
 ``` csharp
 ObjectQuery<Product> products = context.Products.Where("it.Category.CategoryName = 'Beverages'");
@@ -715,7 +715,7 @@ ObjectQuery<Product> products = context.Products.Where("it.Category.CategoryName
 
 -   언어에 빌드되는 쿼리 구문을 보다 사용자 오류 발생 가능성이 더는 텍스트 기반 쿼리 문자열을 포함 합니다.
 
-### <a name="64-------entity-sql-over-an-entity-command"></a>6.4 엔터티는 엔터티 명령을 통해 SQL
+### <a name="64-entity-sql-over-an-entity-command"></a>6.4 엔터티는 엔터티 명령을 통해 SQL
 
 ``` csharp
 EntityCommand cmd = eConn.CreateCommand();
@@ -740,7 +740,7 @@ using (EntityDataReader reader = cmd.ExecuteReader(CommandBehavior.SequentialAcc
 -   CUD 작업에 적합 하지 않습니다.
 -   결과 자동으로 구체화 되지 않은 및 데이터 판독기에서 읽을 수 있어야 합니다.
 
-### <a name="65-------sqlquery-and-executestorequery"></a>6.5 SqlQuery 및 ExecuteStoreQuery
+### <a name="65-sqlquery-and-executestorequery"></a>6.5 SqlQuery 및 ExecuteStoreQuery
 
 데이터베이스에서 SqlQuery:
 
@@ -778,7 +778,7 @@ var beverages = context.ExecuteStoreQuery<Product>(
 -   쿼리는 저장소 의미 체계가 개념적 구문을 대신 사용 하 여 특정 백 엔드에 연결 됩니다.
 -   상속 존재 하는 경우 기존된 쿼리를 요청 된 형식에 대 한 매핑 조건에 대 한 계정 해야 합니다.
 
-### <a name="66-------compiledquery"></a>6.6 CompiledQuery
+### <a name="66-compiledquery"></a>6.6 CompiledQuery
 
 ``` csharp
 private static readonly Func<NorthwindEntities, string, IQueryable<Product>> productsForCategoryCQ = CompiledQuery.Compile(
@@ -801,7 +801,7 @@ var q = context.InvokeProductsForCategoryCQ("Beverages");
 -   컴파일된 쿼리를 기반으로 작성 하는 경우 성능 향상 손실 됩니다.
 -   예를 들어, 익명 형식 프로젝션 CompiledQuery-으로 일부 LINQ 쿼리를 쓸 수 없습니다.
 
-### <a name="67-------performance-comparison-of-different-query-options"></a>6.7 다른 쿼리 옵션의 성능 비교
+### <a name="67-performance-comparison-of-different-query-options"></a>6.7 다른 쿼리 옵션의 성능 비교
 
 테스트에 컨텍스트를 만드는 적합 하지 않습니다 하는 간단한 microbenchmarks 배치한 것입니다. 5,000 번 통제 된 환경에서 캐시 되지 않은 엔터티 집합에 대 한 쿼리를 측정 했습니다. 이러한 숫자는 경고와 함께 수행할: 응용 프로그램에 의해 생성 된 실제 숫자를 반영 하지 않습니다 하지만 대신 얼마나는 다른 쿼리 옵션을 비교 하면 성능 차이 매우 정확 하 게 측정 사과-에-사과, 새 컨텍스트를 만드는 비용을 제외 합니다.
 
@@ -863,7 +863,7 @@ Microbenchmarks은 코드의 작은 변화에 매우 민감합니다. 추가 인
 
 ## <a name="7-design-time-performance-considerations"></a>7 디자인 시간 성능 고려 사항
 
-### <a name="71-------inheritance-strategies"></a>7.1 상속 전략
+### <a name="71-inheritance-strategies"></a>7.1 상속 전략
 
 Entity Framework를 사용 하는 경우 다른 성능 고려 사항에 사용할 상속 전략입니다. Entity Framework에는 3 가지 기본 유형의 상속과 조합을 지원합니다.
 
@@ -871,11 +871,11 @@ Entity Framework를 사용 하는 경우 다른 성능 고려 사항에 사용�
 -   테이블 당 형식 TPT ()-데이터베이스에서 각 유형에 고유한 테이블에 있는 자식 테이블만 부모 테이블을 포함 하지 않는 열을 정의 합니다.
 -   테이블 당 클래스 TPC ()-데이터베이스에서 각 유형에 고유한 전체 테이블에 있는 자식 테이블에는 부모 형식에 정의 된 것을 비롯 한 모든 필드를 정의 합니다.
 
-TPT 상속을 사용 하는 모델에서 생성 되는 쿼리를 다른 상속 전략을 저장소에서 긴 실행 시간에 발생할 수 있습니다를 사용 하 여 생성 되는 것 보다 더 복잡 한 됩니다.  일반적으로 TPT 모델에 대해 쿼리를 생성 하 고 결과 개체를 구체화 하려면 시간이 오래 걸립니다.
+TPT 상속을 사용 하는 모델에서 생성 되는 쿼리를 다른 상속 전략을 저장소에서 긴 실행 시간에 발생할 수 있습니다를 사용 하 여 생성 되는 것 보다 더 복잡 한 됩니다.  일반적으로 TPT 모델에 대해 쿼리를 생성 하 고 결과 개체를 구체화 하려면 시간이 오래 걸립니다.
 
 "성능 고려 사항을 참조 Entity Framework에서 TPT (형식당 하나의 테이블) 상속을 사용 하는 경우" MSDN 블로그 게시: \<http://blogs.msdn.com/b/adonet/archive/2010/08/17/performance-considerations-when-using-tpt-table-per-type-inheritance-in-the-entity-framework.aspx>합니다.
 
-#### <a name="711-------avoiding-tpt-in-model-first-or-code-first-applications"></a>7.1.1 Model First 또는 Code First 응용 프로그램에서 TPT 방지
+#### <a name="711-avoiding-tpt-in-model-first-or-code-first-applications"></a>7.1.1 Model First 또는 Code First 응용 프로그램에서 TPT 방지
 
 TPT 스키마가 있는 기존 데이터베이스 모델을 만들 때 다양 한 옵션 않아도 됩니다. 하지만 성능 문제에 대 한 TPT 상속 Model First 또는 Code First를 사용 하 여 응용 프로그램을 만들 때 피해 야 합니다.
 
@@ -883,7 +883,7 @@ TPT 스키마가 있는 기존 데이터베이스 모델을 만들 때 다양 �
 
 Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하는 경우 EF는 기본적으로 TPH를 사용 하는, 않아 상속 계층의 모든 엔터티에 동일한 테이블에 매핑할 수 됩니다. MSDN Magazine의 "코드 엔터티 Framework4.1에서 첫 번째." 문서 "매핑 Fluent API를 사용한" 섹션을 참조 하세요 ( [http://msdn.microsoft.com/magazine/hh126815.aspx](https://msdn.microsoft.com/magazine/hh126815.aspx)) 대 한 자세한 내용은 합니다.
 
-### <a name="72-------upgrading-from-ef4-to-improve-model-generation-time"></a>7.2 모델 생성을 개선 하기 위해 EF4에서 업그레이드 시간
+### <a name="72-upgrading-from-ef4-to-improve-model-generation-time"></a>7.2 모델 생성을 개선 하기 위해 EF4에서 업그레이드 시간
 
 모델의 저장소 계층 (SSDL)를 생성 하는 알고리즘에는 SQL Server 관련 개선은 Visual Studio 2010 SP1을 설치할 때 Entity Framework 5 및 6에서 Entity Framework 4 업데이트로 제공 됩니다. 다음 테스트 결과 Navision 모델 경우이 매우 큰 모델을 생성 하는 경우 향상을 보여 줍니다. 부록 C에 대 한 자세한 내용은 참조 하십시오.
 
@@ -899,13 +899,13 @@ Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하�
 
 주목할 만한 가치가 SSDL을 생성 하는 경우 부하는 거의 완전히 소비 SQL Server 클라이언트 개발 컴퓨터 대기 하는 동안 서버에서 돌아와서 결과 대 한 유휴 상태입니다. Dba는이 개선 주셔서 감사 드리며 특히 해야 합니다. 모델 생성의 전체 비용에 기본적으로 뷰 생성에서 이제는 주목할 만한 이기도 합니다.
 
-### <a name="73-------splitting-large-models-with-database-first-and-model-first"></a>7.3 데이터베이스를 사용 하 여 큰 모델을 먼저 분할 및 Model First
+### <a name="73-splitting-large-models-with-database-first-and-model-first"></a>7.3 데이터베이스를 사용 하 여 큰 모델을 먼저 분할 및 Model First
 
 모델 크기 증가, 디자이너 화면에 복잡 하 고 사용 하기 어려운 됩니다. 일반적으로 효과적으로 디자이너를 사용 하는 너무 큰 300 개 이상의 엔터티를 사용 하 여 모델을 살펴봅니다. 큰 모델을 분할 하기 위한 여러 옵션을 설명 하는 다음 블로그 게시물: \<http://blogs.msdn.com/b/adonet/archive/2008/11/25/working-with-large-models-in-entity-framework-part-2.aspx>합니다.
 
 Entity Framework의 첫 번째 버전에 대 한 게시물 쓴 있지만 단계는 여전히 적용 됩니다.
 
-### <a name="74-------performance-considerations-with-the-entity-data-source-control"></a>7.4 엔터티 데이터 소스 컨트롤을 사용 하 여 성능 고려 사항
+### <a name="74-performance-considerations-with-the-entity-data-source-control"></a>7.4 엔터티 데이터 소스 컨트롤을 사용 하 여 성능 고려 사항
 
 EntityDataSource 컨트롤을 사용 하 여 웹 응용 프로그램의 성능을 크게 저하 다중 스레드 성능 및 스트레스 테스트 사례 확인 되었습니다. 기본 원인은 EntityDataSource 반복적으로 호출 하는 MetadataWorkspace.LoadFromAssembly 엔터티로 사용할 형식을 검색 하는 웹 응용 프로그램에서 참조 하는 어셈블리에서입니다.
 
@@ -913,7 +913,7 @@ EntityDataSource 컨트롤을 사용 하 여 웹 응용 프로그램의 성능�
 
 또한 ContextTypeName 필드 설정 리플렉션을 통해 어셈블리에서 형식을 로드할 수 없습니다 하는 경우.NET 4.0에서 EntityDataSource ReflectionTypeLoadException을 throw 하는 위치는 기능적 문제가 발생을 하지 않습니다. 이 문제는.NET 4.5에서 수정 되었습니다.
 
-### <a name="75-------poco-entities-and-change-tracking-proxies"></a>7.5 POCO 엔터티와 변경 내용 추적 프록시
+### <a name="75-poco-entities-and-change-tracking-proxies"></a>7.5 POCO 엔터티와 변경 내용 추적 프록시
 
 Entity Framework를 사용 하면 데이터 클래스 자체를 수정 하지 않고 데이터 모델과 함께 사용자 지정 데이터 클래스를 사용할 수 있습니다. 즉, 기존 도메인 개체 등의 POCO(Plain Old CLR Object)를 데이터 모델과 함께 사용할 수 있습니다. 데이터 모델에서 정의 된 엔터티에 매핑되는 이러한 POCO 데이터 클래스 (지 속성 무시 개체 라고도), 대부분의 동일한 쿼리를 지 원하는, 삽입, 업데이트 및 삭제 동작 엔터티 데이터 모델 도구에서 생성 되는 엔터티 형식으로 합니다.
 
@@ -1089,7 +1089,7 @@ WHERE [Extent1].[CustomerID] = @EntityKeyValue1',N'@EntityKeyValue1 nchar(5)',@E
 | 데이터베이스 멀리 코드를 실행 하 시겠습니까? (향상 된 네트워크 대기 시간)  | **이상** 네트워크 대기 시간 문제가 없는 경우-지연 로드를 사용 하 여 코드를 단순화 될 수 있습니다. 응용 프로그램의 토폴로지 변경 될 수 있음을, 부여에 대 한 데이터베이스 근접을 사용 하지 있도록 해야 합니다. <br/> <br/> **예** -네트워크 전용인 문제가 시나리오에 잘 맞는 것을 결정할 수 있습니다. 일반적으로 더 적은 왕복 필요 하기 때문에 선행 로딩은 향상 됩니다.                                                                                                                                                                                                      |
 
 
-#### <a name="822-------performance-concerns-with-multiple-includes"></a>8.2.2 성능 문제가 여러 포함
+#### <a name="822-performance-concerns-with-multiple-includes"></a>8.2.2 성능 문제가 여러 포함
 
 서버 응답 시간 문제를 포함 하는 성능 관련 질문을 제기 하는 경우 문제에 대 한 원본은 자주 쿼리와 여러 Include 문입니다. 쿼리에서 관련된 엔터티를 비롯 한 강력한 상태인 동안에 내부적으로 발생 하는 상황을 이해 해야 합니다.
 
@@ -1147,7 +1147,7 @@ using (NorthwindEntities context = new NorthwindEntities())
 
 ## <a name="9-other-considerations"></a>9 기타 고려 사항
 
-### <a name="91------server-garbage-collection"></a>9.1 서버 가비지 수집
+### <a name="91-server-garbage-collection"></a>9.1 서버 가비지 수집
 
 일부 사용자는 가비지 수집기가 제대로 구성 되지 않은 경우 예상 되는 병렬 처리를 제한 하는 리소스 경합을 경험할 수 있습니다. EF는 다중 스레드 시나리오에서 사용 되는 서버 쪽 체제와 응용 프로그램에서 유사한, 때마다 서버 가비지 수집을 사용 하도록 설정 해야 합니다. 이 작업은 응용 프로그램 구성 파일의 간단한 설정을 통해 수행 됩니다.
 
@@ -1162,7 +1162,7 @@ using (NorthwindEntities context = new NorthwindEntities())
 
 이 프로그램 스레드 경합 감소 하 고 CPU 포화 시나리오에서 최대 30% 여 처리량을 늘릴 해야 합니다. 일반적인 측면에서 항상 응용 프로그램의 동작 클래식 가비지 컬렉션 (UI 및 클라이언트 쪽 시나리오에 대해 더 잘 조정 된)를 사용 하 여 서버 가비지 컬렉션 뿐만 아니라 테스트 해야 합니다.
 
-### <a name="92------autodetectchanges"></a>9.2 AutoDetectChanges
+### <a name="92-autodetectchanges"></a>9.2 AutoDetectChanges
 
 앞에서 설명한 대로 Entity Framework 개체 캐시에 엔터티가 많은 경우 성능 문제를 표시할 수 있습니다. 추가, 제거, 찾기, 항목 및 SaveChanges를 같은 특정 작업을 많은 양의 개체 캐시 크기 수에 따라 CPU 사용할 수 있는 DetectChanges에 대 한 호출을 트리거합니다. 이 원인은 개체 캐시 하 고 계속 해 서 개체 상태 관리자 봅니다 가능한 생성 된 데이터는 다양 한 시나리오에서 올바른 것으로 보장 됩니다 있도록 컨텍스트에 수행 된 각 작업에 동기화 합니다.
 
@@ -1183,11 +1183,11 @@ finally
 
 AutoDetectChanges를 끄기 전에 것이 좋습니다 이해는 Entity Framework 엔터티에서 수행 되는 변경에 대 한 특정 정보를 추적할 수 없게 발생할 수 있습니다. 잘못 처리 하는 경우 응용 프로그램에서 데이터 불일치가 발생할 수 있습니다. AutoDetectChanges 해제에 대 한 자세한 내용은 읽을 \<http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/>합니다.
 
-### <a name="93------context-per-request"></a>9.3 요청당 컨텍스트
+### <a name="93-context-per-request"></a>9.3 요청당 컨텍스트
 
 Entity Framework 컨텍스트는 최적의 성능을 제공 하기 위해 단기 인스턴스 처럼 사용할 것입니다. 컨텍스트는 짧을 것으로 예상 활성 상태로 유지 하 고 삭제와 같이 매우 간단 하 고 가능한 메타 데이터를 reutilize에 구현 되었습니다. 웹 시나리오에서는이 점을 명심 하 여 단일 요청 기간 보다는 컨텍스트가 제공 되지 것입니다. 마찬가지로, 웹이 아닌 시나리오에서 컨텍스트를 삭제 해야 Entity Framework의 캐싱 여러 수준에 대 한 이해에 따라 합니다. 일반적으로 하나는 응용 프로그램 뿐만 아니라 스레드당 컨텍스트 및 정적 컨텍스트의 수명 동안 컨텍스트 인스턴스가 있으면 피해 야 합니다.
 
-### <a name="94------database-null-semantics"></a>9.4 데이터베이스 null 의미 체계
+### <a name="94-database-null-semantics"></a>9.4 데이터베이스 null 의미 체계
 
 기본적으로 entity Framework C에는 SQL 코드를 생성 합니다\# null 비교 의미 체계. 다음 예제 쿼리에서를 것이 좋습니다.
 
@@ -1224,18 +1224,18 @@ Entity Framework 컨텍스트는 최적의 성능을 제공 하기 위해 단기
 
 위 예제 쿼리와 성능 차이가 통제 된 환경에서 실행 하는 microbenchmark의 2% 보다 작은 경우
 
-### <a name="95------async"></a>9.5 비동기
+### <a name="95-async"></a>9.5 비동기
 
 .NET 4.5 이상을 실행 하는 경우 비동기 작업의 entity Framework 6 도입 된 지원. 대부분의 경우 IO 있는 응용 프로그램 관련 경합 비동기 쿼리를 사용 하 여에서 가장 많은 혜택을 작업을 저장 합니다. 응용 프로그램 IO 경합에서 문제가 발생 하지 않는, 경우 비동기 사용은 최상의 경우에서 동기적으로 실행 최악의 경우 또는 비동기 호출, 처럼 동일한 기간에서 결과 반환, 단순히 비동기 작업 실행을 지연 및 추가 tim 추가 e 시나리오의 완료를 합니다.
 
 방문 비동기 응용 프로그램의 성능이 향상 됩니다 하는 경우를 결정 하는 데 도움이 되는 비동기 프로그래밍 작업에 대 한 내용은 [http://msdn.microsoft.com/library/hh191443.aspx ](https://msdn.microsoft.com/library/hh191443.aspx)합니다. Entity Framework에서 비동기 작업의 자세한 사용 방법은 참조 하세요 [비동기 쿼리 및 저장](~/ef6/fundamentals/async.md
 )합니다.
 
-### <a name="96------ngen"></a>9.6 NGEN
+### <a name="96-ngen"></a>9.6 NGEN
 
 Entity Framework 6.NET framework의 기본 설치에서 제공 되지 않습니다. 이와 같이 엔터티 프레임 워크 어셈블리에 없는 다른 MSIL 어셈블리와 동일한 JIT'ing 비용에 따라 모든 Entity Framework 코드 임을 의미는 기본적으로 ngen 합니다. 또한 개발 및 프로덕션 환경에서 응용 프로그램의 콜드 시작 하는 동안 F5 환경을 저하 될 수 있습니다이 있습니다. JIT'ing CPU 및 메모리 비용을 절감 하기 위해 적절 하 게 이미지를 Entity Framework ngen는 것이 좋습니다. NGEN 사용 하 여 Entity Framework 6의 시작 성능을 개선 하는 방법에 대 한 자세한 내용은 참조 하세요. [NGen 사용 하 여 시작 성능을 개선](~/ef6/fundamentals/performance/ngen.md)합니다.
 
-### <a name="97------code-first-versus-edmx"></a>9.7 code First EDMX 비교
+### <a name="97-code-first-versus-edmx"></a>9.7 code First EDMX 비교
 
 개체 지향 프로그래밍 및 관계형 데이터베이스 간의 매핑을 개념적 모델 (개체)와 저장소 스키마 (데이터베이스)의 메모리 내 표현 함으로써 간의 임피던스 불일치 문제에 대 한 entity Framework 이유는 두 가지입니다. 간단히는 엔터티 데이터 모델 또는 EDM이 메타이 데이터 라고 합니다. 이 EDM에서 Entity Framework 왕복 데이터 뷰는 데이터베이스에 메모리의 개체에서 파생 되며 다시 합니다.
 
@@ -1251,11 +1251,11 @@ EDMX와 Code First를 사용 하도록 선택 때 Code First에서 도입 된 �
 
 Entity Framework를 사용 하 여 성능 문제를 발생 하는 경우에 응용 프로그램은 해당 시간을 소모 하는 상황을 확인 하려면 Visual Studio에 기본 제공 하는 것 처럼 프로파일러를 사용할 수 있습니다. "ADO.NET Entity Framework-1 부의 성능 알아보기" 블로그 게시물에서 원형 차트를 생성 하는 데에서는 도구입니다 ( \<http://blogs.msdn.com/b/adonet/archive/2008/02/04/exploring-the-performance-of-the-ado-net-entity-framework-part-1.aspx>) Entity Framework 동작 콜드 및 웜 쿼리 중의 시간을 소모 하는 위치를 보여 주는 합니다.
 
-데이터 및 모델링 고객 자문 팀에서 작성 된 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 성능 문제를 조사 하는 프로파일러 사용 방법의 실제 예제를 보여 줍니다.  \<http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>. Windows 응용 프로그램에 대 한이 게시물 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 하는 경우 Windows 성능 레코더 WPR () 및 Windows 성능 분석기 (WPA) 도구를 Visual Studio에서 작업 보다 더 잘 작동할 수 있습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [http://www.microsoft.com/en-US/download/details.aspx?id=39982](https://www.microsoft.com/en-US/download/details.aspx?id=39982)).
+데이터 및 모델링 고객 자문 팀에서 작성 된 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 성능 문제를 조사 하는 프로파일러 사용 방법의 실제 예제를 보여 줍니다.  \<http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>. Windows 응용 프로그램에 대 한이 게시물 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 하는 경우 Windows 성능 레코더 WPR () 및 Windows 성능 분석기 (WPA) 도구를 Visual Studio에서 작업 보다 더 잘 작동할 수 있습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [http://www.microsoft.com/download/details.aspx?id=39982](https://www.microsoft.com/download/details.aspx?id=39982)).
 
 ### <a name="102-applicationdatabase-profiling"></a>10.2 응용 프로그램/데이터베이스 프로 파일링
 
-Visual Studio에 기본 제공 profiler와 같은 도구는 응용 프로그램은 시간을 소모 하는 상황을 알려 줍니다.  다른 유형의 프로파일러는 사용 가능한 프로덕션 또는 요구 사항에 따라 사전 프로덕션에서 실행 중인 응용 프로그램의 동적 분석을 수행 하 고 일반적인 문제 및 데이터베이스 액세스의 안티 패턴을 찾습니다.
+Visual Studio에 기본 제공 profiler와 같은 도구는 응용 프로그램은 시간을 소모 하는 상황을 알려 줍니다.  다른 유형의 프로파일러는 사용 가능한 프로덕션 또는 요구 사항에 따라 사전 프로덕션에서 실행 중인 응용 프로그램의 동적 분석을 수행 하 고 일반적인 문제 및 데이터베이스 액세스의 안티 패턴을 찾습니다.
 
 상업적으로 사용할 수 있는 두 가지 프로파일러는 Entity Framework Profiler ( \<http://efprof.com>) ORMProfiler 및 ( \<http://ormprofiler.com>)합니다.
 
@@ -1298,9 +1298,9 @@ Entity Framework 6을 사용 하는 경우 또한 기본 제공 로깅 기능을
 
 이 환경에는 클라이언트 응용 프로그램에서 별도 컴퓨터에서 데이터베이스를 사용 하 여 2 대의 컴퓨터 설치를 사용 합니다. 컴퓨터를 동일한 랙에 되므로 네트워크 대기 시간은 비교적 적은 있지만 단일 컴퓨터 환경 보다 좀 더 현실적인 합니다.
 
-#### <a name="1111-------app-server"></a>11.1.1 앱 서버
+#### <a name="1111-app-server"></a>11.1.1 앱 서버
 
-##### <a name="11111------software-environment"></a>11.1.1.1 소프트웨어 환경
+##### <a name="11111-software-environment"></a>11.1.1.1 소프트웨어 환경
 
 -   Entity Framework 4 소프트웨어 환경
     -   OS 이름: Windows Server 2008 R2 Enterprise SP1
@@ -1310,26 +1310,26 @@ Entity Framework 6을 사용 하는 경우 또한 기본 제공 로깅 기능을
     -   OS 이름: Windows 8.1 Enterprise
     -   Visual Studio 2013 – Ultimate입니다.
 
-##### <a name="11112------hardware-environment"></a>11.1.1.2 하드웨어 환경
+##### <a name="11112-hardware-environment"></a>11.1.1.2 하드웨어 환경
 
 -   이중 프로세서: intel (r) 제온 CPU L5520 W3530 @ 2.27ghz, 2261 Mhz8 GHz, 4 코어, 84 논리 프로세서.
 -   2412 GB RamRAM 합니다.
 -   136 GB SCSI250GB SATA 7200 rpm 3 GB/s 드라이브 4 개의 파티션으로 분할 합니다.
 
-#### <a name="1112-------db-server"></a>11.1.2 DB 서버
+#### <a name="1112-db-server"></a>11.1.2 DB 서버
 
-##### <a name="11121------software-environment"></a>11.1.2.1 소프트웨어 환경
+##### <a name="11121-software-environment"></a>11.1.2.1 소프트웨어 환경
 
 -   OS 이름: Windows Server 2008 R28.1 Enterprise SP1
 -   SQL Server 2008 R22012 합니다.
 
-##### <a name="11122------hardware-environment"></a>11.1.2.2 하드웨어 환경
+##### <a name="11122-hardware-environment"></a>11.1.2.2 하드웨어 환경
 
 -   단일 프로세서: intel (r) CPU L5520 @ 2.27ghz 제온 2261 MhzES-1620 0 3.60, @, 4 코어, 논리 프로세서 8입니다.
 -   824 GB RamRAM 합니다.
 -   465 GB ATA500GB SATA 7200 rpm 6GB/s 드라이브 4 개의 파티션으로 분할 합니다.
 
-### <a name="112------b-query-performance-comparison-tests"></a>11.2 2. 쿼리 성능 비교 테스트
+### <a name="112-b-query-performance-comparison-tests"></a>11.2 2. 쿼리 성능 비교 테스트
 
 이러한 테스트를 실행 하는 Northwind 모델 사용 되었습니다. Entity Framework 디자이너를 사용 하 여 데이터베이스에서 생성 되었습니다. 그런 다음 쿼리 실행 옵션의 성능을 비교 하려면 다음 코드를 사용한:
 
@@ -1519,7 +1519,7 @@ Navision 모델을 사용한 쿼리 목록에 Entity SQL 쿼리는 3 개의 범�
   </Query>
 ```
 
-##### <a name="11312-singleaggregating"></a>11.3.1.2 SingleAggregating
+##### <a name="11312singleaggregating"></a>11.3.1.2 SingleAggregating
 
 여러 집계 되지만 없습니다 부분합 (단일 쿼리)를 사용 하 여 일반 BI 쿼리
 
@@ -1540,7 +1540,7 @@ Navision 모델을 사용한 쿼리 목록에 Entity SQL 쿼리는 3 개의 범�
   </Function>
 ```
 
-##### <a name="11313-aggregatingsubtotals"></a>11.3.1.3 AggregatingSubtotals
+##### <a name="11313aggregatingsubtotals"></a>11.3.1.3 AggregatingSubtotals
 
 집계 및 부분합 (모든 공용 구조체)를 통해을 사용 하 여 BI 쿼리
 

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 uid: core/miscellaneous/logging
-ms.openlocfilehash: efc78fbada3c59bf9cf2c4cb694835bb5ad60e76
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 65501b5ac03ae544c51b7fc1a07fa9eea849f1e3
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997007"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022147"
 ---
 # <a name="logging"></a>로깅
 
@@ -18,7 +18,7 @@ ms.locfileid: "42997007"
 
 ## <a name="aspnet-core-applications"></a>ASP.NET Core 응용 프로그램
 
-EF Core는 ASP.NET Core의 로깅 메커니즘을 사용 하 여 자동으로 통합 될 때마다 `AddDbContext` 또는 `AddDbContextPool` 사용 됩니다. 따라서 ASP.NET Core를 사용 하는 경우 로깅 구성 해야에 설명 된 대로 합니다 [ASP.NET Core 설명서](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)합니다.
+EF Core는 ASP.NET Core의 로깅 메커니즘을 사용 하 여 자동으로 통합 될 때마다 `AddDbContext` 또는 `AddDbContextPool` 사용 됩니다. 따라서 ASP.NET Core를 사용 하는 경우 로깅 구성 해야에 설명 된 대로 합니다 [ASP.NET Core 설명서](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)합니다.
 
 ## <a name="other-applications"></a>다른 응용 프로그램
 
@@ -54,4 +54,4 @@ EF Core는 ASP.NET Core의 로깅 메커니즘을 사용 하 여 자동으로 �
 
 EF Core에 대 한로 거 범주에 정의 된는 `DbLoggerCategory` 간단한 문자열을 쉽게 있지만 범주를 찾을 수 있도록 클래스를 해결 합니다.
 
-기본 로깅 인프라에 대 한 자세한 내용은에서 찾을 수 있습니다 합니다 [ASP.NET Core 로깅 설명서](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)합니다.
+기본 로깅 인프라에 대 한 자세한 내용은에서 찾을 수 있습니다 합니다 [ASP.NET Core 로깅 설명서](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)합니다.

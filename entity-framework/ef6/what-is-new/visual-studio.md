@@ -3,12 +3,12 @@ title: Visual Studio 릴리스-EF6
 author: divega
 ms.date: 07/05/2018
 ms.assetid: 028FF890-4EDB-4F03-AE53-72F9C33EC92F
-ms.openlocfilehash: d104236ac5c8877da421ba10de9827f17937a9ec
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 16bcdc6d0e7c5632d4f4c06ba285a7a666f24204
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489923"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022253"
 ---
 # <a name="visual-studio-releases"></a>Visual Studio 릴리스
 
@@ -41,7 +41,7 @@ ms.locfileid: "45489923"
 
 ## <a name="visual-studio-2013"></a>Visual Studio 2013
 - 이 버전의 Visual Studio를 포함 하 고 이전 버전의 Entity Framework 도구 및 런타임입니다.
-6.1.3, Entity Framework 도구를 업그레이드 하는 것이 좋습니다.를 사용 하 여 [설치 관리자](https://www.microsoft.com/en-us/download/details.aspx?id=40762) Microsoft 다운로드 센터에서 사용할 수 있습니다.
+6.1.3, Entity Framework 도구를 업그레이드 하는 것이 좋습니다.를 사용 하 여 [설치 관리자](https://www.microsoft.com/download/details.aspx?id=40762) Microsoft 다운로드 센터에서 사용할 수 있습니다.
 참조 [지난 해제](~/ef6/what-is-new/past-releases.md#ef-613) 이러한 릴리스에 대 한 자세한 내용은 합니다.
 - EF 6.1.3 자동으로 추가 업그레이드 EF 도구를 사용 하 여 새 프로젝트에서 Entity Framework 추가 NuGet 패키지.
 수동으로 설치 하거나 온라인에서 사용할 수 있는 모든 EF NuGet 패키지를 업그레이드할 수 있습니다.
@@ -52,7 +52,7 @@ ms.locfileid: "45489923"
 ## <a name="visual-studio-2012"></a>Visual Studio 2012
 
 - 이 버전의 Visual Studio를 포함 하 고 이전 버전의 Entity Framework 도구 및 런타임입니다.
-6.1.3, Entity Framework 도구를 업그레이드 하는 것이 좋습니다.를 사용 하 여 [설치 관리자](https://www.microsoft.com/en-us/download/details.aspx?id=40762) Microsoft 다운로드 센터에서 사용할 수 있습니다.
+6.1.3, Entity Framework 도구를 업그레이드 하는 것이 좋습니다.를 사용 하 여 [설치 관리자](https://www.microsoft.com/download/details.aspx?id=40762) Microsoft 다운로드 센터에서 사용할 수 있습니다.
 참조 [지난 해제](~/ef6/what-is-new/past-releases.md#ef-613) 이러한 릴리스에 대 한 자세한 내용은 합니다.
 - EF 6.1.3 자동으로 추가 업그레이드 EF 도구를 사용 하 여 새 프로젝트에서 Entity Framework 추가 NuGet 패키지.
 수동으로 설치 하거나 온라인에서 사용할 수 있는 모든 EF NuGet 패키지를 업그레이드할 수 있습니다.
