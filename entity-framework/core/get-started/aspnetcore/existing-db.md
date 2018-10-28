@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: 84e2e4bc1bdc774fa059fa893e0f8ac128931feb
-ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
+ms.openlocfilehash: bba2742c3f3b6da93dd4b4f170a3878fc0473bc8
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447185"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022199"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
 
@@ -59,7 +59,7 @@ ms.locfileid: "47447185"
 
 EF Core를 설치하려면 대상으로 지정할 EF Core 데이터베이스 공급자에 대한 패키지를 설치합니다. 사용 가능한 공급자 목록은 [데이터베이스 공급자](../../providers/index.md)를 참조하세요. 
 
-이 자습서에서는 SQL Server를 사용하기 때문에 공급자 패키지를 설치할 필요가 없습니다. SQL Server 공급자 패키지는 [Microsoft.AspnetCore.App 메타패키지](https://docs.microsoft.com/en-us/aspnet/core/fundamentals/metapackage-app?view=aspnetcore-2.1)에 포함되어 있습니다.
+이 자습서에서는 SQL Server를 사용하기 때문에 공급자 패키지를 설치할 필요가 없습니다. SQL Server 공급자 패키지는 [Microsoft.AspnetCore.App 메타패키지](https://docs.microsoft.com/aspnet/core/fundamentals/metapackage-app?view=aspnetcore-2.1)에 포함되어 있습니다.
 
 ## <a name="reverse-engineer-your-model"></a>모델 리버스 엔지니어링
 

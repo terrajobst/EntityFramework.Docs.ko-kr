@@ -6,18 +6,18 @@ description: Entity Framework Core를 사용하여 .NET Core 시작
 ms.date: 08/03/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: ec20040917a2bca8177924b6905b1cd79e5cd9da
-ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
+ms.openlocfilehash: 6cebe14e179cb6998592f5d3823c114b3bda0138
+ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48834737"
+ms.lasthandoff: 10/25/2018
+ms.locfileid: "50022313"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>.NET Core 콘솔 앱에서 새 데이터베이스로 EF Core 시작
 
 이 자습서에서는 Entity Framework Core를 사용하여 SQLite 데이터베이스에 대한 데이터 액세스를 수행하는 .NET Core 콘솔 앱을 만듭니다. 마이그레이션을 사용하여 모델에서 데이터베이스를 만듭니다. ASP.NET Core MVC를 사용하는 Visual Studio 버전에 대해서는 [ASP.NET Core - 새 데이터베이스](xref:core/get-started/aspnetcore/new-db)를 참조하세요.
 
-GitHub에서 이 문서의 샘플을 봅니다](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite).
+[GitHub에서 이 아티클의 샘플을 봅니다](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/NetCore/ConsoleApp.SQLite).
 
 ## <a name="prerequisites"></a>전제 조건
 

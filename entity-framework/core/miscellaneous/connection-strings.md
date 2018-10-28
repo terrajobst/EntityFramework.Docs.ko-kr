@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: aeb0f5f8-b212-4f89-ae83-c642a5190ba0
 uid: core/miscellaneous/connection-strings
-ms.openlocfilehash: 942865effba7b491dd950886ea30b69a86f1186c
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 7bb39d260f700e5087673e92a50377dc68151710
+ms.sourcegitcommit: 85ccc9ed42d4aaf7525c6312058c5c9ebdaed3ae
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997673"
+ms.lasthandoff: 10/27/2018
+ms.locfileid: "50191344"
 ---
 # <a name="connection-strings"></a>연결 문자열
 
@@ -77,7 +77,7 @@ ASP.NET Core 구성 시스템은 매우 유연 하 고 연결 문자열에 저�
 }
 ```
 
-컨텍스트는 일반적으로 구성 `Startup.cs` 구성에서 읽고 있는 연결 문자열을 사용 합니다. 참고 합니다 `GetConnectionString()` 메서드 키가 있는 구성 값을 찾는 `ConnectionStrings:<connection string name>`합니다.
+컨텍스트는 일반적으로 구성 `Startup.cs` 구성에서 읽고 있는 연결 문자열을 사용 합니다. 참고 합니다 `GetConnectionString()` 메서드 키가 있는 구성 값을 찾는 `ConnectionStrings:<connection string name>`합니다. 가져와야 하는 [Microsoft.Extensions.Configuration](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration) 이 확장 메서드를 사용 하려면 네임 스페이스입니다.
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
