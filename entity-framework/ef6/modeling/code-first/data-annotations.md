@@ -3,12 +3,12 @@ title: First 데이터 주석-EF6 코드
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: 54e27f1b866da14d68db66ca5eca5a6dde819e26
-ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
+ms.openlocfilehash: 8d85ef85f56a23d9b3b526554417dc9dd360e139
+ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47415811"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50980043"
 ---
 # <a name="code-first-data-annotations"></a>Code First 데이터 주석
 > [!NOTE]
@@ -30,26 +30,26 @@ Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나�
 ``` csharp
     public class Blog
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public string BloggerName { get; set;}
-        public virtual ICollection<Post> Posts { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string BloggerName { get; set;}
+        public virtual ICollection<Post> Posts { get; set; }
     }
 
     public class Post
     {
-        public int Id { get; set; }
-        public string Title { get; set; }
-        public DateTime DateCreated { get; set; }
-        public string Content { get; set; }
-        public int BlogId { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public DateTime DateCreated { get; set; }
+        public string Content { get; set; }
+        public int BlogId { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 ```
 
 있는 그대로 블로그 및 게시물 클래스를 편리 하 게 코드의 첫 번째 규칙 따르고 없습니다 조정 EF 호환성을 사용 하도록 설정 해야 합니다. 그러나 EF에 클래스 및 매핑되는 데이터베이스에 대 한 자세한 정보를 제공 하려면 주석을 사용할 수 있습니다.
 
- 
+ 
 
 ## <a name="key"></a>Key
 
@@ -60,11 +60,11 @@ Entity Framework는 엔터티 추적에 사용 되는 키 값을 가진 모든 �
 ``` csharp
     public class Blog
     {
-        [Key]
-        public int PrimaryTrackingKey { get; set; }
-        public string Title { get; set; }
-        public string BloggerName { get; set;}
-        public virtual ICollection<Post> Posts { get; set; }
+        [Key]
+        public int PrimaryTrackingKey { get; set; }
+        public string Title { get; set; }
+        public string BloggerName { get; set;}
+        public virtual ICollection<Post> Posts { get; set; }
     }
 ```
 
@@ -155,11 +155,11 @@ Required 특성 매핑된 속성을 nullable이 아닌 만들어 생성된 된 �
 >[!NOTE]
 > 경우에 따라 속성이 필요한 경우에 null이 아닌 수를 데이터베이스에 열 수 없습니다. 예를 들어 경우 TPH 상속 전략 데이터를 사용 하 여 여러 형식에 대 한에 저장 됩니다 단일 테이블. 파생된 형식이 필요한 속성을 포함 하는 경우 열 있으므로 할 수 없습니다 nullable이 아닌 계층의 모든 형식이 아닌이 속성이 없습니다.
 
- 
+ 
 
 ![블로그 테이블](~/ef6/media/jj591583-figure03.png)
 
- 
+ 
 
 ## <a name="maxlength-and-minlength"></a>MinLength 및 MaxLength
 
@@ -187,7 +187,7 @@ MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향
 
 ![사용자 지정 오류 메시지를 사용 하 여 페이지 만들기](~/ef6/media/jj591583-figure05.png)
 
- 
+ 
 
 ## <a name="notmapped"></a>NotMapped
 
@@ -204,7 +204,7 @@ MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향
     }
 ```
 
- 
+ 
 
 ## <a name="complextype"></a>ComplexType
 
@@ -215,12 +215,12 @@ MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향
     {
         public DateTime? DateCreated { get; set; }
 
-        [MaxLength(250)]
-        public string Description { get; set; }
+        [MaxLength(250)]
+        public string Description { get; set; }
     }
 ```
 
-BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메인 기반 디자인을 BlogDetails는 값 개체 라고 합니다. Entity Framework는 복합 형식으로 값 개체를 나타냅니다.  복합 형식은 자체적으로 추적할 수 없습니다.
+BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메인 기반 디자인을 BlogDetails는 값 개체 라고 합니다. Entity Framework는 복합 형식으로 값 개체를 나타냅니다.  복합 형식은 자체적으로 추적할 수 없습니다.
 
 그러나 블로그 개체의 일부로 추적 됩니다 BlogDetails 블로그 클래스의 속성으로. 먼저이 인식 하는 코드에 대 한 순서로 BlogDetails 클래스 ComplexType로 표시 해야 합니다.
 
@@ -230,15 +230,15 @@ BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메
     {
         public DateTime? DateCreated { get; set; }
 
-        [MaxLength(250)]
-        public string Description { get; set; }
+        [MaxLength(250)]
+        public string Description { get; set; }
     }
 ```
 
 이제 해당 블로그 BlogDetails 나타내는 블로그 클래스에서 속성을 추가할 수 있습니다.
 
 ``` csharp
-        public BlogDetails BlogDetail { get; set; }
+        public BlogDetails BlogDetail { get; set; }
 ```
 
 데이터베이스의 블로그 테이블 블로그 BlogDetail 속성에 포함 된 속성을 포함 하 여 속성을 모두 포함 됩니다. 기본적으로 각 앞 BlogDetail 복합 형식의 이름을 사용 합니다.
@@ -247,7 +247,7 @@ BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메
 
 또 다른 흥미로운 점은 DateCreated 속성 클래스는 nullable이 아닌 날짜/시간으로 정의 했지만, 관련 데이터베이스 필드는 null을 허용 됩니다. 데이터베이스 스키마를 적용 하려는 경우 필요한 주석을 사용 해야 합니다.
 
- 
+ 
 
 ## <a name="concurrencycheck"></a>ConcurrencyCheck
 
@@ -256,11 +256,11 @@ ConcurrencyCheck 주석을 사용 하면 플래그 하나 이상의 속성에서
 ConcurrencyCheck BloggerName 속성에 추가 하 여 작동 하는 방법을 살펴보겠습니다.
 
 ``` csharp
-    [ConcurrencyCheck, MaxLength(10, ErrorMessage="BloggerName must be 10 characters or less"),MinLength(5)]
+    [ConcurrencyCheck, MaxLength(10, ErrorMessage="BloggerName must be 10 characters or less"),MinLength(5)]
     public string BloggerName { get; set; }
 ```
 
-BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 면 해당 속성의 원래 값 업데이트에 사용 됩니다. 이 명령은 올바른 행 키 값 뿐만 아니라 BloggerName의 원래 값에 대해 필터링 하 여 찾은 하려고 합니다.  명령을 PrimaryTrackingKey가 있는 행 업데이트를 볼 수 있는 데이터베이스에 전송 업데이트 명령의 중요 한 부분 1 이며 해당 블로그 데이터베이스에서 검색 된 경우 원래 값 이었던 "Julie"의 BloggerName 다음과 같습니다.
+BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 면 해당 속성의 원래 값 업데이트에 사용 됩니다. 이 명령은 올바른 행 키 값 뿐만 아니라 BloggerName의 원래 값에 대해 필터링 하 여 찾은 하려고 합니다.  명령을 PrimaryTrackingKey가 있는 행 업데이트를 볼 수 있는 데이터베이스에 전송 업데이트 명령의 중요 한 부분 1 이며 해당 블로그 데이터베이스에서 검색 된 경우 원래 값 이었던 "Julie"의 BloggerName 다음과 같습니다.
 
 ``` SQL
     where (([PrimaryTrackingKey] = @4) and ([BloggerName] = @5))
@@ -269,7 +269,7 @@ BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 �
 
 사용자가 변경 된 경우 해당 블로그 블로거 이름을 그동안이 업데이트 실패 하 고 처리 해야 하는 DbUpdateConcurrencyException 받게 됩니다.
 
- 
+ 
 
 ## <a name="timestamp"></a>타임 스탬프
 
@@ -286,7 +286,7 @@ BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 �
 
 ![타임 스탬프 열을 사용 하 여 블로그 테이블](~/ef6/media/jj591583-figure07.png)
 
- 
+ 
 
 ## <a name="table-and-column"></a>테이블 및 열
 
@@ -302,7 +302,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 열 주석의는 자세한 매핑된 열의 특성을 지정 합니다. 이름, 데이터 형식 또는 열을 테이블에 표시 되는 순서도 규정할 수 있습니다. 열 특성의 예는 다음과 같습니다.
 
 ``` csharp
-    [Column(“BlogDescription", TypeName="ntext")]
+    [Column("BlogDescription", TypeName="ntext")]
     public String Description {get;set;}
 ```
 
@@ -312,7 +312,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 ![블로그 테이블 및 열 변경](~/ef6/media/jj591583-figure08.png)
 
- 
+ 
 
 ## <a name="databasegenerated"></a>DatabaseGenerated
 
@@ -327,7 +327,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 기본적으로 위에 읽기는 정수가 키 속성을 데이터베이스의 id 키가 됩니다. 되는 동일한 방식으로 DatabaseGenerated DatabaseGeneratedOption.Identity를 설정 합니다. 원하지 않는 id 키 수, 하는 경우에 DatabaseGeneratedOption.None에 값을 설정할 수 있습니다.
 
- 
+ 
 
 ## <a name="index"></a>인덱스
 
@@ -389,7 +389,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
     }
 ```
 
- 
+ 
 
 ## <a name="relationship-attributes-inverseproperty-and-foreignkey"></a>관계: InverseProperty 특성과 ForeignKey
 
@@ -398,25 +398,25 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 모델의 가장 일반적인 관계 코드 첫 번째 규칙을 고려 하지만 도움말 필요한 곳 경우도 있습니다.
 
-게시물의 관계를 사용 하 여 문제를 만든 블로그 클래스의 키 속성의 이름을 변경 합니다. 
+게시물의 관계를 사용 하 여 문제를 만든 블로그 클래스의 키 속성의 이름을 변경 합니다. 
 
 데이터베이스를 생성 하는 경우 코드 먼저 Post 클래스 BlogId 속성 표시 고이 클래스 이름과 "Id", 블로그 클래스에 외래 키로 일치 규칙을 통해 인식 합니다. 하지만 블로그 클래스에서 BlogId 속성이 없습니다. 이 솔루션은 게시물에는 탐색 속성을 만들고 외래 DataAnnotation 먼저 두 클래스 간의 관계를 구축 하는 방법을 이해 하는 코드를 사용 하 여-Post.BlogId 속성을 사용 하 여-제약 조건을 지정 하는 방법 뿐만 아니라는 데이터베이스입니다.
 
 ``` csharp
     public class Post
     {
-            public int Id { get; set; }
-            public string Title { get; set; }
-            public DateTime DateCreated { get; set; }
-            public string Content { get; set; }
-            public int BlogId { get; set; }
-            [ForeignKey("BlogId")]
-            public Blog Blog { get; set; }
-            public ICollection<Comment> Comments { get; set; }
+            public int Id { get; set; }
+            public string Title { get; set; }
+            public DateTime DateCreated { get; set; }
+            public string Content { get; set; }
+            public int BlogId { get; set; }
+            [ForeignKey("BlogId")]
+            public Blog Blog { get; set; }
+            public ICollection<Comment> Comments { get; set; }
     }
 ```
 
-데이터베이스에서 제약 조건을 InternalBlogs.PrimaryTrackingKey Posts.BlogId 사이의 관계를 보여 줍니다. 
+데이터베이스에서 제약 조건을 InternalBlogs.PrimaryTrackingKey Posts.BlogId 사이의 관계를 보여 줍니다. 
 
 ![InternalBlogs.PrimaryTrackingKey Posts.BlogId 간의 관계](~/ef6/media/jj591583-figure09.png)
 
@@ -434,10 +434,10 @@ Post 클래스의 블로그 게시물을 작성 하는 한 추적 하려는 편�
 ``` csharp
     public class Person
     {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public List<Post> PostsWritten { get; set; }
-            public List<Post> PostsUpdated { get; set; }
+            public int Id { get; set; }
+            public string Name { get; set; }
+            public List<Post> PostsWritten { get; set; }
+            public List<Post> PostsUpdated { get; set; }
     }
 ```
 
@@ -459,7 +459,7 @@ Post 클래스의 블로그 게시물을 작성 하는 한 추적 하려는 편�
 
 ![추가 외래 키가 없는 테이블을 게시](~/ef6/media/jj591583-figure11.png)
 
- 
+ 
 
 ## <a name="summary"></a>요약
 

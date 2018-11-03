@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 393349c05ffaf42c6d2520e73abce23def6becc0
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f5a9ae17471391442170d8c40264e4db6922cb08
+ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42995940"
+ms.lasthandoff: 11/03/2018
+ms.locfileid: "50980004"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
 
@@ -25,7 +25,7 @@ EF Core 디자인 타임 도구와 같은 [마이그레이션을](xref:core/mana
 
 `DbContext` 인스턴스가 있어야 `DbContextOptions` 작업을 수행 하기 위해. `DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.
 
-- 를 사용 하려면 데이터베이스 공급자와 같은 메서드를 호출 하 여 일반적으로 선택한 `UseSqlServer` 또는 `UseSqlite`
+- 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
 - 일반적으로 연결 된 공급자 선택 방법에 대 한 호출 내에서 모든 선택적 동작 공급자 수준의 선택기
 - 일반적으로 공급자 선택기 메서드 전이나 후 연결 된 모든 일반 EF Core 동작 선택기
