@@ -72,7 +72,7 @@
 ##### [별도 프로젝트 사용](core/managing-schemas/migrations/projects.md)
 ##### [여러 공급자](core/managing-schemas/migrations/providers.md)
 ##### [사용자 지정 기록 테이블](core/managing-schemas/migrations/history-table.md)
-#### [🔧API 만들기 및 삭제](core/managing-schemas/ensure-created.md)
+#### [API 만들기 및 삭제](core/managing-schemas/ensure-created.md)
 #### [🔧리버스 엔지니어링](core/managing-schemas/scaffolding.md)
 
 ### [데이터 쿼리](core/querying/index.md)
