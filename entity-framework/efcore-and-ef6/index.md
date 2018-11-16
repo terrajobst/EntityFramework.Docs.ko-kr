@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 0f9f0d4708fa283855eddf2cfc231b37356e413e
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: d5fe9b388707f653fdeb2d6a5daa7215ced71c1d
+ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022352"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51688721"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
@@ -57,7 +57,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 키 생성: 데이터베이스                              | 예      | 1.0                                   |
 | 키 생성: 클라이언트                                |          | 1.0                                   |
 | 복합/소유된 형식                                   | 예      | 2.0                                   |
-| 공간 데이터                                          | 예      |                                       |
+| 공간 데이터                                          | 예      | 2.2                                   |
 | 모델의 그래픽 시각화                      | 예      |                                       |
 | 그래픽 모델 편집기                                | 예      |                                       |
 | 모델 형식: 코드                                    | 예      | 1.0                                   |
