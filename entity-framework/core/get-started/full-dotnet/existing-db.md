@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 08/06/2018
 ms.assetid: a29a3d97-b2d8-4d33-9475-40ac67b3b2c6
 uid: core/get-started/full-dotnet/existing-db
-ms.openlocfilehash: b9e079f88dd35016407b19bb627f8bd46edb3d4c
-ms.sourcegitcommit: ad1bdea58ed35d0f19791044efe9f72f94189c18
+ms.openlocfilehash: 1b90c491a3b2025da750a3266ff45d9d92bb1d0d
+ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47447159"
+ms.lasthandoff: 11/15/2018
+ms.locfileid: "51688617"
 ---
 # <a name="getting-started-with-ef-core-on-net-framework-with-an-existing-database"></a>.NET Framework에서 기존 데이터베이스로 EF Core 시작
 
@@ -120,5 +120,6 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 ## <a name="next-steps"></a>다음 단계
 
 컨텍스트 및 엔터티 클래스를 스캐폴드하는 방법에 대한 자세한 내용은 다음 문서를 참조하세요.
+* [리버스 엔지니어링](xref:core/managing-schemas/scaffolding)
 * [Entity Framework Core 도구 참조 - .NET CLI](xref:core/miscellaneous/cli/dotnet#dotnet-ef-dbcontext-scaffold)
 * [Entity Framework Core 도구 참조 - 패키지 관리자 콘솔](xref:core/miscellaneous/cli/powershell#scaffold-dbcontext)
