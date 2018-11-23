@@ -15,7 +15,7 @@ ms.locfileid: "50191344"
 
 대부분의 데이터베이스 공급자는 특정 형태의 데이터베이스에 연결할 연결 문자열을 요구 합니다. 이 연결 문자열 보호 해야 하는 중요 한 정보를 포함 하는 경우도 있습니다. 응용 프로그램 개발, 테스트 및 프로덕션 등 환경 간에 이동 하면 연결 문자열을 변경 해야 합니다.
 
-## <a name="net-framework-applications"></a>.NET framework 응용 프로그램
+## <a name="net-framework-applications"></a>.NET Framework 응용 프로그램
 
 WinForms, WPF, 콘솔 및 ASP.NET 4 등의.NET framework 응용 프로그램 테스트를 거친 연결 문자열 패턴을 경우 연결 문자열은 응용 프로그램 App.config 파일 (Web.config ASP.NET을 사용 하는 경우)에 추가 되어야 합니다. 연결 문자열에는 사용자 이름 및 암호와 같은 중요 한 정보를 포함 하는 경우 사용 하 여 구성 파일의 콘텐츠를 보호할 수 있습니다 [보호 되는 구성을](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-strings-and-configuration-files#encrypting-configuration-file-sections-using-protected-configuration)합니다.
 
