@@ -26,7 +26,6 @@ ms.locfileid: "50980004"
 작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야합니다. DbContextOptions 인스턴스는 다음과 같은 구성 정보를 전달합니다.
 
 데이터베이스 공급자를 사용하려면 일반적으로 `UseSqlServer` 또는 `UseSqlite`와 같은 메서드를 호출하여 선택합니다. 이러한 확장 메서드들은 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`와 같은 해당 공급자 패키지가 필요합니다. 이 메서드들은 `Microsoft.EntityFrameworkCore` 네임스페이스에 정의되어 있습니다.
-
 - 모든 필수 연결 문자열이나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 위에서 언급한 공급자 선택 메서드에 인수로 전달됩니다.
 - 일반적으로 공급자 선택 메서드에 대한 호출 내에서 체인화 된 모든 공급자 수준의 선택적 동작 선택기
 - 일반적으로 공급자 선택기 메서드 이후 또는 이전에 연결된 모든 일반 EF Core 동작 선택기
