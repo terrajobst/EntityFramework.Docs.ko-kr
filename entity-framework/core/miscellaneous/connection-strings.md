@@ -13,11 +13,11 @@ ms.locfileid: "50191344"
 ---
 # <a name="connection-strings"></a>연결 문자열
 
-대부분의 데이터베이스 공급자는 특정 형태의 데이터베이스에 연결할 연결 문자열을 요구합니다. 이 연결 문자열은 보호 해야 하는 중요한 정보를 포함하는 경우도 있습니다. 응용 프로그램 개발, 테스트 및 프로덕션 등 환경 간에 이동 하면 연결 문자열을 변경 해야 합니다.
+대부분의 데이터베이스 공급자는 특정 형태의 데이터베이스에 연결할 연결 문자열을 요구합니다. 이 연결 문자열은 보호해야 하는 중요한 정보를 포함하는 경우도 있습니다. 응용 프로그램 개발, 테스트 및 프로덕션 등 환경 간에 이동하면 연결 문자열을 변경해야 합니다.
 
 ## <a name="net-framework-applications"></a>.NET Framework 응용 프로그램
 
-WinForms, WPF, 콘솔 및 ASP.NET 4와 같은 .NET Framework 응용 프로그램에는 테스트를 거친 연결 문자열 패턴이 있습니다. 연결 문자열은 응용 프로그램 App.config 파일(ASP.NET을 사용하는 경우 Web.config)에 추가해야합니다. 연결 문자열에 사용자 이름 및 암호와 같은 중요한 정보가 포함되어 있으면 [보호된 구성](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-strings-and-configuration-files#encrypting-configuration-file-sections-using-protected-configuration)을 사용하여 구성 파일의 내용을 보호 할 수 있습니다.
+WinForms, WPF, 콘솔 및 ASP.NET 4와 같은 .NET Framework 응용 프로그램에는 테스트를 거친 연결 문자열 패턴이 있습니다. 연결 문자열은 응용 프로그램 App.config 파일(ASP.NET을 사용하는 경우 Web.config)에 추가해야 합니다. 연결 문자열에 사용자 이름 및 암호와 같은 중요한 정보가 포함되어 있으면 [보호된 구성](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-strings-and-configuration-files#encrypting-configuration-file-sections-using-protected-configuration)을 사용하여 구성 파일의 내용을 보호할 수 있습니다.
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -31,7 +31,7 @@ WinForms, WPF, 콘솔 및 ASP.NET 4와 같은 .NET Framework 응용 프로그램
 ```
 
 > [!TIP]  
-> `providerName` 설정을 데이터베이스 공급자 코드를 통해 구성되었기 때문에 App.config에 저장된 EF 코어 연결 문자열에 필요하지 않습니다.
+> `providerName` 설정을 데이터베이스 공급자 코드를 통해 구성했기 때문에 App.config에 저장된 EF 코어 연결 문자열에 필요하지 않습니다.
 
 그런 다음 컨텍스트의 OnConfiguring 메서드에서 ConfigurationManager API를 사용하여 연결 문자열을 읽을 수 있습니다. 이 API를 사용하려면 System.Configuration 프레임워크 어셈블리에 대한 참조를 추가해야 할 수 있습니다.
 
@@ -50,7 +50,7 @@ public class BloggingContext : DbContext
 
 ## <a name="universal-windows-platform-uwp"></a>UWP(유니버설 Windows 플랫폼)
 
-UWP 응용 프로그램의 연결 문자열은 일반적으로 로컬 파일 이름만 지정하는 SQLite 연결입니다. 일반적으로 민감한 정보는 포함되어 있지 않으므로 응용 프로그램이 배포 될 때 변경하지 않아도됩니다. 따라서 이러한 연결 문자열은 일반적으로 아래와 같이 코드에 남게됩니다. 코드를 코드 밖으로 이동하려면 UWP가 설정 개념을 지원합니다. 자세한 내용은 [UWP 설명서의 앱 설정 섹션](https://docs.microsoft.com/windows/uwp/app-settings/store-and-retrieve-app-data)을 참조하십시오.
+UWP 응용 프로그램의 연결 문자열은 일반적으로 로컬 파일 이름만 지정하는 SQLite 연결입니다. 일반적으로 민감한 정보는 포함되어 있지 않으므로 응용 프로그램이 배포될 때 변경하지 않아도 됩니다. 따라서 이러한 연결 문자열은 일반적으로 아래와 같이 코드에 남게 됩니다. 코드를 코드 밖으로 이동하려면 UWP가 설정 개념을 지원합니다. 자세한 내용은 [UWP 설명서의 앱 설정 섹션](https://docs.microsoft.com/windows/uwp/app-settings/store-and-retrieve-app-data)을 참조하십시오.
 
 ``` csharp
 public class BloggingContext : DbContext
