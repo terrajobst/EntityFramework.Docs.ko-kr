@@ -23,14 +23,14 @@ ms.locfileid: "50980004"
 
 ## <a name="configuring-dbcontextoptions"></a>DbContextOptions 구성
 
-작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야 합니다. DbContextOptions 인스턴스는 다음과 같은 구성 정보를 전달합니다.
+`DbContext` 인스턴스가 있어야 `DbContextOptions` 작업을 수행 하기 위해. `DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.
 
 - 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
 - 일반적으로 연결 된 공급자 선택 방법에 대 한 호출 내에서 모든 선택적 동작 공급자 수준의 선택기
 - 일반적으로 공급자 선택기 메서드 전이나 후 연결 된 모든 일반 EF Core 동작 선택기
 
-다음 예제에서는 SQL Server 공급자, `connectionString` 변수에 포함된 데이터베이스 연결 문자열, 공급자 수준의 명령 제한 시간 및 기본적으로 실행되는 모든 쿼리를 `DbContext` [비 추적](xref:core/querying/tracking#no-tracking-queries)에서 수행하는 EF Core 동작 선택기를 사용하도록 `DbContextOptions`를 구성합니다.
+다음 예제에서는 구성 합니다 `DbContextOptions` SQL Server 공급자를 사용 하려면 연결에 포함 합니다 `connectionString` 변수와 공급자 수준의 명령 제한 시간을 실행 하는 모든 쿼리는 EF Core 동작 선택기를를 `DbContext` [비 추적](xref:core/querying/tracking#no-tracking-queries) 기본적으로:
 
 ``` csharp
 optionsBuilder
@@ -39,7 +39,7 @@ optionsBuilder
 ```
 
 > [!NOTE]  
-> 위에서 설명한 공급자 선택기 메서드 및 기타 동작 선택기 메서드는 `DbContextOptions` 또는 공급자 관련 옵션 클래스의 확장 메서드입니다. 이러한 확장 메서드에 액세스하려면 범위에 네임스페이스(일반적으로 `Microsoft.EntityFrameworkCore`)가 있어야 하고 프로젝트에 추가 패키지 종속성이 있어야 합니다.
+> 공급자 선택기 메서드와 위에서 언급 한 다른 동작 선택기 메서드에 확장 메서드 `DbContextOptions` 또는 공급자별 옵션 클래스입니다. 네임 스페이스를 포함 해야 합니다. 이러한 확장 메서드에 대 한 액세스를 가지려면 (일반적으로 `Microsoft.EntityFrameworkCore`)에서 범위 및 프로젝트에 추가 패키지 종속성을 포함 합니다.
 
 `DbContextOptions`는 `OnConfiguring` 메서드를 재정의하거나 또는 외부에서 생성자 인수를 통해 `DbContext`에 제공할 수 있습니다.
 
@@ -103,7 +103,7 @@ using (var context = new BloggingContext())
 > [!TIP]
 > 이 방법은 테스트가 전체 데이터베이스를 대상으로하지 않는 한 테스트에 적합하지 않습니다.
 
-### <a name="using-dbcontext-with-dependency-injection"></a>종속성 주입과 함께 DbContext를 사용하기 
+### <a name="using-dbcontext-with-dependency-injection"></a>종속성 주입과 함께 DbContext를 사용하기
 
 EF Core는 종속성 주입 컨테이너로 `DbContext`를 사용하는 것을 지원합니다. DbContext 형식은 `AddDbContext<TContext>` 메서드를 사용하여 서비스 컨테이너에 추가할 수 있습니다.
 
@@ -111,7 +111,7 @@ EF Core는 종속성 주입 컨테이너로 `DbContext`를 사용하는 것을 �
 
 종속성 주입에 대한 추가 정보는 아래의 [더 많은 읽기](#more-reading) 자료를 참조하십시오.
 
-종속성 주입에 `DbContext` 추가:
+종속성 주입에 `Dbcontext` 추가:
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
@@ -166,4 +166,4 @@ var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 
 * ASP.NET Core에서 EF 사용에 대한 자세한 내용은 [ASP.NET Core 시작하기](../get-started/aspnetcore/index.md)를 참조하십시오.
 * DI 사용에 관해 더 배우려면 [종속성 주입](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)을 참조하십시오.
-* 자세한 내용은 [테스트](testing/index.md)를 참조하십시오. 
+* 자세한 내용은 [테스트](testing/index.md)를 참조하십시오.
