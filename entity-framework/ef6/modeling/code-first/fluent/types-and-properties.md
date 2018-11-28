@@ -3,12 +3,12 @@ title: Fluent API 구성 및 등록 정보 및 형식 매핑-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 648ed274-c501-4630-88e0-d728ab5c4057
-ms.openlocfilehash: 031376d2fc4778e6f0fa2434ab7ccfd45d436c4a
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 7371cc99142ccf8fc6bea237d7d58d1e67fcecec
+ms.sourcegitcommit: 75f8a179ac9a70ad390fc7ab2a6c5e714e701b8b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490201"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52339805"
 ---
 # <a name="fluent-api---configuring-and-mapping-properties-and-types"></a>Fluent API-구성 하 고 속성 및 형식 매핑
 Entity Framework Code First를 사용 하 여 작업 하는 경우 기본 동작은 POCO 클래스는 EF에 포함 하는 규칙 집합을 사용 하 여 테이블에 매핑할 합니다. 그러나 경우에 따라 없거나 하지 않으려는 해당 규칙을 따르는 및 규칙을 지정 하는 새로운 이외의에 엔터티를 매핑해야 합니다.  
@@ -24,7 +24,7 @@ Code first fluent API에는 가장 일반적으로 재정의 하 여 액세스 �
 EF6을 사용 하 여 시작 수 메서드를 사용 HasDefaultSchema DbModelBuilder에 모든 테이블, 저장된 프로시저 등을 사용 하도록 데이터베이스 스키마를 지정 합니다. 이 기본 설정에 다른 스키마를 명시적으로 구성 하는 모든 개체에 대 한 재정의 됩니다.  
 
 ``` csharp
-modelBuilder.HasDefaultSchema(“sales”);
+modelBuilder.HasDefaultSchema("sales");
 ```  
 
 ### <a name="custom-conventions-ef6-onwards"></a>사용자 지정 규칙 (EF6부터 해당)  
