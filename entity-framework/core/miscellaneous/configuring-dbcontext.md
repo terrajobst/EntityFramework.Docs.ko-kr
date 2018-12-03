@@ -23,7 +23,7 @@ ms.locfileid: "50980004"
 
 ## <a name="configuring-dbcontextoptions"></a>DbContextOptions 구성
 
-`DbContext` 인스턴스가 있어야 `DbContextOptions` 작업을 수행 하기 위해. `DbContextOptions` 인스턴스와 같은 구성 정보를 전달 합니다.
+작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야 합니다. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
 
 - 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
@@ -39,7 +39,7 @@ optionsBuilder
 ```
 
 > [!NOTE]  
-> 공급자 선택기 메서드와 위에서 언급 한 다른 동작 선택기 메서드에 확장 메서드 `DbContextOptions` 또는 공급자별 옵션 클래스입니다. 네임 스페이스를 포함 해야 합니다. 이러한 확장 메서드에 대 한 액세스를 가지려면 (일반적으로 `Microsoft.EntityFrameworkCore`)에서 범위 및 프로젝트에 추가 패키지 종속성을 포함 합니다.
+> 위에서 설명한 공급자 선택기 메서드 및 기타 동작 선택기 메서드는 `DbContextOptions` 또는 공급자 관련 옵션 클래스의 확장 메서드입니다. 이러한 확장 메서드에 액세스하려면 범위에 네임스페이스(일반적으로 `Microsoft.EntityFrameworkCore`)가 있어야 하고 프로젝트에 추가 패키지 종속성이 있어야 합니다.
 
 `DbContextOptions`는 `OnConfiguring` 메서드를 재정의하거나 또는 외부에서 생성자 인수를 통해 `DbContext`에 제공할 수 있습니다.
 
