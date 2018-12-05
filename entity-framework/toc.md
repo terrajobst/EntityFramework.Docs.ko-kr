@@ -12,8 +12,8 @@
 
 ### [새로운 기능](core/what-is-new/index.md)
 #### [EF Core 로드맵](core/what-is-new/roadmap.md)
-#### [EF Core 2.2(미리 보기 상태)](core/what-is-new/ef-core-2.2.md)
-#### [EF Core 2.1(안정적인 최신 릴리스)](core/what-is-new/ef-core-2.1.md)
+#### [EF Core 2.2(안정적인 최신 릴리스)](core/what-is-new/ef-core-2.2.md)
+#### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
 #### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
 #### [EF Core 1.1](core/what-is-new/ef-core-1.1.md)
 #### [EF Core 1.0](core/what-is-new/ef-core-1.0.md)
