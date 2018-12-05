@@ -5,12 +5,12 @@ ms.author: ansvyryd
 ms.date: 11/02/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/data-seeding
-ms.openlocfilehash: 791f7afff36aac52fe2ffdc16ab580db22011b99
-ms.sourcegitcommit: 082946dcaa1ee5174e692dbfe53adeed40609c6a
+ms.openlocfilehash: 8f28dfea12461572ade8fbf3910ebd216dafb389
+ms.sourcegitcommit: fa863883f1193d2118c2f9cee90808baa5e3e73e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2018
-ms.locfileid: "51028098"
+ms.lasthandoff: 12/04/2018
+ms.locfileid: "52857431"
 ---
 # <a name="data-seeding"></a>데이터 시드
 
@@ -54,7 +54,7 @@ ms.locfileid: "51028098"
 > [!TIP]
 > 자동화 된 배포의 일환으로 마이그레이션을 적용 해야 할 수 있습니다 [SQL 스크립트를 만듭니다](xref:core/managing-schemas/migrations/index#generate-sql-scripts) 실행 하기 전에 미리 볼 수 있습니다.
 
-사용할 수 있습니다 `context.Database.EnsureCreated()` 메모리 내 공급자 또는 비-관계 데이터베이스를 사용 하는 경우 또는 예를 들어 테스트 데이터베이스에 대 한 시드 데이터를 포함 하는 새 데이터베이스를 만들려고 합니다. 해당 경우 데이터베이스가 이미 `EnsureCreated()` 스키마 또는 데이터베이스에 시드 데이터 업데이트 하지 것입니다. 관계형 데이터베이스에 대 한 호출 하지 않아야 하면 `EnsureCreated()` 마이그레이션을 사용 하려는 경우.
+사용할 수 있습니다 `context.Database.EnsureCreated()` 메모리 내 공급자 또는 비-관계 데이터베이스를 사용 하는 경우 또는 예를 들어 테스트 데이터베이스에 대 한 시드 데이터를 포함 하는 새 데이터베이스를 만들려고 합니다. 해당 경우 데이터베이스가 이미 `EnsureCreated()` 데이터베이스의 스키마 나 시드 데이터를 모두 업데이트 됩니다. 관계형 데이터베이스에 대 한 호출 하지 않아야 하면 `EnsureCreated()` 마이그레이션을 사용 하려는 경우.
 
 데이터베이스에 연결 하지 않고도 생성 해야 하는 데이터베이스에 이미 있는 데이터를 업데이트 하는 스크립트와 이러한 종류의 시드 데이터 마이그레이션을 하 여 관리 됩니다. 이 인해 몇 가지 제한 사항이 있습니다.
 * 기본 키 값을 데이터베이스에서 일반적으로 생성 되는 경우에 지정 해야 합니다. 마이그레이션 간에 데이터 변경 내용을 검색 하려면 사용 됩니다.
