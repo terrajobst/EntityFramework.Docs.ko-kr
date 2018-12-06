@@ -3,12 +3,12 @@ title: 엔터티 상태-EF6 사용
 author: divega
 ms.date: 10/23/2016
 ms.assetid: acb27f46-3f3a-4179-874a-d6bea5d7120c
-ms.openlocfilehash: c1dde7810d1dfa8a73e6bd2cf091b24be6b865d8
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: ef0e8d5a5a9d66adab7046088c49d8cd472edc8a
+ms.sourcegitcommit: e5f9ca4aa41e64141fa63a1e5fcf4d4775d67d24
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490670"
+ms.lasthandoff: 12/05/2018
+ms.locfileid: "52899654"
 ---
 # <a name="working-with-entity-states"></a>엔터티 상태를 사용 하 여 작업
 추가 및 컨텍스트에 엔터티를 연결 하는 방법 및 Entity Framework SaveChanges 하는 동안 이러한을 처리 하는 방법을 설명 합니다.
@@ -38,7 +38,7 @@ SaveChanges 다양 한 상태의 엔터티에 대 한 여러 가지를 수행합
 
 DbSet에 Add 메서드를 호출 하 여 새 엔터티를 컨텍스트에 추가할 수 있습니다.
 추가 엔터티를 Added 상태로 삽입 되도록 데이터베이스에 다음에 SaveChanges가 호출 될 때를 의미 합니다.
-예를 들어:  
+예를 들어 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -49,7 +49,7 @@ using (var context = new BloggingContext())
 }
 ```  
 
-새 엔터티를 컨텍스트에 추가 하는 다른 방법은 Added로 상태를 변경할 것입니다. 예를 들어:  
+새 엔터티를 컨텍스트에 추가 하는 다른 방법은 Added로 상태를 변경할 것입니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -61,7 +61,7 @@ using (var context = new BloggingContext())
 ```  
 
 마지막으로, 다른 엔터티를 이미 추적 중인 최대 연결 하 여 새 엔터티를 컨텍스트에 추가할 수 있습니다.
-다른 엔터티의 컬렉션 탐색 속성에 새 엔터티를 추가 하거나 새 엔터티를 가리키도록 다른 엔터티의 참조 탐색 속성을 설정 하 여 수 있습니다. 예를 들어:  
+다른 엔터티의 컬렉션 탐색 속성에 새 엔터티를 추가 하거나 새 엔터티를 가리키도록 다른 엔터티의 참조 탐색 속성을 설정 하 여 수 있습니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -71,7 +71,6 @@ using (var context = new BloggingContext())
     blog.Owner = new User { UserName = "johndoe1987" };
 
     // Add a new Post by adding to the collection of a tracked Blog
-    var blog = context.Blogs.Find(2);
     blog.Posts.Add(new Post { Name = "How to Add Entities" });
 
     context.SaveChanges();
@@ -82,7 +81,7 @@ using (var context = new BloggingContext())
 
 ## <a name="attaching-an-existing-entity-to-the-context"></a>기존 엔터티를 컨텍스트에 연결  
 
-있는 경우 이미 알고 있는 엔터티가 에서만 데이터베이스는 현재 추적 중이지 않은 컨텍스트에서 DbSet에서 Attach 메서드를 사용 하 여 엔터티를 추적 하는 컨텍스트를 지정할 수 있습니다. 엔터티가 Unchanged 상태로 컨텍스트에 됩니다. 예를 들어:  
+있는 경우 이미 알고 있는 엔터티가 에서만 데이터베이스는 현재 추적 중이지 않은 컨텍스트에서 DbSet에서 Attach 메서드를 사용 하 여 엔터티를 추적 하는 컨텍스트를 지정할 수 있습니다. 엔터티가 Unchanged 상태로 컨텍스트에 됩니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 var existingBlog = new Blog { BlogId = 1, Name = "ADO.NET Blog" };
@@ -99,7 +98,7 @@ using (var context = new BloggingContext())
 
 내용이 적용 될 데이터베이스에 연결 된 엔터티를 조작 하는 다른 수행 하지 않고 SaveChanges가 호출 될 note 합니다. 엔터티가 Unchanged 상태로 때문입니다.  
 
-기존 엔터티를 컨텍스트에 연결 하는 다른 방법은 Unchanged로 상태를 변경할 것입니다. 예를 들어:  
+기존 엔터티를 컨텍스트에 연결 하는 다른 방법은 Unchanged로 상태를 변경할 것입니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 var existingBlog = new Blog { BlogId = 1, Name = "ADO.NET Blog" };
@@ -119,7 +118,7 @@ using (var context = new BloggingContext())
 ## <a name="attaching-an-existing-but-modified-entity-to-the-context"></a>기존 하지만 수정 된 엔터티를 컨텍스트에 연결 합니다.  
 
 있는 경우 이미 알고 있는 엔터티의 있지만 데이터베이스에 변경 내용의 되었을 엔터티를 연결 하 고 해당 상태를 Modified로 설정 하는 컨텍스트를 지정할 수 있습니다.
-예를 들어:  
+예를 들어 다음과 같습니다.  
 
 ``` csharp
 var existingBlog = new Blog { BlogId = 1, Name = "ADO.NET Blog" };
@@ -141,7 +140,7 @@ using (var context = new BloggingContext())
 
 ## <a name="changing-the-state-of-a-tracked-entity"></a>추적 된 엔터티의 상태를 변경합니다.  
 
-해당 항목의 상태 속성을 설정 하 여 이미 추적 중인 엔터티의 상태를 변경할 수 있습니다. 예를 들어:  
+해당 항목의 상태 속성을 설정 하 여 이미 추적 중인 엔터티의 상태를 변경할 수 있습니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 var existingBlog = new Blog { BlogId = 1, Name = "ADO.NET Blog" };
@@ -163,7 +162,7 @@ using (var context = new BloggingContext())
 
 새 (따라서 데이터베이스 삽입)으로 엔터티를 추가 하거나 기존 엔터티를 연결 및 수정 (데이터베이스 업데이트의 결과)으로 표시 하려면 일부 응용 프로그램에 대 한 일반적인 패턴은 기본 키 값에 따라 합니다.
 예를 들어, 데이터베이스에서 생성 된 정수 기본 키를 사용 하는 경우 새 0 키를 사용 하 여 엔터티 및 엔터티의 기존 0이 아닌 키를 사용 하 여 처리에 공통적으로 적용 됩니다.
-기본 키 값의 검사에 따라 엔터티 상태를 설정 하 여이 패턴을 구현할 수 있습니다. 예를 들어:  
+기본 키 값의 검사에 따라 엔터티 상태를 설정 하 여이 패턴을 구현할 수 있습니다. 예를 들어 다음과 같습니다.  
 
 ``` csharp
 public void InsertOrUpdate(Blog blog)
