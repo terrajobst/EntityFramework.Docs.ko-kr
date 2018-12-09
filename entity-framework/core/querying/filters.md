@@ -3,12 +3,12 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 73efe62262cf45cc1841d7a86cf59249cf07c5ea
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 201292a440d37d240f31452eaebb23dcd4aee1a6
+ms.sourcegitcommit: 8dd71a57a01c439431164c163a0722877d0e5cd8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42996667"
+ms.lasthandoff: 12/07/2018
+ms.locfileid: "53028169"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
 
@@ -17,22 +17,22 @@ ms.locfileid: "42996667"
 * **일시 삭제** - 엔터티 형식이 *IsDeleted* 속성을 정의합니다.
 * **다중 테넌트** - 엔터티 형식이 *TenantId* 속성을 정의합니다.
 
-## <a name="example"></a>예
+## <a name="example"></a>예제
 
 다음 예제에서는 전역 쿼리 필터를 사용하여 간단한 블로그 모델에서 일시 삭제 및 다중 테넌트 쿼리 동작을 구현하는 방법을 보여줍니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFrameworkCore/tree/master/samples/QueryFilters)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryFilters)을 볼 수 있습니다.
 
 먼저 엔터티를 정의합니다.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#Entities)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Entities)]
 
 _Blog_ 엔터티에서 __tenantId_ 필드의 선언을 확인하세요. 이 선언은 각 Blog 인스턴스를 특정 테넌트와 연결하는 데 사용됩니다. 또한 _IsDeleted_ 속성은 _Post_ 엔터티 형식에 정의되어 있습니다. 이 속성은 _Post_ 인스턴스가 “일시 삭제”되었는지 여부를 추적하는 데 사용됩니다. 즉, 기본 데이터를 물리적으로 제거하지 않아도 인스턴스가 삭제된 것으로 표시됩니다.
 
 다음으로, ```HasQueryFilter``` API를 사용하여 _OnModelCreating_에서 쿼리 필터를 구성합니다.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#Configuration)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Configuration)]
 
 이제 _HasQueryFilter_ 호출에 전달된 조건자 식이 해당 형식에 대한 모든 LINQ 쿼리에 자동으로 적용됩니다.
 
@@ -43,7 +43,7 @@ _Blog_ 엔터티에서 __tenantId_ 필드의 선언을 확인하세요. 이 선�
 
 ```IgnoreQueryFilters()``` 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않도록 설정할 수 있습니다.
 
-[!code-csharp[Main](../../../efcore-repo/samples/QueryFilters/Program.cs#IgnoreFilters)]
+[!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#IgnoreFilters)]
 
 ## <a name="limitations"></a>제한 사항
 
