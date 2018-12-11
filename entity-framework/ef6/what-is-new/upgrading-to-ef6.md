@@ -3,12 +3,12 @@ title: Entity Framework 6으로 업그레이드
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 29958ae5-85d3-4585-9ba6-550b8ec9393a
-ms.openlocfilehash: 2e2dacfe67238bdb7fd1f31f784319049f0f2cb0
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 711f1940080de27bd23cb8f641a5c7f2711dd65b
+ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490950"
+ms.lasthandoff: 12/10/2018
+ms.locfileid: "53182009"
 ---
 # <a name="upgrading-to-entity-framework-6"></a>Entity Framework 6으로 업그레이드
 
@@ -64,22 +64,22 @@ DbContext와 Code First 형식에 대 한 네임 스페이스는 변경 되지 �
 
 System.Data.Entity.dll에 이전에 있던 ObjectContext과 같은 형식 새 네임 스페이스로 이동 되었습니다. 즉, 업데이트 해야 하 *를 사용 하 여* 또는 *가져오기* EF6 빌드 지시문입니다.
 
-네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.*에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 방금 삽입 **Entity.Core 합니다.** System.Data 후. 예를 들어:
+네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.*에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 방금 삽입 **Entity.Core 합니다.** System.Data 후. 예를 들어 다음과 같습니다.
 
-- System.Data.EntityException = > System.Data. **Entity.Core 합니다.** EntityException  
-- System.Data.Objects.ObjectContext = > System.Data. **Entity.Core 합니다.** Objects.ObjectContext  
-- System.Data.Objects.DataClasses.RelationshipManager = > System.Data. **Entity.Core 합니다.** Objects.DataClasses.RelationshipManager  
+- System.Data.EntityException = > System.Data. **Entity.Core**합니다. EntityException  
+- System.Data.Objects.ObjectContext = > System.Data. **Entity.Core**합니다. Objects.ObjectContext  
+- System.Data.Objects.DataClasses.RelationshipManager = > System.Data. **Entity.Core**합니다. Objects.DataClasses.RelationshipManager  
 
 이러한 형식에는 *Core* 네임 스페이스는 대부분의 DbContext 기반 응용 프로그램에 대 한 직접 사용 되지 않으므로 합니다. 일부 System.Data.Entity.dll의 일부인 계속 되는 직접 및 일반적으로 DbContext 기반 응용 프로그램에 대 한 형식과 따라서 이동 되지 않은에 *Core* 네임 스페이스입니다. 이러한 항목은 다음과 같습니다.
 
-- System.Data.EntityState = > System.Data. **엔터티.** EntityState  
+- System.Data.EntityState = > System.Data. **엔터티**합니다. EntityState  
 - System.Data.Objects.DataClasses.EdmFunctionAttribute = > System.Data. **Entity.DbFunctionAttribute**  
   > [!NOTE]
   > 이 클래스의 이름이 바뀌었습니다. 이전 이름 가진 클래스에서 여전히 존재 하 고 작동 있지만 이제 되지 않음으로 표시 합니다.  
 - System.Data.Objects.EntityFunctions = > System.Data. **Entity.DbFunctions**  
   > [!NOTE]
   > 이 클래스의 이름이 바뀌었습니다. 이전 이름 가진 클래스 여전히 존재 하 고 작동 있지만 이제 사용 되지 않음으로 표시 합니다.)  
-- System.Data.Spatial에서 이동한 공간 클래스 (예: DbGeography, DbGeometry) = > System.Data. **엔터티.** 공간
+- System.Data.Spatial에서 이동한 공간 클래스 (예: DbGeography, DbGeometry) = > System.Data. **엔터티**합니다. 공간
 
 > [!NOTE]
 > System.Data 네임 스페이스의 형식은 EF 어셈블리로 되지 않는 System.Data.dll의 일부입니다. 이러한 형식으로 이동 하지 하 고 있으므로 해당 네임 스페이스가 그대로 유지 됩니다.
