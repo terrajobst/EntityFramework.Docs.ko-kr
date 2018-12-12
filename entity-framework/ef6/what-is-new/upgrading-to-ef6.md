@@ -44,7 +44,7 @@ EF 디자이너를 사용 하 여 만든 모델에 있는 경우에 EF6 호환 �
 > [!NOTE]
 > 현재 가지 EF 6.x DbContext 생성기 템플릿만 Visual Studio 2012 및 2013 사용할 수 있습니다.
 
-1. 기존 코드 생성 템플릿을 삭제 합니다. 이러한 파일 이름은 일반적으로  **\<edmx_file_name\>.tt** 하 고  **\<edmx_file_name\>합니다. Context.tt** 및 솔루션 탐색기에서 edmx 파일을 중첩할 수 있습니다. 키를 눌러 솔루션 탐색기에서 템플릿을 선택할 수 있습니다 합니다 **Del** 삭제할 키입니다.  
+1. 기존 코드 생성 템플릿을 삭제 합니다. 이러한 파일 이름은 일반적으로 **\<edmx_file_name\>.tt** 하 고 **\<edmx_file_name\>합니다. Context.tt** 및 솔루션 탐색기에서 edmx 파일을 중첩할 수 있습니다. 키를 눌러 솔루션 탐색기에서 템플릿을 선택할 수 있습니다 합니다 **Del** 삭제할 키입니다.  
    > [!NOTE]
    > 웹 사이트 프로젝트에서 하지 템플릿은 edmx 파일을 아래에 중첩 하 하지만 솔루션 탐색기에서 함께 나열 됩니다.  
 
@@ -64,7 +64,7 @@ DbContext와 Code First 형식에 대 한 네임 스페이스는 변경 되지 �
 
 System.Data.Entity.dll에 이전에 있던 ObjectContext과 같은 형식 새 네임 스페이스로 이동 되었습니다. 즉, 업데이트 해야 하 *를 사용 하 여* 또는 *가져오기* EF6 빌드 지시문입니다.
 
-네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.*에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 방금 삽입 **Entity.Core 합니다.** System.Data 후. 예를 들어 다음과 같습니다.
+네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.* 에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 방금 삽입 **Entity.Core 합니다.** System.Data 후. 예를 들어 다음과 같습니다.
 
 - System.Data.EntityException = > System.Data. **Entity.Core**합니다. EntityException  
 - System.Data.Objects.ObjectContext = > System.Data. **Entity.Core**합니다. Objects.ObjectContext  
