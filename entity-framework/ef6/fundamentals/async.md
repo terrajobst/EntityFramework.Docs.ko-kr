@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: 4ed4f5c13341f33ccff8325a5ddacd8f7b195a76
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: de702365251fd05c423c8590ccaefa7d8542ad02
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283825"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058762"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -76,7 +76,7 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
     }
 ```
 
- 
+ 
 
 ## <a name="create-a-synchronous-program"></a>동기 프로그램 만들기
 
@@ -96,7 +96,6 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
             {
                 PerformDatabaseOperations();
 
-                Console.WriteLine();
                 Console.WriteLine("Quote of the day");
                 Console.WriteLine(" Don't worry about the world coming to an end today... ");
                 Console.WriteLine(" It's already tomorrow in Australia.");
@@ -115,16 +114,18 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
                     {
                         Name = "Test Blog #" + (db.Blogs.Count() + 1)
                     });
+                    Console.WriteLine("Calling SaveChanges.");
                     db.SaveChanges();
+                    Console.WriteLine("SaveChanges completed.");
 
                     // Query for all blogs ordered by name
+                    Console.WriteLine("Executing query.");
                     var blogs = (from b in db.Blogs
                                 orderby b.Name
                                 select b).ToList();
 
                     // Write all blogs out to Console
-                    Console.WriteLine();
-                    Console.WriteLine("All blogs:");
+                    Console.WriteLine("Query completed with following results:");
                     foreach (var blog in blogs)
                     {
                         Console.WriteLine(" " + blog.Name);
@@ -145,20 +146,20 @@ EF6 비동기 쿼리를 사용 하 여 저장 지원을 도입 합니다 [async 
 4.  쿼리를 반환 하 고 결과에 기록 되며 **콘솔**
 5.  날짜의 견적에 쓸 때 **콘솔**
 
-![동기화 출력](~/ef6/media/syncoutput.png) 
+![동기화 출력](~/ef6/media/syncoutput.png) 
 
- 
+ 
 
 ## <a name="making-it-asynchronous"></a>비동기 만들기
 
 이제 프로그램을 실행 했으므로 새 비동기를 사용 하 고 await 키워드 시작할 수 있습니다. Program.cs에 다음 변경 내용을 만들었습니다.
 
-1.  2 번 줄: using 문을 합니다 **System.Data.Entity** 네임 스페이스 액세스를 제공 EF 비동기 확장 메서드.
-2.  줄 4:를 사용 하 여 문을 합니다 **System.Threading.Tasks** 네임 스페이스를 사용할 수 있습니다 합니다 **작업** 형식입니다.
-3.  줄 12 & 18:의 진행률을 모니터링 하는 작업으로 캡처하는 것 **PerformSomeDatabaseOperations** (줄 12) 및 다음이 프로그램 실행 차단 작업 완료 한 번에 모든 작업 프로그램 (18 번 줄) 수행에 대 한 합니다.
+1.  2 번 줄: 에 대 한 문을 사용 하는 **System.Data.Entity** 네임 스페이스 액세스를 제공 EF 비동기 확장 메서드.
+2.  줄 4: 에 대 한 문을 사용 하는 **System.Threading.Tasks** 네임 스페이스를 사용할 수 있습니다는 **작업** 형식입니다.
+3.  줄 12 & 18: 진행 상황을 모니터링 하는 작업으로 캡처하는 것 **PerformSomeDatabaseOperations** (줄 12) 및 다음이 프로그램 실행 차단 작업 완료 한 번에 모든 작업 프로그램 (18 번 줄) 수행에 대 한 합니다.
 4.  25 번 줄: 업데이트 되었습니다 **PerformSomeDatabaseOperations** 로 표시 되어야 **비동기** 반환 하 고는 **작업**합니다.
-5.  줄 35:는 이제 SaveChanges의 비동기 버전을 호출 하 고 해당 완료 대기 중입니다.
-6.  줄 42:는 이제 ToList의 비동기 버전을 호출 하 고 결과에서 대기 중입니다.
+5.  35 줄: 이제 SaveChanges의 비동기 버전을 호출 하 고 해당 완료 대기 중입니다.
+6.  42 줄: 이제 ToList 및 결과 기다리는 비동기 버전을 호출 하는 것입니다.
 
 System.Data.Entity 네임 스페이스에서 사용 가능한 확장 메서드의 전체 목록을, QueryableExtensions 클래스를 가리킵니다. *또한 해야 "System.Data.Entity"를 사용 하 여 추가 하 여 문입니다.*
 
@@ -227,9 +228,9 @@ System.Data.Entity 네임 스페이스에서 사용 가능한 확장 메서드�
 4.  모든 쿼리 **블로그** 데이터베이스로 전송 됩니다 *다시 관리 되는 스레드는 데이터베이스의 쿼리 처리 되는 동안 다른 작업을 수행할 수 있습니다. 다른 모든 실행 완료 후 스레드가 대기 호출 하지만 중단만 됩니다.*
 5.  쿼리를 반환 하 고 결과에 기록 되며 **콘솔**
 
-![비동기 출력](~/ef6/media/asyncoutput.png) 
+![비동기 출력](~/ef6/media/asyncoutput.png) 
 
- 
+ 
 
 ## <a name="the-takeaway"></a>코딩할
 

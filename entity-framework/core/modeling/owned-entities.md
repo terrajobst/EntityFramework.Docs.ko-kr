@@ -5,12 +5,12 @@ ms.author: ansvyryd
 ms.date: 02/26/2018
 ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 58da3b6b951b3fa4aa04ec75f5759555c1f0cde5
-ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
+ms.openlocfilehash: fe7e07b8bd483fb3f9b672ee78ef7541f06a21a4
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980030"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058775"
 ---
 # <a name="owned-entity-types"></a>소유 된 엔터티 형식
 
@@ -126,4 +126,4 @@ EF Core에서 이러한 개체의 추적 된 인스턴스를 구분 하는 방�
 
 ### <a name="shortcomings-in-previous-versions"></a>이전 버전의 단점
 - EF Core 2.0 탐색 소유한 엔터티 소유자 계층에서 별도 테이블에 매핑됩니다는 명시적으로 하지 않는 한 엔터티 형식이 파생된 엔터티 형식에서 선언할 수 없습니다 소유 합니다. EF Core 2.1에서이 제한이 제거 되었습니다.
-- 소유 된 형식에 en EF Core 2.0 및 2.1만 참조 탐색 지원 되었습니다. EF Core 2.2에이 제한이 제거 되었습니다.
+- EF Core 2.0 및 2.1만 참조 소유 된 형식에 탐색 지원 되었습니다. EF Core 2.2에이 제한이 제거 되었습니다.

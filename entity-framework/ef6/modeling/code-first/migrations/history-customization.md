@@ -3,12 +3,12 @@ title: 마이그레이션 기록 테이블-EF6를 사용자 지정
 author: divega
 ms.date: 10/23/2016
 ms.assetid: ed5518f0-a9a6-454e-9e98-a4fa7748c8d0
-ms.openlocfilehash: e3faefc4b812ec4bc440ed2bb48747053d8cb1b3
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: eb19f367611a86f685557a6741a5f2f0bad6b718
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283695"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058749"
 ---
 # <a name="customizing-the-migrations-history-table"></a>마이그레이션 기록 테이블을 사용자 지정
 > [!NOTE]
@@ -19,7 +19,7 @@ ms.locfileid: "46283695"
 
 ## <a name="what-is-migrations-history-table"></a>마이그레이션 기록 테이블 이란?
 
-마이그레이션 기록 테이블은 데이터베이스에 적용 되는 마이그레이션에 대 한 정보를 저장 하기 위해 Code First 마이그레이션을 사용 하는 테이블입니다. 기본적으로 데이터베이스에서 테이블의 이름은 \_ \_MigrationHistory 하며 첫 번째 마이그레이션 수행 된 데이터베이스를 적용 하는 경우 생성 됩니다. Entity Framework 5이이 테이블 응용 프로그램이 Microsoft Sql Server 데이터베이스를 사용 하는 경우 시스템 테이블을 했습니다. 그러나 Entity Framework 6에서 변경 된이 및 마이그레이션 기록 테이블의 시스템 테이블을 더 이상 표시 됩니다.
+마이그레이션 기록 테이블은 데이터베이스에 적용 되는 마이그레이션에 대 한 정보를 저장 하기 위해 Code First 마이그레이션을 사용 하는 테이블입니다. 기본적으로 데이터베이스에서 테이블의 이름은 \_ \_MigrationHistory 하며 첫 번째 마이그레이션 데이터베이스에 적용 하는 경우 생성 됩니다. Entity Framework 5이이 테이블 응용 프로그램이 Microsoft Sql Server 데이터베이스를 사용 하는 경우 시스템 테이블을 했습니다. 그러나 Entity Framework 6에서 변경 된이 및 마이그레이션 기록 테이블의 시스템 테이블을 더 이상 표시 됩니다.
 
 ## <a name="why-customize-migrations-history-table"></a>마이그레이션 기록 테이블을 사용자 지정 이유?
 
@@ -43,7 +43,7 @@ ms.locfileid: "46283695"
 >[!NOTE]
 > 일반적으로 EF 모델을 구성한 경우에 기본 호출할 필요가 없습니다. DbContext.OnModelCreating() 이후 OnModelCreating 메서드 재정의에서 onmodelcreating ()의 본문이 비어 있습니다. 마이그레이션 기록 테이블을 구성 하는 경우에 해당 아닙니다. 이 경우 첫 번째 onmodelcreating () 재정의에서 할 일은 실제로 기본를 호출 하는 것입니다. Onmodelcreating ()입니다. 이렇게 하면 마이그레이션 기록 테이블에서 메서드를 재정의 한 다음 조정 하는 기본 방식으로 구성 됩니다.
 
-마이그레이션 기록 테이블의 이름을 바꾸고 "관리자" 라는 사용자 지정 스키마를 저장 하려는 경우를 가정해 봅니다. 또한 DBA 알려주실 것 마이그레이션 MigrationId 열 이름을 바꾸려면\_id입니다.  HistoryContext에서 파생 된 다음 클래스를 만들어이 달성할 수 있습니다.
+마이그레이션 기록 테이블의 이름을 바꾸고 "관리자" 라는 사용자 지정 스키마를 저장 하려는 경우를 가정해 봅니다. 또한 DBA 알려주실 것 마이그레이션 MigrationId 열 이름을 바꾸려면\_id입니다.  HistoryContext에서 파생 된 다음 클래스를 만들어이 달성할 수 있습니다.
 
 ``` csharp
     using System.Data.Common;
