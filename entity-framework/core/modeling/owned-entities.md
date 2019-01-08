@@ -5,12 +5,12 @@ ms.author: ansvyryd
 ms.date: 02/26/2018
 ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
 uid: core/modeling/owned-entities
-ms.openlocfilehash: fe7e07b8bd483fb3f9b672ee78ef7541f06a21a4
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: b2d72b08de79939904bf4e726c695440c906a8aa
+ms.sourcegitcommit: 7bde8e6ad3c4565a4638646ce04bcf5e66f7b5fd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058775"
+ms.lasthandoff: 01/07/2019
+ms.locfileid: "54069206"
 ---
 # <a name="owned-entity-types"></a>소유 된 엔터티 형식
 
@@ -52,7 +52,7 @@ EF Core에서 이러한 개체를 추적 하는 방법을 이해 하려면 기�
 >[!NOTE]
 > 이 기능은 EF Core 2.2의 새로운 기능입니다.
 
-소유 된 형식의 컬렉션을 구성 하려면 `OwnsMany` 에서 사용할 `OnModelCreating`합니다. 그러나 기본 키 구성 되지 않습니다 기본적 있으므로 명시적으로 지정할 필요 합니다. 일반적으로 외래 키 소유자 및 섀도 상태에 있을 수도 있습니다 고유 속성을 추가로 통합 하는 엔터티의 이러한 형식에 대 한 복합 키를 사용 하는 것:
+소유 된 형식의 컬렉션을 구성 하려면 `OwnsMany` 에서 사용할 `OnModelCreating`합니다. 그러나 기본 키 구성 되지 않습니다 기본적 되므로 명시적으로 지정 해야 합니다. 일반적으로 외래 키 소유자 및 섀도 상태에 있을 수도 있습니다 고유 속성을 추가로 통합 하는 엔터티의 이러한 형식에 대 한 복합 키를 사용 하는 것:
 
 [!code-csharp[OwnsMany](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsMany)]
 
