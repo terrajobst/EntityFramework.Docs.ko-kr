@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: f18de8e8cb4fbe81bb2f983a00c9dd2f46be6073
-ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
+ms.openlocfilehash: 7eba9e1a8e145ef407f844ff3a3ab3069495b7ae
+ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53182022"
+ms.lasthandoff: 01/06/2019
+ms.locfileid: "54058736"
 ---
 # <a name="entity-framework-core-roadmap"></a>Entity Framework Core 로드맵
 
@@ -28,7 +28,7 @@ ms.locfileid: "53182022"
 - **LINQ 기능 향상([#12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795))**: LINQ를 사용하면 선택한 언어로 데이터베이스 쿼리를 작성할 수 있어서 다양한 종류의 정보를 활용하여 IntelliSense 및 컴파일 시간 형식 검사를 수행할 수 있습니다.
   그러나 LINQ를 사용하면 복잡한 쿼리를 무제한으로 작성할 수도 있습니다. 이는 LINQ 공급자에게 항상 큰 문제였습니다.
   EF Core의 처음 몇 버전에서는 쿼리 중 SQL로 변환할 수 있는 부분을 생각한 다음, 나머지 쿼리가 클라이언트의 메모리에서 실행되도록 허용하여 이 문제를 부분적으로 해결했습니다.
-  이러한 클라이언트 쪽 실행은 일부 상황에서는 바람직하지만 다른 많은 경우에는 애플리케이션이 프로덕션에 배포될 때까지 식별되지 않을 수 있는 비효율적인 쿼리가 발생할 수 있습니다.
+  이러한 클라이언트 쪽 실행은 일부 상황에서는 바람직하지만, 다른 많은 경우에는 애플리케이션이 프로덕션에 배포될 때까지 식별되지 않을 수 있는 비효율적인 쿼리가 발생할 수 있습니다.
   EF Core 3.0에서는 LINQ 구현 방식과 테스트 방법을 크게 변화시킬 계획입니다.
   목표는 패치 릴리스에서 쿼리 중단을 방지하는 등 더욱 강력한 EF Core를 만들고, 더 많은 식을 SQL로 정확하게 변환할 수 있고, 더 많은 경우에 효율적인 쿼리를 생성하며, 비효율적인 쿼리가 검색되지 않는 것을 방지하는 것입니다.
 

@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 uid: core/saving/transactions
-ms.openlocfilehash: 7083a1228420416a1b60d9744ca2dad2339be53f
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 4c50d6694c6678678c0af8defe2601abee923af1
+ms.sourcegitcommit: 5f11a5fa5d2cde81a4e4d0d5c3a60aa74b83cbd4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993607"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54226194"
 ---
 # <a name="using-transactions"></a>트랜잭션 사용
 
@@ -22,7 +22,7 @@ ms.locfileid: "42993607"
 
 기본적으로 데이터베이스 공급자가 트랜잭션을 지원하는 경우 `SaveChanges()`에 대한 단일 호출의 모든 변경 내용이 트랜잭션에 적용됩니다. 변경이 실패하면 트랜잭션이 롤백되고 변경 내용이 데이터베이스에 적용되지 않습니다. 즉, `SaveChanges()`이 완전히 성공하도록 보장되거나 오류가 발생하는 경우 데이터베이스가 수정되지 않은 상태로 유지됩니다.
 
-대부분의 응용 프로그램에서는 이 기본 동작이면 충분합니다. 응용 프로그램 요구 사항에서 필요하다고 생각되는 경우에만 트랜잭션을 수동으로 제어해야 합니다.
+대부분의 애플리케이션에서는 이 기본 동작이면 충분합니다. 애플리케이션 요구 사항에서 필요하다고 생각되는 경우에만 트랜잭션을 수동으로 제어해야 합니다.
 
 ## <a name="controlling-transactions"></a>트랜잭션 제어
 

@@ -5,16 +5,16 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 2248c60045a914c902f1c958a86c69b283abd722
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 4734586adc89e9c1d866a1b4accd8b5e51fe2bb0
+ms.sourcegitcommit: ebf661025d2ad2b62466fa7bf0e0772a7811cbe7
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022238"
+ms.lasthandoff: 01/11/2019
+ms.locfileid: "54211168"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>ASP.NET Core에서 새 데이터베이스로 EF Core 시작
 
-이 자습서에서는 Entity Framework Core를 사용하여 기본 데이터 액세스를 수행하는 ASP.NET Core MVC 응용 프로그램을 빌드합니다. 이 자습서에서는 마이그레이션을 사용하여 데이터 모델에서 데이터베이스를 만듭니다.
+이 자습서에서는 Entity Framework Core를 사용하여 기본 데이터 액세스를 수행하는 ASP.NET Core MVC 애플리케이션을 빌드합니다. 이 자습서에서는 마이그레이션을 사용하여 데이터 모델에서 데이터베이스를 만듭니다.
 
 Windows에서 Visual Studio 2017을 사용하거나 Windows, macOS 또는 Linux에서 .NET Core CLI를 사용하여 자습서를 진행할 수 있습니다.
 
@@ -46,11 +46,11 @@ GitHub에서 이 문서의 샘플을 봅니다.
 * Visual Studio 2017을 엽니다.
 * **파일 > 새로 만들기 > 프로젝트**
 * 왼쪽 메뉴에서 **설치됨 > Visual C# > .NET Core**를 선택합니다.
-* **새 ASP.NET Core 웹 응용 프로그램**을 선택합니다.
+* **새 ASP.NET Core 웹 애플리케이션**을 선택합니다.
 * 이름으로 **EFGetStarted.AspNetCore.NewDb**를 입력하고 **확인**을 클릭합니다.
-* **새 ASP.NET Core 웹 응용 프로그램** 대화 상자에서:
+* **새 ASP.NET Core 웹 애플리케이션** 대화 상자에서:
   * 드롭다운 목록에서 **.NET Core** 및 **ASP.NET Core 2.1**이 선택되어 있는지 확인합니다.
-  * **웹 응용 프로그램(모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택합니다.
+  * **웹 애플리케이션(모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택합니다.
   * **인증**이 **인증 없음**으로 설정되었는지 확인합니다.
   * **확인**을 클릭합니다.
 
@@ -114,7 +114,7 @@ EF Core를 설치하려면 대상으로 지정할 EF Core 데이터베이스 공
 
 ## <a name="register-the-context-with-dependency-injection"></a>종속성 주입으로 컨텍스트 등록
 
-서비스(예: `BloggingContext`)는 응용 프로그램 시작 중에 [종속성 주입](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html)에 등록됩니다. 이러한 서비스(예: MVC 컨트롤러)가 필요한 구성 요소에는 생성자 매개 변수 또는 속성을 통해 이러한 서비스가 제공됩니다.
+서비스(예: `BloggingContext`)는 애플리케이션 시작 중에 [종속성 주입](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html)에 등록됩니다. 이러한 서비스(예: MVC 컨트롤러)가 필요한 구성 요소에는 생성자 매개 변수 또는 속성을 통해 이러한 서비스가 제공됩니다.
 
 `BloggingContext`를 MVC 컨트롤러에 사용할 수 있도록 서비스로 등록합니다.
 
@@ -201,9 +201,9 @@ EF Core를 설치하려면 대상으로 지정할 EF Core 데이터베이스 공
 스캐폴딩 엔진은 다음 파일을 만듭니다.
 
 * 컨트롤러(*Controllers/BlogsController.cs*)
-* 만들기, 삭제, 세부 정보, 편집 및 인덱스 페이지에 대한 Razor 뷰(_Views/Movies/*.cshtml_)
+* 만들기, 삭제, 세부 정보, 편집 및 인덱스 페이지에 대한 Razor 뷰(_Views/Blogs/*.cshtml_)
 
-## <a name="run-the-application"></a>응용 프로그램 실행
+## <a name="run-the-application"></a>애플리케이션 실행
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -229,5 +229,5 @@ dotnet run
 ## <a name="additional-resources"></a>추가 리소스
 
 * [자습서: SQLite를 사용하여 .NET Core에서 새 데이터베이스로 EF Core 시작](xref:core/get-started/netcore/new-db-sqlite)
-* [자습서: ASP.NET Core에서 Razor Pages 시작](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
-* [자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor 페이지](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
+* [Tutorial: Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)(자습서: ASP.NET Core에서 Razor Pages 시작)
+* [Tutorial: Razor Pages with Entity Framework Core in ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)(자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages)
