@@ -3,46 +3,47 @@ title: EF6 유효성 검사
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 77d6a095-c0d0-471e-80b9-8f9aea6108b2
-ms.openlocfilehash: 3aeb33763819544618c4a3068bb278c9b23409b6
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 98d7bd08d841ee400afb62e1079f1a965f65e139
+ms.sourcegitcommit: b4a5ed177b86bf7f81602106dab6b4acc18dfc18
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490647"
+ms.lasthandoff: 01/15/2019
+ms.locfileid: "54316649"
 ---
 # <a name="data-validation"></a>데이터 유효성 검사
 > [!NOTE]
 > **EF4.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 4.1에서 도입 되었습니다. 일부 또는 모든 정보는 이전 버전을 사용 하는 경우 적용 되지 않습니다.
 
-이 페이지에 있는 콘텐츠는 및 Julie lerman 작성 원래 작성 된 문서 ([http://thedatafarm.com](http://thedatafarm.com)).
+Julie lerman 작성 원래 작성 된 문서에서이 페이지에 있는 콘텐츠는 ([http://thedatafarm.com](http://thedatafarm.com)).
 
 Entity Framework는 다양 한 클라이언트 쪽 유효성 검사에 대 한 사용자 인터페이스를 통해 공급할 수 또는 서버 쪽 유효성 검사에 사용할 수 있는 유효성 검사 기능을 제공 합니다. 코드를 처음 사용 하는 경우 주석 또는 fluent API 구성이 사용 하 여 유효성 검사를 지정할 수 있습니다. 추가 유효성 검사 및 복잡 한 코드에서 지정 될 수 있으며 모델 코드에서 먼저 hails 인지 관계 없이 작동 하는 모델을 우선 또는 먼저 데이터베이스입니다.
 
 ## <a name="the-model"></a>모델
 
-클래스의 간단한 쌍을 사용 하 여 유효성 검사를 설명 하겠습니다: 블로그 및 게시물.
+클래스의 간단한 쌍을 사용 하 여 유효성 검사를 설명 하겠습니다. 블로그 및 게시물입니다.
 
 ``` csharp
     public class Blog
       {
-          public int Id { get; set; }
-          public string Title { get; set; }
-          public string BloggerName { get; set; }
-          public DateTime DateCreated { get; set; }
-          public virtual ICollection<Post> Posts { get; set; }
-          }
-      }
+          public int Id { get; set; }
+          public string Title { get; set; }
+          public string BloggerName { get; set; }
+          public DateTime DateCreated { get; set; }
+          public virtual ICollection<Post> Posts { get; set; }
+          }
+      }
 
-      public class Post
-      {
-          public int Id { get; set; }
-          public string Title { get; set; }
-          public DateTime DateCreated { get; set; }
-          public string Content { get; set; }
-          public int BlogId { get; set; }
-          public ICollection<Comment> Comments { get; set; }
-      }
+      public class Post
+      {
+          public int Id { get; set; }
+          public string Title { get; set; }
+          public DateTime DateCreated { get; set; }
+          public string Content { get; set; }
+          public int BlogId { get; set; }
+          public ICollection<Comment> Comments { get; set; }
+      }
 ```
+
 ## <a name="data-annotations"></a>데이터 주석
 
 코드는 먼저 코드 첫 번째 클래스를 구성 하는 하나의 수단으로 주석을 System.ComponentModel.DataAnnotations 어셈블리를 사용 합니다. 이러한 주석은 간에 필요 MinLength 및 MaxLength와 같은 규칙을 제공 하는입니다. .NET 클라이언트 응용 프로그램의 수는 또한 이러한 주석, 예를 들어, ASP.NET MVC를 인식합니다. 두 클라이언트 쪽 및 서버 쪽 유효성 검사 이러한 주석 사용 하 여 얻을 수 있습니다. 예를 들어 블로그 Title 속성 필수 속성을 적용할 수 있습니다.
@@ -64,7 +65,7 @@ Entity Framework는 다양 한 클라이언트 쪽 유효성 검사에 대 한 �
 
 ``` xml
     <appSettings>
-        <add key="ClientValidationEnabled"value="false"/>
+        <add key="ClientValidationEnabled"value="false"/>
         ...
     </appSettings>
 ```
@@ -79,16 +80,16 @@ Entity Framework는 다양 한 클라이언트 쪽 유효성 검사에 대 한 �
 
 ``` csharp
     public class BlogContext : DbContext
-      {
-          public DbSet<Blog> Blogs { get; set; }
-          public DbSet<Post> Posts { get; set; }
-          public DbSet<Comment> Comments { get; set; }
+      {
+          public DbSet<Blog> Blogs { get; set; }
+          public DbSet<Post> Posts { get; set; }
+          public DbSet<Comment> Comments { get; set; }
 
-          protected override void OnModelCreating(DbModelBuilder modelBuilder)
-          {
-              modelBuilder.Entity<Blog>().Property(p => p.BloggerName).HasMaxLength(10);
-          }
-        }
+          protected override void OnModelCreating(DbModelBuilder modelBuilder)
+          {
+              modelBuilder.Entity<Blog>().Property(p => p.BloggerName).HasMaxLength(10);
+          }
+        }
 ```
 
 발생 한 유효성 검사 오류 Fluent API 구성에 따라는 자동으로 도달률 UI 있지만 수 캡처하지 않습니다 것 코드를 다음 응답에 적절 하 게 합니다.
@@ -99,18 +100,18 @@ Entity Framework는 다양 한 클라이언트 쪽 유효성 검사에 대 한 �
     [HttpPost]
     public ActionResult Edit(int id, Blog blog)
     {
-        try
-        {
-            db.Entry(blog).State = EntityState.Modified;
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-        catch(DbEntityValidationException ex)
-        {
-            var error = ex.EntityValidationErrors.First().ValidationErrors.First();
-            this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
-            return View();
-        }
+        try
+        {
+            db.Entry(blog).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        catch(DbEntityValidationException ex)
+        {
+            var error = ex.EntityValidationErrors.First().ValidationErrors.First();
+            this.ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+            return View();
+        }
     }
 ```
 
@@ -130,23 +131,23 @@ IValidatableObject에 System.ComponentModel.DataAnnotations 존재 하는 인터
 
 ``` csharp
     public class Blog : IValidatableObject
-     {
-         public int Id { get; set; }
-         [Required]
-         public string Title { get; set; }
-         public string BloggerName { get; set; }
-         public DateTime DateCreated { get; set; }
-         public virtual ICollection<Post> Posts { get; set; }
+     {
+         public int Id { get; set; }
+         [Required]
+         public string Title { get; set; }
+         public string BloggerName { get; set; }
+         public DateTime DateCreated { get; set; }
+         public virtual ICollection<Post> Posts { get; set; }
 
-         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-         {
-             if (Title == BloggerName)
-             {
-                 yield return new ValidationResult
-                  ("Blog Title cannot match Blogger Name", new[] { "Title", “BloggerName” });
-             }
-         }
-     }
+         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+         {
+             if (Title == BloggerName)
+             {
+                 yield return new ValidationResult
+                  ("Blog Title cannot match Blogger Name", new[] { "Title", “BloggerName” });
+             }
+         }
+     }
 ```
 
 ValidationResult 생성자 오류 메시지와 유효성 검사와 연관 된 멤버 이름을 나타내는 문자열 배열을 나타내는 문자열입니다. 이 유효성 검사 제목과 BloggerName 모두 확인 되므로 속성 이름은 모두 반환 됩니다.
@@ -168,27 +169,27 @@ DbEntityValidationResult를 DbEntityEntry 및는 ICollection의 DbValidationErro
         System.Data.Entity.Infrastructure.DbEntityEntry entityEntry,
         IDictionary\<object, object> items)
     {
-        var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
-        if (entityEntry.Entity is Post && entityEntry.State == EntityState.Added)
-        {
-            Post post = entityEntry.Entity as Post;
-            //check for uniqueness of post title
-            if (Posts.Where(p => p.Title == post.Title).Count() > 0)
+        var result = new DbEntityValidationResult(entityEntry, new List<DbValidationError>());
+        if (entityEntry.Entity is Post && entityEntry.State == EntityState.Added)
+        {
+            Post post = entityEntry.Entity as Post;
+            //check for uniqueness of post title
+            if (Posts.Where(p => p.Title == post.Title).Count() > 0)
             {
-                result.ValidationErrors.Add(
-                        new System.Data.Entity.Validation.DbValidationError("Title",
-                        "Post title must be unique."));
+                result.ValidationErrors.Add(
+                        new System.Data.Entity.Validation.DbValidationError("Title",
+                        "Post title must be unique."));
             }
-        }
+        }
 
-        if (result.ValidationErrors.Count > 0)
+        if (result.ValidationErrors.Count > 0)
         {
-            return result;
-        }
-        else
+            return result;
+        }
+        else
         {
-         return base.ValidateEntity(entityEntry, items);
-        }
+         return base.ValidateEntity(entityEntry, items);
+        }
     }
 ```
 
@@ -198,19 +199,19 @@ SaveChanges 호출 모두이 문서에서 설명 하는 유효성 검사를 트�
 
 DbContext.GetValidationErrors 모든 유효성 검사, 주석 또는 Fluent API에 의해 정의 된, IValidatableObject (예를 들어 Blog.Validate)에서 만든 유효성 검사 및는 DbContext.ValidateEntity에서 수행 하는 유효성 검사를 트리거 메서드입니다.
 
-다음 코드는 DbContext의 현재 인스턴스에서 GetValidationErrors를 호출 합니다. ValidationErrors는 DbValidationRestuls에 엔터티 형식별으로 그룹화 됩니다. 확장 메서드에서 반환한 DbValidationResults 한 다음 각 ValidationError 내에서 코드를 먼저 반복 합니다.
+다음 코드는 DbContext의 현재 인스턴스에서 GetValidationErrors를 호출 합니다. ValidationErrors는 DbValidationResults에 엔터티 형식별으로 그룹화 됩니다. 확장 메서드에서 반환한 DbValidationResults 한 다음 각 ValidationError 내에서 코드를 먼저 반복 합니다.
 
 ``` csharp
     foreach (var validationResults in db.GetValidationErrors())
-        {
-            foreach (var error in validationResults.ValidationErrors)
-            {
-                Debug.WriteLine(
+        {
+            foreach (var error in validationResults.ValidationErrors)
+            {
+                Debug.WriteLine(
                                   "Entity Property: {0}, Error {1}",
-                                  error.PropertyName,
+                                  error.PropertyName,
                                   error.ErrorMessage);
-            }
-        }
+            }
+        }
 ```
 
 ## <a name="other-considerations-when-using-validation"></a>유효성 검사를 사용 하는 경우 기타 고려 사항
