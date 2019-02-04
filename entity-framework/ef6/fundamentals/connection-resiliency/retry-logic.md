@@ -3,12 +3,12 @@ title: 연결 복원 력 및 다시 시도 논리-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 47d68ac1-927e-4842-ab8c-ed8c8698dff2
-ms.openlocfilehash: 09ebed18b43f864af36b6931f45638f3a3056229
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 7d6aa870cc32a2b344457fbb04525a7c2c8d1c61
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490807"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668767"
 ---
 # <a name="connection-resiliency-and-retry-logic"></a>연결 복원 력 및 다시 시도 논리
 > [!NOTE]
@@ -149,7 +149,7 @@ namespace Demo
         {
             get
             {
-                return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy")  false;
+                return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy") ?? false;
             }
             set
             {

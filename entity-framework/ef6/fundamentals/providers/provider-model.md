@@ -3,12 +3,12 @@ title: EF6-Entity Framework 6 공급자 모델을
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
-ms.openlocfilehash: d07a8689fe968bb1512095a59a61abc7ac346a31
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 8cbf6f87e0936f374c3d8a0c15a0e1d9c828f764
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022326"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668754"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Entity Framework 6 공급자 모델
 
@@ -28,7 +28,7 @@ EF 공급자로 실제로 이러한 서비스 (대 한 기본 클래스)에서 �
 
 ### <a name="dbproviderfactory"></a>DbProviderFactory
 
-EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) 기본적인 수준의 데이터베이스에 대 한 모든 액세스를 수행 합니다. DbProviderFactory EF에 실제로 포함 되지 않지만 대신 클래스는 ADO.NET 공급자에 대 한 진입점을 제공 하는.NET Framework에 사용할 수 있습니다 다른 O/RMs EF 또는 응용 프로그램에서 직접 연결, 명령, 매개 변수 인스턴스를 얻는 및 공급자의 다른 ADO.NET 추상화 알 수 없는 방식으로 합니다. DbProviderFactory에 대 한 자세한 정보는에서 찾을 수 합니다 [ADO.NET에 대 한 MSDN 설명서](https://msdn.microsoft.com/library/a6cd7c08.aspx)합니다.
+EF에서 파생 된 형식에 따라 달라 집니다 [System.Data.Common.DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) 기본적인 수준의 데이터베이스에 대 한 모든 액세스를 수행 합니다. DbProviderFactory EF에 실제로 포함 되지 않지만 대신 클래스는 ADO.NET 공급자에 대 한 진입점을 제공 하는.NET Framework에 사용할 수 있습니다 다른 O/RMs EF 또는 응용 프로그램에서 직접 연결, 명령, 매개 변수 인스턴스를 얻는 및 공급자의 다른 ADO.NET 추상화 알 수 없는 방식으로 합니다. DbProviderFactory에 대 한 자세한 정보를 찾을 수 있습니다 합니다 [ADO.NET에 대 한 MSDN 설명서](https://msdn.microsoft.com/library/a6cd7c08.aspx)합니다.
 
 ### <a name="dbproviderservices"></a>DbProviderServices
 
@@ -60,7 +60,7 @@ Geography 및 geometry 공간 형식에 대 한 지원을 추가할 공급자를
 
 이것이 EF 마이그레이션을 만들고 데이터베이스 스키마 수정에 사용 되는 SQL 생성에 대 한 Code First에서 사용할 수 있는 선택적 서비스입니다. 구현을은 마이그레이션을 지원 하기 위해 필요 합니다. 구현을 제공 하는 경우 다음 것도 사용 됩니다 Database.Create 메서드나 데이터베이스 이니셜라이저를 사용 하 여 데이터베이스를 만들 때.
 
-### <a name="funcdbconnection-string-historycontextfactory"></a>Func < DbConnection, HistoryContextFactory 문자열 >
+### <a name="funcdbconnection-string-historycontextfactory"></a>Func<DbConnection, string, HistoryContextFactory>
 
 이 공급자를 HistoryContext의 매핑을 구성할 수 있도록 하는 선택적 서비스를 `__MigrationHistory` EF 마이그레이션을 사용 하는 테이블입니다. HistoryContext 코드 첫 번째 DbContext 되며 테이블 및 열 매핑 사양 이름과 같은 항목을 변경 하려면 일반 흐름 API를 사용 하 여 구성할 수 있습니다. 해당 공급자에서 모든 기본 테이블 및 열 매핑을 지 원하는 경우 지정 된 데이터베이스 서버에 대 한 모든 공급자에 대 한 EF를 반환한이 서비스의 기본 구현을 작동할 수 있습니다. 이 경우 공급자는이 서비스의 구현을 제공 필요가 없습니다.
 

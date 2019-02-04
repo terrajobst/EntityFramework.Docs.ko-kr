@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: de702365251fd05c423c8590ccaefa7d8542ad02
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: 89c7b9d533d37b4c9e123f37d8ab27c67ba26cc8
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058762"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668715"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -223,7 +223,7 @@ System.Data.Entity 네임 스페이스에서 사용 가능한 확장 메서드�
 
 1.  **SaveChanges** 새 적용할 시작 **블로그** 데이터베이스로 *명령을 보낸 후 데이터베이스에 더 이상 현재 관리 되는 스레드에서 데 필요한 시간을 계산 합니다. 합니다 **PerformDatabaseOperations** 메서드 (경우에 실행 완료 되지 않은)를 반환 하 고 Main 메서드에서 프로그램 흐름을 계속 합니다.*
 2.  **하루 중 견적 콘솔에 기록 됩니다**
-    *대기에서 관리 되는 스레드는 차단 Main 메서드에서 수행할 작업이 더 이상 이므로 데이터베이스 작업이 완료 될 때까지 호출 합니다. 완료 되 면 나머지 우리의 **PerformDatabaseOperations** * 실행 됩니다.
+    *대기에서 관리 되는 스레드는 차단 Main 메서드에서 수행할 작업이 더 이상 이므로 데이터베이스 작업이 완료 될 때까지 호출 합니다. 완료 되 면 나머지 우리의 **PerformDatabaseOperations** 실행 됩니다.*
 3.  **SaveChanges** 완료
 4.  모든 쿼리 **블로그** 데이터베이스로 전송 됩니다 *다시 관리 되는 스레드는 데이터베이스의 쿼리 처리 되는 동안 다른 작업을 수행할 수 있습니다. 다른 모든 실행 완료 후 스레드가 대기 호출 하지만 중단만 됩니다.*
 5.  쿼리를 반환 하 고 결과에 기록 되며 **콘솔**
