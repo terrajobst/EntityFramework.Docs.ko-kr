@@ -3,15 +3,15 @@ title: Code First 마이그레이션 - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
-ms.openlocfilehash: f408ef861a2992783142fa1483d1433ca710399a
-ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
+ms.openlocfilehash: e5a91af73bab9d45b0f1f4242ce503c6b6f407f6
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47415798"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668702"
 ---
 # <a name="code-first-migrations"></a>Code First 마이그레이션
-Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 응용 프로그램의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.
+Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 애플리케이션의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.
 
 1. EF 모델을 사용하는 초기 데이터베이스 만들기
 2. EF 모델에 대한 변경 내용을 추적하기 위한 마이그레이션 생성
@@ -23,7 +23,7 @@ Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 
 
 마이그레이션 사용을 시작하기 전에 먼저 사용할 프로젝트와 Code First 모델이 필요합니다. 이 연습에서는 정식 **Blog** 및 **Post** 모델을 사용하려고 합니다.
 
--   새 **MigrationsDemo** 콘솔 응용 프로그램을 만듭니다.
+-   새 **MigrationsDemo** 콘솔 애플리케이션을 만듭니다.
 -   최신 버전의 **EntityFramework** NuGet 패키지를 프로젝트에 추가합니다.
     -   **도구 –&gt; 라이브러리 패키지 관리자 –&gt; 패키지 관리자 콘솔**
     -   **Install-Package EntityFramework** 명령 실행
@@ -82,7 +82,7 @@ Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 
       }
   ```
 
--   응용 프로그램을 실행하면 **MigrationsCodeDemo.BlogContext** 데이터베이스가 만들어졌음을 알 수 있습니다.
+-   애플리케이션을 실행하면 **MigrationsCodeDemo.BlogContext** 데이터베이스가 만들어졌음을 알 수 있습니다.
 
     ![데이터베이스 LocalDB](~/ef6/media/databaselocaldb.png)
 
@@ -96,7 +96,7 @@ Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 
     public string Url { get; set; }
 ```
 
-응용 프로그램을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269)*).*
+애플리케이션을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269)*).*
 
 예외에서 암시하듯이 이제 Code First 마이그레이션 사용을 시작할 시간입니다. 첫 번째 단계는 컨텍스트에 맞게 마이그레이션을 사용하도록 설정하는 것입니다.
 
@@ -288,7 +288,7 @@ Code First 마이그레이션은 이러한 변경을 매우 효과적으로 스�
 
 **AddBlogUrl** 마이그레이션을 실행한 이후의 상태로 데이터베이스를 마이그레이션하려고 한다고 가정해 보겠습니다. **-TargetMigration** 스위치를 사용하여 이 마이그레이션으로 다운그레이드할 수 있습니다.
 
--   패키지 관리자 콘솔에서 **Update-Database –TargetMigration: AddBlogUrl** 명령을 실행합니다.
+-   패키지 관리자 콘솔에서 **Update-Database–TargetMigration: AddBlogUrl** 명령을 실행합니다.
 
 이 명령은 **AddBlogAbstract** 및 **AddPostClass** 마이그레이션에 대한 Down(다운그레이드) 스크립트를 실행합니다.
 
@@ -308,9 +308,9 @@ Code First 마이그레이션은 마이그레이션 파이프라인을 실행하
 
 EF6부터 **–SourceMigration $InitialDatabase**를 지정하면 생성되는 스크립트가 'idempotent'(멱등원)가 됩니다. 현재 idempotent 스크립트는 모든 버전의 데이터베이스를 최신 버전(또는 **–TargetMigration**을 사용하는 경우 지정한 버전)으로 업그레이드할 수 있습니다. 생성된 스크립트에는 **\_\_MigrationsHistory** 테이블을 확인하고 이전에 적용되지 않은 변경 내용만 적용하는 논리가 포함됩니다.
 
-## <a name="automatically-upgrading-on-application-startup-migratedatabasetolatestversion-initializer"></a>응용 프로그램 시작 시 자동 업그레이드(MigrateDatabaseToLatestVersion 이니셜라이저)
+## <a name="automatically-upgrading-on-application-startup-migratedatabasetolatestversion-initializer"></a>애플리케이션 시작 시 자동 업그레이드(MigrateDatabaseToLatestVersion 이니셜라이저)
 
-응용 프로그램을 배포하는 경우 응용 프로그램이 시작될 때 데이터베이스를 자동으로 업그레이드할 수 있습니다(보류 중인 마이그레이션 적용). 이렇게 하려면 **MigrateDatabaseToLatestVersion** 데이터베이스 이니셜라이저를 등록하면 됩니다. 데이터베이스 이니셜라이저에는 데이터베이스가 올바르게 설정되었는지 확인하는 데 사용되는 몇 가지 논리가 포함됩니다. 이 논리는 응용 프로그램 프로세스(**AppDomain**) 내에서 컨텍스트가 처음 사용될 때 실행됩니다.
+애플리케이션을 배포하는 경우 애플리케이션이 시작될 때 데이터베이스를 자동으로 업그레이드할 수 있습니다(보류 중인 마이그레이션 적용). 이렇게 하려면 **MigrateDatabaseToLatestVersion** 데이터베이스 이니셜라이저를 등록하면 됩니다. 데이터베이스 이니셜라이저에는 데이터베이스가 올바르게 설정되었는지 확인하는 데 사용되는 몇 가지 논리가 포함됩니다. 이 논리는 애플리케이션 프로세스(**AppDomain**) 내에서 컨텍스트가 처음 사용될 때 실행됩니다.
 
 컨텍스트(14번째 줄)를 사용하기 전에 BlogContext에 대한 **MigrateDatabaseToLatestVersion** 이니셜라이저를 설정하기 위해 **Program.cs** 파일을 아래와 같이 업데이트할 수 있습니다. 또한 **System.Data.Entity** 네임스페이스(5번째 줄)에 using 문도 추가해야 합니다.
 
@@ -330,7 +330,7 @@ EF6부터 **–SourceMigration $InitialDatabase**를 지정하면 생성되는 �
         {
             static void Main(string[] args)
             {
-                Database.SetInitializer(new MigrateDatabaseToLatestVersion\<BlogContext, Configuration>());
+                Database.SetInitializer(new MigrateDatabaseToLatestVersion<BlogContext, Configuration>());
 
                 using (var db = new BlogContext())
                 {
@@ -350,4 +350,4 @@ EF6부터 **–SourceMigration $InitialDatabase**를 지정하면 생성되는 �
     }
 ```
 
-이제 응용 프로그램이 실행될 때마다 먼저 대상 데이터베이스가 최신 상태인지 확인하고, 그렇지 않으면 보류 중인 마이그레이션을 적용합니다.
+이제 애플리케이션이 실행될 때마다 먼저 대상 데이터베이스가 최신 상태인지 확인하고, 그렇지 않으면 보류 중인 마이그레이션을 적용합니다.
