@@ -4,16 +4,16 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 58c79d477d590eea355a922b3e1233bbecb305cc
-ms.sourcegitcommit: a6082a2caee62029f101eb1000656966195cd6ee
+ms.openlocfilehash: 5ebc4edba07063ad5e77154adcde5f2664c0d748
+ms.sourcegitcommit: 85d17524d8e022f933cde7fc848313f57dfd3eb8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53181983"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55760524"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 구성 요소
 
 * EF Core는 [.NET Standard 2.0](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.0을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.0 라이브러리에서도 참조할 수 있습니다. 
 
@@ -31,7 +31,7 @@ EF Core를 애플리케이션에 추가하려면 사용할 데이터베이스 �
 
 ASP.NET Core 애플리케이션을 빌드하는 경우 메모리 내 및 SQL Server 공급자를 설치할 필요가 없습니다. 이러한 공급자는 EF Core 런타임와 함께 ASP.NET Core의 현재 버전에 포함되어 있습니다.  
 
-NuGet 패키지를 설치하거나 업데이트하려면 [.NET Core CLI(명령줄 인터페이스), Visual Studio 패키지 관리자 대화 상자 또는 Visual Studio 패키지 관리자 콘솔을 사용할 수 있습니다.
+NuGet 패키지를 설치하거나 업데이트하려면 .NET Core CLI(명령줄 인터페이스), Visual Studio 패키지 관리자 대화 상자 또는 Visual Studio 패키지 관리자 콘솔을 사용할 수 있습니다.
 
 ### <a name="net-core-cli"></a>.NET Core CLI
 
@@ -119,7 +119,7 @@ ASP.NET Core 앱의 경우 이 패키지는 자동으로 포함됩니다.
 
 * EF Core는 SQL Server 및 메모리 내 공급자와 함께 ASP.NET Core의 현재 버전에 포함되어 있습니다. 기존 ASP.NET Core 애플리케이션을 최신 버전의 EF Core로 업그레이드하려면 항상 ASP.NET Core 버전을 업그레이드합니다.
 
-* 타사 데이터베이스 공급자를 사용하는 응용 프로그램을 업데이트해야 할 경우 항상 공급자의 업데이트가 사용할 EF Core 버전과 호환되는지 확인합니다. 예를 들어 이전 버전에 대한 데이터베이스 공급자는 EF Core 런타임 버전 2.0과 호환되지 않습니다.
+* 타사 데이터베이스 공급자를 사용하는 애플리케이션을 업데이트해야 할 경우 항상 공급자의 업데이트가 사용할 EF Core 버전과 호환되는지 확인합니다. 예를 들어 이전 버전에 대한 데이터베이스 공급자는 EF Core 런타임 버전 2.0과 호환되지 않습니다.
 
 * EF Core용 타사 공급자는 일반적으로 EF Core 런타임과 함께 패치 버전을 릴리스하지 않습니다. 타사 공급자를 사용하는 애플리케이션을 EF Core의 패치 버전으로 업그레이드하려면 Microsoft.EntityFrameworkCore 및 Microsoft.EntityFrameworkCore.Relational과 같은 개별 EF Core 런타임 구성 요소에 직접 참조를 추가해야 할 수 있습니다.
 
