@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 65501b5ac03ae544c51b7fc1a07fa9eea849f1e3
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 0a996403afdbe076b1690c98eeb305b40c4d1f4a
+ms.sourcegitcommit: 109a16478de498b65717a6e09be243647e217fb3
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022147"
+ms.lasthandoff: 02/10/2019
+ms.locfileid: "55985576"
 ---
 # <a name="logging"></a>로깅
 
@@ -25,11 +25,14 @@ EF Core는 ASP.NET Core의 로깅 메커니즘을 사용 하 여 자동으로 �
 현재 로깅 EF Core에는 하나 이상의 ILoggerProvider를 사용 하 여 구성 자체는 ILoggerFactory 필요 합니다. 일반적인 공급자 같은 패키지에 제공 됩니다.
 
 * [Microsoft.Extensions.Logging.Console](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Console/): 간단한 콘솔으로 거를 합니다.
-* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): 지 원하는 Azure App Services '진단 로그' 및 '로그 스트림' 기능입니다.
-* [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/): System.Diagnostics.Debug.WriteLine()를 사용 하 여 디버거 모니터는 로그입니다.
+* [Microsoft.Extensions.Logging.AzureAppServices](https://www.nuget.org/packages/Microsoft.Extensions.Logging.AzureAppServices/): Azure App Services '진단 로그' 및 '로그 스트림' 기능을 지원 합니다.
+* [Microsoft.Extensions.Logging.Debug](https://www.nuget.org/packages/Microsoft.Extensions.Logging.Debug/): 디버거에 로그 System.Diagnostics.Debug.WriteLine()를 사용 하 여 모니터링 합니다.
 * [Microsoft.Extensions.Logging.EventLog](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventLog/): Windows 이벤트 로그에 기록 합니다.
-* [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource/): EventSource/EventListener를 지원 합니다.
-* [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource/): System.Diagnostics.TraceSource.TraceEvent()를 사용 하 여 추적 수신기에 로그 합니다.
+* [Microsoft.Extensions.Logging.EventSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.EventSource/): EventSource/EventListener를 지원합니다.
+* [Microsoft.Extensions.Logging.TraceSource](https://www.nuget.org/packages/Microsoft.Extensions.Logging.TraceSource/): System.Diagnostics.TraceSource.TraceEvent()를 사용 하 여 추적 수신기에 기록 합니다.
+
+> [!NOTE]
+> 다음 코드 샘플에서는 `ConsoleLoggerProvider` 생성자를 버전 2.2에서에서 사용 되지 않습니다 되었습니다. 사용 되지 않는 로깅 Api에 대 한 적절 한 대체 버전 3.0에서에서 사용할 수 있습니다. 그동안를 무시 하 고 경고를 표시 하지 않으려면 안전 합니다.
 
 적절 한 패키지를 설치한 후 응용 프로그램을 LoggerFactory의 singleton/전역 인스턴스를 만들어야 합니다. 예를 들어 콘솔으로 거를 사용 하 여:
 
@@ -43,6 +46,9 @@ EF Core는 ASP.NET Core의 로깅 메커니즘을 사용 하 여 자동으로 �
 > 것이 매우 중요 한 응용 프로그램 각 컨텍스트 인스턴스에 대 한 새 ILoggerFactory 인스턴스를 만들지 마십시오입니다. 이렇게 성능 저하 및 메모리 누수를 발생 합니다.
 
 ## <a name="filtering-what-is-logged"></a>로깅되는 내용을 필터링 합니다.
+
+> [!NOTE]
+> 다음 코드 샘플에서는 `ConsoleLoggerProvider` 생성자를 버전 2.2에서에서 사용 되지 않습니다 되었습니다. 사용 되지 않는 로깅 Api에 대 한 적절 한 대체 버전 3.0에서에서 사용할 수 있습니다. 그동안를 무시 하 고 경고를 표시 하지 않으려면 안전 합니다.
 
 로깅되는 내용을 필터링 하는 가장 쉬운 방법은 구성 하는 것은 ILoggerProvider를 등록 하는 경우입니다. 예를 들어:
 
