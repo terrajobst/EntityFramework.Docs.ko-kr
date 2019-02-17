@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 65cfea07a40939c1c3615c97ec785a4082b21de5
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 4e042acb805c743ee794f4e61105b8d2136973b1
+ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994790"
+ms.lasthandoff: 02/03/2019
+ms.locfileid: "55668728"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -317,7 +317,7 @@ EF Core는 탐색 속성을 자동으로 수정하므로 개체 그래프의 주
 
 일부 serialization 프레임워크에서는 이러한 주기를 허용하지 않습니다. 예를 들어 주기가 발생하면 Json.NET은 다음 예외를 throw합니다.
 
-> Newtonsoft.Json.JsonSerializationException: 형식이 ‘MyApplication.Models.Blog’인 ‘Blog’ 속성에 대해 자체 참조 루프가 검색되었습니다.
+> Newtonsoft.Json.JsonSerializationException: 형식이 'MyApplication.Models.Blog'인 'Blog' 속성에 대해 자체 참조 루프가 검색되었습니다.
 
 ASP.NET Core를 사용하는 경우 개체 그래프에서 찾은 주기를 무시하도록 Json.NET을 구성할 수 있습니다. 이 작업은 `Startup.cs`의 `ConfigureServices(...)` 메서드에서 수행됩니다.
 

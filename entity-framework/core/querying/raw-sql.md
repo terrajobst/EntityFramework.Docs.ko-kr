@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: 5bddddfbc2fe8d0ba99914f03b28bde4076fae42
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: 343162596780e6146b57f73a38221701009cd855
+ms.sourcegitcommit: 85d17524d8e022f933cde7fc848313f57dfd3eb8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058716"
+ms.lasthandoff: 02/06/2019
+ms.locfileid: "55760511"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
@@ -17,23 +17,6 @@ Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 
 
 > [!TIP]  
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
-
-## <a name="limitations"></a>제한 사항
-
-원시 SQL 쿼리를 사용할 때는 몇 가지 제한 사항에 유의해야 합니다.
-
-* SQL 쿼리는 엔터티 또는 쿼리 형식의 모든 속성에 대해 데이터를 반환해야 합니다.
-
-* 결과 집합의 열 이름은 속성이 매핑되는 열 이름과 일치해야 합니다. 속성/열 매핑이 원시 SQL 쿼리에 대해 무시되고 결과 집합 열 이름이 속성 이름과 일치해야 한다는 점에서 EF6와 다릅니다.
-
-* SQL 쿼리에 관련 데이터가 포함될 수 없습니다. 그러나 대부분의 경우 쿼리의 맨 위에서 `Include` 연산자를 사용하여 관련 데이터를 반환하도록 작성할 수 있습니다([관련 데이터 포함](#including-related-data) 참조).
-
-* 이 메서드에 전달된 `SELECT` 문은 일반적으로 구성 가능해야 합니다. EF Core가 서버에서 추가 쿼리 연산자를 평가해야 하는 경우(예: `FromSql` 다음에 적용된 LINQ 연산자를 변환해야 하는 경우) 제공된 SQL은 하위 쿼리로 처리됩니다. 즉, 전달된 SQL에는 다음과 같이 하위 쿼리에서 유효하지 않은 문자나 옵션을 포함할 수 없습니다.
-  * 후행 세미콜론
-  * SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)
-  * SQL Server의 `SELECT` 절에서 `TOP 100 PERCENT`와 함께 제공되지 않는 `ORDER BY` 절
-
-* `SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다. 따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.
 
 ## <a name="basic-raw-sql-queries"></a>기본 원시 SQL 쿼리
 
@@ -109,9 +92,25 @@ var blogs = context.Blogs
     .ToList();
 ```
 
-### <a name="including-related-data"></a>관련 데이터 포함
+## <a name="change-tracking"></a>변경 내용 추적
 
-LINQ 연산자로 작성하면 쿼리에 관련 데이터를 포함할 수 있습니다.
+`FromSql()`을 사용하는 쿼리는 EF Core에서 다른 LINQ 쿼리와 완전히 동일한 변경 내용 추적 규칙을 따릅니다. 예를 들어 쿼리 프로젝트 엔터티 형식의 경우 기본적으로 결과가 추적됩니다.  
+
+다음 예제에서는 TVF(테이블 반환 함수)에서 선택하는 원시 SQL 쿼리를 사용한 다음, .AsNoTracking()을 호출하여 변경 내용 추적을 사용하지 않도록 설정합니다.
+
+<!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
+``` csharp
+var searchTerm = ".NET";
+
+var blogs = context.Query<SearchBlogsDto>()
+    .FromSql($"SELECT * FROM dbo.SearchBlogs({searchTerm})")
+    .AsNoTracking()
+    .ToList();
+```
+
+## <a name="including-related-data"></a>관련 데이터 포함
+
+`Include()` 메서드는 다른 LINQ 쿼리와 마찬가지로 관련 데이터를 포함하는 데 사용할 수 있습니다.
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -122,6 +121,23 @@ var blogs = context.Blogs
     .Include(b => b.Posts)
     .ToList();
 ```
+
+## <a name="limitations"></a>제한 사항
+
+원시 SQL 쿼리를 사용할 때는 몇 가지 제한 사항에 유의해야 합니다.
+
+* SQL 쿼리는 엔터티 또는 쿼리 형식의 모든 속성에 대해 데이터를 반환해야 합니다.
+
+* 결과 집합의 열 이름은 속성이 매핑되는 열 이름과 일치해야 합니다. 속성/열 매핑이 원시 SQL 쿼리에 대해 무시되고 결과 집합 열 이름이 속성 이름과 일치해야 한다는 점에서 EF6와 다릅니다.
+
+* SQL 쿼리에 관련 데이터가 포함될 수 없습니다. 그러나 대부분의 경우 쿼리의 맨 위에서 `Include` 연산자를 사용하여 관련 데이터를 반환하도록 작성할 수 있습니다([관련 데이터 포함](#including-related-data) 참조).
+
+* 이 메서드에 전달된 `SELECT` 문은 일반적으로 구성 가능해야 합니다. EF Core가 서버에서 추가 쿼리 연산자를 평가해야 하는 경우(예: `FromSql` 다음에 적용된 LINQ 연산자를 변환해야 하는 경우) 제공된 SQL은 하위 쿼리로 처리됩니다. 즉, 전달된 SQL에는 다음과 같이 하위 쿼리에서 유효하지 않은 문자나 옵션을 포함할 수 없습니다.
+  * 후행 세미콜론
+  * SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)
+  * SQL Server의 `SELECT` 절에서 `TOP 100 PERCENT`와 함께 제공되지 않는 `ORDER BY` 절
+
+* `SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다. 따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.
 
 > [!WARNING]  
 > **원시 SQL 쿼리에 항상 매개 변수화를 사용하세요.** `FromSql` 및 `ExecuteSqlCommand`와 같이 원시 SQL 문자열을 허용하는 API에서는 값을 매개 변수로 쉽게 전달할 수 있습니다. 사용자 입력의 유효성을 검사할 뿐만 아니라 원시 SQL 쿼리/명령에서 사용되는 모든 값에 항상 매개 변수화를 사용하세요. 문자열 연결을 사용하여 쿼리 문자열의 일부를 동적으로 작성하는 경우 모든 입력의 유효성을 검사하여 SQL 삽입 공격으로부터 보호해야 합니다.
