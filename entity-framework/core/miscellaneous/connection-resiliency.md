@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 11/15/2016
 ms.assetid: e079d4af-c455-4a14-8e15-a8471516d748
 uid: core/miscellaneous/connection-resiliency
-ms.openlocfilehash: 729cf9b8c038ea2adba8c79c68d9f6fb1676fefa
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 6d8cf117dfd94524a53e10bb4a23c2a44c4c8e7b
+ms.sourcegitcommit: 33b2e84dae96040f60a613186a24ff3c7b00b6db
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022186"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56459174"
 ---
 # <a name="connection-resiliency"></a>연결 복원력
 
@@ -17,9 +17,21 @@ ms.locfileid: "50022186"
 
 예를 들어 SQL Server 공급자는 SQL Server (SQL Azure 포함)에 특별히 조정 된 실행 전략을 포함 합니다. 다시 시도할 수 있는 예외 형식을 인식 하 고 최대 재시도, 재시도 등 간격에 대 한 가능한 기본값을 갖습니다.
 
-실행 전략에 대해 옵션을 구성할 때 지정 됩니다. 이 일반적으로 `OnConfiguring` 메서드 또는 프로그램에 파생 컨텍스트의 `Startup.cs` ASP.NET Core 응용 프로그램에 대 한 합니다.
+실행 전략에 대해 옵션을 구성할 때 지정 됩니다. 이 일반적으로 `OnConfiguring` 메서드의 파생된 컨텍스트:
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/ConnectionResiliency/Program.cs#OnConfiguring)]
+
+또는 `Startup.cs` ASP.NET Core 응용 프로그램에 대 한 합니다.
+
+``` csharp
+public void ConfigureServices(IServiceCollection services)
+{
+    services.AddDbContext<PicnicContext>(
+        options => options.UseSqlServer(
+            "<connection string>",
+            providerOptions => providerOptions.EnableRetryOnFailure()));
+}
+```
 
 ## <a name="custom-execution-strategy"></a>사용자 지정 실행 전략
 
@@ -41,7 +53,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 그러나 코드를 사용 하는 트랜잭션이 시작 하는 경우 `BeginTransaction()` 하나의 단위로 처리 해야 하는 작업의 고유한 그룹을 정의 하는 및 재생할 수는 오류가 발생 하는 데 필요한은 트랜잭션에서 모든 합니다. 실행 전략을 사용 하는 경우이 작업을 수행 하려고 하면 다음과 같은 예외를 수신 합니다.
 
-> InvalidOperationException: 구성 된 실행 전략 'SqlServerRetryingExecutionStrategy' 사용자가 시작한 트랜잭션을 지원 하지 않습니다. 'DbContext.Database.CreateExecutionStrategy()'에서 반환된 실행 전략을 사용하여 트랜잭션을 다시 시도가 가능한 단위로 트랜잭션의 모든 작업을 실행합니다.
+> InvalidOperationException: 구성된 실행 전략 ‘SqlServerRetryingExecutionStrategy’는 사용자가 시작한 트랜잭션을 지원하지 않습니다. 'DbContext.Database.CreateExecutionStrategy()'에서 반환된 실행 전략을 사용하여 트랜잭션을 다시 시도가 가능한 단위로 트랜잭션의 모든 작업을 실행합니다.
 
 솔루션이 수동으로 실행 해야 하는 모든 항목을 나타내는 대리자를 사용 하 여 실행 전략을 호출 하는 것입니다. 일시적인 오류가 발생하면, 실행 전략에서 대리자를 다시 호출합니다.
 

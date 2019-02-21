@@ -3,12 +3,12 @@ title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: c87c1412cb23abf232663d7e4f44eef5f7818ea2
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: 4c1f03533cf6df49555c3ef8d09d5949b9a3335c
+ms.sourcegitcommit: 33b2e84dae96040f60a613186a24ff3c7b00b6db
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022391"
+ms.lasthandoff: 02/21/2019
+ms.locfileid: "56459213"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서
@@ -43,7 +43,7 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 된 
 |:-----------------------------------------------------------------------------------------------------|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `using(var db = new MyContext())` <br/> `{`                                                          | 컨텍스트 만들기          | 중간                                                                                                                                                                                                                                                                                                                                                                                                                        | 중간                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `  var q1 = ` <br/> `    from c in db.Customers` <br/> `    where c.Id == id1` <br/> `    select c;` | 쿼리 식 만들기 | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                           | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> --생성을 확인 하는 중: 잠재적으로 매우 높은 하지만 캐시 <br/> 매개 변수 평가: 중간 <br/> --번역을 쿼리 하는 중: 중간 <br/> -구체화 생성: 캐시 되지만 보통 <br/> -쿼리 실행을 데이터베이스: 높아질 수 있으므로 <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> --생성을 확인 하는 중: 잠재적으로 매우 높은 하지만 캐시 <br/> 매개 변수 평가: 낮음 <br/> --번역을 쿼리 하는 중: 캐시 되지만 보통 <br/> -구체화 생성: 캐시 되지만 보통 <br/> -쿼리 실행을 데이터베이스: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> --생성을 확인 하는 중: 캐시 되지만 보통 <br/> 매개 변수 평가: 낮음 <br/> --번역을 쿼리 하는 중: 캐시 되지만 보통 <br/> -구체화 생성: 캐시 되지만 보통 <br/> -쿼리 실행을 데이터베이스: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 보다 더 빠르고) <br/> Id 조회: 중간 |
+| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> 뷰 생성: 캐시 된 하지만 잠재적으로 매우 높음 <br/> 매개 변수 평가: 중간 <br/> 쿼리 변환: 중간 <br/> -구체화 생성: 중간 캐시 되지만 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> 뷰 생성: 캐시 된 하지만 잠재적으로 매우 높음 <br/> 매개 변수 평가: 낮음 <br/> 쿼리 변환: 중간 캐시 되지만 <br/> -구체화 생성: 중간 캐시 되지만 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 로드: 캐시 된 하지만 높은 <br/> 뷰 생성: 중간 캐시 되지만 <br/> 매개 변수 평가: 낮음 <br/> 쿼리 변환: 중간 캐시 되지만 <br/> -구체화 생성: 중간 캐시 되지만 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 빠릅니다) <br/> Id 조회: 중간 |
 | `}`                                                                                                  | Connection.Close          | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                           | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 
@@ -53,7 +53,7 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 된 
 |:-----------------------------------------------------------------------------------------------------|:--------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `using(var db = new MyContext())` <br/> `{`                                                          | 컨텍스트 만들기          | 중간                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | 중간                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `  var q1 = ` <br/> `    from c in db.Customers` <br/> `    where c.Id == id1` <br/> `    select c;` | 쿼리 식 만들기 | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | 메타 데이터 ~~로드~~ 조회: ~~캐시 하지만 높은~~ 낮음 <br/> -볼 ~~세대~~ 조회: ~~잠재적으로 매우 높은 되지만 캐시 된~~ 낮음 <br/> 매개 변수 평가: 중간 <br/> -쿼리 ~~번역~~ 조회: 중간 <br/> -구체화 ~~세대~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> -쿼리 실행을 데이터베이스: 높아질 수 있으므로 <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 ~~로드~~ 조회: ~~캐시 하지만 높은~~ 낮음 <br/> -볼 ~~세대~~ 조회: ~~잠재적으로 매우 높은 되지만 캐시 된~~ 낮음 <br/> 매개 변수 평가: 낮음 <br/> -쿼리 ~~번역~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> -구체화 ~~세대~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> -쿼리 실행을 데이터베이스: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 ~~로드~~ 조회: ~~캐시 하지만 높은~~ 낮음 <br/> -볼 ~~세대~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> 매개 변수 평가: 낮음 <br/> -쿼리 ~~번역~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> -구체화 ~~세대~~ 조회: ~~캐시 되지만 보통~~ 낮음 <br/> -쿼리 실행을 데이터베이스: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 보다 더 빠르고) <br/> Id 조회: 중간 |
+| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | 메타 데이터 ~~로드~~ 조회 합니다. ~~높은 되지만 캐시 된~~ 낮음 <br/> -볼 ~~생성~~ 조회 합니다. ~~잠재적으로 매우 높은 되지만 캐시 된~~ 낮음 <br/> 매개 변수 평가: 중간 <br/> -쿼리 ~~번역~~ 조회 합니다. 중간 <br/> -구체화 ~~생성~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 ~~로드~~ 조회 합니다. ~~높은 되지만 캐시 된~~ 낮음 <br/> -볼 ~~생성~~ 조회 합니다. ~~잠재적으로 매우 높은 되지만 캐시 된~~ 낮음 <br/> 매개 변수 평가: 낮음 <br/> -쿼리 ~~번역~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> -구체화 ~~생성~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 <br/> Id 조회: 중간 | 메타 데이터 ~~로드~~ 조회 합니다. ~~높은 되지만 캐시 된~~ 낮음 <br/> -볼 ~~생성~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> 매개 변수 평가: 낮음 <br/> -쿼리 ~~번역~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> -구체화 ~~생성~~ 조회 합니다. ~~보통 되지만 캐시 된~~ 낮음 <br/> 데이터베이스 쿼리 실행: 잠재적으로 높은 (향상 된 상황에 따라 쿼리) <br/> + Connection.Open <br/> + Command.ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 빠릅니다) <br/> Id 조회: 중간 |
 | `}`                                                                                                  | Connection.Close          | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 
@@ -207,7 +207,7 @@ Entity Framework 6을 사용할 경우 개발자는 AddRange와 RemoveRange 컬�
 
 #### <a name="321-some-notes-about-query-plan-caching"></a>3.2.1 몇 가지 알아야 할 쿼리 계획 캐싱
 
--   모든 쿼리 형식에 대 한 쿼리 계획 캐시를 공유: Entity SQL, LINQ to Entities 및 CompiledQuery 개체입니다.
+-   모든 쿼리 유형을 쿼리 계획 캐시를 공유 합니다. Entity SQL, LINQ to Entities 및 CompiledQuery 개체입니다.
 -   기본적으로 쿼리 계획 캐싱을 사용할 Entity SQL 쿼리에서 ObjectQuery 또는 EntityCommand를 통해 실행 여부를 합니다. 또한 기본적으로에 사용 LINQ to Entities 쿼리에서.NET 4.5에서 Entity Framework 및 Entity Framework 6
     -   쿼리 계획 캐싱 (EntityCommand에 ObjectQuery) EnablePlanCaching 속성을 false로 설정 하 여 비활성화할 수 있습니다. 예를 들어:
 ``` csharp
@@ -319,8 +319,6 @@ LINQ 쿼리를 컴파일 시간이 오래 걸리는 프로세스 이므로 데�
 모든 LINQ 쿼리를 작성 하는 기능은 매우 유용 합니다. 이렇게 하려면 단순히 메서드를 호출 하면 IQueryable 후와 같은 *skip ()* 하거나 *count ()* 합니다. 그러나 수행 하므로 기본적으로 새 IQueryable 개체를 반환 합니다. 기술적으로 CompiledQuery 위에 작성에서 중지 하는 것은, 이렇게 하면 새 IQueryable 개체를 생성 하는 계획 컴파일러를 통해 전달이 다시 필요 합니다.
 
 일부 구성 요소 구성된 IQueryable을 이용 하 게 고급 기능을 사용 하는 개체입니다. 예를 들어 ASP 합니다. NET의 GridView 수 수 데이터 바인딩된 IQueryable 개체 SelectMethod 속성을 통해. GridView 정렬 및 데이터 모델에 대해 페이징 수 있도록이 IQueryable 개체에 대해 구성 합니다. 알 수 있듯이 gridview를 CompiledQuery를 사용 하 여 컴파일된 쿼리를 적중 하지는 하지만 새 autocompiled 쿼리를 생성 합니다.
-
-고객 자문 팀이 해당 "잠재적 성능 문제 사용 하 여 컴파일된 LINQ 쿼리 다시 컴파일" 블로그 게시물에 설명 합니다. <http://blogs.msdn.com/b/appfabriccat/archive/2010/08/06/potential-performance-issues-with-compiled-linq-query-re-compiles.aspx>합니다.
 
 쿼리 점진적 필터를 추가 경우이를 실행할 수 있는 곳입니다. 예를 들어 선택적 필터 (예: 국가 및 OrdersCount)에 대 한 몇 가지 드롭 다운 목록 사용 하 여 고객에 게 페이지를 해야 합니다. CompiledQuery IQueryable 결과 통해 이러한 필터를 구성할 수 있습니다 하지만 발생할에서 새 쿼리를 실행 하 여 때마다 계획 컴파일러를 통해 이동 합니다.
 
@@ -639,7 +637,7 @@ Entity Framework는 여러 가지 방법으로 쿼리를 제공 합니다. 다�
 -   추적 안 함 LINQ to Entities 합니다.
 -   ObjectQuery 통해 SQL 엔터티입니다.
 -   EntityCommand 통해 SQL 엔터티입니다.
--   ExecuteStoreQuery 합니다.
+-   ExecuteStoreQuery.
 -   SqlQuery 합니다.
 -   CompiledQuery 합니다.
 
@@ -808,15 +806,15 @@ var q = context.InvokeProductsForCategoryCQ("Beverages");
 | EF  | 테스트                                 | 시간 (ms) | 메모리   |
 |:----|:-------------------------------------|:----------|:---------|
 | EF5 | ObjectContext ESQL                   | 2414      | 38801408 |
-| EF5 | ObjectContext Linq 쿼리             | 2692      | 38277120 |
-| EF5 | DbContext Linq 쿼리 추적 안 함     | 2818      | 41840640 |
-| EF5 | DbContext Linq 쿼리                 | 2930      | 41771008 |
+| EF5 | ObjectContext Linq Query             | 2692      | 38277120 |
+| EF5 | DbContext Linq Query No Tracking     | 2818      | 41840640 |
+| EF5 | DbContext Linq Query                 | 2930      | 41771008 |
 | EF5 | ObjectContext Linq 쿼리 추적 안 함 | 3013      | 38412288 |
 |     |                                      |           |          |
 | EF6 | ObjectContext ESQL                   | 2059      | 46039040 |
-| EF6 | ObjectContext Linq 쿼리             | 3074      | 45248512 |
-| EF6 | DbContext Linq 쿼리 추적 안 함     | 3125      | 47575040 |
-| EF6 | DbContext Linq 쿼리                 | 3420      | 47652864 |
+| EF6 | ObjectContext Linq Query             | 3074      | 45248512 |
+| EF6 | DbContext Linq Query No Tracking     | 3125      | 47575040 |
+| EF6 | DbContext Linq Query                 | 3420      | 47652864 |
 | EF6 | ObjectContext Linq 쿼리 추적 안 함 | 3593      | 45260800 |
 
 ![EF5 마이크로 벤치 마크를 5000 웜 반복](~/ef6/media/ef5micro5000warm.png)
@@ -835,10 +833,10 @@ Microbenchmarks은 코드의 작은 변화에 매우 민감합니다. 추가 인
 | EF5 | ObjectContext Linq 쿼리 추적 안 함        | 969       | 38293504 |
 | EF5 | 개체 쿼리를 사용 하 여 ObjectContext Entity Sql | 1089      | 38981632 |
 | EF5 | 컴파일된 쿼리에서 ObjectContext                | 1099      | 38682624 |
-| EF5 | ObjectContext Linq 쿼리                    | 1152      | 38178816 |
-| EF5 | DbContext Linq 쿼리 추적 안 함            | 1208      | 41803776 |
+| EF5 | ObjectContext Linq Query                    | 1152      | 38178816 |
+| EF5 | DbContext Linq Query No Tracking            | 1208      | 41803776 |
 | EF5 | DbSet에 DbContext Sql 쿼리                | 1414      | 37982208 |
-| EF5 | DbContext Linq 쿼리                        | 1574      | 41738240 |
+| EF5 | DbContext Linq Query                        | 1574      | 41738240 |
 |     |                                             |           |          |
 | EF6 | ObjectContext 엔터티 명령                | 480       | 47247360 |
 | EF6 | ObjectContext 저장소 쿼리                   | 493       | 46739456 |
@@ -846,10 +844,10 @@ Microbenchmarks은 코드의 작은 변화에 매우 민감합니다. 추가 인
 | EF6 | ObjectContext Linq 쿼리 추적 안 함        | 684       | 46333952 |
 | EF6 | 개체 쿼리를 사용 하 여 ObjectContext Entity Sql | 767       | 48865280 |
 | EF6 | 컴파일된 쿼리에서 ObjectContext                | 788       | 48467968 |
-| EF6 | DbContext Linq 쿼리 추적 안 함            | 878       | 47554560 |
-| EF6 | ObjectContext Linq 쿼리                    | 953       | 47632384 |
+| EF6 | DbContext Linq Query No Tracking            | 878       | 47554560 |
+| EF6 | ObjectContext Linq Query                    | 953       | 47632384 |
 | EF6 | DbSet에 DbContext Sql 쿼리                | 1023      | 41992192 |
-| EF6 | DbContext Linq 쿼리                        | 1290      | 47529984 |
+| EF6 | DbContext Linq Query                        | 1290      | 47529984 |
 
 
 ![EF5 웜 쿼리 1000 반복](~/ef6/media/ef5warmquery1000.png)
@@ -889,12 +887,12 @@ Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하�
 
 1005 엔터티 집합과 연결 집합이 4227 모델에 포함 되어 있습니다.
 
-| 구성                              | 사용 된 시간의 분석                                                                                                                                               |
+| 구성하기                              | 사용 된 시간의 분석                                                                                                                                               |
 |:-------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Visual Studio 2010에서는 Entity Framework 4     | SSDL 생성: 2 시간 27 분 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> 1 초 ObjectLayer 생성: <br/> 뷰 생성: 2 h 14 분 |
-| Visual Studio 2010 SP1, Entity Framework 4 | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> 1 초 ObjectLayer 생성: <br/> 뷰 생성: 1 시간 53 분   |
-| Visual Studio 2013, Entity Framework 5     | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> 1 초 ObjectLayer 생성: <br/> 뷰 생성: 65 분    |
-| Visual Studio 2013, Entity Framework 6     | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> 1 초 ObjectLayer 생성: <br/> 뷰 생성: 28 초입니다.   |
+| Visual Studio 2010, Entity Framework 4     | SSDL 생성: 2 시간 27 분 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 2 h 14 분 |
+| Visual Studio 2010 SP1, Entity Framework 4 | SSDL 생성: 1 초 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 1 시간 53 분   |
+| Visual Studio 2013, Entity Framework 5     | SSDL 생성: 1 초 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 65 분    |
+| Visual Studio 2013, Entity Framework 6     | SSDL 생성: 1 초 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 28 초입니다.   |
 
 
 주목할 만한 가치가 SSDL을 생성 하는 경우 부하는 거의 완전히 소비 SQL Server 클라이언트 개발 컴퓨터 대기 하는 동안 서버에서 돌아와서 결과 대 한 유휴 상태입니다. Dba는이 개선 주셔서 감사 드리며 특히 해야 합니다. 모델 생성의 전체 비용에 기본적으로 뷰 생성에서 이제는 주목할 만한 이기도 합니다.
@@ -1303,30 +1301,30 @@ Entity Framework 6을 사용 하는 경우 또한 기본 제공 로깅 기능을
 ##### <a name="11111-software-environment"></a>11.1.1.1 소프트웨어 환경
 
 -   Entity Framework 4 소프트웨어 환경
-    -   OS 이름: Windows Server 2008 R2 Enterprise SP1
+    -   OS 이름: Windows Server 2008 R2 Enterprise SP1.
     -   Visual Studio 2010 – Ultimate입니다.
     -   Visual Studio 2010 SP1 (일부 비교)에 해당 합니다.
 -   Entity Framework 5 및 6 소프트웨어 환경
-    -   OS 이름: Windows 8.1 Enterprise
+    -   OS 이름: Windows 8.1 Enterprise
     -   Visual Studio 2013 – Ultimate입니다.
 
 ##### <a name="11112-hardware-environment"></a>11.1.1.2 하드웨어 환경
 
--   이중 프로세서: intel (r) 제온 CPU L5520 W3530 @ 2.27ghz, 2261 Mhz8 GHz, 4 코어, 84 논리 프로세서.
--   2412 GB RamRAM 합니다.
+-   이중 프로세서:     Intel (r) 제온 CPU L5520 W3530 @ 2.27ghz, 2261 Mhz8 GHz, 4 코어, 84 논리 프로세서.
+-   2412 GB RamRAM.
 -   136 GB SCSI250GB SATA 7200 rpm 3 GB/s 드라이브 4 개의 파티션으로 분할 합니다.
 
 #### <a name="1112-db-server"></a>11.1.2 DB 서버
 
 ##### <a name="11121-software-environment"></a>11.1.2.1 소프트웨어 환경
 
--   OS 이름: Windows Server 2008 R28.1 Enterprise SP1
--   SQL Server 2008 R22012 합니다.
+-   OS 이름: Windows Server 2008 R28.1 Enterprise SP1.
+-   SQL Server 2008 R22012.
 
 ##### <a name="11122-hardware-environment"></a>11.1.2.2 하드웨어 환경
 
--   단일 프로세서: intel (r) CPU L5520 @ 2.27ghz 제온 2261 MhzES-1620 0 3.60, @, 4 코어, 논리 프로세서 8입니다.
--   824 GB RamRAM 합니다.
+-   단일 프로세서: Intel (r) 제온 CPU L5520 @ 2.27ghz, 2261 MhzES-1620 0 3.60, @, 4 코어, 논리 프로세서 8입니다.
+-   824 GB RamRAM.
 -   465 GB ATA500GB SATA 7200 rpm 6GB/s 드라이브 4 개의 파티션으로 분할 합니다.
 
 ### <a name="112-b-query-performance-comparison-tests"></a>11.2 2. 쿼리 성능 비교 테스트
