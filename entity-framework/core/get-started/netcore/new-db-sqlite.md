@@ -6,12 +6,12 @@ description: Entity Framework Core를 사용하여 .NET Core 시작
 ms.date: 08/03/2018
 ms.assetid: 099d179e-dd7b-4755-8f3c-fcde914bf50b
 uid: core/get-started/netcore/new-db-sqlite
-ms.openlocfilehash: 6cebe14e179cb6998592f5d3823c114b3bda0138
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: a0df80a8fe96be4f8cc3177919e2b087e14cb49c
+ms.sourcegitcommit: 735715f10cc8a231c213e4f055d79f0effd86570
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022313"
+ms.lasthandoff: 02/16/2019
+ms.locfileid: "56325329"
 ---
 # <a name="getting-started-with-ef-core-on-net-core-console-app-with-a-new-database"></a>.NET Core 콘솔 앱에서 새 데이터베이스로 EF Core 시작
 
@@ -32,9 +32,9 @@ ms.locfileid: "50022313"
   ```
 ## <a name="change-the-current-directory"></a>현재 디렉터리 변경
 
-이후 단계에서는 응용 프로그램에 대해 `dotnet` 명령을 실행해야 합니다.
+이후 단계에서는 애플리케이션에 대해 `dotnet` 명령을 실행해야 합니다.
 
-* 현재 디렉터리를 다음과 같은 응용 프로그램 디렉터리로 변경합니다.
+* 현재 디렉터리를 다음과 같은 애플리케이션 디렉터리로 변경합니다.
 
   ``` Console
   cd ConsoleApp.SQLite/
@@ -60,7 +60,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 
   [!code-csharp[Main](../../../../samples/core/GetStarted/NetCore/ConsoleApp.SQLite/Model.cs)]
 
-팁: 실제 응용 프로그램에서는 각 클래스를 별도의 파일에 저장하고 구성 파일 또는 환경 변수에 연결 문자열을 저장합니다. 자습서를 간단히 유지하기 위해 모든 항목이 하나의 파일에 포함되어 있습니다.
+팁: 실제 애플리케이션에서는 각 클래스를 별도의 파일에 저장하고 구성 파일 또는 환경 변수에 연결 문자열을 저장합니다. 자습서를 간단히 유지하기 위해 모든 항목이 하나의 파일에 포함되어 있습니다.
 
 ## <a name="create-the-database"></a>데이터베이스 만들기
 
@@ -69,7 +69,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 * `dotnet ef migrations add InitialCreate`를 실행하여 마이그레이션을 스캐폴딩하고 모델에 대한 초기 테이블 집합을 만듭니다.
 * `dotnet ef database update`를 실행하여 새 마이그레이션을 데이터베이스에 적용합니다. 이 명령은 마이그레이션을 적용하기 전에 데이터베이스를 만듭니다.
 
-*blogging.db** SQLite DB는 프로젝트 디렉터리에 있습니다.
+*blogging.db* SQLite DB는 프로젝트 디렉터리에 있습니다.
 
 ## <a name="use-the-model"></a>모델 사용
 
@@ -112,5 +112,5 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 ## <a name="additional-resources"></a>추가 리소스
 
 * [자습서: SQLite를 사용하여 ASP.NET Core에서 새 데이터베이스로 EF Core 시작](xref:core/get-started/aspnetcore/new-db)
-* [자습서: ASP.NET Core에서 Razor Pages 시작](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)
-* [자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor 페이지](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)
+* [자습서: Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)(자습서: ASP.NET Core에서 Razor Pages 시작)
+* [자습서: Razor Pages with Entity Framework Core in ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)(자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages)
