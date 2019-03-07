@@ -1,14 +1,14 @@
 ---
-title: First 데이터 주석-EF6 코드
+title: Code First Data Annotations - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: 8d85ef85f56a23d9b3b526554417dc9dd360e139
-ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
+ms.openlocfilehash: e6b017306b4f66f5bac2a9964e11391da28ceb40
+ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980043"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57463284"
 ---
 # <a name="code-first-data-annotations"></a>Code First 데이터 주석
 > [!NOTE]
@@ -25,7 +25,7 @@ Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나�
 
 ## <a name="the-model"></a>모델
 
-코드의 첫 번째 DataAnnotations는 클래스의 간단한 쌍을 사용 하 여 설명 하겠습니다: 블로그 및 게시물.
+코드의 첫 번째 DataAnnotations는 클래스의 간단한 쌍을 사용 하 여 설명 하겠습니다. 블로그 및 게시물입니다.
 
 ``` csharp
     public class Blog
@@ -176,7 +176,7 @@ MaxLength 주석 10 속성의 길이 설정 하 여 데이터베이스에 영향
 
 ![BloggerName 열의 최대 길이 표시 하는 블로그 테이블](~/ef6/media/jj591583-figure04.png)
 
-클라이언트 쪽 주석 MVC 및 EF 4.1 서버 쪽 주석 둘 다 적용 됩니다는 오류 메시지를 동적으로 다시 작성이 유효성 검사: "필드 BloggerName '10'의 최대 길이 사용 하 여 문자열 또는 배열 형식 이어야 합니다." 해당 메시지가 약간 깁니다. 여러 주석 ErrorMessage 특성을 사용 하 여 오류 메시지를 지정할 수 있습니다.
+클라이언트 쪽 주석 MVC 및 EF 4.1 서버 쪽 주석 둘 다 오류 메시지를 동적으로 다시 작성이 유효성 검사를을 유지 합니다. "필드 BloggerName '10'의 최대 길이 사용 하 여 문자열 또는 배열 형식 이어야 합니다." 해당 메시지가 약간 깁니다. 여러 주석 ErrorMessage 특성을 사용 하 여 오류 메시지를 지정할 수 있습니다.
 
 ``` csharp
     [MaxLength(10, ErrorMessage="BloggerName must be 10 characters or less"),MinLength(5)]
@@ -245,9 +245,6 @@ BlogDetails에 모든 형식의 키 속성이 없는지 확인 합니다. 도메
 
 ![복합 형식 가진 블로그 테이블](~/ef6/media/jj591583-figure06.png)
 
-또 다른 흥미로운 점은 DateCreated 속성 클래스는 nullable이 아닌 날짜/시간으로 정의 했지만, 관련 데이터베이스 필드는 null을 허용 됩니다. 데이터베이스 스키마를 적용 하려는 경우 필요한 주석을 사용 해야 합니다.
-
- 
 
 ## <a name="concurrencycheck"></a>ConcurrencyCheck
 
@@ -271,7 +268,7 @@ BloggerName 필드 ConcurrencyCheck 주석으로 인해 SaveChanges 호출 되 �
 
  
 
-## <a name="timestamp"></a>타임 스탬프
+## <a name="timestamp"></a>TimeStamp
 
 보다 일반적으로 동시성 검사에 대 한 타임 스탬프 또는 rowversion 필드를 사용 하는 것입니다. 하지만 ConcurrencyCheck 주석을 사용 하는 대신 사용할 수 있습니다 보다 구체적인 타임 스탬프 주석으로 속성의 형식은 바이트 배열입니다. 코드 처음으로 처리 될 타임 스탬프 속성 동일한 ConcurrencyCheck 속성 있지만 것도 코드는 먼저 생성 된 데이터베이스 필드를 nullable이 아닌 있는지 확인 합니다. 지정된 된 클래스의 한 타임 스탬프 속성을 하나만 사용할 수 있습니다.
 
@@ -374,7 +371,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
 ### <a name="multiple-column-indexes"></a>다중 열 인덱스
 
-여러 열에 걸쳐 있는 인덱스는 지정된 된 테이블에 대 한 여러 인덱스 주석에서 동일한 이름을 사용 하 여 지정 됩니다. 다중 열 인덱스를 만들면 인덱스의 열 순서를 지정 해야 합니다. 예를 들어, 다음 코드에서 다중 열 인덱스를 만듭니다 **등급** 하 고 **BlogId** 호출 **IX\_BlogAndRating**합니다. **BlogId** 인덱스의 첫 번째 열 및 **등급** 두 번째입니다.
+여러 열에 걸쳐 있는 인덱스는 지정된 된 테이블에 대 한 여러 인덱스 주석에서 동일한 이름을 사용 하 여 지정 됩니다. 다중 열 인덱스를 만들면 인덱스의 열 순서를 지정 해야 합니다. 예를 들어, 다음 코드에서 다중 열 인덱스를 만듭니다 **등급** 하 고 **BlogId** 호출 **IX\_BlogIdAndRating**합니다. **BlogId** 인덱스의 첫 번째 열 및 **등급** 두 번째입니다.
 
 ``` csharp
     public class Post
@@ -391,7 +388,7 @@ Code First는 데이터베이스를 만들 수 있도록 됩니다, 경우에 �
 
  
 
-## <a name="relationship-attributes-inverseproperty-and-foreignkey"></a>관계: InverseProperty 특성과 ForeignKey
+## <a name="relationship-attributes-inverseproperty-and-foreignkey"></a>관계 특성: InverseProperty 및 ForeignKey
 
 > [!NOTE]
 > 이 페이지는 Code First 데이터 주석 사용 하 여 모델의 관계를 설정 하는 방법에 대 한 정보를 제공 합니다. EF 및 관계를 사용 하 여 데이터 액세스 및 조작 하는 방법에 관계에 대 한 일반적인 정보를 참조 하세요 [관계 및 탐색 속성](~/ef6/fundamentals/relationships.md). *
@@ -441,7 +438,7 @@ Post 클래스의 블로그 게시물을 작성 하는 한 추적 하려는 편�
     }
 ```
 
-먼저 코드는 자체적으로 두 개의 클래스에서 속성을 일치 시킬 수 없습니다. 게시물에 대 한 데이터베이스 테이블 CreatedBy 사용자에 대 한 하나의 외래 키를 있어야 하 고 4 개는 외래 키 속성 만듭니다 먼저 UpdatedBy 상대방이 했지만 코드에 대 한: Person\_Id, Person\_Id1, CreatedBy\_Id 및 UpdatedBy\_id입니다.
+먼저 코드는 자체적으로 두 개의 클래스에서 속성을 일치 시킬 수 없습니다. 게시물에 대 한 데이터베이스 테이블은 CreatedBy person 및 UpdatedBy 사용자에 대 한 하나의 외래 키를 가져야 하지만 코드 먼저 만들어집니다 네 개의 외래 키 속성: Person\_Id, Person\_Id1, CreatedBy\_Id 및 UpdatedBy\_id입니다.
 
 ![추가 외래 키를 사용 하 여 테이블을 게시](~/ef6/media/jj591583-figure10.png)
 

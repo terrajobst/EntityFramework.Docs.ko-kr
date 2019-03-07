@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: a87eca72aa58487415eea11e4f83de1a19e73506
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: cda5cc170646abc3e9d9a70d729237c01f028259
+ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022339"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57463206"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -19,7 +19,15 @@ ms.locfileid: "50022339"
 
 이 로그 2.1에서 2.2로 변경 내용과 시작 했습니다. 2.1 이전 버전에서는 사용 된 [ `providers-beware` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) 및 [ `providers-fyi` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) 당사의 문제 및 끌어오기 요청에는 레이블.
 
-## <a name="21-----22"></a>2.1 2.2--->
+## <a name="22-----30"></a>2.2 ---> 3.0
+
+* https://github.com/aspnet/EntityFrameworkCore/pull/14022
+  * 사용 되지 않는 Api를 제거 하 고 축소 된 선택적 매개 변수 오버 로드
+  * Removed DatabaseColumn.GetUnderlyingStoreType()
+* https://github.com/aspnet/EntityFrameworkCore/pull/14589
+  * 사용 되지 않는 Api를 제거합니다.
+
+## <a name="21-----22"></a>2.1 ---> 2.2
 
 ### <a name="test-only-changes"></a>테스트 전용 변경 내용
 
@@ -56,7 +64,7 @@ ms.locfileid: "50022339"
   * 개념을 추가 하는이 PR이 `CanConnect` 를 사용할 경우 결정 하기 위해 확인 하는 ASP.NET Core 상태에서 사용 됩니다. 기본적으로 관계형 구현을 호출 `Exist`, 하지만 공급자 필요에 따라 다르게 구현할 수 있습니다. 비관계형 공급자를 사용할 수 있으려면 상태 검사를 위해 새 API를 구현 해야 합니다.
 * [https://github.com/aspnet/EntityFrameworkCore/pull/13306](https://github.com/aspnet/EntityFrameworkCore/pull/13306) --DbParameter 크기를 설정 하지 않아도 기본 RelationalTypeMapping를 업데이트 하는 중
   * 중지 잘릴 수 있으므로 기본적으로 크기를 설정 합니다. 공급자는 크기를 설정 해야 하는 경우 자체 논리를 추가 해야 합니다.
-* [https://github.com/aspnet/EntityFrameworkCore/pull/13372](https://github.com/aspnet/EntityFrameworkCore/pull/13372) -RevEng:는 항상 10 진수 열에 대 한 열 형식 지정
+* https://github.com/aspnet/EntityFrameworkCore/pull/13372 - RevEng: 항상 10 진수 열에 대 한 열 형식 지정
   * 항상 10 진수 열에 대 한 열 형식 규칙에 따라 구성 하는 것이 아니라 스 캐 폴드 된 코드에서 구성 합니다.
   * 공급자 종료의 모든 변경 내용이 필요 하지 않습니다.
 * [https://github.com/aspnet/EntityFrameworkCore/pull/13469](https://github.com/aspnet/EntityFrameworkCore/pull/13469) -SQL 사례 식을 생성 하기 위한 CaseExpression을 추가 합니다.
