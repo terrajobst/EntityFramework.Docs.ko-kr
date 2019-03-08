@@ -2,7 +2,7 @@
 
 ## [EF Core & EF6 비교](efcore-and-ef6/index.md)
 
-### [동일한 응용 프로그램의 EF6 및 EF Core](efcore-and-ef6/side-by-side.md)
+### [동일한 애플리케이션의 EF6 및 EF Core](efcore-and-ef6/side-by-side.md)
 ### [EF6에서 EF Core로 이식](efcore-and-ef6/porting/index.md)
 #### [요구 사항 유효성 검사](efcore-and-ef6/porting/ensure-requirements.md)
 #### [EDMX 기반 모델 이식](efcore-and-ef6/porting/port-edmx.md)
@@ -11,7 +11,10 @@
 ## [Entity Framework Core](core/index.md)
 
 ### [새로운 기능](core/what-is-new/index.md)
-#### [EF Core 로드맵](core/what-is-new/roadmap.md)
+#### [로드맵](core/what-is-new/roadmap.md)
+#### [EF Core 3.0(미리 보기 상태)](core/what-is-new/ef-core-3.0/index.md)
+##### [새로운 기능](core/what-is-new/ef-core-3.0/features.md)
+##### [주요 변경 사항](core/what-is-new/ef-core-3.0/breaking-changes.md)
 #### [EF Core 2.2(안정적인 최신 릴리스)](core/what-is-new/ef-core-2.2.md)
 #### [EF Core 2.1](core/what-is-new/ef-core-2.1.md)
 #### [EF Core 2.0](core/what-is-new/ef-core-2.0.md)
