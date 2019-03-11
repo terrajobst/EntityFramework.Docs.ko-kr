@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: b52b1fe6b2d5a585f4d55b0299891f61cbc968a3
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: b5ac31722f49589f1494a3d8d1c8a7011a4cf9ce
+ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997572"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57463271"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
@@ -157,7 +157,7 @@ builder.ApplyConfiguration(new CustomerConfiguration());
 
 ### <a name="dbcontext-pooling"></a>DbContext 풀링
 
-일반적으로 ASP.NET Core 응용 프로그램에서 EF Core 사용을 위한 기본 패턴에는 사용자 지정 DbContext 형식을 종속성 주입 시스템에 등록하고 나중에 컨트롤러의 생성자 매개 변수를 통해 해당 형식의 인스턴스를 구하는 것이 관련됩니다. 즉 각 요청에 대해 DbContext의 새 인스턴스가 만들어집니다.
+일반적으로 ASP.NET Core 애플리케이션에서 EF Core 사용을 위한 기본 패턴에는 사용자 지정 DbContext 형식을 종속성 주입 시스템에 등록하고 나중에 컨트롤러의 생성자 매개 변수를 통해 해당 형식의 인스턴스를 구하는 것이 관련됩니다. 즉 각 요청에 대해 DbContext의 새 인스턴스가 만들어집니다.
 
 버전 2.0에서는 투명하게 재사용 가능한 DbContext 인스턴스의 풀을 도입하는 종속성 주입에서 사용자 지정 DbContext 형식을 등록하는 새로운 방법이 도입됩니다. DbContext 풀링을 사용하려면 서비스 등록 중에 ```AddDbContext``` 대신 ```AddDbContextPool```을 사용합니다.
 
@@ -181,9 +181,9 @@ services.AddDbContextPool<BloggingContext>(
 
 대규모 시나리오에서 장점을 발휘하도록 설계된 두 번째 선택 성능 기능입니다.
 
-수동 또는 명시적으로 컴파일된 쿼리 API는 이전 EF 버전에서 제공되었으며, LINQ-SQL에서도 한 번의 계산으로 여러 번 실행하기 위해 응용 프로그램의 쿼리 전환 캐시에 사용되었습니다.
+수동 또는 명시적으로 컴파일된 쿼리 API는 이전 EF 버전에서 제공되었으며, LINQ-SQL에서도 한 번의 계산으로 여러 번 실행하기 위해 애플리케이션의 쿼리 전환 캐시에 사용되었습니다.
 
-일반 EF Core는 쿼리 식의 해시된 표현에 따라 자동으로 쿼리를 컴파일하여 캐시할 수 있으나, 해시 및 캐시 조회 계산을 무시하여 응용 프로그램이 대리자 호출을 통해 기존에 컴파일된 쿼리를 사용하도록 함으로써 약간의 성능 향상을 얻는 데 이 메커니즘을 사용할 수 있습니다.
+일반 EF Core는 쿼리 식의 해시된 표현에 따라 자동으로 쿼리를 컴파일하여 캐시할 수 있으나, 해시 및 캐시 조회 계산을 무시하여 애플리케이션이 대리자 호출을 통해 기존에 컴파일된 쿼리를 사용하도록 함으로써 약간의 성능 향상을 얻는 데 이 메커니즘을 사용할 수 있습니다.
 
 ``` csharp
 // Create an explicitly compiled query
@@ -206,7 +206,7 @@ using (var db = new CustomerContext())
 
 EF Core는 다양한 메커니즘을 통해 키 값의 자동 생성을 지원합니다. 이 기능을 사용할 경우 키 속성이 CLR 기본값(보통 0 또는 null)이면 값이 생성됩니다. 즉 엔터티의 그래프가 `DbContext.Attach` 또는 `DbSet.Attach`로 전달되며 EF Core는 키가 이미 설정된 엔터티는 `Unchanged`, 키 설정이 없는 엔터티는 `Added`로 표시합니다. 이렇게 하면 생성된 키를 사용할 때 새 엔터티와 기존 엔터티의 혼합 그래프를 간편하게 연결할 수 있습니다. `DbContext.Update` 및 `DbSet.Update`는 키 설정이 있는 엔터티가 `Unchanged` 대신 `Modified`로 표시된다는 점을 제외하고는 동일한 방식으로 작동합니다.
 
-## <a name="query"></a>Query
+## <a name="query"></a>쿼리
 
 ### <a name="improved-linq-translation"></a>향상된 LINQ 변환
 
@@ -302,7 +302,7 @@ public class MyPluralizer : IPluralizer
 ### <a name="only-one-provider-per-model"></a>모델당 단일 공급자
 공급자가 모델과 상호 작용하는 방식을 보완하고 규칙, 주석 및 복합 API가 다양한 공급자에서 작동하는 방식을 간소화합니다.
 
-이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 응용 프로그램에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 *공통 관계형 메타데이터 개념*에 대한 모든 액세스가 항상 `.SqlServer`, `.Sqlite` 등이 아닌 `.Relational` 호출을 통해 이루어집니다.
+이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 애플리케이션에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 *공통 관계형 메타데이터 개념*에 대한 모든 액세스가 항상 `.SqlServer`, `.Sqlite` 등이 아닌 `.Relational` 호출을 통해 이루어집니다.
 
 ### <a name="consolidated-logging-and-diagnostics"></a>통합된 로깅 및 진단
 

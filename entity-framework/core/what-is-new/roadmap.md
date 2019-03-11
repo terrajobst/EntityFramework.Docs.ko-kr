@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: 9064b323c11282418f2bedf70f874d45c18bb78a
-ms.sourcegitcommit: 735715f10cc8a231c213e4f055d79f0effd86570
+ms.openlocfilehash: f466d112e5ed8661ad1e2d91079c1c01d34b9002
+ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56325342"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57463232"
 ---
 # <a name="entity-framework-core-roadmap"></a>Entity Framework Core 로드맵
 
@@ -18,43 +18,12 @@ ms.locfileid: "56325342"
 
 ### <a name="ef-core-30"></a>EF Core 3.0
 
-뛰어난 EF Core 2.2와 함께 Microsoft는 이제 .NET Core 3.0 및 ASP.NET 3.0 릴리스에 맞춰질 EF Core 3.0에 집중하고 있습니다.
-
-아직 새 기능이 완성되지 않았으므로 2018년 12월에  [NuGet 갤러리에 게시된 EF Core 3.0 미리 보기 1 패키지](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/3.0.0-preview.18572.1) 에는 [버그 수정, 부분 개선 사항 및 3.0 작업에 대비해 수행한 변경 사항](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aissue+milestone%3A3.0.0+is%3Aclosed+label%3Aclosed-fixed)만 포함됩니다.
-
-사실, Microsoft는 할당된 시간 내에 완성할 수 있는 적절한 기능 모음을 갖추도록 3.0 [릴리스 계획](#release-planning-process)을 계속 조정해야 합니다.
-계획이 더 분명해지면 더 많은 작업을 공유하겠습니다. 작업하려는 높은 수준의 테마와 기능 몇 가지는 다음과 같습니다.
-
-- **LINQ 기능 향상([#12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795))**: LINQ를 사용하면 선택한 언어로 데이터베이스 쿼리를 작성할 수 있어서 다양한 종류의 정보를 활용하여 IntelliSense 및 컴파일 시간 형식 검사를 수행할 수 있습니다.
-  그러나 LINQ를 사용하면 복잡한 쿼리를 무제한으로 작성할 수도 있습니다. 이는 LINQ 공급자에게 항상 큰 문제였습니다.
-  EF Core의 처음 몇 버전에서는 쿼리 중 SQL로 변환할 수 있는 부분을 생각한 다음, 나머지 쿼리가 클라이언트의 메모리에서 실행되도록 허용하여 이 문제를 부분적으로 해결했습니다.
-  이러한 클라이언트 쪽 실행은 일부 상황에서는 바람직하지만, 다른 많은 경우에는 애플리케이션이 프로덕션에 배포될 때까지 식별되지 않을 수 있는 비효율적인 쿼리가 발생할 수 있습니다.
-  EF Core 3.0에서는 LINQ 구현 방식과 테스트 방법을 크게 변화시킬 계획입니다.
-  목표는 패치 릴리스에서 쿼리 중단을 방지하는 등 더욱 강력한 EF Core를 만들고, 더 많은 식을 SQL로 정확하게 변환할 수 있고, 더 많은 경우에 효율적인 쿼리를 생성하며, 비효율적인 쿼리가 검색되지 않는 것을 방지하는 것입니다.
-
-- **Cosmos DB 지원([#8443](https://github.com/aspnet/EntityFrameworkCore/issues/8443))**: Microsoft는 개발자가 EF 프로그래밍 모델에 친숙해져서 애플리케이션 데이터베이스로 Azure Cosmos DB를 쉽게 대상으로 지정할 수 있도록 하기 위해 EF Core의 Cosmos DB 공급자에 공을 들이고 있습니다.
-  목표는 전역 배포, “always on” 가용성, 탄력적인 확장성, 짧은 대기 시간, .NET 개발자에 훨씬 더 많은 액세스 가능성과 같은 몇몇 Cosmos DB 기능을 활용하는 것입니다.
-  공급자는 Cosmos DB의 SQL API에 대해 자동 변경 내용 추적, LINQ, 값 변환 같은 대부분의 EF Core 기능을 사용할 수 있습니다. Microsoft는 EF Core 2.2 전에 이러한 노력을 시작했으며, [공급자의 몇몇 미리 보기 버전을 제공했습니다](https://blogs.msdn.microsoft.com/dotnet/2018/10/17/announcing-entity-framework-core-2-2-preview-3/).
-  새 계획은 EF Core 3.0과 함께 공급자를 계속 개발하는 것입니다.   
-
-- **C# 8.0 지원([#12047](https://github.com/aspnet/EntityFrameworkCore/issues/12047))**: Microsoft는 고객이 EF Core를 사용하면서 비동기 스트림(각각에 대한 대기 포함), nullable 참조 형식 같은 일부 [C# 8.0의 새 기능](https://blogs.msdn.microsoft.com/dotnet/2018/11/12/building-c-8-0/)을 활용하기를 바랍니다.
-
-- **쿼리 형식의 리버스 엔지니어링 데이터베이스 뷰([#1679](https://github.com/aspnet/EntityFrameworkCore/issues/1679))**: EF Core 2.1에서는 데이터베이스에서 읽을 수는 있지만 업데이트할 수 없는 데이터를 나타낼 수 있는 쿼리 형식에 대한 지원을 추가했습니다.
-  쿼리 형식은 데이터베이스 뷰 매핑에 아주 적합하므로 EF Core 3.0에서는 데이터베이스 뷰에 대한 쿼리 형식 생성을 자동화하고자 합니다.
-
-- **속성 모음 엔터티([#13610](https://github.com/aspnet/EntityFrameworkCore/issues/13610) 및 [#9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914))**: 이 기능은 일반 속성 대신 인덱싱된 속성에 데이터를 저장하는 엔터티를 사용하고 동일한 .NET 클래스의 인스턴스(잠재적으로 `Dictionary<string, object>`만큼 단순한 인스턴스)를 사용하여 동일한 EF Core 모델에서 여러 엔터티 형식을 나타낼 수 있도록 하는 기능입니다.
-  이 기능은 EF Core에 대해 가장 요청이 많았던 기능 향상 중 하나인 조인 엔터티가 없는 다 대 다 관계를 지원하는 발판입니다.
-
-- **.NET Core의 EF 6.3([EF6 #271](https://github.com/aspnet/EntityFramework6/issues/271))**: 많은 기존 애플리케이션이 이전 버전의 EF를 사용하고 단지 .NET Core를 활용하기 위해 이전 버전의 EF를 EF Core로 포팅하는 일은 상당한 노력이 필요할 수 있다는 점을 이해합니다.
-  그러한 이유로, Microsoft는 다음 버전의 EF 6가 .NET Core 3.0에서 실행되도록 조정할 예정입니다.
-  이는 최소한의 변경으로 기존 애플리케이션의 포팅을 간단히 수행하기 위해서입니다.
-  예를 들어 새 공급자가 필요하고 SQL Server에서 공간 지원이 불가능한 것과 같은 몇 가지 제한 사항이 있을 예정이며, EF 6에 대해 계획된 새 기능은 없습니다.
-
-그동안에는 [Issue Tracker에서 이 쿼리](https://github.com/aspnet/EntityFrameworkCore/issues?q=is%3Aopen+is%3Aissue+milestone%3A3.0.0+sort%3Areactions-%2B1-desc)를 사용하여 3.0에 할당된 작업 항목을 임시로 확인하세요.
+EF Core 2.2가 출시됨에 따라 이제 EF Core 3.0이 주요 관심사입니다.
+릴리스에 포함되는 계획된 [새로운 기능](xref:core/what-is-new/ef-core-3.0/features) 및 의도적인 [호환성이 손상되는 변경](xref:core/what-is-new/ef-core-3.0/breaking-changes)에 대한 정보는 [EF Core 3.0의 새로운 기능](xref:core/what-is-new/ef-core-3.0/index)을 참조하세요.
 
 ## <a name="schedule"></a>일정
 
-EF Core에 대한 일정은 [.NET Core 일정](https://github.com/dotnet/core/blob/master/roadmap.md) 및 [ASP.NET Core 일정](https://github.com/aspnet/Home/wiki/Roadmap)과 동기화됩니다.
+EF Core의 릴리스 일정은 [.NET Core 릴리스 일정](https://github.com/dotnet/core/blob/master/roadmap.md)과 동기화됩니다.
 
 ## <a name="backlog"></a>백로그
 
@@ -84,9 +53,9 @@ EF6에서 기능의 존재 여부도 기능이 EF Core에서 구현되어야 함
 
 2. **이 기능을 아직 구현하지 않은 경우 사람들이 사용할 수 있는 해결 방법은 무엇인가요?** 예를 들어 많은 개발자는 네이티브 다대다 지원 부족의 문제를 해결하기 위해 조인 테이블을 매핑할 수 있습니다. 분명히 일부 개발자는 그렇게 하고 싶어 하지 않지만 많은 개발자가 그렇게 할 수 있으며, 이는 결정의 한 요인으로 고려됩니다.
 
-3. **이 기능의 구현은 다른 기능의 구현으로 가까이 다가가도록 하는 EF Core의 아키텍처를 진화시키나요?** Microsoft는 다른 기능의 구성 요소로 작동하는 기능을 선호하는 경향이 있습니다. 예를 들어 속성 모음 엔터티는 다대다 지원을 지향하는 데 도움이 되며, 엔터티 생성자는 지연 로드 지원을 사용하도록 설정했습니다. 
+3. **이 기능의 구현은 다른 기능의 구현으로 가까이 다가가도록 하는 EF Core의 아키텍처를 진화시키나요?** Microsoft는 다른 기능의 구성 요소로 작동하는 기능을 선호하는 경향이 있습니다. 예를 들어 속성 모음 엔터티는 다대다 지원을 지향하는 데 도움이 되며, 엔터티 생성자는 지연 로드 지원을 사용하도록 설정했습니다.
 
-4. **기능은 확장성 지점인가요?** 확장성 지점을 통해 개발자는 해당 동작에 연결하고 누락된 기능을 보완할 수 있으므로 Microsoft는 확장성 지점을 선호하는 경향이 있습니다. 
+4. **기능은 확장성 지점인가요?** 확장성 지점을 통해 개발자는 해당 동작에 연결하고 누락된 기능을 보완할 수 있으므로 Microsoft는 확장성 지점을 선호하는 경향이 있습니다.
 
 5. **다른 제품과 함께 사용할 경우 기능의 시너지 효과는 무엇인가요?** Microsoft는 EF Core를 .NET Core, 최신 버전의 Visual Studio, Microsoft Azure 등과 같은 다른 제품과 함께 사용하도록 하거나 그러한 환경을 크게 향상하는 기능을 선호합니다.
 

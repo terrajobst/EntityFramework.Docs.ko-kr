@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: 343162596780e6146b57f73a38221701009cd855
-ms.sourcegitcommit: 85d17524d8e022f933cde7fc848313f57dfd3eb8
+ms.openlocfilehash: ad7ac3099cfd4c49b88acfbbff61f2af9294b6ec
+ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55760511"
+ms.lasthandoff: 03/06/2019
+ms.locfileid: "57463245"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
@@ -140,4 +140,6 @@ var blogs = context.Blogs
 * `SELECT` 이외의 SQL 문은 구성할 수 없는 것으로 자동으로 인식됩니다. 따라서 저장 프로시저의 전체 결과는 항상 클라이언트에 반환되며 `FromSql` 다음에 적용된 모든 LINQ 연산자는 메모리 내에서 평가됩니다.
 
 > [!WARNING]  
-> **원시 SQL 쿼리에 항상 매개 변수화를 사용하세요.** `FromSql` 및 `ExecuteSqlCommand`와 같이 원시 SQL 문자열을 허용하는 API에서는 값을 매개 변수로 쉽게 전달할 수 있습니다. 사용자 입력의 유효성을 검사할 뿐만 아니라 원시 SQL 쿼리/명령에서 사용되는 모든 값에 항상 매개 변수화를 사용하세요. 문자열 연결을 사용하여 쿼리 문자열의 일부를 동적으로 작성하는 경우 모든 입력의 유효성을 검사하여 SQL 삽입 공격으로부터 보호해야 합니다.
+> **원시 SQL 쿼리에 항상 매개 변수화를 사용하세요.** 사용자 입력의 유효성을 검사할 뿐만 아니라 원시 SQL 쿼리/명령에서 사용되는 모든 값에 항상 매개 변수화를 사용하세요. `FromSql` 및 `ExecuteSqlCommand`와 같이 원시 SQL 문자열을 허용하는 API에서는 값을 매개 변수로 쉽게 전달할 수 있습니다. FormattableString을 허용하는 `FromSql` 및 `ExecuteSqlCommand`의 오버로드는 SQL 삽입 공격으로부터 보호하는 방식으로 문자열 보간 구문을 사용할 수도 있습니다. 
+> 
+> 문자열 연결 또는 보간을 사용하여 쿼리 문자열의 일부를 동적으로 빌드하거나 동적 SQL로 해당 입력을 실행할 수 있는 명령문이나 저장 프로시저에 사용자 입력을 전달하는 경우, SQL 삽입 공격으로부터 보호하기 위해 입력의 유효성을 검사해야할 책임이 있습니다.
