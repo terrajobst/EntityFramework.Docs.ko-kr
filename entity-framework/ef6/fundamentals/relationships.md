@@ -3,12 +3,12 @@ title: 관계, 탐색 속성 및 EF6 외래 키
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: 46c2d11b5704ec7ae82a423ae042b87f5efe436f
-ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
+ms.openlocfilehash: 416eb1fb590330ba292a858347e26b83dddc74df
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2018
-ms.locfileid: "49315661"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829202"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
 이 항목에서는 Entity Framework는 엔터티 간의 관계를 관리 하는 방법의 개요를 제공 합니다. 또한 매핑 관계를 조작 하는 방법에 대 한 지침을 제공 합니다.
@@ -29,7 +29,7 @@ Entity Framework의 엔터티 연결 또는 관계를 통해 다른 엔터티와
 
 모델에 외래 키 열 포함 되지 않습니다, 경우 연결 정보는 독립적 개체로 관리 됩니다. 관계는 외래 키 속성 대신 개체 참조를 통해 추적 됩니다. 이 유형의 연결 호출 되는 *독립 연결*합니다. 수정 하는 가장 일반적인 방법은 *독립 연결* 연결에 참여 하는 각 엔터티에 대해 생성 되는 탐색 속성을 수정 하는 것입니다.
 
-모델에서 두 종류의 연결 중 하나 또는 둘 모두를 사용할 수 있습니다. 그러나 순수 다 대 다 관계에서 외래 키만 포함 하는 조인 테이블이 연결 된 경우는 EF는 이러한 다 대 다 관계를 관리 하는 독립 연결을 사용 합니다.   
+모델에서 두 종류의 연결 중 하나 또는 둘 모두를 사용할 수 있습니다. 그러나 순수 다 대 다 관계에서 외래 키만 포함 하는 조인 테이블이 연결 된 경우는 EF는 이러한 다 대 다 관계를 관리 하는 독립 연결을 사용 합니다.   
 
 다음 이미지에서는 Entity Framework 디자이너를 사용 하 여 생성 된 개념적 모델을 보여 줍니다. 모델에 일 대 다 관계에 참여 하는 두 개의 엔터티가 포함 되어 있습니다. 두 엔터티는 탐색 속성입니다. **코스** 종속 엔터티가 있고 합니다 **DepartmentID** 외래 키 속성을 정의 합니다.
 
@@ -51,7 +51,7 @@ public class Department
 {
    public Department()
    {
-     this.Course = new HashSet<Course>();
+     this.Courses = new HashSet<Course>();
    }  
    public int DepartmentID { get; set; }
    public string Name { get; set; }
