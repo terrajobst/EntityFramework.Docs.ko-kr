@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: a7e1a03bf1131cd53123f5cc39b07bed94619b44
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: 748db8a71a04a2d696ef21a03319906b9fc776be
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463384"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829228"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -22,11 +22,10 @@ ms.locfileid: "57463384"
 
 ## <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.
 
-[추적 문제 #12795](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
+[추적 문제 #14935](https://github.com/aspnet/EntityFrameworkCore/issues/14935)
+[문제 #12795도 참조](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
 
-> [!IMPORTANT]
-> 이 줄 바꿈으로 미리 알려드립니다.
-3.0 미리 보기에서는 아직 제공되지 않습니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
 
 **이전 동작**
 
@@ -98,8 +97,14 @@ EF Core 3.0 부터 명령/SQL 실행의 로깅은 `Debug` 수준입니다.
 **완화 방법**
 
 이 로깅 이벤트는 `RelationalEventId.CommandExecuting`에서 이벤트 ID 20100으로 정의됩니다.
-`Info` 수준에서 SQL을 다시 로그인하려면 `Debug` 수준에서 로깅을 켜고 이 이벤트에 대해서만 필터링합니다.
-
+`Info` 수준에서 다시 SQL을 로그하려면 `OnConfiguring` 또는 `AddDbContext`에서 수준을 명시적으로 구성하세요.
+예:
+```C#
+protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    => optionsBuilder
+        .UseSqlServer(connectionString)
+        .ConfigureWarnings(c => c.Log((RelationalEventId.CommandExecuting, LogLevel.Info)));
+```
 
 ## <a name="temporary-key-values-are-no-longer-set-onto-entity-instances"></a>임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.
 
@@ -439,6 +444,28 @@ modelBuilder
     .HasField("_id");
 ```
 
+## <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않음
+
+[추적 문제 #14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에는 `AddDbContext` 또는 `AddDbContextPool`을 호출하면 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 및 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)에 대한 호출을 통해 D.I를 사용하여 로깅 및 메모리 캐시 서비스도 등록합니다.
+
+**새 동작**
+
+EF Core 3.0부터 `AddDbContext` 및 `AddDbContextPool`은 DI(종속성 주입)를 사용하여 이러한 서비스를 더 이상 등록하지 않습니다.
+
+**이유**
+
+EF Core 3.0에서는 이러한 서비스가 애플리케이션의 DI 컨테이너에 있을 필요가 없습니다. 그러나 `ILoggerFactory`가 애플리케이션의 DI 컨테이너에 등록된 경우 EF Core에서 여전히 DI를 사용합니다.
+
+**완화 방법**
+
+애플리케이션에 이러한 서비스가 필요한 경우 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 또는 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 DI 컨테이너에 명시적으로 등록합니다.
+
 ## <a name="dbcontextentry-now-performs-a-local-detectchanges"></a>DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.
 
 [추적 문제 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
@@ -610,6 +637,43 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     optionsBuilder
         .ConfigureWarnings(w => w.Log(CoreEventId.ManyServiceProvidersCreatedWarning));
 }
+```
+
+## <a name="new-behavior-for-hasonehasmany-called-with-a-single-string"></a>단일 문자열로 호출되는 HasOne/HasMany의 새 동작
+
+[추적 문제 #9171](https://github.com/aspnet/EntityFrameworkCore/issues/9171)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에는 단일 문자열을 사용하여 `HasOne` 또는 `HasMany`를 호출하는 코드가 혼란스러운 방식으로 해석되었습니다.
+예:
+```C#
+modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
+```
+
+코드는 비공개일 수 있는 `Entrance` 탐색 속성을 사용하여 `Samuri`를 다른 엔터티 형식과 관련시키려는 것 같습니다.
+
+실제로 이 코드는 탐색 속성을 사용하지 않고 `Entrance`라고 하는 엔터티 형식과 관계를 생성하려고 합니다.
+
+**새 동작**
+
+EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처럼 보이는 방식으로 동작합니다.
+
+**이유**
+
+이전 동작은 특히 구성 코드를 읽고 오류를 찾을 때 매우 혼란스럽습니다.
+
+**완화 방법**
+
+새 동작은 형식 이름의 문자열을 사용하고 탐색 속성을 명시적으로 지정하지 않은 채 명시적으로 관계를 구성하는 애플리케이션만 중단됩니다.
+이는 일반적이지 않습니다.
+이전 동작은 탐색 속성 이름에 대해 `null`을 전달하여 명시적으로 얻을 수 있습니다.
+예:
+
+```C#
+modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 ```
 
 ## <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.

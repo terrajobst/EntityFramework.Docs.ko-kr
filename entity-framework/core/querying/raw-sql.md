@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: ad7ac3099cfd4c49b88acfbbff61f2af9294b6ec
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: 0ad43db794902cf1f46bfe8f117fbd36e06f3c44
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463245"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829176"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
@@ -96,7 +96,7 @@ var blogs = context.Blogs
 
 `FromSql()`을 사용하는 쿼리는 EF Core에서 다른 LINQ 쿼리와 완전히 동일한 변경 내용 추적 규칙을 따릅니다. 예를 들어 쿼리 프로젝트 엔터티 형식의 경우 기본적으로 결과가 추적됩니다.  
 
-다음 예제에서는 TVF(테이블 반환 함수)에서 선택하는 원시 SQL 쿼리를 사용한 다음, .AsNoTracking()을 호출하여 변경 내용 추적을 사용하지 않도록 설정합니다.
+다음 예제에서는 TVF(테이블 반환 함수)에서 선택하는 원시 SQL 쿼리를 사용한 이후에 .AsNoTracking()을 호출하여 변경 내용 추적을 사용하지 않도록 설정합니다.
 
 <!-- [!code-csharp[Main](samples/core/Querying/Querying/RawSQL/Sample.cs)] -->
 ``` csharp

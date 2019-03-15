@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
-ms.openlocfilehash: cf0d2cf032b9aa319fe706aece5b1ea66a5d6251
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: b6774f615b04bf9579aac5dea217e7321631da0c
+ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463365"
+ms.lasthandoff: 03/14/2019
+ms.locfileid: "57829189"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 새로운 기능(현재 미리 보기 상태)
 
@@ -75,7 +75,7 @@ EF Core 2.1에서 도입되고 EF Core 3.0에서 키가 없는 엔터티 형식�
 이 기능에 대한 작업이 시작되었지만 현재 미리 보기에는 포함되어 있지 않습니다. 
 
 이 기능은 일반 속성 대신 인덱싱된 속성에 데이터를 저장하는 엔터티를 사용하고 동일한 .NET 클래스의 인스턴스(잠재적으로 `Dictionary<string, object>`만큼 단순한 인스턴스)를 사용하여 동일한 EF Core 모델에서 여러 엔터티 형식을 나타낼 수 있도록 하는 기능입니다.
-이 기능은 EF Core에 대해 가장 요청이 많았던 기능 향상 중 하나인 조인 엔터티가 없는 다 대 다 관계를 지원하는 발판입니다.
+이 기능은 EF Core에 대해 가장 요청이 많았던 기능 향상 중 하나인 조인 엔터티([issue #1368](https://github.com/aspnet/EntityFrameworkCore/issues/1368))가 없는 다 대 다 관계를 지원하는 발판입니다.
 
 ## <a name="ef-63-on-net-core"></a>.NET Core의 EF 6.3 
 
