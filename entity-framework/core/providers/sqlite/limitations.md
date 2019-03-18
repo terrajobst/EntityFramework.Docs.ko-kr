@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 04/09/2017
 ms.assetid: 94ab4800-c460-4caa-a5e8-acdfee6e6ce2
 uid: core/providers/sqlite/limitations
-ms.openlocfilehash: 69c40fcd8b7ddb925728b1bad9992ad2a81e7540
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 53262bc926d79f42c4418a62717a462564dc80bf
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994666"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58131410"
 ---
 # <a name="sqlite-ef-core-database-provider-limitations"></a>SQLite EF Core 데이터베이스 공급자의 제한 사항
 
@@ -41,7 +41,7 @@ SQLite 데이터베이스 엔진이 다양 한 대부분의 기타 관계형 데
 | DropPrimaryKey       | ✗          |                  |
 | DropTable            | ✔          | 1.0              |
 | DropUniqueConstraint | ✗          |                  |
-| RenameColumn         | ✗          |                  |
+| RenameColumn         | ✔          | 2.2.2            |
 | RenameIndex          | ✔          | 2.1              |
 | RenameTable          | ✔          | 1.0              |
 | EnsureSchema         | ✔ (아무)  | 2.0              |
@@ -52,7 +52,7 @@ SQLite 데이터베이스 엔진이 다양 한 대부분의 기타 관계형 데
 
 ## <a name="migrations-limitations-workaround"></a>마이그레이션 제한 사항 해결
 
-일부 해결 방법을 사용 하면 수동으로 테이블을 수행 하 여 마이그레이션에 코드를 작성 하 여 이러한 한계를 다시 작성 합니다. 테이블 다시 빌드는 기존 테이블 이름 바꾸기, 새 테이블 만들기, 새 테이블에 데이터를 복사 및 이전 테이블을 삭제 해야 합니다. 사용 해야 합니다는 `Sql(string)` 일부이 단계를 수행 하는 방법입니다.
+일부 해결 방법을 사용 하면 수동으로 테이블을 수행 하 여 마이그레이션에 코드를 작성 하 여 이러한 한계를 다시 작성 합니다. 테이블 다시 빌드에는 기존 테이블 이름 바꾸기, 새 테이블 만들기, 새 테이블에 데이터 복사 및 이전 테이블 삭제가 포함됩니다. 사용 해야 합니다는 `Sql(string)` 일부이 단계를 수행 하는 방법입니다.
 
 참조 [다른 종류의 테이블 스키마 변경 사항을 편집](http://sqlite.org/lang_altertable.html#otheralter) 자세한 SQLite 설명서.
 

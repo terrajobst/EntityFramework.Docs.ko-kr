@@ -1,18 +1,18 @@
 ---
-title: Entity Framework 용어-EF6
+title: Entity Framework Glossary - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 3f05ffdd-49bc-499c-9732-4a368bf5d2d7
-ms.openlocfilehash: 9ed7a2d841c625de35de57edb4e57e69b89a3db9
-ms.sourcegitcommit: 5d74ac575f813110db6d870720f50dd7606446bc
+ms.openlocfilehash: 4e42e5870879524b814cecdc361e688d36f0180f
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2018
-ms.locfileid: "48881269"
+ms.lasthandoff: 03/18/2019
+ms.locfileid: "58131381"
 ---
 # <a name="entity-framework-glossary"></a>Entity Framework 용어집
 ## <a name="code-first"></a>Code First
-코드를 사용 하 여 Entity Framework 모델을 만드는 중입니다. 모델을 대상으로 지정할 수와 기존 데이터베이스 또는 새 데이터베이스입니다.
+코드를 사용 하 여 Entity Framework 모델을 만드는 중입니다. 모델은 데이터베이스를 기존 또는 새 데이터베이스를 대상으로 지정할 수 있습니다.
 
 ## <a name="context"></a>컨텍스트
 데이터베이스를 쿼리하고 데이터를 저장할 수 있도록 세션을 나타내는 클래스입니다. 컨텍스트는 DbContext 나 ObjectContext 클래스에서 파생 됩니다.
