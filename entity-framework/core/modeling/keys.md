@@ -4,16 +4,18 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 912ffef7-86a0-4cdc-a776-55f907459d20
 uid: core/modeling/keys
-ms.openlocfilehash: 9e6946100ebabc6ba57cb792b3672219098b1e21
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 6272e323b83ccab2ed060a2ebbde1d1e8e353d66
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994023"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319168"
 ---
 # <a name="keys-primary"></a>키 (기본)
 
-키를 각 엔터티 인스턴스에 대 한 기본 고유 식별자로 사용 됩니다. 개념에 매핑됩니다 관계형 데이터베이스를 사용 하는 경우는 *기본 키*합니다. 기본 키 없는 고유 식별자를 구성할 수도 있습니다 (참조 [대체 키](alternate-keys.md) 자세한).
+키를 각 엔터티 인스턴스에 대 한 기본 고유 식별자로 사용 됩니다. 개념에 매핑됩니다 관계형 데이터베이스를 사용 하는 경우는 *기본 키*합니다. 기본 키 없는 고유 식별자를 구성할 수도 있습니다 (참조 [대체 키](alternate-keys.md) 자세한). 
+
+다음 방법 중 하나를 기본 키를 설치/생성할 수입니다.
 
 ## <a name="conventions"></a>규칙
 

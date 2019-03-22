@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 70fe2d934901f5366c96904b08f49a35f6590b47
-ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
+ms.openlocfilehash: 0f8389decbc1995cc629d24c5baa197255cd328a
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58131401"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319142"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -28,6 +28,8 @@ ms.locfileid: "58131401"
   * 사용 되지 않는 Api를 제거합니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/15044
   * CharTypeMapping의 서브 클래스 기본 구현에서 몇 가지 버그를 수정 하는 데 필요한 동작 변경 내용으로 인해 손상 되었을 수 있습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15090
+  * IDatabaseModelFactory에 대 한 기본 클래스를 추가 하 고 이후에 중단을 완화 하기 위해 매개 변수를 사용 하도록 업데이트 합니다.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 

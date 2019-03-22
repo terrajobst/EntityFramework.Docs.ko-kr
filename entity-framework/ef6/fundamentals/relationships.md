@@ -3,12 +3,12 @@ title: 관계, 탐색 속성 및 EF6 외래 키
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: 416eb1fb590330ba292a858347e26b83dddc74df
-ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
+ms.openlocfilehash: 8292ae7af8d760240715854611d92ab340bf1ca7
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57829202"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319194"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
 이 항목에서는 Entity Framework는 엔터티 간의 관계를 관리 하는 방법의 개요를 제공 합니다. 또한 매핑 관계를 조작 하는 방법에 대 한 지침을 제공 합니다.
@@ -147,7 +147,7 @@ public class Department
 
 ## <a name="loading-related-objects"></a>관련 개체 로드
 
-가장 일반적으로 사용 하면 Entity Framework에서 탐색 속성을 사용 하 여 정의 된 연결에 의해 반환된 된 엔터티를 관련 된 엔터티를 로드 합니다. 자세한 내용은 [관련 개체 로드](~/ef6/querying/related-data.md)합니다.
+Entity Framework에서 일반적으로 탐색 속성을 사용 하면 정의 된 연결에 의해 반환된 된 엔터티를 관련 된 엔터티를 로드 합니다. 자세한 내용은 [관련 개체 로드](~/ef6/querying/related-data.md)합니다.
 
 > [!NOTE]
 > 외래 키 연결에서 종속 개체의 관련된 끝을 로드하면 현재 메모리에 있는 종속 개체의 외래 키 값에 따라 관련 개체가 로드됩니다.

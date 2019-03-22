@@ -3,12 +3,12 @@ title: 모의 프레임 워크-EF6 사용 하 여 테스트
 author: divega
 ms.date: 10/23/2016
 ms.assetid: bd66a638-d245-44d4-8e71-b9c6cb335cc7
-ms.openlocfilehash: 80fd97073744be40d66c09706d3513dba18e724d
-ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
+ms.openlocfilehash: 3d39b41018beb70b72105dfb2fe4d61afc0b0525
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48834723"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319207"
 ---
 # <a name="testing-with-a-mocking-framework"></a>모의 프레임 워크를 사용 하 여 테스트
 > [!NOTE]
@@ -21,7 +21,7 @@ ms.locfileid: "48834723"
 메모리 내 버전이 컨텍스트를 만드는 데 사용할 수 있는 두 가지 방법이 있습니다.  
 
 - **사용자 고유의 test double을 만드는** -이 방법은 사용자의 컨텍스트 및 Dbset 고유한 메모리 내 구현의 작성 하는 것입니다. 이 클래스의 동작 하지만 작성 하 고 적절 한 양의 코드를 소유 하는 포함 될 수 있습니다 하는 방법에 대 한 제어 많이 제공 합니다.  
-- **모의 프레임 워크를 사용 하 여 test double을 만들려면** -(예: Moq) 모의 프레임 워크를 사용 하 여 할 수 있습니다의 메모리 내 구현을 컨텍스트와를 런타임에 동적으로 만든 집합입니다.  
+- **모의 프레임 워크를 사용 하 여 test double을 만들려면** -(예: Moq) 모의 프레임 워크를 사용 하 여 사용자의 컨텍스트 및를 런타임에 동적으로 생성 하는 집합의 메모리 내 구현을 사용할 수 있습니다.  
 
 이 문서에서 모의 프레임 워크를 사용 하 여 처리 합니다. 사용자 고유의 test double을 만드는 참조 [사용자 고유의 테스트 Double을 사용 하 여 테스트](writing-test-doubles.md)합니다.  
 

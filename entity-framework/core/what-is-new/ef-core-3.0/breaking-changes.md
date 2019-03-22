@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 748db8a71a04a2d696ef21a03319906b9fc776be
-ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
+ms.openlocfilehash: 534ac95cccc03e9797ba766e601e2fe86eaf8061
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57829228"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319220"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -653,7 +653,7 @@ EF Core 3.0 이전에는 단일 문자열을 사용하여 `HasOne` 또는 `HasMa
 modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 ```
 
-코드는 비공개일 수 있는 `Entrance` 탐색 속성을 사용하여 `Samuri`를 다른 엔터티 형식과 관련시키려는 것 같습니다.
+코드는 비공개일 수 있는 `Entrance` 탐색 속성을 사용하여 `Samurai`를 다른 엔터티 형식과 관련시키려는 것 같습니다.
 
 실제로 이 코드는 탐색 속성을 사용하지 않고 `Entrance`라고 하는 엔터티 형식과 관계를 생성하려고 합니다.
 
@@ -785,3 +785,83 @@ EF Core 3.0부터 EF Core가 `SQLitePCLRaw.bundle_e_sqlite3`을 사용합니다.
 **완화 방법**
 
 iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `SQLitePCLRaw` 번들을 사용하도록 `Microsoft.Data.Sqlite`를 구성합니다.
+
+## <a name="char-values-are-now-stored-as-text-on-sqlite"></a>Char 값은 이제 SQLite에 텍스트로 저장됨
+
+[추적 문제 #15020](https://github.com/aspnet/EntityFrameworkCore/issues/15020)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**이전 동작**
+
+Char 값은 이전에 SQLite에 정수 값으로 저장되었습니다. 예를 들어, *A*의 char 값은 정수 값 65로 저장되었습니다.
+
+**새 동작**
+
+Char 값은 이제 텍스트로 저장됩니다.
+
+**이유**
+
+값을 텍스트로 저장하는 것이 더 자연스럽고 데이터베이스가 다른 기술과 더 잘 호환됩니다.
+
+**완화 방법**
+
+다음과 같이 SQL을 실행하여 기존 데이터베이스를 새 형식으로 마이그레이션할 수 있습니다.
+
+``` sql
+UPDATE MyTable
+SET CharColumn = char(CharColumn)
+WHERE typeof(CharColumn) = 'integer';
+```
+
+EF Core에서는 이러한 속성에 값 변환기를 구성하여 이전 동작을 계속 사용할 수도 있습니다.
+
+``` csharp
+modelBuilder
+    .Entity<MyEntity>()
+    .Property(e => e.CharProperty)
+    .HasConversion(
+        c => (long)c,
+        i => (char)i);
+```
+
+또한 Microsoft.Data.Sqlite는 정수 및 텍스트 열에서 문자 값을 읽을 수 있으므로 특정 시나리오에서는 아무런 조치도 필요하지 않을 수 있습니다.
+
+## <a name="migration-ids-are-now-generated-using-the-invariant-cultures-calendar"></a>이제 마이그레이션 ID가 고정 문화권의 달력을 사용하여 생성됨
+
+[추적 문제 #12978](https://github.com/aspnet/EntityFrameworkCore/issues/12978)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**이전 동작**
+
+마이그레이션 ID는 현재 문화권의 달력을 사용하여 의도치 않게 생성되었습니다.
+
+**새 동작**
+
+이제 마이그레이션 ID는 항상 고정 문화권의 달력(그레고리력)을 사용하여 생성됩니다.
+
+**이유**
+
+데이터베이스를 업데이트하거나 병합 충돌을 해결할 때 마이그레이션 순서가 중요합니다. 고정 달력을 사용하면 팀 멤버가 서로 다른 시스템 캘린더로 인해 발생할 수 있는 주문 문제를 방지할 수 있습니다.
+
+**완화 방법**
+
+이 변경은 그레고리력(예: 태국 불교식 달력)보다 큰 년도가 있는 그레고리력이 아닌 달력을 사용하는 사용자에게 영향을 줍니다. 기존 마이그레이션 ID를 업데이트하여 기존 마이그레이션 후 새 마이그레이션 순서를 지정해야 합니다.
+
+마이그레이션 ID는 마이그레이션 디자이너 파일의 마이그레이션 속성에서 찾을 수 있습니다.
+
+``` diff
+ [DbContext(typeof(MyDbContext))]
+-[Migration("25620318122820_MyMigration")]
++[Migration("20190318122820_MyMigration")]
+ partial class MyMigration
+ {
+```
+
+마이그레이션 기록 테이블도 업데이트해야 합니다.
+
+``` sql
+UPDATE __EFMigrationsHistory
+SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 150))
+```

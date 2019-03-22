@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 4e042acb805c743ee794f4e61105b8d2136973b1
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.openlocfilehash: 6beaebf2c6859fcf91e963bfae02f029f8f51147
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668728"
+ms.lasthandoff: 03/19/2019
+ms.locfileid: "58131437"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -52,7 +52,7 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#IncludeTree)]
 
-포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blog`를 쿼리하는 경우 `Posts`를 포함한 다음, `Posts`의 `Author` 및 `Tags`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
+포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blogs`를 쿼리하는 경우 `Posts`를 포함한 다음, `Posts`의 `Author` 및 `Tags`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
 

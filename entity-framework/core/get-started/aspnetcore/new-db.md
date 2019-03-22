@@ -5,12 +5,12 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 4734586adc89e9c1d866a1b4accd8b5e51fe2bb0
-ms.sourcegitcommit: ebf661025d2ad2b62466fa7bf0e0772a7811cbe7
+ms.openlocfilehash: 25e5a683acf4bbed0b978cc6a80f1b50a0b64ca1
+ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54211168"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58319181"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>ASP.NET Core에서 새 데이터베이스로 EF Core 시작
 
@@ -52,7 +52,7 @@ GitHub에서 이 문서의 샘플을 봅니다.
   * 드롭다운 목록에서 **.NET Core** 및 **ASP.NET Core 2.1**이 선택되어 있는지 확인합니다.
   * **웹 애플리케이션(모델-뷰-컨트롤러)** 프로젝트 템플릿을 선택합니다.
   * **인증**이 **인증 없음**으로 설정되었는지 확인합니다.
-  * **확인**을 클릭합니다.
+  * **확인** 을 클릭합니다.
 
 경고: **인증**에 **없음** 대신 **개별 사용자 계정**을 사용하는 경우 Entity Framework Core 모델은 `Models\IdentityModel.cs`의 프로젝트에 추가됩니다. 이 자습서에서 배운 기술을 사용하면 두 번째 모델을 추가하거나 기존 모델을 확장하여 엔터티 클래스를 포함하도록 선택할 수 있습니다.
 
@@ -114,9 +114,9 @@ EF Core를 설치하려면 대상으로 지정할 EF Core 데이터베이스 공
 
 ## <a name="register-the-context-with-dependency-injection"></a>종속성 주입으로 컨텍스트 등록
 
-서비스(예: `BloggingContext`)는 애플리케이션 시작 중에 [종속성 주입](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html)에 등록됩니다. 이러한 서비스(예: MVC 컨트롤러)가 필요한 구성 요소에는 생성자 매개 변수 또는 속성을 통해 이러한 서비스가 제공됩니다.
+`BloggingContext`를 MVC 컨트롤러에 사용할 수 있도록 하려면 `Startup.cs`의 서비스로 등록합니다.
 
-`BloggingContext`를 MVC 컨트롤러에 사용할 수 있도록 서비스로 등록합니다.
+애플리케이션 시작 중에 서비스(예: `BloggingContext`)가 [종속성 주입](http://docs.asp.net/en/latest/fundamentals/dependency-injection.html)에 등록되므로 생성자 매개 변수 및 속성을 통해 서비스(예: MVC 컨트롤러)를 사용하는 구성 요소에 자동으로 제공될 수 있습니다.
 
 # <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
 
@@ -229,5 +229,5 @@ dotnet run
 ## <a name="additional-resources"></a>추가 리소스
 
 * [자습서: SQLite를 사용하여 .NET Core에서 새 데이터베이스로 EF Core 시작](xref:core/get-started/netcore/new-db-sqlite)
-* [Tutorial: Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)(자습서: ASP.NET Core에서 Razor Pages 시작)
-* [Tutorial: Razor Pages with Entity Framework Core in ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)(자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages)
+* [자습서: Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)(자습서: ASP.NET Core에서 Razor Pages 시작)
+* [자습서: Razor Pages with Entity Framework Core in ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)(자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages)
