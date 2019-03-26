@@ -3,12 +3,12 @@ title: 사용자 고유의 test double-EF6 사용 하 여 테스트
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 16a8b7c0-2d23-47f4-9cc0-e2eb2e738ca3
-ms.openlocfilehash: 2158dc73585c2720e7293096b0478c73edf522d9
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 9db56e28cd89084fece36c3e5a2c1b4495991d01
+ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490911"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419733"
 ---
 # <a name="testing-with-your-own-test-doubles"></a>사용자 고유의 test double을 사용 하 여 테스트
 > [!NOTE]
@@ -43,7 +43,7 @@ ms.locfileid: "45490911"
 
 ## <a name="creating-a-context-interface"></a>상황에 맞는 인터페이스 만들기  
 
-여기서는 EF를 사용 하는 서비스를 테스트 확인을 모델입니다. 테스트에 대 한 메모리 내 버전과 EF 컨텍스트를 교체 하기 위해 인터페이스 정의 바로 EF 컨텍스트입니다 (및 메모리에 이중) imeplement를 합니다.  
+여기서는 EF를 사용 하는 서비스를 테스트 확인을 모델입니다. 테스트에 대 한 메모리 내 버전과 EF 컨텍스트를 교체 하기 위해 바로 EF 컨텍스트입니다 (및 메모리에 이중)에서 구현 하는 인터페이스를 정의 됩니다.
 
 테스트 하려는 서비스 쿼리는 및 우리의 컨텍스트의 DbSet 속성을 사용 하 여 데이터를 수정 하 고 또한 데이터베이스에 변경 내용을 푸시할 SaveChanges를 호출 합니다. 따라서 이러한 멤버는 인터페이스에 포함 되 고 있습니다.  
 

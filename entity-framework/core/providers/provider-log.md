@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 0f8389decbc1995cc629d24c5baa197255cd328a
-ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
+ms.openlocfilehash: 1133976d8d25e4099b64a1a30a8d2066ff3f6cd7
+ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319142"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419668"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -20,6 +20,8 @@ ms.locfileid: "58319142"
 이 로그 2.1에서 2.2로 변경 내용과 시작 했습니다. 2.1 이전 버전에서는 사용 된 [ `providers-beware` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) 및 [ `providers-fyi` ](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) 당사의 문제 및 끌어오기 요청에는 레이블.
 
 ## <a name="22-----30"></a>2.2 ---> 3.0
+
+대부분의 참고를 [응용 프로그램 수준 주요 변경 내용](../what-is-new/ef-core-3.0/breaking-changes.md) 공급자에도 영향을 줍니다.
 
 * https://github.com/aspnet/EntityFrameworkCore/pull/14022
   * 사용 되지 않는 Api를 제거 하 고 축소 된 선택적 매개 변수 오버 로드
@@ -30,6 +32,35 @@ ms.locfileid: "58319142"
   * CharTypeMapping의 서브 클래스 기본 구현에서 몇 가지 버그를 수정 하는 데 필요한 동작 변경 내용으로 인해 손상 되었을 수 있습니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/15090
   * IDatabaseModelFactory에 대 한 기본 클래스를 추가 하 고 이후에 중단을 완화 하기 위해 매개 변수를 사용 하도록 업데이트 합니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15123
+  * 이후에 중단을 완화 하기 위해 MigrationsSqlGenerator에서 매개 변수 개체를 사용 합니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/14972
+  * 공급자를 사용할 수 있는 Api 일부 변경 해야 하는 로그 수준을 명시적으로 구성 했습니다. 특히, 공급자는 로깅 인프라를 직접 사용 하는 경우 다음이 변경 중단 될 수 있습니다 사용 하는 합니다. 또한 (될 공용) 인프라를 사용 하는 공급자에서 파생 해야 앞 `LoggingDefinitions` 또는 `RelationalLoggingDefinitions`합니다. SQL Server 및 예제에 대 한 메모리 내 공급자를 참조 하세요.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15091
+  * Core, 관계형, 및 추상화 리소스 문자열 공개 됩니다.
+  * `CoreLoggerExtensions` 및 `RelationalLoggerExtensions` 공개 됩니다. 코어 또는 관계형 수준에서 정의 된 이벤트를 기록할 때 공급자에서 이러한 Api를 사용 해야 합니다. 로깅 리소스를 직접 액세스 하지 않습니다 이 여전히 내부입니다.
+  * `IRawSqlCommandBuilder` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
+  * `IMigrationsSqlGenerator` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/14706
+  * 관계형 명령을 작성 하기 위한 인프라 공개 되었으므로 수 안전 하 게 공급자에서 사용 하 고 수 있도록 약간 리팩터링 합니다.
+  * `IRelationalCommandBuilderFactory`범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
+  * `IShaperCommandContextFactory` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
+  * `ISelectExpressionFactory` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/14733
+  * `ILazyLoader` 일시적인 서비스에 범위가 지정 된 서비스에서 변경 되었습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/14610
+  * `IUpdateSqlGenerator` 단일 서비스에 범위가 지정 된 서비스에서 변경 되었습니다.
+  * 또한 `ISingletonUpdateSqlGenerator` 제거 되었습니다
+* https://github.com/aspnet/EntityFrameworkCore/pull/15067
+  * 공급자가 사용 되는 내부 코드를 많이 이제 공개 되었으므로
+  * 참조할 necssary 더 이상 이어야 `IndentedStringBuilder` 노출 하는 위치에서 팩터링되며 하므로
+  * 사용법 `NonCapturingLazyInitializer` 바꿔야 `LazyInitializer` BCL에서
+* https://github.com/aspnet/EntityFrameworkCore/pull/14608
+  * 이 변경은 주요 변경 사항 문서 응용 프로그램에 완벽 하 게 적용 됩니다. 공급자에 대 한 자세한에 영향을 주는 테스트 EF core 테스트 인프라에 변경 하는 작은 가능성이 있으므로이 문제를 도달할 자주 발생할 수 있으므로이 수 있습니다.
+* https://github.com/aspnet/EntityFrameworkCore/issues/13961
+  * `EntityMaterializerSource` 간단해졌습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/14895
+  * StartsWith 번역 공급자 수 원하는 해야 반응 하는 방식으로 바뀌었습니다.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
