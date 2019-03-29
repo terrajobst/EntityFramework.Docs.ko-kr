@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 534ac95cccc03e9797ba766e601e2fe86eaf8061
-ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
+ms.openlocfilehash: 7ed55d4cae36f6b25059a5b218db4b0d5e2fb266
+ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319220"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58419746"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -786,6 +786,56 @@ EF Core 3.0부터 EF Core가 `SQLitePCLRaw.bundle_e_sqlite3`을 사용합니다.
 
 iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `SQLitePCLRaw` 번들을 사용하도록 `Microsoft.Data.Sqlite`를 구성합니다.
 
+## <a name="guid-values-are-now-stored-as-text-on-sqlite"></a>Guid 값은 이제 SQLite에 텍스트로 저장되었습니다.
+
+[추적 문제 #15078](https://github.com/aspnet/EntityFrameworkCore/issues/15078)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**이전 동작**
+
+Guid 값은 이전에 SQLite에 BLOB 값으로 저장되었습니다.
+
+**새 동작**
+
+Guid 값은 이제 텍스트로 저장됩니다.
+
+**이유**
+
+Guid의 이진 형식은 표준화되지 않았습니다. 값을 텍스트로 저장하면 데이터베이스가 다른 기술과 더 잘 호환됩니다.
+
+**완화 방법**
+
+다음과 같이 SQL을 실행하여 기존 데이터베이스를 새 형식으로 마이그레이션할 수 있습니다.
+
+``` sql
+UPDATE MyTable
+SET GuidColumn = hex(substr(GuidColumn, 4, 1)) ||
+                 hex(substr(GuidColumn, 3, 1)) ||
+                 hex(substr(GuidColumn, 2, 1)) ||
+                 hex(substr(GuidColumn, 1, 1)) || '-' ||
+                 hex(substr(GuidColumn, 6, 1)) ||
+                 hex(substr(GuidColumn, 5, 1)) || '-' ||
+                 hex(substr(GuidColumn, 8, 1)) ||
+                 hex(substr(GuidColumn, 7, 1)) || '-' ||
+                 hex(substr(GuidColumn, 9, 2)) || '-' ||
+                 hex(substr(GuidColumn, 11, 6))
+WHERE typeof(GuidColumn) == 'blob';
+```
+
+EF Core에서는 이러한 속성에 값 변환기를 구성하여 이전 동작을 계속 사용할 수도 있습니다.
+
+``` csharp
+modelBuilder
+    .Entity<MyEntity>()
+    .Property(e => e.GuidProperty)
+    .HasConversion(
+        g => g.ToByteArray(),
+        b => new Guid(b));
+```
+
+Microsoft.Data.Sqlite는 BLOB 및 텍스트 열 모두에서 Guid 값을 읽을 수 있습니다. 하지만 매개 변수 및 상수에 대한 기본 형식이 변경되었으므로 Guid를 포함하는 대부분의 시나리오에서 조치를 취해야 합니다.
+
 ## <a name="char-values-are-now-stored-as-text-on-sqlite"></a>Char 값은 이제 SQLite에 텍스트로 저장됨
 
 [추적 문제 #15020](https://github.com/aspnet/EntityFrameworkCore/issues/15020)
@@ -865,3 +915,51 @@ modelBuilder
 UPDATE __EFMigrationsHistory
 SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 150))
 ```
+
+## <a name="logquerypossibleexceptionwithaggregateoperator-has-been-renamed"></a>LogQueryPossibleExceptionWithAggregateOperator 이름이 바뀌었습니다.
+
+[추적 문제 #10985](https://github.com/aspnet/EntityFrameworkCore/issues/10985)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**변경 내용**
+
+`RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` 이름이 `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 바뀌었습니다.
+
+**이유**
+
+이 경고 이벤트의 이름 지정을 다른 모든 경고 이벤트에 맞춥니다.
+
+**완화 방법**
+
+새 이름을 사용합니다. (이벤트 ID 번호가 변경되지 않았습니다.)
+
+## <a name="clarify-api-for-foreign-key-constraint-names"></a>외래 키 제약 조건 이름에 대한 API를 명확히 합니다.
+
+[추적 문제 #10730](https://github.com/aspnet/EntityFrameworkCore/issues/10730)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예:
+
+```C#
+var constraintName = myForeignKey.Name;
+```
+
+**새 동작**
+
+이제 EF Core 3.0부터 외래 키 제약 조건 이름은 "제약 조건 이름"이라고 합니다. 예:
+
+```C#
+var constraintName = myForeignKey.ConstraintName;
+```
+
+**이유**
+
+이러한 변경으로 인해 이 영역에서 이름을 일관되게 지정하고, 또한 일관되게 외래 키가 정의된 열 또는 속성 이름이 아닌 외래 키 제약 조건의 이름임을 명확히 합니다.
+
+**완화 방법**
+
+새 이름을 사용합니다.
