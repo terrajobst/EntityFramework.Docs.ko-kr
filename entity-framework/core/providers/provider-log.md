@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 1133976d8d25e4099b64a1a30a8d2066ff3f6cd7
-ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
+ms.openlocfilehash: 229c15ec0402e1706318593a099236f723d80595
+ms.sourcegitcommit: ab847dd881d51122e695b7cd8c025fcf3a5a9033
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419668"
+ms.lasthandoff: 03/30/2019
+ms.locfileid: "58678386"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -61,6 +61,10 @@ ms.locfileid: "58419668"
   * `EntityMaterializerSource` 간단해졌습니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/14895
   * StartsWith 번역 공급자 수 원하는 해야 반응 하는 방식으로 바뀌었습니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15168
+  * 규칙 집합 서비스 변경 되었습니다. 공급자 "ProviderConventionSet" 또는 "RelationalConventionSet" 중 하나에서 상속 해야 합니다.
+  * 사용자 지정을 통해 추가할 수 있습니다 `IConventionSetCustomizer` 서비스가 있지만이 다른 확장 되지 공급자에서 사용할 것입니다.
+  * 런타임 시 사용 되는 규칙에서 확인 해야 합니다. `IConventionSetBuilder`합니다.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
