@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: f5a9ae17471391442170d8c40264e4db6922cb08
-ms.sourcegitcommit: 39080d38e1adea90db741257e60dc0e7ed08aa82
+ms.openlocfilehash: 9400fe8ea817b6aca0fb63c1de05ffe1dc997b2f
+ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980004"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58868011"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
 
@@ -23,7 +23,7 @@ ms.locfileid: "50980004"
 
 ## <a name="configuring-dbcontextoptions"></a>DbContextOptions 구성
 
-작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야 합니다. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
+`DbContext` 인스턴스가 있어야 `DbContextOptions` 작업을 수행 하기 위해. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
 
 - 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
@@ -107,7 +107,7 @@ using (var context = new BloggingContext())
 
 EF Core는 종속성 주입 컨테이너로 `DbContext`를 사용하는 것을 지원합니다. DbContext 형식은 `AddDbContext<TContext>` 메서드를 사용하여 서비스 컨테이너에 추가할 수 있습니다.
 
-`AddDbContext<TContext>`는 DbContext 형식인 `TContext` 및 해당 `DbContextOptions<TContext>`를 서비스 컨테이너에서 사용할 수 있습니다.
+`AddDbContext<TContext>` 둘 다 하 여 DbContext 형식을 하 게 `TContext`, 및 해당 `DbContextOptions<TContext>` 주입 서비스 컨테이너에서 사용할 수 있습니다.
 
 종속성 주입에 대한 추가 정보는 아래의 [더 많은 읽기](#more-reading) 자료를 참조하십시오.
 
@@ -161,6 +161,27 @@ using (var context = serviceProvider.GetService<BloggingContext>())
 
 var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
+## <a name="avoiding-dbcontext-threading-issues"></a>DbContext 스레딩 문제를 방지 합니다.
+
+Entity Framework Core 동일한 실행 되 고 여러 병렬 작업을 지원 하지 않습니다 `DbContext` 인스턴스. 동시 액세스 정의 되지 않은 동작, 응용 프로그램 충돌 및 데이터 손상이 발생할 수 있습니다. 항상 사용 하는 것이 때문에 별도 `DbContext` 병렬로 실행 하는 작업에 대 한 인스턴스. 
+
+동일한 inadvernetly 원인은 동시 액세스를 수행할 수 있는 일반적인 실수는 `DbContext` 인스턴스:
+
+### <a name="forgetting-to-await-the-completion-of-an-asynchronous-operation-before-starting-any-other-operation-on-the-same-dbcontext"></a>동일한 DbContext에 대해 다른 작업을 시작 하기 전에 비동기 작업의 완료를 대기할 무시
+
+비동기 메서드는 비차단 방식으로 데이터베이스를 액세스 하는 작업을 시작 하려면 EF Core를 사용 합니다. 그러나 호출자가 이러한 방법 중 하나를 완료를 기다리지는 않습니다 하 고 다른 작업에서 수행 하는 경우는 `DbContext`의 상태는 `DbContext` 일 수 있습니다 (및 가능성이 됩니다) 손상입니다. 
+
+EF Core 비동기 메서드를 즉시 await 항상 있습니다.  
+
+### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>종속성 주입을 통해 여러 스레드에서 DbContext 인스턴스를 암시적으로 공유
+
+합니다 [ `AddDbContext` ](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 확장 메서드는 등록 `DbContext` 사용 하 여 형식를 [scoped 수명](https://docs .microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) 기본적으로 합니다. 
+
+될 ASP.NET Core 응용 프로그램에 대 한 동시 액세스 문제 로부터 안전 하 게 지정된 된 시간에 각 클라이언트 요청을 실행 하는 스레드가 하나만 있기 때문에 각 요청을 별도 종속성 주입 범위를 가져옵니다 (및 따라서 별도 `DbContext` 인스턴스)입니다.
+
+하지만 명시적으로 병렬로 여러 스레드를 실행 하는 모든 코드 인지를 확인 해야 `DbContext` 인스턴스가 아닌 동시에 accesed 적이 있습니다.
+
+종속성 주입을 사용 하 여 수행할 수 있습니다 하거나를 등록 하 여 컨텍스트 범위 지정 및 만들기 범위로 (사용 하 여 `IServiceScopeFactory`) 각 스레드에 대해 또는 등록 하 여 합니다 `DbContext` 일시적으로 (오버 로드를 사용 하 여 `AddDbContext` 를사용하는`ServiceLifetime` 매개 변수).
 
 ## <a name="more-reading"></a>더 많은 읽기
 

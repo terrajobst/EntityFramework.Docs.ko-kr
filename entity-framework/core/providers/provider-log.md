@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 229c15ec0402e1706318593a099236f723d80595
-ms.sourcegitcommit: ab847dd881d51122e695b7cd8c025fcf3a5a9033
+ms.openlocfilehash: 9ef87a737111053df0359f3b2d7a4f82d25c578a
+ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/30/2019
-ms.locfileid: "58678386"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58867946"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -43,9 +43,6 @@ ms.locfileid: "58678386"
   * `IMigrationsSqlGenerator` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/14706
   * 관계형 명령을 작성 하기 위한 인프라 공개 되었으므로 수 안전 하 게 공급자에서 사용 하 고 수 있도록 약간 리팩터링 합니다.
-  * `IRelationalCommandBuilderFactory`범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
-  * `IShaperCommandContextFactory` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
-  * `ISelectExpressionFactory` 범위가 지정 된 서비스에 단일 서비스에서 변경 되었습니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/14733
   * `ILazyLoader` 일시적인 서비스에 범위가 지정 된 서비스에서 변경 되었습니다.
 * https://github.com/aspnet/EntityFrameworkCore/pull/14610
