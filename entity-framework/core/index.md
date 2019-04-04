@@ -4,8 +4,13 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 uid: core/index
+ms.openlocfilehash: fa0695be29668789a179f9a0d6330f3361dbac29
+ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 03/17/2019
+ms.locfileid: "58131424"
 ---
-
 # <a name="entity-framework-core"></a>Entity Framework Core
 
 EF(Entity Framework) Core는 널리 사용되는 Entity Framework 데이터 액세스 기술의 가볍고 확장 가능한 [오픈 소스](https://github.com/aspnet/EntityFrameworkCore) 플랫폼 교차 버전입니다.
