@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 7ed55d4cae36f6b25059a5b218db4b0d5e2fb266
-ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
+ms.openlocfilehash: fd593b2832a5a6ffe27cd4493127b5d405f684ba
+ms.sourcegitcommit: ce44f85a5bce32ef2d3d09b7682108d3473511b3
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419746"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58914129"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -75,6 +75,46 @@ ASP.NET Core 3.0 이전에는 `Microsoft.AspNetCore.App` 또는 `Microsoft.AspNe
 **완화 방법**
 
 ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이션에서 EF Core를 사용하려면 애플리케이션에서 사용할 EF Core 데이터베이스 공급자에 대한 패키지 참조를 명시적으로 추가합니다.
+
+## <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.
+
+[추적 문제 #10996](https://github.com/aspnet/EntityFrameworkCore/issues/10996)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
+
+**이전 동작**
+
+EF Core 3.0이 나오기 전에는 이런 메서드 이름이 일반 문자열 또는 SQL 및 매개 변수로 보간해야 하는 문자열에 대해 작동하도록 오버로드되었습니다.
+
+**새 동작**
+
+EF Core 3.0부터는 `FromSqlRaw`, `ExecuteSqlRaw` 및 `ExecuteSqlRawAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
+예:
+
+```C#
+context.Products.FromSqlRaw(
+    "SELECT * FROM Products WHERE Name = {0}",
+    product.Name);
+```
+
+`FromSqlInterpolated`, `ExecuteSqlInterpolated` 및 `ExecuteSqlInterpolatedAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
+예:
+
+```C#
+context.Products.FromSqlInterpolated(
+    $"SELECT * FROM Products WHERE Name = {product.Name}");
+```
+
+위의 두 쿼리 모두 같은 SQL 매개 변수를 사용하여 같은 매개 변수가 있는 SQL을 생성합니다.
+
+**이유**
+
+이와 같은 메서드 오버로드를 적용할 경우 보간된 문자열 메서드를 호출하려다 실수로 원시 문자열 메서드를 호출하거나, 반대로 후자를 호출하려다 전자를 호출하는 실수를 저지를 가능성이 매우 높습니다.
+쿼리에는 매개 변수가 있어야 하는데, 이 경우 매개 변수가 없는 쿼리가 나올 수 있습니다.
+
+**완화 방법**
+
+새 메서드 이름을 사용하도록 전환합니다.
 
 ## <a name="query-execution-is-logged-at-debug-level"></a>쿼리 실행이 디버그 수준에서 로깅됩니다.
 
@@ -291,6 +331,156 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
 
 위의 예와 같이 소유 형식 관계의 구성을 변경하여 새 API 화면을 사용합니다.
 
+## <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.
+
+[추적 문제 #9005](https://github.com/aspnet/EntityFrameworkCore/issues/9005)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+다음 모델을 살펴보세요.
+```C#
+public class Order
+{
+    public int Id { get; set; }
+    public int CustomerId { get; set; }
+    public OrderDetails Details { get; set; }
+}
+
+public class OrderDetails
+{
+    public int Id { get; set; }
+    public string ShippingAddress { get; set; }
+}
+```
+EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이블에 명시적으로 매핑되는 경우 새 `Order`를 추가할 때 `OrderDetails` 인스턴스가 언제나 필수였습니다.
+
+
+**새 동작**
+
+3.0부터는 EF Core가 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
+EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
+
+**완화 방법**
+
+사용하는 모델이 모든 선택적 열에 따라 다르게 공유되는 테이블을 포함하지만 해당 테이블을 가리키는 탐색이 `null`로 예상되지 않는 경우 `null`을 탐색하는 경우를 처리하도록 애플리케이션을 수정해야 합니다. 이렇게 할 수 없는 경우 엔터티 형식에 필수 속성을 추가하거나 하나 이상의 속성에 `null`이 아닌 값을 할당해야 합니다.
+
+## <a name="all-entities-sharing-a-table-with-a-concurrency-token-column-have-to-map-it-to-a-property"></a>동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.
+
+[추적 문제 #14154](https://github.com/aspnet/EntityFrameworkCore/issues/14154)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+다음 모델을 살펴보세요.
+```C#
+public class Order
+{
+    public int Id { get; set; }
+    public int CustomerId { get; set; }
+    public byte[] Version { get; set; }
+    public OrderDetails Details { get; set; }
+}
+
+public class OrderDetails
+{
+    public int Id { get; set; }
+    public string ShippingAddress { get; set; }
+}
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<Order>()
+        .Property(o => o.Version).IsRowVersion().HasColumnName("Version");
+}
+```
+EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이블에 명시적으로 매핑하는 경우 `OrderDetails`만 업데이트하면 클라이언트의 `Version` 값이 업데이트되지 않으며 다음 업데이트가 실패합니다.
+
+
+**새 동작**
+
+3.0부터 EF Core는 `OrderDetails`를 소유하는 경우 새 `Version` 값을 `Order`에 전파합니다. 그렇지 않으면 모델 유효성 검사 중에 예외가 발생합니다.
+
+**이유**
+
+같은 테이블에 매핑된 엔터티 중 한 개만 업데이트하는 경우 부실 동시성 토큰 값을 방지하기 위해 이렇게 변경되었습니다.
+
+**완화 방법**
+
+테이블을 공유하는 모든 엔터티는 동시성 토큰 열에 매핑되는 속성을 포함해야 합니다. 해당 속성을 섀도 상태로 만들 수 있습니다.
+```C#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Entity<OrderDetails>()
+        .Property<byte[]>("Version").IsRowVersion().HasColumnName("Version");
+}
+```
+
+## <a name="inherited-properties-from-unmapped-types-are-now-mapped-to-a-single-column-for-all-derived-types"></a>매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.
+
+[추적 문제 #13998](https://github.com/aspnet/EntityFrameworkCore/issues/13998)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+다음 모델을 살펴보세요.
+```C#
+public abstract class EntityBase
+{
+    public int Id { get; set; }
+}
+
+public abstract class OrderBase : EntityBase
+{
+    public int ShippingAddress { get; set; }
+}
+
+public class BulkOrder : OrderBase
+{
+}
+
+public class Order : OrderBase
+{
+}
+
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Ignore<OrderBase>();
+    modelBuilder.Entity<EntityBase>();
+    modelBuilder.Entity<BulkOrder>();
+    modelBuilder.Entity<Order>();
+}
+```
+
+EF Core 3.0 전에는 `ShippingAddress` 속성이 기본적으로 `BulkOrder` 및 `Order`에 대한 별도의 열에 매핑되었습니다.
+
+**새 동작**
+
+3.0부터 EF Core는 `ShippingAddress`에 대한 열을 한 개만 생성합니다.
+
+**이유**
+
+이전 동작은 예상할 수 없었습니다.
+
+**완화 방법**
+
+이 속성을 여전히 파생 형식에 대한 별도의 열에 명시적으로 매핑할 수 있습니다.
+
+```C#
+protected override void OnModelCreating(ModelBuilder modelBuilder)
+{
+    modelBuilder.Ignore<OrderBase>();
+    modelBuilder.Entity<EntityBase>();
+    modelBuilder.Entity<BulkOrder>()
+        .Property(o => o.ShippingAddress).HasColumnName("BulkShippingAddress");
+    modelBuilder.Entity<Order>()
+        .Property(o => o.ShippingAddress).HasColumnName("ShippingAddress");
+}
+```
+
 ## <a name="the-foreign-key-property-convention-no-longer-matches-same-name-as-the-principal-property"></a>외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.
 
 [추적 문제 #13274](https://github.com/aspnet/EntityFrameworkCore/issues/13274)
@@ -312,7 +502,6 @@ public class Order
     public int Id { get; set; }
     public int CustomerId { get; set; }
 }
-
 ```
 EF Core 3.0 이전에는 규칙에 따라 외래 키에 대해 `CustomerId` 속성이 사용되었습니다.
 그러나 `Order`가 소유 형식인 경우 `CustomerId`도 기본 키가 되며 이는 일반적으로 예상되는 것은 아닙니다.
@@ -359,6 +548,58 @@ public class Order
 **완화 방법**
 
 속성을 외래 키로 하고, 이에 따라서 기본 키의 일부가 되는 경우 명시적으로 이와 같이 구성합니다.
+
+## <a name="database-connection-is-now-closed-if-not-used-anymore-before-the-transactionscope-has-been-completed"></a>데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.
+
+[추적 문제 #14218](https://github.com/aspnet/EntityFrameworkCore/issues/14218)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+EF Core 3.0 전에는 컨텍스트가 `TransactionScope` 내에서 연결을 여는 경우 현재 `TransactionScope`가 활성화되어 있는 동안 해당 연결이 열린 상태로 유지됩니다.
+
+```C#
+using (new TransactionScope())
+{
+    using (AdventureWorks context = new AdventureWorks())
+    {
+        context.ProductCategories.Add(new ProductCategory());
+        context.SaveChanges();
+
+        // Old behavior: Connection is still open at this point
+        
+        var categories = context.ProductCategories().ToList();
+    }
+}
+```
+
+**새 동작**
+
+3.0부터 EF Core는 연결의 사용이 완료되면 해당 연결을 즉시 닫습니다.
+
+**이유**
+
+같은 `TransactionScope`에 복수의 컨텍스트를 사용할 수 있도록 이렇게 변경했습니다. 새 동작 alose는 EF6과 일치합니다.
+
+**완화 방법**
+
+연결이 열린 상태로 유지되어야 하는 경우 `OpenConnection()`을 명시적으로 호출하여 EF Core가 연결을 조기에 닫지 않도록 합니다.
+
+```C#
+using (new TransactionScope())
+{
+    using (AdventureWorks context = new AdventureWorks())
+    {
+        context.Database.OpenConnection();
+        context.ProductCategories.Add(new ProductCategory());
+        context.SaveChanges();
+        
+        var categories = context.ProductCategories().ToList();
+        context.Database.CloseConnection();
+    }
+}
+```
 
 ## <a name="each-property-uses-independent-in-memory-integer-key-generation"></a>각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.
 
@@ -566,7 +807,7 @@ EF Core 3.0부터 이제 `ILoggerFactory`는 범위가 지정된 대로 등록�
 
 **이전 동작**
 
-`IDbContextOptionsExtensionWithDebugInfo`는 2.x 릴리스 주기 동안 인터페이스에 대한 호환성이 손상되는 변경을 방지하기 위해 `IDbContextOptionsExtension`에서 확장된 추가 선택적 인터페이스입니다.
+`IDbContextOptionsExtensionWithDebugInfo` 은 2.x 릴리스 주기 동안 인터페이스에 대한 호환성이 손상되는 변경을 방지하기 위해 `IDbContextOptionsExtension`에서 확장된 추가 선택적 인터페이스입니다.
 
 **새 동작**
 
@@ -675,6 +916,36 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 ```C#
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 ```
+
+## <a name="the-return-type-for-several-async-methods-has-been-changed-from-task-to-valuetask"></a>여러 비동기 메서드의 반환 형식이 작업에서 ValueTask로 변경되었습니다.
+
+[추적 문제 #15184](https://github.com/aspnet/EntityFrameworkCore/issues/15184)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+다음 비동기 메서드는 이전에 `Task<T>`를 반환했습니다.
+
+* `DbContext.FindAsync()`
+* `DbSet.FindAsync()`
+* `DbContext.AddAsync()`
+* `DbSet.AddAsync()`
+* `ValueGenerator.NextValueAsync()` (그리고 파생 클래스)
+
+**새 동작**
+
+앞서 언급한 메서드는 이제 이전과 같은 `T`를 통해 `ValueTask<T>`를 반환합니다.
+
+**이유**
+
+이 변경은 해당 메서드를 호출할 때 발생하는 힙 할당 수를 줄여서 일반적인 성능을 개선합니다.
+
+**완화 방법**
+
+단순히 위의 API를 대기 중인 애플리케이션은 다시 컴파일하기만 하면 됩니다. 소스 변경은 필요 없습니다.
+더 복잡한 사용(예: 반환된 `Task`를 `Task.WhenAny()`에 전달)의 경우 일반적으로 반환된 `ValueTask<T>`에 대해 `AsTask()`를 호출하여 `Task<T>`로 변환해야 합니다.
+이렇게 하면 이 변경으로 인한 할당 감소가 무효화됩니다.
 
 ## <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.
 
@@ -922,9 +1193,9 @@ SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
-**변경 내용**
+**변경**
 
-`RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` 이름이 `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 바뀌었습니다.
+`RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 이름이 변경되었습니다.
 
 **이유**
 

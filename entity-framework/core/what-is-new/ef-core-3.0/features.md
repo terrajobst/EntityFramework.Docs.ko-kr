@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
-ms.openlocfilehash: b6774f615b04bf9579aac5dea217e7321631da0c
-ms.sourcegitcommit: a709054b2bc7a8365201d71f59325891aacd315f
+ms.openlocfilehash: 7501a806271c9734e85e31845f260f2d512da077
+ms.sourcegitcommit: a8b04050033c5dc46c076b7e21b017749e0967a8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57829189"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58867959"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 새로운 기능(현재 미리 보기 상태)
 
@@ -50,6 +50,31 @@ Microsoft는 개발자가 EF 프로그래밍 모델에 친숙해져서 애플리
 Microsoft는 EF Core 2.2 전에 이러한 노력을 시작했으며, [공급자의 몇몇 미리 보기 버전을 제공했습니다](https://blogs.msdn.microsoft.com/dotnet/2018/10/17/announcing-entity-framework-core-2-2-preview-3/).
 새 계획은 EF Core 3.0과 함께 공급자를 계속 개발하는 것입니다. 
 
+## <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.
+
+[추적 문제 #9005](https://github.com/aspnet/EntityFrameworkCore/issues/9005)
+
+이 기능은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+다음 모델을 살펴보세요.
+```C#
+public class Order
+{
+    public int Id { get; set; }
+    public int CustomerId { get; set; }
+    public OrderDetails Details { get; set; }
+}
+
+public class OrderDetails
+{
+    public int Id { get; set; }
+    public string ShippingAddress { get; set; }
+}
+```
+
+EF Core 3.0부터 `OrderDetails`가 `Order`에 소유되거나 같은 테이블에 명시적으로 매핑된 경우 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외하고 모든 `OrderDetails` 속성이 Null 허용 열에 매핑됩니다.
+EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
+
 ## <a name="c-80-support"></a>C# 8.0 지원
 
 [추적 문제 #12047](https://github.com/aspnet/EntityFrameworkCore/issues/12047)
@@ -68,7 +93,7 @@ Microsoft는 EF Core 2.2 전에 이러한 노력을 시작했으며, [공급자�
 EF Core 2.1에서 도입되고 EF Core 3.0에서 키가 없는 엔터티 형식으로 간주되는 [쿼리 유형](xref:core/modeling/query-types)은 데이터베이스에서 읽을 수 있지만 업데이트할 수 없는 데이터를 나타냅니다.
 이 특성은 대부분의 시나리오에서 데이터베이스 뷰에 매우 적합하므로 리버스 엔지리어닝 데이터베이스 뷰에서 키 없이 엔터티 형식을 자동화할 계획입니다.
 
-## <a name="property-bag-entities"></a>속성 모음 엔터티 
+## <a name="property-bag-entities"></a>속성 모음 엔터티
 
 [추적 문제 #13610](https://github.com/aspnet/EntityFrameworkCore/issues/13610) 및 [#9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914)
 
@@ -77,7 +102,7 @@ EF Core 2.1에서 도입되고 EF Core 3.0에서 키가 없는 엔터티 형식�
 이 기능은 일반 속성 대신 인덱싱된 속성에 데이터를 저장하는 엔터티를 사용하고 동일한 .NET 클래스의 인스턴스(잠재적으로 `Dictionary<string, object>`만큼 단순한 인스턴스)를 사용하여 동일한 EF Core 모델에서 여러 엔터티 형식을 나타낼 수 있도록 하는 기능입니다.
 이 기능은 EF Core에 대해 가장 요청이 많았던 기능 향상 중 하나인 조인 엔터티([issue #1368](https://github.com/aspnet/EntityFrameworkCore/issues/1368))가 없는 다 대 다 관계를 지원하는 발판입니다.
 
-## <a name="ef-63-on-net-core"></a>.NET Core의 EF 6.3 
+## <a name="ef-63-on-net-core"></a>.NET Core의 EF 6.3
 
 [추적 문제 EF6#271](https://github.com/aspnet/EntityFramework6/issues/271)
 
