@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0d0590f1-1ea3-4d5c-8f44-db17395cd3f3
 uid: core/miscellaneous/testing/in-memory
-ms.openlocfilehash: 2754d1deba98fcee0eb88669293b2197545c8874
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 8aaea52f22954ef6a2b7d9b9c5627597c61ac644
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997894"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562548"
 ---
 # <a name="testing-with-inmemory"></a>InMemory 테스트
 
@@ -64,6 +64,6 @@ EF Core 데이터베이스 공급자는 관계형 데이터베이스를 사용�
 InMemory 데이터베이스를 사용 하는 테스트 클래스의 예는 다음과 같습니다. 각 테스트 메서드는 각 메서드는 자체 InMemory 데이터베이스 고유 데이터베이스 이름을 지정 합니다.
 
 >[!TIP]
-> 사용 하 여 `.UseInMemoryDatabase()` 확장 메서드, NuGet 패키지 참조 `Microsoft.EntityFrameworkCore.InMemory`합니다.
+> 사용 하 여 `.UseInMemoryDatabase()` 확장 메서드, NuGet 패키지 참조 [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory/)합니다.
 
 [!code-csharp[Main](../../../../samples/core/Miscellaneous/Testing/TestProject/InMemory/BlogServiceTests.cs)]
