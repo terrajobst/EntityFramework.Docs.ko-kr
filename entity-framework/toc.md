@@ -65,6 +65,7 @@
 #### [값 변환](core/modeling/value-conversions.md)
 #### [데이터 시드](core/modeling/data-seeding.md)
 #### [엔터티 형식 생성자](core/modeling/constructors.md)
+#### [테이블 분할](core/modeling/table-splitting.md)
 #### [소유한 엔터티 형식](core/modeling/owned-entities.md)
 #### [쿼리 형식](core/modeling/query-types.md)
 #### [동일한 DbContext를 갖는 대체 모델](core/modeling/dynamic-model.md)
