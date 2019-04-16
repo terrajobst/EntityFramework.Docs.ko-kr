@@ -4,17 +4,17 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 5ae06a4342a556936dc44c5bf6622814eaad4733
-ms.sourcegitcommit: 7a7da65404c9338e1e3df42576a13be536a6f95f
+ms.openlocfilehash: b94ac567644a9d98a05a40857cc072c500203370
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/06/2018
-ms.locfileid: "48834749"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562561"
 ---
 <a name="migrations"></a>마이그레이션
 ==========
 
-데이터 모델은 개발 중에 변경되고 데이터베이스와 동기화되지 않습니다. 데이터베이스를 삭제하고 EF가 모델과 일치하는 새 데이터베이스를 만들게 할 수 있지만, 이 절차로 인해 데이터가 손실됩니다. EF Core의 마이그레이션 기능은 데이터베이스 스키마를 증분 방식으로 업데이트하여 응용 프로그램 데이터 모델과의 동기 상태를 유지하면서 데이터베이스에 기존 데이터를 보존하는 방법을 제공합니다.
+데이터 모델은 개발 중에 변경되고 데이터베이스와 동기화되지 않습니다. 데이터베이스를 삭제하고 EF가 모델과 일치하는 새 데이터베이스를 만들게 할 수 있지만, 이 절차로 인해 데이터가 손실됩니다. EF Core의 마이그레이션 기능은 데이터베이스 스키마를 증분 방식으로 업데이트하여 애플리케이션 데이터 모델과의 동기 상태를 유지하면서 데이터베이스에 기존 데이터를 보존하는 방법을 제공합니다.
 
 마이그레이션에는 다음 작업에 도움이 되는 명령줄 도구 및 API가 포함됩니다.
 
@@ -47,8 +47,8 @@ dotnet ef migrations add InitialCreate
 
 프로젝트의 **Migrations** 디렉터리 아래 3개 파일이 추가됩니다.
 
-* **00000000000000_InitialCreate.cs** -- 주 마이그레이션 파일. 마이그레이션을 적용하고(`Up()`) 변환하는 데(`Down()`) 필요한 작업을 포함합니다.
-* **00000000000000_InitialCreate.Designer.cs** -- 마이그레이션 메타데이터 파일. EF에서 사용하는 정보가 들어 있습니다.
+* **XXXXXXXXXXXXXX_InitialCreate.cs** -- 주 마이그레이션 파일. 마이그레이션을 적용하고(`Up()`) 변환하는 데(`Down()`) 필요한 작업을 포함합니다.
+* **XXXXXXXXXXXXXX_InitialCreate.Designer.cs** -- 마이그레이션 메타데이터 파일. EF에서 사용하는 정보가 들어 있습니다.
 * **MyContextModelSnapshot.cs** - 현재 모델의 스냅숏. 다음 마이그레이션을 추가할 때 변경 항목을 판단하는 데 사용됩니다.
 
 파일 이름의 타임스탬프는 시간순으로 정렬되기 때문에 변경의 진행 상황을 파악할 수 있습니다.
@@ -198,7 +198,7 @@ myDbContext.Database.Migrate();
 ```
 
 > [!WARNING]
-> * 이 방법은 모두에게 적합한 것이 아닙니다. 로컬 데이터베이스가 있는 앱에는 훌륭하나 대부분의 응용 프로그램에는 SQL 스크립트 생성 등과 같이 더 강력한 배포 전략이 필요합니다.
+> * 이 방법은 모두에게 적합한 것이 아닙니다. 로컬 데이터베이스가 있는 앱에는 훌륭하나 대부분의 애플리케이션에는 SQL 스크립트 생성 등과 같이 더 강력한 배포 전략이 필요합니다.
 > * `Migrate()`에 앞서 `EnsureCreated()`를 호출하지 않습니다. `EnsureCreated()`는 마이그레이션을 무시하고 스키마를 만들어 `Migrate()`에 실패합니다.
 
 <a name="next-steps"></a>다음 단계

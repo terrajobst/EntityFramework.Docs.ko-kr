@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 414773284df7c208b9a2acf0536fda459bdf775b
-ms.sourcegitcommit: 7bde8e6ad3c4565a4638646ce04bcf5e66f7b5fd
+ms.openlocfilehash: d432ca36c166f7baf71253709bf58b1f5428a11a
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54069232"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562509"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -40,7 +40,7 @@ EF Core Power Tools는 간단한 사용자 인터페이스에서 다양한 EF Co
 
 ### <a name="entity-framework-visual-editor"></a>Entity Framework Visual Editor
 
-Entity Framework Visual Editor는 EF 6 및 EF Core 클래스의 시각적 디자인을 위해 ORM 디자이너를 추가한 Visual Studio 2017의 확장 기능입니다. 코드는 T4 템플릿을 사용하여 생성되므로 필요에 맞게 사용자 지정할 수 있습니다. 상속, 단방향 및 양방향 연결, 열거형 및 클래스를 색으로 구분하는 기능을 지원하고, 디자인의 잠재적으로 난해한 부분을 설명하기 위한 텍스트 블록을 추가합니다.
+Entity Framework Visual Editor는 EF 6 및 EF Core 클래스의 시각적 개체 디자인을 위해 ORM 디자이너를 추가한 Visual Studio의 확장 기능입니다. 코드는 T4 템플릿을 사용하여 생성되므로 필요에 맞게 사용자 지정할 수 있습니다. 상속, 단방향 및 양방향 연결, 열거형 및 클래스를 색으로 구분하는 기능을 지원하고, 디자인의 잠재적으로 난해한 부분을 설명하기 위한 텍스트 블록을 추가합니다.
 
 [Marketplace](https://marketplace.visualstudio.com/items?itemName=michaelsawczyn.EFDesigner)
 
