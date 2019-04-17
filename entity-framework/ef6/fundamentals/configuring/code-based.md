@@ -3,12 +3,12 @@ title: 코드 기반 구성-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 13886d24-2c74-4a00-89eb-aa0dee328d83
-ms.openlocfilehash: c317f112f713612f7b9aef3764a0bd004fef5424
-ms.sourcegitcommit: 735715f10cc8a231c213e4f055d79f0effd86570
+ms.openlocfilehash: 079a4ab30af74eac8b1f51ece5801ff40a867a29
+ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56325355"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59619287"
 ---
 # <a name="code-based-configuration"></a>코드 기반 구성
 > [!NOTE]
@@ -106,7 +106,7 @@ EntityFramework는이 위해 잠기기 직전 기존 구성을 수정할 수 있
 - (EF가 사용 됨) 전에 앱 시작 시 플러그 인 또는 공급자는이 이벤트에 대 한 이벤트 처리기 메서드를 등록 해야 합니다. (응용 프로그램 EF를 사용 하기 전에 발생 해야이 note 합니다.)  
 - 이벤트 처리기를 호출 ReplaceService 교체 해야 하는 모든 서비스에 대 한 합니다.  
 
-예를 들어 repalce IDbConnectionFactory DbProviderService를 다음과 같이 결과 처리기 등록:  
+예를 들어 IDbConnectionFactory 및 DbProviderService 바꾸려면 다음과 같이 결과 처리기 등록:  
 
 ``` csharp
 DbConfiguration.Loaded += (_, a) =>
