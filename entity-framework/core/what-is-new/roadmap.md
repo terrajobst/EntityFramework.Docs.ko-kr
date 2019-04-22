@@ -4,19 +4,19 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 834C9729-7F6E-4355-917D-DE3EE9FE149E
 uid: core/what-is-new/roadmap
-ms.openlocfilehash: f466d112e5ed8661ad1e2d91079c1c01d34b9002
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: e9d1a707c643036fa15b1e0e46730eadefd65518
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463232"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562470"
 ---
 # <a name="entity-framework-core-roadmap"></a>Entity Framework Core 로드맵
 
 > [!IMPORTANT]
 > 이후 릴리스의 기능 집합 및 일정은 항상 변경될 수 있으며 이 페이지를 최신 상태로 유지하려고 노력함에도 불구하고 최신 계획을 항상 반영할 수 없을 수도 있습니다.
 
-### <a name="ef-core-30"></a>EF Core 3.0
+## <a name="ef-core-30"></a>EF Core 3.0
 
 EF Core 2.2가 출시됨에 따라 이제 EF Core 3.0이 주요 관심사입니다.
 릴리스에 포함되는 계획된 [새로운 기능](xref:core/what-is-new/ef-core-3.0/features) 및 의도적인 [호환성이 손상되는 변경](xref:core/what-is-new/ef-core-3.0/breaking-changes)에 대한 정보는 [EF Core 3.0의 새로운 기능](xref:core/what-is-new/ef-core-3.0/index)을 참조하세요.

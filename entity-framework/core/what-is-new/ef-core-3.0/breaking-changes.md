@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: fd593b2832a5a6ffe27cd4493127b5d405f684ba
-ms.sourcegitcommit: ce44f85a5bce32ef2d3d09b7682108d3473511b3
+ms.openlocfilehash: 4b251638de43af6525f3e6faa0bd4113ab1714b9
+ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58914129"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59619261"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -242,6 +242,28 @@ public string Id { get; set; }
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
 context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 ```
+
+## <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>DeleteBehavior.Restrict에는 명확한 의미 체계가 있습니다.
+
+[추적 문제 #12661](https://github.com/aspnet/EntityFrameworkCore/issues/12661)
+
+이 변경 내용은 EF Core 3.0 미리 보기 5에 도입될 것입니다.
+
+**이전 동작**
+
+3.0 이전에는 `DeleteBehavior.Restrict`가 `Restrict` 의미 체계를 사용하여 데이터베이스에 외래 키를 만들었지만, 확실치 않은 방식으로 fixup도 변경했습니다.
+
+**새 동작**
+
+3.0부터 `DeleteBehavior.Restrict`는 EF 내부 fixup에 영향을 주지 않고 `Restrict` 의미 체계(즉, 계단식 없음, 제약 조건 위반을 throw함)로 외부 키를 생성하도록 보장합니다.
+
+**이유**
+
+이 변경은 예기치 않은 부작용 없이 직관적인 방식으로 `DeleteBehavior`를 사용하는 환경을 개선하기 위해 이루어졌습니다.
+
+**완화 방법**
+
+이전 동작은 `DeleteBehavior.ClientNoAction`을 사용하여 복원할 수 있습니다.
 
 ## <a name="query-types-are-consolidated-with-entity-types"></a>쿼리 형식은 엔터티 형식과 통합됩니다.
 
@@ -685,6 +707,52 @@ modelBuilder
     .HasField("_id");
 ```
 
+## <a name="field-only-property-names-should-match-the-field-name"></a>필드 전용 속성 이름은 필드 이름과 일치해야 합니다.
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에는 문자열 값으로 속성을 지정할 수 있었고 CLR 형식에서 해당 이름을 가진 속성을 찾을 수 없는 경우, EF Core는 변환 규칙을 사용하여 필드에 일치시키려고 했습니다.
+```C#
+private class Blog
+{
+    private int _id;
+    public string Name { get; set; }
+}
+```
+```C#
+modelBuilder
+    .Entity<Blog>()
+    .Property("Id");
+```
+
+**새 동작**
+
+EF Core 3.0부터 필드 전용 속성은 필드 이름과 정확히 일치해야 합니다.
+
+```C#
+modelBuilder
+    .Entity<Blog>()
+    .Property("_id");
+```
+
+**이유**
+
+이 변경은 유사한 이름의 두 속성에 대해 동일한 필드를 사용하지 않도록 하기 위해 이루어졌으며, 필드 전용 속성에 대한 일치 규칙을 CLR 속성에 매핑된 속성과 동일하게 만듭니다.
+
+**완화 방법**
+
+필드 전용 속성의 이름은 매핑되는 필드와 동일한 이름을 지정해야 합니다.
+이후 EF Core 3.0 미리 보기에서는 속성 이름과 다른 필드 이름을 명시적으로 다시 사용하도록 설정할 계획입니다.
+
+```C#
+modelBuilder
+    .Entity<Blog>()
+    .Property("Id")
+    .HasField("_id");
+```
+
 ## <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않음
 
 [추적 문제 #14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
@@ -807,7 +875,7 @@ EF Core 3.0부터 이제 `ILoggerFactory`는 범위가 지정된 대로 등록�
 
 **이전 동작**
 
-`IDbContextOptionsExtensionWithDebugInfo` 은 2.x 릴리스 주기 동안 인터페이스에 대한 호환성이 손상되는 변경을 방지하기 위해 `IDbContextOptionsExtension`에서 확장된 추가 선택적 인터페이스입니다.
+`IDbContextOptionsExtensionWithDebugInfo`는 2.x 릴리스 주기 동안 인터페이스에 대한 호환성이 손상되는 변경을 방지하기 위해 `IDbContextOptionsExtension`에서 확장된 추가 선택적 인터페이스입니다.
 
 **새 동작**
 
@@ -931,7 +999,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 * `DbSet.FindAsync()`
 * `DbContext.AddAsync()`
 * `DbSet.AddAsync()`
-* `ValueGenerator.NextValueAsync()` (그리고 파생 클래스)
+* `ValueGenerator.NextValueAsync()`(및 파생 클래스)
 
 **새 동작**
 
@@ -1010,11 +1078,35 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 **이유**
 
-이 변경으로 인해 `Includes`가 있는 인덱스의 API를 모든 데이터베이스 공급자에 대해 한 곳으로 통합할 수 있습니다.
+이 변경으로 인해 `Include`가 있는 인덱스의 API를 모든 데이터베이스 공급자에 대해 한 곳으로 통합할 수 있습니다.
 
 **완화 방법**
 
 위에 표시된 것처럼 새 API를 사용합니다.
+
+## <a name="metadata-api-changes"></a>메타데이터 API 변경 내용
+
+[추적 문제 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+
+**새 동작**
+
+다음 속성이 확장 메서드로 변환되었습니다.
+
+* `IEntityType.QueryFilter` -> `GetQueryFilter()`
+* `IEntityType.DefiningQuery` -> `GetDefiningQuery()`
+* `IProperty.IsShadowProperty` -> `IsShadowProperty()`
+* `IProperty.BeforeSaveBehavior` -> `GetBeforeSaveBehavior()`
+* `IProperty.AfterSaveBehavior` -> `GetAfterSaveBehavior()`
+
+**이유**
+
+이 변경은 앞서 언급한 인터페이스의 구현을 단순화합니다.
+
+**완화 방법**
+
+새로운 확장 메서드를 사용합니다.
 
 ## <a name="ef-core-no-longer-sends-pragma-for-sqlite-fk-enforcement"></a>EF Core는 더 이상 SQLite FK 적용을 위한 pragma를 보내지 않습니다.
 
@@ -1193,9 +1285,9 @@ SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
-**변경**
+**변경 내용**
 
-`RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 이름이 변경되었습니다.
+`RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` 이름이 `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 바뀌었습니다.
 
 **이유**
 

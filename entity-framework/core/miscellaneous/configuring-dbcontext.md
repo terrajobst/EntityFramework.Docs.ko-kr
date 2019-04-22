@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
 ms.openlocfilehash: 0350b25d0d0efe05df7cb9e93a3f4ae2d864fd63
-ms.sourcegitcommit: 47e0a66a136e743a815d099d2bee5f0da1a068c6
+ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59363939"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
@@ -23,7 +23,7 @@ ms.locfileid: "59363939"
 
 ## <a name="configuring-dbcontextoptions"></a>DbContextOptions 구성
 
-`DbContext` 인스턴스가 있어야 `DbContextOptions` 작업을 수행 하기 위해. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
+작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야 합니다. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
 
 - 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
 - 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
@@ -107,7 +107,7 @@ using (var context = new BloggingContext())
 
 EF Core는 종속성 주입 컨테이너로 `DbContext`를 사용하는 것을 지원합니다. DbContext 형식은 `AddDbContext<TContext>` 메서드를 사용하여 서비스 컨테이너에 추가할 수 있습니다.
 
-`AddDbContext<TContext>` 둘 다 하 여 DbContext 형식을 하 게 `TContext`, 및 해당 `DbContextOptions<TContext>` 주입 서비스 컨테이너에서 사용할 수 있습니다.
+`AddDbContext<TContext>`는 DbContext 형식인 `TContext` 및 해당 `DbContextOptions<TContext>`를 서비스 컨테이너에서 사용할 수 있습니다.
 
 종속성 주입에 대한 추가 정보는 아래의 [더 많은 읽기](#more-reading) 자료를 참조하십시오.
 

@@ -3,14 +3,17 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 201292a440d37d240f31452eaebb23dcd4aee1a6
-ms.sourcegitcommit: 8dd71a57a01c439431164c163a0722877d0e5cd8
+ms.openlocfilehash: 4afc9fb0338d34845639d57013ac710445321940
+ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/07/2018
-ms.locfileid: "53028169"
+ms.lasthandoff: 04/14/2019
+ms.locfileid: "59562444"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
+
+> [!NOTE]
+> 이 기능은 EF Core 2.0에서 도입되었습니다.
 
 전역 쿼리 필터는 메타데이터 모델(일반적으로 *OnModelCreating*)의 엔터티 형식에 적용되는 LINQ 쿼리 조건자(일반적으로 LINQ *Where* 쿼리 연산자에 전달되는 부울 식)입니다. 이러한 필터는 Include 사용이나 직접 탐색 속성 참조 등의 간접 참조되는 엔터티 형식 등을 포함하여 해당 엔터티 형식과 관련한 모든 LINQ 쿼리에 자동으로 적용됩니다. 이 기능의 몇 가지 일반적인 용도는 다음과 같습니다.
 
