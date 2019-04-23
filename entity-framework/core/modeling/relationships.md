@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0ff736a3-f1b0-4b58-a49c-4a7094bd6935
 uid: core/modeling/relationships
-ms.openlocfilehash: a53a862cc2443a1c4461aa287def100284635f26
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 9ef1a9269fc99f5b27a81c11a161ed5f9d74180d
+ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994944"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59929939"
 ---
 # <a name="relationships"></a>관계
 
@@ -22,21 +22,21 @@ ms.locfileid: "42994944"
 
 관계를 설명 하는 데 사용 되는 약관의 여러 가지
 
-* **종속 엔터티:** 외래 키 속성을 포함 하는 엔터티입니다. 관계의 'child' 라고도 합니다.
+* **종속 엔터티:** 이 외래 키 속성을 포함 하는 엔터티입니다. 관계의 'child' 라고도 합니다.
 
-* **주 엔터티:** 기본/대체 키 속성을 포함 하는 엔터티입니다. 관계의 'parent' 라고도 합니다.
+* **주 엔터티:** 이 기본/대체 키 속성을 포함 하는 엔터티입니다. 관계의 'parent' 라고도 합니다.
 
-* **외래 키:** 엔터티에 관련 된 보안 주체 키 속성의 값을 저장 하는 데 사용 되는 종속 엔터티의 속성입니다.
+* **외래 키:** 엔터티 관련 된 보안 주체 키 속성의 값을 저장 하는 데 사용 되는 종속 엔터티의 속성입니다.
 
-* **주체 키:** 주 엔터티를 고유 하 게 식별 하는 속성입니다. 이 기본 키 또는 대체 키 수 있습니다.
+* **계정 키:** 주 엔터티를 고유 하 게 식별 하는 속성입니다. 이 기본 키 또는 대체 키 수 있습니다.
 
 * **탐색 속성:** 관련된 엔터티를 대 한 참조를 포함 하는 보안 주체 및/또는 종속 엔터티에 정의 된 속성입니다.
 
-  * **컬렉션 탐색 속성:** 많은 관련된 엔터티에 대 한 참조를 포함 하는 탐색 속성입니다.
+  * **컬렉션 탐색 속성:** 여러 관련된 엔터티에 대 한 참조를 포함 하는 탐색 속성입니다.
 
-  * **참조 탐색 속성:** 단일 관련 엔터티에 대 한 참조를 포함 하는 탐색 속성입니다.
+  * **참조 탐색 속성:** 단일 관련 엔터티에 대 한 참조를 보유 하는 탐색 속성입니다.
 
-  * **역 탐색 속성:** 특정 탐색 속성에 설명 하는 경우이 용어는 관계의 다른 쪽에 탐색 속성입니다.
+  * **역 탐색 속성:** 특정 탐색 속성에 설명 하는 경우이 용어 관계의 다른 쪽에 탐색 속성을 가리킵니다.
 
 다음 코드 목록 사이 일 대 다 관계를 보여 줍니다. `Blog` 및 `Post`
 
@@ -98,13 +98,13 @@ ms.locfileid: "42994944"
 
 ## <a name="data-annotations"></a>데이터 주석
 
-관계를 구성 하려면 사용할 수 있는 두 데이터 주석이 `[ForeignKey]` 고 `[InverseProperty]`입니다.
+관계를 구성 하려면 사용할 수 있는 두 데이터 주석이 `[ForeignKey]` 고 `[InverseProperty]`입니다. 사용할 수는 `System.ComponentModel.DataAnnotations.Schema` 네임 스페이스입니다.
 
 ### <a name="foreignkey"></a>[ForeignKey]
 
 지정 된 관계에 대 한 외래 키 속성으로 사용할 해야 속성을 구성 하려면 데이터 주석을 사용할 수 있습니다. 외래 키 속성은 규칙에 따라 검색 되지 경우 일반적으로 수행 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Relationships/ForeignKey.cs?name=Entities&highlight=17)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Relationships/ForeignKey.cs?highlight=30)]
 
 > [!TIP]  
 > `[ForeignKey]` 주석 관계의 탐색 속성 중 하나에 배치할 수 있습니다. 종속 엔터티 클래스의 탐색 속성을 이동 하지 않아도 됩니다.
@@ -113,29 +113,29 @@ ms.locfileid: "42994944"
 
 종속 및 주체 엔터티에서 탐색 속성 쌍 방법을 구성 하려면 데이터 주석을 사용할 수 있습니다. 두 엔터티 형식 간의 탐색 속성 쌍이 하나만 있으면 일반적으로 수행 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Relationships/InverseProperty.cs?name=Entities&highlight=20,23)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Relationships/InverseProperty.cs?highlight=33,36)]
 
 ## <a name="fluent-api"></a>Fluent API
 
 Fluent API의 관계를 구성 하 여 관계를 구성 하는 탐색 속성을 식별 하 여 시작 합니다. `HasOne` 또는 `HasMany` 에서 구성을 시작 하는 엔터티 형식의 탐색 속성을 식별 합니다. 다음에 대 한 호출을 연결할 `WithOne` 또는 `WithMany` 역 탐색을 식별 합니다. `HasOne`/`WithOne` 참조 탐색 속성에 사용 되 고 `HasMany` / `WithMany` 컬렉션 탐색 속성에 사용 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/NoForeignKey.cs?name=Model&highlight=8,9,10)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/NoForeignKey.cs?highlight=14-16)]
 
 ### <a name="single-navigation-property"></a>단일 탐색 속성
 
 하나의 탐색 속성이 있는 경우 매개 변수가 없는 오버 로드가 `WithOne` 고 `WithMany`입니다. 이 나타내지만 참조 또는 관계의 반대쪽 끝에서 수집 하는 개념적 엔터티 클래스에 포함 된 탐색 속성이 없습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/OneNavigation.cs?name=Model&highlight=10)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/OneNavigation.cs?highlight=14-16)]
 
 ### <a name="foreign-key"></a>외래 키
 
 지정 된 관계에 대 한 외래 키 속성으로 사용할 해야 속성을 구성 하는 Fluent API를 사용할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/ForeignKey.cs?name=Model&highlight=11)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/ForeignKey.cs?highlight=17)]
 
 다음 코드 샘플에는 복합 외래 키를 구성 하는 방법을 보여 줍니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/CompositeForeignKey.cs?name=Model&highlight=13)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/CompositeForeignKey.cs?highlight=20)]
 
 문자열 오버 로드를 사용할 수 있습니다 `HasForeignKey(...)` 외래 키로 섀도 속성을 구성 하려면 (참조 [섀도 속성](shadow-properties.md) 자세한). (아래와 같이) 외래 키로 사용 하기 전에 모델에 섀도 속성을 명시적으로 추가 하는 것이 좋습니다.
 

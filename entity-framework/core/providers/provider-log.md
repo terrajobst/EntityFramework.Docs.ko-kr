@@ -6,12 +6,12 @@ ms.date: 08/08/2018
 ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
-ms.openlocfilehash: 9ef87a737111053df0359f3b2d7a4f82d25c578a
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 61a58bd6119763d90731fac62343b983af510cb6
+ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58867946"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59929877"
 ---
 # <a name="provider-impacting-changes"></a>공급자에 영향을 주는 변경 내용
 
@@ -62,6 +62,7 @@ ms.locfileid: "58867946"
   * 규칙 집합 서비스 변경 되었습니다. 공급자 "ProviderConventionSet" 또는 "RelationalConventionSet" 중 하나에서 상속 해야 합니다.
   * 사용자 지정을 통해 추가할 수 있습니다 `IConventionSetCustomizer` 서비스가 있지만이 다른 확장 되지 공급자에서 사용할 것입니다.
   * 런타임 시 사용 되는 규칙에서 확인 해야 합니다. `IConventionSetBuilder`합니다.
+* https://github.com/aspnet/EntityFrameworkCore/pull/15288 데이터 시드 내부 형식을 사용할 필요가 없도록 하는 공용 API 개로 리팩터링 되었습니다. 모든 관계형 공급자에 대 한 기본 관계형 클래스에 의해 처리 시 딩 되므로 비관계형 공급자에만 영향 해야이 있습니다.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
@@ -82,7 +83,6 @@ ms.locfileid: "58867946"
   * 이러한 테스트를 사용 하 여 공급자 대응 해야 합니다.
 * [https://github.com/aspnet/EntityFrameworkCore/pull/12141](https://github.com/aspnet/EntityFrameworkCore/pull/12141) -기능 테스트를 삭제 하는 대신 풀에 컨텍스트를 반환 합니다.
   * 이 변경 리팩터링 반응 하는 공급자가 필요할 수 있는 몇 가지 테스트 포함
-
 
 ### <a name="test-and-product-code-changes"></a>테스트 및 제품 코드 변경 내용
 
