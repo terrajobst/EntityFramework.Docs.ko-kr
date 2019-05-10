@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 0350b25d0d0efe05df7cb9e93a3f4ae2d864fd63
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 316d363d4a1b8a909efc1c32b492280c0d16cb4e
+ms.sourcegitcommit: 960e42a01b3a2f76da82e074f64f52252a8afecc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59363939"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405217"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
 
@@ -163,7 +163,13 @@ var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
 ## <a name="avoiding-dbcontext-threading-issues"></a>DbContext 스레딩 문제를 방지 합니다.
 
-Entity Framework Core 동일한 실행 되 고 여러 병렬 작업을 지원 하지 않습니다 `DbContext` 인스턴스. 동시 액세스 정의 되지 않은 동작, 응용 프로그램 충돌 및 데이터 손상이 발생할 수 있습니다. 항상 사용 하는 것이 때문에 별도 `DbContext` 병렬로 실행 하는 작업에 대 한 인스턴스. 
+Entity Framework Core 동일한 실행 되 고 여러 병렬 작업을 지원 하지 않습니다 `DbContext` 인스턴스. 비동기 쿼리의 병렬 실행 및 여러 스레드에서 명시적 동시 사용을 모두 포함 합니다. 따라서, 항상 `await` 비동기 즉시 호출 또는 별도 사용 하 여 `DbContext` 병렬로 실행 하는 작업에 대 한 인스턴스.
+
+EF Core를 사용 하려고를 감지 하는 경우는 `DbContext` 인스턴스를 동시에 볼 수는 `InvalidOperationException` 다음과 같은 메시지를 사용 하 여: 
+
+> 이 컨텍스트에서 이전 작업이 완료 되기 전에 두 번째 작업을 시작 합니다. 하지만이 일반적으로 발생 다른 스레드에 의해 DbContext의 동일한 인스턴스를 사용 인스턴스 멤버는 보장 되지 않습니다 스레드로부터 안전 합니다.
+
+동시 액세스 감지 되 면 정의 되지 않은 동작, 응용 프로그램 충돌 및 데이터가 손상 될 수 있습니다.
 
 동일한 inadvernetly 원인은 동시 액세스를 수행할 수 있는 일반적인 실수는 `DbContext` 인스턴스:
 

@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 02/23/2018
 ms.assetid: 420AFFE7-B709-4A68-9149-F06F8746FB33
 uid: core/modeling/constructors
-ms.openlocfilehash: 1b36197465fb9a6571a306d36eb1e9d885a5399e
-ms.sourcegitcommit: 0cef7d448e1e47bdb333002e2254ed42d57b45b6
+ms.openlocfilehash: 5bf49718f02c1860871b1f4c255ec4d98fce2fc7
+ms.sourcegitcommit: 960e42a01b3a2f76da82e074f64f52252a8afecc
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43152467"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405254"
 ---
 # <a name="entity-types-with-constructors"></a>생성자를 사용 하 여 엔터티 형식
 
@@ -90,7 +90,7 @@ public class Post
 * 일부 속성은 생성자 매개 변수를 가지도록 해야 합니다. 예를 들어, EF Core가 일반적인 방법으로 생성자를 호출한 후에 설정 됩니다 Post.Content 속성 모든 생성자 매개 변수에 의해 설정 되지 않았습니다.
 * 매개 변수 형식과 이름을 일치 해야 속성 형식 이름과 속성 될 수 있다는 점이 파스칼식 대/소문자 매개 변수는 카멜식 대 합니다.
 * EF Core (블로그 게시물 위의 등)의 탐색 속성을 설정할 수 없습니다는 생성자를 사용 합니다.
-* 생성자는 public 일 수, 개인, 또는 다른 액세스 가능성을 갖도록 합니다.
+* 생성자는 public 일 수, 개인, 또는 다른 액세스 가능성을 갖도록 합니다. 그러나 지연 로드 프록시 생성자를 상속 하는 프록시 클래스에서 액세스할 수 있는지 필요 합니다. 일반적으로 public 또는 protected 있도록 의미 합니다.
 
 ### <a name="read-only-properties"></a>읽기 전용 속성
 

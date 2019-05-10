@@ -3,12 +3,12 @@ title: 트랜잭션-EF6 사용
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0d0f1824-d781-4cb3-8fda-b7eaefced1cd
-ms.openlocfilehash: 7197733ab25c8475746e7863963384730919e3ff
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 96cfff4cca59ab27dd68f50d0260e90902e33a92
+ms.sourcegitcommit: eefcab31142f61a7aaeac03ea90dcd39f158b8b8
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489780"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873231"
 ---
 # <a name="working-with-transactions"></a>트랜잭션 사용
 > [!NOTE]
@@ -39,7 +39,7 @@ EF6 Entity Framework 전에 개발해왔으므로 연결을 여는 데이터베�
 
 EF6을 사용 하 여 프레임 워크를 지금 시작 하는 작업에 제공 합니다.  
 
-1. **Database.BeginTransaction()** : 시작 하 고 여러 작업이 동일한 트랜잭션 내에 결합 되도록 하는 기존 DbContext – 내에서 직접 트랜잭션을 완료 하려면 사용자에 대 한 쉬운 방법 이므로 모두 커밋되거나 모두 롤백 하나로. 또한 보다 쉽게 트랜잭션 격리 수준을 지정할 수 있습니다.  
+1. **Database.BeginTransaction()** : 사용자를 시작 하 고 여러 작업이 동일한 트랜잭션 내에 결합 되도록 하는 기존 DbContext – 내에서 직접 트랜잭션을 완료에 대 한 쉬운 방법 이므로 모두 커밋되거나 모두 하나로 롤백됩니다. 또한 보다 쉽게 트랜잭션 격리 수준을 지정할 수 있습니다.  
 2. **Database.UseTransaction()** : Entity Framework 외부에서 시작 된 트랜잭션을 사용 하도록 DbContext 수 있습니다.  
 
 ### <a name="combining-several-operations-into-one-transaction-within-the-same-context"></a>여러 작업을 동일한 컨텍스트 내에서 하나의 트랜잭션으로 결합  
@@ -126,7 +126,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
-sing System.Transactions;
+using System.Transactions;
 
 namespace TransactionsExamples
 {
