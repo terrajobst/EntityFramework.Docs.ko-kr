@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 4b251638de43af6525f3e6faa0bd4113ab1714b9
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: b1b5e286e08a8b6b4efe225a176e76023f9fdd20
+ms.sourcegitcommit: 960e42a01b3a2f76da82e074f64f52252a8afecc
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59619261"
+ms.lasthandoff: 05/08/2019
+ms.locfileid: "65405235"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -75,6 +75,35 @@ ASP.NET Core 3.0 이전에는 `Microsoft.AspNetCore.App` 또는 `Microsoft.AspNe
 **완화 방법**
 
 ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이션에서 EF Core를 사용하려면 애플리케이션에서 사용할 EF Core 데이터베이스 공급자에 대한 패키지 참조를 명시적으로 추가합니다.
+
+## <a name="the-ef-core-command-line-tool-dotnet-ef-is-no-longer-part-of-the-net-core-sdk"></a>EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.
+
+[추적 문제 #14016](https://github.com/aspnet/EntityFrameworkCore/issues/14016)
+
+이 변경 내용은 EF Core 3.0 미리 보기 4 및 .NET Core SDK의 해당 버전에서 도입되었습니다.
+
+**이전 동작**
+
+3.0 이전에는 `dotnet ef` 도구가 .NET Core SDK에 포함되었으며 추가 단계 없이도 모든 프로젝트의 명령줄에서 쉽게 사용할 수 있었습니다. 
+
+**새 동작**
+
+3.0부터 .NET SDK에 `dotnet ef` 도구가 포함되어 있지 않으므로 사용하기 전에 명시적으로 로컬 또는 글로벌 도구로 설치해야 합니다. 
+
+**이유**
+
+이 변경으로 인해 `dotnet ef`을 NuGet에서 일반 .NET CLI 도구로 배포 및 업데이트할 수 있으며, EF Core 3.0도 항상 NuGet 패키지로 배포된다는 사실과 일치합니다.
+
+**완화 방법**
+
+마이그레이션을 관리하거나 `DbContext`의 스캐폴드를 수행하려면 `dotnet tool install` 명령을 사용하여 `dotnet-ef`를 설치합니다.
+예를 들어 글로벌 도구로 설치하려면 다음 명령을 입력합니다.
+
+  ``` console
+  $ dotnet tool install --global dotnet-ef --version <exact-version>
+  ```
+
+[도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용하여 도구 종속성으로 선언한 프로젝트의 종속성을 복원할 때도 로컬 도구를 얻을 수 있습니다.
 
 ## <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.
 
@@ -602,7 +631,7 @@ using (new TransactionScope())
 
 **이유**
 
-같은 `TransactionScope`에 복수의 컨텍스트를 사용할 수 있도록 이렇게 변경했습니다. 새 동작 alose는 EF6과 일치합니다.
+같은 `TransactionScope`에 복수의 컨텍스트를 사용할 수 있도록 이렇게 변경했습니다. 새 동작은 EF6과도 일치합니다.
 
 **완화 방법**
 
@@ -660,7 +689,7 @@ EF Core 3.0부터 메모리 내 데이터베이스를 사용하는 경우 각 �
 
 **새 동작**
 
-EF Core 3.0부터 속성 지원 필드가 알려진 경우 항상 지원 필드를 사용하여 해당 속성을 읽고 씁니다.
+EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지원 필드를 사용하여 해당 속성을 읽고 씁니다.
 이로 인해 애플리케이션이 getter 또는 setter 메서드로 코딩된 추가 동작을 사용하는 경우 애플리케이션이 중단될 수 있습니다.
 
 **이유**

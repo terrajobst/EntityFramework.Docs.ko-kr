@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: e98e2e601203db7ea3d3344ddc7b7e0aff7f2143
-ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
+ms.openlocfilehash: 590d16902329ffb3fff8026f8dfdcfc887f6dea3
+ms.sourcegitcommit: eefcab31142f61a7aaeac03ea90dcd39f158b8b8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/14/2019
-ms.locfileid: "59562522"
+ms.lasthandoff: 04/29/2019
+ms.locfileid: "64873200"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -334,3 +334,5 @@ public void ConfigureServices(IServiceCollection services)
     ...
 }
 ```
+
+또 다른 대안은 탐색 속성 중 하나를 `[JsonIgnore]` 특성으로 데코레이트하는 것입니다. 이 특성은 Json.NET이 직렬화하는 동안 해당 탐색 속성을 트래버스하지 않도록 지시합니다.
