@@ -3,12 +3,12 @@ title: EF4, EF5, 및 EF6에 대 한 성능 고려 사항
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d6d5a465-6434-45fa-855d-5eb48c61a2ea
-ms.openlocfilehash: 4c1f03533cf6df49555c3ef8d09d5949b9a3335c
-ms.sourcegitcommit: 33b2e84dae96040f60a613186a24ff3c7b00b6db
+ms.openlocfilehash: f8fa1001c85366e169cf50e89efdb65bd92b671e
+ms.sourcegitcommit: f277883a5ed28eba57d14aaaf17405bc1ae9cf94
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56459213"
+ms.lasthandoff: 05/18/2019
+ms.locfileid: "65874605"
 ---
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>4, 5 및 6 EF에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 등에서
@@ -119,9 +119,9 @@ Entity Framework 6을 사용 하는 경우에서 가져올 수 있습니다 뷰 
 
 많은 경우 크게 독립 연결에서 외래 키 연결 모델의 연결을 전환 뷰 생성에 소요 된 시간을 개선 하는 위치를 살펴보았습니다.
 
-이러한 향상 된이 기능을 보여 주기 위해 EDMGen을 사용 하 여 Navision 모델의 두 버전을 생성 했습니다. *참고: seeappendix Cfor Navision 모델을 설명 합니다.* Navision 모델은 엔터티 및 이들 간의 관계는 매우 많은 양의 인해이 연습에 대 한 흥미로운입니다.
+이러한 향상 된이 기능을 보여 주기 위해 EDMGen을 사용 하 여 Navision 모델의 두 버전을 생성 했습니다. *참고: Navision 모델에 대 한 부록 C를 참조 하세요.* Navision 모델은 엔터티 및 이들 간의 관계는 매우 많은 양의 인해이 연습에 대 한 흥미로운입니다.
 
-외래 키 연결을 사용 하 여이 매우 큰 모델의 한 버전을 생성 하 고 독립 연결을 사용 하 여 생성 된 다른 합니다. 그런 다음 각 모델에 대 한 뷰를 생성 하는 데 걸린 기간 시간 초과 되었습니다. Entity Framework 6 테스트 StorageMappingItemCollection 클래스에서 GenerateViews() 메서드를 사용 하는 동안는 뷰를 생성할 클래스 EntityViewGenerator에서에서 GenerateViews() 메서드를 사용 하는 엔터티 Framework5 테스트 합니다. 코드 구조는 Entity Framework 6 코드 베이스에서 발생 한 변경으로 인해이 있습니다.
+외래 키 연결을 사용 하 여이 매우 큰 모델의 한 버전을 생성 하 고 독립 연결을 사용 하 여 생성 된 다른 합니다. 그런 다음 각 모델에 대 한 뷰를 생성 하는 데 걸린 기간 시간 초과 되었습니다. Entity Framework 6 테스트 StorageMappingItemCollection 클래스에서 GenerateViews() 메서드를 사용 하는 동안는 뷰를 생성할 클래스 EntityViewGenerator에서에서 GenerateViews() 메서드를 사용 하는 entity Framework 5 테스트 합니다. 코드 구조는 Entity Framework 6 코드 베이스에서 발생 한 변경으로 인해이 있습니다.
 
 Entity Framework 5를 사용 하 여 외래 키를 사용 하 여 모델에 대 한 뷰 생성 랩 컴퓨터에서 65 분을 걸렸습니다. Unknown의 얼마나 걸리는 독립 연결을 사용 하는 모델에 대 한 보기를 생성 합니다. 월별 업데이트를 설치 하려면 연구소에서 컴퓨터를 다시 부팅 된 전에 달에 대 한 실행 중인 테스트를 두었습니다.
 
@@ -240,7 +240,7 @@ Entity Framework 6을 사용할 경우 개발자는 AddRange와 RemoveRange 컬�
 
 #### <a name="323-test-metrics-demonstrating-query-plan-caching-performance"></a>3.2.3 테스트 메트릭을 쿼리 계획 캐싱 성능 데모
 
-쿼리 계획 캐싱 응용 프로그램의 성능에 영향을 보여 주기 위해 수행한 테스트 여기 Navision 모델에 대 한 Entity SQL 쿼리 횟수를 실행 했습니다. Navision 모델과 실행 된 쿼리의 종류에 대 한 부록을 참조 하세요. 이 테스트에서는 먼저 쿼리 목록을 반복 하 고 (캐싱 사용) 하는 경우 캐시에 추가 하려면 각각 두 번 실행 합니다. 이 단계가 시간 초과 하지 않습니다. 캐시 비우기; 수행 하도록 허용 하려면 60 초 이상의 주 스레드가 절전 모드에서는 다음으로, 마지막으로 캐시 된 쿼리를 실행 하는 두 번째 목록에 통해 반복 합니다. 또한 쿼리의 각 집합은 정확 하 게 구한 시간 쿼리 계획 캐시에서 지정 된 혜택을 반영 되도록 실행 되기 전에 플러시 그 SQL Server 계획 캐시 합니다.
+쿼리 계획 캐싱 응용 프로그램의 성능에 영향을 보여 주기 위해 수행한 테스트 여기 Navision 모델에 대 한 Entity SQL 쿼리 횟수를 실행 했습니다. Navision 모델과 실행 된 쿼리의 종류에 대 한 부록을 참조 하세요. 이 테스트에서는 먼저 쿼리 목록을 반복 하 고 (캐싱 사용) 하는 경우 캐시에 추가 하려면 각각 두 번 실행 합니다. 이 단계가 시간 초과 하지 않습니다. 캐시 비우기; 수행 하도록 허용 하려면 60 초 이상의 주 스레드가 절전 모드에서는 다음으로, 마지막으로 캐시 된 쿼리를 실행 하는 두 번째 목록에 통해 반복 합니다. 또한 SQL Server 계획 캐시는 정확 하 게 구한 시간 쿼리 계획 캐시에서 지정 된 혜택을 반영 되도록 각 집합이 쿼리를 실행 하기 전에 플러시됩니다.
 
 ##### <a name="3231-test-results"></a>3.2.3.1 테스트 결과
 
@@ -487,7 +487,7 @@ for (var i = 0; i < count; ++i)
 
 ``` csharp
 var customers = context.Customers.OrderBy(c => c.LastName);
-for (var i = 0; i \< count; ++i)
+for (var i = 0; i < count; ++i)
 {
     var currentCustomer = customers.Skip(() => i).FirstOrDefault();
     ProcessCustomer(currentCustomer);
@@ -887,7 +887,7 @@ Code First 방법으로 상속을 사용 하 여 모델의 매핑을 구성 하�
 
 1005 엔터티 집합과 연결 집합이 4227 모델에 포함 되어 있습니다.
 
-| 구성하기                              | 사용 된 시간의 분석                                                                                                                                               |
+| 구성                              | 사용 된 시간의 분석                                                                                                                                               |
 |:-------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Visual Studio 2010, Entity Framework 4     | SSDL 생성: 2 시간 27 분 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 2 h 14 분 |
 | Visual Studio 2010 SP1, Entity Framework 4 | SSDL 생성: 1 초 <br/> 매핑 생성 합니다. 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 1 시간 53 분   |
