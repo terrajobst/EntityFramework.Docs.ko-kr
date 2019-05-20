@@ -30,6 +30,7 @@
 #### [.NET Core](core/get-started/netcore/index.md)
 ##### [새 데이터베이스](core/get-started/netcore/new-db-sqlite.md)
 #### [ASP.NET Core](core/get-started/aspnetcore/index.md)
+##### [⤤ 대화형 자습서](/learn/modules/persist-data-ef-core/)
 ##### [새 데이터베이스](core/get-started/aspnetcore/new-db.md)
 ##### [기존 데이터베이스](core/get-started/aspnetcore/existing-db.md)
 ##### [⤤ EF Core 및 Razor Pages](/aspnet/core/data/ef-rp/intro)
