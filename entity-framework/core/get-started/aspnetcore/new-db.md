@@ -5,12 +5,12 @@ ms.author: riande
 ms.date: 08/03/2018
 ms.assetid: e153627f-f132-4c11-b13c-6c9a607addce
 uid: core/get-started/aspnetcore/new-db
-ms.openlocfilehash: 25e5a683acf4bbed0b978cc6a80f1b50a0b64ca1
-ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
+ms.openlocfilehash: fbc1a00d6d6d0624bcbbfa1e51f4e21a915baaaa
+ms.sourcegitcommit: f277883a5ed28eba57d14aaaf17405bc1ae9cf94
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319181"
+ms.lasthandoff: 05/18/2019
+ms.locfileid: "65874570"
 ---
 # <a name="getting-started-with-ef-core-on-aspnet-core-with-a-new-database"></a>ASP.NET Core에서 새 데이터베이스로 EF Core 시작
 
@@ -229,5 +229,5 @@ dotnet run
 ## <a name="additional-resources"></a>추가 리소스
 
 * [자습서: SQLite를 사용하여 .NET Core에서 새 데이터베이스로 EF Core 시작](xref:core/get-started/netcore/new-db-sqlite)
-* [자습서: Get started with Razor Pages in ASP.NET Core](https://docs.microsoft.com/aspnet/core/tutorials/razor-pages/razor-pages-start)(자습서: ASP.NET Core에서 Razor Pages 시작)
-* [자습서: Razor Pages with Entity Framework Core in ASP.NET Core](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro)(자습서: ASP.NET Core에서 Entity Framework Core를 사용한 Razor Pages)
+* [ASP.NET Core의 Razor 페이지 시작](/aspnet/core/tutorials/razor-pages/razor-pages-start) 또는 [ASP.NET Core MVC 시작 ](/aspnet/core/tutorials/first-mvc-app/start-mvc)
+* [자습서: ASP.NET Core의 Entity Framework Core를 포함한 Razor 페이지](https://docs.microsoft.com/aspnet/core/data/ef-rp/intro) 또는 [ASP.NET MVC 웹앱에서 EF Core 시작](/aspnet/core/data/ef-mvc/intro)
