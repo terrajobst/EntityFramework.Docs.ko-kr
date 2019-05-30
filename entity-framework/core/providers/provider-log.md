@@ -62,7 +62,7 @@ ms.locfileid: "59929877"
   * 규칙 집합 서비스 변경 되었습니다. 공급자 "ProviderConventionSet" 또는 "RelationalConventionSet" 중 하나에서 상속 해야 합니다.
   * 사용자 지정을 통해 추가할 수 있습니다 `IConventionSetCustomizer` 서비스가 있지만이 다른 확장 되지 공급자에서 사용할 것입니다.
   * 런타임 시 사용 되는 규칙에서 확인 해야 합니다. `IConventionSetBuilder`합니다.
-* https://github.com/aspnet/EntityFrameworkCore/pull/15288 데이터 시드 내부 형식을 사용할 필요가 없도록 하는 공용 API 개로 리팩터링 되었습니다. 모든 관계형 공급자에 대 한 기본 관계형 클래스에 의해 처리 시 딩 되므로 비관계형 공급자에만 영향 해야이 있습니다.
+* [https://github.com/aspnet/EntityFrameworkCore/pull/15288](https://github.com/aspnet/EntityFrameworkCore/pull/15288) 데이터 시드 내부 형식을 사용할 필요가 없도록 하는 공용 API 개로 리팩터링 되었습니다. 모든 관계형 공급자에 대 한 기본 관계형 클래스에 의해 처리 시 딩 되므로 비관계형 공급자에만 영향 해야이 있습니다.
 
 ## <a name="21-----22"></a>2.1 ---> 2.2
 
