@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0ff736a3-f1b0-4b58-a49c-4a7094bd6935
 uid: core/modeling/relationships
-ms.openlocfilehash: 9ef1a9269fc99f5b27a81c11a161ed5f9d74180d
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
+ms.openlocfilehash: 793401362788e865c89ce01b6246b1ba14c36c8a
+ms.sourcegitcommit: 8b9568211d37a1c36da9533fa1ac2ef063b0bf8c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929939"
+ms.lasthandoff: 06/08/2019
+ms.locfileid: "66815003"
 ---
 # <a name="relationships"></a>관계
 
@@ -140,6 +140,12 @@ Fluent API의 관계를 구성 하 여 관계를 구성 하는 탐색 속성을 
 문자열 오버 로드를 사용할 수 있습니다 `HasForeignKey(...)` 외래 키로 섀도 속성을 구성 하려면 (참조 [섀도 속성](shadow-properties.md) 자세한). (아래와 같이) 외래 키로 사용 하기 전에 모델에 섀도 속성을 명시적으로 추가 하는 것이 좋습니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/ShadowForeignKey.cs#Sample)]
+
+### <a name="without-navigation-property"></a>탐색 속성 사용 하지 않고
+
+반드시 탐색 속성을 제공할 필요가 없습니다. 단순히 관계의 한쪽 외래 키를 제공할 수 있습니다.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Relationships/NoNavigation.cs?highlight=14-17)]
 
 ### <a name="principal-key"></a>주체 키
 
