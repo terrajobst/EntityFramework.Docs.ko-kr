@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: faae0153e0f2bdd42d3b316582dfcab88d9ceb5b
-ms.sourcegitcommit: ea1cdec0b982b922a59b9d9301d3ed2b94baca0f
+ms.openlocfilehash: 9112d8d235237e68232aac54453d584af0edb524
+ms.sourcegitcommit: b188194a1901f4d086d05765cbc5c9b8c9dc5eed
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/31/2019
-ms.locfileid: "66452290"
+ms.lasthandoff: 06/11/2019
+ms.locfileid: "66829491"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -18,23 +18,23 @@ ms.locfileid: "66452290"
 
 다음 API 및 동작 변경은 3.0.0으로 업그레이드할 때 EF Core 2.2.x용으로 개발된 애플리케이션을 중단시킬 가능성이 있습니다.
 데이터베이스 공급자에만 영향을 줄 것으로 예상되는 변경 내용은 [공급자 변경](../../providers/provider-log.md)에 설명되어 있습니다.
-3.0 미리 보기 간의 도입된 새로운 기능의 중단은 여기에 설명되어 있지 않습니다.
+3\.0 미리 보기 간의 도입된 새로운 기능의 중단은 여기에 설명되어 있지 않습니다.
 
 ## <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.
 
-[추적 문제 #14935](https://github.com/aspnet/EntityFrameworkCore/issues/14935)
-[문제 #12795도 참조](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
+[추적 이슈 #14935](https://github.com/aspnet/EntityFrameworkCore/issues/14935)
+[이슈 #12795도 참조](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
-3.0 이전에는 EF Core가 쿼리의 일부인 식을 SQL 또는 매개 변수로 변환할 수 없었을 때 클라이언트에서 자동으로 식을 계산했습니다.
+3\.0 이전에는 EF Core가 쿼리의 일부인 식을 SQL 또는 매개 변수로 변환할 수 없었을 때 클라이언트에서 자동으로 식을 계산했습니다.
 기본적으로, 잠재적 비용이 많이 드는 식에 대한 클라이언트 평가는 경고만 트리거합니다.
 
 **새 동작**
 
-3.0부터 EF Core는 최상위 수준 프로젝션(쿼리의 마지막 `Select()` 호출)의 식만 클라이언트에서 평가할 수 있습니다.
+3\.0부터 EF Core는 최상위 수준 프로젝션(쿼리의 마지막 `Select()` 호출)의 식만 클라이언트에서 평가할 수 있습니다.
 쿼리의 다른 부분에서 식을 SQL 또는 매개 변수로 변환할 수 없을 때 예외가 throw됩니다.
 
 **이유**
@@ -53,7 +53,7 @@ ms.locfileid: "66452290"
 
 ## <a name="entity-framework-core-is-no-longer-part-of-the-aspnet-core-shared-framework"></a>Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크에 포함되지 않습니다.
 
-[추적 문제 공지 사항 #325](https://github.com/aspnet/Announcements/issues/325)
+[추적 이슈 공지 사항 #325](https://github.com/aspnet/Announcements/issues/325)
 
 이 변경 내용은 ASP.NET Core 3.0 미리 보기 1에 도입되었습니다. 
 
@@ -63,7 +63,7 @@ ASP.NET Core 3.0 이전에는 `Microsoft.AspNetCore.App` 또는 `Microsoft.AspNe
 
 **새 동작**
 
-3.0부터 ASP.NET Core 공유 프레임워크에는 EF Core 또는 EF Core 데이터 공급자가 포함되지 않습니다.
+3\.0부터 ASP.NET Core 공유 프레임워크에는 EF Core 또는 EF Core 데이터 공급자가 포함되지 않습니다.
 
 **이유**
 
@@ -78,17 +78,17 @@ ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이�
 
 ## <a name="the-ef-core-command-line-tool-dotnet-ef-is-no-longer-part-of-the-net-core-sdk"></a>EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.
 
-[추적 문제 #14016](https://github.com/aspnet/EntityFrameworkCore/issues/14016)
+[추적 이슈 #14016](https://github.com/aspnet/EntityFrameworkCore/issues/14016)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4 및 .NET Core SDK의 해당 버전에서 도입되었습니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4 및 .NET Core SDK의 해당 버전에 도입되었습니다.
 
 **이전 동작**
 
-3.0 이전에는 `dotnet ef` 도구가 .NET Core SDK에 포함되었으며 추가 단계 없이도 모든 프로젝트의 명령줄에서 쉽게 사용할 수 있었습니다. 
+3\.0 이전에는 `dotnet ef` 도구가 .NET Core SDK에 포함되었으며 추가 단계 없이도 모든 프로젝트의 명령줄에서 쉽게 사용할 수 있었습니다. 
 
 **새 동작**
 
-3.0부터 .NET SDK에 `dotnet ef` 도구가 포함되어 있지 않으므로 사용하기 전에 명시적으로 로컬 또는 글로벌 도구로 설치해야 합니다. 
+3\.0부터 .NET SDK에 `dotnet ef` 도구가 포함되어 있지 않으므로 사용하기 전에 명시적으로 로컬 또는 글로벌 도구로 설치해야 합니다. 
 
 **이유**
 
@@ -107,7 +107,7 @@ ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이�
 
 ## <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.
 
-[추적 문제 #10996](https://github.com/aspnet/EntityFrameworkCore/issues/10996)
+[추적 이슈 #10996](https://github.com/aspnet/EntityFrameworkCore/issues/10996)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -145,9 +145,31 @@ context.Products.FromSqlInterpolated(
 
 새 메서드 이름을 사용하도록 전환합니다.
 
+## <a name="fromsql-methods-can-only-be-specified-on-query-roots"></a>FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.
+
+[추적 이슈 #15704](https://github.com/aspnet/EntityFrameworkCore/issues/15704)
+
+이 변경 내용은 EF Core 3.0 미리 보기 6에 도입되었습니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에는 `FromSql` 메서드를 쿼리의 아무 곳에나 지정할 수 있었습니다.
+
+**새 동작**
+
+EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(`FromSql` 대체)만 쿼리 루트에 지정할 수 있습니다(예: `DbSet<>`에 직접). 다른 위치에 지정하려고 하면 컴파일 오류가 발생합니다.
+
+**이유**
+
+`DbSet`가 아닌 위치에 `FromSql`을 지정하는 것은 추가 의미 또는 추가 가치가 없으므로 특정 시나리오에서 모호성을 발생시킬 수 있습니다.
+
+**완화 방법**
+
+`FromSql` 호출은 이 호출이 적용되는 `DbSet`로 직접 이동해야 합니다.
+
 ## <a name="query-execution-is-logged-at-debug-level"></a>쿼리 실행이 디버그 수준에서 로깅됩니다.
 
-[추적 문제 #14523](https://github.com/aspnet/EntityFrameworkCore/issues/14523)
+[추적 이슈 #14523](https://github.com/aspnet/EntityFrameworkCore/issues/14523)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -177,7 +199,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ## <a name="temporary-key-values-are-no-longer-set-onto-entity-instances"></a>임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.
 
-[추적 문제 #12378](https://github.com/aspnet/EntityFrameworkCore/issues/12378)
+[추적 이슈 #12378](https://github.com/aspnet/EntityFrameworkCore/issues/12378)
 
 이 변경 내용은 EF Core 3.0 미리 보기 2에 도입되었습니다.
 
@@ -188,7 +210,7 @@ EF Core 3.0 이전에는 임시 값이 데이터베이스에서 생성된 실제
 
 **새 동작**
 
-3.0부터 EF Core는 엔터티의 추적 정보의 일부로 임시 키 값을 저장하고, 키 속성 자체는 변경하지 않고 그대로 둡니다.
+3\.0부터 EF Core는 엔터티의 추적 정보의 일부로 임시 키 값을 저장하고, 키 속성 자체는 변경하지 않고 그대로 둡니다.
 
 **이유**
 
@@ -205,7 +227,7 @@ EF Core 3.0 이전에는 임시 값이 데이터베이스에서 생성된 실제
 
 ## <a name="detectchanges-honors-store-generated-key-values"></a>DetectChanges는 저장 생성 키 값을 준수합니다.
 
-[추적 문제 #14616](https://github.com/aspnet/EntityFrameworkCore/issues/14616)
+[추적 이슈 #14616](https://github.com/aspnet/EntityFrameworkCore/issues/14616)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -245,17 +267,17 @@ public string Id { get; set; }
 
 ## <a name="cascade-deletions-now-happen-immediately-by-default"></a>계단식 삭제는 기본적으로 즉시 발생합니다.
 
-[추적 문제 #10114](https://github.com/aspnet/EntityFrameworkCore/issues/10114)
+[추적 이슈 #10114](https://github.com/aspnet/EntityFrameworkCore/issues/10114)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
 **이전 동작**
 
-3.0 이전에는 SaveChanges가 호출될 때까지 EF Core에는 연계 작업(필요한 보안 주체가 삭제되거나 필요한 보안 주체에 대한 관계가 끊어질 때 종속 엔터티 삭제)이 적용되지 않았습니다.
+3\.0 이전에는 SaveChanges가 호출될 때까지 EF Core에는 연계 작업(필요한 보안 주체가 삭제되거나 필요한 보안 주체에 대한 관계가 끊어질 때 종속 엔터티 삭제)이 적용되지 않았습니다.
 
 **새 동작**
 
-3.0부터 EF Core는 트리거 조건이 검색되는 즉시 연계 동작을 적용합니다.
+3\.0부터 EF Core는 트리거 조건이 검색되는 즉시 연계 동작을 적용합니다.
 예를 들어, 보안 주체 엔터티를 삭제하기 위해 `context.Remove()`를 호출하면 추적된 모든 관련 필수 종속 항목도 즉시 `Deleted`로 설정됩니다.
 
 **이유**
@@ -274,17 +296,17 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 ## <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>DeleteBehavior.Restrict에는 명확한 의미 체계가 있습니다.
 
-[추적 문제 #12661](https://github.com/aspnet/EntityFrameworkCore/issues/12661)
+[추적 이슈 #12661](https://github.com/aspnet/EntityFrameworkCore/issues/12661)
 
-이 변경 내용은 EF Core 3.0 미리 보기 5에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 5에 도입되었습니다.
 
 **이전 동작**
 
-3.0 이전에는 `DeleteBehavior.Restrict`가 `Restrict` 의미 체계를 사용하여 데이터베이스에 외래 키를 만들었지만, 확실치 않은 방식으로 fixup도 변경했습니다.
+3\.0 이전에는 `DeleteBehavior.Restrict`가 `Restrict` 의미 체계를 사용하여 데이터베이스에 외래 키를 만들었지만, 확실치 않은 방식으로 fixup도 변경했습니다.
 
 **새 동작**
 
-3.0부터 `DeleteBehavior.Restrict`는 EF 내부 fixup에 영향을 주지 않고 `Restrict` 의미 체계(즉, 계단식 없음, 제약 조건 위반을 throw함)로 외부 키를 생성하도록 보장합니다.
+3\.0부터 `DeleteBehavior.Restrict`는 EF 내부 fixup에 영향을 주지 않고 `Restrict` 의미 체계(즉, 계단식 없음, 제약 조건 위반을 throw함)로 외부 키를 생성하도록 보장합니다.
 
 **이유**
 
@@ -296,7 +318,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 ## <a name="query-types-are-consolidated-with-entity-types"></a>쿼리 형식은 엔터티 형식과 통합됩니다.
 
-[추적 문제 #14194](https://github.com/aspnet/EntityFrameworkCore/issues/14194)
+[추적 이슈 #14194](https://github.com/aspnet/EntityFrameworkCore/issues/14194)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -326,9 +348,9 @@ API의 다음 부분은 이제 사용되지 않습니다.
 
 ## <a name="configuration-api-for-owned-type-relationships-has-changed"></a>소유 형식 관계에 대한 구성 API가 변경됨
 
-[추적 문제 #12444](https://github.com/aspnet/EntityFrameworkCore/issues/12444)
-[추적 문제 #9148](https://github.com/aspnet/EntityFrameworkCore/issues/9148)
-[추적 문제 #14153](https://github.com/aspnet/EntityFrameworkCore/issues/14153)
+[추적 이슈 #12444](https://github.com/aspnet/EntityFrameworkCore/issues/12444)
+[추적 이슈 #9148](https://github.com/aspnet/EntityFrameworkCore/issues/9148)
+[추적 이슈 #14153](https://github.com/aspnet/EntityFrameworkCore/issues/14153)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -384,9 +406,9 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
 
 ## <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.
 
-[추적 문제 #9005](https://github.com/aspnet/EntityFrameworkCore/issues/9005)
+[추적 이슈 #9005](https://github.com/aspnet/EntityFrameworkCore/issues/9005)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -410,7 +432,7 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 
 **새 동작**
 
-3.0부터는 EF Core가 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
+3\.0부터는 EF Core가 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
 EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
 
 **완화 방법**
@@ -419,9 +441,9 @@ EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 �
 
 ## <a name="all-entities-sharing-a-table-with-a-concurrency-token-column-have-to-map-it-to-a-property"></a>동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.
 
-[추적 문제 #14154](https://github.com/aspnet/EntityFrameworkCore/issues/14154)
+[추적 이슈 #14154](https://github.com/aspnet/EntityFrameworkCore/issues/14154)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -452,7 +474,7 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 
 **새 동작**
 
-3.0부터 EF Core는 `OrderDetails`를 소유하는 경우 새 `Version` 값을 `Order`에 전파합니다. 그렇지 않으면 모델 유효성 검사 중에 예외가 발생합니다.
+3\.0부터 EF Core는 `OrderDetails`를 소유하는 경우 새 `Version` 값을 `Order`에 전파합니다. 그렇지 않으면 모델 유효성 검사 중에 예외가 발생합니다.
 
 **이유**
 
@@ -471,9 +493,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="inherited-properties-from-unmapped-types-are-now-mapped-to-a-single-column-for-all-derived-types"></a>매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.
 
-[추적 문제 #13998](https://github.com/aspnet/EntityFrameworkCore/issues/13998)
+[추적 이슈 #13998](https://github.com/aspnet/EntityFrameworkCore/issues/13998)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -510,7 +532,7 @@ EF Core 3.0 전에는 `ShippingAddress` 속성이 기본적으로 `BulkOrder` �
 
 **새 동작**
 
-3.0부터 EF Core는 `ShippingAddress`에 대한 열을 한 개만 생성합니다.
+3\.0부터 EF Core는 `ShippingAddress`에 대한 열을 한 개만 생성합니다.
 
 **이유**
 
@@ -534,7 +556,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="the-foreign-key-property-convention-no-longer-matches-same-name-as-the-principal-property"></a>외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.
 
-[추적 문제 #13274](https://github.com/aspnet/EntityFrameworkCore/issues/13274)
+[추적 이슈 #13274](https://github.com/aspnet/EntityFrameworkCore/issues/13274)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -559,7 +581,7 @@ EF Core 3.0 이전에는 규칙에 따라 외래 키에 대해 `CustomerId` 속�
 
 **새 동작**
 
-3.0부터 EF Core는 보안 주체 속성과 동일한 이름을 가지는 경우 규칙에 따라 외래 키에 대한 속성을 사용하려고 하지 않습니다.
+3\.0부터 EF Core는 보안 주체 속성과 동일한 이름을 가지는 경우 규칙에 따라 외래 키에 대한 속성을 사용하려고 하지 않습니다.
 보안 주체 속성 이름과 연결된 보안 주체 유형 이름 및 보안 주체 속성 이름 패턴과 연결된 탐색 이름은 여전히 일치합니다.
 예:
 
@@ -602,9 +624,9 @@ public class Order
 
 ## <a name="database-connection-is-now-closed-if-not-used-anymore-before-the-transactionscope-has-been-completed"></a>데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.
 
-[추적 문제 #14218](https://github.com/aspnet/EntityFrameworkCore/issues/14218)
+[추적 이슈 #14218](https://github.com/aspnet/EntityFrameworkCore/issues/14218)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -627,7 +649,7 @@ using (new TransactionScope())
 
 **새 동작**
 
-3.0부터 EF Core는 연결의 사용이 완료되면 해당 연결을 즉시 닫습니다.
+3\.0부터 EF Core는 연결의 사용이 완료되면 해당 연결을 즉시 닫습니다.
 
 **이유**
 
@@ -654,9 +676,9 @@ using (new TransactionScope())
 
 ## <a name="each-property-uses-independent-in-memory-integer-key-generation"></a>각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.
 
-[추적 문제 #6872](https://github.com/aspnet/EntityFrameworkCore/issues/6872)
+[추적 이슈 #6872](https://github.com/aspnet/EntityFrameworkCore/issues/6872)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -678,13 +700,13 @@ EF Core 3.0부터 메모리 내 데이터베이스를 사용하는 경우 각 �
 
 ## <a name="backing-fields-are-used-by-default"></a>지원 필드는 기본적으로 사용됩니다.
 
-[추적 문제 #12430](https://github.com/aspnet/EntityFrameworkCore/issues/12430)
+[추적 이슈 #12430](https://github.com/aspnet/EntityFrameworkCore/issues/12430)
 
 이 변경 내용은 EF Core 3.0 미리 보기 2에 도입되었습니다.
 
 **이전 동작**
 
-3.0 이전에는 속성에 대한 지원 필드가 알려져 있더라도 EF Core는 기본적으로 속성 getter 및 setter 메서드를 사용하여 속성 값을 읽고 작성했습니다.
+3\.0 이전에는 속성에 대한 지원 필드가 알려져 있더라도 EF Core는 기본적으로 속성 getter 및 setter 메서드를 사용하여 속성 값을 읽고 작성했습니다.
 이에 대한 예외는 쿼리 실행으로 알려진 경우 지원 필드가 직접 설정되었습니다.
 
 **새 동작**
@@ -698,7 +720,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 
 **완화 방법**
 
-modelBuilder 흐름 API에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
+`ModelBuilder`에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
 예:
 
 ```C#
@@ -707,9 +729,9 @@ modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruct
 
 ## <a name="throw-if-multiple-compatible-backing-fields-are-found"></a>호환이 가능한 여러 지원 필드가 발견되면 throw됩니다.
 
-[추적 문제 #12523](https://github.com/aspnet/EntityFrameworkCore/issues/12523)
+[추적 이슈 #12523](https://github.com/aspnet/EntityFrameworkCore/issues/12523)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -738,7 +760,7 @@ modelBuilder
 
 ## <a name="field-only-property-names-should-match-the-field-name"></a>필드 전용 속성 이름은 필드 이름과 일치해야 합니다.
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -784,9 +806,9 @@ modelBuilder
 
 ## <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않음
 
-[추적 문제 #14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
+[추적 이슈 #14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -806,7 +828,7 @@ EF Core 3.0에서는 이러한 서비스가 애플리케이션의 DI 컨테이�
 
 ## <a name="dbcontextentry-now-performs-a-local-detectchanges"></a>DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.
 
-[추적 문제 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
+[추적 이슈 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -834,9 +856,9 @@ EF Core 3.0부터 `DbContext.Entry` 호출은 지정된 엔터티와 이와 관�
 
 ## <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.
 
-[추적 문제 #14617](https://github.com/aspnet/EntityFrameworkCore/issues/14617)
+[추적 이슈 #14617](https://github.com/aspnet/EntityFrameworkCore/issues/14617)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -872,7 +894,7 @@ public string Id { get; set; }
 
 ## <a name="iloggerfactory-is-now-a-scoped-service"></a>ILoggerFactory는 이제 범위가 지정된 서비스입니다.
 
-[추적 문제 #14698](https://github.com/aspnet/EntityFrameworkCore/issues/14698)
+[추적 이슈 #14698](https://github.com/aspnet/EntityFrameworkCore/issues/14698)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -898,7 +920,7 @@ EF Core 3.0부터 이제 `ILoggerFactory`는 범위가 지정된 대로 등록�
 
 ## <a name="idbcontextoptionsextensionwithdebuginfo-merged-into-idbcontextoptionsextension"></a>IDbContextOptionsExtensionWithDebugInfo가 IDbContextOptionsExtension에 병합됨
 
-[추적 문제 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
+[추적 이슈 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -920,9 +942,9 @@ EF Core 3.0부터 이제 `ILoggerFactory`는 범위가 지정된 대로 등록�
 
 ## <a name="lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded"></a>지연 로드 프록시는 더 이상 탐색 속성이 완전히 로드되었다고 가정하지 않습니다.
 
-[추적 문제 #12780](https://github.com/aspnet/EntityFrameworkCore/issues/12780)
+[추적 이슈 #12780](https://github.com/aspnet/EntityFrameworkCore/issues/12780)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -947,7 +969,7 @@ EF Core 3.0부터 프록시는 탐색 속성이 로드되었는지 여부를 추
 
 ## <a name="excessive-creation-of-internal-service-providers-is-now-an-error-by-default"></a>내부 서비스 공급자의 과도한 생성은 이제 기본적으로 오류입니다.
 
-[추적 문제 #10236](https://github.com/aspnet/EntityFrameworkCore/issues/10236)
+[추적 이슈 #10236](https://github.com/aspnet/EntityFrameworkCore/issues/10236)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -979,9 +1001,9 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 ## <a name="new-behavior-for-hasonehasmany-called-with-a-single-string"></a>단일 문자열로 호출되는 HasOne/HasMany의 새 동작
 
-[추적 문제 #9171](https://github.com/aspnet/EntityFrameworkCore/issues/9171)
+[추적 이슈 #9171](https://github.com/aspnet/EntityFrameworkCore/issues/9171)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -1016,9 +1038,9 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 
 ## <a name="the-return-type-for-several-async-methods-has-been-changed-from-task-to-valuetask"></a>여러 비동기 메서드의 반환 형식이 작업에서 ValueTask로 변경되었습니다.
 
-[추적 문제 #15184](https://github.com/aspnet/EntityFrameworkCore/issues/15184)
+[추적 이슈 #15184](https://github.com/aspnet/EntityFrameworkCore/issues/15184)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **이전 동작**
 
@@ -1046,7 +1068,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 
 ## <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.
 
-[추적 문제 #9913](https://github.com/aspnet/EntityFrameworkCore/issues/9913)
+[추적 이슈 #9913](https://github.com/aspnet/EntityFrameworkCore/issues/9913)
 
 이 변경 내용은 EF Core 3.0 미리 보기 2에 도입되었습니다.
 
@@ -1069,7 +1091,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 
 ## <a name="totable-on-a-derived-type-throws-an-exception"></a>파생된 형식의 ToTable에서 예외가 throw됩니다. 
 
-[추적 문제 #11811](https://github.com/aspnet/EntityFrameworkCore/issues/11811)
+[추적 이슈 #11811](https://github.com/aspnet/EntityFrameworkCore/issues/11811)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -1092,7 +1114,7 @@ EF Core 3.0부터 시작하여 이후 릴리스에서 TPT 및 TPC 지원을 추�
 
 ## <a name="forsqlserverhasindex-replaced-with-hasindex"></a>ForSqlServerHasIndex가 HasIndex로 바뀝니다. 
 
-[추적 문제 #12366](https://github.com/aspnet/EntityFrameworkCore/issues/12366)
+[추적 이슈 #12366](https://github.com/aspnet/EntityFrameworkCore/issues/12366)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -1115,9 +1137,9 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 ## <a name="metadata-api-changes"></a>메타데이터 API 변경 내용
 
-[추적 문제 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
+[추적 이슈 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
 
-이 변경 내용은 EF Core 3.0 미리 보기 4에 도입될 것입니다.
+이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
 **새 동작**
 
@@ -1137,9 +1159,31 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 새로운 확장 메서드를 사용합니다.
 
+## <a name="provider-specific-metadata-api-changes"></a>공급자 고유의 메타데이터 API 변경 내용
+
+[추적 이슈 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
+
+이 변경 내용은 EF Core 3.0 미리 보기 6에 도입되었습니다.
+
+**새 동작**
+
+공급자 고유의 확장 메서드가 평면화됩니다.
+
+* `IProperty.Relational().ColumnName` -> `IProperty.GetColumnName()`
+* `IEntityType.SqlServer().IsMemoryOptimized` -> `IEntityType.GetSqlServerIsMemoryOptimized()`
+* `PropertyBuilder.UseSqlServerIdentityColumn()` -> `PropertyBuilder.ForSqlServerUseIdentityColumn()`
+
+**이유**
+
+이 변경은 앞서 언급한 확장 메서드의 구현을 단순화합니다.
+
+**완화 방법**
+
+새로운 확장 메서드를 사용합니다.
+
 ## <a name="ef-core-no-longer-sends-pragma-for-sqlite-fk-enforcement"></a>EF Core는 더 이상 SQLite FK 적용을 위한 pragma를 보내지 않습니다.
 
-[추적 문제 #12151](https://github.com/aspnet/EntityFrameworkCore/issues/12151)
+[추적 이슈 #12151](https://github.com/aspnet/EntityFrameworkCore/issues/12151)
 
 이 변경 내용은 EF Core 3.0 미리 보기 3에 도입되었습니다.
 
@@ -1180,7 +1224,7 @@ iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `SQLitePCLRaw` �
 
 ## <a name="guid-values-are-now-stored-as-text-on-sqlite"></a>Guid 값은 이제 SQLite에 텍스트로 저장되었습니다.
 
-[추적 문제 #15078](https://github.com/aspnet/EntityFrameworkCore/issues/15078)
+[추적 이슈 #15078](https://github.com/aspnet/EntityFrameworkCore/issues/15078)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -1230,7 +1274,7 @@ Microsoft.Data.Sqlite는 BLOB 및 텍스트 열 모두에서 Guid 값을 읽을 
 
 ## <a name="char-values-are-now-stored-as-text-on-sqlite"></a>Char 값은 이제 SQLite에 텍스트로 저장됨
 
-[추적 문제 #15020](https://github.com/aspnet/EntityFrameworkCore/issues/15020)
+[추적 이슈 #15020](https://github.com/aspnet/EntityFrameworkCore/issues/15020)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -1271,7 +1315,7 @@ modelBuilder
 
 ## <a name="migration-ids-are-now-generated-using-the-invariant-cultures-calendar"></a>이제 마이그레이션 ID가 고정 문화권의 달력을 사용하여 생성됨
 
-[추적 문제 #12978](https://github.com/aspnet/EntityFrameworkCore/issues/12978)
+[추적 이슈 #12978](https://github.com/aspnet/EntityFrameworkCore/issues/12978)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -1310,7 +1354,7 @@ SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 
 
 ## <a name="logquerypossibleexceptionwithaggregateoperator-has-been-renamed"></a>LogQueryPossibleExceptionWithAggregateOperator 이름이 바뀌었습니다.
 
-[추적 문제 #10985](https://github.com/aspnet/EntityFrameworkCore/issues/10985)
+[추적 이슈 #10985](https://github.com/aspnet/EntityFrameworkCore/issues/10985)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -1328,7 +1372,7 @@ SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 
 
 ## <a name="clarify-api-for-foreign-key-constraint-names"></a>외래 키 제약 조건 이름에 대한 API를 명확히 합니다.
 
-[추적 문제 #10730](https://github.com/aspnet/EntityFrameworkCore/issues/10730)
+[추적 이슈 #10730](https://github.com/aspnet/EntityFrameworkCore/issues/10730)
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
