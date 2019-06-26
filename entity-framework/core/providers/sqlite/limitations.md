@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 04/09/2017
 ms.assetid: 94ab4800-c460-4caa-a5e8-acdfee6e6ce2
 uid: core/providers/sqlite/limitations
-ms.openlocfilehash: ce834d60b9ceb4c414f097f2d86254cc5edd958f
-ms.sourcegitcommit: 645785187ae23ddf7d7b0642c7a4da5ffb0c7f30
+ms.openlocfilehash: eaa7d5b1496172e4f3821433a1cd098ee7e8b737
+ms.sourcegitcommit: 9bd64a1a71b7f7aeb044aeecc7c4785b57db1ec9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58419707"
+ms.lasthandoff: 06/26/2019
+ms.locfileid: "67394796"
 ---
 # <a name="sqlite-ef-core-database-provider-limitations"></a>SQLite EF Core 데이터베이스 공급자의 제한 사항
 
@@ -22,6 +22,25 @@ SQLite 공급자에 많은 마이그레이션 제한 사항이 있습니다. 대
 * 스키마
 * 시퀀스
 * 계산 열
+
+## <a name="query-limitations"></a>쿼리 제한 사항
+
+SQLite는 데이터 형식은 기본적으로 지원 하지 않습니다. EF Core 읽고 이러한 형식 및 같음 쿼리 값을 쓸 수 있습니다 (`where e.Property == value`)도 지원 됩니다. 그러나 다른 작업을 비교와 클라이언트에서 평가 순서 지정 해야 합니다.
+
+* DateTimeOffset
+* Decimal
+* TimeSpan
+* UInt64
+
+대신 `DateTimeOffset`, 날짜/시간 값을 사용 하는 것이 좋습니다. 여러 표준 시간대를 처리 하는 경우에 값을 저장 하 고 적절 한 표준 시간대로 다시 변환 전에 UTC로 변환 하는 것이 좋습니다.
+
+`Decimal` 형식은 높은 수준의 전체 자릿수를 제공 합니다. 그러나 전체 자릿수는 수준이 필요 하지 않으면, 좋습니다 double을 대신 사용 합니다. 사용할 수는 [값 변환기](../../modeling/value-conversions.md) 소수 클래스에서 사용 하 여 계속 합니다.
+
+``` csharp
+modelBuilder.Entity<MyEntity>()
+    .Property(e => e.DecimalProperty)
+    .HasConversion<double>();
+```
 
 ## <a name="migrations-limitations"></a>마이그레이션 제한 사항
 
