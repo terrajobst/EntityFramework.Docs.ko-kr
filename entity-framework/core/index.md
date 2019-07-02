@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 uid: core/index
-ms.openlocfilehash: fa0695be29668789a179f9a0d6330f3361dbac29
-ms.sourcegitcommit: 6c4e06bc62d98442530e93a44725e38e59483d42
+ms.openlocfilehash: 0e35a2b3f89c92b717b8e05c8fa3ae5af5ce8fd3
+ms.sourcegitcommit: 06073f8efde97dd5f540dbfb69f574d8380566fe
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/17/2019
-ms.locfileid: "58131424"
+ms.lasthandoff: 06/24/2019
+ms.locfileid: "67333773"
 ---
 # <a name="entity-framework-core"></a>Entity Framework Core
 
@@ -23,7 +23,7 @@ EF Core 는 여러 데이터베이스 엔진을 지원합니다. 자세한 내�
 
 EF Core에서는 데이터 액세스가 모델을 통해 수행됩니다. 모델은 엔터티 클래스와, 데이터베이스와의 세션을 나타내는 컨텍스트 개체로 구성되어 데이터를 쿼리하고 저장할 수 있습니다. 자세한 내용은 [모델 만들기](modeling/index.md)를 참조하세요.
 
-기존 데이터베이스에서 모델을 생성하거나, 데이터베이스에 맞는 모델을 직접 코딩하거나, EF 마이그레이션을 사용하여 모델에서 데이터베이스를 만들고 시간에 따라 모델이 변경되면서 확장할 수 있습니다.
+기존 데이터베이스에서 모델을 생성하거나, 데이터베이스에 맞는 모델을 직접 코딩하거나, [EF 마이그레이션](managing-schemas/migrations/index.md)을 사용하여 모델에서 데이터베이스를 만들고 시간에 따라 모델이 변경되면서 확장할 수 있습니다.
 
 ``` csharp
 using Microsoft.EntityFrameworkCore;
