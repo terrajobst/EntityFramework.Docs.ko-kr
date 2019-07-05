@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 96586808862c4373168dcd34a5f00c9f2f7563c3
-ms.sourcegitcommit: 9bd64a1a71b7f7aeb044aeecc7c4785b57db1ec9
+ms.openlocfilehash: dcbea1a2aab5baea35f81500bb7bb5482695d778
+ms.sourcegitcommit: 812010a35afe902d8c4bb03a67d575f8e91b5ec0
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/26/2019
-ms.locfileid: "67394824"
+ms.lasthandoff: 07/02/2019
+ms.locfileid: "67506254"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -1396,10 +1396,6 @@ var constraintName = myForeignKey.ConstraintName;
 
 EF Core 3.0 이전에는 이러한 메서드가 비공개였습니다.
 
-```C#
-var constraintName = myForeignKey.Name;
-```
-
 **새 동작**
 
 EF Core 3.0부터 이러한 메서드는 공개입니다.
@@ -1463,3 +1459,26 @@ SQLitePCL.raw의 버전 2.0.0은 .NET Standard 2.0을 대상으로 합니다. �
 **완화 방법**
 
 SQLitePCL.raw 버전 2.0.0에 중대한 변경이 포함되었습니다. 자세한 내용은 [릴리스 정보](https://github.com/ericsink/SQLitePCL.raw/blob/v2/v2.md)를 참조하세요.
+
+
+## <a name="nettopologysuite-updated-to-version-200"></a>NetTopologySuite를 버전 2.0.0으로 업데이트
+
+[이슈 추적 #14825](https://github.com/aspnet/EntityFrameworkCore/issues/14825)
+
+이 변경 내용은 EF Core 3.0 미리 보기 7에 도입되었습니다.
+
+**이전 동작**
+
+이전의 공간 패키지는 NetTopologySuite의 버전 1.15.1을 사용했습니다.
+
+**새 동작**
+
+버전 2.0.0에 의존하도록 패키지를 업데이트했습니다.
+
+**이유**
+
+NetTopologySuite 버전 2.0.0은 EF Core 사용자에게 발생하는 여러 가지 유용성 문제를 해결하는 것이 목적입니다.
+
+**완화 방법**
+
+NetTopologySuite 버전 2.0.0에는 호환성이 손상되는 변경이 포함되어 있습니다. 자세한 내용은 [릴리스 정보](https://www.nuget.org/packages/NetTopologySuite/2.0.0-pre001)를 참조하세요.
