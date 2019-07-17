@@ -2,14 +2,14 @@
 title: EF Core 도구 참조 (.NET CLI)-EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 09/20/2018
+ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 959785c7b10ca668f3691106f62076d538978c03
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: 05c5f89fc79556e72a7e629c147aa817fe7d1a6b
+ms.sourcegitcommit: e90d6cfa3e96f10b8b5275430759a66a0c714ed1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688669"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286462"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Entity Framework Core 참조-.NET CLI 도구
 
@@ -23,9 +23,28 @@ Entity Framework Core에 대 한 명령줄 인터페이스 (CLI) 도구는 디�
 
 설치 절차는 프로젝트 형식 및 버전에 따라 달라 집니다.
 
+* EF Core 3.x
 * ASP.NET Core 2.1 이상 버전
 * EF Core 2.x
 * EF Core 1.x
+
+### <a name="ef-core-3x"></a>EF Core 3.x
+
+* `dotnet ef` 전역 또는 로컬 도구를 설치 해야 합니다. 대부분의 개발자가 설치 `dotnet ef` 다음 명령 사용 하 여 전역 도구로:
+
+  ``` console
+    $ dotnet tool install --global dotnet-ef --version 3.0.0-*
+  ```
+
+  사용할 수도 있습니다 `dotnet ef` 로컬 도구로 합니다. 를 사용 하려면 로컬 도구로 사용 하 여 도구 종속성을 선언 하는 프로젝트의 종속성을 복원 합니다는 [매니페스트 파일 도구](https://github.com/dotnet/cli/issues/10288)합니다.
+
+* 설치 합니다 [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)). SDK는 Visual Studio의 최신 버전이 있는 경우에 설치 해야 합니다.
+
+* 최신 설치 `Microsoft.EntityFrameworkCore.Design` 패키지 있습니다.
+
+  ``` Console
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+  ```
 
 ### <a name="aspnet-core-21"></a>ASP.NET Core 2.1 이상
 
@@ -37,7 +56,7 @@ Entity Framework Core에 대 한 명령줄 인터페이스 (CLI) 도구는 디�
 
 합니다 `dotnet ef` 명령을 사용할 수 있도록 설치 해야 하는.NET Core SDK에 포함 된를 `Microsoft.EntityFrameworkCore.Design` 패키지 있습니다.
 
-* 현재 설치 [.NET Core SDK](https://www.microsoft.com/net/download/core)합니다. 최신 버전의 Visual Studio 2017이 있는 경우에도 이 SDK를 설치해야 합니다.
+* 현재 설치 [.NET Core SDK](https://www.microsoft.com/net/download/core)합니다. SDK는 Visual Studio의 최신 버전이 있는 경우에 설치 해야 합니다.
 
 * 안정적인 최신 설치 `Microsoft.EntityFrameworkCore.Design` 패키지 있습니다.
 
@@ -140,7 +159,7 @@ ASP.NET Core 프로젝트에 대 한 환경에 지정 하려면 합니다 **ASPN
 |                   | 옵션                            | 설명                                                                                                                                                                                                                                                   |
 |:------------------|:----------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                   | `--json`                          | JSON 출력을 표시 합니다.                                                                                                                                                                                                                                             |
-| <nobr>`-c`</nobr> | `--context <DBCONTEXT>`           | `DbContext` 클래스를 사용 합니다. 유일한 또는 정규화 된 네임 스페이스의 클래스 이름입니다.  이 옵션을 생략할 경우 EF Core 컨텍스트 클래스를 찾을 수 있습니다. 여러 컨텍스트 클래스의 경우이 옵션이 필요 합니다.                                            |
+| <nobr>`-c`</nobr> | `--context <DBCONTEXT>`           | 사용할 `DbContext` 클래스입니다. 유일한 또는 정규화 된 네임 스페이스의 클래스 이름입니다.  이 옵션을 생략할 경우 EF Core 컨텍스트 클래스를 찾을 수 있습니다. 여러 컨텍스트 클래스의 경우이 옵션이 필요 합니다.                                            |
 | `-p`              | `--project <PROJECT>`             | 대상 프로젝트의 프로젝트 폴더에 상대 경로입니다.  기본값은 현재 폴더입니다.                                                                                                                                                              |
 | `-s`              | `--startup-project <PROJECT>`     | 시작 프로젝트의 프로젝트 폴더에 상대 경로입니다. 기본값은 현재 폴더입니다.                                                                                                                                                              |
 |                   | `--framework <FRAMEWORK>`         | 합니다 [대상 프레임 워크 모니커](/dotnet/standard/frameworks#supported-target-framework-versions) 에 대 한 합니다 [대상 프레임 워크](/dotnet/standard/frameworks)합니다.  프로젝트 파일을 여러 대상 프레임 워크를 지정 하 고 그 중 하나를 선택 하려는 경우 사용 합니다. |
@@ -193,7 +212,7 @@ dotnet ef database update 20180904195021_InitialCreate
 
 인수:
 
-| 인수       | 설명                                                                                                                                                                                                             |
+| 인수       | Description                                                                                                                                                                                                             |
 |:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `<CONNECTION>` | 데이터베이스에 연결 문자열입니다. ASP.NET Core 2.x 프로젝트에 대 한 값이 될 수 있습니다 *이름 =\<연결 문자열의 이름 >* 합니다. 이 경우 이름을 프로젝트에 대해 설정 된 구성 소스에서 제공 됩니다. |
 | `<PROVIDER>`   | 공급자에서 사용 합니다. 일반적으로이 NuGet 패키지의 이름 예: `Microsoft.EntityFrameworkCore.SqlServer`합니다.                                                                                           |
@@ -229,13 +248,13 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 인수:
 
-| 인수 | 설명                |
+| 인수 | Description                |
 |:---------|:---------------------------|
 | `<NAME>` | 마이그레이션 이름입니다. |
 
 옵션:
 
-|                   | 옵션                             | 설명                                                                                                      |
+|                   | 옵션                             | Description                                                                                                      |
 |:------------------|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------|
 | <nobr>`-o`</nobr> | <nobr>`--output-dir <PATH>`</nobr> | 사용 하 여 디렉터리 (및 하위 네임 스페이스). 프로젝트 디렉터리를 기준으로 경로입니다. 기본값은 "마이그레이션"입니다. |
 
@@ -249,7 +268,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 옵션:
 
-|                   | 옵션    | 설명                                                                     |
+|                   | 옵션    | Description                                                                     |
 |:------------------|:----------|:--------------------------------------------------------------------------------|
 | <nobr>`-f`</nobr> | `--force` | 마이그레이션 되돌리기 (데이터베이스에 적용 된 변경 내용 롤백). |
 
@@ -259,7 +278,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 인수:
 
-| 인수 | 설명                                                                                                                                                   |
+| 인수 | Description                                                                                                                                                   |
 |:---------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `<FROM>` | 마이그레이션을 시작 합니다. 마이그레이션은 식별 이름 또는 id입니다. 숫자 0는 특별 한 의미 *첫 번째 마이그레이션 전에*입니다. 기본값은 0입니다. |
 | `<TO>`   | 끝 마이그레이션입니다. 기본값 마지막 마이그레이션입니다.                                                                                                         |

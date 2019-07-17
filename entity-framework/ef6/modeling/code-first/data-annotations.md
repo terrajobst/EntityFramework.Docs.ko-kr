@@ -1,20 +1,20 @@
 ---
-title: Code First Data Annotations - EF6
+title: First 데이터 주석-EF6 코드
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80abefbd-23c9-4fce-9cd3-520e5df9856e
-ms.openlocfilehash: e6b017306b4f66f5bac2a9964e11391da28ceb40
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: fcd01aef7303573001460b352f8099b2cc6e224a
+ms.sourcegitcommit: e90d6cfa3e96f10b8b5275430759a66a0c714ed1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463284"
+ms.lasthandoff: 07/17/2019
+ms.locfileid: "68286473"
 ---
 # <a name="code-first-data-annotations"></a>Code First 데이터 주석
 > [!NOTE]
 > **EF4.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 4.1에서 도입 되었습니다. 이전 버전을 사용 하는 경우이 정보 중 일부나 전부 적용 되지 않습니다.
 
-Julie lerman 작성 원래 작성 된 문서에서이 페이지에 있는 콘텐츠는 (\<http://thedatafarm.com>)합니다.
+Julie lerman 작성 원래 작성 된 문서에서이 페이지에 있는 콘텐츠는 (\<http://thedatafarm.com>) 합니다.
 
 Entity Framework Code First EF를 쿼리 하는 데 사용 하는 모델을 나타내는 사용자 고유의 도메인 클래스를 사용 하면 추적 하 고 함수를 업데이트 하는 중 변경 됩니다. 코드는 먼저 '구성 보다 규칙입니다.' 라고 하는 프로그래밍 패턴을 활용 먼저 코드 클래스 Entity Framework의 규칙을 따르고이 경우 자동으로 작동의 작업을 수행 하는 방법에 대해 간주 합니다. 그러나 클래스 해당 규칙을 따르지 않으면 구성 필수 정보를 사용 하 여 EF 수 있도록 클래스에 추가할 수가 있습니다.
 
@@ -146,7 +146,7 @@ Title 속성에 필요한 추가 하면 EF 및 MVC가 속성에 데이터가 있
     public string Title { get; set; }
 ```
 
-없는 추가 하지 않은 코드 또는 태그 변경 내용을 응용 프로그램에서 MVC 응용 프로그램이 실행 클라이언트 쪽 유효성 검사, 속성 및 주석 이름을 사용 하 여 메시지를 동적으로 작성 합니다.
+추가 코드 또는 응용 프로그램에서 태그 변경 없이 사용 하 여 MVC 응용 프로그램에 클라이언트 쪽 유효성 검사, 속성 및 주석 이름을 사용 하 여 메시지를 동적으로 작성을 수행 합니다.
 
 ![만들 제목으로 페이지는 필요한 오류](~/ef6/media/jj591583-figure02.png)
 
