@@ -1,15 +1,15 @@
 ---
-title: DbContext-EF Core 구성
+title: DbContext 구성-EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 316d363d4a1b8a909efc1c32b492280c0d16cb4e
-ms.sourcegitcommit: 960e42a01b3a2f76da82e074f64f52252a8afecc
+ms.openlocfilehash: ddabf825ef23c2ec07efcde390df7d0cf48db33c
+ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/08/2019
-ms.locfileid: "65405217"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68306505"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
 
@@ -25,12 +25,12 @@ ms.locfileid: "65405217"
 
 작업을 수행하려면 `DbContext`에 `DbContextOptions` 인스턴스가 있어야 합니다. `DbContextOptions` 인스턴스는 다음과 같은 구성 정보를 전달합니다.
 
-- 데이터베이스 공급자를 사용 하려면 일반적으로 같은 메서드를 호출 하 여 선택한 `UseSqlServer` 또는 `UseSqlite`합니다. 이러한 확장 메서드는 해당 공급자 패키지를 같은 필요 `Microsoft.EntityFrameworkCore.SqlServer` 또는 `Microsoft.EntityFrameworkCore.Sqlite`합니다. 에 정의 된 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스입니다.
-- 모든 필수 연결 문자열이 나 데이터베이스 인스턴스의 식별자입니다. 일반적으로 인수로 전달 위에서 언급 한 공급자 선택 방법
-- 일반적으로 연결 된 공급자 선택 방법에 대 한 호출 내에서 모든 선택적 동작 공급자 수준의 선택기
-- 일반적으로 공급자 선택기 메서드 전이나 후 연결 된 모든 일반 EF Core 동작 선택기
+- 사용할 데이터베이스 공급자입니다. 일반적으로 또는 `UseSqlServer` `UseSqlite`와 같은 메서드를 호출 하 여 선택 합니다. 이러한 확장 메서드에는 또는 `Microsoft.EntityFrameworkCore.SqlServer` `Microsoft.EntityFrameworkCore.Sqlite`와 같은 해당 공급자 패키지가 필요 합니다. 메서드는 `Microsoft.EntityFrameworkCore` 네임 스페이스에서 정의 됩니다.
+- 일반적으로 위에서 언급 한 공급자 선택 메서드에 인수로 전달 되는 데이터베이스 인스턴스의 필수 연결 문자열 또는 식별자입니다.
+- 공급자 수준 선택적 동작 선택기 (일반적으로 공급자 선택 메서드 호출 내에도 연결)
+- 일반적으로 공급자 선택기 메서드에 연결 된 일반적인 EF Core 동작 선택기입니다.
 
-다음 예제에서는 구성 합니다 `DbContextOptions` SQL Server 공급자를 사용 하려면 연결에 포함 합니다 `connectionString` 변수와 공급자 수준의 명령 제한 시간을 실행 하는 모든 쿼리는 EF Core 동작 선택기를를 `DbContext` [비 추적](xref:core/querying/tracking#no-tracking-queries) 기본적으로:
+다음 예제에서는 SQL Server 공급자 `DbContextOptions` 를 사용 하도록를 구성 하 고, `connectionString` 변수에 포함 된 연결, 공급자 수준 명령 시간 제한을 사용 하 고, EF Core 동작 선택기를 사용 하 여 `DbContext` 모든 쿼리를 실행 합니다. 기본적으로 [추적 안 함](xref:core/querying/tracking#no-tracking-queries) :
 
 ``` csharp
 optionsBuilder
@@ -63,7 +63,7 @@ public class BloggingContext : DbContext
 > [!TIP]  
 > DbContext의 기본 생성자도 `DbContextOptions`의 비 제네릭 버전을 허용하지만 비 제네릭 버전을 사용하는 것은 다중 컨텍스트 유형이 있는 응용 프로그램에는 권장되지 않습니다.
 
-생성자 인수에서 초기화 하는 응용 프로그램 코드:
+생성자 인수에서 초기화할 응용 프로그램 코드:
 
 ``` csharp
 var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
@@ -111,7 +111,7 @@ EF Core는 종속성 주입 컨테이너로 `DbContext`를 사용하는 것을 �
 
 종속성 주입에 대한 추가 정보는 아래의 [더 많은 읽기](#more-reading) 자료를 참조하십시오.
 
-종속성 주입에 `Dbcontext` 추가:
+종속성 주입에 `DbContext` 추가:
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
@@ -161,35 +161,35 @@ using (var context = serviceProvider.GetService<BloggingContext>())
 
 var options = serviceProvider.GetService<DbContextOptions<BloggingContext>>();
 ```
-## <a name="avoiding-dbcontext-threading-issues"></a>DbContext 스레딩 문제를 방지 합니다.
+## <a name="avoiding-dbcontext-threading-issues"></a>DbContext 스레딩 문제 방지
 
-Entity Framework Core 동일한 실행 되 고 여러 병렬 작업을 지원 하지 않습니다 `DbContext` 인스턴스. 비동기 쿼리의 병렬 실행 및 여러 스레드에서 명시적 동시 사용을 모두 포함 합니다. 따라서, 항상 `await` 비동기 즉시 호출 또는 별도 사용 하 여 `DbContext` 병렬로 실행 하는 작업에 대 한 인스턴스.
+Entity Framework Core는 동일한 `DbContext` 인스턴스에서 실행 되는 여러 병렬 작업을 지원 하지 않습니다. 여기에는 비동기 쿼리의 병렬 실행과 여러 스레드에서의 명시적 동시 사용이 모두 포함 됩니다. 따라서는 항상 `await` 비동기를 호출 하거나 병렬로 실행 되 `DbContext` 는 작업에 대해 별도의 인스턴스를 사용 합니다.
 
-EF Core를 사용 하려고를 감지 하는 경우는 `DbContext` 인스턴스를 동시에 볼 수는 `InvalidOperationException` 다음과 같은 메시지를 사용 하 여: 
+EF Core에서 `DbContext` 인스턴스를 동시에 사용 하려는 시도를 감지 하면 다음과 같은 메시지가 `InvalidOperationException` 표시 됩니다. 
 
-> 이 컨텍스트에서 이전 작업이 완료 되기 전에 두 번째 작업을 시작 합니다. 하지만이 일반적으로 발생 다른 스레드에 의해 DbContext의 동일한 인스턴스를 사용 인스턴스 멤버는 보장 되지 않습니다 스레드로부터 안전 합니다.
+> 이전 작업이 완료 되기 전에이 컨텍스트에서 시작 된 두 번째 작업입니다. 이 문제는 일반적으로 DbContext의 동일한 인스턴스를 사용 하는 다른 스레드에 의해 발생 하지만 인스턴스 멤버는 스레드로부터 안전 하지 않을 수 있습니다.
 
-동시 액세스 감지 되 면 정의 되지 않은 동작, 응용 프로그램 충돌 및 데이터가 손상 될 수 있습니다.
+동시 액세스가 검색 되지 않는 경우에는 정의 되지 않은 동작, 응용 프로그램 충돌 및 데이터 손상이 발생할 수 있습니다.
 
-동일한 inadvernetly 원인은 동시 액세스를 수행할 수 있는 일반적인 실수는 `DbContext` 인스턴스:
+실수로 동일한 `DbContext` 인스턴스에서 동시에 액세스할 수 있는 일반적인 실수가 있습니다.
 
-### <a name="forgetting-to-await-the-completion-of-an-asynchronous-operation-before-starting-any-other-operation-on-the-same-dbcontext"></a>동일한 DbContext에 대해 다른 작업을 시작 하기 전에 비동기 작업의 완료를 대기할 무시
+### <a name="forgetting-to-await-the-completion-of-an-asynchronous-operation-before-starting-any-other-operation-on-the-same-dbcontext"></a>동일한 DbContext에서 다른 작업을 시작 하기 전에 비동기 작업의 완료를 기다리지 않습니다.
 
-비동기 메서드는 비차단 방식으로 데이터베이스를 액세스 하는 작업을 시작 하려면 EF Core를 사용 합니다. 그러나 호출자가 이러한 방법 중 하나를 완료를 기다리지는 않습니다 하 고 다른 작업에서 수행 하는 경우는 `DbContext`의 상태는 `DbContext` 일 수 있습니다 (및 가능성이 됩니다) 손상입니다. 
+비동기 메서드를 사용 하면 EF Core를 사용 하 여 비차단 방식으로 데이터베이스에 액세스 하는 작업을 시작할 수 있습니다. 그러나 호출자가 이러한 메서드 중 하나를 완료 하는 것을 기다리지 않고에서 다른 작업 `DbContext`을 수행 하기 위해를 진행 하는 경우의 상태 `DbContext` 는이 될 수 있으며,이 경우에는 손상 될 가능성이 높습니다. 
 
-EF Core 비동기 메서드를 즉시 await 항상 있습니다.  
+항상 EF Core 비동기 메서드를 즉시 기다립니다.  
 
-### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>종속성 주입을 통해 여러 스레드에서 DbContext 인스턴스를 암시적으로 공유
+### <a name="implicitly-sharing-dbcontext-instances-across-multiple-threads-via-dependency-injection"></a>종속성 주입을 통해 여러 스레드 간에 DbContext 인스턴스를 암시적으로 공유
 
-합니다 [ `AddDbContext` ](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 확장 메서드는 등록 `DbContext` 사용 하 여 형식를 [scoped 수명](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) 기본적으로 합니다. 
+확장 [`AddDbContext`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 메서드는 기본적 `DbContext` 으로 범위가 지정 된 [수명](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) 으로 형식을 등록 합니다. 
 
-될 ASP.NET Core 응용 프로그램에 대 한 동시 액세스 문제 로부터 안전 하 게 지정된 된 시간에 각 클라이언트 요청을 실행 하는 스레드가 하나만 있기 때문에 각 요청을 별도 종속성 주입 범위를 가져옵니다 (및 따라서 별도 `DbContext` 인스턴스)입니다.
+이 ASP.NET Core는 지정 된 시간에 각 클라이언트 요청을 실행 하는 스레드가 하나 뿐 이며, 각 요청이 별도의 종속성 주입 범위 (따라서 `DbContext` 별도의 인스턴스).
 
-하지만 명시적으로 병렬로 여러 스레드를 실행 하는 모든 코드 인지를 확인 해야 `DbContext` 인스턴스가 아닌 동시에 accesed 적이 있습니다.
+그러나 여러 스레드를 명시적으로 병렬로 실행 하는 코드는 `DbContext` 인스턴스가 동시에 액세스 되지 않도록 해야 합니다.
 
-종속성 주입을 사용 하 여 수행할 수 있습니다 하거나를 등록 하 여 컨텍스트 범위 지정 및 만들기 범위로 (사용 하 여 `IServiceScopeFactory`) 각 스레드에 대해 또는 등록 하 여 합니다 `DbContext` 일시적으로 (오버 로드를 사용 하 여 `AddDbContext` 를사용하는`ServiceLifetime` 매개 변수).
+종속성 주입을 사용 하 여이 작업을 수행 `IServiceScopeFactory` `DbContext` `AddDbContext` 하려면컨텍스트를범위가지정된로등록하고각스레드에대해범위(사용)를만들거나를임시로등록합니다.(의오버로드를사용하여를사용합니다.`ServiceLifetime` 매개 변수).
 
-## <a name="more-reading"></a>더 많은 읽기
+## <a name="more-reading"></a>추가 정보
 
 * ASP.NET Core에서 EF 사용에 대한 자세한 내용은 [ASP.NET Core 시작하기](../get-started/aspnetcore/index.md)를 참조하십시오.
 * DI 사용에 관해 더 배우려면 [종속성 주입](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection)을 참조하십시오.
