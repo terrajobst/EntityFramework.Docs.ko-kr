@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: d432ca36c166f7baf71253709bf58b1f5428a11a
-ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
+ms.openlocfilehash: 08231cd93002a6d1b3cebe20f4f7cf57ea085af2
+ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/14/2019
-ms.locfileid: "59562509"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68306402"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -155,3 +155,16 @@ EF Core에 대한 임시 지원을 구현합니다.
 EF Core에 대한 두 번째 수준 고성능 쿼리 캐시입니다.
 
 [GitHub 리포지토리](https://github.com/SteffenMangold/EntityFrameworkCore.Cacheable)
+
+### <a name="entity-framework-plus"></a>Entity Framework Plus
+
+다음과 같은 기능으로 DbContext를 확장합니다. 필터, 감사, 캐싱, 향후 쿼리, 일괄 삭제, 일괄 업데이트 등을 포함합니다.
+
+[웹 사이트](https://entityframework-plus.net/)
+[GitHub 리포지토리](https://github.com/zzzprojects/EntityFramework-Plus)
+
+### <a name="entity-framework-extensions"></a>Entity Framework Extensions
+
+고성능 대량 작업을 통해 DbContext를 확장합니다. BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge 등이 있습니다.
+
+[웹 사이트](https://entityframework-extensions.net/)
