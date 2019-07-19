@@ -3,12 +3,12 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: 4afc9fb0338d34845639d57013ac710445321940
-ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
+ms.openlocfilehash: e1cb9f5afc54aaa12e5880ace606277b00911c06
+ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/14/2019
-ms.locfileid: "59562444"
+ms.lasthandoff: 07/18/2019
+ms.locfileid: "68306468"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
 
@@ -31,20 +31,20 @@ ms.locfileid: "59562444"
 
 [!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Entities)]
 
-_Blog_ 엔터티에서 __tenantId_ 필드의 선언을 확인하세요. 이 선언은 각 Blog 인스턴스를 특정 테넌트와 연결하는 데 사용됩니다. 또한 _IsDeleted_ 속성은 _Post_ 엔터티 형식에 정의되어 있습니다. 이 속성은 _Post_ 인스턴스가 “일시 삭제”되었는지 여부를 추적하는 데 사용됩니다. 즉, 기본 데이터를 물리적으로 제거하지 않아도 인스턴스가 삭제된 것으로 표시됩니다.
+_블로그_ 엔터티에서 _tenantId_ 필드의 선언을 확인하세요. 이 선언은 각 Blog 인스턴스를 특정 테넌트와 연결하는 데 사용됩니다. 또한 _IsDeleted_ 속성은 _Post_ 엔터티 형식에 정의되어 있습니다. 이 속성은 _Post_ 인스턴스가 “일시 삭제”되었는지 여부를 추적하는 데 사용됩니다. 즉, 기본 데이터를 물리적으로 제거하지 않아도 인스턴스가 삭제된 것으로 표시됩니다.
 
-다음으로, ```HasQueryFilter``` API를 사용하여 _OnModelCreating_에서 쿼리 필터를 구성합니다.
+다음으로, `HasQueryFilter` API를 사용하여 _OnModelCreating_에서 쿼리 필터를 구성합니다.
 
 [!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Configuration)]
 
 이제 _HasQueryFilter_ 호출에 전달된 조건자 식이 해당 형식에 대한 모든 LINQ 쿼리에 자동으로 적용됩니다.
 
 > [!TIP]
-> DbContext 인스턴스 수준 필드를 사용합니다. ```_tenantId```는 현재 테넌트를 설정하는 데 사용됩니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 인스턴스)의 값을 사용합니다.
+> DbContext 인스턴스 수준 필드를 사용합니다. `_tenantId`는 현재 테넌트를 설정하는 데 사용됩니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 인스턴스)의 값을 사용합니다.
 
 ## <a name="disabling-filters"></a>필터 사용 안 함
 
-```IgnoreQueryFilters()``` 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않도록 설정할 수 있습니다.
+`IgnoreQueryFilters()` 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않도록 설정할 수 있습니다.
 
 [!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#IgnoreFilters)]
 
