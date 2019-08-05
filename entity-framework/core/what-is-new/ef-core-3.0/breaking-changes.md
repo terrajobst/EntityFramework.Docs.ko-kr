@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 7cc0bd3946be2e63d9fb46a023bf6abe750ae0e3
-ms.sourcegitcommit: e90d6cfa3e96f10b8b5275430759a66a0c714ed1
+ms.openlocfilehash: c73663412efcd93c04892f193d4f5a2485724e22
+ms.sourcegitcommit: 755a15a789631cc4ea581e2262a2dcc49c219eef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286490"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497524"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -20,7 +20,59 @@ ms.locfileid: "68286490"
 데이터베이스 공급자에만 영향을 줄 것으로 예상되는 변경 내용은 [공급자 변경](../../providers/provider-log.md)에 설명되어 있습니다.
 3\.0 미리 보기 간의 도입된 새로운 기능의 중단은 여기에 설명되어 있지 않습니다.
 
-## <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.
+## <a name="summary"></a>요약
+
+| **호환성이 손상되는 변경**                                                                                               | **영향** |
+|:------------------------------------------------------------------------------------------------------------------|------------|
+| [LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.](#linq-queries-are-no-longer-evaluated-on-the-client)         | 높음       |
+| [EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.](#dotnet-ef) | 높음      |
+| [FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.](#fromsql) | 높음      |
+| [쿼리 형식은 엔터티 형식과 통합됩니다.](#qt) | 높음      |
+| [Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크의 일부가 아닙니다.](#no-longer) | 중간      |
+| [계단식 삭제는 기본적으로 즉시 발생합니다.](#cascade) | 중간      |
+| [DeleteBehavior.Restrict에 더 명확한 의미 체계가 적용되었습니다.](#deletebehavior) | 중간      |
+| [소유 형식 관계에 대한 구성 API가 변경되었습니다.](#config) | 중간      |
+| [각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.](#each) | 중간      |
+| [메타데이터 API 변경 내용](#metadata-api-changes) | 중간      |
+| [공급자별 메타데이터 API 변경 내용](#provider) | 중간      |
+| [UseRowNumberForPaging이 제거되었습니다.](#urn) | 중간      |
+| [FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.](#fromsql) | 낮음      |
+| [~~쿼리 실행은 디버그 수준에서 로깅됩니다.~~ 되돌림](#qe) | 낮음      |
+| [임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.](#tkv) | 낮음      |
+| [DetectChanges는 저장소 생성 키 값을 준수합니다.](#dc) | 낮음      |
+| [보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.](#de) | 낮음      |
+| [동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.](#aes) | 낮음      |
+| [매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.](#ip) | 낮음      |
+| [외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.](#fkp) | 낮음      |
+| [데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.](#dbc) | 낮음      |
+| [지원 필드는 기본적으로 사용됩니다.](#backing-fields-are-used-by-default) | 낮음      |
+| [호환이 가능한 여러 지원 필드가 발견되면 throw합니다.](#throw-if-multiple-compatible-backing-fields-are-found) | 낮음      |
+| [필드 전용 속성 이름은 필드 이름과 일치해야 합니다.](#field-only-property-names-should-match-the-field-name) | 낮음      |
+| [AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않습니다.](#adddbc) | 낮음      |
+| [DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.](#dbe) | 낮음      |
+| [문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.](#string-and-byte-array-keys-are-not-client-generated-by-default) | 낮음      |
+| [ILoggerFactory는 이제 범위가 지정된 서비스입니다.](#ilf) | 낮음      |
+| [지연 로드 프록시는 더 이상 탐색 속성이 완전히 로드되었다고 가정하지 않습니다.](#lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded) | 낮음      |
+| [내부 서비스 공급자의 과도한 생성은 이제 기본적으로 오류입니다.](#excessive-creation-of-internal-service-providers-is-now-an-error-by-default) | 낮음      |
+| [단일 문자열로 호출되는 HasOne/HasMany의 새 동작](#nbh) | 낮음      |
+| [여러 비동기 메서드의 반환 형식이 작업에서 ValueTask로 변경되었습니다.](#rtnt) | 낮음      |
+| [관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.](#rtt) | 낮음      |
+| [파생된 형식의 ToTable에서 예외가 throw됩니다.](#totable-on-a-derived-type-throws-an-exception) | 낮음      |
+| [EF Core는 더 이상 SQLite FK 적용을 위한 pragma를 보내지 않습니다.](#pragma) | 낮음      |
+| [Microsoft.EntityFrameworkCore.Sqlite는 이제 SQLitePCLRaw.bundle_e_sqlite3에 종속됩니다.](#sqlite3) | 낮음      |
+| [Guid 값은 이제 SQLite에 텍스트로 저장됩니다.](#guid) | 낮음      |
+| [Char 값은 이제 SQLite에 텍스트로 저장됩니다.](#char) | 낮음      |
+| [마이그레이션 ID가 이제 고정 문화권의 달력을 사용하여 생성됩니다.](#migid) | 낮음      |
+| [확장 정보/메타데이터가 IDbContextOptionsExtension에서 제거되었습니다.](#xinfo) | 낮음      |
+| [LogQueryPossibleExceptionWithAggregateOperator 이름이 바뀌었습니다.](#lqpe) | 낮음      |
+| [외래 키 제약 조건 이름에 대한 API가 명확해졌습니다.](#clarify) | 낮음      |
+| [IRelationalDatabaseCreator.HasTables/HasTablesAsync가 공개되었습니다.](#irdc2) | 낮음      |
+| [이제 Microsoft.EntityFrameworkCore.Design은 DevelopmentDependency 패키지입니다.](#dip) | 낮음      |
+| [SQLitePCL.raw가 버전 2.0.0으로 업데이트되었습니다.](#SQLitePCL) | 낮음      |
+| [NetTopologySuite가 버전 2.0.0으로 업데이트되었습니다.](#NetTopologySuite) | 낮음      |
+| [복수의 모호한 자기 참조 관계를 구성해야 합니다.](#mersa) | 낮음      |
+
+### <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.
 
 [추적 문제 #14935](https://github.com/aspnet/EntityFrameworkCore/issues/14935)
 [문제 #12795도 참조](https://github.com/aspnet/EntityFrameworkCore/issues/12795)
@@ -51,7 +103,8 @@ ms.locfileid: "68286490"
 
 쿼리를 완벽하게 변환할 수 없는 경우 변환할 수 있는 형식으로 쿼리를 다시 작성하거나 `AsEnumerable()`, `ToList()` 또는 유사한 형식을 사용하여 명시적으로 데이터를 클라이언트로 가져오면 LINQ to Objects를 사용하여 추가로 처리할 수 있습니다.
 
-## <a name="entity-framework-core-is-no-longer-part-of-the-aspnet-core-shared-framework"></a>Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크에 포함되지 않습니다.
+<a name="no-longer"></a>
+### <a name="entity-framework-core-is-no-longer-part-of-the-aspnet-core-shared-framework"></a>Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크에 포함되지 않습니다.
 
 [추적 문제 공지 사항 #325](https://github.com/aspnet/Announcements/issues/325)
 
@@ -76,7 +129,8 @@ ASP.NET Core 3.0 이전에는 `Microsoft.AspNetCore.App` 또는 `Microsoft.AspNe
 
 ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이션에서 EF Core를 사용하려면 애플리케이션에서 사용할 EF Core 데이터베이스 공급자에 대한 패키지 참조를 명시적으로 추가합니다.
 
-## <a name="the-ef-core-command-line-tool-dotnet-ef-is-no-longer-part-of-the-net-core-sdk"></a>EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.
+<a name="dotnet-ef"></a>
+### <a name="the-ef-core-command-line-tool-dotnet-ef-is-no-longer-part-of-the-net-core-sdk"></a>EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.
 
 [추적 문제 #14016](https://github.com/aspnet/EntityFrameworkCore/issues/14016)
 
@@ -104,7 +158,8 @@ ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이�
 
 [도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용하여 도구 종속성으로 선언한 프로젝트의 종속성을 복원할 때도 로컬 도구를 얻을 수 있습니다.
 
-## <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.
+<a name="fromsql"></a>
+### <a name="fromsql-executesql-and-executesqlasync-have-been-renamed"></a>FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.
 
 [추적 문제 #10996](https://github.com/aspnet/EntityFrameworkCore/issues/10996)
 
@@ -144,7 +199,9 @@ context.Products.FromSqlInterpolated(
 
 새 메서드 이름을 사용하도록 전환합니다.
 
-## <a name="fromsql-methods-can-only-be-specified-on-query-roots"></a>FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.
+<a name="fromsql"></a>
+
+### <a name="fromsql-methods-can-only-be-specified-on-query-roots"></a>FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.
 
 [추적 이슈 #15704](https://github.com/aspnet/EntityFrameworkCore/issues/15704)
 
@@ -166,7 +223,9 @@ EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(
 
 `FromSql` 호출은 이 호출이 적용되는 `DbSet`로 직접 이동해야 합니다.
 
-## <a name="query-execution-is-logged-at-debug-level-reverted"></a>~~쿼리 실행은 디버그 수준에서 로깅됩니다.~~ 되돌림
+<a name="qe"></a>
+
+### <a name="query-execution-is-logged-at-debug-level-reverted"></a>~~쿼리 실행은 디버그 수준에서 로깅됩니다.~~ 되돌림
 
 [추적 문제 #14523](https://github.com/aspnet/EntityFrameworkCore/issues/14523)
 
@@ -180,7 +239,9 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         .ConfigureWarnings(c => c.Log((RelationalEventId.CommandExecuting, LogLevel.Debug)));
 ```
 
-## <a name="temporary-key-values-are-no-longer-set-onto-entity-instances"></a>임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.
+<a name="tkv"></a>
+
+### <a name="temporary-key-values-are-no-longer-set-onto-entity-instances"></a>임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.
 
 [추적 문제 #12378](https://github.com/aspnet/EntityFrameworkCore/issues/12378)
 
@@ -208,7 +269,9 @@ EF Core 3.0 이전에는 임시 값이 데이터베이스에서 생성된 실제
 * 엔터티의 추적 정보에서 실제 임시 키 값을 가져옵니다.
 예를 들어 `context.Entry(blog).Property(e => e.Id).CurrentValue`는 `blog.Id` 자체가 설정되지 않았더라도 임시 값을 반환합니다.
 
-## <a name="detectchanges-honors-store-generated-key-values"></a>DetectChanges는 저장 생성 키 값을 준수합니다.
+<a name="dc"></a>
+
+### <a name="detectchanges-honors-store-generated-key-values"></a>DetectChanges는 저장 생성 키 값을 준수합니다.
 
 [추적 문제 #14616](https://github.com/aspnet/EntityFrameworkCore/issues/14616)
 
@@ -247,8 +310,8 @@ modelBuilder
 [DatabaseGenerated(DatabaseGeneratedOption.None)]
 public string Id { get; set; }
 ```
-
-## <a name="cascade-deletions-now-happen-immediately-by-default"></a>계단식 삭제는 기본적으로 즉시 발생합니다.
+<a name="cascade"></a>
+### <a name="cascade-deletions-now-happen-immediately-by-default"></a>계단식 삭제는 기본적으로 즉시 발생합니다.
 
 [추적 문제 #10114](https://github.com/aspnet/EntityFrameworkCore/issues/10114)
 
@@ -276,8 +339,8 @@ public string Id { get; set; }
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
 context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 ```
-
-## <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>DeleteBehavior.Restrict에는 명확한 의미 체계가 있습니다.
+<a name="deletebehavior"></a>
+### <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>DeleteBehavior.Restrict에는 명확한 의미 체계가 있습니다.
 
 [추적 문제 #12661](https://github.com/aspnet/EntityFrameworkCore/issues/12661)
 
@@ -299,7 +362,8 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 이전 동작은 `DeleteBehavior.ClientNoAction`을 사용하여 복원할 수 있습니다.
 
-## <a name="query-types-are-consolidated-with-entity-types"></a>쿼리 형식은 엔터티 형식과 통합됩니다.
+<a name="qt"></a>
+### <a name="query-types-are-consolidated-with-entity-types"></a>쿼리 형식은 엔터티 형식과 통합됩니다.
 
 [추적 문제 #14194](https://github.com/aspnet/EntityFrameworkCore/issues/14194)
 
@@ -329,7 +393,8 @@ API의 다음 부분은 이제 사용되지 않습니다.
 * **`DbQuery<>`** - 대신 `DbSet<>`를 사용해야 합니다.
 * **`DbContext.Query<>()`** - 대신 `DbContext.Set<>()`를 사용해야 합니다.
 
-## <a name="configuration-api-for-owned-type-relationships-has-changed"></a>소유 형식 관계에 대한 구성 API가 변경됨
+<a name="config"></a>
+### <a name="configuration-api-for-owned-type-relationships-has-changed"></a>소유 형식 관계에 대한 구성 API가 변경됨
 
 [추적 문제 #12444](https://github.com/aspnet/EntityFrameworkCore/issues/12444)
 [추적 문제 #9148](https://github.com/aspnet/EntityFrameworkCore/issues/9148)
@@ -387,7 +452,9 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
 
 위의 예와 같이 소유 형식 관계의 구성을 변경하여 새 API 화면을 사용합니다.
 
-## <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.
+<a name="de"></a>
+
+### <a name="dependent-entities-sharing-the-table-with-the-principal-are-now-optional"></a>보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.
 
 [추적 문제 #9005](https://github.com/aspnet/EntityFrameworkCore/issues/9005)
 
@@ -422,7 +489,9 @@ EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 �
 
 사용하는 모델이 모든 선택적 열에 따라 다르게 공유되는 테이블을 포함하지만 해당 테이블을 가리키는 탐색이 `null`로 예상되지 않는 경우 `null`을 탐색하는 경우를 처리하도록 애플리케이션을 수정해야 합니다. 이렇게 할 수 없는 경우 엔터티 형식에 필수 속성을 추가하거나 하나 이상의 속성에 `null`이 아닌 값을 할당해야 합니다.
 
-## <a name="all-entities-sharing-a-table-with-a-concurrency-token-column-have-to-map-it-to-a-property"></a>동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.
+<a name="aes"></a>
+
+### <a name="all-entities-sharing-a-table-with-a-concurrency-token-column-have-to-map-it-to-a-property"></a>동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.
 
 [추적 문제 #14154](https://github.com/aspnet/EntityFrameworkCore/issues/14154)
 
@@ -474,7 +543,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-## <a name="inherited-properties-from-unmapped-types-are-now-mapped-to-a-single-column-for-all-derived-types"></a>매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.
+<a name="ip"></a>
+
+### <a name="inherited-properties-from-unmapped-types-are-now-mapped-to-a-single-column-for-all-derived-types"></a>매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.
 
 [추적 문제 #13998](https://github.com/aspnet/EntityFrameworkCore/issues/13998)
 
@@ -537,7 +608,9 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 }
 ```
 
-## <a name="the-foreign-key-property-convention-no-longer-matches-same-name-as-the-principal-property"></a>외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.
+<a name="fkp"></a>
+
+### <a name="the-foreign-key-property-convention-no-longer-matches-same-name-as-the-principal-property"></a>외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.
 
 [추적 문제 #13274](https://github.com/aspnet/EntityFrameworkCore/issues/13274)
 
@@ -605,7 +678,9 @@ public class Order
 
 속성을 외래 키로 하고, 이에 따라서 기본 키의 일부가 되는 경우 명시적으로 이와 같이 구성합니다.
 
-## <a name="database-connection-is-now-closed-if-not-used-anymore-before-the-transactionscope-has-been-completed"></a>데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.
+<a name="dbc"></a>
+
+### <a name="database-connection-is-now-closed-if-not-used-anymore-before-the-transactionscope-has-been-completed"></a>데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.
 
 [추적 문제 #14218](https://github.com/aspnet/EntityFrameworkCore/issues/14218)
 
@@ -657,7 +732,9 @@ using (new TransactionScope())
 }
 ```
 
-## <a name="each-property-uses-independent-in-memory-integer-key-generation"></a>각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.
+<a name="each"></a>
+
+### <a name="each-property-uses-independent-in-memory-integer-key-generation"></a>각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.
 
 [추적 문제 #6872](https://github.com/aspnet/EntityFrameworkCore/issues/6872)
 
@@ -681,7 +758,7 @@ EF Core 3.0부터 메모리 내 데이터베이스를 사용하는 경우 각 �
 이로 인해 특정 메모리 내 키 값을 사용하는 애플리케이션이 중단될 수 있습니다.
 대신 특정 키 값을 사용하지 않거나 새 동작과 일치하도록 업데이트하지 않도록 합니다.
 
-## <a name="backing-fields-are-used-by-default"></a>지원 필드는 기본적으로 사용됩니다.
+### <a name="backing-fields-are-used-by-default"></a>지원 필드는 기본적으로 사용됩니다.
 
 [추적 문제 #12430](https://github.com/aspnet/EntityFrameworkCore/issues/12430)
 
@@ -710,7 +787,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
 ```
 
-## <a name="throw-if-multiple-compatible-backing-fields-are-found"></a>호환이 가능한 여러 지원 필드가 발견되면 throw됩니다.
+### <a name="throw-if-multiple-compatible-backing-fields-are-found"></a>호환이 가능한 여러 지원 필드가 발견되면 throw됩니다.
 
 [추적 문제 #12523](https://github.com/aspnet/EntityFrameworkCore/issues/12523)
 
@@ -741,7 +818,7 @@ modelBuilder
     .HasField("_id");
 ```
 
-## <a name="field-only-property-names-should-match-the-field-name"></a>필드 전용 속성 이름은 필드 이름과 일치해야 합니다.
+### <a name="field-only-property-names-should-match-the-field-name"></a>필드 전용 속성 이름은 필드 이름과 일치해야 합니다.
 
 이 변경 내용은 EF Core 3.0 미리 보기 4에 도입되었습니다.
 
@@ -787,7 +864,9 @@ modelBuilder
     .HasField("_id");
 ```
 
-## <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않음
+<a name="adddbc"></a>
+
+### <a name="adddbcontextadddbcontextpool-no-longer-call-addlogging-and-addmemorycache"></a>AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않음
 
 [추적 문제 #14756](https://github.com/aspnet/EntityFrameworkCore/issues/14756)
 
@@ -809,7 +888,9 @@ EF Core 3.0에서는 이러한 서비스가 애플리케이션의 DI 컨테이�
 
 애플리케이션에 이러한 서비스가 필요한 경우 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 또는 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 DI 컨테이너에 명시적으로 등록합니다.
 
-## <a name="dbcontextentry-now-performs-a-local-detectchanges"></a>DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.
+<a name="dbe"></a>
+
+### <a name="dbcontextentry-now-performs-a-local-detectchanges"></a>DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.
 
 [추적 문제 #13552](https://github.com/aspnet/EntityFrameworkCore/issues/13552)
 
@@ -837,7 +918,7 @@ EF Core 3.0부터 `DbContext.Entry` 호출은 지정된 엔터티와 이와 관�
 
 `Entry`를 호출하기 전에 명시적으로 `ChgangeTracker.DetectChanges()`를 호출하여 3.0 이전 버전의 동작을 확인합니다.
 
-## <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.
+### <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.
 
 [추적 문제 #14617](https://github.com/aspnet/EntityFrameworkCore/issues/14617)
 
@@ -875,7 +956,9 @@ modelBuilder
 public string Id { get; set; }
 ```
 
-## <a name="iloggerfactory-is-now-a-scoped-service"></a>ILoggerFactory는 이제 범위가 지정된 서비스입니다.
+<a name="ilf"></a>
+
+### <a name="iloggerfactory-is-now-a-scoped-service"></a>ILoggerFactory는 이제 범위가 지정된 서비스입니다.
 
 [추적 문제 #14698](https://github.com/aspnet/EntityFrameworkCore/issues/14698)
 
@@ -901,7 +984,7 @@ EF Core 3.0부터 이제 `ILoggerFactory`는 범위가 지정된 대로 등록�
 
 이와 같은 상황에 처한 경우 [EF Core GitHub 문제 추적기](https://github.com/aspnet/EntityFrameworkCore/issues)에 문제를 제출하여 향후 이 문제를 해결할 수 있는 방법을 더 잘 이해할 수 있도록 `ILoggerFactory`를 사용하는 방법을 알려주세요.
 
-## <a name="lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded"></a>지연 로드 프록시는 더 이상 탐색 속성이 완전히 로드되었다고 가정하지 않습니다.
+### <a name="lazy-loading-proxies-no-longer-assume-navigation-properties-are-fully-loaded"></a>지연 로드 프록시는 더 이상 탐색 속성이 완전히 로드되었다고 가정하지 않습니다.
 
 [추적 문제 #12780](https://github.com/aspnet/EntityFrameworkCore/issues/12780)
 
@@ -928,7 +1011,7 @@ EF Core 3.0부터 프록시는 탐색 속성이 로드되었는지 여부를 추
 
 애플리케이션을 업데이트하여 삭제된 컨텍스트로 지연 로드를 시도하지 않도록 하거나 예외 메시지에 설명된 대로 작업을 수행하지 않도록 구성합니다.
 
-## <a name="excessive-creation-of-internal-service-providers-is-now-an-error-by-default"></a>내부 서비스 공급자의 과도한 생성은 이제 기본적으로 오류입니다.
+### <a name="excessive-creation-of-internal-service-providers-is-now-an-error-by-default"></a>내부 서비스 공급자의 과도한 생성은 이제 기본적으로 오류입니다.
 
 [추적 문제 #10236](https://github.com/aspnet/EntityFrameworkCore/issues/10236)
 
@@ -960,7 +1043,9 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 }
 ```
 
-## <a name="new-behavior-for-hasonehasmany-called-with-a-single-string"></a>단일 문자열로 호출되는 HasOne/HasMany의 새 동작
+<a name="nbh"></a>
+
+### <a name="new-behavior-for-hasonehasmany-called-with-a-single-string"></a>단일 문자열로 호출되는 HasOne/HasMany의 새 동작
 
 [추적 문제 #9171](https://github.com/aspnet/EntityFrameworkCore/issues/9171)
 
@@ -997,7 +1082,9 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 ```
 
-## <a name="the-return-type-for-several-async-methods-has-been-changed-from-task-to-valuetask"></a>여러 비동기 메서드의 반환 형식이 작업에서 ValueTask로 변경되었습니다.
+<a name="rtnt"></a>
+
+### <a name="the-return-type-for-several-async-methods-has-been-changed-from-task-to-valuetask"></a>여러 비동기 메서드의 반환 형식이 작업에서 ValueTask로 변경되었습니다.
 
 [추적 문제 #15184](https://github.com/aspnet/EntityFrameworkCore/issues/15184)
 
@@ -1027,7 +1114,9 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 더 복잡한 사용(예: 반환된 `Task`를 `Task.WhenAny()`에 전달)의 경우 일반적으로 반환된 `ValueTask<T>`에 대해 `AsTask()`를 호출하여 `Task<T>`로 변환해야 합니다.
 이렇게 하면 이 변경으로 인한 할당 감소가 무효화됩니다.
 
-## <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.
+<a name="rtt"></a>
+
+### <a name="the-relationaltypemapping-annotation-is-now-just-typemapping"></a>관계형:TypeMapping 주석은 이제 TypeMapping일 뿐입니다.
 
 [추적 문제 #9913](https://github.com/aspnet/EntityFrameworkCore/issues/9913)
 
@@ -1050,7 +1139,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 이는 일반적이지 않은 주석으로 형식 매핑에 직접 액세스하는 애플리케이션만 중단합니다.
 수정하기 위한 가장 적절한 작업은 직접 주석을 사용하는 대신 API 화면을 사용하여 형식 매핑에 액세스하는 것입니다.
 
-## <a name="totable-on-a-derived-type-throws-an-exception"></a>파생된 형식의 ToTable에서 예외가 throw됩니다. 
+### <a name="totable-on-a-derived-type-throws-an-exception"></a>파생된 형식의 ToTable에서 예외가 throw됩니다. 
 
 [추적 문제 #11811](https://github.com/aspnet/EntityFrameworkCore/issues/11811)
 
@@ -1073,7 +1162,7 @@ EF Core 3.0부터 시작하여 이후 릴리스에서 TPT 및 TPC 지원을 추�
 
 파생된 형식을 다른 테이블에 매핑하려는 시도를 제거합니다.
 
-## <a name="forsqlserverhasindex-replaced-with-hasindex"></a>ForSqlServerHasIndex가 HasIndex로 바뀝니다. 
+### <a name="forsqlserverhasindex-replaced-with-hasindex"></a>ForSqlServerHasIndex가 HasIndex로 바뀝니다. 
 
 [추적 문제 #12366](https://github.com/aspnet/EntityFrameworkCore/issues/12366)
 
@@ -1096,7 +1185,7 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 위에 표시된 것처럼 새 API를 사용합니다.
 
-## <a name="metadata-api-changes"></a>메타데이터 API 변경 내용
+### <a name="metadata-api-changes"></a>메타데이터 API 변경 내용
 
 [추적 문제 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
 
@@ -1120,7 +1209,9 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 새로운 확장 메서드를 사용합니다.
 
-## <a name="provider-specific-metadata-api-changes"></a>공급자 고유의 메타데이터 API 변경 내용
+<a name="provider"></a>
+
+### <a name="provider-specific-metadata-api-changes"></a>공급자 고유의 메타데이터 API 변경 내용
 
 [추적 문제 #214](https://github.com/aspnet/EntityFrameworkCore/issues/214)
 
@@ -1142,7 +1233,9 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 새로운 확장 메서드를 사용합니다.
 
-## <a name="ef-core-no-longer-sends-pragma-for-sqlite-fk-enforcement"></a>EF Core는 더 이상 SQLite FK 적용을 위한 pragma를 보내지 않습니다.
+<a name="pragma"></a>
+
+### <a name="ef-core-no-longer-sends-pragma-for-sqlite-fk-enforcement"></a>EF Core는 더 이상 SQLite FK 적용을 위한 pragma를 보내지 않습니다.
 
 [추적 문제 #12151](https://github.com/aspnet/EntityFrameworkCore/issues/12151)
 
@@ -1165,7 +1258,9 @@ EF Core 3.0부터 EF Core는 더 이상 SQLite에 대한 연결이 열릴 때 `P
 외래 키는 기본적으로 EF Core에 사용되는 SQLitePCLRaw.bundle_e_sqlite3에서 기본적으로 활성화됩니다.
 다른 경우에는 연결 문자열에 `Foreign Keys=True`를 지정하여 외래 키를 활성화할 수 있습니다.
 
-## <a name="microsoftentityframeworkcoresqlite-now-depends-on-sqlitepclrawbundleesqlite3"></a>Microsoft.EntityFrameworkCore.Sqlite는 이제 SQLitePCLRaw.bundle_e_sqlite3에 종속됩니다.
+<a name="sqlite3"></a>
+
+### <a name="microsoftentityframeworkcoresqlite-now-depends-on-sqlitepclrawbundleesqlite3"></a>Microsoft.EntityFrameworkCore.Sqlite는 이제 SQLitePCLRaw.bundle_e_sqlite3에 종속됩니다.
 
 **이전 동작**
 
@@ -1183,7 +1278,9 @@ EF Core 3.0부터 EF Core가 `SQLitePCLRaw.bundle_e_sqlite3`을 사용합니다.
 
 iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `SQLitePCLRaw` 번들을 사용하도록 `Microsoft.Data.Sqlite`를 구성합니다.
 
-## <a name="guid-values-are-now-stored-as-text-on-sqlite"></a>Guid 값은 이제 SQLite에 텍스트로 저장되었습니다.
+<a name="guid"></a>
+
+### <a name="guid-values-are-now-stored-as-text-on-sqlite"></a>Guid 값은 이제 SQLite에 텍스트로 저장되었습니다.
 
 [추적 문제 #15078](https://github.com/aspnet/EntityFrameworkCore/issues/15078)
 
@@ -1233,7 +1330,9 @@ modelBuilder
 
 Microsoft.Data.Sqlite는 BLOB 및 텍스트 열 모두에서 Guid 값을 읽을 수 있습니다. 하지만 매개 변수 및 상수에 대한 기본 형식이 변경되었으므로 Guid를 포함하는 대부분의 시나리오에서 조치를 취해야 합니다.
 
-## <a name="char-values-are-now-stored-as-text-on-sqlite"></a>Char 값은 이제 SQLite에 텍스트로 저장됨
+<a name="char"></a>
+
+### <a name="char-values-are-now-stored-as-text-on-sqlite"></a>Char 값은 이제 SQLite에 텍스트로 저장됨
 
 [추적 문제 #15020](https://github.com/aspnet/EntityFrameworkCore/issues/15020)
 
@@ -1274,7 +1373,9 @@ modelBuilder
 
 또한 Microsoft.Data.Sqlite는 정수 및 텍스트 열에서 문자 값을 읽을 수 있으므로 특정 시나리오에서는 아무런 조치도 필요하지 않을 수 있습니다.
 
-## <a name="migration-ids-are-now-generated-using-the-invariant-cultures-calendar"></a>이제 마이그레이션 ID가 고정 문화권의 달력을 사용하여 생성됨
+<a name="migid"></a>
+
+### <a name="migration-ids-are-now-generated-using-the-invariant-cultures-calendar"></a>이제 마이그레이션 ID가 고정 문화권의 달력을 사용하여 생성됨
 
 [추적 문제 #12978](https://github.com/aspnet/EntityFrameworkCore/issues/12978)
 
@@ -1313,7 +1414,9 @@ UPDATE __EFMigrationsHistory
 SET MigrationId = CONCAT(LEFT(MigrationId, 4)  - 543, SUBSTRING(MigrationId, 4, 150))
 ```
 
-## <a name="userownumberforpaging-has-been-removed"></a>UseRowNumberForPaging가 제거되었습니다.
+<a name="urn"></a>
+
+### <a name="userownumberforpaging-has-been-removed"></a>UseRowNumberForPaging가 제거되었습니다.
 
 [추적 문제 #16400](https://github.com/aspnet/EntityFrameworkCore/issues/16400)
 
@@ -1335,7 +1438,9 @@ EF Core 3.0부터 EF는 SQL Server 2008 이후 버전하고만 호환되는 페�
 
 생성된 SQL이 지원을 받을 수 있도록 최신 버전의 SQL Server 또는 더 높은 호환성 수준을 사용하여 업데이트하는 것이 좋습니다. 따라서, 이 작업을 수행할 수 없는 경우 세부 정보를 사용하여 [추적 문제에 대해 설명](https://github.com/aspnet/EntityFrameworkCore/issues/16400)해주세요. 사용자 의견에 따라 이 결정을 다시 검토할 수 있습니다.
 
-## <a name="extension-infometadata-has-been-removed-from-idbcontextoptionsextension"></a>확장 정보/메타데이터가 IDbContextOptionsExtension에서 제거되었습니다.
+<a name="xinfo"></a>
+
+### <a name="extension-infometadata-has-been-removed-from-idbcontextoptionsextension"></a>확장 정보/메타데이터가 IDbContextOptionsExtension에서 제거되었습니다.
 
 [추적 이슈 #16119](https://github.com/aspnet/EntityFrameworkCore/issues/16119)
 
@@ -1359,7 +1464,9 @@ EF Core 3.0부터 EF는 SQL Server 2008 이후 버전하고만 호환되는 페�
 새 패턴에 따라 확장을 업데이트합니다.
 EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOptionsExtension`을 여러 번 구현한 예가 확인되었습니다.
 
-## <a name="logquerypossibleexceptionwithaggregateoperator-has-been-renamed"></a>LogQueryPossibleExceptionWithAggregateOperator 이름이 바뀌었습니다.
+<a name="lqpe"></a>
+
+### <a name="logquerypossibleexceptionwithaggregateoperator-has-been-renamed"></a>LogQueryPossibleExceptionWithAggregateOperator 이름이 바뀌었습니다.
 
 [추적 문제 #10985](https://github.com/aspnet/EntityFrameworkCore/issues/10985)
 
@@ -1377,7 +1484,9 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 새 이름을 사용합니다. (이벤트 ID 번호가 변경되지 않았습니다.)
 
-## <a name="clarify-api-for-foreign-key-constraint-names"></a>외래 키 제약 조건 이름에 대한 API를 명확히 합니다.
+<a name="clarify"></a>
+
+### <a name="clarify-api-for-foreign-key-constraint-names"></a>외래 키 제약 조건 이름에 대한 API를 명확히 합니다.
 
 [추적 문제 #10730](https://github.com/aspnet/EntityFrameworkCore/issues/10730)
 
@@ -1407,7 +1516,9 @@ var constraintName = myForeignKey.ConstraintName;
 
 새 이름을 사용합니다.
 
-## <a name="irelationaldatabasecreatorhastableshastablesasync-have-been-made-public"></a>IRelationalDatabaseCreator.HasTables/HasTablesAsync가 공개되었습니다.
+<a name="irdc2"></a>
+
+### <a name="irelationaldatabasecreatorhastableshastablesasync-have-been-made-public"></a>IRelationalDatabaseCreator.HasTables/HasTablesAsync가 공개되었습니다.
 
 [추적 이슈 #15997](https://github.com/aspnet/EntityFrameworkCore/issues/15997)
 
@@ -1429,7 +1540,9 @@ EF Core 3.0부터 이러한 메서드는 공개입니다.
 
 재정의의 접근성을 변경합니다.
 
-## <a name="microsoftentityframeworkcoredesign-is-now-a-developmentdependency-package"></a>이제 Microsoft.EntityFrameworkCore.Design은 DevelopmentDependency 패키지입니다.
+<a name="dip"></a>
+
+### <a name="microsoftentityframeworkcoredesign-is-now-a-developmentdependency-package"></a>이제 Microsoft.EntityFrameworkCore.Design은 DevelopmentDependency 패키지입니다.
 
 [추적 이슈 #11506](https://github.com/aspnet/EntityFrameworkCore/issues/11506)
 
@@ -1459,7 +1572,9 @@ EF Core 3.0부터는 DevelopmentDependency 패키지입니다. 따라서 종속�
 </PackageReference>
 ```
 
-## <a name="sqlitepclraw-updated-to-version-200"></a>SQLitePCL.raw가 버전 2.0.0으로 업데이트되었습니다.
+<a name="SQLitePCL"></a>
+
+### <a name="sqlitepclraw-updated-to-version-200"></a>SQLitePCL.raw가 버전 2.0.0으로 업데이트되었습니다.
 
 [추적 이슈 #14824](https://github.com/aspnet/EntityFrameworkCore/issues/14824)
 
@@ -1481,8 +1596,9 @@ SQLitePCL.raw의 버전 2.0.0은 .NET Standard 2.0을 대상으로 합니다. �
 
 SQLitePCL.raw 버전 2.0.0에 중대한 변경이 포함되었습니다. 자세한 내용은 [릴리스 정보](https://github.com/ericsink/SQLitePCL.raw/blob/v2/v2.md)를 참조하세요.
 
+<a name="NetTopologySuite"></a>
 
-## <a name="nettopologysuite-updated-to-version-200"></a>NetTopologySuite를 버전 2.0.0으로 업데이트
+### <a name="nettopologysuite-updated-to-version-200"></a>NetTopologySuite를 버전 2.0.0으로 업데이트
 
 [이슈 추적 #14825](https://github.com/aspnet/EntityFrameworkCore/issues/14825)
 
@@ -1503,3 +1619,50 @@ NetTopologySuite 버전 2.0.0은 EF Core 사용자에게 발생하는 여러 가
 **완화 방법**
 
 NetTopologySuite 버전 2.0.0에는 호환성이 손상되는 변경이 포함되어 있습니다. 자세한 내용은 [릴리스 정보](https://www.nuget.org/packages/NetTopologySuite/2.0.0-pre001)를 참조하세요.
+
+<a name="mersa"></a>
+
+### <a name="multiple-ambiguous-self-referencing-relationships-must-be-configured"></a>복수의 모호한 자기 참조 관계를 구성해야 합니다. 
+
+[추적 문제 #13573](https://github.com/aspnet/EntityFrameworkCore/issues/13573)
+
+이 변경 내용은 EF Core 3.0 미리 보기 6에 도입되었습니다.
+
+**이전 동작**
+
+복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예:
+
+```C#
+public class User 
+{
+        public Guid Id { get; set; }
+        public User CreatedBy { get; set; }
+        public User UpdatedBy { get; set; }
+        public Guid CreatedById { get; set; }
+        public Guid? UpdatedById { get; set; }
+}
+```
+
+**새 동작**
+
+이 시나리오는 이제 모델 빌드에서 검색되고, 모델이 모호하다는 예외가 throw됩니다.
+
+**이유**
+
+결과로 생성되는 모델이 모호하고 잘못 사용될 가능성이 컸습니다.
+
+**완화 방법**
+
+관계의 전체 구성을 사용합니다. 예:
+
+```C#
+modelBuilder
+     .Entity<User>()
+     .HasOne(e => e.CreatedBy)
+     .WithMany();
+ 
+ modelBuilder
+     .Entity<User>()
+     .HasOne(e => e.UpdatedBy)
+     .WithMany();
+```

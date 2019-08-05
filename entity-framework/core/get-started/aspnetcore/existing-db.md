@@ -1,17 +1,18 @@
 ---
 title: ASP.NET Core에서 시작 - 기존 데이터베이스 - EF Core
 author: rowanmiller
+description: ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
 ms.date: 08/02/2018
 ms.assetid: 2bc68bea-ff77-4860-bf0b-cf00db6712a0
 uid: core/get-started/aspnetcore/existing-db
-ms.openlocfilehash: c8acb95395968f710e6b896de6c3598cb7b23676
-ms.sourcegitcommit: e66745c9f91258b2cacf5ff263141be3cba4b09e
+ms.openlocfilehash: 6b0ed0a9222644bee31d23234aa27b2084137f4a
+ms.sourcegitcommit: 755a15a789631cc4ea581e2262a2dcc49c219eef
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/06/2019
-ms.locfileid: "54058788"
+ms.lasthandoff: 07/25/2019
+ms.locfileid: "68497521"
 ---
-# <a name="getting-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
+# <a name="get-started-with-ef-core-on-aspnet-core-with-an-existing-database"></a>ASP.NET Core에서 기존 데이터베이스로 EF Core 시작
 
 이 자습서에서는 Entity Framework Core를 사용하여 기본 데이터 액세스를 수행하는 ASP.NET Core MVC 애플리케이션을 빌드합니다. 기존 데이터베이스를 리버스 엔지니어링하여 Entity Framework 모델을 만듭니다.
 
@@ -53,7 +54,7 @@ ms.locfileid: "54058788"
 * 대상 프레임워크 드롭다운이 **.NET Core**로 설정되고 버전 드롭다운이 **ASP.NET Core 2.1**로 설정되었는지 확인합니다.
 * **웹 애플리케이션(모델-뷰-컨트롤러)** 템플릿을 선택합니다.
 * **인증**이 **인증 없음**으로 설정되었는지 확인합니다.
-* **확인**을 클릭합니다.
+* **확인** 을 클릭합니다.
 
 ## <a name="install-entity-framework-core"></a>Entity Framework Core 설치
 
@@ -75,7 +76,7 @@ Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Conn
 `The term 'Scaffold-DbContext' is not recognized as the name of a cmdlet`이라는 오류가 표시되면 Visual Studio를 닫았다가 다시 엽니다.
 
 > [!TIP]  
-> 위의 명령에 `-Tables` 인수를 추가하여 엔터티를 생성할 테이블을 지정할 수 있습니다. 예를 들어 `-Tables Blog,Post`과 같은 형식입니다.
+> 위의 명령에 `-Tables` 인수를 추가하여 엔터티를 생성할 테이블을 지정할 수 있습니다. 예를 들어, `-Tables Blog,Post`을 입력합니다.
 
 리버스 엔지니어링 프로세스에서는 기존 데이터베이스의 스키마를 기반으로 엔터티 클래스(`Blog.cs` & `Post.cs`) 및 파생 컨텍스트(`BloggingContext.cs`)를 만들었습니다.
 
