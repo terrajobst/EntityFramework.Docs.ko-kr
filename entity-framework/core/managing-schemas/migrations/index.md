@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: b94ac567644a9d98a05a40857cc072c500203370
-ms.sourcegitcommit: 8f801993c9b8cd8a8fbfa7134818a8edca79e31a
+ms.openlocfilehash: 7d97551044ae4a8fc42d1676199da884f3e2994d
+ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/14/2019
-ms.locfileid: "59562561"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565252"
 ---
 <a name="migrations"></a>마이그레이션
 ==========
@@ -136,7 +136,7 @@ dotnet ef database update
 
 ### <a name="empty-migrations"></a>빈 마이그레이션
 
-때때로 모델 변경 없이 마이그레이션을 추가하는 것이 유용합니다. 이 경우 새 마이그레이션을 추가하면 빈 클래스가 있는 코드 파일이 만들어집니다. 이 마이그레이션을 사용자 지정하여 EF Core 모델과 직접적인 관련이 없는 작업을 수행할 수 있습니다.  이러한 방식으로 관리하고자 할 수 있는 항목은 다음과 같습니다.
+때때로 모델 변경 없이 마이그레이션을 추가하는 것이 유용합니다. 이 경우 새 마이그레이션을 추가하면 빈 클래스가 있는 코드 파일이 만들어집니다. 이 마이그레이션을 사용자 지정하여 EF Core 모델과 직접적인 관련이 없는 작업을 수행할 수 있습니다. 이러한 방식으로 관리하고자 할 수 있는 항목은 다음과 같습니다.
 
 * 전체 텍스트 검색
 * 함수
@@ -191,7 +191,7 @@ dotnet ef migrations script
 ---------------------------
 일부 앱은 시작이나 최초 실행 중에 런타임에서 마이그레이션을 적용하려 할 수 있습니다. 이 작업은 `Migrate()` 메서드로 수행합니다.
 
-이 메서드는 `IMigrator` 서비스를 기반으로 구성되므로 더 고급 시나리오에 사용할 수 있습니다. `DbContext.GetService<IMigrator>()`를 사용하여 액세스합니다.
+이 메서드는 `IMigrator` 서비스를 기반으로 구성되므로 더 고급 시나리오에 사용할 수 있습니다. `myDbContext.GetInfrastructure().GetService<IMigrator>()`를 사용하여 액세스합니다.
 
 ``` csharp
 myDbContext.Database.Migrate();
