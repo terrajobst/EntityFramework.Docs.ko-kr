@@ -3,25 +3,25 @@ title: 구성 파일 설정-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 000044c6-1d32-4cf7-ae1f-ea21d86ebf8f
-ms.openlocfilehash: faba4e406b9f26f5bed6149f75c59da362d84692
-ms.sourcegitcommit: 15022dd06d919c29b1189c82611ea32f9fdc6617
+ms.openlocfilehash: 86389e4a3a3bac46e2a4cf2da648a4b19e29f3c3
+ms.sourcegitcommit: 299011fc4bd576eed58a4274f967639fa13fec53
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47415785"
+ms.lasthandoff: 08/21/2019
+ms.locfileid: "69886563"
 ---
 # <a name="configuration-file-settings"></a>구성 파일 설정
-Entity Framework에는 다양을 한 설정 구성 파일에서 지정할 수 있습니다. 일반적 EF '구성 보다 규칙' 원칙을 따릅니다:이 게시물에 설명 된 모든 설정은 기본 동작을가 기본값에는 더 이상 요구 사항을 충족 하는 경우 설정을 변경 하는 방법에 대 한 걱정 해야 합니다.  
+Entity Framework 구성 파일에서 여러 가지 설정을 지정할 수 있습니다. 일반적으로 EF는 ' 구성 규칙 ' 원칙을 따릅니다 .이 게시물에 설명 된 모든 설정은 기본 동작을 수행 합니다. 기본값이 더 이상 요구 사항을 충족 하지 않는 경우에만 설정을 변경 하는 것에 대해서만 걱정할 필요가 있습니다.  
 
-## <a name="a-code-based-alternative"></a>코드 기반 대체 항목  
+## <a name="a-code-based-alternative"></a>코드 기반 대안  
 
-이러한 모든 설정을 적용할 수도 있습니다 코드를 사용 합니다. 부터 도입 되었습니다 EF6 [코드 기반 구성](code-based.md), 코드에서 구성을 적용 하는 중앙 방법을 제공 하는 합니다. EF6를 이전 코드에서 구성도 적용할 수 있지만 다양 한 Api를 사용 하 여 다양 한 영역을 구성 하 해야 합니다. 구성 파일 옵션에는 이러한 설정을 배포 하는 동안 코드를 업데이트 하지 않고 쉽게 변경할 수 있습니다.
+이러한 설정은 모두 코드를 사용 하 여 적용할 수 있습니다. EF6 부터는 코드에서 구성을 적용 하는 중심 방법을 제공 하는 [코드 기반 구성을](code-based.md)도입 했습니다. EF6 이전에는 코드에서 구성을 계속 적용할 수 있지만 다양 한 Api를 사용 하 여 다양 한 영역을 구성 해야 합니다. 구성 파일 옵션을 사용 하면 코드를 업데이트 하지 않고 배포 중에 이러한 설정을 쉽게 변경할 수 있습니다.
 
 ## <a name="the-entity-framework-configuration-section"></a>Entity Framework 구성 섹션  
 
-EF4.1 있습니다부터 사용 하 여 상황에 맞는 데이터베이스 이니셜라이저를 설정할 수는 **appSettings** 구성 파일의 섹션입니다. 사용자 지정 소개 했습니다 EF 4.3 **entityFramework** 새 설정을 처리 하는 섹션입니다. Entity Framework에서 여전히 이전 형식을 사용 하 여 설정 하는 데이터베이스 이니셜라이저를 인식 하지만 가능한 경우 새 형식으로 이동 하는 것이 좋습니다.
+EF 4.1부터 구성 파일의 **appSettings** 섹션을 사용 하 여 컨텍스트에 대 한 데이터베이스 이니셜라이저를 설정할 수 있습니다. EF 4.3에는 새 설정을 처리 하는 사용자 지정 **Entityframework** 섹션이 도입 되었습니다. Entity Framework는 이전 형식을 사용 하 여 데이터베이스 이니셜라이저 집합을 계속 인식 하지만 가능한 경우 새 형식으로 이동 하는 것이 좋습니다.
 
-합니다 **entityFramework** 섹션 EntityFramework NuGet 패키지를 설치할 때 자동으로 프로젝트의 구성 파일에 추가 되었습니다.  
+Entityframework NuGet 패키지를 설치할 때 **entityframework** 섹션이 프로젝트의 구성 파일에 자동으로 추가 되었습니다.  
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -36,11 +36,11 @@ EF4.1 있습니다부터 사용 하 여 상황에 맞는 데이터베이스 이�
 
 ## <a name="connection-strings"></a>연결 문자열  
 
-[이 페이지](~/ef6/fundamentals/configuring/connection-strings.md) 구성 파일에서 연결 문자열을 포함 하 여 Entity Framework에서 사용할 데이터베이스를 결정 하는 방법에 자세한 정보를 제공 합니다.  
+[이 페이지](~/ef6/fundamentals/configuring/connection-strings.md) 에서는 구성 파일의 연결 문자열을 포함 하 여 사용할 데이터베이스를 Entity Framework 결정 하는 방법에 대해 자세히 설명 합니다.  
 
-연결 문자열은 표준에서 이동 **connectionStrings** 요소 않아도 합니다 **entityFramework** 섹션.  
+연결 문자열은 표준 **connectionStrings** 요소로 이동 하며 **entityframework** 섹션이 필요 하지 않습니다.  
 
-먼저 기반 코드 모델 일반 ADO.NET 연결 문자열을 사용 합니다. 예를 들어:  
+Code First 기반 모델은 일반 ADO.NET 연결 문자열을 사용 합니다. 예를 들어:  
 
 ``` xml
 <connectionStrings>
@@ -50,7 +50,7 @@ EF4.1 있습니다부터 사용 하 여 상황에 맞는 데이터베이스 이�
 </connectionStrings>
 ```  
 
-EF 디자이너 모델 사용 하 여 특수 한 EF 연결 문자열을 기반으로 합니다. 예를 들어:  
+EF Designer 기반 모델은 특수 EF 연결 문자열을 사용 합니다. 예:  
 
 ``` xml  
 <connectionStrings>
@@ -60,7 +60,7 @@ EF 디자이너 모델 사용 하 여 특수 한 EF 연결 문자열을 기반�
         res://*/BloggingModel.csdl|
         res://*/BloggingModel.ssdl|
         res://*/BloggingModel.msl;
-      provider=System.Data.SqlClient
+      provider=System.Data.SqlClient;
       provider connection string=
         &quot;data source=(localdb)\mssqllocaldb;
         initial catalog=Blogging;
@@ -70,35 +70,35 @@ EF 디자이너 모델 사용 하 여 특수 한 EF 연결 문자열을 기반�
 </connectionStrings>
 ```
 
-## <a name="code-based-configuration-type-ef6-onwards"></a>코드 기반 구성 유형 (EF6부터 해당)  
+## <a name="code-based-configuration-type-ef6-onwards"></a>코드 기반 구성 유형 (EF6)  
 
-EF6부터 데 EF에 대 한 DbConfiguration 지정할 수 있습니다 [코드 기반 구성](code-based.md) 응용 프로그램에서 합니다. 대부분의 EF를 DbConfiguration에 자동으로 검색 하는 대로이 설정을 지정할 필요가 없습니다. DbConfiguration config 파일에서 지정 해야 하는 경우의 세부 정보 참조를 **이동 DbConfiguration** 부분 [코드 기반 구성](code-based.md)합니다.  
+EF6부터 응용 프로그램의 [코드 기반 구성](code-based.md) 에 사용할 DBCONFIGURATION을 EF에 지정할 수 있습니다. 대부분의 경우 EF에서 DbConfiguration를 자동으로 검색 하므로이 설정을 지정할 필요가 없습니다. 구성 파일에서 DbConfiguration을 지정 해야 하는 경우에 대 한 자세한 내용은 [코드 기반 구성](code-based.md)의 **이동 dbconfiguration** 섹션을 참조 하십시오.  
 
-어셈블리 정규화 된 형식 이름을 DbConfiguration 형식을 설정 하려면 지정 합니다 **codeConfigurationType** 요소입니다.  
+DbConfiguration 형식을 설정 하려면 **codeConfigurationType** 요소에 정규화 된 어셈블리 형식 이름을 지정 합니다.  
 
 > [!NOTE]
-> 정규화 된 어셈블리 이름은 쉼표, 어셈블리의 형식에 있는 다음 네임 스페이스 정규화 된 이름입니다. 필요에 따라 어셈블리 버전, 문화권 및 공개 키 토큰을 지정할 수도 있습니다.  
+> 정규화 된 어셈블리 이름은 네임 스페이스로 정규화 된 이름이 며, 그 다음에는 해당 형식이 있는 어셈블리입니다. 어셈블리 버전, culture 및 공개 키 토큰을 선택적으로 지정할 수도 있습니다.  
 
 ``` xml
 <entityFramework codeConfigurationType="MyNamespace.MyConfiguration, MyAssembly">
 </entityFramework>
 ```  
 
-## <a name="ef-database-providers-ef6-onwards"></a>EF 데이터베이스 공급자 (EF6부터 해당)  
+## <a name="ef-database-providers-ef6-onwards"></a>EF 데이터베이스 공급자 (EF6 이상)  
 
-EF6을 하기 전에 데이터베이스 공급자의 Entity Framework 전용 부분 코어 ADO.NET 공급자의 일부로 포함 되도록 했습니다. EF6부터 EF 특정 부분은 이제 관리 되며 별도로 등록 합니다.  
+EF6 이전에는 데이터베이스 공급자의 Entity Framework 관련 부분이 핵심 ADO.NET 공급자의 일부로 포함 되어야 했습니다. EF6부터 EF 관련 부분은 이제 개별적으로 관리 및 등록 됩니다.  
 
-일반적으로 공급자를 직접 등록할 필요가 없습니다. 일반적으로 이렇게 공급자를 설치할 때 설치 됩니다.  
+일반적으로 공급자를 직접 등록할 필요가 없습니다. 이러한 작업은 일반적으로 공급자를 설치할 때 수행 됩니다.  
 
-공급자를 포함 하 여 등록 된를 **공급자** 요소 아래에 있는 **공급자** 의 하위 섹션을 **entityFramework** 섹션. 공급자 항목에 대 한 필수 특성을 두 가지 있습니다.  
+공급자는 **Entityframework** 섹션의 **providers** 자식 섹션 아래에 **공급자** 요소를 포함 하 여 등록 됩니다. 공급자 항목에는 다음과 같은 두 가지 필수 특성이 있습니다.  
 
-- **invariantName** core ADO.NET 공급자를 식별 하는이 EF 공급자가 대상  
-- **형식** EF 공급자 구현의 어셈블리 정규화 된 형식 이름  
+- **invariantName** 는이 EF 공급자가 대상으로 하는 핵심 ADO.NET 공급자를 식별 합니다.  
+- **type** 은 EF 공급자 구현에 대 한 어셈블리의 정규화 된 형식 이름입니다.  
 
 > [!NOTE]
-> 정규화 된 어셈블리 이름은 쉼표, 어셈블리의 형식에 있는 다음 네임 스페이스 정규화 된 이름입니다. 필요에 따라 어셈블리 버전, 문화권 및 공개 키 토큰을 지정할 수도 있습니다.  
+> 정규화 된 어셈블리 이름은 네임 스페이스로 정규화 된 이름이 며, 그 다음에는 해당 형식이 있는 어셈블리입니다. 어셈블리 버전, culture 및 공개 키 토큰을 선택적으로 지정할 수도 있습니다.  
 
-예를 들어 Entity Framework를 설치한 경우 기본 SQL Server 공급자를 등록 하기 위해 만든 항목을 다음과 같습니다.  
+예를 들어 Entity Framework를 설치할 때 기본 SQL Server 공급자를 등록 하기 위해 만든 항목이 여기에 나와 있습니다.  
 
 ``` xml  
 <providers>
@@ -106,11 +106,11 @@ EF6을 하기 전에 데이터베이스 공급자의 Entity Framework 전용 부
 </providers>
 ```  
 
-## <a name="interceptors-ef61-onwards"></a>인터셉터 (EF6.1부터 해당)  
+## <a name="interceptors-ef61-onwards"></a>인터셉터 (EF 6.1 이상)  
 
-EF6.1를 사용 하 여 시작 하면 인터셉터 구성 파일에 등록할 수 있습니다. 인터셉터를 사용 하면 EF 연결 등을 열어 데이터베이스 쿼리 실행과 같은 특정 작업을 수행 하는 경우 추가 논리를 실행할 수 있습니다.  
+EF 6.1부터 구성 파일에 인터셉터를 등록할 수 있습니다. 인터셉터를 사용 하면 EF가 데이터베이스 쿼리 실행, 연결 열기 등의 특정 작업을 수행할 때 추가 논리를 실행할 수 있습니다.  
 
-인터셉터를 포함 하 여 등록 된는 **인터셉터** 요소 아래에 있는 **인터셉터** 자식 섹션의 **entityFramework** 섹션. 예를 들어, 다음 구성을 등록 기본 제공 **DatabaseLogger** 인터셉터는 콘솔에 모든 데이터베이스 작업을 기록 합니다.  
+인터셉터는 **Entityframework** 섹션의 **인터셉터** 자식 섹션 아래에 **인터셉터** 요소를 포함 하 여 등록 됩니다. 예를 들어 다음 구성은 모든 데이터베이스 작업을 콘솔에 기록 하는 기본 제공 **Databaselogger 거** 인터셉터를 등록 합니다.  
 
 ``` xml  
 <interceptors>
@@ -118,9 +118,9 @@ EF6.1를 사용 하 여 시작 하면 인터셉터 구성 파일에 등록할 �
 </interceptors>
 ```  
 
-### <a name="logging-database-operations-to-a-file-ef61-onwards"></a>로깅 데이터베이스 작업 파일 (EF6.1부터 해당)  
+### <a name="logging-database-operations-to-a-file-ef61-onwards"></a>파일에 데이터베이스 작업 로깅 (EF 6.1 이상)  
 
-인터셉터 구성 파일을 통해 등록 문제를 디버깅 하는 데 기존 응용 프로그램에 로깅을 추가 하려는 경우 특히 유용 합니다. **DatabaseLogger** 생성자 매개 변수로 파일 이름을 제공 하 여 파일에는 로깅을 지원 합니다.  
+구성 파일을 통해 인터셉터를 등록 하는 것은 문제를 디버그 하는 데 도움이 되도록 기존 응용 프로그램에 로깅을 추가 하려는 경우에 특히 유용 합니다. **Databaselogger** 파일 이름을 생성자 매개 변수로 제공 하 여 파일에 대 한 로깅을 지원 합니다.  
 
 ``` xml  
 <interceptors>
@@ -132,7 +132,7 @@ EF6.1를 사용 하 여 시작 하면 인터셉터 구성 파일에 등록할 �
 </interceptors>
 ```  
 
-기본적으로이 로그 파일을 앱이 시작 될 때마다 새 파일을 사용 하 여 덮어쓸 수로 인해 됩니다. 로그에 대신 추가할 파일 이미 있는 경우에 같은 코드를 사용 합니다.  
+기본적으로이 파일은 앱이 시작 될 때마다 새 파일을 사용 하 여 로그 파일을 덮어씁니다. 이미 존재 하는 경우 로그 파일에 추가 하려면 다음과 같은 항목을 사용 합니다.  
 
 ``` xml  
 <interceptors>
@@ -145,20 +145,20 @@ EF6.1를 사용 하 여 시작 하면 인터셉터 구성 파일에 등록할 �
 </interceptors>
 ```  
 
-에 대 한 자세한 **DatabaseLogger** 블로그 게시물을 참조 인터셉터를 등록 하 고 [EF 6.1: 다시 컴파일하지 않고도 로깅을 사용 하도록](https://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/)합니다.  
+**Databaselogger** 나 인터셉터 등록에 대 한 자세한 내용은 블로그 게시물 [EF 6.1: 다시 컴파일하지](https://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/)않고 로깅을 설정 합니다.  
 
-## <a name="code-first-default-connection-factory"></a>첫 번째 기본 연결 팩터리 코드  
+## <a name="code-first-default-connection-factory"></a>Code First 기본 연결 팩터리  
 
-구성 섹션을 사용 하면 Code First 컨텍스트에 대해 사용 하도록 데이터베이스를 찾으려고 사용 해야 하는 기본 연결 팩터리를 지정할 수 있습니다. 기본 연결 팩터리는 컨텍스트에 대 한 구성 파일에 연결 문자열을 추가한 경우에 사용 됩니다.  
+구성 섹션에서는를 사용 하 여 컨텍스트에 사용할 데이터베이스를 찾는 Code First 기본 연결 팩터리를 지정할 수 있습니다. 기본 연결 팩터리는 컨텍스트의 구성 파일에 연결 문자열을 추가 하지 않은 경우에만 사용 됩니다.  
 
-EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것에 따라 설치를 가리키는 기본 연결 팩터리가 등록 되었습니다.  
+EF NuGet 패키지를 설치 하는 경우 설치 된 기본 연결 팩터리가 SQL Express 또는 LocalDB를 가리키도록 등록 되었습니다.  
 
-어셈블리 정규화 된 형식 이름을 지정 하면 연결 팩터리를 설정 하려면 합니다 **defaultConnectionFactory** 요소입니다.  
+연결 팩터리를 설정 하려면 **Defaultconnectionfactory** 요소에 정규화 된 어셈블리 형식 이름을 지정 합니다.  
 
 > [!NOTE]
-> 정규화 된 어셈블리 이름은 쉼표, 어셈블리의 형식에 있는 다음 네임 스페이스 정규화 된 이름입니다. 필요에 따라 어셈블리 버전, 문화권 및 공개 키 토큰을 지정할 수도 있습니다.  
+> 정규화 된 어셈블리 이름은 네임 스페이스로 정규화 된 이름이 며, 그 다음에는 해당 형식이 있는 어셈블리입니다. 어셈블리 버전, culture 및 공개 키 토큰을 선택적으로 지정할 수도 있습니다.  
 
-사용자 고유의 기본 연결 팩터리가 설정 예는 다음과 같습니다.  
+기본 연결 팩터리를 설정 하는 예제는 다음과 같습니다.  
 
 ``` xml  
 <entityFramework>
@@ -166,9 +166,9 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </entityFramework>
 ```  
 
-위의 예제에는 매개 변수가 없는 생성자를 갖도록 사용자 지정 팩터리가 필요 합니다. 필요한 경우에 생성자 매개 변수를 사용 하 여 지정할 수 있습니다 합니다 **매개 변수** 요소입니다.  
+위의 예제에서는 사용자 지정 팩터리에서 매개 변수가 없는 생성자를 사용 해야 합니다. 필요한 경우 **parameters** 요소를 사용 하 여 생성자 매개 변수를 지정할 수 있습니다.  
 
-예를 들어, Entity Framework에 포함 된, SqlCeConnectionFactory을 사용 하려면 공급자 고정 이름을 생성자에 제공 해야 합니다. 공급자 고정 이름을 사용 하려는 SQL Compact의 버전을 식별 합니다. 다음 구성은 기본적으로 SQL Compact 버전 4.0을 사용 하는 컨텍스트를 발생 합니다.  
+예를 들어 Entity Framework에 포함 된 SqlCeConnectionFactory에는 생성자에 공급자 고정 이름을 제공 해야 합니다. 공급자 고정 이름은 사용 하려는 SQL Compact의 버전을 식별 합니다. 다음 구성을 사용 하면 기본적으로 컨텍스트가 SQL Compact 버전 4.0을 사용 합니다.  
 
 ``` xml  
 <entityFramework>
@@ -180,9 +180,9 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </entityFramework>
 ```  
 
-기본 연결 팩터리가 설정 하지 않으면, Code First 사용을 가리키는 SqlConnectionFactory `.\SQLEXPRESS`합니다. SqlConnectionFactory 연결 문자열의 부분을 재정의할 수 있도록 하는 생성자가 있습니다. 이외의 SQL Server 인스턴스를 사용 하려는 경우 `.\SQLEXPRESS` 이 생성자를 사용 하 여 서버를 설정할 수 있습니다.  
+기본 연결 팩터리를 설정 하지 않으면 Code First SqlConnectionFactory `.\SQLEXPRESS`를 사용 하 여를 가리킵니다. 또한 SqlConnectionFactory에는 연결 문자열의 일부를 재정의할 수 있는 생성자가 있습니다. 이외의 `.\SQLEXPRESS` SQL Server 인스턴스를 사용 하려는 경우이 생성자를 사용 하 여 서버를 설정할 수 있습니다.  
 
-다음 구성은 Code First를 사용 하면 **MyDatabaseServer** 는 명시적 연결 문자열 설정 되지 않은 컨텍스트에 대 한 합니다.  
+다음 구성에서는 명시적 연결 문자열이 설정 되지 않은 컨텍스트에 대해 **Mydatabaseserver** 를 사용 Code First 합니다.  
 
 ``` xml  
 <entityFramework>
@@ -194,7 +194,7 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </entityFramework>
 ```  
 
-기본적으로 문자열 형식의 생성자 인수는 가정 합니다. 이 설정을 변경 하려면 type 특성을 사용할 수 있습니다.  
+기본적으로 생성자 인수는 문자열 형식 이라고 가정 합니다. Type 특성을 사용 하 여이를 변경할 수 있습니다.  
 
 ``` xml
 <parameter value="2" type="System.Int32" />
@@ -202,11 +202,11 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 
 ## <a name="database-initializers"></a>데이터베이스 이니셜라이저  
 
-데이터베이스 이니셜라이저 컨텍스트 당 별로 구성 됩니다. 사용 하 여 구성 파일에서 설정할 수는 **상황에 맞는** 요소입니다. 이 요소는 구성 중인 컨텍스트를 식별 하 어셈블리의 정규화 된 이름을 사용 합니다.  
+데이터베이스 이니셜라이저는 컨텍스트 별로 구성 됩니다. **컨텍스트** 요소를 사용 하 여 구성 파일에서 설정할 수 있습니다. 이 요소는 어셈블리의 정규화 된 이름을 사용 하 여 구성 중인 컨텍스트를 식별 합니다.  
 
-기본적으로 Code First 컨텍스트에 CreateDatabaseIfNotExists 이니셜라이저를 사용 하도록 구성 됩니다. **disableDatabaseInitialization** 특성을 합니다 **상황에 맞는** 데이터베이스 초기화를 사용 하지 않도록 설정 하는 데 사용할 수 있는 요소입니다.  
+기본적으로 Code First 컨텍스트는 CreateDatabaseIfNotExists 이니셜라이저를 사용 하도록 구성 됩니다. 데이터베이스 초기화를 사용 하지 않도록 설정 하는 데 사용할 수 있는 **context** 요소에 **disabledatabaseinitialization** 특성이 있습니다.  
 
-예를 들어, 다음 구성을 MyAssembly.dll에 정의 된 Blogging.BlogContext 컨텍스트에 대 한 데이터베이스 초기화를 해제 합니다.  
+예를 들어 다음 구성은 MyAssembly에 정의 된 블로그의 데이터베이스 초기화를 사용 하지 않도록 설정 합니다.  
 
 ``` xml  
 <contexts>
@@ -214,7 +214,7 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </contexts>
 ```  
 
-사용할 수는 **databaseInitializer** 사용자 정의 이니셜라이저 함수를 설정할 요소입니다.  
+**Databaseinitializer** 요소를 사용 하 여 사용자 지정 이니셜라이저를 설정할 수 있습니다.  
 
 ``` xml
 <contexts>
@@ -224,7 +224,7 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </contexts>
 ```  
 
-기본 연결 팩터리와 동일한 구문을 사용 하는 생성자 매개 변수입니다.  
+생성자 매개 변수는 기본 연결 팩터리와 동일한 구문을 사용 합니다.  
 
 ``` xml  
 <contexts>
@@ -238,9 +238,9 @@ EF NuGet 패키지를 설치한 경우 SQL Express 또는 LocalDB에 어떤 것�
 </contexts>
 ```  
 
-Entity Framework에 포함 된 일반 데이터베이스 이니셜라이저 중 하나를 구성할 수 있습니다. 합니다 **형식** 특성 제네릭 형식에 대 한.NET Framework 형식을 사용 합니다.  
+Entity Framework에 포함 된 일반 데이터베이스 이니셜라이저 중 하나를 구성할 수 있습니다. **Type** 특성은 제네릭 형식에 대해 .NET Framework 형식을 사용 합니다.  
 
-예를 들어, Code First 마이그레이션을 사용 하는 경우는 마이그레이션할 데이터베이스를 사용 하 여 자동으로 구성할 수는 `MigrateDatabaseToLatestVersion<TContext, TMigrationsConfiguration>` 이니셜라이저입니다.  
+예를 들어 Code First 마이그레이션를 사용 하는 경우 `MigrateDatabaseToLatestVersion<TContext, TMigrationsConfiguration>` 이니셜라이저를 사용 하 여 자동으로 마이그레이션되는 데이터베이스를 구성할 수 있습니다.  
 
 ``` xml
 <contexts>
