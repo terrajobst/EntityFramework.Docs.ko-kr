@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: b5ac31722f49589f1494a3d8d1c8a7011a4cf9ce
-ms.sourcegitcommit: a013e243a14f384999ceccaf9c779b8c1ae3b936
+ms.openlocfilehash: 2712845512d9eb349ef3a7e14f4365327db0fcd6
+ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57463271"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565332"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
@@ -21,7 +21,7 @@ ms.locfileid: "57463271"
 
 ### <a name="table-splitting"></a>테이블 분할
 
-이제 기본 키 열을 공유하는 동일한 테이블에 둘 이상의 엔터티 형식을 매핑할 수 있으며 각각의 행은 둘 이상의 엔터티에 해당하게 됩니다. 
+이제 기본 키 열을 공유하는 동일한 테이블에 둘 이상의 엔터티 형식을 매핑할 수 있으며 각각의 행은 둘 이상의 엔터티에 해당하게 됩니다.
 
 테이블 분할을 사용하려면 테이블을 공유하는 모든 엔터티 형식 사이에 식별 관계(외래 키 속성이 기본 키 형성)가 구성되어야 합니다.
 
@@ -32,12 +32,13 @@ modelBuilder.Entity<Product>()
 modelBuilder.Entity<Product>().ToTable("Products");
 modelBuilder.Entity<ProductDetails>().ToTable("Products");
 ```
+이 기능에 대한 자세한 내용은 [테이블 분할에 대한 섹션](xref:core/modeling/table-splitting)을 참조하세요.
 
 ### <a name="owned-types"></a>소유된 형식
 
 소유된 엔터티 형식이 동일한 CLR 형식을 다른 소유된 엔터티 형식과 공유할 수 있으나, CLR 형식만으로는 식별할 수 없으므로 다른 엔터티 형식으로부터의 탐색이 있어야 합니다. 정의 탐색을 포함하는 엔터티가 그 소유자입니다. 소유자를 쿼리할 때 소유된 형식은 기본적으로 포함됩니다.
 
-규칙으로, 소유된 형식에 대해 섀도 기본 키가 만들어지며 테이블 분할을 사용하여 소유자와 동일한 테이블에 매핑됩니다. 따라서 EF6에서 복합 형식이 사용되는 방식과 유사하게 소유된 형식을 사용할 수 있습니다. 
+규칙으로, 소유된 형식에 대해 섀도 기본 키가 만들어지며 테이블 분할을 사용하여 소유자와 동일한 테이블에 매핑됩니다. 따라서 EF6에서 복합 형식이 사용되는 방식과 유사하게 소유된 형식을 사용할 수 있습니다.
 
 ``` csharp
 modelBuilder.Entity<Order>().OwnsOne(p => p.OrderDetails, cb =>
@@ -91,7 +92,7 @@ public class BloggingContext : DbContext
     }
 }
 ```
-```Post``` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 ```TenantId```의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
+`Post` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 `TenantId`의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
 
 IgnoreQueryFilters() 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않게 설정할 수 있습니다.
 
@@ -159,7 +160,7 @@ builder.ApplyConfiguration(new CustomerConfiguration());
 
 일반적으로 ASP.NET Core 애플리케이션에서 EF Core 사용을 위한 기본 패턴에는 사용자 지정 DbContext 형식을 종속성 주입 시스템에 등록하고 나중에 컨트롤러의 생성자 매개 변수를 통해 해당 형식의 인스턴스를 구하는 것이 관련됩니다. 즉 각 요청에 대해 DbContext의 새 인스턴스가 만들어집니다.
 
-버전 2.0에서는 투명하게 재사용 가능한 DbContext 인스턴스의 풀을 도입하는 종속성 주입에서 사용자 지정 DbContext 형식을 등록하는 새로운 방법이 도입됩니다. DbContext 풀링을 사용하려면 서비스 등록 중에 ```AddDbContext``` 대신 ```AddDbContextPool```을 사용합니다.
+버전 2.0에서는 투명하게 재사용 가능한 DbContext 인스턴스의 풀을 도입하는 종속성 주입에서 사용자 지정 DbContext 형식을 등록하는 새로운 방법이 도입됩니다. DbContext 풀링을 사용하려면 서비스 등록 중에 `AddDbContext` 대신 `AddDbContextPool`을 사용합니다.
 
 ``` csharp
 services.AddDbContextPool<BloggingContext>(
@@ -172,7 +173,7 @@ services.AddDbContextPool<BloggingContext>(
 
 ### <a name="limitations"></a>제한 사항
 
-새 메서드에서 DbContext의 ```OnConfiguring()``` 메서드에서 수행할 수 있는 작업에 몇 가지 제한이 있습니다.
+새 메서드에서 DbContext의 `OnConfiguring()` 메서드에서 수행할 수 있는 작업에 몇 가지 제한이 있습니다.
 
 > [!WARNING]  
 > 요청 간에 공유해야 하는 파생된 DbContext 클래스에서 자체 상태(예: 개인 필드)를 유지 관리하는 경우 DbContext 풀링을 사용하지 않습니다. EF Core는 DbContext 인스턴스를 풀에 추가하기 전에 인지한 상태만 재설정합니다.
@@ -216,9 +217,9 @@ EF Core는 다양한 메커니즘을 통해 키 값의 자동 생성을 지원�
 
 이 작업은 그룹 조인에 대해 생성된 SQL을 개선합니다. 그룹 조인은 선택적 탐색 속성에 대한 하위 쿼리의 결과인 경우가 많습니다.
 
-### <a name="string-interpolation-in-fromsql-and-executesqlcommand"></a>FromSql 및 ExecuteSqlCommand의 문자열 보간 
+### <a name="string-interpolation-in-fromsql-and-executesqlcommand"></a>FromSql 및 ExecuteSqlCommand의 문자열 보간
 
-C# 6에는 C# 식을 직접 문자열 리터럴에 포함할 수 있게 하여 런타임에서 문자열을 빌드할 수 있는 훌륭한 방법을 제공하는 문자열 보간이 도입되었습니다.  EF Core 2.0에서는 원시 SQL 문자열 ```FromSql``` 및 ```ExecuteSqlCommand```를 허용하는 두 기본 API에 보간 문자열에 대한 특수 지원을 추가했습니다. 이 새로운 지원을 통해 C# 문자열 보간을 '안전한' 방법으로 사용할 수 있습니다. 즉 동적으로 런타임 시 SQL을 생성할 때 발생할 수 있는 일반적인 SQL 주입 실수로부터 보호할 수 있습니다.
+C# 6에는 C# 식을 직접 문자열 리터럴에 포함할 수 있게 하여 런타임에서 문자열을 빌드할 수 있는 훌륭한 방법을 제공하는 문자열 보간이 도입되었습니다. EF Core 2.0에서는 원시 SQL 문자열 `FromSql` 및 `ExecuteSqlCommand`를 허용하는 두 기본 API에 보간 문자열에 대한 특수 지원을 추가했습니다. 이 새로운 지원을 통해 C# 문자열 보간을 '안전한' 방법으로 사용할 수 있습니다. 즉 동적으로 런타임 시 SQL을 생성할 때 발생할 수 있는 일반적인 SQL 주입 실수로부터 보호할 수 있습니다.
 
 예를 들면 다음과 같습니다.
 
@@ -308,7 +309,7 @@ public class MyPluralizer : IPluralizer
 
 (ILogger에 기반) 로깅 및 (DiagnosticSource 기반) 진단 메커니즘에서 이제 더 많은 코드를 공유합니다.
 
-2.0에서는 ILogger에 전송된 메시지의 이벤트 ID가 변경되었습니다. 이제 이벤트 ID가 EF Core 코드 전체에서 고유합니다. 또한 이 메시지가 MVC 등에서 사용되는 구조화된 로깅의 표준 패턴을 따릅니다.
+2\.0에서는 ILogger에 전송된 메시지의 이벤트 ID가 변경되었습니다. 이제 이벤트 ID가 EF Core 코드 전체에서 고유합니다. 또한 이 메시지가 MVC 등에서 사용되는 구조화된 로깅의 표준 패턴을 따릅니다.
 
 로거 범주도 변경되었습니다. 이제 [DbLoggerCategory](https://github.com/aspnet/EntityFramework/blob/dev/src/EFCore/DbLoggerCategory.cs)를 통해 액세스되는 잘 알려진 범주 집합입니다.
 

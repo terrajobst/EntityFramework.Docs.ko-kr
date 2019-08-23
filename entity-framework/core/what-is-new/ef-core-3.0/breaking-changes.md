@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: c73663412efcd93c04892f193d4f5a2485724e22
-ms.sourcegitcommit: 755a15a789631cc4ea581e2262a2dcc49c219eef
+ms.openlocfilehash: 884cc6611b986fb213d99d3d2fc69d7bebe34aa2
+ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68497524"
+ms.lasthandoff: 08/17/2019
+ms.locfileid: "69565321"
 ---
 # <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
 
@@ -25,6 +25,7 @@ ms.locfileid: "68497524"
 | **호환성이 손상되는 변경**                                                                                               | **영향** |
 |:------------------------------------------------------------------------------------------------------------------|------------|
 | [LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.](#linq-queries-are-no-longer-evaluated-on-the-client)         | 높음       |
+| [EF Core 3.0은 .NET Standard 2.0이 아니라 .NET Standard 2.1을 대상으로 합니다.](#netstandard21) | 높음      |
 | [EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.](#dotnet-ef) | 높음      |
 | [FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.](#fromsql) | 높음      |
 | [쿼리 형식은 엔터티 형식과 통합됩니다.](#qt) | 높음      |
@@ -33,6 +34,7 @@ ms.locfileid: "68497524"
 | [DeleteBehavior.Restrict에 더 명확한 의미 체계가 적용되었습니다.](#deletebehavior) | 중간      |
 | [소유 형식 관계에 대한 구성 API가 변경되었습니다.](#config) | 중간      |
 | [각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.](#each) | 중간      |
+| [비 추적 쿼리가 더 이상 ID 확인을 수행하지 않습니다.](#notrackingresolution) | 중간      |
 | [메타데이터 API 변경 내용](#metadata-api-changes) | 중간      |
 | [공급자별 메타데이터 API 변경 내용](#provider) | 중간      |
 | [UseRowNumberForPaging이 제거되었습니다.](#urn) | 중간      |
@@ -102,6 +104,29 @@ ms.locfileid: "68497524"
 **완화 방법**
 
 쿼리를 완벽하게 변환할 수 없는 경우 변환할 수 있는 형식으로 쿼리를 다시 작성하거나 `AsEnumerable()`, `ToList()` 또는 유사한 형식을 사용하여 명시적으로 데이터를 클라이언트로 가져오면 LINQ to Objects를 사용하여 추가로 처리할 수 있습니다.
+
+<a name="netstandard21"></a>
+### <a name="ef-core-30-targets-net-standard-21-rather-than-net-standard-20"></a>EF Core 3.0은 .NET Standard 2.0이 아니라 .NET Standard 2.1을 대상으로 합니다.
+
+[추적 문제 #15498](https://github.com/aspnet/EntityFrameworkCore/issues/15498)
+
+이 변경 내용은 EF Core 3.0 미리 보기 7에 도입되었습니다.
+
+**이전 동작**
+
+3\.0 이전에는 EF Core가 .NET Standard 2.0을 대상으로 했으며 .NET Framework 등 표준을 지원하는 모든 플랫폼에서 실행되었습니다.
+
+**새 동작**
+
+3\.0부터 EF Core는 .NET Standard 2.1을 대상으로 하며 이 표준을 지원하는 모든 플랫폼에서 실행됩니다. 여기에 .NET Framework는 포함되지 않습니다.
+
+**이유**
+
+이는 .NET Core와 Xamarin 같은 기타 최신 .NET 플랫폼에 에너지를 집중하기 위한 .NET 기술의 전략적 결정의 일부입니다.
+
+**완화 방법**
+
+최신 .NET 플랫폼으로 이동하세요. 가능하지 않는 경우, EF Core 2.1 또는 EF Core 2.2를 계속 사용하세요. 둘 다 .NET Framework를 지원합니다.
 
 <a name="no-longer"></a>
 ### <a name="entity-framework-core-is-no-longer-part-of-the-aspnet-core-shared-framework"></a>Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크에 포함되지 않습니다.
@@ -222,6 +247,34 @@ EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(
 **완화 방법**
 
 `FromSql` 호출은 이 호출이 적용되는 `DbSet`로 직접 이동해야 합니다.
+
+<a name="notrackingresolution"></a>
+### <a name="no-tracking-queries-no-longer-perform-identity-resolution"></a>비 추적 쿼리가 더 이상 ID 확인을 수행하지 않습니다.
+
+[추적 문제 #13518](https://github.com/aspnet/EntityFrameworkCore/issues/13518)
+
+이 변경 내용은 EF Core 3.0 미리 보기 6에 도입되었습니다.
+
+**이전 동작**
+
+EF Core 3.0 이전에는 지정된 형식 및 ID의 엔터티가 발생할 때마다 동일한 엔터티 인스턴스가 사용되었습니다. 이는 추적 쿼리의 동작과 일치합니다. 예를 들어 다음 쿼리는
+
+```C#
+var results = context.Products.Include(e => e.Category).AsNoTracking().ToList();
+```
+지정된 범주와 연결된 각 `Product`에 대해 동일한 `Category` 인스턴스를 반환합니다.
+
+**새 동작**
+
+EF Core 3.0부터 지정된 형식 및 ID의 엔터티가 반환된 그래프의 여러 위치에서 발생할 때 여러 엔터티 인스턴스가 생성됩니다. 예를 들어 위 쿼리는 이제 두 제품이 동일한 범주에 연결되어 있는 경우에도 각 `Product`에 대해 새 `Category` 인스턴스를 반환합니다.
+
+**이유**
+
+ID 확인(즉 이전에 발생한 엔터티와 동일한 형식과 ID를 가진 엔터티 확인)이 추가 성능 및 메모리 오버헤드를 추가합니다. 이는 일반적으로 비 추적 쿼리가 먼저 사용되는 이유와 상반됩니다. 또한 ID 확인이 때때로 유용할 수 있지만, 엔터티가 직렬화되고 클라이언트로 전송되는 경우(비 추적 쿼리에 일반적임)에는 필요하지 않습니다.
+
+**완화 방법**
+
+ID 확인이 필요한 경우 추적 쿼리를 사용합니다.
 
 <a name="qe"></a>
 
@@ -1222,8 +1275,8 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 공급자 고유의 확장 메서드가 평면화됩니다.
 
 * `IProperty.Relational().ColumnName` -> `IProperty.GetColumnName()`
-* `IEntityType.SqlServer().IsMemoryOptimized` -> `IEntityType.GetSqlServerIsMemoryOptimized()`
-* `PropertyBuilder.UseSqlServerIdentityColumn()` -> `PropertyBuilder.ForSqlServerUseIdentityColumn()`
+* `IEntityType.SqlServer().IsMemoryOptimized` -> `IEntityType.IsMemoryOptimized()`
+* `PropertyBuilder.UseSqlServerIdentityColumn()` -> `PropertyBuilder.UseIdentityColumn()`
 
 **이유**
 
@@ -1260,7 +1313,7 @@ EF Core 3.0부터 EF Core는 더 이상 SQLite에 대한 연결이 열릴 때 `P
 
 <a name="sqlite3"></a>
 
-### <a name="microsoftentityframeworkcoresqlite-now-depends-on-sqlitepclrawbundleesqlite3"></a>Microsoft.EntityFrameworkCore.Sqlite는 이제 SQLitePCLRaw.bundle_e_sqlite3에 종속됩니다.
+### <a name="microsoftentityframeworkcoresqlite-now-depends-on-sqlitepclrawbundle_e_sqlite3"></a>Microsoft.EntityFrameworkCore.Sqlite는 이제 SQLitePCLRaw.bundle_e_sqlite3에 종속됩니다.
 
 **이전 동작**
 

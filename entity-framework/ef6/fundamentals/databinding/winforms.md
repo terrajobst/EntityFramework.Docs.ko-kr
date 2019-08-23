@@ -3,12 +3,12 @@ title: WinForms를 사용 하 여 데이터 바인딩-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 80fc5062-2f1c-4dbd-ab6e-b99496784b36
-ms.openlocfilehash: ad55ef4d496bbfe30eafcab9811c92989066519f
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 3c7c58f5ded29c136bbdca1d81c64b07c53ce583
+ms.sourcegitcommit: 7391cc31193c1216ec9ed485709042ad0c2106cf
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306556"
+ms.lasthandoff: 08/23/2019
+ms.locfileid: "69985479"
 ---
 # <a name="databinding-with-winforms"></a>WinForms를 사용 하 여 데이터 바인딩
 이 단계별 연습에서는 POCO 형식을 "마스터-세부 정보" 폼의 WinForms (Window Forms) 컨트롤에 바인딩하는 방법을 보여 줍니다. 응용 프로그램은 Entity Framework를 사용 하 여 데이터베이스의 데이터로 개체를 채우고, 변경 내용을 추적 하 고, 데이터를 데이터베이스에 보관 합니다.
@@ -47,7 +47,7 @@ Windows Forms를 사용할 때 정렬에 양방향 데이터 바인딩을 사용
 -   프로젝트에 **ObservableListSource** 클래스를 추가 합니다.
     -   프로젝트 이름을 마우스 오른쪽 단추로 클릭 합니다.
     -   **새 항목 추가&gt; 를** 선택 합니다.
-    -   클래스 **를 선택 하** 고 클래스 이름으로 **ObservableListSource** 를 입력 합니다.
+    -   클래스 를 선택 하 고 클래스 이름으로 **ObservableListSource** 를 입력 합니다.
 -   기본적으로 생성 된 코드를 다음 코드로 바꿉니다.
 
 *이 클래스를 사용 하면 양방향 데이터 바인딩과 정렬을 사용할 수 있습니다. 클래스는 system.collections.objectmodel.observablecollection&lt;T&gt; 에서 파생 되며 IListSource의 명시적 구현을 추가 합니다. IListSource의 GetList () 메서드는 System.collections.objectmodel.observablecollection와 동기화 상태로 유지 되는 IBindingList 구현을 반환 하도록 구현 됩니다. ToBindingList에 의해 생성 된 IBindingList 구현에서는 정렬을 지원 합니다. ToBindingList 확장 메서드는 EntityFramework 어셈블리에서 정의 됩니다.*
@@ -276,12 +276,12 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임 중에 파생 된 
 -   주 메뉴에서 **프로젝트-&gt; 새 데이터 소스 추가** ...를 선택 합니다.
     Visual Studio 2010에서는 **데이터-&gt; 새 데이터 소스 추가**...를 선택 해야 합니다.
 -   데이터 소스 형식 선택 창에서 **개체** 를 선택 하 고 **다음** 을 클릭 합니다.
--   데이터 개체 선택 대화 상자에서 Win펼침을 두  번 선택 하 고 **범주** 를 선택 합니다. 범주 데이터 원본에서 제품의 속성을 통해 제품 데이터 원본을 선택할 필요가 없습니다.
+-   데이터 개체 선택 대화 상자에서 Win펼침을 두 번 선택 하 고 **범주** 를 선택 합니다. 범주 데이터 원본에서 제품의 속성을 통해 제품 데이터 원본을 선택할 필요가 없습니다.
 
     ![데이터 원본](~/ef6/media/datasource.png)
 
--   **마침을 클릭 합니다.** 데이터 소스 *창이 표시 되지 않으면 * * * 보기-&gt; 기타 창-&gt; 데이터 원본을 선택* 합니다. 
-    *
+-   **마침을 클릭 합니다.**
+    데이터 소스 창이 표시 되지 않으면 **보기-&gt; 기타 창&gt; -데이터 원본** 을 선택 합니다.
 -   데이터 소스 창이 자동으로 숨겨지지 않도록 고정 아이콘을 누릅니다. 창이 이미 표시 되는 경우 새로 고침 단추를 눌러야 할 수 있습니다.
 
     ![데이터 원본 2](~/ef6/media/datasource2.png)

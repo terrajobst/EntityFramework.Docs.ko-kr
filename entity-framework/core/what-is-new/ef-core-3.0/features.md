@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: 2EBE2CCC-E52D-483F-834C-8877F5EB0C0C
 uid: core/what-is-new/ef-core-3.0/features
-ms.openlocfilehash: 7501a806271c9734e85e31845f260f2d512da077
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: a71aa01e81d9830d7b9e6cb01c200851100a15df
+ms.sourcegitcommit: 87e72899d17602f7526d6ccd22f3c8ee844145df
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58867959"
+ms.lasthandoff: 08/20/2019
+ms.locfileid: "69628424"
 ---
 # <a name="new-features-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 새로운 기능(현재 미리 보기 상태)
 
@@ -65,6 +65,7 @@ public class Order
     public OrderDetails Details { get; set; }
 }
 
+[Owned]
 public class OrderDetails
 {
     public int Id { get; set; }
@@ -73,7 +74,8 @@ public class OrderDetails
 ```
 
 EF Core 3.0부터 `OrderDetails`가 `Order`에 소유되거나 같은 테이블에 명시적으로 매핑된 경우 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외하고 모든 `OrderDetails` 속성이 Null 허용 열에 매핑됩니다.
-EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
+
+쿼리 시 EF Core는 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
 
 ## <a name="c-80-support"></a>C# 8.0 지원
 
@@ -91,7 +93,7 @@ EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 �
 이 기능은 현재 미리 보기에 포함되어 있지 않습니다.
 
 EF Core 2.1에서 도입되고 EF Core 3.0에서 키가 없는 엔터티 형식으로 간주되는 [쿼리 유형](xref:core/modeling/query-types)은 데이터베이스에서 읽을 수 있지만 업데이트할 수 없는 데이터를 나타냅니다.
-이 특성은 대부분의 시나리오에서 데이터베이스 뷰에 매우 적합하므로 리버스 엔지리어닝 데이터베이스 뷰에서 키 없이 엔터티 형식을 자동화할 계획입니다.
+이 특성은 대부분의 시나리오에서 데이터베이스 뷰에 매우 적합하므로 리버스 엔지니어링 데이터베이스 뷰에서 키 없이 엔터티 형식을 자동화할 계획입니다.
 
 ## <a name="property-bag-entities"></a>속성 모음 엔터티
 
