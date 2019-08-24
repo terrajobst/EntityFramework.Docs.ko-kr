@@ -18,7 +18,7 @@ Entity Framework는 .NET용의 개체-관계형 매퍼(O/RM)입니다. 이 문�
 
 ## <a name="entity-framework-6"></a>Entity Framework 6
 
-Entity Framework 6(EF6)은 테스트와 시험을 거친 데이터 액세스 기술입니다. 2008년에 .NET Framework 3.5 SP1 및 Visual Studio 2008 SP1의 일부로 처음 릴리스되었습니다. 4.1 릴리스부터는 [EntityFramework](https://www.nuget.org/packages/EntityFramework/) NuGet 패키지로 탑재되었습니다. EF6는 .NET Framework 4.x에서 실행되며, 이는 Windows에서만 실행됨을 의미합니다. 
+Entity Framework 6(EF6)은 테스트와 시험을 거친 데이터 액세스 기술입니다. 2008년에 .NET Framework 3.5 SP1 및 Visual Studio 2008 SP1의 일부로 처음 릴리스되었습니다. 4\.1 릴리스부터는 [EntityFramework](https://www.nuget.org/packages/EntityFramework/) NuGet 패키지로 탑재되었습니다. EF6는 .NET Framework 4.x에서 실행되며, 이는 Windows에서만 실행됨을 의미합니다. 
 
 EF6는 계속 지원되는 제품이며 버그 수정 사항과 작은 개선이 이어질 것입니다.
 
@@ -93,7 +93,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 
 | **기능**                                           | **EF6**  | **EF Core**                           |
 |:------------------------------------------------------|:---------|:--------------------------------------|
-| 변경 내용 추적: 스냅숏                             | 예      | 1.0                                   |
+| 변경 내용 추적: 스냅샷                             | 예      | 1.0                                   |
 | 변경 내용 추적: 알림                         | 예      | 1.0                                   |
 | 변경 내용 추적: 프록시                              | 예      |                                       |
 | 추적된 상태 액세스                               | 예      | 1.0                                   |
@@ -102,7 +102,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 문 일괄 처리                                |          | 1.0                                   |
 | 저장 프로시저 매핑                              | 예      |                                       |
 | 연결이 끊긴 그래프 하위 수준 API                     | 나쁨     | 1.0                                   |
-| 연결이 끊긴 그래프 종단 간                         |          | 1.0(부분)                         |
+| 연결이 끊긴 그래프 엔드투엔드                         |          | 1.0(부분)                         |
 
 ### <a name="other-features"></a>기타 기능
 
@@ -144,9 +144,9 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | Mono 및 Xamarin                                        |          | 1.0(진행 중)                     |
 | UWP                                                   |          | 1.0(진행 중)                     |
 
-## <a name="guidance-for-new-applications"></a>새 응용 프로그램에 대한 지침
+## <a name="guidance-for-new-applications"></a>새 애플리케이션에 대한 지침
 
-다음 조건이 모두 충족되면 새 응용 프로그램에 EF Core를 사용해 보세요.
+다음 조건이 모두 충족되면 새 애플리케이션에 EF Core를 사용해 보세요.
 * 이 앱을 사용하려면 .NET Core의 기능이 필요합니다. 자세한 내용은 [서버 앱에 대해 .NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)을 참조하세요.
 * EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/roadmap)을 확인하여 나중에 지원할 계획이 있는지 확인하세요. 
 
@@ -154,9 +154,9 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 * 이 앱은 Windows 및 .NET Framework 4.0 이상에서 실행됩니다.
 * EF6는 앱에 필요한 모든 기능을 지원합니다.
 
-## <a name="guidance-for-existing-ef6-applications"></a>기존 EF6 응용 프로그램에 대한 지침
+## <a name="guidance-for-existing-ef6-applications"></a>기존 EF6 애플리케이션에 대한 지침
 
-EF Core의 기본적인 변경 내용 때문에, 변경할 중요한 이유가 있는 경우에만 EF6 응용 프로그램을 EF Core로 이동하는 것이 좋습니다. 새로운 기능을 사용하기 위해 EF Core로 이동하려면 제한 사항을 알고 있어야 합니다. 자세한 내용은 [EF6에서 EF Core로 이식](porting/index.md)을 참조하세요. **EF6에서 EF Core로의 이동은 업그레이드보다는 이식에 가깝습니다.** 
+EF Core의 기본적인 변경 내용 때문에, 변경할 중요한 이유가 있는 경우에만 EF6 애플리케이션을 EF Core로 이동하는 것이 좋습니다. 새로운 기능을 사용하기 위해 EF Core로 이동하려면 제한 사항을 알고 있어야 합니다. 자세한 내용은 [EF6에서 EF Core로 이식](porting/index.md)을 참조하세요. **EF6에서 EF Core로의 이동은 업그레이드보다는 이식에 가깝습니다.** 
 
 ## <a name="next-steps"></a>다음 단계
 

@@ -13,7 +13,7 @@ ms.locfileid: "50022378"
 ---
 # <a name="getting-started-with-ef-core-on-universal-windows-platform-uwp-with-a-new-database"></a>UWP(유니버설 Windows 플랫폼)에서 새 데이터베이스로 EF Core 시작
 
-이 자습서에서는 Entity Framework Core를 사용하여 로컬 SQLite 데이터베이스에 대한 기본 데이터 액세스를 수행하는 UWP(유니버설 Windows 플랫폼) 응용 프로그램을 빌드합니다.
+이 자습서에서는 Entity Framework Core를 사용하여 로컬 SQLite 데이터베이스에 대한 기본 데이터 액세스를 수행하는 UWP(유니버설 Windows 플랫폼) 애플리케이션을 빌드합니다.
 
 [GitHub에서 이 아티클의 샘플을 봅니다](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted/UWP).
 
@@ -28,7 +28,7 @@ ms.locfileid: "50022378"
 > [!IMPORTANT]
 > 이 자습서에서는 Entity Framework Core [마이그레이션](xref:core/managing-schemas/migrations/index) 명령을 사용하여 데이터베이스의 스키마를 작성하고 업데이트합니다.
 > 이러한 명령은 UWP 프로젝트에 작동하지 않습니다.
-> 이러한 이유로 응용 프로그램의 데이터 모델이 공유 라이브러리 프로젝트에 배치되고 별도의 .NET Core 콘솔 응용 프로그램이 명령을 실행하는 데 사용됩니다.
+> 이러한 이유로 애플리케이션의 데이터 모델이 공유 라이브러리 프로젝트에 배치되고 별도의 .NET Core 콘솔 애플리케이션이 명령을 실행하는 데 사용됩니다.
 
 ## <a name="create-a-library-project-to-hold-the-data-model"></a>데이터 모델을 보관할 라이브러리 프로젝트 만들기
 
@@ -80,7 +80,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 
 ## <a name="install-entity-framework-core-tools-in-the-migrations-startup-project"></a>마이그레이션 시작 프로젝트에 Entity Framework Core 도구 설치
 
-패키지 관리자 콘솔에서 EF Core 마이그레이션 명령을 사용하려면 콘솔 응용 프로그램에서 EF Core 도구 패키지를 설치하세요.
+패키지 관리자 콘솔에서 EF Core 마이그레이션 명령을 사용하려면 콘솔 애플리케이션에서 EF Core 도구 패키지를 설치하세요.
 
 * **도구 > NuGet 패키지 관리자 > 패키지 관리자 콘솔**
 
@@ -88,7 +88,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 
 ## <a name="create-the-initial-migration"></a>초기 마이그레이션 만들기
 
- 시작 프로젝트로 콘솔 응용 프로그램을 지정하여 초기 마이그레이션을 만드세요.
+ 시작 프로젝트로 콘솔 애플리케이션을 지정하여 초기 마이그레이션을 만드세요.
 
 * `Add-Migration InitialCreate -StartupProject Blogging.Migrations.Startup` 실행
 
@@ -108,9 +108,9 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 > 대상 및 최소 버전을 **Windows 10 Fall Creators Update(10.0; 빌드 16299.0)** 이상으로 설정합니다.
 > 이전 버전의 Windows 10에서는 Entity Framework Core에 필요한 .NET Standard 2.0을 지원하지 않습니다.
 
-## <a name="add-code-to-create-the-database-on-application-startup"></a>응용 프로그램 시작 시 데이터베이스를 만드는 코드 추가
+## <a name="add-code-to-create-the-database-on-application-startup"></a>애플리케이션 시작 시 데이터베이스를 만드는 코드 추가
 
-앱이 실행되는 디바이스에서 데이터베이스를 만들려면 응용 프로그램 시작 시 로컬 데이터베이스에 보류 중인 마이그레이션을 적용할 코드를 추가합니다. 이렇게 하면 앱이 처음 실행될 때 로컬 데이터베이스가 만들어집니다.
+앱이 실행되는 디바이스에서 데이터베이스를 만들려면 애플리케이션 시작 시 로컬 데이터베이스에 보류 중인 마이그레이션을 적용할 코드를 추가합니다. 이렇게 하면 앱이 처음 실행될 때 로컬 데이터베이스가 만들어집니다.
 
 * *Blogging.UWP* 프로젝트의 프로젝트 참조를 *Blogging.Model* 프로젝트에 추가합니다.
 
@@ -121,7 +121,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
   [!code-csharp[Main](../../../../samples/core/GetStarted/UWP/Blogging.UWP/App.xaml.cs?highlight=1-2,26-29)]
 
 > [!TIP]  
-> 모델을 변경하는 경우 `Add-Migration` 명령을 사용하여 새 마이그레이션을 스캐폴딩하고 데이터베이스에 해당 변경 내용을 적용합니다. 보류 중인 마이그레이션은 응용 프로그램이 시작될 때 각 디바이스의 로컬 데이터베이스에 적용됩니다.
+> 모델을 변경하는 경우 `Add-Migration` 명령을 사용하여 새 마이그레이션을 스캐폴딩하고 데이터베이스에 해당 변경 내용을 적용합니다. 보류 중인 마이그레이션은 애플리케이션이 시작될 때 각 디바이스의 로컬 데이터베이스에 적용됩니다.
 >
 >EF Core는 데이터베이스의 `__EFMigrationsHistory` 테이블을 사용하여 이미 데이터베이스에 적용된 마이그레이션을 추적합니다.
 
@@ -143,7 +143,7 @@ EF Core 를 사용하려면 대상으로 지정할 데이터베이스 공급자�
 
 [!code-csharp[Main](../../../../samples/core/GetStarted/UWP/Blogging.UWP/MainPage.xaml.cs?highlight=1,31-49)]
 
-이제 응용 프로그램을 실행하여 작동하는지 확인할 수 있습니다.
+이제 애플리케이션을 실행하여 작동하는지 확인할 수 있습니다.
 
 * **솔루션 탐색기**에서 *Blogging.UWP* 프로젝트를 마우스 오른쪽 단추로 클릭한 다음, **배포**를 선택합니다.
 

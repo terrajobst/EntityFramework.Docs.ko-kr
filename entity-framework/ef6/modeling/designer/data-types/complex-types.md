@@ -28,7 +28,7 @@ ms.locfileid: "45489910"
 
 -   복합 형식은 키 없고 따라서 독립적으로 존재할 수 없습니다. 복합 형식은 엔터티 형식 또는 다른 복합 형식의 속성으로만 존재할 수 있습니다.
 -   복합 형식 연결에 참여할 수 없습니다 및 탐색 속성을 포함할 수 없습니다.
--   복합 형식 속성 일 수 없습니다 **null**합니다. * * InvalidOperationException * * 발생 때 **DbContext.SaveChanges** 라고는 null 복합 개체가 발견 되 고 있습니다. 복잡 한 개체의 스칼라 속성 일 수 있습니다 **null**합니다.
+-   복합 형식 속성 일 수 없습니다 **null**합니다. \* * InvalidOperationException * * 발생 때 **DbContext.SaveChanges** 라고는 null 복합 개체가 발견 되 고 있습니다. 복잡 한 개체의 스칼라 속성 일 수 있습니다 **null**합니다.
 -   복합 형식은 다른 복합 형식에서 상속할 수 없습니다.
 -   복합 유형으로 정의 해야 합니다는 **클래스**합니다. 
 -   EF에서 복합 형식 개체에서 멤버의 변경 내용을 검색 하면 **DbContext.DetectChanges** 라고 합니다. 엔터티 프레임 워크에서 호출 **DetectChanges** 는 다음 멤버가 호출 될 때 자동으로: **DbSet.Find**하십시오 **DbSet.Local**, **DbSet.Remove**, **DbSet.Add**합니다 **DbSet.Attach**를 **DbContext.SaveChanges**를 **DbContext.GetValidationErrors**, **DbContext.Entry**하십시오 **DbChangeTracker.Entries**합니다.
@@ -117,14 +117,14 @@ ms.locfileid: "45489910"
 
 ## <a name="map-a-function-import-to-a-complex-type"></a>Function Import를 복합 형식 매핑
 
-Function Import는 저장 프로시저를 기반으로 합니다. Function Import를 복합 형식에 매핑하려면 해당 저장 프로시저에서 반환하는 열의 수와 복합 형식의 속성 수가 일치해야 하고 저장소 형식이 속성 형식과 호환되어야 합니다.
+Function Import는 저장 프로시저를 기반으로 합니다. Function Import를 복합 형식에 매핑하려면 해당 저장 프로시저에서 반환하는 열의 수와 복합 형식의 속성 수가 일치해야 하고 스토리지 형식이 속성 형식과 호환되어야 합니다.
 
 -   복합 형식에 매핑하려는 가져온된 함수가 두 번 클릭 합니다.
 
     ![함수 가져오기](~/ef6/media/functionimports.png)
 
 -   다음과 같이 새 Function Import에 대한 설정을 입력합니다.
-    -   function import를 만드는 저장된 프로시저를 지정 합니다 **저장 프로시저 이름** 필드입니다. 이 필드는 저장소 모델의 모든 저장 프로시저가 표시되는 드롭다운 목록입니다.
+    -   function import를 만드는 저장된 프로시저를 지정 합니다 **저장 프로시저 이름** 필드입니다. 이 필드는 스토리지 모델의 모든 저장 프로시저가 표시되는 드롭다운 목록입니다.
     -   function import의 이름을 지정 합니다 **Function Import 이름** 필드입니다.
     -   선택 **복잡 한** 반환으로 입력 한 다음 드롭다운 목록에서 적절 한 유형을 선택 하 여 특정 복합 반환 형식을 지정 합니다.
 

@@ -50,8 +50,8 @@ Windows, OSX 및 Linux에서 .NET Framework 및 .NET Core를 둘 다 대상으�
 모델에서 잘못된 패턴을 검색하고 유용한 오류 메시지를 제공합니다.
 
 ## <a name="change-tracking"></a>Change tracking
-### <a name="snapshot-change-tracking"></a>스냅숏 변경 내용 추적
-현재 상태를 원래 상태의 복사본(스냅숏)과 비교하여 엔터티의 변경 내용을 자동으로 검색할 수 있습니다.
+### <a name="snapshot-change-tracking"></a>스냅샷 변경 내용 추적
+현재 상태를 원래 상태의 복사본(스냅샷)과 비교하여 엔터티의 변경 내용을 자동으로 검색할 수 있습니다.
 ### <a name="notification-change-tracking"></a>알림 변경 내용 추적
 속성 값이 수정될 경우 엔터티가 변경 추적 프로그램에 알릴 수 있습니다.
 ### <a name="accessing-tracked-state"></a>추적된 상태 액세스
