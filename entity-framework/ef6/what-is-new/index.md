@@ -3,12 +3,12 @@ title: 새로운 기능 - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
-ms.openlocfilehash: fcd6339f67a1512dd66220c59537d12cf0b22620
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 01dc618954da5dbd12fbd37c2c47701ce251be92
+ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490300"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271449"
 ---
 # <a name="whats-new-in-ef6"></a>EF6의 새로운 기능
 
@@ -44,7 +44,7 @@ EF 6.2 런타임은 2017년 10월에 NuGet에 출시되었습니다.
 - 이제 Migrate.exe가 -script 옵션 지원 [#240](https://github.com/aspnet/EntityFramework6/issues/240)
 - 이제 EF6는 SQL Server에서 시퀀스를 통해 생성된 키 값 사용 가능 [#165](https://github.com/aspnet/EntityFramework6/issues/165)
 - SQL Azure 실행 전략에 대한 일시적인 오류 목록 업데이트 [83](https://github.com/aspnet/EntityFramework6/issues/83)
-- 버그: "SqlParameter가 이미 다른 SqlParameterCollection에 포함되어 있음" 메시지와 함께 쿼리 재시도 또는 SQL 명령이 실패 [#81](https://github.com/aspnet/EntityFramework6/issues/81)
+- 버그: “SqlParameter가 이미 다른 SqlParameterCollection에 포함되어 있음” 메시지와 함께 쿼리 재시도 또는 SQL 명령이 실패 [#81](https://github.com/aspnet/EntityFramework6/issues/81)
 - 버그: 디버거에서 DbQuery.ToString() 평가가 자주 시간 초과 [#73](https://github.com/aspnet/EntityFramework6/issues/73)
 
 ## <a name="future-releases"></a>이후 릴리스

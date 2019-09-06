@@ -3,12 +3,12 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: e1cb9f5afc54aaa12e5880ace606277b00911c06
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: c9bbb8a5889834ea078ddb7e432863b3d0cf2ffe
+ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306468"
+ms.lasthandoff: 09/04/2019
+ms.locfileid: "70271454"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
 
@@ -41,6 +41,9 @@ _블로그_ 엔터티에서 _tenantId_ 필드의 선언을 확인하세요. 이 
 
 > [!TIP]
 > DbContext 인스턴스 수준 필드를 사용합니다. `_tenantId`는 현재 테넌트를 설정하는 데 사용됩니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 인스턴스)의 값을 사용합니다.
+
+> [!NOTE]
+> 현재 동일한 엔터티에 여러 개의 쿼리 필터를 정의할 수 없습니다. 마지막 필터만 적용됩니다. 그러나 논리 _AND_ 연산자([C#의 `&&`](https://docs.microsoft.com/dotnet/csharp/language-reference/operators/boolean-logical-operators#conditional-logical-and-operator-))를 사용하여 여러 조건으로 단일 필터를 정의할 수 있습니다.
 
 ## <a name="disabling-filters"></a>필터 사용 안 함
 
