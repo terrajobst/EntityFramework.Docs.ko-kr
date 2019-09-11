@@ -37,7 +37,7 @@ EF Core는 단일 행에 두 개 이상의 엔터티를 매핑할 수 있습니�
 
 참조 된 [전체 샘플 프로젝트](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/TableSplitting) 자세한 컨텍스트.
 
-## <a name="usage"></a>사용법
+## <a name="usage"></a>사용
 
 저장 하 고 테이블 분할을 사용 하 여 엔터티 쿼리 다른 엔터티는 동일한 방식으로 수행 됩니다, 그리고 유일한 차이점은 삽입에 대 한 행을 공유 하는 모든 엔터티를 추적할 수 있어야 합니다.
 
