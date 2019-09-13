@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: bf2039110962e8dd114242dcd0b9454963750774
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: ae578976ffc88b407ef0aaa0017935005bedd093
+ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306592"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70921623"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -221,12 +221,14 @@ System.object 네임 스페이스에서 사용 가능한 확장 메서드의 포
 
 이제 코드는 비동기 이므로 프로그램을 실행할 때 다른 실행 흐름을 관찰할 수 있습니다.
 
-1.  **SaveChanges** 는 명령이 데이터베이스로 전송 된 *후 데이터베이스에 새 블로그를 푸시하는 시작을 시작 합니다. 현재 관리 되는 스레드에 더 이상 계산 시간이 필요 하지 않습니다. **PerformDatabaseOperations** 메서드는 실행이 완료 되지 않은 경우에도를 반환 하 고 Main 메서드의 프로그램 흐름은 계속 됩니다.*
-2.  **요일에 대 한 견적은**
-    주 메서드에서 수행할 작업이 더 이상 없으므로 콘솔*에 기록 됩니다. 관리 되는 스레드는 데이터베이스 작업이 완료 될 때까지 대기 호출에서 차단 됩니다. 완료 되 면 **PerformDatabaseOperations** 의 나머지가 실행 됩니다.*
-3.  **SaveChanges** 완료
-4.  데이터베이스에서 쿼리 를 처리 하는 동안에 *는 모든 블로그의 쿼리가 데이터베이스에 다시 전송 되며 관리 되는 스레드는 다른 작업을 수행할 수 있습니다. 다른 모든 실행이 완료 된 후에도 스레드는 대기 호출에서 중단 됩니다.*
-5.  쿼리가 반환 되 고 결과가 **콘솔** 에 기록 됩니다.
+1. **SaveChanges** 는 데이터베이스에 새 **블로그** 를 푸시하는 것으로 시작 합니다.  
+    *명령이 데이터베이스로 전송 되 면 현재 관리 되는 스레드에 더 이상 계산 시간이 필요 하지 않습니다. **PerformDatabaseOperations** 메서드는 실행이 완료 되지 않은 경우에도를 반환 하 고 Main 메서드의 프로그램 흐름은 계속 됩니다.*
+2. **요일의 견적이 콘솔에 기록 됩니다.**  
+    *Main 메서드에서 수행할 작업이 더 이상 없으므로 관리 되는 스레드는 데이터베이스 작업이 완료 될 때까지 대기 호출에서 차단 됩니다. 완료 되 면 **PerformDatabaseOperations** 의 나머지가 실행 됩니다.*
+3.  **SaveChanges** 완료  
+4.  모든 **블로그의** 쿼리가 데이터베이스로 전송 됨  
+    *또한 데이터베이스에서 쿼리가 처리 되는 동안 관리 되는 스레드는 다른 작업을 수행할 수 있습니다. 다른 모든 실행이 완료 된 후에도 스레드는 대기 호출에서 중단 됩니다.*
+5.  쿼리가 반환 되 고 결과가 **콘솔** 에 기록 됩니다.  
 
 ![비동기 출력](~/ef6/media/asyncoutput.png) 
 
