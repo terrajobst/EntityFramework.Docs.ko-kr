@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 590d16902329ffb3fff8026f8dfdcfc887f6dea3
-ms.sourcegitcommit: eefcab31142f61a7aaeac03ea90dcd39f158b8b8
+ms.openlocfilehash: 4bf9598f9b7e74c2835d3926215de9a7ef4e6f96
+ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/29/2019
-ms.locfileid: "64873200"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70921798"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -25,7 +25,7 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 `Include` 메서드를 사용하여 쿼리 결과에 포함할 관련 데이터를 지정할 수 있습니다. 다음 예제에서 결과에 반환되는 블로그에는 관련 게시물로 채워진 `Posts` 속성이 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#SingleInclude)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#SingleInclude)]
 
 > [!TIP]  
 > Entity Framework Core는 이전에 컨텍스트 인스턴스에 로드된 다른 엔터티로 탐색 속성을 자동으로 수정합니다. 따라서 탐색 속성에 대한 데이터를 명시적으로 포함하지 않더라도 관련 엔터티의 일부 또는 전체가 이전에 로드된 경우 속성이 채워질 수 있습니다.
@@ -33,28 +33,28 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 여러 관계의 관련 데이터를 단일 쿼리에 포함할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleIncludes)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleIncludes)]
 
 ### <a name="including-multiple-levels"></a>여러 수준 포함
 
 `ThenInclude` 메서드를 사용하여 여러 수준의 관련 데이터를 포함하도록 관계를 드릴다운할 수 있습니다. 다음 예제에서는 모든 블로그, 관련 게시물 및 각 게시물의 작성자를 로드합니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#SingleThenInclude)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#SingleThenInclude)]
 
 > [!NOTE]  
-> 현재 버전의 Visual Studio에서는 잘못된 코드 완성 옵션을 제공하므로 컬렉션 탐색 속성 뒤에 `ThenInclude` 메서드를 사용하면 올바른 식에 구문 오류 플래그가 지정될 수 있습니다. 이는 https://github.com/dotnet/roslyn/issues/8237에서 추적되는 IntelliSense 버그의 증상입니다. 코드가 올바르고 성공적으로 컴파일할 수 있는 한 잘못된 구문 오류는 무시해도 안전합니다. 
+> 현재 버전의 Visual Studio에서는 잘못된 코드 완성 옵션을 제공하므로 컬렉션 탐색 속성 뒤에 `ThenInclude` 메서드를 사용하면 올바른 식에 구문 오류 플래그가 지정될 수 있습니다. 이는 https://github.com/dotnet/roslyn/issues/8237 에서 추적되는 IntelliSense 버그의 증상입니다. 코드가 올바르고 성공적으로 컴파일할 수 있는 한 잘못된 구문 오류는 무시해도 안전합니다. 
 
 `ThenInclude`에 대한 여러 호출을 연결하여 관련 데이터의 추가 수준을 계속 포함할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleThenIncludes)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleThenIncludes)]
 
 이 호출을 모두 결합하여 여러 수준 및 여러 루트의 관련 데이터를 동일한 쿼리에 포함할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#IncludeTree)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#IncludeTree)]
 
 포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blogs`를 쿼리하는 경우 `Posts`를 포함한 다음, `Posts`의 `Author` 및 `Tags`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
 
 ### <a name="include-on-derived-types"></a>파생 형식에 포함
 
@@ -117,11 +117,11 @@ public class School
 
 다음 예제에서 포함 연산자는 `Blog`를 기반으로 하고, `Select` 연산자는 무명 형식을 반환하도록 쿼리를 변경하는 데 사용됩니다. 이 경우 포함 연산자는 아무 효과가 없습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#IgnoredInclude)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#IgnoredInclude)]
 
 기본적으로 EF Core는 포함 연산자가 무시될 때 경고를 로깅합니다. 로깅 출력 보기에 대한 자세한 내용은 [로깅](../miscellaneous/logging.md)을 참조하세요. 포함 연산자가 무시될 때 동작을 throw나 아무 작업도 하지 않음으로 변경할 수 있습니다. 이 작업은 컨텍스트에 대한 옵션을 설정할 때 수행하며, 일반적으로 `DbContext.OnConfiguring`에서나 `Startup.cs`(ASP.NET Core를 사용하는 경우)에서 수행합니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/ThrowOnIgnoredInclude/BloggingContext.cs#OnConfiguring)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/ThrowOnIgnoredInclude/BloggingContext.cs#OnConfiguring)]
 
 ## <a name="explicit-loading"></a>명시적 로드
 
@@ -130,7 +130,7 @@ public class School
 
 `DbContext.Entry(...)` API를 통해 탐색 속성을 명시적으로 로드할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#Eager)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#Eager)]
 
 관련 엔터티를 반환하는 별도의 쿼리를 실행하여 탐색 속성을 명시적으로 로드할 수도 있습니다. 변경 내용 추적이 사용되는 경우 엔터티를 로드하면 EF Core는 새로 로드된 엔터티의 탐색 속성을 이미 로드된 엔터티를 참조하도록 자동으로 설정하고, 이미 로드된 엔터티의 탐색 속성을 새로 로드된 엔터티를 참조하도록 설정합니다.
 
@@ -140,11 +140,11 @@ public class School
 
 따라서 메모리로 로드하지 않고도 관련 엔터티에 대해 집계 연산자를 실행하는 것과 같은 작업을 수행할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#NavQueryAggregate)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#NavQueryAggregate)]
 
 메모리로 로드되는 관련 엔터티를 필터링할 수도 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Querying/Querying/RelatedData/Sample.cs#NavQueryFiltered)]
+[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#NavQueryFiltered)]
 
 ## <a name="lazy-loading"></a>지연 로드
 

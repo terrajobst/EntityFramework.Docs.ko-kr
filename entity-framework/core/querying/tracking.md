@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e17e060c-929f-4180-8883-40c438fbcc01
 uid: core/querying/tracking
-ms.openlocfilehash: 6c5d516fcb3950ae168860029660e1b1061546b8
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.openlocfilehash: d93be5c2b727d8fbaddd103f8f367c699ae80a7c
+ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668780"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70921651"
 ---
 # <a name="tracking-vs-no-tracking-queries"></a>추적 및 비 추적 쿼리
 
@@ -24,7 +24,7 @@ ms.locfileid: "55668780"
 
 다음 예제에서는 `SaveChanges()` 중에 블로그 등급 변경을 검색하고 데이터베이스에 유지합니다.
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -40,7 +40,7 @@ using (var context = new BloggingContext())
 
 개별 쿼리를 비 추적 쿼리로 전환할 수 있습니다.
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=4)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=4)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -52,7 +52,7 @@ using (var context = new BloggingContext())
 
 컨텍스트 인스턴스 수준에서 기본 추적 동작을 변경할 수도 있습니다.
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=3)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=3)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -69,7 +69,7 @@ using (var context = new BloggingContext())
 
 쿼리의 결과 형식이 엔터티 형식이 아닌 경우에도 결과에 엔터티 형식이 포함되어 있으면 기본적으로 추적됩니다. 무명 형식을 반환하는 다음 쿼리에서는 결과 집합에 있는 `Blog`의 인스턴스가 추적됩니다.
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=7)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=7)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -85,7 +85,7 @@ using (var context = new BloggingContext())
 
 결과 집합에 엔터티 형식이 포함되어 있지 않으면 추적이 수행되지 않습니다. 엔터티의 일부 값은 있지만 실제 엔터티 형식의 인스턴스는 없는 무명 형식을 반환하는 다음 쿼리에서는 추적이 수행되지 않습니다.
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
