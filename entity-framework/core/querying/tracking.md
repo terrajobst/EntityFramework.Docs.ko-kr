@@ -4,27 +4,27 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e17e060c-929f-4180-8883-40c438fbcc01
 uid: core/querying/tracking
-ms.openlocfilehash: 6c5d516fcb3950ae168860029660e1b1061546b8
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.openlocfilehash: d93be5c2b727d8fbaddd103f8f367c699ae80a7c
+ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668780"
+ms.lasthandoff: 09/12/2019
+ms.locfileid: "70921651"
 ---
-# <a name="tracking-vs-no-tracking-queries"></a><span data-ttu-id="9bfd5-102">추적 및 비 추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="9bfd5-102">Tracking vs. No-Tracking Queries</span></span>
+# <a name="tracking-vs-no-tracking-queries"></a><span data-ttu-id="616d8-102">추적 및 비 추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="616d8-102">Tracking vs. No-Tracking Queries</span></span>
 
-<span data-ttu-id="9bfd5-103">추적 동작은 Entity Framework Core가 해당 변경 추적 장치에서 엔터티 인스턴스에 대한 정보를 유지할지 여부를 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-103">Tracking behavior controls whether or not Entity Framework Core will keep information about an entity instance in its change tracker.</span></span> <span data-ttu-id="9bfd5-104">엔터티를 추적하는 경우 엔터티에서 검색된 변경 내용은 `SaveChanges()` 중 데이터베이스에 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-104">If an entity is tracked, any changes detected in the entity will be persisted to the database during `SaveChanges()`.</span></span> <span data-ttu-id="9bfd5-105">또한 Entity Framework Core는 추적 쿼리에서 가져온 엔터티와 이전에 DbContext 인스턴스에 로드된 엔터티 사이의 탐색 속성을 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-105">Entity Framework Core will also fix-up navigation properties between entities that are obtained from a tracking query and entities that were previously loaded into the DbContext instance.</span></span>
+<span data-ttu-id="616d8-103">추적 동작은 Entity Framework Core가 해당 변경 추적 장치에서 엔터티 인스턴스에 대한 정보를 유지할지 여부를 제어합니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-103">Tracking behavior controls whether or not Entity Framework Core will keep information about an entity instance in its change tracker.</span></span> <span data-ttu-id="616d8-104">엔터티를 추적하는 경우 엔터티에서 검색된 변경 내용은 `SaveChanges()` 중 데이터베이스에 유지됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-104">If an entity is tracked, any changes detected in the entity will be persisted to the database during `SaveChanges()`.</span></span> <span data-ttu-id="616d8-105">또한 Entity Framework Core는 추적 쿼리에서 가져온 엔터티와 이전에 DbContext 인스턴스에 로드된 엔터티 사이의 탐색 속성을 수정합니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-105">Entity Framework Core will also fix-up navigation properties between entities that are obtained from a tracking query and entities that were previously loaded into the DbContext instance.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="9bfd5-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
+> <span data-ttu-id="616d8-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
 
-## <a name="tracking-queries"></a><span data-ttu-id="9bfd5-107">추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="9bfd5-107">Tracking queries</span></span>
+## <a name="tracking-queries"></a><span data-ttu-id="616d8-107">추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="616d8-107">Tracking queries</span></span>
 
-<span data-ttu-id="9bfd5-108">기본적으로 엔터티 형식을 반환하는 쿼리는 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-108">By default, queries that return entity types are tracking.</span></span> <span data-ttu-id="9bfd5-109">즉, 해당 엔터티 인스턴스를 변경하고 `SaveChanges()`에서 해당 변경 내용을 유지하도록 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-109">This means you can make changes to those entity instances and have those changes persisted by `SaveChanges()`.</span></span>
+<span data-ttu-id="616d8-108">기본적으로 엔터티 형식을 반환하는 쿼리는 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-108">By default, queries that return entity types are tracking.</span></span> <span data-ttu-id="616d8-109">즉, 해당 엔터티 인스턴스를 변경하고 `SaveChanges()`에서 해당 변경 내용을 유지하도록 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-109">This means you can make changes to those entity instances and have those changes persisted by `SaveChanges()`.</span></span>
 
-<span data-ttu-id="9bfd5-110">다음 예제에서는 `SaveChanges()` 중에 블로그 등급 변경을 검색하고 데이터베이스에 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-110">In the following example, the change to the blogs rating will be detected and persisted to the database during `SaveChanges()`.</span></span>
+<span data-ttu-id="616d8-110">다음 예제에서는 `SaveChanges()` 중에 블로그 등급 변경을 검색하고 데이터베이스에 유지합니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-110">In the following example, the change to the blogs rating will be detected and persisted to the database during `SaveChanges()`.</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -34,13 +34,13 @@ using (var context = new BloggingContext())
 }
 ```
 
-## <a name="no-tracking-queries"></a><span data-ttu-id="9bfd5-111">비 추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="9bfd5-111">No-tracking queries</span></span>
+## <a name="no-tracking-queries"></a><span data-ttu-id="616d8-111">비 추적 쿼리</span><span class="sxs-lookup"><span data-stu-id="616d8-111">No-tracking queries</span></span>
 
-<span data-ttu-id="9bfd5-112">비 추적 쿼리는 읽기 전용 시나리오에서 결과가 사용되는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-112">No tracking queries are useful when the results are used in a read-only scenario.</span></span> <span data-ttu-id="9bfd5-113">이 쿼리는 변경 내용 추적 정보를 설정할 필요가 없기 때문에 더 빠르게 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-113">They are quicker to execute because there is no need to setup change tracking information.</span></span>
+<span data-ttu-id="616d8-112">비 추적 쿼리는 읽기 전용 시나리오에서 결과가 사용되는 경우에 유용합니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-112">No tracking queries are useful when the results are used in a read-only scenario.</span></span> <span data-ttu-id="616d8-113">이 쿼리는 변경 내용 추적 정보를 설정할 필요가 없기 때문에 더 빠르게 실행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-113">They are quicker to execute because there is no need to setup change tracking information.</span></span>
 
-<span data-ttu-id="9bfd5-114">개별 쿼리를 비 추적 쿼리로 전환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-114">You can swap an individual query to be no-tracking:</span></span>
+<span data-ttu-id="616d8-114">개별 쿼리를 비 추적 쿼리로 전환할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-114">You can swap an individual query to be no-tracking:</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=4)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=4)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -50,9 +50,9 @@ using (var context = new BloggingContext())
 }
 ```
 
-<span data-ttu-id="9bfd5-115">컨텍스트 인스턴스 수준에서 기본 추적 동작을 변경할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-115">You can also change the default tracking behavior at the context instance level:</span></span>
+<span data-ttu-id="616d8-115">컨텍스트 인스턴스 수준에서 기본 추적 동작을 변경할 수도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-115">You can also change the default tracking behavior at the context instance level:</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=3)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=3)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -63,13 +63,13 @@ using (var context = new BloggingContext())
 ```
 
 > [!NOTE]  
-> <span data-ttu-id="9bfd5-116">추적 쿼리는 실행 쿼리 내에서 ID 확인을 수행하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-116">No tracking queries still perform identity resolution within the executing query.</span></span> <span data-ttu-id="9bfd5-117">결과 집합에 동일한 엔터티가 여러 번 포함되는 경우 결과 집합의 각 항목에 대해 엔터티 클래스의 동일한 인스턴스가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-117">If the result set contains the same entity multiple times, the same instance of the entity class will be returned for each occurrence in the result set.</span></span> <span data-ttu-id="9bfd5-118">그러나 약한 참조는 이미 반환된 엔터티를 추적하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-118">However, weak references are used to keep track of entities that have already been returned.</span></span> <span data-ttu-id="9bfd5-119">ID가 동일한 이전 결과가 범위를 벗어나고 가비지 수집이 실행되는 경우 새 엔터티 인스턴스를 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-119">If a previous result with the same identity goes out of scope, and garbage collection runs, you may get a new entity instance.</span></span> <span data-ttu-id="9bfd5-120">자세한 내용은 [쿼리 작동 방식](overview.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-120">For more information, see [How Query Works](overview.md).</span></span>
+> <span data-ttu-id="616d8-116">추적 쿼리는 실행 쿼리 내에서 ID 확인을 수행하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-116">No tracking queries still perform identity resolution within the executing query.</span></span> <span data-ttu-id="616d8-117">결과 집합에 동일한 엔터티가 여러 번 포함되는 경우 결과 집합의 각 항목에 대해 엔터티 클래스의 동일한 인스턴스가 반환됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-117">If the result set contains the same entity multiple times, the same instance of the entity class will be returned for each occurrence in the result set.</span></span> <span data-ttu-id="616d8-118">그러나 약한 참조는 이미 반환된 엔터티를 추적하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-118">However, weak references are used to keep track of entities that have already been returned.</span></span> <span data-ttu-id="616d8-119">ID가 동일한 이전 결과가 범위를 벗어나고 가비지 수집이 실행되는 경우 새 엔터티 인스턴스를 가져올 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-119">If a previous result with the same identity goes out of scope, and garbage collection runs, you may get a new entity instance.</span></span> <span data-ttu-id="616d8-120">자세한 내용은 [쿼리 작동 방식](overview.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="616d8-120">For more information, see [How Query Works](overview.md).</span></span>
 
-## <a name="tracking-and-projections"></a><span data-ttu-id="9bfd5-121">추적 및 프로젝션</span><span class="sxs-lookup"><span data-stu-id="9bfd5-121">Tracking and projections</span></span>
+## <a name="tracking-and-projections"></a><span data-ttu-id="616d8-121">추적 및 프로젝션</span><span class="sxs-lookup"><span data-stu-id="616d8-121">Tracking and projections</span></span>
 
-<span data-ttu-id="9bfd5-122">쿼리의 결과 형식이 엔터티 형식이 아닌 경우에도 결과에 엔터티 형식이 포함되어 있으면 기본적으로 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-122">Even if the result type of the query isn't an entity type, if the result contains entity types they will still be tracked by default.</span></span> <span data-ttu-id="9bfd5-123">무명 형식을 반환하는 다음 쿼리에서는 결과 집합에 있는 `Blog`의 인스턴스가 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-123">In the following query, which returns an anonymous type, the instances of `Blog` in the result set will be tracked.</span></span>
+<span data-ttu-id="616d8-122">쿼리의 결과 형식이 엔터티 형식이 아닌 경우에도 결과에 엔터티 형식이 포함되어 있으면 기본적으로 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-122">Even if the result type of the query isn't an entity type, if the result contains entity types they will still be tracked by default.</span></span> <span data-ttu-id="616d8-123">무명 형식을 반환하는 다음 쿼리에서는 결과 집합에 있는 `Blog`의 인스턴스가 추적됩니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-123">In the following query, which returns an anonymous type, the instances of `Blog` in the result set will be tracked.</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs?highlight=7)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs?highlight=7)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
@@ -83,9 +83,9 @@ using (var context = new BloggingContext())
 }
 ```
 
-<span data-ttu-id="9bfd5-124">결과 집합에 엔터티 형식이 포함되어 있지 않으면 추적이 수행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-124">If the result set does not contain any entity types, then no tracking is performed.</span></span> <span data-ttu-id="9bfd5-125">엔터티의 일부 값은 있지만 실제 엔터티 형식의 인스턴스는 없는 무명 형식을 반환하는 다음 쿼리에서는 추적이 수행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="9bfd5-125">In the following query, which returns an anonymous type with some of the values from the entity (but no instances of the actual entity type), there is no tracking performed.</span></span>
+<span data-ttu-id="616d8-124">결과 집합에 엔터티 형식이 포함되어 있지 않으면 추적이 수행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-124">If the result set does not contain any entity types, then no tracking is performed.</span></span> <span data-ttu-id="616d8-125">엔터티의 일부 값은 있지만 실제 엔터티 형식의 인스턴스는 없는 무명 형식을 반환하는 다음 쿼리에서는 추적이 수행되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="616d8-125">In the following query, which returns an anonymous type with some of the values from the entity (but no instances of the actual entity type), there is no tracking performed.</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/Querying/Tracking/Sample.cs)] -->
+<!-- [!code-csharp[Main](samples/core/Querying/Tracking/Sample.cs)] -->
 ``` csharp
 using (var context = new BloggingContext())
 {
