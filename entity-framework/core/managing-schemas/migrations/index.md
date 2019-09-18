@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: 7d97551044ae4a8fc42d1676199da884f3e2994d
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: ffa9a34f13ab29f0ba93f9fd1f469398630604ce
+ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565252"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005453"
 ---
 <a name="migrations"></a>마이그레이션
 ==========
@@ -25,6 +25,9 @@ ms.locfileid: "69565252"
 * [마이그레이션 되돌리기](#revert-a-migration). 데이터베이스 변경 내용을 실행 취소합니다.
 * [SQL 스크립트 생성](#generate-sql-scripts). 프로덕션 데이터베이스를 업데이트하거나 마이그레이션 코드 문제점을 해결하기 위한 스크립트가 필요할 수 있습니다.
 * [런타임에 마이그레이션 적용](#apply-migrations-at-runtime). 디자인 타임 업데이트 및 실행 중인 스크립트가 최상의 옵션이 아닌 경우 `Migrate()` 메서드를 호출합니다.
+
+> [!TIP]
+> `DbContext`가 시작 프로젝트와 다른 어셈블리에 있는 경우 [패키지 관리자 콘솔 도구](xref:core/miscellaneous/cli/powershell#target-and-startup-project) 또는 [.NET Core CLI 도구](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project)에서 대상 및 시작 프로젝트를 명시적으로 지정할 수 있습니다.
 
 <a name="install-the-tools"></a>도구 설치
 -----------------
