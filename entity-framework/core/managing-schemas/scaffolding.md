@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/13/2018
 ms.assetid: 6263EF7D-4989-42E6-BDEE-45DA770342FB
 uid: core/managing-schemas/scaffolding
-ms.openlocfilehash: 6e61d2ebcf5ada365dcdb264bc371199574e12fa
-ms.sourcegitcommit: 33b2e84dae96040f60a613186a24ff3c7b00b6db
+ms.openlocfilehash: 775a929982b9f4fb10aad9cd43bbb555ce632ad1
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56459187"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149017"
 ---
 # <a name="reverse-engineering"></a>리버스 엔지니어링
 
@@ -79,7 +79,7 @@ dotnet ef dbcontext scaffold ... --table Artist --table Album
 
 엔터티 형식은 기본적으로 Fluent API를 사용하여 구성됩니다. 가능한 경우 데이터 주석을 대신 사용하려면 `-DataAnnotations`(PMC) 또는 `--data-annotations`(CLI)를 지정합니다.
 
-예를 들어, Fluent API를 사용 하는 스 캐 폴딩이:
+예를 들어, 흐름 API를 사용 하면 다음과 같이 스 캐 폴드 됩니다.
 
 ``` csharp
 entity.Property(e => e.Title)
@@ -87,7 +87,7 @@ entity.Property(e => e.Title)
     .HasMaxLength(160);
 ```
 
-데이터 주석을 사용 하는 동안는 스 캐 폴딩이:
+데이터 주석을 사용 하는 동안 다음과 같은 스 캐 폴드 됩니다.
 
 ``` csharp
 [Required]
@@ -123,13 +123,11 @@ dotnet ef dbcontext scaffold ... --context-dir Data --output-dir Models
 
 ## <a name="what-doesnt-work"></a>작동 하지 않는
 
-모델에 대한 모든 것이 데이터베이스 스키마를 사용하여 표현될 수 있는 것은 아닙니다. 예를 들어 **상속 계층 구조**, **소유 형식** 및 **테이블 분할**에 대한 정보는 데이터베이스 스키마에 없습니다. 이 때문에 이러한 구조는 결코 리버스 엔지니어링되지 않습니다.
+모델에 대한 모든 것이 데이터베이스 스키마를 사용하여 표현될 수 있는 것은 아닙니다. 예를 들어 [**상속 계층 구조**](../modeling/inheritance.md), [**소유 된 형식**](../modeling/owned-entities.md)및 [**테이블 분할**](../modeling/table-splitting.md) 에 대 한 정보는 데이터베이스 스키마에 없습니다. 이 때문에 이러한 구조는 결코 리버스 엔지니어링되지 않습니다.
 
 또한 **몇 가지 열 형식**은 EF Core 공급자가 지원되지 않습니다. 이러한 열은 모델에 포함되지 않습니다.
 
-EF Core는 모든 엔터티 형식에 키가 있어야 합니다. 그러나 테이블은 기본 키를 지정하지 않아도 됩니다. **기본 키가 없는 테이블**은 현재 리버스 엔지니어링되지 않습니다.
-
-두 사용자가 동시에 동일한 엔터티를 업데이트하지 못하도록 EF Core 모델에서 **동시성 토큰**을 정의할 수 있습니다.  일부 데이터베이스에는 이 형식의 열(예: SQL Server의 rowversion)을 나타내는 특수한 형식이 있습니다. 이 경우 이 정보를 리버스 엔지니어링할 수 있습니다. 그러나 다른 동시성 토큰은 리버스 엔지니어링되지 않습니다.
+EF Core 모델에서 [**동시성 토큰**](../modeling/concurrency.md)을 정의 하 여 두 사용자가 동시에 동일한 엔터티를 업데이트 하지 못하게 할 수 있습니다. 일부 데이터베이스에는 이 형식의 열(예: SQL Server의 rowversion)을 나타내는 특수한 형식이 있습니다. 이 경우 이 정보를 리버스 엔지니어링할 수 있습니다. 그러나 다른 동시성 토큰은 리버스 엔지니어링되지 않습니다.
 
 ## <a name="customizing-the-model"></a>모델을 사용자 지정
 
@@ -137,7 +135,7 @@ EF Core에서 생성된 코드는 자유롭게 변경할 수 있습니다. 자�
 
 필요에 맞게 엔터티 형식 클래스 및 DbContext 클래스를 사용자 정의합니다. 예를 들어 형식 및 속성의 이름을 바꾸거나 상속 계층 구조를 도입하거나 테이블을 여러 엔터티로 분할하도록 선택할 수 있습니다. 또한 비고유 인덱스, 사용하지 않는 시퀀스 및 탐색 속성, 선택적 스칼라 속성 및 제약 조건 이름은 모델에서 제거할 수 있습니다.
 
-별도의 파일에서 다른 부분 클래스를 사용하여 생성자, 메서드, 속성 등을 추가할 수도 있습니다.  별도 파일에서 다른 partial 클래스를 사용 합니다. 이 방법은 다시 리버스 엔지니어링 모델 하려는 경우에 작동 합니다.
+또한 추가 생성자, 메서드, 속성 등을 추가할 수 있습니다. 별도 파일에서 다른 partial 클래스를 사용 합니다. 이 방법은 다시 리버스 엔지니어링 모델 하려는 경우에 작동 합니다.
 
 ## <a name="updating-the-model"></a>모델 업데이트
 

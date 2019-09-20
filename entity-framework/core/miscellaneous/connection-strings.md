@@ -4,20 +4,20 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: aeb0f5f8-b212-4f89-ae83-c642a5190ba0
 uid: core/miscellaneous/connection-strings
-ms.openlocfilehash: c306f9ca7a51fc9e3db18e883fd44f56dd1a3cb4
-ms.sourcegitcommit: e90d6cfa3e96f10b8b5275430759a66a0c714ed1
+ms.openlocfilehash: ed89d6d09b15b0dea7fd8bc3ff3e3f631495ecb7
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68286457"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149109"
 ---
 # <a name="connection-strings"></a>연결 문자열
 
 대부분의 데이터베이스 공급자는 특정 형태의 데이터베이스에 연결할 연결 문자열을 요구합니다. 이 연결 문자열은 보호해야 하는 중요한 정보를 포함하는 경우도 있습니다. 응용 프로그램 개발, 테스트 및 프로덕션 등 환경 간에 이동하면 연결 문자열을 변경해야 합니다.
 
-## <a name="net-framework-applications"></a>.NET Framework 응용 프로그램
+## <a name="winforms--wpf-applications"></a>WinForms & WPF 응용 프로그램
 
-WinForms, WPF, 콘솔 및 ASP.NET 4 등의.NET framework 응용 프로그램 테스트를 거친 연결 문자열 패턴을 경우 연결 문자열은 응용 프로그램의 App.config 파일 (Web.config ASP.NET을 사용 하는 경우)에 추가 되어야 합니다. 연결 문자열에는 사용자 이름 및 암호와 같은 중요 한 정보를 포함 하는 경우 사용 하 여 구성 파일의 콘텐츠를 보호할 수 있습니다 [보호 되는 구성을](https://docs.microsoft.com/dotnet/framework/data/adonet/connection-strings-and-configuration-files#encrypting-configuration-file-sections-using-protected-configuration)합니다.
+WinForms, WPF 및 ASP.NET 4 응용 프로그램은 연결 문자열 패턴이 시도 되었고 테스트를 거쳤습니다. 연결 문자열은 응용 프로그램의 App.config 파일 (ASP.NET를 사용 하는 경우 web.config)에 추가 되어야 합니다. 연결 문자열에 사용자 이름 및 암호와 같은 중요 한 정보가 포함 되어 있는 경우 [암호 관리자 도구](https://docs.microsoft.com/aspnet/core/security/app-secrets#secret-manager)를 사용 하 여 구성 파일의 내용을 보호할 수 있습니다.
 
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
@@ -77,7 +77,7 @@ ASP.NET Core에서 구성 시스템은 매우 유연하며 연결 문자열은 `
 }
 ```
 
-컨텍스트는 일반적으로 구성에서 읽는 연결 문자열로 `Startup.cs`에 구성됩니다. `GetConnectionString()` 메서드는 키가 `ConnectionStrings:<connection string name>`인 구성 값을 찾습니다. 가져와야 하는 [Microsoft.Extensions.Configuration](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration) 이 확장 메서드를 사용 하도록 네임 스페이스입니다.
+컨텍스트는 일반적으로 구성에서 읽는 연결 문자열로 `Startup.cs`에 구성됩니다. `GetConnectionString()` 메서드는 키가 `ConnectionStrings:<connection string name>`인 구성 값을 찾습니다. 이 확장 메서드를 사용 하려면 [Microsoft Extensions. 구성](https://docs.microsoft.com/dotnet/api/microsoft.extensions.configuration) 네임 스페이스를 가져와야 합니다.
 
 ``` csharp
 public void ConfigureServices(IServiceCollection services)
