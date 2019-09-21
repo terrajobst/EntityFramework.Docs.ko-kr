@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3e2f7698-fec2-4cec-9e2d-2e3e0074120c
 uid: core/providers/sqlite/index
-ms.openlocfilehash: 31de8449a12a10d4f98ebb4bb6125389606e9bbd
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: e4cbdba46f901831892192a343db2920a5760042
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994004"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149273"
 ---
 # <a name="sqlite-ef-core-database-provider"></a>SQLite EF Core 데이터베이스 공급자
 
@@ -23,30 +23,9 @@ ms.locfileid: "42994004"
 Install-Package Microsoft.EntityFrameworkCore.Sqlite
 ```
 
-## <a name="get-started"></a>시작
-
-다음 리소스는 이 공급자를 시작하는 데 도움이 될 수 있습니다.
-* [UWP의 로컬 SQLite](../../get-started/uwp/getting-started.md)
-
-* [.NET Core 응용 프로그램에서 새 SQLite 데이터베이스로](../../get-started/netcore/new-db-sqlite.md)
-
-* [Unicorn Clicker 샘플 응용 프로그램](https://github.com/rowanmiller/UnicornStore/tree/master/UnicornClicker/UWP)
-
-* [Unicorn Packer 샘플 응용 프로그램](https://github.com/rowanmiller/UnicornStore/tree/master/UnicornPacker)
-
 ## <a name="supported-database-engines"></a>지원되는 데이터베이스 엔진
 
 * SQLite(3.7부터 해당)
-
-## <a name="supported-platforms"></a>지원되는 플랫폼
-
-* .NET Framework(4.5.1부터)
-
-* .NET Core
-
-* Mono(4.2.0부터)
-
-* 유니버설 Windows 플랫폼
 
 ## <a name="limitations"></a>제한 사항
 
