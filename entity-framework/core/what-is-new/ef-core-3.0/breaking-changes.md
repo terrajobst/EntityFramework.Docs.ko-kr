@@ -4,21 +4,17 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 884cc6611b986fb213d99d3d2fc69d7bebe34aa2
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: 04487291f24bb702dad4b497c34234afdd5e3c9a
+ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565321"
+ms.lasthandoff: 09/16/2019
+ms.locfileid: "71005579"
 ---
-# <a name="breaking-changes-included-in-ef-core-30-currently-in-preview"></a>EF Core 3.0에 포함된 호환성이 손상되는 변경(현재 미리 보기 상태)
-
-> [!IMPORTANT]
-> 이후 릴리스의 기능 집합 및 일정은 항상 변경될 수 있으며 이 페이지를 최신 상태로 유지하려고 노력함에도 불구하고 최신 계획을 항상 반영할 수 없을 수도 있습니다.
-
-다음 API 및 동작 변경은 3.0.0으로 업그레이드할 때 EF Core 2.2.x용으로 개발된 애플리케이션을 중단시킬 가능성이 있습니다.
+# <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
+3\.0.0으로 업그레이드할 때 기존 애플리케이션의 호환성이 손상될 수 있는 API 및 동작 변경 내용은 다음과 같습니다.
 데이터베이스 공급자에만 영향을 줄 것으로 예상되는 변경 내용은 [공급자 변경](../../providers/provider-log.md)에 설명되어 있습니다.
-3\.0 미리 보기 간의 도입된 새로운 기능의 중단은 여기에 설명되어 있지 않습니다.
+3\.0 미리 보기 간 호환성이 손상되는 변경은 여기에 설명되어 있지 않습니다.
 
 ## <a name="summary"></a>요약
 
@@ -908,7 +904,7 @@ modelBuilder
 **완화 방법**
 
 필드 전용 속성의 이름은 매핑되는 필드와 동일한 이름을 지정해야 합니다.
-이후 EF Core 3.0 미리 보기에서는 속성 이름과 다른 필드 이름을 명시적으로 다시 사용하도록 설정할 계획입니다.
+3\.0 이후 EF Core의 향후 릴리스에서는 속성 이름과 다른 필드 이름을 명시적으로 다시 사용하도록 설정할 계획입니다([#15307](https://github.com/aspnet/EntityFrameworkCore/issues/15307) 이슈 참조).
 
 ```C#
 modelBuilder
