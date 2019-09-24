@@ -5,26 +5,26 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: d5fe9b388707f653fdeb2d6a5daa7215ced71c1d
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: ad0807a3cfd62c6c09a97df1a45134db7a538623
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688721"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149058"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
-Entity Framework는 .NET용의 개체-관계형 매퍼(O/RM)입니다. 이 문서에서는 Entity Framework 6와 Entity Framework Core, 이 두 버전을 비교합니다.
+Entity Framework는 .NET용의 개체-관계형 매퍼(O/RM)입니다. 이 문서에서는 두 버전을 비교합니다. Entity Framework 6와 Entity Framework Core를 비교합니다.
 
 ## <a name="entity-framework-6"></a>Entity Framework 6
 
-Entity Framework 6(EF6)은 테스트와 시험을 거친 데이터 액세스 기술입니다. 2008년에 .NET Framework 3.5 SP1 및 Visual Studio 2008 SP1의 일부로 처음 릴리스되었습니다. 4\.1 릴리스부터는 [EntityFramework](https://www.nuget.org/packages/EntityFramework/) NuGet 패키지로 탑재되었습니다. EF6는 .NET Framework 4.x에서 실행되며, 이는 Windows에서만 실행됨을 의미합니다. 
+Entity Framework 6(EF6)은 테스트와 시험을 거친 데이터 액세스 기술입니다. 2008년에 .NET Framework 3.5 SP1 및 Visual Studio 2008 SP1의 일부로 처음 릴리스되었습니다. 4\.1 릴리스부터는 [EntityFramework](https://www.nuget.org/packages/EntityFramework/) NuGet 패키지로 탑재되었습니다. EF6는 3.0 이상부터 .NET Framework 4.x 및 .NET Core에서 실행됩니다.
 
 EF6는 계속 지원되는 제품이며 버그 수정 사항과 작은 개선이 이어질 것입니다.
 
 ## <a name="entity-framework-core"></a>Entity Framework Core
 
-EF Core(Entity Framework Core)는 2016년 처음 릴리스된 EF6를 완전히 다시 작성한 버전입니다. Nuget 패키지로 제공되며 [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/)가 기본입니다. EF Core는 .NET Core 또는 .NET Framework에서 실행할 수 있는 크로스 플랫폼 제품입니다.
+EF Core(Entity Framework Core)는 2016년 처음 릴리스된 EF6를 완전히 다시 작성한 버전입니다. Nuget 패키지로 제공되며 [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/)가 기본입니다. EF Core는 .NET Core에서 실행되는 교차 플랫폼 제품입니다.
 
 EF Core는 EF6와 유사한 개발자 환경을 제공하도록 디자인되었습니다. 대부분의 상위 API가 그대로 유지되므로 EF6를 사용한 개발자에게는 EF Core가 친숙할 것입니다.
 
@@ -43,13 +43,13 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 기본 클래스 매핑                                   | 예      | 1.0                                   |
 | 매개 변수가 포함된 생성자                          |          | 2.1                                   |
 | 속성 값 변환                            |          | 2.1                                   |
-| 키 없이 매핑된 형식(쿼리 형식)               |          | 2.1                                   |
+| 키가 없는 매핑된 형식                             |          | 2.1                                   |
 | 규칙                                           | 예      | 1.0                                   |
 | 사용자 지정 규칙                                    | 예      | 1.0(부분)                         |
 | 데이터 주석                                      | 예      | 1.0                                   |
 | Fluent API                                            | 예      | 1.0                                   |
-| 상속: TPH(계층 구조별 테이블)                | 예      | 1.0                                   |
-| 상속: TPT(형식별 테이블)                     | 예      |                                       |
+| 상속: TPH(계층당 하나의 테이블)                | 예      | 1.0                                   |
+| 상속: TPT(형식당 테이블)                     | 예      |                                       |
 | 상속: TPC(구체적인 클래스별 테이블)           | 예      |                                       |
 | 섀도 상태 속성                               |          | 1.0                                   |
 | 대체 키                                        |          | 1.0                                   |
@@ -70,6 +70,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 엔터티 분할                                      | 예      |                                       |
 | 데이터베이스 스칼라 함수 매핑                      | 나쁨     | 2.0                                   |
 | 필드 매핑                                         |          | 1.1                                   |
+| nullable 참조 형식(C# 8.0)                     |          | 3.0                                   |
 
 ### <a name="querying-data"></a>데이터 쿼리
 
@@ -77,17 +78,17 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | LINQ 쿼리                                          | 예      | 1.0(복합 쿼리에 대해 진행 중) |
 | 읽기 가능한 생성된 SQL                                | 나쁨     | 1.0                                   |
-| 혼합 클라이언트/서버 평가                        |          | 1.0                                   |
 | GroupBy 변환                                   | 예      | 2.1                                   |
 | 관련 데이터 로드: 즉시                           | 예      | 1.0                                   |
-| 관련 데이터 로드: 파생된 형식에 즉시 로드 |          | 2.1                                   |
+| 관련 데이터 로드: 파생 형식에 대한 즉시 로드 |          | 2.1                                   |
 | 관련 데이터 로드: 지연                            | 예      | 2.1                                   |
-| 관련 데이터 로드: 명시적                        | 예      | 1.1                                   |
+| 관련 데이터 로드: 명시적 방법                        | 예      | 1.1                                   |
 | 원시 SQL 쿼리: 엔터티 형식                         | 예      | 1.0                                   |
-| 원시 SQL 쿼리: 비 엔터티 형식(쿼리 형식)       | 예      | 2.1                                   |
+| 원시 SQL 쿼리: 키 없는 엔터티 형식                 | 예      | 2.1                                   |
 | 원시 SQL 쿼리: LINQ로 작성                  |          | 1.0                                   |
 | 명시적으로 컴파일된 쿼리                           | 나쁨     | 2.0                                   |
 | 텍스트 기반 쿼리 언어(Entity SQL)                | 예      |                                       |
+| await foreach(C# 8.0)                                |          | 3.0                                   |
 
 ### <a name="saving-data"></a>데이터 저장
 
@@ -95,7 +96,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | 변경 내용 추적: 스냅샷                             | 예      | 1.0                                   |
 | 변경 내용 추적: 알림                         | 예      | 1.0                                   |
-| 변경 내용 추적: 프록시                              | 예      |                                       |
+| 변경 내용 추적: Proxy                              | 예      |                                       |
 | 추적된 상태 액세스                               | 예      | 1.0                                   |
 | 낙관적 동시성                                | 예      | 1.0                                   |
 | 트랜잭션                                          | 예      | 1.0                                   |
@@ -123,32 +124,31 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | SQL Server                                            | 예      | 1.0                                   |
 | MySQL                                                 | 예      | 1.0                                   |
 | PostgreSQL                                            | 예      | 1.0                                   |
-| Oracle                                                | 예      | 1.0 <sup>(1)</sup>                    |
+| Oracle                                                | 예      | 1.0                                   |
 | SQLite                                                | 예      | 1.0                                   |
-| SQL Server Compact                                    | 예      | 1.0 <sup>(2)</sup>                    |
+| SQL Server Compact                                    | 예      | 1.0 <sup>(1)</sup>                    |
 | DB2                                                   | 예      | 1.0                                   |
 | Firebird                                              | 예      | 2.0                                   |
-| Jet(Microsoft Access)                                |          | 2.0 <sup>(2)</sup>                    |
+| Jet(Microsoft Access)                                |          | 2.0 <sup>(1)</sup>                    |
+| Cosmos DB                                             |          | 3.0                                   |
 | 메모리 내(테스트용)                               |          | 1.0                                   |
 
-<sup>1</sup> 현재 Oracle에 사용할 수 있는 유료 공급자가 지원됩니다. Oracle의 무료 공식 공급자를 사용 중입니다.
+<sup>1</sup> SQL Server Compact 및 Jet 공급자는 .NET Core가 아닌 .NET Framework에서만 작동합니다.
 
-<sup>2</sup> SQL Server Compact 및 Jet 공급자는 .NET Core가 아닌 .NET Framework에서만 작동합니다.
+### <a name="net-implementations"></a>.NET 구현체
 
-### <a name="net-implementations"></a>.NET 구현
-
-| **기능**                                           | **EF6**  | **EF Core**                           |
-|:------------------------------------------------------|:---------|:--------------------------------------|
-| .NET Framework(콘솔, WinForms, WPF, ASP.NET)      | 예      | 1.0                                   |
-| .NET Core(콘솔, ASP.NET Core)                     |          | 1.0                                   |
-| Mono 및 Xamarin                                        |          | 1.0(진행 중)                     |
-| UWP                                                   |          | 1.0(진행 중)                     |
+| **기능**                                           | **EF6**            | **EF Core**                           |
+|:------------------------------------------------------|:-------------------|:--------------------------------------|
+| .NET Framework                                        | 예                | 1.0(3.0에서 제거됨)                  |
+| .NET Core                                             | 예(6.3에서 추가됨) | 1.0                                   |
+| Mono 및 Xamarin                                        |                    | 1.0(진행 중)                     |
+| UWP                                                   |                    | 1.0(진행 중)                     |
 
 ## <a name="guidance-for-new-applications"></a>새 애플리케이션에 대한 지침
 
 다음 조건이 모두 충족되면 새 애플리케이션에 EF Core를 사용해 보세요.
 * 이 앱을 사용하려면 .NET Core의 기능이 필요합니다. 자세한 내용은 [서버 앱에 대해 .NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)을 참조하세요.
-* EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/roadmap)을 확인하여 나중에 지원할 계획이 있는지 확인하세요. 
+* EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/roadmap)을 확인하여 나중에 지원할 계획이 있는지 확인하세요.
 
 다음 조건이 모두 충족되면 EF6를 사용해 보세요.
 * 이 앱은 Windows 및 .NET Framework 4.0 이상에서 실행됩니다.
@@ -156,7 +156,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 
 ## <a name="guidance-for-existing-ef6-applications"></a>기존 EF6 애플리케이션에 대한 지침
 
-EF Core의 기본적인 변경 내용 때문에, 변경할 중요한 이유가 있는 경우에만 EF6 애플리케이션을 EF Core로 이동하는 것이 좋습니다. 새로운 기능을 사용하기 위해 EF Core로 이동하려면 제한 사항을 알고 있어야 합니다. 자세한 내용은 [EF6에서 EF Core로 이식](porting/index.md)을 참조하세요. **EF6에서 EF Core로의 이동은 업그레이드보다는 이식에 가깝습니다.** 
+EF Core의 기본적인 변경 내용 때문에, 변경할 중요한 이유가 있는 경우에만 EF6 애플리케이션을 EF Core로 이동하는 것이 좋습니다. 새로운 기능을 사용하기 위해 EF Core로 이동하려면 제한 사항을 알고 있어야 합니다. 자세한 내용은 [EF6에서 EF Core로 이식](porting/index.md)을 참조하세요. **EF6에서 EF Core로의 이동은 업그레이드보다는 이식에 가깝습니다.**
 
 ## <a name="next-steps"></a>다음 단계
 

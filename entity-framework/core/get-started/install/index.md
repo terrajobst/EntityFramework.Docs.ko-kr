@@ -4,22 +4,22 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 62194d1db4efcdaed53ca0e14f160315f8e3cf03
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: eb808dd9d9b1b214947524cd83999f67be9cc0ff
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921753"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149067"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
 ## <a name="prerequisites"></a>전제 조건
 
-* EF Core는 [.NET Standard 2.0](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.0을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.0 라이브러리에서도 참조할 수 있습니다. 
+* EF Core는 [.NET Standard 2.1](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.1을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.1 라이브러리에서도 참조할 수 있습니다. 
 
 * 예를 들어 .NET Core를 사용하여 EF Core를 대상으로 하는 앱을 개발할 수 있습니다. .NET Core 앱을 빌드하려면 [.NET Core SDK](https://dotnet.microsoft.com/download)가 필요합니다. 필요에 따라 Visual Studio, Visual Studio for Mac 또는 Visual Studio Code와 같은 개발 환경을 사용할 수도 있습니다. 자세한 내용은 [.NET Core 시작](/dotnet/core/get-started)을 확인하세요.
 
-* EF Core를 통해 Visual Studio를 사용하여 Windows에서 .NET Framework 4.6.1 이상을 대상으로 하는 애플리케이션을 개발할 수 있습니다. [Visual Studio](https://visualstudio.microsoft.com/vs)의 최신 버전을 사용하는 것이 좋습니다. Visual Studio 2015와 같은 이전 버전을 사용하려면 [NuGet 클라이언트를 버전 3.6.0로 업그레이드](https://www.nuget.org/downloads)하여 .NET Standard 2.0 라이브러리와 함께 작동하도록 합니다.
+* EF Core를 사용하면 Windows에서 Visual Studio를 사용하여 애플리케이션을 개발할 수 있습니다. [Visual Studio](https://visualstudio.microsoft.com/vs)의 최신 버전을 사용하는 것이 좋습니다.
 
 * EF Core는 [Xamarin](https://dotnet.microsoft.com/apps/xamarin) 및 .NET 네이티브와 같은 다른 .NET 구현에서도 실행할 수 있습니다. 하지만 실제로 해당 구현에는 앱에서 EF Core의 작동 방식에 영향을 미칠 수 있는 런타임 제한이 있습니다. 자세한 내용은 [EF Core에서 지원되는 .NET 구현](xref:core/platforms/index)을 참조하세요.
 
@@ -133,16 +133,3 @@ ASP.NET Core 앱의 경우 이 패키지는 자동으로 포함됩니다.
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     ```
 
-* .NET Framework를 대상으로 하는 애플리케이션은 .NET Standard 2.0 라이브러리와 함께 작동하도록 변경해야 할 수 있습니다.
-
-  * 프로젝트 파일을 편집하고 최초 속성 그룹에 다음 항목이 표시되는지 확인합니다.
-
-    ``` xml
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
-    ```
-
-  * 테스트 프로젝트의 경우 다음 항목도 있는지 확인합니다.
-
-    ``` xml
-    <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-    ```

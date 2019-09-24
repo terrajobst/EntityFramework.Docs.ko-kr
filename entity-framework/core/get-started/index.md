@@ -1,39 +1,169 @@
 ---
 title: 시작 - EF Core
-author: rowanmiller
-ms.date: 10/27/2016
+author: rick-anderson
+ms.date: 09/17/2019
 ms.assetid: 3c88427c-20c6-42ec-a736-22d3eccd5071
 uid: core/get-started/index
-ms.openlocfilehash: b846d63f2c285a43d60eecfb2be3d460a5d31924
-ms.sourcegitcommit: 064b09431f05848830e145a6cd65cad58881557c
+ms.openlocfilehash: b921d1e99b07bdeb24fb81e16f65d9fef444bd33
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52552596"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149011"
 ---
-# <a name="getting-started-with-entity-framework-core"></a>Entity Framework Core 시작
+# <a name="getting-started-with-ef-core"></a>EF Core 시작
 
-## <a name="installing-ef-coreinstallindexmd"></a>[EF Core 설치](install/index.md)
+이 자습서에서는 Entity Framework Core를 사용하여 SQLite 데이터베이스에 대한 데이터 액세스를 수행하는 .NET Core 콘솔 앱을 만듭니다.
 
-다양한 플랫폼과 널리 사용되는 IDE에서 응용 프로그램에 EF Core를 추가하는 데 필요한 단계를 요약합니다.
+Windows에서 Visual Studio를 사용하거나 Windows, macOS 또는 Linux에서 .NET Core CLI를 사용하여 자습서를 진행할 수 있습니다.
 
-## <a name="step-by-step-tutorials"></a>단계별 자습서
+[GitHub에서 이 아티클의 샘플을 봅니다](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/GetStarted).
 
-이 기본 자습서에는 Entity Framework Core나 특정 IDE에 대한 사전 지식이 필요하지 않습니다. 데이터베이스에서 데이터를 쿼리하여 저장하는 간단한 응용 프로그램을 만들어가면서 단계별로 안내합니다. 다양한 운영 체제와 응용 프로그램 유형에서 시작할 수 있는 자습서를 제공합니다.
+## <a name="prerequisites"></a>전제 조건
 
-Entity Framework Core는 기존 데이터베이스 기반 모델이나, 모델 기반 데이터베이스를 만들 수 있습니다. 이 방법 모두 설명하는 자습서가 있습니다.
+다음 소프트웨어를 설치합니다.
 
-* .NET Core 콘솔 앱
-  * [새 데이터베이스](netcore/new-db-sqlite.md)
-* ASP.NET Core 앱
-  * [새 데이터베이스](aspnetcore/new-db.md)
-  * [기존 데이터베이스](aspnetcore/existing-db.md)
-  * [EF Core 및 Razor Pages](/aspnet/core/data/ef-rp/intro)
-* UWP(유니버설 Windows 플랫폼) 앱
-  * [새 데이터베이스](uwp/getting-started.md)
-* .NET Framework 앱
-  * [새 데이터베이스](full-dotnet/new-db.md)
-  * [기존 데이터베이스](full-dotnet/existing-db.md)
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
 
-> [!NOTE]  
-> 이 자습서와 함께 제공되는 샘플은 EF Core 2.1을 사용하도록 업데이트되었습니다. 그러나 대부분의 경우 명령을 약간만 수정하면 이전 릴리스를 사용하는 응용 프로그램을 만들 수 있습니다. 
+* [.NET Core 3.0 SDK](https://www.microsoft.com/net/download/core)
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* 이 워크로드의 경우 [Visual Studio 2019 버전 16.3 이상](https://www.visualstudio.com/downloads/):
+  * **.NET Core 플랫폼 간 개발**(**기타 도구 집합** 아래)
+
+---
+
+## <a name="create-a-new-project"></a>새 프로젝트 만들기
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+``` Console
+dotnet new console -o EFGetStarted
+cd EFGetStarted
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* Visual Studio를 엽니다.
+* **새 프로젝트 만들기**를 클릭합니다.
+* **C#** 태그가 있는 **콘솔 앱(.NET Core)** 을 선택하고 **다음**을 클릭합니다
+* 이름에 **EFGetStarted**를 입력하고 **만들기**를 클릭합니다.
+
+---
+
+## <a name="install-entity-framework-core"></a>Entity Framework Core 설치
+
+EF Core를 설치하려면 대상으로 지정할 EF Core 데이터베이스 공급자에 대한 패키지를 설치합니다. 이 자습서에서는 .NET Core가 지원하는 모든 플랫폼에서 실행되는 SQLite를 사용합니다. 사용 가능한 공급자 목록은 [데이터베이스 공급자](../providers/index.md)를 참조하세요.
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+``` Console
+dotnet add package Microsoft.EntityFrameworkCore.Sqlite
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* **도구 > NuGet 패키지 관리자 > 패키지 관리자 콘솔**
+* 다음 명령을 실행합니다.
+
+  ``` PowerShell
+  Install-Package Microsoft.EntityFrameworkCore.Sqlite
+  ```
+
+팁: 프로젝트를 마우스 오른쪽 단추로 클릭하고 **NuGet 패키지 관리**를 선택하여 패키지를 설치할 수도 있습니다.
+
+---
+
+## <a name="create-the-model"></a>모델 만들기
+
+모델을 구성하는 컨텍스트 클래스 및 엔터티 클래스를 정의합니다.
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+* 프로젝트 디렉터리에서 다음 코드를 사용하여 **Model.cs**를 만듭니다.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* 프로젝트를 마우스 오른쪽 단추로 클릭하고 **추가 > 클래스**를 선택합니다.
+* 이름으로 **Model.cs**를 입력하고 **추가**를 클릭합니다.
+* 파일의 내용을 다음 코드로 바꿉니다.
+
+---
+
+[!code-csharp[Main](../../../samples/core/GetStarted/Model.cs)]
+
+EF Core는 모델을 기존 데이터베이스에서 [리버스 엔지니어링](../managing-schemas/scaffolding.md)할 수도 있습니다.
+
+팁: 실제 앱에서는 각 클래스를 별도의 파일에 저장하고 구성 파일 또는 환경 변수에 [연결 문자열](../miscellaneous/connection-strings.md)을 저장합니다. 자습서를 간단히 유지하기 위해 모든 항목이 하나의 파일에 포함되어 있습니다.
+
+## <a name="create-the-database"></a>데이터베이스 만들기
+
+다음 단계에서는 [마이그레이션](xref:core/managing-schemas/migrations/index)을 사용하여 데이터베이스를 만듭니다.
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+* 다음 명령을 실행합니다.
+
+  ``` Console
+  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet add package Microsoft.EntityFrameworkCore.Design
+  dotnet ef migrations add InitialCreate
+  dotnet ef database update
+  ```
+
+  그러면 [dotnet ef](../miscellaneous/cli/dotnet.md)와 프로젝트에서 명령을 실행하는 데 필요한 디자인 패키지가 설치됩니다. `migrations` 명령은 마이그레이션을 스캐폴딩하여 모델에 대한 초기 테이블 집합을 만듭니다. `database update` 명령은 데이터베이스를 만들고 새 마이그레이션을 적용합니다.
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+* **패키지 관리자 콘솔**에서 다음 명령을 실행합니다.
+
+  ``` PowerShell
+  Install-Package Microsoft.EntityFrameworkCore.Tools
+  Add-Migration InitialCreate
+  Update-Database
+  ```
+
+  그러면 [EF Core용 PMC 도구](../miscellaneous/cli/powershell.md)가 설치됩니다. `Add-Migration` 명령은 마이그레이션을 스캐폴딩하여 모델에 대한 초기 테이블 집합을 만듭니다. `Update-Database` 명령은 데이터베이스를 만들고 새 마이그레이션을 적용합니다.
+
+---
+
+## <a name="create-read-update--delete"></a>만들기, 읽기, 업데이트 및 삭제
+
+* *Program.cs*를 열고 내용을 다음 코드로 바꿉니다.
+
+  [!code-csharp[Main](../../../samples/core/GetStarted/Program.cs)]
+
+## <a name="run-the-app"></a>앱 실행
+
+# <a name="net-core-clitabnetcore-cli"></a>[.NET Core CLI](#tab/netcore-cli)
+
+``` Console
+dotnet run
+```
+
+# <a name="visual-studiotabvisual-studio"></a>[Visual Studio](#tab/visual-studio)
+
+Visual Studio는 .NET Core 콘솔 앱을 실행할 때 일관되지 않은 작업 디렉터리를 사용합니다. ([dotnet/project-system#3619](https://github.com/dotnet/project-system/issues/3619) 참조) 이로 인해 다음과 같은 예외가 발생합니다. *해당 테이블이 없습니다. Blogs*. 작업 디렉터리를 업데이트하려면
+
+* 프로젝트를 마우스 오른쪽 단추로 클릭하고 **프로젝트 파일 편집**을 선택합니다.
+* *Targetframework* 속성 바로 아래에 다음을 추가합니다.
+
+  ``` XML
+  <StartWorkingDirectory>$(MSBuildProjectDirectory)</StartWorkingDirectory>
+  ```
+
+* 파일 저장
+
+이제 앱을 실행할 수 있습니다.
+
+* **디버그 > 디버깅하지 않고 시작**
+
+---
+
+# <a name="next-steps"></a>다음 단계
+
+* [ASP.NET Core 자습서](/aspnet/core/data/ef-rp/intro)에 따라 웹앱에서 EF Core를 사용합니다.
+* [LINQ 쿼리 식](/dotnet/csharp/programming-guide/concepts/linq/basic-linq-query-operations)에 대해 자세히 알아봅니다.
+* [모델을 구성](xref:core/modeling/index)하여 [필수](xref:core/modeling/required-optional) 및 [최대 길이](xref:core/modeling/max-length)와 같은 항목을 지정합니다.
+* 모델을 변경한 후 [마이그레이션](xref:core/managing-schemas/migrations/index)을 사용하여 데이터베이스 스키마를 업데이트합니다.

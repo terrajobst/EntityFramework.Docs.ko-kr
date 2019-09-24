@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 02/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/providers/index
-ms.openlocfilehash: 3748496db89c110d55a0876727e33e1f3ec987d9
-ms.sourcegitcommit: 5280dcac4423acad8b440143433459b18886115b
+ms.openlocfilehash: 096d68f814e279bd224dfc50111d6576ab5eb223
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58914093"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149232"
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 
@@ -21,10 +21,10 @@ Entity Framework Core는 플러그 인 라이브러리 호출 데이터베이스
 
 | NuGet 패키지                                                                                                        | 지원되는 데이터베이스 엔진 | 유지 관리자/공급 업체                                                           | 참고/요구 사항 | 유용한 링크                                                                                                                                                                                       |
 |:---------------------------------------------------------------------------------------------------------------------|:---------------------------|:------------------------------------------------------------------------------|:---------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)    | SQL Server 2008 이상    | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) |                      | [docs](xref:core/providers/sql-server/index)                                                                                                                                                       |
+| [Microsoft.EntityFrameworkCore.SqlServer](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer)    | SQL Server 2012 이상    | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) |                      | [docs](xref:core/providers/sql-server/index)                                                                                                                                                       |
 | [Microsoft.EntityFrameworkCore.Sqlite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite)          | SQLite 3.7 이상         | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) |                      | [docs](xref:core/providers/sqlite/index)                                                                                                                                                           |
 | [Microsoft.EntityFrameworkCore.InMemory](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.InMemory)      | EF Core 메모리 내 데이터베이스 | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) | 테스트 전용     | [docs](xref:core/providers/in-memory/index)                                                                                                                                                        |
-| [Microsoft.EntityFrameworkCore.Cosmos](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)          | Azure Cosmos DB SQL API    | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) | 미리 보기만         | [블로그](https://blogs.msdn.microsoft.com/dotnet/2018/10/17/announcing-entity-framework-core-2-2-preview-3/)                                                                                         |
+| [Microsoft.EntityFrameworkCore.Cosmos](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)          | Azure Cosmos DB SQL API    | [EF Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore/)(Microsoft) |                      | [docs](xref:core/providers/cosmos/index)                                                                                         |
 | [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL)        | PostgreSQL                 | [Npgsql 개발 팀](https://github.com/npgsql)                          |                      | [docs](http://www.npgsql.org/efcore/index.html)                                                                                                                                                    |
 | [Pomelo.EntityFrameworkCore.MySql](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MySql)                  | MySQL, MariaDB             | [Pomelo Foundation 프로젝트](https://github.com/PomeloFoundation)              |                      | [readme](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MySql/blob/master/README.md)                                                                                               |
 | [Pomelo.EntityFrameworkCore.MyCat](https://www.nuget.org/packages/Pomelo.EntityFrameworkCore.MyCat)                  | MyCAT Server               | [Pomelo Foundation 프로젝트](https://github.com/PomeloFoundation)              | 시험판만      | [readme](https://github.com/PomeloFoundation/Pomelo.EntityFrameworkCore.MyCat/blob/master/README.md)                                                                                               |
@@ -51,10 +51,6 @@ Entity Framework Core는 플러그 인 라이브러리 호출 데이터베이스
 Cosmos DB에서 SQL API용 EF Core 공급자를 개발하고 있습니다.
 이것이 Microsoft가 생산하는 완전한 첫 번째 문서 기반 데이터베이스 공급자가 될 것이며, 이를 통해 알게 되는 내용이 EF Core의 후속 릴리스 및 그 밖의 비관계형 공급자의 설계 개선 사항에 반영될 것입니다.
 [NuGet 갤러리](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)에서 미리 보기를 확인할 수 있습니다.
-
-### <a name="oracle-first-party-provider"></a>Oracle 자사 공급자
-Oracle .NET 팀에서 [EF Core용 Oracle 공급자](https://www.nuget.org/packages/Oracle.EntityFrameworkCore/) 베타를 게시했습니다.
-릴리스 시점 등을 비롯한 이 공급자에 대한 질문은 [Oracle 커뮤니티 사이트](https://community.oracle.com/)에 직접 남겨 주세요.
 
 ## <a name="adding-a-database-provider-to-your-application"></a>애플리케이션에 데이터베이스 공급자 추가
 
