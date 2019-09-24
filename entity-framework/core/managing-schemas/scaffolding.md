@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/13/2018
 ms.assetid: 6263EF7D-4989-42E6-BDEE-45DA770342FB
 uid: core/managing-schemas/scaffolding
-ms.openlocfilehash: 775a929982b9f4fb10aad9cd43bbb555ce632ad1
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: afe2c865305ade93dd10c8838b80c8b4177e7e8e
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149017"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197190"
 ---
 # <a name="reverse-engineering"></a>리버스 엔지니어링
 
@@ -121,13 +121,12 @@ dotnet ef dbcontext scaffold ... --context-dir Data --output-dir Models
 
 관계를 작성하기 위해 외래 키가 사용됩니다. 해당 엔터티 형식 클래스, Fluent API 및 데이터 주석은 앱에서 동일한 모델을 재생성하기 위해 스캐폴딩됩니다.
 
-## <a name="what-doesnt-work"></a>작동 하지 않는
+## <a name="limitations"></a>제한 사항
 
-모델에 대한 모든 것이 데이터베이스 스키마를 사용하여 표현될 수 있는 것은 아닙니다. 예를 들어 [**상속 계층 구조**](../modeling/inheritance.md), [**소유 된 형식**](../modeling/owned-entities.md)및 [**테이블 분할**](../modeling/table-splitting.md) 에 대 한 정보는 데이터베이스 스키마에 없습니다. 이 때문에 이러한 구조는 결코 리버스 엔지니어링되지 않습니다.
-
-또한 **몇 가지 열 형식**은 EF Core 공급자가 지원되지 않습니다. 이러한 열은 모델에 포함되지 않습니다.
-
-EF Core 모델에서 [**동시성 토큰**](../modeling/concurrency.md)을 정의 하 여 두 사용자가 동시에 동일한 엔터티를 업데이트 하지 못하게 할 수 있습니다. 일부 데이터베이스에는 이 형식의 열(예: SQL Server의 rowversion)을 나타내는 특수한 형식이 있습니다. 이 경우 이 정보를 리버스 엔지니어링할 수 있습니다. 그러나 다른 동시성 토큰은 리버스 엔지니어링되지 않습니다.
+* 모델에 대한 모든 것이 데이터베이스 스키마를 사용하여 표현될 수 있는 것은 아닙니다. 예를 들어 [**상속 계층 구조**](../modeling/inheritance.md), [**소유 된 형식**](../modeling/owned-entities.md)및 [**테이블 분할**](../modeling/table-splitting.md) 에 대 한 정보는 데이터베이스 스키마에 없습니다. 이 때문에 이러한 구조는 결코 리버스 엔지니어링되지 않습니다.
+* 또한 **몇 가지 열 형식**은 EF Core 공급자가 지원되지 않습니다. 이러한 열은 모델에 포함되지 않습니다.
+* EF Core 모델에서 [**동시성 토큰**](../modeling/concurrency.md)을 정의 하 여 두 사용자가 동시에 동일한 엔터티를 업데이트 하지 못하게 할 수 있습니다. 일부 데이터베이스에는 이 형식의 열(예: SQL Server의 rowversion)을 나타내는 특수한 형식이 있습니다. 이 경우 이 정보를 리버스 엔지니어링할 수 있습니다. 그러나 다른 동시성 토큰은 리버스 엔지니어링되지 않습니다.
+* [8 nullable 참조 형식 기능은 현재 리버스 엔지니어링에서 지원 되지 않습니다. C# ](/dotnet/csharp/tutorials/nullable-reference-types) EF Core는 기능 C# 을 사용할 수 없는 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하 `string` 는 데 `string?`사용 되는 흐름 API 또는 데이터 주석을 사용 하지 않고 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
 
 ## <a name="customizing-the-model"></a>모델을 사용자 지정
 

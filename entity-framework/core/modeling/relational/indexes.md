@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 4581e7ba-5e7f-452c-9937-0aaf790ba10a
 uid: core/modeling/relational/indexes
-ms.openlocfilehash: dfada7446f812f3c277572cc1338441272e8f448
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: 7dcf27dedbde45302a462a4c41a811b9868e40bb
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565361"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197022"
 ---
 # <a name="indexes"></a>인덱스
 
@@ -30,18 +30,18 @@ ms.locfileid: "69565361"
 
 흐름 API를 사용 하 여 인덱스 이름을 구성할 수 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/IndexName.cs?name=Model&highlight=9)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexName.cs?name=Model&highlight=9)]
 
 필터를 지정할 수도 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/IndexFilter.cs?name=Model&highlight=9)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexFilter.cs?name=Model&highlight=9)]
 
 SQL Server 공급자 EF를 사용 하는 경우 고유 인덱스의 일부인 모든 null 허용 열에 대해 ' IS NOT NULL ' 필터를 추가 합니다. 이 규칙을 재정의 하려면 값을 `null` 제공할 수 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/IndexNoFilter.cs?name=Model&highlight=10)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexNoFilter.cs?name=Model&highlight=10)]
 
 ### <a name="include-columns-in-sql-server-indexes"></a>SQL Server 인덱스에 열 포함
 
 쿼리의 모든 열이 키 또는 키가 아닌 열로 인덱스에 포함 되는 경우에는 [포괄 열이 있는 인덱스](https://docs.microsoft.com/sql/relational-databases/indexes/create-indexes-with-included-columns) 를 구성 하 여 쿼리 성능을 크게 향상 시킬 수 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/ForSqlServerHasIndex.cs?name=Model)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/ForSqlServerHasIndex.cs?name=Model)]

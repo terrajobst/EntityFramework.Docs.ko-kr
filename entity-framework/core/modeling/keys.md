@@ -4,24 +4,24 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 912ffef7-86a0-4cdc-a776-55f907459d20
 uid: core/modeling/keys
-ms.openlocfilehash: 51d163b867085f42f415dbd7afa9e311ab1781a0
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
+ms.openlocfilehash: 8b32bf6417890a954c933a5973a2c90c609beeca
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929838"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197275"
 ---
-# <a name="keys-primary"></a>키 (기본)
+# <a name="keys-primary"></a>키(기본)
 
-키를 각 엔터티 인스턴스에 대 한 기본 고유 식별자로 사용 됩니다. 개념에 매핑됩니다 관계형 데이터베이스를 사용 하는 경우는 *기본 키*합니다. 기본 키 없는 고유 식별자를 구성할 수도 있습니다 (참조 [대체 키](alternate-keys.md) 자세한). 
+키는 각 엔터티 인스턴스에 대 한 기본 고유 식별자 역할을 합니다. 관계형 데이터베이스를 사용 하는 경우 *기본 키*의 개념에 매핑됩니다. 기본 키가 아닌 고유 식별자를 구성할 수도 있습니다 (자세한 내용은 [대체 키](alternate-keys.md) 참조). 
 
-다음 방법 중 하나를 기본 키를 설치/생성할 수입니다.
+다음 방법 중 하나를 사용 하 여 기본 키를 설정/만들 수 있습니다.
 
 ## <a name="conventions"></a>규칙
 
-이라는 속성이 규칙에 따라 `Id` 또는 `<type name>Id` 엔터티 키로 구성 됩니다.
+규칙에 따라 또는 `Id` `<type name>Id` 이라는 속성은 엔터티의 키로 구성 됩니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Samples/KeyId.cs?highlight=3)] -->
+<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/KeyId.cs?highlight=3)] -->
 ``` csharp
 class Car
 {
@@ -32,7 +32,7 @@ class Car
 }
 ```
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Samples/KeyTypeNameId.cs?highlight=3)] -->
+<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/KeyTypeNameId.cs?highlight=3)] -->
 ``` csharp
 class Car
 {
@@ -45,16 +45,16 @@ class Car
 
 ## <a name="data-annotations"></a>데이터 주석
 
-엔터티 키로 단일 속성을 구성 하려면 데이터 주석을 사용할 수 있습니다.
+데이터 주석을 사용 하 여 단일 속성을 엔터티의 키로 구성할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/KeySingle.cs?highlight=13)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/KeySingle.cs?highlight=13)]
 
 ## <a name="fluent-api"></a>Fluent API
 
-엔터티 키로 단일 속성을 구성 하는 Fluent API를 사용할 수 있습니다.
+흐름 API를 사용 하 여 단일 속성을 엔터티의 키로 구성할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/KeySingle.cs?highlight=11,12)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/KeySingle.cs?highlight=11,12)]
 
-또한 (복합 키로 알려짐) 엔터티 키로 여러 속성을 구성 하려면 Fluent API를 사용할 수 있습니다. 복합 키만 구성할 수 있습니다 Fluent API를 사용 하 여-규칙에서는 복합 키를 설정 하지 않습니다 하 고 데이터 주석을 하나를 구성 하려면 사용할 수 없습니다.
+흐름 API를 사용 하 여 여러 속성을 엔터티의 키 (복합 키 라고 함)로 구성할 수도 있습니다. 복합 키는 흐름 API를 사용 하 여 구성할 수 있습니다. 규칙은 복합 키를 설정 하지 않으며 데이터 주석을 사용 하 여 구성할 수 없습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/KeyComposite.cs?highlight=11,12)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/KeyComposite.cs?highlight=11,12)]

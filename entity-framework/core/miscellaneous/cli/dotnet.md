@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 0278353640ea242df9e6ee5278c9dda78bfd341b
-ms.sourcegitcommit: 7b7f774a5966b20d2aed5435a672a1edbe73b6fb
+ms.openlocfilehash: 910136871cce5818b8e70a012e5132259b66e4c1
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/17/2019
-ms.locfileid: "69565275"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197587"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Entity Framework Core 도구 참조-.NET CLI
 
@@ -33,7 +33,7 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 * `dotnet ef`는 전역 또는 로컬 도구로 설치 해야 합니다. 대부분의 개발자는 `dotnet ef` 다음 명령을 사용 하 여 전역 도구로 설치 합니다.
 
   ``` console
-  dotnet tool install --global dotnet-ef --version 3.0.0-*
+  dotnet tool install --global dotnet-ef
   ```
 
   As local tool을 `dotnet ef` 사용할 수도 있습니다. 로컬 도구로 사용 하려면 [도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용 하 여 도구를 도구 종속성으로 선언 하는 프로젝트의 종속성을 복원 합니다.
@@ -156,7 +156,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 
 ## <a name="common-options"></a>일반 옵션
 
-|                   | 옵션                            | Description                                                                                                                                                                                                                                                   |
+|                   | 옵션                            | 설명                                                                                                                                                                                                                                                   |
 |:------------------|:----------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |                   | `--json`                          | JSON 출력을 표시 합니다.                                                                                                                                                                                                                                             |
 | <nobr>`-c`</nobr> | `--context <DBCONTEXT>`           | 사용할 `DbContext` 클래스입니다. 네임 스페이스를 포함 하거나 정규화 된 클래스 이름입니다.  이 옵션을 생략 하면 EF Core 컨텍스트 클래스가 검색 됩니다. 컨텍스트 클래스가 여러 개인 경우이 옵션이 필요 합니다.                                            |
@@ -212,7 +212,7 @@ dotnet ef database update 20180904195021_InitialCreate
 
 인수:
 
-| 인수       | Description                                                                                                                                                                                                             |
+| 인수       | 설명                                                                                                                                                                                                             |
 |:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `<CONNECTION>` | 데이터베이스에 대 한 연결 문자열입니다. ASP.NET Core 2.x 프로젝트의 경우 값은 *이름 =\<연결 문자열 >의 이름일*수 있습니다. 이 경우 프로젝트에 대해 설정 된 구성 소스에서 이름이 제공 됩니다. |
 | `<PROVIDER>`   | 사용할 공급자입니다. 일반적으로 NuGet 패키지의 이름입니다 (예: `Microsoft.EntityFrameworkCore.SqlServer`).                                                                                           |
@@ -248,13 +248,13 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 인수:
 
-| 인수 | Description                |
+| 인수 | 설명                |
 |:---------|:---------------------------|
 | `<NAME>` | 마이그레이션의 이름입니다. |
 
 옵션:
 
-|                   | 옵션                             | Description                                                                                                      |
+|                   | 옵션                             | 설명                                                                                                      |
 |:------------------|:-----------------------------------|:-----------------------------------------------------------------------------------------------------------------|
 | <nobr>`-o`</nobr> | <nobr>`--output-dir <PATH>`</nobr> | 사용할 디렉터리 및 하위 네임 스페이스입니다. 경로는 프로젝트 디렉터리에 상대적입니다. 기본값은 "migration"입니다. |
 
@@ -285,7 +285,7 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 옵션:
 
-|                   | 옵션            | Description                                                        |
+|                   | 옵션            | 설명                                                        |
 |:------------------|:------------------|:-------------------------------------------------------------------|
 | <nobr>`-o`</nobr> | `--output <FILE>` | 스크립트를 쓸 파일입니다.                                   |
 | `-i`              | `--idempotent`    | 마이그레이션할 때 데이터베이스에서 사용할 수 있는 스크립트를 생성 합니다. |

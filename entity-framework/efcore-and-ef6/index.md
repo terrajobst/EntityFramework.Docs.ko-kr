@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: ad0807a3cfd62c6c09a97df1a45134db7a538623
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 3d2f72e64e6846d2d8bb6d4d507e04090287114d
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149058"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71198014"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
@@ -148,7 +148,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 
 다음 조건이 모두 충족되면 새 애플리케이션에 EF Core를 사용해 보세요.
 * 이 앱을 사용하려면 .NET Core의 기능이 필요합니다. 자세한 내용은 [서버 앱에 대해 .NET Core와 .NET Framework 중에 선택](https://docs.microsoft.com/dotnet/standard/choosing-core-framework-server)을 참조하세요.
-* EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/roadmap)을 확인하여 나중에 지원할 계획이 있는지 확인하세요.
+* EF Core는 앱에 필요한 모든 기능을 지원합니다. 원하는 기능이 없는 경우에는 [EF Core 로드맵](xref:core/what-is-new/index)을 확인하여 나중에 지원할 계획이 있는지 확인하세요. 
 
 다음 조건이 모두 충족되면 EF6를 사용해 보세요.
 * 이 앱은 Windows 및 .NET Framework 4.0 이상에서 실행됩니다.

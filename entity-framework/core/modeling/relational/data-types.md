@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 9d2e647f-29e4-483b-af00-74269eb06e8f
 uid: core/modeling/relational/data-types
-ms.openlocfilehash: d667cbcb821e321faed36d097b531c7c55b81248
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 26664ebe18abcdeaa2b9c8dc23a6410204f53c8e
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149168"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197184"
 ---
 # <a name="data-types"></a>데이터 형식
 
@@ -30,10 +30,10 @@ ms.locfileid: "71149168"
 
 예를 들어 다음 코드는 `Url` 의 최대 `200` 길이 `Rating` 와 소수 자릿수가의 전체 자릿수 `5` `2`와 소수 자릿수가 인 비유니코드 문자열로 구성 됩니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/DataAnnotations/Samples/Relational/DataType.cs?name=Entities&highlight=4,6)]
+[!code-csharp[Main](../../../../samples/core/Modeling/DataAnnotations/Relational/DataType.cs?name=Entities&highlight=4,6)]
 
 ## <a name="fluent-api"></a>Fluent API
 
 흐름 API를 사용 하 여 열에 대해 동일한 데이터 형식을 지정할 수도 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Samples/Relational/DataType.cs?name=Model&highlight=9-10)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/DataType.cs?name=Model&highlight=9-10)]
