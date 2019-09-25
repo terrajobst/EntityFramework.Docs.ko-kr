@@ -1,15 +1,15 @@
 ---
-title: 모델 만들기 - EF Core
+title: 모델 만들기 및 구성 - EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 88253ff3-174e-485c-b3f8-768243d01ee1
 uid: core/modeling/index
-ms.openlocfilehash: 78a8ffd2393a914edf737104f14e41f8a9074ad5
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
+ms.openlocfilehash: 5b886226b16b5b1a1f01e6040e58d92ae8678d29
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929900"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197312"
 ---
 # <a name="creating-and-configuring-a-model"></a>모델 만들기 및 구성
 
@@ -24,10 +24,10 @@ Entity Framework는 엔터티 클래스의 형태에 따라 규칙 집합을 사
 
 파생된 컨텍스트에서  `OnModelCreating`  메서드를 재정의하고  `ModelBuilder API`를 사용하여 모델을 구성할 수 있습니다. 이것은 가장 강력한 구성 방법으로, 엔터티 클래스를 수정하지 않고도 구성을 지정할 수 있습니다. Fluent API 구성은 우선 순위가 가장 높으며 규칙과 데이터 주석을 재정의합니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Samples/Required.cs?highlight=11-13)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Required.cs?highlight=11-13)]
 
 ## <a name="use-data-annotations-to-configure-a-model"></a>데이터 주석을 사용하여 모델 구성
 
 특성(데이터 주석이라고 함)을 클래스와 속성에 정의할 수도 있습니다. 데이터 주석은 규칙을 재정의하지만 흐름 API 구성이 데이터 주석을 재정의합니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Samples/Required.cs?highlight=14)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?highlight=14)]

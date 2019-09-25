@@ -1,20 +1,20 @@
 ---
-title: 개요 - EF6
+title: Entity Framework 6 개요
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
 uid: ef6/index
-ms.openlocfilehash: 1efadf4484a13d5df2a2f11aad3d0e8f9ceff543
-ms.sourcegitcommit: 8b42045cd21f80f425a92f5e4e9dd4972a31720b
+ms.openlocfilehash: fcd514eebbf09e50403b95c88db04c33520011e9
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/14/2018
-ms.locfileid: "49315635"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71198048"
 ---
 # <a name="entity-framework-6"></a>Entity Framework 6
 EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
 
-O/RM으로써 EF6는 관계형 데이터베이스와 개체 중심 데이터베이스 사이의 불일치를 완화하고, 개발자가 응용 프로그램의 도메인을 나타내는 강력한 형식의 .NET 개체를 사용하여 관계형 데이터베이스에 저장된 데이터와 상호 작용할 수 있게 해주고, 일반적으로 개발자가 작성해야 하는 데이터 액세스 "내부" 코드의 많은 부분을 할 필요가 없게 만들어 줍니다.
+O/RM으로써 EF6는 관계형 데이터베이스와 개체 중심 데이터베이스 사이의 불일치를 완화하고, 개발자가 애플리케이션의 도메인을 나타내는 강력한 형식의 .NET 개체를 사용하여 관계형 데이터베이스에 저장된 데이터와 상호 작용할 수 있게 해주고, 일반적으로 개발자가 작성해야 하는 데이터 액세스 "내부" 코드의 많은 부분을 할 필요가 없게 만들어 줍니다.
 
 EF6는 다양한 인기 O/RM 기능을 구현합니다.
 - EF 형식에 따라 달라지지 않는 [POCO](~/ef6/resources/glossary.md#poco) 엔터티 클래스 매핑
@@ -30,14 +30,14 @@ EF6는 다양한 인기 O/RM 기능을 구현합니다.
 - 엔터티 모델을 만드는 시각적 디자이너.
 - 코드를 작성하여 엔터티 모델을 만드는 "Code First" 환경
 - 기존 데이터베이스에서 모델을 생성한 후 직접 편집할 수도 있고, 처음부터 새로 만든 후 새 데이터베이스를 생성하는 데 사용할 수도 있습니다.
-- ASP.NET을 포함한 .NET Framework 응용 프로그램 모델과 통합, 데이터 바인딩을 통해 WPF 및 WinForms와 통합.
+- ASP.NET을 포함한 .NET Framework 애플리케이션 모델과 통합, 데이터 바인딩을 통해 WPF 및 WinForms와 통합.
 - ADO.NET 및 SQL Server, Oracle, MySQL, SQLite, PostgreSQL, DB2 등에 연결할 수 있는 다양한 공급자를 기반으로 하는 데이터베이스 연결.
 
 ## <a name="should-i-use-ef6-or-ef-core"></a>EF6 또는 EF Core를 사용해야 하나요?
 
 EF Core는 가볍고 확장 가능한 최신 버전의 Entity Framework로, EF6와 매우 비슷한 기능을 제공합니다.
 EF Core는 완전히 다시 작성되었으며, EF6의 고급 매핑 기능 중 일부를 제공하지 않지만 EF6에 없는 여러 새 기능을 포함하고 있습니다.
-기능 집합이 요구 사항과 일치하는 경우 새 응용 프로그램에서 EF Core를 사용해 보세요.
+기능 집합이 요구 사항과 일치하는 경우 새 애플리케이션에서 EF Core를 사용해 보세요.
 [EF Core & EF6 비교](xref:efcore-and-ef6/index)에서는 이 선택에 대해 자세히 살펴봅니다.
 
 ## <a name="get-startedef6get-startedmd"></a>[시작](~/ef6/get-started.md)

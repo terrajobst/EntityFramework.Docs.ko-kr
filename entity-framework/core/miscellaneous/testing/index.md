@@ -1,17 +1,17 @@
 ---
-title: Entity Framework를 사용한 구성 요소 테스트 - EF Core
+title: EF Core를 사용하여 구성 요소 테스트
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 1603be0c-69bc-4dd9-9a08-3d0129cdc6c1
 uid: core/miscellaneous/testing/index
-ms.openlocfilehash: fc751b9053c337e4911f4016b65b370d1276046b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: a946387718546f14e1485b4093e6c8046188f62d
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997839"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197497"
 ---
-# <a name="testing"></a>테스트
+# <a name="testing-components-using-ef-core"></a>EF Core를 사용하여 구성 요소 테스트
 
 실제 데이터베이스 I/O 작업에 부담을 주지 않으면서 실제 데이터베이스에 근접 연결하는 무엇인가를 통해 구성 요소를 테스트하고자 할 수 있습니다.
 
