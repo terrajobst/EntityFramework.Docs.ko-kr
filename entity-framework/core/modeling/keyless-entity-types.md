@@ -5,16 +5,16 @@ ms.author: ansvyryd
 ms.date: 02/26/2018
 ms.assetid: 9F4450C5-1A3F-4BB6-AC19-9FAC64292AAD
 uid: core/modeling/keyless-entity-types
-ms.openlocfilehash: b968ac9602b9aa1f1c1e3181b6b76a64394d70f0
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: e78b9f91fd2505de300ced7b5e73291b5d1ad3b4
+ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71150790"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266769"
 ---
-# <a name="keyless-entity-types"></a>키가 없는 엔터티 형식
+# <a name="keyless-entity-types"></a>키 없는 엔터티 형식
 > [!NOTE]
-> 이 기능은 EF Core 2.1의 새로운 기능입니다. 3\.0 이전 버전은 쿼리 유형 이라고 합니다.
+> 이 기능은 쿼리 유형 이름 아래 EF Core 2.1에 추가 되었습니다. EF Core 3.0에서 개념은 키가 없는 엔터티 형식으로 이름이 변경 되었습니다.
 
 일반 엔터티 형식 외에도 EF Core 모델에는 키 값이 포함 되지 않은 데이터에 대 한 데이터베이스 쿼리를 수행 하는 데 사용할 수 있는 _키가 없는 엔터티 형식이_포함 될 수 있습니다.
 
@@ -56,7 +56,7 @@ ms.locfileid: "71150790"
 다음 예제에서는 키가 없는 엔터티 형식을 사용 하 여 데이터베이스 뷰를 쿼리 하는 방법을 보여 줍니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryTypes)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/KeylessEntityTypes)을 볼 수 있습니다.
 
 먼저 간단한 블로그 및 게시물 모델을 정의합니다.
 

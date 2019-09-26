@@ -4,12 +4,12 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: bb7038764644682c2149a8a500f342804d01f3d2
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: c49f4cba0066d1e218f11c3959d96f9cafa913f4
+ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198044"
+ms.lasthandoff: 09/25/2019
+ms.locfileid: "71266790"
 ---
 # <a name="whats-new-in-ef6"></a>EF6의 새로운 기능
 
@@ -22,7 +22,8 @@ EF 특정 버전을 설치하는 방법은 [Entity Framework 받기](~/ef6/funda
 EF 6.3.0 런타임은 2019년 9월에 NuGet에서 출시되었습니다. 이 릴리스의 주요 목표는 EF 6을 사용하는 기존 애플리케이션을 .NET Core 3.0으로 손쉽게 마이그레이션하는 것이었습니다. 커뮤니티 역시 여러 버그 수정과 기능 향상에 기여했습니다. 자세한 내용은 각 6.3.0 [마일스톤](https://github.com/aspnet/EntityFramework6/milestones?state=closed)에서 종결된 문제를 참조하세요. 다음은 몇 가지 주목할 만한 것입니다.
 
 - .NET Core 3.0 지원
-  - 이제 EntityFramework 패키지는 .NET Framework 4.x 외에도 .NET Standard 2.1을 대상으로 합니다.
+  - 이제 EntityFramework 패키지는 .NET Framework 4.x. 외에도 .NET Standard 2.1을 대상으로 합니다.
+  - 즉, EF 6.3은 플랫폼 간이며 Windows 외에도 Linux 및 macOS와 같은 다른 운영 체제에서도 지원됨을 의미합니다.
   - 마이그레이션 명령이 프로세스에서 실행되고 SDK 스타일 프로젝트에서 사용할 수 있도록 다시 작성되었습니다.
 - SQL Server HierarchyId 지원
 - Roslyn 및 NuGet PackageReference와의 호환성이 향상되었습니다.
@@ -37,12 +38,12 @@ EF 6.3.0 런타임은 2019년 9월에 NuGet에서 출시되었습니다. 이 릴
 연결 파일은 프로젝트 파일에서 다음과 같이 표시됩니다.
 
 ``` csproj 
-&lt;ItemGroup&gt;
-  &lt;EntityDeploy Include="..\EdmxDesignHost\Entities.edmx" Link="Model\Entities.edmx" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Entities.Context.cs" Link="Model\Entities.Context.cs" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Thing.cs" Link="Model\Thing.cs" /&gt;
-  &lt;Compile Include="..\EdmxDesignHost\Person.cs" Link="Model\Person.cs" /&gt;
-&lt;/ItemGroup&gt;
+<ItemGroup>
+  <EntityDeploy Include="..\EdmxDesignHost\Entities.edmx" Link="Model\Entities.edmx" />
+  <Compile Include="..\EdmxDesignHost\Entities.Context.cs" Link="Model\Entities.Context.cs" />
+  <Compile Include="..\EdmxDesignHost\Thing.cs" Link="Model\Thing.cs" />
+  <Compile Include="..\EdmxDesignHost\Person.cs" Link="Model\Person.cs" />
+</ItemGroup>
 ```
 
 EDMX 파일은 EntityDeploy 빌드 작업과 연결됩니다. 이 작업은 EF 모델을 대상 어셈블리에 포함 리소스로 추가하거나 EDMX의 메타데이터 아티팩트 처리 설정에 따라 출력 폴더의 파일로 복사하는 특수 MSBuild 작업(현재 EF 6.3 패키지에 포함됨)입니다. 설정하는 방법에 대한 자세한 내용은 [EDMX .NET Core 샘플](https://aka.ms/EdmxDotNetCoreSample)을 참조하세요.

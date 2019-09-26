@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 uid: core/what-is-new/ef-core-2.1
-ms.openlocfilehash: 16600ccbb1194d584fae15671118d9c046f1f637
-ms.sourcegitcommit: 06073f8efde97dd5f540dbfb69f574d8380566fe
+ms.openlocfilehash: 5f97015f0228387574e3a19fb20cae1bdb403410
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/24/2019
-ms.locfileid: "67333853"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149182"
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
 
@@ -81,7 +81,7 @@ modelBuilder.Entity<Post>().HasData(new Post{ Id = 1, Text = "Hello World!" });
 - 모델에서 정의된 쿼리에 매핑
 - `FromSql()` 쿼리에 대한 반환 형식으로 제공
 
-이 항목에 대한 자세한 내용은 [쿼리 형식에 대한 섹션](xref:core/modeling/query-types)을 참고하세요.
+이 항목에 대한 자세한 내용은 [쿼리 형식에 대한 섹션](xref:core/modeling/keyless-entity-types)을 참고하세요.
 
 ## <a name="include-for-derived-types"></a>파생된 형식에 포함
 이제 `Include` 메서드를 작성할 때 파생된 형식에서 정의된 탐색 속성만을 지정할 수 있습니다. 강력한 형식의 `Include` 버전에서 명시적 캐스트 또는 `as` 연산자를 사용하도록 지원합니다. 또한 이제 문자열 `Include` 버전의 파생된 형식에서 정의된 탐색 속성의 이름을 참조하도록 지원합니다.

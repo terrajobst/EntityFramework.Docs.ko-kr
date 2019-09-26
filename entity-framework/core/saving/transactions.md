@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 uid: core/saving/transactions
-ms.openlocfilehash: 4c50d6694c6678678c0af8defe2601abee923af1
-ms.sourcegitcommit: 5f11a5fa5d2cde81a4e4d0d5c3a60aa74b83cbd4
+ms.openlocfilehash: ff12c4e7ace1f1b9e503cb2353bcdd53efd87cce
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54226194"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197902"
 ---
 # <a name="using-transactions"></a>트랜잭션 사용
 
 트랜잭션을 사용하면 여러 데이터베이스 작업을 원자성 방식으로 처리할 수 있습니다. 트랜잭션이 커밋되면 모든 작업이 성공적으로 데이터베이스에 적용됩니다. 트랜잭션이 롤백되면 데이터베이스에 아무 작업도 적용되지 않습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Transactions/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Transactions/)을 볼 수 있습니다.
 
 ## <a name="default-transaction-behavior"></a>기본 트랜잭션 동작
 
@@ -30,7 +30,7 @@ ms.locfileid: "54226194"
 
 일부 데이터베이스 공급자는 트랜잭션을 지원하지 않습니다. 일부 공급자는 트랜잭션 API가 호출될 때 throw되거나 작동하지 않을 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/ControllingTransaction/Sample.cs?name=Transaction&highlight=3,17,18,19)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/ControllingTransaction/Sample.cs?name=Transaction&highlight=3,17,18,19)]
 
 ## <a name="cross-context-transaction-relational-databases-only"></a>컨텍스트 간 트랜잭션(관계형 데이터베이스만 해당)
 
@@ -47,7 +47,7 @@ ms.locfileid: "54226194"
 > [!TIP]  
 > `DbContextOptionsBuilder`는 `DbContext.OnConfiguring`에서 컨텍스트를 구성하는 데 사용되는 API이며, 이제 외부에서 이 API를 사용하여 `DbContextOptions`를 만듭니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Context&highlight=3,4,5)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction/Sample.cs?name=Context&highlight=3,4,5)]
 
 또는 `DbContext.OnConfiguring`을 계속 사용하지만 `DbContext.OnConfiguring`에서 저장된 후 사용되는 `DbConnection`을 허용합니다.
 
@@ -74,7 +74,7 @@ public class BloggingContext : DbContext
 
 이제 동일한 연결을 공유하는 여러 컨텍스트 인스턴스를 작성할 수 있습니다. 그런 다음, `DbContext.Database.UseTransaction(DbTransaction)` API를 사용하여 두 컨텍스트를 동일한 트랜잭션에 등록합니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/SharingTransaction/Sample.cs?name=Transaction&highlight=1,2,3,7,16,23,24,25)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/SharingTransaction/Sample.cs?name=Transaction&highlight=1,2,3,7,16,23,24,25)]
 
 ## <a name="using-external-dbtransactions-relational-databases-only"></a>외부 DbTransactions 사용(관계형 데이터베이스만 해당)
 
@@ -82,7 +82,7 @@ public class BloggingContext : DbContext
 
 다음 예제에서는 동일한 트랜잭션에서 ADO.NET SqlClient 작업 및 Entity Framework Core 작업을 수행하는 방법을 보여줍니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/ExternalDbTransaction/Sample.cs?name=Transaction&highlight=4,10,21,26,27,28)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/ExternalDbTransaction/Sample.cs?name=Transaction&highlight=4,10,21,26,27,28)]
 
 ## <a name="using-systemtransactions"></a>System.Transactions 사용
 
@@ -91,11 +91,11 @@ public class BloggingContext : DbContext
 
 더 큰 범위를 조정해야 하는 경우 앰비언트 트랜잭션을 사용할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,2,3,26,27,28)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/AmbientTransaction/Sample.cs?name=Transaction&highlight=1,2,3,26,27,28)]
 
 또한 명시적 트랜잭션에 등록할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,15,28,29,30)]
+[!code-csharp[Main](../../../samples/core/Saving/Transactions/CommitableTransaction/Sample.cs?name=Transaction&highlight=1,15,28,29,30)]
 
 ### <a name="limitations-of-systemtransactions"></a>System.Transactions의 제한 사항  
 

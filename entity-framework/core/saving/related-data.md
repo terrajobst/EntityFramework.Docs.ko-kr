@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 uid: core/saving/related-data
-ms.openlocfilehash: 7349c57c0dccd3c911178641d3b34a478a4f6194
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 45c7b8e4bfa4ce7967ad76ef4a7d4818b0d3aebf
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994746"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197883"
 ---
 # <a name="saving-related-data"></a>관련 데이터 저장
 
 격리된 엔터티 외에 모델에 정의된 관계도 사용할 수 있습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/RelatedData/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/)을 볼 수 있습니다.
 
 ## <a name="adding-a-graph-of-new-entities"></a>새 엔터티 그래프 추가
 
@@ -24,10 +24,10 @@ ms.locfileid: "42994746"
 
 다음 예제에서는 블로그와 세 개의 관련 게시물이 모두 데이터베이스에 삽입됩니다. `Blog.Posts` 탐색 속성을 통해 게시물에 연결할 수 있으므로 게시물을 검색하여 추가합니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
 
 > [!TIP]  
-> EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정합니다. 예를 들어, `context.Entry(blog).State = EntityState.Modified`을 입력합니다.
+> EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정합니다. 예: `context.Entry(blog).State = EntityState.Modified`.
 
 ## <a name="adding-a-related-entity"></a>관련 엔터티 추가하기
 
@@ -35,7 +35,7 @@ ms.locfileid: "42994746"
 
 다음 예제에서는 `post` 엔터티가 데이터베이스에서 가져온 `blog` 엔터티의 `Posts` 속성에 추가되어 삽입됩니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#AddingRelatedEntity)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingRelatedEntity)]
 
 ## <a name="changing-relationships"></a>관계 변경
 
@@ -43,7 +43,7 @@ ms.locfileid: "42994746"
 
 다음 예제에서는 해당 `Blog` 탐색 속성이 `blog`를 가리키도록 설정되어 있으므로 `post` 엔터티가 새 `blog` 엔터티에 속하도록 업데이트됩니다. 또한 `blog`는 컨텍스트에서 이미 추적한 엔터티(`post`)의 탐색 속성에서 참조되는 새 엔터티이므로 데이터베이스에 삽입됩니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#ChangingRelationships)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#ChangingRelationships)]
 
 ## <a name="removing-relationships"></a>관계 제거
 
@@ -59,4 +59,4 @@ ms.locfileid: "42994746"
 
 다음 예제에서는 하위 삭제가 `Blog`와 `Post` 간의 관계에 구성되어 `post` 엔터티가 데이터베이스에서 삭제됩니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/RelatedData/Sample.cs#RemovingRelationships)]
+[!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#RemovingRelationships)]

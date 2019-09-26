@@ -3,24 +3,24 @@ title: 동시성 충돌 처리 - EF Core
 author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: e050b17bfa31a4785161c700bc0355e83162b405
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 4d6ff24e58caa0b228e9c1e4313beda78d1025fc
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993114"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197839"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 
 > [!NOTE]
-> 이 페이지에서는 EF Core에서 동시성의 작동 방식과 응용 프로그램에서 동시성 충돌을 처리하는 방법에 대해 설명합니다. 모델에서 동시성 토큰을 구성하는 방법에 대한 자세한 내용은 [동시성 토큰](xref:core/modeling/concurrency)을 참조하세요.
+> 이 페이지에서는 EF Core에서 동시성의 작동 방식과 애플리케이션에서 동시성 충돌을 처리하는 방법에 대해 설명합니다. 모델에서 동시성 토큰을 구성하는 방법에 대한 자세한 내용은 [동시성 토큰](xref:core/modeling/concurrency)을 참조하세요.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/Concurrency/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Concurrency/)을 볼 수 있습니다.
 
-‘데이터베이스 동시성’이란 여러 프로세스 또는 사용자가 동시에 데이터베이스에서 동일한 데이터를 액세스하거나 변경하는 상황을 의미합니다. ‘동시성 제어’는 동시 변경 내용이 있을 경우 데이터 일관성을 보장하는 데 사용되는 특정 메커니즘을 의미합니다.
+‘데이터베이스 동시성’이란 여러 프로세스 또는 사용자가 동시에 데이터베이스에서 동일한 데이터를 액세스하거나 변경하는 상황을 의미합니다.  ‘동시성 제어’는 동시 변경 내용이 있을 경우 데이터 일관성을 보장하는 데 사용되는 특정 메커니즘을 의미합니다. 
 
-EF Core는 ‘낙관적 동시성 제어’를 구현하여 여러 프로세스 또는 사용자가 동기화 또는 잠금의 오버헤드 없이 독립적으로 변경할 수 있습니다. 이상적인 상황에서는 이러한 변경 내용이 서로 방해가 되지 않으므로 성공할 수 있습니다. 최악의 경우 둘 이상의 프로세스에서 충돌하는 변경을 수행하려고 하여 하나만 성공합니다.
+EF Core는 ‘낙관적 동시성 제어’를 구현하여 여러 프로세스 또는 사용자가 동기화 또는 잠금의 오버헤드 없이 독립적으로 변경할 수 있습니다.  이상적인 상황에서는 이러한 변경 내용이 서로 방해가 되지 않으므로 성공할 수 있습니다. 최악의 경우 둘 이상의 프로세스에서 충돌하는 변경을 수행하려고 하여 하나만 성공합니다.
 
 ## <a name="how-concurrency-control-works-in-ef-core"></a>EF Core에서 동시성 제어의 작동 방식
 
@@ -29,7 +29,7 @@ EF Core는 ‘낙관적 동시성 제어’를 구현하여 여러 프로세스 
 - 값이 일치하면 작업이 완료됩니다.
 - 값이 일치하지 않으면 EF Core는 다른 사용자가 충돌하는 작업을 수행했다고 가정하고 현재 트랜잭션을 중단합니다.
 
-다른 사용자가 현재 작업과 충돌하는 작업을 수행한 경우를 ‘동시성 충돌’이라고 합니다.
+다른 사용자가 현재 작업과 충돌하는 작업을 수행한 경우를 ‘동시성 충돌’  이라고 합니다.
 
 데이터베이스 공급자는 동시성 토큰 값 비교를 구현해야 합니다.
 
@@ -48,15 +48,15 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 이전 예제에서 한 사용자는 `Person`의 일부 변경 내용을 저장하려고 하는데 다른 사용자는 `LastName`을 이미 변경한 경우 예외가 throw됩니다.
 
-이때 응용 프로그램은 충돌하는 변경 내용으로 인해 업데이트가 실패했음을 사용자에게 알리기만 하고 계속 진행할 수 있습니다. 그러나 이 레코드가 여전히 동일한 실제 사람을 나타내도록 하고 작업을 다시 시도하도록 사용자에게 메시지를 표시하는 것이 좋습니다.
+이때 애플리케이션은 충돌하는 변경 내용으로 인해 업데이트가 실패했음을 사용자에게 알리기만 하고 계속 진행할 수 있습니다. 그러나 이 레코드가 여전히 동일한 실제 사람을 나타내도록 하고 작업을 다시 시도하도록 사용자에게 메시지를 표시하는 것이 좋습니다.
 
-이 프로세스는 ‘동시성 충돌 해결’의 예제입니다.
+이 프로세스는 ‘동시성 충돌 해결’  의 예제입니다.
 
-동시성 충돌 해결에는 현재 `DbContext`에서 보류 중인 변경 내용을 데이터베이스의 값과 병합하는 작업이 포함됩니다. 병합되는 값은 응용 프로그램에 따라 달라지며 사용자 입력으로 지정할 수 있습니다.
+동시성 충돌 해결에는 현재 `DbContext`에서 보류 중인 변경 내용을 데이터베이스의 값과 병합하는 작업이 포함됩니다. 병합되는 값은 애플리케이션에 따라 달라지며 사용자 입력으로 지정할 수 있습니다.
 
 **세 가지 값 집합을 동시성 충돌 해결에 사용할 수 있습니다.**
 
-* **현재 값**은 응용 프로그램이 데이터베이스에 쓰려고 시도하는 값입니다.
+* **현재 값**은 애플리케이션이 데이터베이스에 쓰려고 시도하는 값입니다.
 
 * **원래 값**은 편집을 수행하기 전에 데이터베이스에서 처음에 검색된 값입니다.
 
@@ -69,6 +69,6 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 3. 데이터베이스의 현재 값을 반영하도록 동시성 토큰의 원래 값을 새로 고칩니다.
 4. 충돌이 발생하지 않을 때까지 프로세스를 다시 시도합니다.
 
-다음 예제에서는 `Person.FirstName` 및 `Person.LastName`을 동시성 토큰으로 설정합니다. 저장할 값을 선택하는 응용 프로그램별 논리를 포함하는 위치에 `// TODO:` 주석이 있습니다.
+다음 예제에서는 `Person.FirstName` 및 `Person.LastName`을 동시성 토큰으로 설정합니다. 저장할 값을 선택하는 애플리케이션별 논리를 포함하는 위치에 `// TODO:` 주석이 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]
+[!code-csharp[Main](../../../samples/core/Saving/Concurrency/Sample.cs?name=ConcurrencyHandlingCode&highlight=34-35)]
