@@ -4,16 +4,16 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 04487291f24bb702dad4b497c34234afdd5e3c9a
-ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
+ms.openlocfilehash: f7c241159c689d4648b2778b53e50c22f580deb0
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005579"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197929"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 3\.0.0으로 업그레이드할 때 기존 애플리케이션의 호환성이 손상될 수 있는 API 및 동작 변경 내용은 다음과 같습니다.
-데이터베이스 공급자에만 영향을 줄 것으로 예상되는 변경 내용은 [공급자 변경](../../providers/provider-log.md)에 설명되어 있습니다.
+데이터베이스 공급자에만 영향을 줄 것으로 예상되는 변경 내용은 [공급자 변경](xref:core/providers/provider-log)에 설명되어 있습니다.
 3\.0 미리 보기 간 호환성이 손상되는 변경은 여기에 설명되어 있지 않습니다.
 
 ## <a name="summary"></a>요약
@@ -23,6 +23,7 @@ ms.locfileid: "71005579"
 | [LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.](#linq-queries-are-no-longer-evaluated-on-the-client)         | 높음       |
 | [EF Core 3.0은 .NET Standard 2.0이 아니라 .NET Standard 2.1을 대상으로 합니다.](#netstandard21) | 높음      |
 | [EF Core 명령줄 도구인 dotnet ef는 더 이상 .NET Core SDK의 일부가 아닙니다.](#dotnet-ef) | 높음      |
+| [DetectChanges는 저장소 생성 키 값을 준수합니다.](#dc) | 높음      |
 | [FromSql, ExecuteSql, ExecuteSqlAsync의 이름이 변경되었습니다.](#fromsql) | 높음      |
 | [쿼리 형식은 엔터티 형식과 통합됩니다.](#qt) | 높음      |
 | [Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크의 일부가 아닙니다.](#no-longer) | 중간      |
@@ -37,7 +38,6 @@ ms.locfileid: "71005579"
 | [FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.](#fromsql) | 낮음      |
 | [~~쿼리 실행은 디버그 수준에서 로깅됩니다.~~ 되돌림](#qe) | 낮음      |
 | [임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.](#tkv) | 낮음      |
-| [DetectChanges는 저장소 생성 키 값을 준수합니다.](#dc) | 낮음      |
 | [보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.](#de) | 낮음      |
 | [동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.](#aes) | 낮음      |
 | [매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.](#ip) | 낮음      |
@@ -69,6 +69,7 @@ ms.locfileid: "71005579"
 | [SQLitePCL.raw가 버전 2.0.0으로 업데이트되었습니다.](#SQLitePCL) | 낮음      |
 | [NetTopologySuite가 버전 2.0.0으로 업데이트되었습니다.](#NetTopologySuite) | 낮음      |
 | [복수의 모호한 자기 참조 관계를 구성해야 합니다.](#mersa) | 낮음      |
+| [DbFunction.Schema가 null 또는 빈 문자열이면 모델의 기본 스키마에 있도록 구성됩니다.](#udf-empty-string) | 낮음      |
 
 ### <a name="linq-queries-are-no-longer-evaluated-on-the-client"></a>LINQ 쿼리는 더 이상 클라이언트에서 평가되지 않습니다.
 
@@ -174,7 +175,7 @@ ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이�
 마이그레이션을 관리하거나 `DbContext`의 스캐폴드를 수행하려면 `dotnet-ef`를 전역 도구로 설치합니다.
 
   ``` console
-    $ dotnet tool install --global dotnet-ef --version 3.0.0-*
+    $ dotnet tool install --global dotnet-ef
   ```
 
 [도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용하여 도구 종속성으로 선언한 프로젝트의 종속성을 복원할 때도 로컬 도구를 얻을 수 있습니다.
@@ -420,7 +421,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 **이전 동작**
 
-EF Core 3.0 이전에는 [쿼리 형식](xref:core/modeling/query-types)이 기본 키를 구조화된 방법으로 정의하지 않는 데이터를 쿼리하는 수단이었습니다.
+EF Core 3.0 이전에는 [쿼리 형식](xref:core/modeling/keyless-entity-types)이 기본 키를 구조화된 방법으로 정의하지 않는 데이터를 쿼리하는 수단이었습니다.
 즉, 쿼리 형식은 키 없이 엔터티 형식을 매핑하는데 사용(보기에서 가능할 수도 있지만 테이블에서도 가능한 경우)되는 반면, 일반 엔터티 형식은 키가 사용 가능할 때(테이블에서 가능하지만 보기에서도 가능한 경우) 사용되었습니다.
 
 **새 동작**
@@ -873,7 +874,7 @@ modelBuilder
 
 **이전 동작**
 
-EF Core 3.0 이전에는 문자열 값으로 속성을 지정할 수 있었고 CLR 형식에서 해당 이름을 가진 속성을 찾을 수 없는 경우, EF Core는 변환 규칙을 사용하여 필드에 일치시키려고 했습니다.
+EF Core 3.0 이전에는 문자열 값으로 속성을 지정할 수 있었고 .NET 형식에서 해당 이름을 가진 속성을 찾을 수 없는 경우, EF Core는 변환 규칙을 사용하여 필드에 일치시키려고 했습니다.
 ```C#
 private class Blog
 {
@@ -1714,4 +1715,39 @@ modelBuilder
      .Entity<User>()
      .HasOne(e => e.UpdatedBy)
      .WithMany();
+```
+
+<a name="udf-empty-string"></a>
+### <a name="dbfunctionschema-being-null-or-empty-string-configures-it-to-be-in-models-default-schema"></a>DbFunction.Schema가 null 또는 빈 문자열이면 모델의 기본 스키마에 있도록 구성됩니다.
+
+[추적 이슈 #12757](https://github.com/aspnet/EntityFrameworkCore/issues/12757)
+
+이 변경 내용은 EF Core 3.0 미리 보기 7에 도입되었습니다.
+
+**이전 동작**
+
+스키마가 빈 문자열로 구성된 DbFunction은 스키마가 없는 기본 제공 함수로 처리되었습니다. 예를 들어 다음 코드는 `DatePart` CLR 함수를 SqlServer의 `DATEPART` 기본 제공 함수에 매핑합니다.
+
+```C#
+[DbFunction("DATEPART", Schema = "")]
+public static int? DatePart(string datePartArg, DateTime? date) => throw new Exception();
+
+```
+
+**새 동작**
+
+모든 DbFunction 매핑은 사용자 정의 함수에 매핑되는 것으로 간주됩니다. 따라서 빈 문자열 값은 모델에 대한 기본 스키마 내에 함수를 배치합니다. 이것은 흐름 API `modelBuilder.HasDefaultSchema()` 또는 `dbo`를 통해 명시적으로 구성된 스키마일 수도 있고 그렇지 않을 수도 있습니다.
+
+**이유**
+
+이전에 스키마가 비어 있던 것은 해당 함수를 기본 제공으로 처리하는 방법이었지만 그 논리는 기본 제공 함수가 어떤 스키마에도 속하지 않는 SqlServer에만 적용됩니다.
+
+**완화 방법**
+
+DbFunction의 변환이 기본 제공 함수에 매핑되도록 수동으로 구성합니다.
+
+```C#
+modelBuilder
+    .HasDbFunction(typeof(MyContext).GetMethod(nameof(MyContext.DatePart)))
+    .HasTranslation(args => SqlFunctionExpression.Create("DatePart", args, typeof(int?), null));
 ```

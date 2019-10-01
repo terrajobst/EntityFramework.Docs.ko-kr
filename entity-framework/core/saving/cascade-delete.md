@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 uid: core/saving/cascade-delete
-ms.openlocfilehash: 15b7e69676ef9aeb70121fcec404c34a17e5e2bb
-ms.sourcegitcommit: 8d04a2ad98036f32ca70c77ce3040c5edb1cdf82
+ms.openlocfilehash: ec04de4eab2a28e3aa81ff27accef4fc11c83995
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44384841"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197798"
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
@@ -33,7 +33,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 아래 표에 나열된 대로 네 가지 삭제 동작이 있습니다.
 
 ### <a name="optional-relationships"></a>선택적 관계
-선택적 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘있습니다’.
+선택적 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘있습니다’. 
 
 | 동작 이름               | 메모리의 종속/자식에 대한 영향    | 데이터베이스의 종속/자식에 대한 영향  |
 |:----------------------------|:---------------------------------------|:---------------------------------------|
@@ -43,7 +43,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 | **Restrict**                | 없음                                   | 없음                                   |
 
 ### <a name="required-relationships"></a>필수 관계
-필수 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘없습니다’.
+필수 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘없습니다’. 
 
 | 동작 이름         | 메모리의 종속/자식에 대한 영향 | 데이터베이스의 종속/자식에 대한 영향 |
 |:----------------------|:------------------------------------|:--------------------------------------|
@@ -52,7 +52,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 | **SetNull**           | SaveChanges가 throw됨                  | SaveChanges가 throw됨                    |
 | **Restrict**          | 없음                                | 없음                                  |
 
-위의 표에서 ‘없음’은 제약 조건 위반을 발생시킬 수 있습니다. 예를 들어 주/자식 엔터티가 삭제되었지만 종속/자식의 외래 키를 변경하는 작업을 수행하지 않으면 외래 제약 조건 위반으로 인해 데이터베이스에서 SaveChanges가 throw될 수 있습니다.
+위의 표에서 ‘없음’은 제약 조건 위반을 발생시킬 수 있습니다.  예를 들어 주/자식 엔터티가 삭제되었지만 종속/자식의 외래 키를 변경하는 작업을 수행하지 않으면 외래 제약 조건 위반으로 인해 데이터베이스에서 SaveChanges가 throw될 수 있습니다.
 
 상위 수준에서 다음을 수행합니다.
 * 부모가 있어야 엔터티가 존재할 수 있는 경우 EF에서 자동으로 하위를 삭제할 수 있도록 하려면 *Cascade*를 사용합니다.
@@ -70,9 +70,9 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ## <a name="entity-deletion-examples"></a>엔터티 삭제 예제
 
-다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모 엔터티가 삭제될 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모 엔터티가 삭제될 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/CascadeDelete/Sample.cs#DeleteBehaviorVariations)]
+[!code-csharp[Main](../../../samples/core/Saving/CascadeDelete/Sample.cs#DeleteBehaviorVariations)]
 
 각 변형을 살펴보고 어떤 상황이 발생하는지 파악해 보겠습니다.
 
@@ -181,9 +181,9 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ## <a name="delete-orphans-examples"></a>고아 삭제 예제
 
-다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모/주와 자식/종속 같 관계가 끊어진 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다. 이 예제에서는 주/부모(블로그)의 컬렉션 탐색 속성에서 종속/자식(게시물)을 제거하여 관계를 끊습니다. 그러나 주/부모에 대한 종속/자식의 참조가 무효화되는 경우에는 동작이 동일합니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모/주와 자식/종속 같 관계가 끊어진 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다. 이 예제에서는 주/부모(블로그)의 컬렉션 탐색 속성에서 종속/자식(게시물)을 제거하여 관계를 끊습니다. 그러나 주/부모에 대한 종속/자식의 참조가 무효화되는 경우에는 동작이 동일합니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/CascadeDelete/Sample.cs#DeleteOrphansVariations)]
+[!code-csharp[Main](../../../samples/core/Saving/CascadeDelete/Sample.cs#DeleteOrphansVariations)]
 
 각 변형을 살펴보고 어떤 상황이 발생하는지 파악해 보겠습니다.
 

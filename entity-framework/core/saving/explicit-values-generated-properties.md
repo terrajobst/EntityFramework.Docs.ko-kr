@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: 00abef4d1208400ff68ced0a241b98b8dc9be5c0
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: d6aa9a0a9ce34e09a39026ad7ea9195b6777858c
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42997855"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197860"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>생성된 속성에 대한 명시적 값 설정
 
@@ -18,25 +18,25 @@ ms.locfileid: "42997855"
 생성된 속성에 대해 값을 생성하지 않고 명시적 값을 설정하려는 경우가 있을 수 있습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.
 
 ## <a name="the-model"></a>모델
 
 이 문서에 사용된 모델에는 단일 `Employee` 엔터티가 포함되어 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
 
 ## <a name="saving-an-explicit-value-during-add"></a>추가 중 명시적 값 저장
 
 `Employee.EmploymentStarted` 속성은 기본값을 사용하여 새 엔터티에 대해 데이터베이스에서 값을 생성하도록 구성됩니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
 다음 코드에서는 데이터베이스에 두 명의 직원을 삽입합니다.
 * 첫 번째의 경우 `Employee.EmploymentStarted` 속성에 값이 할당되지 않으므로 `DateTime`에 대한 CLR 기본값으로 설정됩니다.
 * 두 번째의 경우 `1-Jan-2000`이라는 명시적 값을 설정했습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
 
 출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.
 
@@ -54,7 +54,7 @@ ms.locfileid: "42997855"
 > [!NOTE]  
 > SQL Server 공급자 내에서 자동으로 이 작업을 수행하려면 백로그에 [기능 요청](https://github.com/aspnet/EntityFramework/issues/703)이 있어야 합니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
 
 출력에서는 제공된 ID가 데이터베이스에 저장되었음을 보여줍니다.
 
@@ -67,7 +67,7 @@ ms.locfileid: "42997855"
 
 `Employee.LastPayRaise` 속성은 업데이트 중에 데이터베이스에서 값을 생성하도록 구성됩니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
 
 > [!NOTE]  
 > 기본적으로 업데이트 중에 생성되도록 구성된 속성에 대한 명시적 값을 저장하려고 하면 EF Core에서 예외를 throw합니다. 이를 방지하려면 하위 수준 메타데이터 API로 드롭다운하고 위에 표시된 대로 `AfterSaveBehavior`를 설정해야 합니다.
@@ -77,13 +77,13 @@ ms.locfileid: "42997855"
 
 데이터베이스에는 `UPDATE` 작업 중에 `LastPayRaise` 열에 대한 값을 생성하는 트리거도 있습니다.
 
-[!code-sql[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
+[!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
 다음 코드에서는 데이터베이스에서 두 직원의 급여를 올립니다.
 * 첫 번째의 경우 `Employee.LastPayRaise` 속성에 값이 할당되지 않으므로 null로 설정됩니다.
 * 두 번째의 경우 1주일 전(급여 인상 날짜 소급)이라는 명시적 값을 설정했습니다.
 
-[!code-csharp[Main](../../../samples/core/Saving/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
+[!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
 
 출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.
 

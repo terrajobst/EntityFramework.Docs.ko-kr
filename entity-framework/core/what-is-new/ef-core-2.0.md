@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 28b2180e898b91d233b590b1639674a464f8c679
-ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
+ms.openlocfilehash: 781578d9de05895cdbc777aa53c3f6d6f9777869
+ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271429"
+ms.lasthandoff: 09/20/2019
+ms.locfileid: "71149043"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
@@ -36,7 +36,7 @@ modelBuilder.Entity<ProductDetails>().ToTable("Products");
 
 ### <a name="owned-types"></a>소유된 형식
 
-소유된 엔터티 형식이 동일한 CLR 형식을 다른 소유된 엔터티 형식과 공유할 수 있으나, CLR 형식만으로는 식별할 수 없으므로 다른 엔터티 형식으로부터의 탐색이 있어야 합니다. 정의 탐색을 포함하는 엔터티가 그 소유자입니다. 소유자를 쿼리할 때 소유된 형식은 기본적으로 포함됩니다.
+소유 엔터티 형식이 동일한 .NET 형식을 다른 소유 엔터티 형식과 공유할 수 있으나, .NET 형식만으로는 식별할 수 없으므로 다른 엔터티 형식으로부터의 탐색이 있어야 합니다. 정의 탐색을 포함하는 엔터티가 그 소유자입니다. 소유자를 쿼리할 때 소유된 형식은 기본적으로 포함됩니다.
 
 규칙으로, 소유된 형식에 대해 섀도 기본 키가 만들어지며 테이블 분할을 사용하여 소유자와 동일한 테이블에 매핑됩니다. 따라서 EF6에서 복합 형식이 사용되는 방식과 유사하게 소유된 형식을 사용할 수 있습니다.
 
