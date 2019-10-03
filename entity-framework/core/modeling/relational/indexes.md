@@ -1,17 +1,17 @@
 ---
-title: 인덱스-EF Core
+title: 인덱스 (관계형 데이터베이스)-EF Core
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 4581e7ba-5e7f-452c-9937-0aaf790ba10a
 uid: core/modeling/relational/indexes
-ms.openlocfilehash: 7dcf27dedbde45302a462a4c41a811b9868e40bb
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 7bb74d0bfa6090b597eb988a46f00494e25f233e
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197022"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813641"
 ---
-# <a name="indexes"></a>인덱스
+# <a name="indexes-relational-database"></a>인덱스 (관계형 데이터베이스)
 
 > [!NOTE]  
 > 이 섹션의 구성은 일반적인 관계형 데이터베이스에 적용됩니다. 여기서 나오는 확장 메서드는 관계형 데이터베이스 공급자를 설치할 때 사용 가능할 것입니다(공유 *Microsoft.EntityFrameworkCore.Relational* 패키지 때문).
