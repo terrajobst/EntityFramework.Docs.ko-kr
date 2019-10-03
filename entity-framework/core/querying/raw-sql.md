@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: ebec5775770c0f1e297eaaf35bf644c605a69afc
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: d8f52edfdf4bd7776ab8d81185c867cbfd7bcf44
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197765"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813591"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
@@ -62,7 +62,6 @@ var blogs = context.Blogs
 
 > [!NOTE]
 > 버전 3.0 이전에는 `FromSqlRaw` 및 `FromSqlInterpolated`가 `FromSql`이라는 두 오버로드였습니다. 자세한 내용은 [이전 버전 섹션](#previous-versions)을 참조하세요.
-
 
 <!-- [!code-csharp[Main](samples/core/Querying/RawSQL/Sample.cs)] -->
 ``` csharp
@@ -172,6 +171,6 @@ var blogs = context.Blogs
 
 * SQL Server는 저장 프로시저 호출에 대한 작성을 허용하지 않으므로 그러한 호출에 추가 쿼리 연산자를 적용하려고 하면 잘못된 SQL이 발생합니다. 클라이언트 평가를 위해 `AsEnumerable()` 뒤에 쿼리 연산자를 도입할 수 있습니다.
 
-# <a name="previous-versions"></a>이전 버전
+## <a name="previous-versions"></a>이전 버전
 
 EF Core 버전 2.2 및 이전 버전에는 최신 `FromSqlRaw` 및 `FromSqlInterpolated`와 동일한 방식으로 작동하는 `FromSql`이라는 두 개의 오버로드가 있습니다. 이로 인해 보간된 문자열 메서드를 호출하려다 실수로 원시 문자열 메서드를 호출하거나, 반대로 후자를 호출하려다 전자를 호출하는 실수를 저지를 가능성이 매우 높습니다. 쿼리에는 매개 변수가 있어야 하는데, 이 경우 매개 변수가 없는 쿼리가 나올 수 있습니다.
