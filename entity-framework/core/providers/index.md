@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 02/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/providers/index
-ms.openlocfilehash: 096d68f814e279bd224dfc50111d6576ab5eb223
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: db06906e6af518a27a21f30b12d722ce06e9bd52
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149232"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813519"
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 
@@ -44,27 +44,23 @@ Entity Framework Core는 플러그 인 라이브러리 호출 데이터베이스
 | [Devart.Data.SQLite.EFCore](https://www.nuget.org/packages/Devart.Data.SQLite.EFCore/)                               | SQLite 3 이상           | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/sqlite/docs/)                                                                                                                                             |
 | [Devart.Data.MySql.EFCore](https://www.nuget.org/packages/Devart.Data.MySql.EFCore/)                                 | MySQL 5 이상            | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/mysql/docs/)                                                                                                                                              |
 
-## <a name="future-providers"></a>향후 공급자
-
-### <a name="cosmos-db"></a>Cosmos DB
-
-Cosmos DB에서 SQL API용 EF Core 공급자를 개발하고 있습니다.
-이것이 Microsoft가 생산하는 완전한 첫 번째 문서 기반 데이터베이스 공급자가 될 것이며, 이를 통해 알게 되는 내용이 EF Core의 후속 릴리스 및 그 밖의 비관계형 공급자의 설계 개선 사항에 반영될 것입니다.
-[NuGet 갤러리](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos)에서 미리 보기를 확인할 수 있습니다.
-
 ## <a name="adding-a-database-provider-to-your-application"></a>애플리케이션에 데이터베이스 공급자 추가
 
-대부분의 EF Core용 데이터베이스 공급자는 NuGet 패키지로 배포됩니다. 즉, 명령줄 도구에서 `dotnet`을 사용하여 설치할 수 있습니다.
+대부분의 EF Core용 데이터베이스 공급자는 NuGet 패키지로 배포되며 다음과 같이 설치할 수 있습니다.
+
+# <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` console
 dotnet add package provider_package_name
 ```
 
-또는 Visual Studio에서 NuGet의 패키지 관리자 콘솔을 사용합니다.
+# <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 install-package provider_package_name
 ```
+
+***
 
 기능이 설치되면 종속성 주입 컨테이너를 사용하는 경우 `DbContext`, `OnConfiguring` 메서드 또는 `AddDbContext` 메서드 중 하나에서 공급자를 구성합니다.
 예를 들어 다음 줄에서는 전달된 연결 문자열을 사용하여 SQL Server 공급자를 구성합니다.
