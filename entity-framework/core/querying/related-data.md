@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 4bf9598f9b7e74c2835d3926215de9a7ef4e6f96
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 4e4ba21cd099daab4db8a8f358800fde26980c14
+ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921798"
+ms.lasthandoff: 10/02/2019
+ms.locfileid: "71813584"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -30,7 +30,6 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 > [!TIP]  
 > Entity Framework Core는 이전에 컨텍스트 인스턴스에 로드된 다른 엔터티로 탐색 속성을 자동으로 수정합니다. 따라서 탐색 속성에 대한 데이터를 명시적으로 포함하지 않더라도 관련 엔터티의 일부 또는 전체가 이전에 로드된 경우 속성이 채워질 수 있습니다.
 
-
 여러 관계의 관련 데이터를 단일 쿼리에 포함할 수 있습니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleIncludes)]
@@ -40,9 +39,6 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 `ThenInclude` 메서드를 사용하여 여러 수준의 관련 데이터를 포함하도록 관계를 드릴다운할 수 있습니다. 다음 예제에서는 모든 블로그, 관련 게시물 및 각 게시물의 작성자를 로드합니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#SingleThenInclude)]
-
-> [!NOTE]  
-> 현재 버전의 Visual Studio에서는 잘못된 코드 완성 옵션을 제공하므로 컬렉션 탐색 속성 뒤에 `ThenInclude` 메서드를 사용하면 올바른 식에 구문 오류 플래그가 지정될 수 있습니다. 이는 https://github.com/dotnet/roslyn/issues/8237 에서 추적되는 IntelliSense 버그의 증상입니다. 코드가 올바르고 성공적으로 컴파일할 수 있는 한 잘못된 구문 오류는 무시해도 안전합니다. 
 
 `ThenInclude`에 대한 여러 호출을 연결하여 관련 데이터의 추가 수준을 계속 포함할 수 있습니다.
 
@@ -55,6 +51,9 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blogs`를 쿼리하는 경우 `Posts`를 포함한 다음, `Posts`의 `Author` 및 `Tags`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
+
+> [!CAUTION]
+> 버전 3.0.0부터는 `Include`를 실행할 때마다 관계형 공급자가 생성한 SQL 쿼리에 JOIN이 추가되는 반면, 이전 버전에서는 추가 SQL 쿼리가 생성되었습니다. 이렇게 하면 쿼리 성능이 향상되거나 더 나빠지는 등의 큰 변화가 생길 수 있습니다. 특히 아주 많은 수의 `Include` 연산자를 포함하는 LINQ 쿼리는 데카르트 급증 문제를 방지하기 위해 여러 개별 LINQ 쿼리로 분할해야 할 수 있습니다.
 
 ### <a name="include-on-derived-types"></a>파생 형식에 포함
 
@@ -111,22 +110,7 @@ public class School
   context.People.Include("School").ToList()
   ```
 
-### <a name="ignored-includes"></a>무시된 포함
-
-쿼리가 시작된 엔터티 형식의 인스턴스를 더 이상 반환하지 않도록 쿼리를 변경하면 포함 연산자가 무시됩니다.
-
-다음 예제에서 포함 연산자는 `Blog`를 기반으로 하고, `Select` 연산자는 무명 형식을 반환하도록 쿼리를 변경하는 데 사용됩니다. 이 경우 포함 연산자는 아무 효과가 없습니다.
-
-[!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#IgnoredInclude)]
-
-기본적으로 EF Core는 포함 연산자가 무시될 때 경고를 로깅합니다. 로깅 출력 보기에 대한 자세한 내용은 [로깅](../miscellaneous/logging.md)을 참조하세요. 포함 연산자가 무시될 때 동작을 throw나 아무 작업도 하지 않음으로 변경할 수 있습니다. 이 작업은 컨텍스트에 대한 옵션을 설정할 때 수행하며, 일반적으로 `DbContext.OnConfiguring`에서나 `Startup.cs`(ASP.NET Core를 사용하는 경우)에서 수행합니다.
-
-[!code-csharp[Main](../../../samples/core/Querying/RelatedData/ThrowOnIgnoredInclude/BloggingContext.cs#OnConfiguring)]
-
 ## <a name="explicit-loading"></a>명시적 로드
-
-> [!NOTE]  
-> 이 기능은 EF Core 1.1에서 도입되었습니다.
 
 `DbContext.Entry(...)` API를 통해 탐색 속성을 명시적으로 로드할 수 있습니다.
 
@@ -148,10 +132,8 @@ public class School
 
 ## <a name="lazy-loading"></a>지연 로드
 
-> [!NOTE]  
-> 이 기능은 EF Core 2.1에서 도입되었습니다.
-
 지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예:
+
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
@@ -159,12 +141,15 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         .UseSqlServer(myConnectionString);
 ```
 또는 AddDbContext를 사용하는 경우:
+
 ```csharp
 .AddDbContext<BloggingContext>(
     b => b.UseLazyLoadingProxies()
           .UseSqlServer(myConnectionString));
 ```
+
 EF Core에서 재정의할 수 있는 모든 탐색 속성에 대해 지연 로드를 사용합니다. 즉, `virtual`이어야 하고 상속될 수 있는 클래스에 있어야 합니다. 예를 들어 다음 엔터티에서 `Post.Blog` 및 `Blog.Posts` 탐색 속성은 지연 로드됩니다.
+
 ```csharp
 public class Blog
 {
@@ -183,9 +168,11 @@ public class Post
     public virtual Blog Blog { get; set; }
 }
 ```
+
 ### <a name="lazy-loading-without-proxies"></a>프록시 없는 지연 로드
 
 지연 로드 프록시는 [엔터티 형식 생성자](../modeling/constructors.md)에 설명된 대로 `ILazyLoader` 서비스를 엔터티에 삽입하여 작동합니다. 예:
+
 ```csharp
 public class Blog
 {
@@ -238,7 +225,9 @@ public class Post
     }
 }
 ```
+
 이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 패키지에 정의된 `ILazyLoader` 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예:
+
 ```csharp
 public class Blog
 {
@@ -291,7 +280,9 @@ public class Post
     }
 }
 ```
+
 위의 코드에서는 `Load` 확장 메서드를 사용하여 대리자 사용을 좀 더 깔끔하게 합니다.
+
 ```csharp
 public static class PocoLoadingExtensions
 {
@@ -308,6 +299,7 @@ public static class PocoLoadingExtensions
     }
 }
 ```
+
 > [!NOTE]  
 > 지연 로드 대리자에 대한 생성자 매개 변수를 “lazyLoader”라고 합니다. 이와 다른 이름을 사용하는 구성은 향후 릴리스에 포함될 예정입니다.
 
