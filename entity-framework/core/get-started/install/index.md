@@ -1,15 +1,15 @@
 ---
-title: Entity Framework Core 설치
+title: Entity Framework Core 설치 - EF Core
 author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 7bdedf563b7d919ba334db79af73c3eed3ba4129
-ms.sourcegitcommit: 2caec1e63f2ce1d9439ef6193df5a77da2fedd0f
+ms.openlocfilehash: b4ae13ae1b22bb78c2c0407c0b3da64ee12ff2c1
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71317574"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181209"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
@@ -128,8 +128,7 @@ ASP.NET Core 앱의 경우 이 패키지는 자동으로 포함됩니다.
   * `Microsoft.EntityFrameworkCore.SqlServer.Design`과 같은 데이터베이스 공급자 디자인 타임 패키지는 EF Core 2.0 이상에서 더 이상 필요하거나 지원되지 않지만, 다른 패키지를 업그레이드할 때 자동으로 제거되지는 않습니다.
 
   * .NET CLI 도구는 버전 2.1부터 .NET SDK에 포함되므로 해당 패키지에 대한 참조를 프로젝트 파일에서 제거할 수 있습니다.
-
-    ```
+    ```xml
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
     ```
 

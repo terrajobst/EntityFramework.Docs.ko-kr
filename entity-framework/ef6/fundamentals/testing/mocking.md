@@ -1,51 +1,51 @@
 ---
-title: 모의 프레임 워크-EF6 사용 하 여 테스트
+title: 모의 프레임 워크를 사용 하 여 테스트-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: bd66a638-d245-44d4-8e71-b9c6cb335cc7
-ms.openlocfilehash: 3d39b41018beb70b72105dfb2fe4d61afc0b0525
-ms.sourcegitcommit: eb8359b7ab3b0a1a08522faf67b703a00ecdcefd
+ms.openlocfilehash: 790e077c5b30c4a68a96b3c1a99b40893b2bbe55
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58319207"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181567"
 ---
 # <a name="testing-with-a-mocking-framework"></a>모의 프레임 워크를 사용 하 여 테스트
 > [!NOTE]
 > **EF6 이상만** - 이 페이지에서 다루는 기능, API 등은 Entity Framework 6에 도입되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.  
 
-응용 프로그램에 대 한 테스트를 작성 하는 경우 데이터베이스 도달 하지 않도록 하는 것이 좋습니다.  Entity Framework를 사용 하 여 메모리 내 데이터 컨텍스트를 만들어 – – 테스트를 통해 정의 되는 동작을 사용 하 여이 작업을 수행할 수 있습니다.  
+응용 프로그램에 대 한 테스트를 작성 하는 경우 데이터베이스에 대 한 적중을 방지 하는 것이 좋습니다.  Entity Framework를 사용 하면 테스트에 정의 된 동작을 사용 하 여 메모리 내 데이터를 사용 하는 컨텍스트를 만들어이를 달성할 수 있습니다.  
 
-## <a name="options-for-creating-test-doubles"></a>Test double을 만들기 위한 옵션  
+## <a name="options-for-creating-test-doubles"></a>테스트 double을 만드는 옵션  
 
-메모리 내 버전이 컨텍스트를 만드는 데 사용할 수 있는 두 가지 방법이 있습니다.  
+컨텍스트의 메모리 내 버전을 만드는 데 사용할 수 있는 두 가지 방법이 있습니다.  
 
-- **사용자 고유의 test double을 만드는** -이 방법은 사용자의 컨텍스트 및 Dbset 고유한 메모리 내 구현의 작성 하는 것입니다. 이 클래스의 동작 하지만 작성 하 고 적절 한 양의 코드를 소유 하는 포함 될 수 있습니다 하는 방법에 대 한 제어 많이 제공 합니다.  
-- **모의 프레임 워크를 사용 하 여 test double을 만들려면** -(예: Moq) 모의 프레임 워크를 사용 하 여 사용자의 컨텍스트 및를 런타임에 동적으로 생성 하는 집합의 메모리 내 구현을 사용할 수 있습니다.  
+- **사용자 고유의 테스트 만들기** -이 방법은 사용자의 컨텍스트와 dbsets의 고유한 메모리 내 구현을 작성 하는 것을 포함 합니다. 이렇게 하면 클래스가 동작 하는 방식을 제어할 수 있을 뿐만 아니라 적절 한 양의 코드를 작성 하 고 소유 하는 것을 포함할 수 있습니다.  
+- **모의 프레임 워크를 사용 하 여 테스트 double 만들기** – 모의 프레임 워크 (예: moq)를 사용 하 여 컨텍스트의 메모리 내 구현을 사용 하 고 런타임에 동적으로 생성 되는 집합을 설정할 수 있습니다.  
 
-이 문서에서 모의 프레임 워크를 사용 하 여 처리 합니다. 사용자 고유의 test double을 만드는 참조 [사용자 고유의 테스트 Double을 사용 하 여 테스트](writing-test-doubles.md)합니다.  
+이 문서에서는 모의 프레임 워크를 사용 하는 방법을 다룹니다. 사용자 고유의 테스트를 만들려면 [Double 테스트를 사용 하 여 테스트 double](writing-test-doubles.md)을 참조 하세요.  
 
-모의 프레임 워크를 사용 하 여 EF를 사용 하 여 보여 주기 위해 Moq를 사용 하려고 합니다. Moq를 얻을 수 있는 가장 쉬운 방법은 설치 하는 것은 [NuGet에서 패키지를 Moq](http://nuget.org/packages/Moq/)합니다.  
+모의 프레임 워크에서 EF를 사용 하는 방법을 시연 하기 위해 Moq를 사용할 예정입니다. Moq를 얻는 가장 쉬운 방법은 [NuGet에서 moq 패키지](https://nuget.org/packages/Moq/)를 설치 하는 것입니다.  
 
-## <a name="testing-with-pre-ef6-versions"></a>EF6 이전 버전을 사용 하 여 테스트  
+## <a name="testing-with-pre-ef6-versions"></a>사전 EF6 버전으로 테스트  
 
-이 문서에 나와 있는 시나리오 EF6에서 DbSet을 변경 했습니다에 종속 됩니다. EF5 및 이전 버전을 사용 하 여 테스트에 대 한 참조 [가짜 컨텍스트를 사용 하 여 테스트](http://romiller.com/2012/02/14/testing-with-a-fake-dbcontext/)합니다.  
+이 문서에 나와 있는 시나리오는 EF6에서 DbSet에 적용 한 일부 변경 내용에 따라 달라 집니다. EF5 이전 버전을 사용한 테스트는 [가짜 컨텍스트로 테스트](https://romiller.com/2012/02/14/testing-with-a-fake-dbcontext/)를 참조 하세요.  
 
-## <a name="limitations-of-ef-in-memory-test-doubles"></a>EF에서 메모리 test double의 제한 사항  
+## <a name="limitations-of-ef-in-memory-test-doubles"></a>EF 메모리 내 테스트 double의 제한 사항  
 
-메모리 내 test double은 단위 테스트 응용 프로그램의 EF를 사용 하는 비트 수준 검사를 제공 하는 좋은 방법 수 있습니다. 그러나 이렇게 하면 사용 하는 LINQ to Objects 메모리 내 데이터에 대 한 쿼리를 실행 합니다. 이 데이터베이스에 대해 실행 되는 SQL 쿼리를 변환할 EF의 LINQ 공급자 (LINQ to Entities)를 사용 하 여 보다 다양 한 동작이 발생할 수 있습니다.  
+메모리 내 테스트 double은 EF를 사용 하는 응용 프로그램의 비트 단위 테스트 수준 범위를 제공 하는 좋은 방법일 수 있습니다. 그러나이 작업을 수행 하는 경우 LINQ to Objects를 사용 하 여 메모리 내 데이터에 대해 쿼리를 실행 합니다. 이렇게 하면 EF의 LINQ 공급자 (LINQ to Entities)를 사용 하 여 데이터베이스에 대해 실행 되는 SQL로 쿼리를 변환 하는 것과 다른 동작이 발생할 수 있습니다.  
 
-이러한 차이의 예로 관련된 데이터를 로드 합니다. 블로그 시리즈를 만들면 관련 게시물 각 다음 각 블로그에 대해 항상 관련된 게시물을 로드는 메모리 내 데이터를 사용 하는 경우. 그러나 데이터베이스에 대해 실행 하는 경우 이러한 데이터는 Include 메서드를 사용 하는 경우 로드만 됩니다.  
+이러한 차이점의 한 가지 예는 관련 데이터를 로드 하는 것입니다. 각각 관련 게시물이 있는 일련의 블로그를 만드는 경우 메모리 내 데이터를 사용 하는 경우 관련 게시물이 항상 각 블로그에 대해 로드 됩니다. 그러나 데이터베이스에 대해 실행 하는 경우에는 Include 메서드를 사용 하는 경우에만 데이터가 로드 됩니다.  
 
-이러한 이유로 항상 일정 수준의 엔드-투-엔드 데이터베이스에 대해 올바르게 응용 프로그램이 작동 되도록 (단위 테스트) 외에도 테스트를 포함 하는 것이 좋습니다.  
+따라서 응용 프로그램이 데이터베이스에 대해 올바르게 작동 하도록 하기 위해 항상 특정 수준의 종단 간 테스트 (단위 테스트 포함)를 포함 하는 것이 좋습니다.  
 
-## <a name="following-along-with-this-article"></a>이 문서와 함께 다음  
+## <a name="following-along-with-this-article"></a>이 문서와 함께 다음을 수행 합니다.  
 
-이 문서에서는 전체 코드 샘플을 원하는 경우 과정을 따르려면 Visual Studio를 복사할 수 있습니다. 만드는 것이 **단위 테스트 프로젝트** 해야 대상 **.NET Framework 4.5** 비동기를 사용 하는 섹션을 완료 합니다.  
+이 문서에서는 Visual Studio로 복사 하 여 원하는 경우 따라 진행할 수 있는 전체 코드 목록을 제공 합니다. **단위 테스트 프로젝트** 를 만드는 것이 가장 쉽지만 비동기를 사용 하는 섹션을 완료 하려면 **.NET Framework 4.5** 를 대상으로 해야 합니다.  
 
 ## <a name="the-ef-model"></a>EF 모델  
 
-테스트 하려는 서비스 이용 EF는 BloggingContext 및 블로그 및 게시물 클래스를 구성 하는 모델입니다. 이 코드는 EF 디자이너에서 생성 될 수 있습니다 또는 Code First 모델입니다.  
+테스트 하려는 서비스는 BloggingContext 및 블로그 및 게시물 클래스로 구성 된 EF 모델을 사용 합니다. 이 코드는 EF Designer에서 생성 되었거나 Code First 모델 일 수 있습니다.  
 
 ``` csharp
 using System.Collections.Generic;
@@ -80,11 +80,11 @@ namespace TestingDemo
 }
 ```  
 
-### <a name="virtual-dbset-properties-with-ef-designer"></a>EF 디자이너를 사용 하 여 가상 DbSet 속성  
+### <a name="virtual-dbset-properties-with-ef-designer"></a>EF Designer를 사용 하 여 가상 DbSet 속성  
 
-Note 컨텍스트의 DbSet 속성을 가상으로 표시 됩니다. 이렇게 하면 모의 프레임 워크에는 컨텍스트 및 모의 구현 사용 하 여 이러한 속성을 재정의에서 파생 됩니다.  
+컨텍스트의 DbSet 속성은 virtual로 표시 됩니다. 이렇게 하면 모의 프레임 워크가 컨텍스트에서 파생 되 고 모의 구현으로 이러한 속성을 재정의할 수 있습니다.  
 
-사용할 경우 Code First 다음 클래스를 직접 편집할 수 있습니다. EF 디자이너를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. 엽니다는 \<model_name\>합니다. Edmx 파일에서 중첩 된 Context.tt 파일은 다음 코드 조각은 찾고 표시 된 것 처럼 virtual 키워드에 추가 합니다.  
+Code First를 사용 하는 경우 클래스를 직접 편집할 수 있습니다. EF Designer를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. @No__t-0model_name @ no__t-1을 엽니다. Context.tt 파일은 edmx 파일에 중첩 되어 있습니다. 다음 코드 조각을 찾아 virtual 키워드에 다음과 같이 추가 합니다.  
 
 ``` csharp
 public string DbSet(EntitySet entitySet)
@@ -98,9 +98,9 @@ public string DbSet(EntitySet entitySet)
 }
 ```  
 
-## <a name="service-to-be-tested"></a>서비스 테스트  
+## <a name="service-to-be-tested"></a>테스트할 서비스  
 
-메모리 내 test double을 사용 하 여 테스트 보여 주기 위해는 BlogService에 대 한 몇 가지 테스트를 작성 하려고 합니다. 새 블로그 (AddBlog)를 만들 수 있는 서비스 이며 (GetAllBlogs) 이름으로 정렬 된 모든 블로그를 반환 합니다. GetAllBlogs, 외에 (GetAllBlogsAsync) 이름순으로 정렬 하는 모든 블로그를 비동기적으로 가져오기 됩니다 하는 메서드를 제공 했습니다.  
+메모리 내 테스트 double로 테스트 하는 방법을 보여 주기 위해 BlogService에 대 한 몇 가지 테스트를 작성할 예정입니다. 서비스는 새 블로그 (AddBlog)를 만들고 이름을 기준으로 정렬 된 모든 블로그 (GetAllBlogs)를 반환할 수 있습니다. GetAllBlogs 외에도 이름 (GetAllBlogsAsync)으로 정렬 된 모든 블로그를 비동기적으로 가져오는 메서드도 제공 했습니다.  
 
 ``` csharp
 using System.Collections.Generic;
@@ -148,9 +148,9 @@ namespace TestingDemo
 }
 ```  
 
-## <a name="testing-non-query-scenarios"></a>쿼리가 아닌 시나리오를 테스트합니다.  
+## <a name="testing-non-query-scenarios"></a>쿼리가 아닌 시나리오 테스트  
 
-쿼리가 아닌 메서드를 테스트 하기 위해 수행 해야 됩니다. 다음 테스트 Moq를 사용 하 여 컨텍스트를 만듭니다. 그런 다음 DbSet을 만듭니다\<블로그\> 컨텍스트의 블로그 속성에서 반환 될 연결 하 고 있습니다. 다음으로, 컨텍스트 AddBlog 메서드를 사용 하 여 새 블로그 –를 만들려면 다음 사용 되는 새 BlogService 만드는 사용 됩니다. 마지막으로 테스트 서비스 새 블로그를 추가 하 고 컨텍스트 SaveChanges 호출을 확인 합니다.  
+쿼리가 아닌 메서드 테스트를 시작 하기 위해 수행 해야 하는 작업입니다. 다음 테스트에서는 Moq를 사용 하 여 컨텍스트를 만듭니다. 그런 다음 DbSet @ no__t-0Blog @ no__t-1을 만들어 컨텍스트의 블로그 속성에서 반환 됩니다. 그런 다음, 컨텍스트를 사용 하 여 새 BlogService를 만든 다음 AddBlog 메서드를 사용 하 여 새 블로그를 만드는 데 사용 합니다. 마지막으로 테스트는 서비스에서 새 블로그를 추가 하 고 컨텍스트에서 SaveChanges를 호출 했는지 확인 합니다.  
 
 ``` csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -180,11 +180,11 @@ namespace TestingDemo
 }
 ```  
 
-## <a name="testing-query-scenarios"></a>쿼리 시나리오를 테스트합니다.  
+## <a name="testing-query-scenarios"></a>쿼리 시나리오 테스트  
 
-Double DbSet 테스트에 대 한 쿼리를 실행할 수 있도록 구현의 IQueryable 설치 해야 합니다. 첫 번째 단계에서 일부 메모리 내 데이터를 만들 때 – 목록을 사용 하는 것\<블로그\>합니다. 다음으로 만들겠습니다. 컨텍스트 및 DBSet\<블로그\> 한 다음 linq to Objects 공급자 목록을 사용 하 여 작동 하는 위임만 하는 DbSet – IQueryable 구현 연결\<T\>합니다.  
+DbSet 테스트 double에 대해 쿼리를 실행할 수 있으려면 IQueryable의 구현을 설정 해야 합니다. 첫 번째 단계는 일부 메모리 내 데이터를 만드는 것입니다. 이때 @ no__t-0Blog @ no__t-1 목록을 사용 하 고 있습니다. 다음으로, 컨텍스트와 DBSet @ no__t-0Blog @ no__t-1을 만든 다음, DbSet에 대 한 IQueryable 구현을 연결 합니다. 즉, List @ no__t-2T no__t-3에서 작동 하는 LINQ to Objects 공급자에만 위임 됩니다.  
 
-이 test double에 기반을 BlogService을 만들고 이름별 GetAllBlogs에서 다시 얻게 데이터가 정렬 되는 확인 한 다음에서는 합니다.  
+그런 다음 테스트 double을 기반으로 BlogService를 만들고 GetAllBlogs 데이터를 이름별로 정렬할 수 있습니다.  
 
 ``` csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -231,15 +231,15 @@ namespace TestingDemo
 
 ### <a name="testing-with-async-queries"></a>비동기 쿼리를 사용 하 여 테스트
 
-Entity Framework 6에는 비동기적으로 쿼리를 실행 하는 데 사용할 수 있는 확장 메서드 집합을 도입 했습니다. 이러한 메서드의 예로 ToListAsync, FirstAsync, ForEachAsync 등이 있습니다.  
+Entity Framework 6에서는 쿼리를 비동기적으로 실행 하는 데 사용할 수 있는 확장 메서드 집합을 도입 했습니다. 이러한 메서드의 예로는 ToListAsync, FirstAsync, ForEachAsync 등이 있습니다.  
 
-Entity Framework 쿼리에서 LINQ를 사용 하므로, 확장 메서드는 IQueryable 및 IEnumerable에 정의 됩니다. 그러나는 Entity Framework와 함께 사용할만 디자인 되어 있으므로 LINQ 쿼리는 Entity Framework 쿼리 없는에서 크레딧을 사용 하려고 하면 다음 오류가 나타날 수 있습니다.
+쿼리에서 LINQ를 사용 Entity Framework 하기 때문에 확장 메서드는 IQueryable 및 IEnumerable에 정의 됩니다. 그러나 Entity Framework 사용 하도록 디자인 되었기 때문에 Entity Framework 쿼리가 아닌 LINQ 쿼리에서 사용 하려고 하면 다음 오류가 나타날 수 있습니다.
 
-> 소스 IQueryable IDbAsyncEnumerable를 구현 하지 않는{0}합니다. 비동기 작업의 Entity Framework IDbAsyncEnumerable를 구현 하는 원본만 사용할 수 있습니다. 자세한 내용은 참조 하세요 [ http://go.microsoft.com/fwlink/?LinkId=287068 ](https://go.microsoft.com/fwlink/?LinkId=287068)합니다.  
+> 원본 IQueryable은 IDbAsyncEnumerable @ no__t-0을 구현 하지 않습니다. IDbAsyncEnumerable을 구현 하는 원본만 Entity Framework 비동기 작업에 사용할 수 있습니다. 자세한 내용은 [http://go.microsoft.com/fwlink/?LinkId=287068](https://go.microsoft.com/fwlink/?LinkId=287068)을 참조 하세요.  
 
-비동기 메서드는 EF 쿼리를 실행 하는 경우에 지원 됩니다을 하는 동안에 메모리 내에 대해 실행 되는 DbSet의 double을 테스트할 때 단위 테스트에서 사용 하는 것이 좋습니다.  
+비동기 메서드는 EF 쿼리를 실행 하는 경우에만 지원 되지만 DbSet의 메모리 내 테스트 double에 대해 실행 될 때 단위 테스트에서 사용 하는 것이 좋습니다.  
 
-비동기 메서드를 사용 하기 위해 비동기 쿼리를 처리 하는 메모리 내 DbAsyncQueryProvider 생성 해야 합니다. Moq를 사용 하 여 쿼리 공급자를 설치 하 수, 하는 동안 코드의 테스트 double 구현을 만들려면 훨씬 쉽습니다. 이 구현에 대 한 코드는 다음과 같습니다.  
+비동기 메서드를 사용 하려면 비동기 쿼리를 처리 하기 위해 메모리 내 DbAsyncQueryProvider를 만들어야 합니다. Moq를 사용 하 여 쿼리 공급자를 설정 하는 것이 가능 하기는 하지만 코드에서 테스트 이중 구현을 만드는 것이 훨씬 쉽습니다. 이 구현에 대 한 코드는 다음과 같습니다.  
 
 ``` csharp
 using System.Collections.Generic;
@@ -349,7 +349,7 @@ namespace TestingDemo
 }
 ```  
 
-비동기 쿼리 공급자를 만들었으므로 새 GetAllBlogsAsync 메서드에 대 한 단위 테스트를 작성할 수 했습니다.  
+이제 비동기 쿼리 공급자를 만들었으므로 새로운 GetAllBlogsAsync 메서드에 대 한 단위 테스트를 작성할 수 있습니다.  
 
 ``` csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;

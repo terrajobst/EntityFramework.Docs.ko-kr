@@ -1,45 +1,45 @@
 ---
-title: VB.NET-EF6 사용 하 여 Fluent API
+title: VB.NET를 사용 하는 흐름 API-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: 6aa74fa72296f66f0b069b9b5ee7e2e016570525
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: df3e61fa5e2d24873336511e90231a7d78d32535
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283747"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182665"
 ---
-# <a name="fluent-api-with-vbnet"></a>VB.NET 사용 하 여 Fluent API
-C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.NET 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다. 이 연습에서는 fluent API 구성은 VB.NET를 사용 하 여 수행 하는 방법을 보여 줍니다.
+# <a name="fluent-api-with-vbnet"></a>VB.NET를 사용 하는 흐름 API
+Code First를 사용 하면 C @ no__t-0 또는 VB.NET 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다. 이 연습에서는 VB.NET을 사용 하 여 흐름 API 구성을 수행 하는 방법을 보여 줍니다.
 
-이 페이지에서는 Code First에 대 한 기본적인 지식이 있다고 가정 합니다. Code First에 대 한 자세한 내용은 다음 연습을 확인해 보십시오.
+이 페이지에서는 Code First에 대해 기본적으로 이해 하 고 있다고 가정 합니다. Code First에 대 한 자세한 내용은 다음 연습을 확인 하세요.
 
--   [새 데이터베이스에 대 한 code First](~/ef6/modeling/code-first/workflows/new-database.md)
--   [기존 데이터베이스에 대 한 code First](~/ef6/modeling/code-first/workflows/existing-database.md)
+-   [새 데이터베이스에 Code First](~/ef6/modeling/code-first/workflows/new-database.md)
+-   [기존 데이터베이스로 Code First](~/ef6/modeling/code-first/workflows/existing-database.md)
 
-## <a name="pre-requisites"></a>필수 조건
+## <a name="pre-requisites"></a>필수 구성 요소
 
-적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.
+이 연습을 완료 하려면 Visual Studio 2010 또는 Visual Studio 2012 이상이 설치 되어 있어야 합니다.
 
-Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치
+Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 도 설치 해야 합니다.
 
-## <a name="create-the-application"></a>응용 프로그램 만들기
+## <a name="create-the-application"></a>애플리케이션 만들기
 
-간단 하 게 데이터 액세스를 수행 하려면 Code First를 사용 하는 기본적인 콘솔 응용 프로그램을 빌드하는 것이 하겠습니다.
+간단 하 게 유지 하기 위해 Code First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
 
 -   Visual Studio를 엽니다.
--   **파일만&gt; 새로운 기능-&gt; 프로젝트...**
--   선택 **Windows** 왼쪽된 메뉴에서 및 **콘솔 응용 프로그램**
--   입력 **CodeFirstVBSample** 이름으로
+-   **파일-&gt; 새 &gt; 프로젝트 ...**
+-   왼쪽 메뉴 및 **콘솔 응용 프로그램** 에서 **Windows** 를 선택 합니다.
+-   이름으로 **Codefirstvbsample** 을 입력 합니다.
 -   **확인**을 선택합니다.
 
 ## <a name="define-the-model"></a>모델 정의
 
-이 단계에서는 개념적 모델을 나타내는 엔터티 형식 VB.NET POCO를 정의 합니다. 클래스는 기본 클래스에서 파생 되거나 모든 인터페이스를 구현할 필요가 없습니다.
+이 단계에서는 개념적 모델을 나타내는 VB.NET POCO 엔터티 형식을 정의 합니다. 클래스는 기본 클래스에서 파생 되거나 인터페이스를 구현할 필요가 없습니다.
 
--   입력을 프로젝트에 새 클래스를 추가 **SchoolModel** 클래스 이름
--   새 클래스의 내용을 다음 코드로 대체
+-   프로젝트에 새 클래스를 추가 하 고 클래스 이름으로 **SchoolModel** 를 입력 합니다.
+-   새 클래스의 내용을 다음 코드로 바꿉니다.
 
 ``` vb
    Public Class Department
@@ -133,21 +133,21 @@ Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstud
     End Class
 ```
 
-## <a name="define-a-derived-context"></a>파생된 컨텍스트를 정의 합니다.
+## <a name="define-a-derived-context"></a>파생 컨텍스트 정의
 
-EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에서 형식을 사용 하 여 시작 하려고 합니다. 죄송 합니다.
+Entity Framework에서 형식을 사용 하기 시작 하므로 EntityFramework NuGet 패키지를 추가 해야 합니다.
 
--   * * 프로젝트&gt; **NuGet 패키지 관리...**
+-   \* * 프로젝트 – &gt; **NuGet 패키지 관리** ...
 > [!NOTE]
-> 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
--   선택 된 **Online** 탭
--   선택 된 **EntityFramework** 패키지
--   클릭 **설치**
+> **NuGet 패키지 관리** ...가 없는 경우 옵션을 선택 하면 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야 합니다.
+-   **온라인** 탭을 선택 합니다.
+-   **Entityframework** 패키지를 선택 합니다.
+-   **설치** 클릭
 
-이제 데이터베이스를 쿼리하고 데이터를 저장할 수 있어를 사용 하 여 세션을 나타내는 파생된 컨텍스트를 정의 하는 시간입니다. System.Data.Entity.DbContext에서 파생 되 고 형식화 된 DbSet을 노출 하는 컨텍스트를 정의 했습니다&lt;TEntity&gt; 모델의 각 클래스에 대 한 합니다.
+이제 데이터베이스와의 세션을 나타내는 파생 컨텍스트를 정의 하 여 데이터를 쿼리하고 저장할 수 있습니다. DbContext에서 파생 되는 컨텍스트를 정의 하 고 모델의 각 클래스에 대해 형식화 된 DbSet @ no__t-0TEntity-1을 노출 합니다.
 
--   입력을 프로젝트에 새 클래스를 추가 **SchoolContext** 클래스 이름
--   새 클래스의 내용을 다음 코드로 대체
+-   프로젝트에 새 클래스를 추가 하 고 클래스 이름으로 **schoolcontext.cs** 를 입력 합니다.
+-   새 클래스의 내용을 다음 코드로 바꿉니다.
 
 ``` vb
     Imports System.Data.Entity
@@ -169,11 +169,11 @@ EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에�
     End Class
 ```
 
-## <a name="configuring-with-the-fluent-api"></a>Fluent API를 사용 하 여 구성
+## <a name="configuring-with-the-fluent-api"></a>흐름 API를 사용 하 여 구성
 
-이 섹션에서는 fluent Api를 사용 하 여 테이블 열 매핑 및 테이블 간의 관계에는 속성을 매핑할 형식을 구성 하는 방법에 설명\\모델의 형식입니다. Fluent API를 통해 노출 되는 **DbModelBuilder** 입력 하 고 가장 일반적으로 재정의 하 여 액세스 합니다 **OnModelCreating** 메서드를 **DbContext**합니다.
+이 섹션에서는 흐름 Api를 사용 하 여 모델에서 테이블 매핑, 속성-열 매핑 및 테이블 @ no__t 간 관계를 구성 하는 방법을 보여 줍니다. 흐름 API는 **Dbmodelbuilder** 형식을 통해 노출 되며 **DbContext**에서 **onmodelcreating** 메서드를 재정의 하 여 가장 일반적으로 액세스 합니다.
 
--   다음 코드를 복사 하 고 추가 합니다 **OnModelCreating** 에 정의 된 메서드는 **SchoolContext** 클래스 주석은 각 매핑 수행
+-   다음 코드를 복사 하 여 **schoolcontext.cs** 클래스에 정의 된 **onmodelcreating** 메서드에 추가 합니다. 주석은 각 매핑의 의미를 설명 합니다.
 
 ``` vb
 ' Configure Code First to ignore PluralizingTableName convention
@@ -363,12 +363,12 @@ modelBuilder.Entity(Of Course)().
     WillCascadeOnDelete(False)
 ```
 
-## <a name="using-the-model"></a>모델을 사용 하 여
+## <a name="using-the-model"></a>모델 사용
 
-사용 하 여 일부 데이터 액세스를 수행해 보겠습니다를 **SchoolContext** 작업에서 모델을 볼 수 있습니다.
+**Schoolcontext.cs** 를 사용 하 여 일부 데이터 액세스를 수행 하 여 작동 중인 모델을 확인해 보겠습니다.
 
--   Main 함수 정의 되어 있는 Module1.vb 파일을 열으십시오
--   복사 및 붙여넣기 다음 Module1 정의
+-   Main 함수가 정의 된 module1.vb 파일을 엽니다.
+-   다음의 Module1 정의를 복사 하 여 붙여넣습니다.
 
 ``` vb
 Imports System.Data.Entity
@@ -410,7 +410,7 @@ End Module
 
 이제 응용 프로그램을 실행 하 고 테스트할 수 있습니다.
 
-```
+```console
 Enter a name for a new Department: Computing
 All Departments in the database:
 Computing

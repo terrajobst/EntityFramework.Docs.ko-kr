@@ -25,9 +25,9 @@
               href: core/what-is-new/index.md
             - name: EF Core 3.0
               items:
-                - name: 새 기능
+                - name: 새로운 기능
                   href: core/what-is-new/ef-core-3.0/index.md
-                - name: 호환성이 손상되는 변경
+                - name: 주요 변경 내용
                   href: core/what-is-new/ef-core-3.0/breaking-changes.md
             - name: EF Core 2.2
               href: core/what-is-new/ef-core-2.2.md
@@ -175,8 +175,6 @@
           items:
             - name: 개요
               href: core/querying/index.md
-            - name: 기본 쿼리
-              href: core/querying/basic.md
             - name: 관련 데이터 로드
               href: core/querying/related-data.md
             - name: 클라이언트 및 서버 평가
@@ -188,7 +186,7 @@
             - name: 비동기 쿼리
               href: core/querying/async.md
             - name: 쿼리가 작동하는 방법
-              href: core/querying/overview.md
+              href: core/querying/how-query-works.md
             - name: 전역 쿼리 필터
               href: core/querying/filters.md
             - name: 쿼리 태그
@@ -219,7 +217,7 @@
           items:
             - name: 개요
               href: core/providers/index.md
-            - name: Microsoft SQL Server
+            - name: Microsoft SQL Server에 대한 연결 문자열
               items:
                 - name: 개요
                   href: core/providers/sql-server/index.md
@@ -287,7 +285,7 @@
               href: ef6/fundamentals/relationships.md
             - name: 비동기 쿼리 및 저장
               href: ef6/fundamentals/async.md
-            - name: Configuration
+            - name: 구성
               items:
                 - name: 코드 기반
                   href: ef6/fundamentals/configuring/code-based.md
@@ -505,7 +503,7 @@
               href: ef6/resources/blogs.md
             - name: 사례 연구
               href: ef6/resources/case-studies.md
-            - name: 참가
+            - name: 기고
               href: ef6/resources/contribute.md
             - name: 도움말 보기
               href: ef6/resources/get-help.md

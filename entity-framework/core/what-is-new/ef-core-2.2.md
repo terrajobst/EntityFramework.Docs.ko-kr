@@ -4,12 +4,12 @@ author: divega
 ms.date: 11/14/2018
 ms.assetid: 998C04F3-676A-4FCF-8450-CFB0457B4198
 uid: core/what-is-new/ef-core-2.2
-ms.openlocfilehash: 79b4efc3aee23e19a9ea1deb6373b9984b77f886
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: 5fcf7c6dfb4d8cb7928ef974af6deb52df7c63eb
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688757"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181368"
 ---
 # <a name="new-features-in-ef-core-22"></a>EF Core 2.2의 새로운 기능
 
@@ -21,7 +21,7 @@ EF Core 2.2는 이제 [NTS](https://github.com/NetTopologySuite/NetTopologySuite
 
 공간 데이터 지원은 일련의 공급자별 확장 패키지로 구현됩니다.
 이러한 각각의 패키지는 NTS 형식과 메서드에 대한 매핑, 데이터베이스의 해당 공간 형식 및 함수를 제공합니다.
-그러한 공급자 확장은 [SQL Server](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite/), [SQLite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite/), [PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite/)([Npgsql 프로젝트](http://www.npgsql.org/))에 대해 현재 사용 가능합니다.
+그러한 공급자 확장은 [SQL Server](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite/), [SQLite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite/), [PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite/)([Npgsql 프로젝트](https://www.npgsql.org/))에 대해 현재 사용 가능합니다.
 공간 형식은 추가 확장 없이 [EF Core 메모리 내 공급자](https://docs.microsoft.com/en-us/ef/core/providers/in-memory/)에서 바로 사용할 수 있습니다.
 
 공급자 확장을 설치하면 지원되는 형식의 속성을 엔터티에 추가할 수 있습니다. 예:

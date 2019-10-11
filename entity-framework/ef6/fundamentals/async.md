@@ -3,12 +3,12 @@ title: 비동기 쿼리 및 저장-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
-ms.openlocfilehash: ae578976ffc88b407ef0aaa0017935005bedd093
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 0642dc13e7aa3906fa1495031c62701fc16f0192
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921623"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181840"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -30,7 +30,7 @@ EF6는 비동기 쿼리에 대 한 지원을 도입 하 고 .NET 4.5에 도입 �
 
 -   [Brandon Bray 's .NET 4.5의 async/wait 개요](https://blogs.msdn.com/b/dotnet/archive/2012/04/03/async-in-4-5-worth-the-await.aspx)
 -   MSDN Library의 [비동기 프로그래밍](https://msdn.microsoft.com/library/hh191443.aspx) 페이지
--   [Async를 사용 하 여 ASP.NET 웹 응용 프로그램을 빌드하는 방법](http://channel9.msdn.com/events/teched/northamerica/2013/dev-b337) (서버 처리량이 증가 하는 데모 포함)
+-   [Async를 사용 하 여 ASP.NET 웹 응용 프로그램을 빌드하는 방법](https://channel9.msdn.com/events/teched/northamerica/2013/dev-b337) (서버 처리량이 증가 하는 데모 포함)
 
 ## <a name="create-the-model"></a>모델 만들기
 
@@ -222,12 +222,12 @@ System.object 네임 스페이스에서 사용 가능한 확장 메서드의 포
 이제 코드는 비동기 이므로 프로그램을 실행할 때 다른 실행 흐름을 관찰할 수 있습니다.
 
 1. **SaveChanges** 는 데이터베이스에 새 **블로그** 를 푸시하는 것으로 시작 합니다.  
-    *명령이 데이터베이스로 전송 되 면 현재 관리 되는 스레드에 더 이상 계산 시간이 필요 하지 않습니다. **PerformDatabaseOperations** 메서드는 실행이 완료 되지 않은 경우에도를 반환 하 고 Main 메서드의 프로그램 흐름은 계속 됩니다.*
+    *은 데이터베이스가 데이터베이스로 전송 된 후 현재 관리 되는 스레드에 더 이상 계산 시간이 필요 하지 않습니다. **PerformDatabaseOperations** 메서드는 실행이 완료 되지 않은 경우에도를 반환 하 고 Main 메서드의 프로그램 흐름은 계속 됩니다.*
 2. **요일의 견적이 콘솔에 기록 됩니다.**  
-    *Main 메서드에서 수행할 작업이 더 이상 없으므로 관리 되는 스레드는 데이터베이스 작업이 완료 될 때까지 대기 호출에서 차단 됩니다. 완료 되 면 **PerformDatabaseOperations** 의 나머지가 실행 됩니다.*
+    @no__t 주 메서드에서 수행할 작업이 더 이상 없기 때문에 관리 되는 스레드는 데이터베이스 작업이 완료 될 때까지 대기 호출에서 차단 됩니다. 완료 되 면 **PerformDatabaseOperations** 의 나머지가 실행 됩니다. *
 3.  **SaveChanges** 완료  
 4.  모든 **블로그의** 쿼리가 데이터베이스로 전송 됨  
-    *또한 데이터베이스에서 쿼리가 처리 되는 동안 관리 되는 스레드는 다른 작업을 수행할 수 있습니다. 다른 모든 실행이 완료 된 후에도 스레드는 대기 호출에서 중단 됩니다.*
+    *은 쿼리가 데이터베이스에서 처리 되는 동안 관리 되는 스레드가 다른 작업을 수행할 수 있습니다. 다른 모든 실행이 완료 된 후에는 스레드가 대기 호출에 대해서만 중단 됩니다.*
 5.  쿼리가 반환 되 고 결과가 **콘솔** 에 기록 됩니다.  
 
 ![비동기 출력](~/ef6/media/asyncoutput.png) 

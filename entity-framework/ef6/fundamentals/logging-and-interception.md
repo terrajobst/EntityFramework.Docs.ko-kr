@@ -3,12 +3,12 @@ title: 데이터베이스 작업 로깅 및 가로채기-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: b5ee7eb1-88cc-456e-b53c-c67e24c3f8ca
-ms.openlocfilehash: be32ed114269543ac36b256a202e0494d466e4f7
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 35b0284a5ad8b2b732f074589bd458d243312575
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306541"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181667"
 ---
 # <a name="logging-and-intercepting-database-operations"></a>데이터베이스 작업 로깅 및 가로채기
 > [!NOTE]
@@ -100,7 +100,7 @@ WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
 
 Log 속성이 설정 되 면 다음 내용이 모두 로깅됩니다.  
 
-- 모든 유형의 명령에 대 한 SQL 예를 들어:  
+- 모든 유형의 명령에 대 한 SQL 예를 들어 다음과 같은 가치를 제공해야 합니다.  
     - 일반 LINQ 쿼리, eSQL 쿼리 및 SqlQuery와 같은 메서드의 원시 쿼리를 포함 하는 쿼리  
     - SaveChanges의 일부로 생성 된 삽입, 업데이트 및 삭제  
     - 지연 로드에 의해 생성 된 것과 같은 관계 로딩 쿼리  
@@ -171,7 +171,7 @@ SELECT * from ThisTableIsMissing
 
 태스크가 취소 된 비동기 명령의 경우 예외가 발생 하 여 결과가 실패할 수 있습니다 .이는 취소 하려고 할 때 기본 ADO.NET 공급자가 자주 수행 하는 작업입니다. 이 문제가 발생 하지 않고 작업이 완전히 취소 되 면 출력은 다음과 같이 표시 됩니다.  
 
-```  
+```console
 update Blogs set Title = 'No' where Id = -1
 -- Executing asynchronously at 5/13/2013 10:21:10 AM
 -- Canceled in 1 ms
@@ -227,7 +227,7 @@ public class OneLineFormatter : DatabaseLogFormatter
 
 ### <a name="setting-the-databaselogformatter"></a>DatabaseLogFormatter 설정  
 
-새 DatabaseLogFormatter 클래스를 만든 후에는 EF를 사용 하 여 등록 해야 합니다. 코드 기반 구성을 사용 하 여이 작업을 수행 합니다. 즉, DbContext 클래스와 동일한 어셈블리의 DbConfiguration에서 파생 되는 새 클래스를 만든 후이 새 클래스의 생성자에서 SetDatabaseLogFormatter를 호출 하는 것을 의미 합니다. 예를 들어:  
+새 DatabaseLogFormatter 클래스를 만든 후에는 EF를 사용 하 여 등록 해야 합니다. 코드 기반 구성을 사용 하 여이 작업을 수행 합니다. 즉, DbContext 클래스와 동일한 어셈블리의 DbConfiguration에서 파생 되는 새 클래스를 만든 후이 새 클래스의 생성자에서 SetDatabaseLogFormatter를 호출 하는 것을 의미 합니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
 
 ``` csharp
 public class MyDbConfiguration : DbConfiguration
@@ -244,7 +244,7 @@ public class MyDbConfiguration : DbConfiguration
 
 이 새로운 DatabaseLogFormatter는 이제 데이터베이스 .Log가 설정 될 때마다 사용 됩니다. 따라서 1 부에서 코드를 실행 하면 다음과 같은 결과가 출력 됩니다.  
 
-```  
+```console
 Context 'BlogContext' is executing command 'SELECT TOP (1) [Extent1].[Id] AS [Id], [Extent1].[Title] AS [Title]FROM [dbo].[Blogs] AS [Extent1]WHERE (N'One Unicorn' = [Extent1].[Title]) AND ([Extent1].[Title] IS NOT NULL)'
 Context 'BlogContext' is executing command 'SELECT [Extent1].[Id] AS [Id], [Extent1].[Title] AS [Title], [Extent1].[BlogId] AS [BlogId]FROM [dbo].[Posts] AS [Extent1]WHERE [Extent1].[BlogId] = @EntityKeyValue1'
 Context 'BlogContext' is executing command 'update [dbo].[Posts]set [Title] = @0where ([Id] = @1)'
@@ -261,11 +261,11 @@ Context 'BlogContext' is executing command 'insert [dbo].[Posts]([Title], [BlogI
 
 ### <a name="the-interception-context"></a>가로채기 컨텍스트입니다.  
 
-인터셉터 인터페이스에 정의 된 메서드를 살펴보면 모든 호출에 DbInterceptionContext 형식의 개체 또는 DbCommandInterceptionContext\<\>와 같이이에서 파생 된 일부 형식이 지정 됩니다. 이 개체는 EF에서 수행 하는 동작에 대 한 컨텍스트 정보를 포함 합니다. 예를 들어 DbContext를 대신 하 여 작업을 수행 하는 경우 DbContext는 DbInterceptionContext에 포함 됩니다. 마찬가지로, 비동기적으로 실행 되는 명령의 경우 IsAsync 플래그는 DbCommandInterceptionContext에 설정 됩니다.  
+인터셉터 인터페이스에 정의 된 메서드를 살펴보면 모든 호출에 DbInterceptionContext 형식의 개체 또는이에서 파생 된 형식 (예: DbCommandInterceptionContext @ no__t-0 @ no__t-1)을 지정 하는 것이 명백 합니다. 이 개체는 EF에서 수행 하는 동작에 대 한 컨텍스트 정보를 포함 합니다. 예를 들어 DbContext를 대신 하 여 작업을 수행 하는 경우 DbContext는 DbInterceptionContext에 포함 됩니다. 마찬가지로, 비동기적으로 실행 되는 명령의 경우 IsAsync 플래그는 DbCommandInterceptionContext에 설정 됩니다.  
 
 ### <a name="result-handling"></a>결과 처리  
 
-\< DbCommandInterceptionContext\> 클래스에는 Result, originalresult, Exception 및 originalresult 이라는 속성이 포함 되어 있습니다. 이러한 속성은 작업이 실행 되기 전에 호출 되는 가로채기 메서드를 호출 하는 경우 null/0으로 설정 됩니다. 즉, ... 메서드를 실행 합니다. 작업이 실행 되 고 성공 하면 Result와 OriginalResult가 작업의 결과로 설정 됩니다. 이러한 값은 작업이 실행 된 후 호출 되는 가로채기 메서드에서 관찰 될 수 있습니다. 즉, ... 메서드를 실행 했습니다. 마찬가지로 작업에서을 throw 하는 경우 Exception 및 OriginalException 속성이 설정 됩니다.  
+DbCommandInterceptionContext @ no__t-0 @ no__t 클래스에는 Result, OriginalResult, Exception 및 Originalresult 이라는 속성이 포함 되어 있습니다. 이러한 속성은 작업이 실행 되기 전에 호출 되는 가로채기 메서드를 호출 하는 경우 null/0으로 설정 됩니다. 즉, ... 메서드를 실행 합니다. 작업이 실행 되 고 성공 하면 Result와 OriginalResult가 작업의 결과로 설정 됩니다. 이러한 값은 작업이 실행 된 후 호출 되는 가로채기 메서드에서 관찰 될 수 있습니다. 즉, ... 메서드를 실행 했습니다. 마찬가지로 작업에서을 throw 하는 경우 Exception 및 OriginalException 속성이 설정 됩니다.  
 
 #### <a name="suppressing-execution"></a>실행 억제  
 
@@ -289,7 +289,7 @@ OriginalResult 및 Originalresult 속성은 읽기 전용 이며 실제로 작�
 
 ### <a name="registering-interceptors"></a>인터셉터 등록  
 
-하나 이상의 가로채기 인터페이스를 구현 하는 클래스를 만든 후에는 DbInterception 클래스를 사용 하 여 EF에 등록할 수 있습니다. 예를 들어:  
+하나 이상의 가로채기 인터페이스를 구현 하는 클래스를 만든 후에는 DbInterception 클래스를 사용 하 여 EF에 등록할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
 
 ``` csharp
 DbInterception.Add(new NLogCommandInterceptor());
@@ -297,9 +297,9 @@ DbInterception.Add(new NLogCommandInterceptor());
 
 DbConfiguration 코드 기반 구성 메커니즘을 사용 하 여 앱 도메인 수준에서 인터셉터를 등록할 수도 있습니다.  
 
-### <a name="example-logging-to-nlog"></a>예제: NLog에 로깅  
+### <a name="example-logging-to-nlog"></a>예: NLog에 로깅  
 
-여기에 모두 IDbCommandInterceptor 및 [Nlog](http://nlog-project.org/) 를 사용 하는 예제를 살펴보겠습니다.  
+여기에 모두 IDbCommandInterceptor 및 [Nlog](https://nlog-project.org/) 를 사용 하는 예제를 살펴보겠습니다.  
 
 - 비 비동기식으로 실행 되는 명령에 대 한 경고 기록  
 - 실행 시 throw 되는 명령에 대 한 오류를 기록 합니다.  

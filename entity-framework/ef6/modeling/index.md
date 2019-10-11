@@ -3,12 +3,12 @@ title: 모델 만들기 - EF6
 author: divega
 ms.date: 07/05/2018
 ms.assetid: 4890228E-CEA1-4595-B8AD-CA81253F8767
-ms.openlocfilehash: c02cdf0550116b703fb6436f8b0c6b064b5d1408
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: bd9843a93121f53518a307c9d2d43b68ae03369c
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283578"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182471"
 ---
 # <a name="creating-a-model"></a>모델 만들기
 
@@ -16,7 +16,7 @@ EF 모델은 애플리케이션 클래스 및 속성이 데이터베이스 테�
 
 - **Code First 사용**: 개발자는 모델을 지정하는 코드를 작성합니다. EF는 런타임에 개발자가 제공한 엔터티 클래스 및 추가 모델 구성을 기반으로 모델과 매핑을 생성합니다.
 
-- **EF 디자이너 사용**: 개발자는 EF 디자이너를 사용하여 모델을 지정하는 상자와 선을 그립니다. 그 결과로 생성되는 모델은 EDMX 확장을 사용하여 파일에 XML로 저장됩니다. 애플리케이션의 도메인 개체는 일반적으로 개념적 모델에서 자동으로 생성됩니다.
+- **EF Designer 사용**: 개발자는 EF 디자이너를 사용하여 모델을 지정하는 상자와 선을 그립니다. 그 결과로 생성되는 모델은 EDMX 확장을 사용하여 파일에 XML로 저장됩니다. 애플리케이션의 도메인 개체는 일반적으로 개념적 모델에서 자동으로 생성됩니다.
 
 ## <a name="ef-workflows"></a>EF 워크플로
 
@@ -32,7 +32,7 @@ EF 모델은 애플리케이션 클래스 및 속성이 데이터베이스 테�
 
 이 짧은 비디오에서는 워크플로 간 차이점과 적합한 워크플로를 찾는 방법을 설명합니다.
 
-**작성자**: [Rowan Miller](http://romiller.com/)
+**발표자**: [Rowan Miller](https://romiller.com/)
 
 ![Which Workflow Thumb](../media/whichworkflow-thumb.png) [WMV](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_winvideo_ChoseYourWorkflow.wmv) | [MP4](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_mp4video_ChoseYourWorkflow.m4v) | [WMV(ZIP)](https://download.microsoft.com/download/8/F/8/8F81F4CD-3678-4229-8D79-0C63FFA3C595/HDI_ITPro_Technet_winvideo_ChoseYourWorkflow.zip)
 

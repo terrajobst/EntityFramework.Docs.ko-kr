@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
-ms.openlocfilehash: 026df735473e31f1c1463c1fbc6f46c4fd6dfd4f
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: cced53edadb890e4e86753ec2628218ffc4d1d5b
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921731"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181385"
 ---
 # <a name="spatial-data"></a>공간 데이터
 
@@ -32,7 +32,7 @@ Npgsql.EntityFrameworkCore.PostgreSQL   | [Npgsql. PostgreSQL. NetTopologySuite]
 
 ## <a name="reverse-engineering"></a>리버스 엔지니어링
 
-공간 NuGet 패키지는 공간 속성을 사용 하 여 [리버스 엔지니어링](../managing-schemas/scaffolding.md) 모델을 사용할 수도 있지만 또는 `dotnet ef dbcontext scaffold`를 `Scaffold-DbContext` 실행 ***하기 전에*** 패키지를 설치 해야 합니다. 그렇지 않으면 열에 대 한 형식 매핑을 찾을 수 없다는 경고가 표시 되 고 열이 생략 됩니다.
+공간 NuGet 패키지는 공간 속성을 사용 하 여 [리버스 엔지니어링](../managing-schemas/scaffolding.md) 모델을 사용할 수도 있지만 `Scaffold-DbContext` 또는 `dotnet ef dbcontext scaffold`을 실행 ***하기 전에*** 패키지를 설치 해야 합니다. 그렇지 않으면 열에 대 한 형식 매핑을 찾을 수 없다는 경고가 표시 되 고 열이 생략 됩니다.
 
 ## <a name="nettopologysuite-nts"></a>NetTopologySuite (NTS)
 
@@ -46,7 +46,7 @@ optionsBuilder.UseSqlServer(
     x => x.UseNetTopologySuite());
 ```
 
-여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. 네임 스페이스는 `NetTopologySuite.Geometries` 네임 스페이스 내에 있습니다.
+여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. @No__t-0 네임 스페이스 내에 있습니다.
 
 * 기하학
   * 점
@@ -62,7 +62,7 @@ optionsBuilder.UseSqlServer(
 
 기본 Geometry 형식을 사용 하면 모든 형식의 모양을 속성으로 지정할 수 있습니다.
 
-다음 엔터티 클래스를 사용 하 여 [와이드 세계의 가져오기 샘플 데이터베이스](http://go.microsoft.com/fwlink/?LinkID=800630)의 테이블에 매핑할 수 있습니다.
+다음 엔터티 클래스를 사용 하 여 [와이드 세계의 가져오기 샘플 데이터베이스](https://go.microsoft.com/fwlink/?LinkID=800630)의 테이블에 매핑할 수 있습니다.
 
 ``` csharp
 [Table("Cities", Schema = "Application"))]
@@ -101,7 +101,7 @@ var currentLocation = geometryFactory.CreatePoint(-122.121512, 47.6739882);
 
 ### <a name="longitude-and-latitude"></a>경도 및 위도
 
-NTS의 좌표는 X 및 Y 값을 기준으로 합니다. 경도 및 위도를 나타내려면 경도에 X를, 위도에 Y를 사용 합니다. 이 값은 일반적 으로 이러한 값 `latitude, longitude` 을 표시 하는 형식에서 이전입니다.
+NTS의 좌표는 X 및 Y 값을 기준으로 합니다. 경도 및 위도를 나타내려면 경도에 X를, 위도에 Y를 사용 합니다. 이 값은 일반적으로 이러한 값이 표시 되는 `latitude, longitude` 형식에서 **이전** 입니다.
 
 ### <a name="srid-ignored-during-client-operations"></a>클라이언트 작업 중에 무시 되는 SRID
 
@@ -213,11 +213,11 @@ SQL Server를 사용 하는 경우 알아야 할 몇 가지 추가 사항이 있
 
 ### <a name="geography-or-geometry"></a>지리 또는 기 하 도형
 
-기본적으로 공간 속성은 SQL Server의 열 `geography` 에 매핑됩니다. 를 사용 `geometry`하려면 모델에서 [열 유형을 구성](xref:core/modeling/relational/data-types) 합니다.
+기본적으로 공간 속성은 SQL Server의 `geography` 열에 매핑됩니다. @No__t-0을 사용 하려면 모델에서 [열 유형을 구성](xref:core/modeling/relational/data-types) 합니다.
 
 ### <a name="geography-polygon-rings"></a>지리 다각형 링
 
-`geography` 열 유형을 사용 하는 경우 SQL Server는 외부 링 (또는 셸) 및 내부 링 (또는 구멍)에 추가 요구 사항을 적용 합니다. 외부 링은 시계 반대 방향으로, 내부는 시계 방향으로 링 해야 합니다. NTS는 데이터베이스에 값을 보내기 전에 유효성을 검사 합니다.
+@No__t-0 열 형식을 사용 하는 경우 SQL Server는 외부 링 (또는 셸) 및 내부 링 (또는 구멍)에 추가 요구 사항을 적용 합니다. 외부 링은 시계 반대 방향으로, 내부는 시계 방향으로 링 해야 합니다. NTS는 데이터베이스에 값을 보내기 전에 유효성을 검사 합니다.
 
 ### <a name="fullglobe"></a>FullGlobe
 
@@ -244,7 +244,7 @@ brew install libspatialite
 
 ### <a name="configuring-srid"></a>SRID 구성
 
-SpatiaLite에서 열은 열 당 SRID를 지정 해야 합니다. 기본 SRID은 `0`입니다. ForSqliteHasSrid 메서드를 사용 하 여 다른 SRID를 지정 합니다.
+SpatiaLite에서 열은 열 당 SRID를 지정 해야 합니다. 기본 SRID는 `0`입니다. ForSqliteHasSrid 메서드를 사용 하 여 다른 SRID를 지정 합니다.
 
 ``` csharp
 modelBuilder.Entity<City>().Property(c => c.Location)
@@ -331,5 +331,5 @@ NumInteriorRings | ✔ | ✔ | ✔ | ✔
 
 * [SQL Server의 공간 데이터](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [SpatiaLite 홈 페이지](https://www.gaia-gis.it/fossil/libspatialite)
-* [Npgsql 공간 설명서](http://www.npgsql.org/efcore/mapping/nts.html)
-* [PostGIS 설명서](http://postgis.net/documentation/)
+* [Npgsql 공간 설명서](https://www.npgsql.org/efcore/mapping/nts.html)
+* [PostGIS 설명서](https://postgis.net/documentation/)

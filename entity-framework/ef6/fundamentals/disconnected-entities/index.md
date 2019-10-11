@@ -3,15 +3,15 @@ title: 연결이 끊긴 엔터티 사용 - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 12138003-a373-4817-b1b7-724130202f5f
-ms.openlocfilehash: 11ca2a9a4161e02d32d98bf03dd4cf28545334b7
-ms.sourcegitcommit: 5e11125c9b838ce356d673ef5504aec477321724
+ms.openlocfilehash: f1ce44e7b00ec4c60a81ed850ce5c9d866495e1b
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50022173"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181764"
 ---
 # <a name="working-with-disconnected-entities"></a>연결이 끊긴 엔터티 사용
-Entity Framework 기반 응용 프로그램에서 컨텍스트 클래스는 추적된 엔터티에 적용된 변경 내용을 검색합니다. SaveChanges 메서드를 호출하면 컨텍스트에서 추적한 변경 내용이 데이터베이스에 유지됩니다. n 계층 응용 프로그램을 작업할 때 엔터티 개체는 일반적으로 컨텍스트와 연결이 끊어진 동안 수정되므로 변경 내용을 추적하고 변경 내용을 컨텍스트에 보고하는 방법을 결정해야 합니다. 이 토픽에서는 엔터티 연결이 끊어진 Entity Framework를 사용할 때 제공되는 여러 옵션을 알아보겠습니다.   
+Entity Framework 기반 애플리케이션에서 컨텍스트 클래스는 추적된 엔터티에 적용된 변경 내용을 검색합니다. SaveChanges 메서드를 호출하면 컨텍스트에서 추적한 변경 내용이 데이터베이스에 유지됩니다. n 계층 애플리케이션을 작업할 때 엔터티 개체는 일반적으로 컨텍스트와 연결이 끊어진 동안 수정되므로 변경 내용을 추적하고 변경 내용을 컨텍스트에 보고하는 방법을 결정해야 합니다. 이 토픽에서는 엔터티 연결이 끊어진 Entity Framework를 사용할 때 제공되는 여러 옵션을 알아보겠습니다.   
 
 ## <a name="web-service-frameworks"></a>웹 서비스 프레임워크
 
@@ -30,4 +30,4 @@ EF 컨텍스트와의 연결이 끊어진 동안 엔터티의 임의 그래프 �
 이 템플릿은 EF 디자이너를 사용하여 만든 모델에 사용할 수 있지만, Code First 모델에는 사용할 수 없습니다. 자세한 내용은 [자체 추적 엔터티](self-tracking-entities/index.md)를 참조하세요.  
 
 > [!IMPORTANT]
-> 자동 추적 엔터티 템플릿을 더 이상 권장하지 않습니다. 이 템플릿은 기존 응용 프로그램을 지원하는 용도로만 제공될 것입니다. 응용 프로그램에서 연결이 끊긴 엔터티 그래프를 사용해야 하는 경우 커뮤니티에서 적극적으로 개발한 자동 추적 엔터티와 비슷한 기술인 [추적 가능 엔터티](http://trackableentities.github.io/) 같은 다른 대안을 고려하거나 하위 수준 변경 내용 추적 API를 사용하여 사용자 지정 코드를 작성하는 방법을 고려해 보세요.
+> 자동 추적 엔터티 템플릿을 더 이상 권장하지 않습니다. 이 템플릿은 기존 애플리케이션을 지원하는 용도로만 제공될 것입니다. 애플리케이션에서 연결이 끊긴 엔터티 그래프를 사용해야 하는 경우 커뮤니티에서 적극적으로 개발한 자동 추적 엔터티와 비슷한 기술인 [추적 가능 엔터티](https://trackableentities.github.io/) 같은 다른 대안을 고려하거나 하위 수준 변경 내용 추적 API를 사용하여 사용자 지정 코드를 작성하는 방법을 고려해 보세요.

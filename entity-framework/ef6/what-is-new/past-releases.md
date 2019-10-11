@@ -3,12 +3,12 @@ title: Entity Framework의 이전 릴리스-EF6
 author: divega
 ms.date: 09/12/2019
 ms.assetid: 1060bb99-765f-4f32-aaeb-d6635d3dbd3e
-ms.openlocfilehash: 3ee433ac0932f89841b5cc42fb864eefb9419ef2
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 478dec6b2401efd554e84a231fe78e71dcbf5771
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149274"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182113"
 ---
 # <a name="past-releases-of-entity-framework"></a>Entity Framework의 이전 릴리스
 
@@ -88,7 +88,7 @@ EF 6.1.0 런타임은 2014 년 3 월에 NuGet에 릴리스 되었습니다.
 
 - **도구 통합** 은 새 EF 모델을 만드는 일관 된 방법을 제공 합니다. 이 기능은 [ADO.NET 엔터티 데이터 모델 마법사를 확장 하](~/ef6/modeling/code-first/workflows/existing-database.md)여 기존 데이터베이스에서 리버스 엔지니어링을 비롯 한 Code First 모델 만들기를 지원 합니다. 이러한 기능은 이전에 EF Power Tools의 베타 품질로 제공 되었습니다.
 - **[트랜잭션 커밋 실패를 처리](~/ef6/fundamentals/connection-resiliency/commit-failures.md)** 하면 새로 도입 된 기능을 사용 하 여 트랜잭션 작업을 가로채는 CommitFailureHandler 제공 됩니다. CommitFailureHandler는 트랜잭션을 커밋하는 동안 연결 오류를 자동으로 복구할 수 있도록 합니다.
-- **[Indexattribute](~/ef6/modeling/code-first/data-annotations.md)** 를 사용 하면 Code First 모델의 속성에 `[Index]` 특성을 배치 하 여 인덱스를 지정할 수 있습니다. 그러면 Code First는 데이터베이스에 해당 인덱스를 만듭니다.
+- **[Indexattribute](~/ef6/modeling/code-first/data-annotations.md)** 를 사용 하면 Code First 모델의 속성 (또는 속성)에 `[Index]` 특성을 배치 하 여 인덱스를 지정할 수 있습니다. 그러면 Code First는 데이터베이스에 해당 인덱스를 만듭니다.
 - **공용 매핑 API는** 속성 및 형식이 데이터베이스의 열과 테이블에 매핑되는 방법에 대 한 정보에 대 한 액세스를 제공 합니다. 이전 릴리스에서이 API는 내부용입니다.
 - **[앱/web.config 파일을 통해 인터셉터를 구성](~/ef6/fundamentals/configuring/config-file.md)** 하면 응용 프로그램을 다시 컴파일하지 않고도 인터셉터를 추가할 수 있습니다.
 - **System.object**는 모든 데이터베이스 작업을 파일에 쉽게 기록할 수 있게 해 주는 새로운 인터셉터입니다. 이전 기능과 함께이 기능을 사용 하면 다시 컴파일하지 않아도 [배포 된 응용 프로그램에 대 한 데이터베이스 작업의 로깅을 쉽게 전환할](~/ef6/fundamentals/configuring/config-file.md)수 있습니다.
@@ -125,7 +125,7 @@ EF 6.0.0 런타임은 2013 년 10 월에 NuGet에 릴리스 되었습니다.
 - **.Net 4.0의 열거형, 공간 및 향상 된 성능** -.NET Framework에 사용 되는 핵심 구성 요소를 EF NuGet 패키지로 이동 하 여 이제 열거형 지원, 공간 데이터 형식 및 .net 4.0에서 EF5의 성능 향상을 제공할 수 있습니다.
 - **LINQ 쿼리에서 열거 가능. Contains의 성능 향상**.
 - 특히 규모가 많은 모델의 경우 **준비 시간 (뷰 생성)이 향상**되었습니다.
-- **플러그형 복수화 &amp; 단수형 Service**.
+- **플러그형 복수화 @no__t 단수형 Service**.
 - 이제 엔터티 클래스에서 **Equals 또는 GetHashCode의 사용자 지정 구현이** 지원 됩니다.
 - **Dbset/RemoveRange** 는 집합에서 여러 엔터티를 추가 하거나 제거 하는 최적화 된 방법을 제공 합니다.
 - **DbChangeTracker** 는 데이터베이스에 저장 되는 보류 중인 변경 내용이 있는지 확인 하는 쉽고 효율적인 방법을 제공 합니다.
@@ -138,9 +138,9 @@ EF 6.0.0 런타임은 2013 년 10 월에 NuGet에 릴리스 되었습니다.
 - **[Idempotent 마이그레이션 스크립트](~/ef6/modeling/code-first/migrations/index.md)** 를 사용 하 여 모든 버전의 데이터베이스를 최신 버전으로 업그레이드할 수 있는 SQL 스크립트를 생성할 수 있습니다.
 - **[구성 가능한 마이그레이션 기록 테이블](~/ef6/modeling/code-first/migrations/history-customization.md)** 을 사용 하 여 마이그레이션 기록 테이블의 정의를 사용자 지정할 수 있습니다. 이는 마이그레이션 기록 테이블이 제대로 작동 하도록 지정 하기 위해 적절 한 데이터 형식이 필요한 데이터베이스 공급자에 게 특히 유용 합니다.
 - **데이터베이스당 여러 컨텍스트** 는 마이그레이션을 사용할 때 또는 Code First 자동으로 데이터베이스를 만들 때 데이터베이스 당 Code First 모델 하나에 대 한 이전 제한을 제거 합니다.
-- **[Dbmodelbuilder. HasDefaultSchema](~/ef6/modeling/code-first/fluent/types-and-properties.md)** 는 Code First 모델에 대 한 기본 데이터베이스 스키마를 한 곳에서 구성할 수 있도록 하는 새로운 Code First API입니다. 이전에는 Code First 기본 스키마가 dbo &quot;&quot; 에 하드 코딩 되었으며 테이블이 속한 스키마를 ToTable API를 통해 구성 하는 유일한 방법이 있습니다.
+- **[Dbmodelbuilder. HasDefaultSchema](~/ef6/modeling/code-first/fluent/types-and-properties.md)** 는 Code First 모델에 대 한 기본 데이터베이스 스키마를 한 곳에서 구성할 수 있도록 하는 새로운 Code First API입니다. 이전에는 Code First 기본 스키마가 &quot;dbo @ no__t-1로 하드 코딩 되었으며, 테이블이 ToTable API를 통해 속한 스키마를 구성 하는 유일한 방법입니다.
 - **AddFromAssembly 메서드** 를 사용 하면 CODE FIRST 흐름 API와 함께 구성 클래스를 사용 하는 경우 어셈블리에 정의 된 모든 구성 클래스를 쉽게 추가할 수 있습니다.
-- **[사용자 지정 마이그레이션 작업](http://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/)** 을 통해 코드 기반 마이그레이션에 사용할 추가 작업을 추가할 수 있습니다.
+- **[사용자 지정 마이그레이션 작업](https://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/)** 을 통해 코드 기반 마이그레이션에 사용할 추가 작업을 추가할 수 있습니다.
 - Code First를 사용 하 여 만든 데이터베이스의 경우 **기본 트랜잭션 격리 수준이 READ_COMMITTED_SNAPSHOT로 변경 되어** 확장성 및 교착 상태를 줄일 수 있습니다.
 - **이제 엔터티 및 복합 형식이 nestedinside 클래스 일 수 있습니다**. |
 

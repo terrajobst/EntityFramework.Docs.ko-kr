@@ -1,16 +1,16 @@
 ---
-title: Entity Framework 6와 Entity Framework Core 비교
+title: Entity Framework 6과 Entity Framework Core 비교 - EF
 description: Entity Framework 6와 Entity Framework Core 중에 선택하는 방법을 제공합니다.
 author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 3d2f72e64e6846d2d8bb6d4d507e04090287114d
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 9fe4905de5bd81fce083d620724b7fad4c6dd11b
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71198014"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182040"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
@@ -62,9 +62,9 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 그래픽 모델 편집기                                | 예      |                                       |
 | 모델 형식: 코드                                    | 예      | 1.0                                   |
 | 모델 형식: EDMX(XML)                              | 예      |                                       |
-| 데이터베이스에서 모델 만들기: 명령줄              | 예      | 1.0                                   |
+| 데이터베이스에서 모델 만들기: 명령 줄              | 예      | 1.0                                   |
 | 데이터베이스에서 모델 만들기: VS 마법사                 | 예      |                                       |
-| 데이터베이스에서 모델 업데이트                            | Partial  |                                       |
+| 데이터베이스에서 모델 업데이트                            | 부분  |                                       |
 | 전역 쿼리 필터                                  |          | 2.0                                   |
 | 테이블 분할                                       | 예      | 2.0                                   |
 | 엔터티 분할                                      | 예      |                                       |
@@ -96,7 +96,7 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | 변경 내용 추적: 스냅샷                             | 예      | 1.0                                   |
 | 변경 내용 추적: 알림                         | 예      | 1.0                                   |
-| 변경 내용 추적: Proxy                              | 예      |                                       |
+| 변경 내용 추적: 프록시                              | 예      |                                       |
 | 추적된 상태 액세스                               | 예      | 1.0                                   |
 | 낙관적 동시성                                | 예      | 1.0                                   |
 | 트랜잭션                                          | 예      | 1.0                                   |

@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 43b98c1f09a89f7e5451e28cbf2f78a2cb1040e5
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 0c9671eb77181d85cd493341cd1abf842d13fb0e
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921774"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181265"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -54,7 +54,7 @@ CatFactory는 SQL Server 데이터베이스에서 DbContext 클래스, 엔터티
 
 Entity Framework Core 생성기(efg)는 `dotnet ef dbcontext scaffold`와 비슷하게 기존 데이터베이스에서 EF Core 모델을 생성할 수 있는 .NET Core CLI 도구이지만 지역 교체를 통하거나 매핑 파일을 구문 분석하여 안전한 코드 [재생성](https://efg.loresoft.com/en/latest/regeneration/)도 지원합니다. 이 도구는 보기 모델, 유효성 검사 및 개체 매퍼 코드를 생성하도록 지원합니다. 
 
-[자습서](http://www.loresoft.com/Generate-ASP-NET-Web-API)
+[자습서](https://www.loresoft.com/Generate-ASP-NET-Web-API)
 [설명서](https://efg.loresoft.com/en/latest/)
 
 ## <a name="extensions"></a>확장

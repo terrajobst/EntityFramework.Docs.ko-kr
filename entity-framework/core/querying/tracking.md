@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e17e060c-929f-4180-8883-40c438fbcc01
 uid: core/querying/tracking
-ms.openlocfilehash: d93be5c2b727d8fbaddd103f8f367c699ae80a7c
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 588dee012039ce5ecc83f0ecf263a4ea6ca38c29
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921651"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181978"
 ---
 # <a name="tracking-vs-no-tracking-queries"></a>추적 및 비 추적 쿼리
 
@@ -63,7 +63,7 @@ using (var context = new BloggingContext())
 ```
 
 > [!NOTE]  
-> 추적 쿼리는 실행 쿼리 내에서 ID 확인을 수행하지 않습니다. 결과 집합에 동일한 엔터티가 여러 번 포함되는 경우 결과 집합의 각 항목에 대해 엔터티 클래스의 동일한 인스턴스가 반환됩니다. 그러나 약한 참조는 이미 반환된 엔터티를 추적하는 데 사용됩니다. ID가 동일한 이전 결과가 범위를 벗어나고 가비지 수집이 실행되는 경우 새 엔터티 인스턴스를 가져올 수 있습니다. 자세한 내용은 [쿼리 작동 방식](overview.md)을 참조하세요.
+> 추적 쿼리는 실행 쿼리 내에서 ID 확인을 수행하지 않습니다. 결과 집합에 동일한 엔터티가 여러 번 포함되는 경우 결과 집합의 각 항목에 대해 엔터티 클래스의 동일한 인스턴스가 반환됩니다. 그러나 약한 참조는 이미 반환된 엔터티를 추적하는 데 사용됩니다. ID가 동일한 이전 결과가 범위를 벗어나고 가비지 수집이 실행되는 경우 새 엔터티 인스턴스를 가져올 수 있습니다. 자세한 내용은 [쿼리 작동 방식](xref:core/querying/how-query-works)을 참조하세요.
 
 ## <a name="tracking-and-projections"></a>추적 및 프로젝션
 

@@ -3,12 +3,12 @@ title: Entity Framework 공급자 - EF6
 author: divega
 ms.date: 06/27/2018
 ms.assetid: 7BFB7763-CD6C-4520-93A2-7B265F5FA586
-ms.openlocfilehash: f6e34d1273bd1004ce9d1610ce3613068088eb5e
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.openlocfilehash: bf07296503e4bb5d1e13f5f6f29e7118cbbde61d
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668741"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181683"
 ---
 # <a name="entity-framework-6-providers"></a>Entity Framework 6 공급자
 > [!NOTE]
@@ -21,15 +21,15 @@ ms.locfileid: "55668741"
 EF6에 맞게 다시 빌드된 것으로 파악된 공급자는 다음과 같습니다.
 
 *   **Microsoft SQL Server 공급자**
-    *   [Entity Framework 오픈 소스 코드베이스](http://github.com/aspnet/EntityFramework6)로 빌드
-    *   [EntityFramework NuGet 패키지](http://nuget.org/packages/EntityFramework)의 일부로 제공
+    *   [Entity Framework 오픈 소스 코드베이스](https://github.com/aspnet/EntityFramework6)로 빌드
+    *   [EntityFramework NuGet 패키지](https://nuget.org/packages/EntityFramework)의 일부로 제공
 *   **Microsoft SQL Server Compact Edition 공급자**
-    *   [Entity Framework 오픈 소스 코드베이스](http://github.com/aspnet/EntityFramework6)로 빌드
-    *   [EntityFramework.SqlServerCompact NuGet 패키지](http://nuget.org/packages/EntityFramework.SqlServerCompact)에 포함
-*   [**Devart dotConnect Data 공급자**](http://www.devart.com/dotconnect/)
-    *   Oracle, MySQL, PostgreSQL, SQLite, Salesforce, DB2 및 SQL Server를 포함하여 다양한 데이터베이스에 대한 [Devart](http://www.devart.com/)의 타사 공급자가 있습니다.
-*   [**CData Software 공급자**](http://www.cdata.com/ado/)
-    *   Salesforce, Azure Table Storage, MySql 등을 포함하여 다양한 데이터 저장소에 대한 [CData Software](http://www.cdata.com/ado/)의 타사 공급자가 있습니다.
+    *   [Entity Framework 오픈 소스 코드베이스](https://github.com/aspnet/EntityFramework6)로 빌드
+    *   [EntityFramework.SqlServerCompact NuGet 패키지](https://nuget.org/packages/EntityFramework.SqlServerCompact)에 포함
+*   [**Devart dotConnect Data 공급자**](https://www.devart.com/dotconnect/)
+    *   Oracle, MySQL, PostgreSQL, SQLite, Salesforce, DB2 및 SQL Server를 포함하여 다양한 데이터베이스에 대한 [Devart](https://www.devart.com/)의 타사 공급자가 있습니다.
+*   [**CData Software 공급자**](https://www.cdata.com/ado/)
+    *   Salesforce, Azure Table Storage, MySql 등을 포함하여 다양한 데이터 저장소에 대한 [CData Software](https://www.cdata.com/ado/)의 타사 공급자가 있습니다.
 *   **Firebird 공급자**
     *   [NuGet 패키지](https://www.nuget.org/packages/EntityFramework.Firebird/)의 일부로 제공
 *   **Visual Fox Pro 공급자**

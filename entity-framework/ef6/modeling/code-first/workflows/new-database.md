@@ -1,46 +1,46 @@
 ---
-title: 새 데이터베이스-EF6 대 한 code First
+title: 새 데이터베이스에 Code First-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
-ms.openlocfilehash: a19db575b685cde98509fff4a0efaf26106b26bc
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: d540fc6e84049f345ae22998f94c309e0be73fc3
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46284124"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72182564"
 ---
-# <a name="code-first-to-a-new-database"></a>새 데이터베이스에 대 한 code First
-이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. C를 사용 하 여 모델을 정의 하는 코드 먼저 허용\# 또는 VB.Net 클래스입니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
+# <a name="code-first-to-a-new-database"></a>새 데이터베이스에 Code First
+이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오에는 존재 하지 않는 데이터베이스를 대상으로 하 고 Code First 만들거나 새 테이블을 추가할 Code First 있는 빈 데이터베이스가 포함 됩니다. Code First를 사용 하면 C @ no__t-0 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다.
 
-## <a name="watch-the-video"></a>비디오를 시청 하세요.
-이 비디오에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오는 존재 하지 않는 데이터베이스를 대상으로 포함 및 Code First는 만들거나 빈 데이터베이스는 Code First는 새 테이블을 추가 합니다. 먼저 코드를 사용 하면 C# 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 클래스 및 속성 또는 fluent API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 필요에 따라 있습니다.
+## <a name="watch-the-video"></a>비디오 시청
+이 비디오에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오에는 존재 하지 않는 데이터베이스를 대상으로 하 고 Code First 만들거나 새 테이블을 추가할 Code First 있는 빈 데이터베이스가 포함 됩니다. Code First를 사용 하면 또는 VB.Net 클래스를 C# 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다.
 
-**작성자**: [Rowan Miller](http://romiller.com/)
+**제공**: [행](https://romiller.com/)
 
-**비디오**: [WMV](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.wmv) | [MP4](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-mp4Video-CodeFirstNewDatabase.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.zip)
+**비디오**: [WMV](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.wmv)@NO__T-[1MP4](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-mp4Video-CodeFirstNewDatabase.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/B/A/5/BA57BADE-D558-4693-8F82-29E64E4084AB/HDI-ITPro-MSDN-winvideo-CodeFirstNewDatabase.zip)
 
-## <a name="pre-requisites"></a>필수 조건
+## <a name="pre-requisites"></a>필수 구성 요소
 
-적어도 Visual studio 2010 해야 하거나이 연습을 완료 하려면 Visual Studio 2012를 설치 합니다.
+이 연습을 완료 하려면 Visual Studio 2010 또는 Visual Studio 2012 이상이 설치 되어 있어야 합니다.
 
-Visual Studio 2010을 사용 하는 경우 해야 할 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 설치 합니다.
+Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 도 설치 해야 합니다.
 
-## <a name="1-create-the-application"></a>1. 응용 프로그램 만들기
+## <a name="1-create-the-application"></a>1. 애플리케이션 만들기
 
-간단 하 게 데이터 액세스를 수행 하려면 Code First를 사용 하는 기본적인 콘솔 응용 프로그램을 빌드하는 것이 하겠습니다.
+간단 하 게 유지 하기 위해 Code First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
 
 -   Visual Studio를 엽니다.
--   **파일만&gt; 새로운 기능-&gt; 프로젝트...**
--   선택 **Windows** 왼쪽된 메뉴에서 및 **콘솔 응용 프로그램**
--   입력 **CodeFirstNewDatabaseSample** 이름으로
+-   **파일-&gt; 새 &gt; 프로젝트 ...**
+-   왼쪽 메뉴 및 **콘솔 응용 프로그램** 에서 **Windows** 를 선택 합니다.
+-   이름으로 **CodeFirstNewDatabaseSample** 을 입력 합니다.
 -   **확인**을 선택합니다.
 
 ## <a name="2-create-the-model"></a>2. 모델 만들기
 
-클래스를 사용 하 여 매우 간단한 모델을 정의 해 보겠습니다. 방금 정의 고 Program.cs 파일에는 있지만 아웃 클래스를 별도 파일 및 잠재적으로 별도 프로젝트를 분할 하는 실제 응용 프로그램에 있습니다.
+클래스를 사용 하 여 매우 간단한 모델을 정의 하겠습니다. Program.cs 파일에서 정의 하 고 있지만 실제 응용 프로그램에서는 클래스를 개별 파일 및 잠재적으로 개별 프로젝트로 분할 합니다.
 
-프로그램 클래스 정의 Program.cs에서 아래 다음 두 클래스를 추가 합니다.
+Program.cs의 Program 클래스 정의 아래에 다음 두 개의 클래스를 추가 합니다.
 
 ``` csharp
 public class Blog
@@ -62,27 +62,27 @@ public class Post
 }
 ```
 
-만들고 두 개의 탐색 속성 (Blog.Posts 및 Post.Blog) 가상 알 수 있습니다. 따라서 Entity Framework의 지연 로드 기능이 있습니다. 지연 로드는 이러한 속성의 내용을 자동으로 로드할 데이터베이스에서 액세스 하려고 할 때를 의미 합니다.
+두 개의 탐색 속성 (블로그 게시물 및 게시물 블로그)이 가상으로 작성 되 고 있음을 알 수 있습니다. 이렇게 하면 Entity Framework의 지연 로드 기능을 사용할 수 있습니다. 지연 로드는 액세스 하려고 할 때 이러한 속성의 내용이 데이터베이스에서 자동으로 로드 됨을 의미 합니다.
 
 ## <a name="3-create-a-context"></a>3. 컨텍스트 만들기
 
-이제 데이터베이스를 쿼리하고 데이터를 저장할 수 있어를 사용 하 여 세션을 나타내는 파생된 컨텍스트를 정의 하는 시간입니다. System.Data.Entity.DbContext에서 파생 되 고 형식화 된 DbSet을 노출 하는 컨텍스트를 정의 했습니다&lt;TEntity&gt; 모델의 각 클래스에 대 한 합니다.
+이제 데이터베이스와의 세션을 나타내는 파생 컨텍스트를 정의 하 여 데이터를 쿼리하고 저장할 수 있습니다. DbContext에서 파생 되는 컨텍스트를 정의 하 고 모델의 각 클래스에 대해 형식화 된 DbSet @ no__t-0TEntity-1을 노출 합니다.
 
-이제 EntityFramework NuGet 패키지를 추가 해야 하므로 Entity Framework에서 형식 사용 하기 시작 합니다.
+이제 Entity Framework의 형식을 사용 하기 시작 하므로 EntityFramework NuGet 패키지를 추가 해야 합니다.
 
--   **프로젝트&gt; NuGet 패키지 관리...**
-    참고: 없는 경우는 **NuGet 패키지 관리...** 설치 해야 하는 옵션을 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c)
--   선택 된 **Online** 탭
--   선택 된 **EntityFramework** 패키지
--   클릭 **설치**
+-   **프로젝트 – &gt; NuGet 패키지 관리 ...**
+    참고: **NuGet 패키지 관리** ...가 없는 경우 옵션을 선택 하면 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야 합니다.
+-   **온라인** 탭을 선택 합니다.
+-   **Entityframework** 패키지를 선택 합니다.
+-   **설치** 클릭
 
-추가 하 여 문을 Program.cs 맨 위에 있는 System.Data.Entity에 대 한 합니다.
+Program.cs의 맨 위에 using 문을 추가 합니다.
 
 ``` csharp
 using System.Data.Entity;
 ```
 
-Program.cs에서 Post 클래스 아래 다음 파생된 컨텍스트를 추가 합니다.
+Program.cs의 Post 클래스 아래에 다음 파생 컨텍스트를 추가 합니다.
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -92,7 +92,7 @@ public class BloggingContext : DbContext
 }
 ```
 
-Program.cs 이제 포함 항목의 전체 목록은 다음과 같습니다.
+다음은 Program.cs에 포함 되어야 하는 내용에 대 한 전체 목록입니다.
 
 ``` csharp
 using System;
@@ -137,11 +137,11 @@ namespace CodeFirstNewDatabaseSample
 }
 ```
 
-데이터 저장 및 검색을 시작 해야 하는 모든 코드입니다. 물론 백그라운드에서 진행 상당한 되며 알아보겠습니다 살펴보겠습니다는 첫 번째 있지만 잠시에서 하는지 확인해 보겠습니다 작업.
+데이터 저장 및 검색을 시작 하는 데 필요한 모든 코드입니다. 당연히 약간의 작업을 수행 하는 것이 좋지만 잠시 후에 수행 하는 것을 살펴보겠습니다.
 
-## <a name="4-reading--writing-data"></a>4. 읽기 및 데이터 쓰기
+## <a name="4-reading--writing-data"></a>4. 데이터 읽기 & 쓰기
 
-아래 표시 된 것과 같이 Program.cs의 Main 메서드를 구현 합니다. 이 코드는이 컨텍스트의 새 인스턴스를 만듭니다 및 다음 새 블로그 삽입을 사용 하 여 합니다. 다음 LINQ 쿼리를 사용 하 여 제목으로 사전순으로 정렬 하는 데이터베이스에서 모든 블로그를 검색 하려면.
+아래와 같이 Program.cs에서 Main 메서드를 구현 합니다. 이 코드는 컨텍스트의 새 인스턴스를 만든 다음이를 사용 하 여 새 블로그를 삽입 합니다. 그런 다음 LINQ 쿼리를 사용 하 여 데이터베이스에서 제목별로 사전순으로 정렬 된 모든 블로그를 검색 합니다.
 
 ``` csharp
 class Program
@@ -178,52 +178,52 @@ class Program
 
 이제 응용 프로그램을 실행 하 고 테스트할 수 있습니다.
 
-```
+```console
 Enter a name for a new Blog: ADO.NET Blog
 All blogs in the database:
 ADO.NET Blog
 Press any key to exit...
 ```
-### <a name="wheres-my-data"></a>내 데이터는 어디 입니까?
+### <a name="wheres-my-data"></a>내 데이터는 어디에 있나요?
 
-관례상 DbContext를 데이터베이스를 만들었습니다.
+DbContext에서 규칙에 따라 데이터베이스를 만들었습니다.
 
--   (Visual Studio 2010을 사용 하 여 기본적으로 설치 됨)을 로컬 SQL Express 인스턴스를 사용할 수 있는 경우 Code First가 만든 데이터베이스 인스턴스에서
--   SQL Express를 사용할 수 없는 경우 Code First를 시도 하 고 사용 [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) (Visual Studio 2012를 사용 하 여 기본적으로 설치 됨)
--   데이터베이스는이 경우에서 파생 컨텍스트의 정규화 된 이름 뒤에 오는 이름은 **CodeFirstNewDatabaseSample.BloggingContext**
+-   로컬 SQL Express 인스턴스를 사용할 수 있는 경우 (기본적으로 Visual Studio 2010와 함께 설치 됨) Code First에서 해당 인스턴스에 데이터베이스를 만들었습니다.
+-   SQL Express를 사용할 수 없는 경우 Code First에서 [LocalDB](https://msdn.microsoft.com/library/hh510202(v=sql.110).aspx) 를 시도 하 고 사용 합니다 (Visual Studio 2012와 함께 기본적으로 설치 됨).
+-   데이터베이스 이름은 파생 컨텍스트의 정규화 된 이름 (여기서는 **CodeFirstNewDatabaseSample. BloggingContext**
 
-이 방금 기본 규칙 및 Code First를 사용 하는 데이터베이스를 변경 하는 방법은 여러 가지가 있습니다,에 자세한 정보가 제공 됩니다는 **DbContext는 모델 및 데이터베이스 연결을 검색 하는 방법을** 항목입니다.
+이러한 규칙은 기본 규칙 이며 Code First 사용 하는 데이터베이스를 변경 하는 다양 한 방법이 있습니다. 자세한 내용은 **모델 및 데이터베이스 연결을 검색 하는 방법** 항목에서 확인할 수 있습니다.
 Visual Studio에서 서버 탐색기를 사용 하 여이 데이터베이스에 연결할 수 있습니다.
 
--   **보기-&gt; 서버 탐색기**
--   마우스 오른쪽 단추로 클릭 **데이터 연결** 선택한 **연결 추가 중...**
--   Microsoft SQL Server 데이터 원본으로 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않은 경우
+-   **뷰-&gt; 서버 탐색기**
+-   **데이터 연결** 을 마우스 오른쪽 단추로 클릭 하 고 **연결 추가** ...를 선택 합니다.
+-   서버 탐색기 데이터베이스에 연결 하지 않은 경우 Microsoft SQL Server를 데이터 원본으로 선택 해야 합니다.
 
     ![데이터 원본 선택](~/ef6/media/selectdatasource.png)
 
--   LocalDB 또는 어느에 따라 설치한 SQL Express에 연결
+-   설치한 항목에 따라 LocalDB 또는 SQL Express에 연결
 
-이제 Code First에서 만든 스키마를 검사 수 있습니다.
+이제 Code First 만든 스키마를 검사할 수 있습니다.
 
-![초기 스키마](~/ef6/media/schemainitial.png)
+![스키마 초기](~/ef6/media/schemainitial.png)
 
-DbContext에 정의한 DbSet 속성을 확인 하 여 모델에 포함할 어떤 클래스를 산출 합니다. 다음 테이블 및 열 이름을 결정, 데이터 형식을 결정 하 고, 기본 키 등을 찾을 Code First 규칙의 기본 집합을 사용 합니다. 이 연습의 뒷부분에서 이러한 규칙을 재정의할 수 있습니다 하는 방법을 살펴보겠습니다.
+DbContext는 정의한 DbSet 속성을 살펴보면 모델에 포함할 클래스를 처리 했습니다. 그런 다음 기본 Code First 규칙 집합을 사용 하 여 테이블 및 열 이름을 결정 하 고, 데이터 형식을 결정 하 고, 기본 키를 찾습니다. 이 연습의 뒷부분에서는 이러한 규칙을 재정의할 수 있는 방법을 살펴보겠습니다.
 
-## <a name="5-dealing-with-model-changes"></a>5. 모델 변경 처리
+## <a name="5-dealing-with-model-changes"></a>5. 모델 변경 내용 처리
 
-이제 데이터베이스 스키마를 업데이트 해야 하는 이러한 변경을 수행 하는 경우 모델을를 일부 변경 하는 시간입니다. 이렇게 하려면 short에 대 한 Code First 마이그레이션을 또는 마이그레이션 이라는 기능을 사용 하려고 합니다.
+이제 모델을 변경할 때 이러한 변경 작업을 수행 하면 데이터베이스 스키마도 업데이트 해야 합니다. 이렇게 하려면 Code First 마이그레이션 라는 기능 또는 짧은 마이그레이션 기능을 사용 합니다.
 
-마이그레이션은 데이터베이스 스키마를 업그레이드 (및 다운 그레이드) 하는 방법을 설명 하는 단계는 정렬 된 집합이 있을 수 있습니다. 각 마이그레이션 라고 하는 이러한 단계를 적용할 변경 내용을 설명 하는 일부 코드를 포함 합니다. 
+마이그레이션을 통해 데이터베이스 스키마를 업그레이드 하 고 다운 그레이드 하는 방법을 설명 하는 일련의 단계를 수행할 수 있습니다. 마이그레이션 이라고 하는 이러한 각 단계에는 적용 되는 변경 내용을 설명 하는 코드가 포함 되어 있습니다. 
 
-첫 번째 단계는 BloggingContext에 대 한 Code First 마이그레이션을 사용 하도록 설정 하는 것입니다.
+첫 번째 단계는 BloggingContext에 대 한 Code First 마이그레이션를 사용 하도록 설정 하는 것입니다.
 
--   **도구-&gt; 라이브러리 패키지 관리자-&gt; 패키지 관리자 콘솔**
+-   **도구-&gt; 라이브러리 패키지 관리자-@no__t 2 패키지 관리자 콘솔**
 -   패키지 관리자 콘솔에서 **Enable-Migrations** 명령을 실행합니다.
--   새 마이그레이션 폴더 두 항목을 포함 하는 프로젝트에 추가 되었습니다.
-    -   **Configuration.cs** –이 파일에는 마이그레이션에 대 한 마이그레이션을 사용할 설정이 포함 되어 있습니다. BloggingContext 합니다. 이 연습에서는 아무 것도 변경할 필요가 없습니다 이지만 여기 네임 스페이스를 변경 하는 시드 데이터를 다른 데이터베이스에 대 한 등록 공급자를 지정할 수 있는 마이그레이션 등에서 생성 되는 합니다.
-    -   **&lt;타임 스탬프&gt;\_InitialCreate.cs** –이 첫 번째 마이그레이션을, 블로그 및 게시물 테이블이 포함 된 하나에 빈 데이터베이스에서 수행 하려면 데이터베이스에 이미 적용 된 변경 내용을 나타내는 . 하지만 하도록 Code First 마이그레이션을로 변환 되었을 것 마이그레이션에 옵트인 했습니다 했으므로 우리에 게 있어 이러한 테이블을 자동으로 만듭니다. 먼저 코드에도이 마이그레이션이 이미 적용 된 로컬 데이터베이스에 기록 됩니다. 파일의 타임 스탬프는 정렬을 위해 사용 됩니다.
+-   새 마이그레이션 폴더가 다음 두 항목을 포함 하는 프로젝트에 추가 되었습니다.
+    -   **Configuration.cs** –이 파일에는 마이그레이션 시 BloggingContext 마이그레이션에 사용할 설정이 포함 되어 있습니다. 이 연습에서는 어떤 것도 변경할 필요가 없지만, 여기서는 초기값 데이터를 지정 하 고, 다른 데이터베이스에 대 한 공급자를 등록 하 고, 마이그레이션이 생성 되는 네임 스페이스를 변경할 수 있습니다.
+    -   **&lt;timestamp @ no__t-2\_InitialCreate.cs** – 첫 번째 마이그레이션은 데이터베이스에 이미 적용 된 변경 내용을 표시 하 여 블로그 및 게시물 테이블이 포함 된 데이터베이스에 대 한 빈 데이터베이스를 만드는 것을 나타냅니다. 이러한 테이블을 자동으로 만들 Code First 있지만 마이그레이션에 옵트인 (opt in) 한 후에는 마이그레이션로 변환 되었습니다. 이 마이그레이션이 이미 적용 된 Code First 로컬 데이터베이스에도 기록 됩니다. 파일 이름에 대 한 타임 스탬프는 정렬 목적으로 사용 됩니다.
 
-    이제 모델을 사용 하 여 변경 하기, 블로그 클래스에 Url 속성을 추가 해 보겠습니다.
+    이제 모델을 변경 하 고, 블로그 클래스에 Url 속성을 추가 하겠습니다.
 
 ``` csharp
 public class Blog
@@ -236,9 +236,9 @@ public class Blog
 }
 ```
 
--   실행 합니다 **Add-migration AddUrl** 패키지 관리자 콘솔에서 명령을 합니다.
-    추가 마이그레이션 명령을 마지막 마이그레이션 이후 변경 내용을 확인 하 고 발견 되는 변경 내용으로 새 마이그레이션을 스 캐 폴딩 합니다. 마이그레이션을; 이름을 제공할 수 있습니다. 이 경우 마이그레이션 'AddUrl' 이라고 합니다.
-    스 캐 폴드 된 코드는 우리 해야 한다는 dbo에 문자열 데이터를 보유할 수에 있는 Url 열을 추가 합니다. 블로그 테이블입니다. 필요한 경우 스 캐 폴드 된 코드를 편집할 수 있지만 경우에 필수는 아닙니다.
+-   패키지 관리자 콘솔에서 **추가 마이그레이션 AddUrl** 명령을 실행 합니다.
+    마이그레이션 추가 명령은 마지막 마이그레이션 이후 변경 내용을 확인 하 고 검색 된 변경 내용을 사용 하 여 새 마이그레이션을 스 캐 폴드. 마이그레이션 이름을 지정할 수 있습니다. 이 경우 ' AddUrl ' 마이그레이션을 호출 합니다.
+    스 캐 폴드 코드는 문자열 데이터를 보유할 수 있는 Url 열을 dbo에 추가 해야 한다는 것을 의미 합니다. 블로그 테이블. 필요한 경우 스 캐 폴드 코드를 편집할 수 있지만이 경우에는 필요 하지 않습니다.
 
 ``` csharp
 namespace CodeFirstNewDatabaseSample.Migrations
@@ -261,18 +261,18 @@ namespace CodeFirstNewDatabaseSample.Migrations
 }
 ```
 
--   실행 합니다 **Update-database** 패키지 관리자 콘솔에서 명령을 합니다. 이 명령은 데이터베이스에 보류 중인 마이그레이션을 적용 됩니다. InitialCreate 마이그레이션 마이그레이션을 새 AddUrl 마이그레이션 적용만 있으므로 이미 적용 되었습니다.
-    팁: 사용할 수는 **– Verbose** 보려면 데이터베이스에 대해 실행 되는 SQL 데이터베이스 업데이트를 호출 하는 경우를 전환 합니다.
+-   패키지 관리자 콘솔에서 **업데이트 데이터베이스** 명령을 실행 합니다. 이 명령은 보류 중인 모든 마이그레이션을 데이터베이스에 적용 합니다. InitialCreate 마이그레이션은 이미 적용 되어 마이그레이션 시 새로운 AddUrl 마이그레이션만 적용 됩니다.
+    팁: 업데이트-데이터베이스를 호출할 때 **– Verbose** 스위치를 사용 하 여 데이터베이스에 대해 실행 되는 SQL을 확인할 수 있습니다.
 
-새 Url 열이 이제 블로그 테이블 데이터베이스에 추가 됩니다.
+이제 데이터베이스의 블로그 테이블에 새 Url 열이 추가 됩니다.
 
-![Url 사용 하 여 스키마](~/ef6/media/schemawithurl.png)
+![Url이 포함 된 스키마](~/ef6/media/schemawithurl.png)
 
 ## <a name="6-data-annotations"></a>6. 데이터 주석
 
-지금까지 EF는 기본 규칙을 사용 하 여 모델을 검색만 하도록 했습니다 하지만 클래스에는 규칙을 따르지 시점과 추가 구성을 수행 하려면 먼저 시간 되도록 것입니다. 두 가지 방법으로이; 이 섹션의 데이터 주석 및 다음 흐름 API는 다음 섹션에서 살펴보겠습니다.
+지금까지 EF는 기본 규칙을 사용 하 여 모델을 검색 하지만 클래스에서 규칙을 따르지 않고 추가 구성을 수행 해야 하는 경우가 있었습니다. 이에 대 한 두 가지 옵션이 있습니다. 이 섹션에서 데이터 주석을 확인 하 고 다음 섹션에서 흐름 API를 살펴보겠습니다.
 
--   모델에 추가할 사용자 클래스
+-   모델에 사용자 클래스를 추가 해 보겠습니다.
 
 ``` csharp
 public class User
@@ -282,7 +282,7 @@ public class User
 }
 ```
 
--   이 파생된 컨텍스트 집합을 추가 해야
+-   또한 파생 된 컨텍스트에 집합을 추가 해야 합니다.
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -293,14 +293,14 @@ public class BloggingContext : DbContext
 }
 ```
 
--   표시 된 오류는 마이그레이션을 추가 하려고 할 경우 얻게 "*EntityType 'User' 키가 없는 정의 합니다. 키를 정의이 EntityType에 대 한 합니다. "* EF에 사용자 이름을 사용자에 대 한 기본 키를 함을 알 수 없습니다.
--   사용 하 여 추가 하므로 이제 데이터 주석을 사용 하는 것 Program.cs 맨 위에 있는 문
+-   마이그레이션을 추가 하려고 하면 "*EntityType ' 사용자 '에 키가 정의 되어 있지 않다는 오류가 발생 합니다. 이 EntityType의 키를 정의 합니다. "* EF에는 사용자 이름이 사용자에 대 한 기본 키 여야 한다는 것을 알 수 있는 방법이 없습니다.
+-   이제 데이터 주석을 사용할 예정 이므로 Program.cs의 맨 위에 using 문을 추가 해야 합니다.
 
-```
+```csharp
 using System.ComponentModel.DataAnnotations;
 ```
 
--   이제 기본 키 것을 식별 하기 위해 사용자 이름 속성에 주석 달기
+-   이제 사용자 이름 속성에 주석을 추가 하 여 기본 키인지를 식별 합니다.
 
 ``` csharp
 public class User
@@ -311,14 +311,14 @@ public class User
 }
 ```
 
--   사용 된 **Add-migration AddUser** 데이터베이스 변경 명령을 적용 하는 마이그레이션을 스 캐 폴딩
--   실행 합니다 **Update-database** 새 마이그레이션을 데이터베이스에 적용 하는 명령
+-   Migration 스 캐 폴드 **AddUser** 명령을 사용 하 여 이러한 변경 내용을 데이터베이스에 적용 하는 마이그레이션 추가
+-   **Update-database** 명령을 실행 하 여 데이터베이스에 새 마이그레이션을 적용 합니다.
 
-이제 새 테이블은 데이터베이스에 추가 됩니다.
+이제 새 테이블이 데이터베이스에 추가 됩니다.
 
-![사용자와 스키마](~/ef6/media/schemawithusers.png)
+![사용자가 있는 스키마](~/ef6/media/schemawithusers.png)
 
-EF에서 지원 되는 주석의 전체 목록은 다음과 같습니다.
+EF에서 지원 되는 전체 주석 목록은 다음과 같습니다.
 
 -   [KeyAttribute](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.keyattribute)
 -   [StringLengthAttribute](https://msdn.microsoft.com/library/system.componentmodel.dataannotations.stringlengthattribute)
@@ -336,13 +336,13 @@ EF에서 지원 되는 주석의 전체 목록은 다음과 같습니다.
 
 ## <a name="7-fluent-api"></a>7. Fluent API
 
-이전 섹션에서 데이터 주석을 사용 하 여 보완 하거나 규칙에 따라 검색 된 항목을 재정의에 대해 살펴보았습니다. Code First fluent API를 통해 모델을 구성 하는 다른 방법은 됩니다.
+이전 섹션에서는 데이터 주석을 사용 하 여 규칙에 따라 검색 된 항목을 보완 하거나 재정의 하는 방법을 살펴보았습니다. 모델을 구성 하는 다른 방법은 Code First 흐름 API를 통하는 것입니다.
 
-대부분의 모델 구성 할 수 있는 간단한 데이터 주석을 사용 합니다. Fluent API는 데이터 주석 할 수 있는 모든 또한 불가능 데이터 주석을 사용한 몇 가지 고급 구성에 설명 하는 모델 구성을 지정 하는 고급 방법을 합니다. 데이터 주석과 흐름 API를 함께 사용할 수 있습니다.
+대부분의 모델 구성은 간단한 데이터 주석을 사용 하 여 수행할 수 있습니다. 흐름 API는 데이터 주석을 사용 하 여 데이터 주석으로 수행할 수 없는 몇 가지 고급 구성 외에도 데이터 주석을 통해 수행할 수 있는 모든 것을 포함 하는 모델 구성을 지정 하는 보다 고급 방법입니다. 데이터 주석과 흐름 API를 함께 사용할 수 있습니다.
 
-Fluent API에 액세스 하려면 DbContext의 OnModelCreating 메서드를 재정의할 수 있습니다. 에 방문 하셔서 User.DisplayName 표시할에 저장 되는 열의 이름을 바꿀 경우를 가정해\_이름입니다.
+흐름 API에 액세스 하려면 DbContext에서 OnModelCreating 메서드를 재정의 합니다. @ No__t-0name을 표시 하기 위해 User. DisplayName이 저장 된 열의 이름을 바꾸려고 한다고 가정해 보겠습니다.
 
--   다음 코드를 사용 하 여 BloggingContext OnModelCreating 메서드 재정의
+-   다음 코드를 사용 하 여 BloggingContext에서 OnModelCreating 메서드를 재정의 합니다.
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -360,13 +360,13 @@ public class BloggingContext : DbContext
 }
 ```
 
--   사용 합니다 **Add-migration ChangeDisplayName** 데이터베이스 변경 명령을 적용 하는 마이그레이션을 스 캐 폴딩 합니다.
--   실행 합니다 **Update-database** 새 마이그레이션을 데이터베이스에 적용할 명령.
+-   마이그레이션을 스 캐 폴드 하 여 데이터베이스에 이러한 변경 내용을 적용 하려면 migration **Changechangedisplayname** 명령을 사용 합니다.
+-   **업데이트-데이터베이스** 명령을 실행 하 여 데이터베이스에 새 마이그레이션을 적용 합니다.
 
-표시할 DisplayName 열 이름이 이제\_이름:
+이제 DisplayName 열의 이름이 @ no__t-0name을 표시 하도록 변경 되었습니다.
 
-![이름을 바꿀 표시 이름과 함께 스키마](~/ef6/media/schemawithdisplaynamerenamed.png)
+![표시 이름이 변경 된 스키마](~/ef6/media/schemawithdisplaynamerenamed.png)
 
 ## <a name="summary"></a>요약
 
-이 연습에서는 새 데이터베이스를 사용 하 여 Code First 개발에 살펴보았습니다. 클래스를 사용 하 여 모델을 정의 하 고 데이터베이스를 만들고 저장 하 고 데이터를 검색 하는 모델을 사용 합니다. 데이터베이스가 만들어진 후로 발전 한 모델 스키마를 변경 하려면 Code First 마이그레이션을 사용 했습니다. 데이터 주석 및 Fluent API를 사용 하 여 모델을 구성 하는 방법을 살펴보았습니다.
+이 연습에서는 새 데이터베이스를 사용 하 여 Code First 개발을 살펴보았습니다. 그런 다음 클래스를 사용 하 여 모델을 정의 하 고이 모델을 사용 하 여 데이터베이스를 만들고 데이터를 저장 및 검색 합니다. 데이터베이스를 만든 후에는 모델이 진화 함에 따라 스키마를 변경 Code First 마이그레이션 했습니다. 또한 데이터 주석과 흐름 API를 사용 하 여 모델을 구성 하는 방법도 살펴보았습니다.
