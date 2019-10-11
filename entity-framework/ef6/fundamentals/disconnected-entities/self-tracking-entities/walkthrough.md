@@ -3,61 +3,61 @@ title: 자동 추적 엔터티 연습-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: b21207c9-1d95-4aa3-ae05-bc5fe300dab0
-ms.openlocfilehash: d89c452410d34bea71e8220aae141c3bfca3e1ce
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: 9bd644461f50a7eff1006cb8866ca9a3b08b6b8d
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490276"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181707"
 ---
-# <a name="self-tracking-entities-walkthrough"></a><span data-ttu-id="cd89f-102">자동 추적 엔터티 연습</span><span class="sxs-lookup"><span data-stu-id="cd89f-102">Self-Tracking Entities Walkthrough</span></span>
+# <a name="self-tracking-entities-walkthrough"></a><span data-ttu-id="901fa-102">자동 추적 엔터티 연습</span><span class="sxs-lookup"><span data-stu-id="901fa-102">Self-Tracking Entities Walkthrough</span></span>
 > [!IMPORTANT]
-> <span data-ttu-id="cd89f-103">자동 추적 엔터티 템플릿을 더 이상 권장하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-103">We no longer recommend using the self-tracking-entities template.</span></span> <span data-ttu-id="cd89f-104">이 템플릿은 기존 응용 프로그램을 지원하는 용도로만 제공될 것입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-104">It will only continue to be available to support existing applications.</span></span> <span data-ttu-id="cd89f-105">응용 프로그램에서 연결이 끊긴 엔터티 그래프를 사용해야 하는 경우 커뮤니티에서 적극적으로 개발한 자동 추적 엔터티와 비슷한 기술인 [추적 가능 엔터티](http://trackableentities.github.io/) 같은 다른 대안을 고려하거나 하위 수준 변경 내용 추적 API를 사용하여 사용자 지정 코드를 작성하는 방법을 고려해 보세요.</span><span class="sxs-lookup"><span data-stu-id="cd89f-105">If your application requires working with disconnected graphs of entities, consider other alternatives such as [Trackable Entities](http://trackableentities.github.io/), which is a technology similar to Self-Tracking-Entities that is more actively developed by the community, or writing custom code using the low-level change tracking APIs.</span></span>
+> <span data-ttu-id="901fa-103">자동 추적 엔터티 템플릿을 더 이상 권장하지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-103">We no longer recommend using the self-tracking-entities template.</span></span> <span data-ttu-id="901fa-104">이 템플릿은 기존 애플리케이션을 지원하는 용도로만 제공될 것입니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-104">It will only continue to be available to support existing applications.</span></span> <span data-ttu-id="901fa-105">애플리케이션에서 연결이 끊긴 엔터티 그래프를 사용해야 하는 경우 커뮤니티에서 적극적으로 개발한 자동 추적 엔터티와 비슷한 기술인 [추적 가능 엔터티](https://trackableentities.github.io/) 같은 다른 대안을 고려하거나 하위 수준 변경 내용 추적 API를 사용하여 사용자 지정 코드를 작성하는 방법을 고려해 보세요.</span><span class="sxs-lookup"><span data-stu-id="901fa-105">If your application requires working with disconnected graphs of entities, consider other alternatives such as [Trackable Entities](https://trackableentities.github.io/), which is a technology similar to Self-Tracking-Entities that is more actively developed by the community, or writing custom code using the low-level change tracking APIs.</span></span>
 
-<span data-ttu-id="cd89f-106">이 연습에서는 Windows Communication Foundation (WCF) 서비스 엔터티 그래프를 반환 하는 작업을 노출 하는 시나리오를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-106">This walkthrough demonstrates the scenario in which a Windows Communication Foundation (WCF) service exposes an operation that returns an entity graph.</span></span> <span data-ttu-id="cd89f-107">다음, 클라이언트 응용 프로그램에서는 해당 그래프를 조작 하 고 유효성을 검사 하 고 Entity Framework를 사용 하 여 데이터베이스에 업데이트를 저장 하는 서비스 작업에 수정 내용을 전송 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-107">Next, a client application manipulates that graph and submits the modifications to a service operation that validates and saves the updates to a database using Entity Framework.</span></span>
+<span data-ttu-id="901fa-106">이 연습에서는 Windows Communication Foundation (WCF) 서비스에서 엔터티 그래프를 반환 하는 작업을 노출 하는 시나리오를 보여 줍니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-106">This walkthrough demonstrates the scenario in which a Windows Communication Foundation (WCF) service exposes an operation that returns an entity graph.</span></span> <span data-ttu-id="901fa-107">그런 다음 클라이언트 응용 프로그램은 해당 그래프를 조작 하 고 Entity Framework를 사용 하 여 업데이트의 유효성을 검사 하 고 데이터베이스에 저장 하는 서비스 작업에 수정 내용을 전송 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-107">Next, a client application manipulates that graph and submits the modifications to a service operation that validates and saves the updates to a database using Entity Framework.</span></span>
 
-<span data-ttu-id="cd89f-108">이 연습을 완료 하기 전에 읽어야 하는 [자동 추적 엔터티](index.md) 페이지입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-108">Before completing this walkthrough make sure you read the [Self-Tracking Entities](index.md) page.</span></span>
+<span data-ttu-id="901fa-108">이 연습을 완료 하기 전에 [자동 추적 엔터티](index.md) 페이지를 확인 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-108">Before completing this walkthrough make sure you read the [Self-Tracking Entities](index.md) page.</span></span>
 
-<span data-ttu-id="cd89f-109">이 연습에서는 다음 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-109">This walkthrough completes the following actions:</span></span>
+<span data-ttu-id="901fa-109">이 연습에서는 다음 작업을 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-109">This walkthrough completes the following actions:</span></span>
 
--   <span data-ttu-id="cd89f-110">에 액세스 하려면 데이터베이스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-110">Creates a database to access.</span></span>
--   <span data-ttu-id="cd89f-111">모델이 포함 된 클래스 라이브러리를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-111">Creates a class library that contains the model.</span></span>
--   <span data-ttu-id="cd89f-112">자동 추적 엔터티 생성기 템플릿을를 교환 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-112">Swaps to the Self-Tracking Entity Generator template.</span></span>
--   <span data-ttu-id="cd89f-113">엔터티 클래스를 별도 프로젝트로 이동합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-113">Moves the entity classes to a separate project.</span></span>
--   <span data-ttu-id="cd89f-114">쿼리 엔터티를 저장 하는 작업을 노출 하는 WCF 서비스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-114">Creates a WCF service that exposes operations to query and save entities.</span></span>
--   <span data-ttu-id="cd89f-115">응용 프로그램 (콘솔 및 WPF) 서비스를 사용 하는 클라이언트를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-115">Creates client applications (Console and WPF) that consume the service.</span></span>
+-   <span data-ttu-id="901fa-110">액세스할 데이터베이스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-110">Creates a database to access.</span></span>
+-   <span data-ttu-id="901fa-111">모델을 포함 하는 클래스 라이브러리를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-111">Creates a class library that contains the model.</span></span>
+-   <span data-ttu-id="901fa-112">자동 추적 엔터티 생성기 템플릿으로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-112">Swaps to the Self-Tracking Entity Generator template.</span></span>
+-   <span data-ttu-id="901fa-113">엔터티 클래스를 개별 프로젝트로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-113">Moves the entity classes to a separate project.</span></span>
+-   <span data-ttu-id="901fa-114">엔터티를 쿼리하고 저장 하는 작업을 노출 하는 WCF 서비스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-114">Creates a WCF service that exposes operations to query and save entities.</span></span>
+-   <span data-ttu-id="901fa-115">서비스를 사용 하는 클라이언트 응용 프로그램 (콘솔 및 WPF)을 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-115">Creates client applications (Console and WPF) that consume the service.</span></span>
 
-<span data-ttu-id="cd89f-116">이 연습에서는 Database First 사용 하지만 동일한 기술을 Model First를 동일 하 게 적용 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-116">We'll use Database First in this walkthrough but the same techniques apply equally to Model First.</span></span>
+<span data-ttu-id="901fa-116">이 연습에서는 Database First을 사용 하지만 동일한 기술이 Model First에 동일 하 게 적용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-116">We'll use Database First in this walkthrough but the same techniques apply equally to Model First.</span></span>
 
-## <a name="pre-requisites"></a><span data-ttu-id="cd89f-117">필수 조건</span><span class="sxs-lookup"><span data-stu-id="cd89f-117">Pre-Requisites</span></span>
+## <a name="pre-requisites"></a><span data-ttu-id="901fa-117">필수 구성 요소</span><span class="sxs-lookup"><span data-stu-id="901fa-117">Pre-Requisites</span></span>
 
-<span data-ttu-id="cd89f-118">이 연습을 완료 하려면 최신 버전의 Visual Studio를 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-118">To complete this walkthrough you will need a recent version of Visual Studio.</span></span>
+<span data-ttu-id="901fa-118">이 연습을 완료 하려면 최신 버전의 Visual Studio가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-118">To complete this walkthrough you will need a recent version of Visual Studio.</span></span>
 
-## <a name="create-a-database"></a><span data-ttu-id="cd89f-119">데이터베이스 만들기</span><span class="sxs-lookup"><span data-stu-id="cd89f-119">Create a Database</span></span>
+## <a name="create-a-database"></a><span data-ttu-id="901fa-119">데이터베이스 만들기</span><span class="sxs-lookup"><span data-stu-id="901fa-119">Create a Database</span></span>
 
-<span data-ttu-id="cd89f-120">Visual Studio와 함께 설치 되는 데이터베이스 서버 설치한 Visual Studio의 버전에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-120">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
+<span data-ttu-id="901fa-120">Visual Studio와 함께 설치 되는 데이터베이스 서버는 설치한 Visual Studio 버전에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-120">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you have installed:</span></span>
 
--   <span data-ttu-id="cd89f-121">Visual Studio 2012를 사용 하는 경우 다음 만들려는 LocalDB 데이터베이스입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-121">If you are using Visual Studio 2012 then you'll be creating a LocalDB database.</span></span>
--   <span data-ttu-id="cd89f-122">Visual Studio 2010을 사용 하는 경우 SQL Express 데이터베이스를 만드는 됩니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-122">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
+-   <span data-ttu-id="901fa-121">Visual Studio 2012을 사용 하는 경우 LocalDB 데이터베이스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-121">If you are using Visual Studio 2012 then you'll be creating a LocalDB database.</span></span>
+-   <span data-ttu-id="901fa-122">Visual Studio 2010을 사용 하는 경우 SQL Express 데이터베이스를 만듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-122">If you are using Visual Studio 2010 you'll be creating a SQL Express database.</span></span>
 
-<span data-ttu-id="cd89f-123">데이터베이스를 생성 해 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-123">Let's go ahead and generate the database.</span></span>
+<span data-ttu-id="901fa-123">계속 해 서 데이터베이스를 생성 해 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-123">Let's go ahead and generate the database.</span></span>
 
--   <span data-ttu-id="cd89f-124">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-124">Open Visual Studio</span></span>
--   <span data-ttu-id="cd89f-125">**보기-&gt; 서버 탐색기**</span><span class="sxs-lookup"><span data-stu-id="cd89f-125">**View -&gt; Server Explorer**</span></span>
--   <span data-ttu-id="cd89f-126">마우스 오른쪽 단추로 클릭 **데이터 연결-&gt; 연결 추가 중...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-126">Right click on **Data Connections -&gt; Add Connection…**</span></span>
--   <span data-ttu-id="cd89f-127">선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않았으면 **Microsoft SQL Server** 데이터 원본으로</span><span class="sxs-lookup"><span data-stu-id="cd89f-127">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>
--   <span data-ttu-id="cd89f-128">LocalDB 또는 어느에 따라 설치한 SQL Express에 연결</span><span class="sxs-lookup"><span data-stu-id="cd89f-128">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>
--   <span data-ttu-id="cd89f-129">입력 **STESample** 데이터베이스 이름으로</span><span class="sxs-lookup"><span data-stu-id="cd89f-129">Enter **STESample** as the database name</span></span>
--   <span data-ttu-id="cd89f-130">선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**</span><span class="sxs-lookup"><span data-stu-id="cd89f-130">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
--   <span data-ttu-id="cd89f-131">새 데이터베이스 서버 탐색기에 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-131">The new database will now appear in Server Explorer</span></span>
--   <span data-ttu-id="cd89f-132">Visual Studio 2012를 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="cd89f-132">If you are using Visual Studio 2012</span></span>
-    -   <span data-ttu-id="cd89f-133">서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 선택 **새 쿼리**</span><span class="sxs-lookup"><span data-stu-id="cd89f-133">Right-click on the database in Server Explorer and select **New Query**</span></span>
-    -   <span data-ttu-id="cd89f-134">새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**</span><span class="sxs-lookup"><span data-stu-id="cd89f-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
--   <span data-ttu-id="cd89f-135">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="cd89f-135">If you are using Visual Studio 2010</span></span>
-    -   <span data-ttu-id="cd89f-136">선택 **데이터&gt; Transact SQL 편집기-&gt; 새 쿼리 연결 하는 중...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-136">Select **Data -&gt; Transact SQL Editor -&gt; New Query Connection...**</span></span>
-    -   <span data-ttu-id="cd89f-137">입력 **.\\ SQLEXPRESS** 서버 이름 및 클릭으로 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-137">Enter **.\\SQLEXPRESS** as the server name and click **OK**</span></span>
-    -   <span data-ttu-id="cd89f-138">선택 된 **STESample** 쿼리 편집기의 맨 위에 있는 드롭다운에서 아래로 데이터베이스</span><span class="sxs-lookup"><span data-stu-id="cd89f-138">Select the **STESample** database from the drop down at the top of the query editor</span></span>
-    -   <span data-ttu-id="cd89f-139">새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **SQL 실행**</span><span class="sxs-lookup"><span data-stu-id="cd89f-139">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>
+-   <span data-ttu-id="901fa-124">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-124">Open Visual Studio</span></span>
+-   <span data-ttu-id="901fa-125">**뷰-&gt; 서버 탐색기**</span><span class="sxs-lookup"><span data-stu-id="901fa-125">**View -&gt; Server Explorer**</span></span>
+-   <span data-ttu-id="901fa-126">데이터 연결을 마우스 오른쪽 단추로 클릭 하 **&gt; 연결 추가** ...를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-126">Right click on **Data Connections -&gt; Add Connection…**</span></span>
+-   <span data-ttu-id="901fa-127">서버 탐색기 데이터베이스에 연결 하지 않은 경우 **Microsoft SQL Server** 를 데이터 원본으로 선택 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-127">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>
+-   <span data-ttu-id="901fa-128">설치한 항목에 따라 LocalDB 또는 SQL Express에 연결</span><span class="sxs-lookup"><span data-stu-id="901fa-128">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>
+-   <span data-ttu-id="901fa-129">데이터베이스 이름으로 **STESample** 을 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-129">Enter **STESample** as the database name</span></span>
+-   <span data-ttu-id="901fa-130">**확인** 을 선택 하 고 새 데이터베이스를 만들지 여부를 묻는 메시지가 표시 되 면 **예** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-130">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>
+-   <span data-ttu-id="901fa-131">이제 새 데이터베이스가 서버 탐색기에 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-131">The new database will now appear in Server Explorer</span></span>
+-   <span data-ttu-id="901fa-132">Visual Studio 2012을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="901fa-132">If you are using Visual Studio 2012</span></span>
+    -   <span data-ttu-id="901fa-133">서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 **새 쿼리** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-133">Right-click on the database in Server Explorer and select **New Query**</span></span>
+    -   <span data-ttu-id="901fa-134">다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **실행** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-134">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>
+-   <span data-ttu-id="901fa-135">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="901fa-135">If you are using Visual Studio 2010</span></span>
+    -   <span data-ttu-id="901fa-136">**데이터-&gt; TRANSACT-SQL SQL 편집기-&gt; 새 쿼리 연결** ...을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-136">Select **Data -&gt; Transact SQL Editor -&gt; New Query Connection...**</span></span>
+    -   <span data-ttu-id="901fa-137">**@No__t-1SQLEXPRESS** 를 서버 이름으로 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-137">Enter **.\\SQLEXPRESS** as the server name and click **OK**</span></span>
+    -   <span data-ttu-id="901fa-138">쿼리 편집기 위쪽의 드롭다운에서 **STESample** 데이터베이스를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-138">Select the **STESample** database from the drop down at the top of the query editor</span></span>
+    -   <span data-ttu-id="901fa-139">다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **Sql 실행** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-139">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>
 
 ``` SQL
     CREATE TABLE [dbo].[Blogs] (
@@ -83,106 +83,105 @@ ms.locfileid: "45490276"
     INSERT INTO [dbo].[Posts] ([Title], [Content], [BlogId]) VALUES (N'What is New', N'More interesting stuff...', 1)
 ```
 
-## <a name="create-the-model"></a><span data-ttu-id="cd89f-140">모델 만들기</span><span class="sxs-lookup"><span data-stu-id="cd89f-140">Create the Model</span></span>
+## <a name="create-the-model"></a><span data-ttu-id="901fa-140">모델 만들기</span><span class="sxs-lookup"><span data-stu-id="901fa-140">Create the Model</span></span>
 
-<span data-ttu-id="cd89f-141">Up,에서는 먼저 모델에 삽입할 프로젝트입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-141">First up, we need a project to put the model in.</span></span>
+<span data-ttu-id="901fa-141">먼저 모델을 배치할 프로젝트가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-141">First up, we need a project to put the model in.</span></span>
 
--   <span data-ttu-id="cd89f-142">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-142">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="cd89f-143">선택 **Visual C\#**  왼쪽된 창에서 다음 **클래스 라이브러리**</span><span class="sxs-lookup"><span data-stu-id="cd89f-143">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
--   <span data-ttu-id="cd89f-144">입력 **STESample** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-144">Enter **STESample** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-142">**파일-&gt; 새 &gt; 프로젝트 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-142">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="901fa-143">왼쪽 창에서 **Visual C @ no__t-1** 을 선택한 다음 **클래스 라이브러리** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-143">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
+-   <span data-ttu-id="901fa-144">이름으로 **STESample** 를 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-144">Enter **STESample** as the name and click **OK**</span></span>
 
-<span data-ttu-id="cd89f-145">이제 간단한 모델을 데이터베이스에 액세스 하려면 EF 디자이너에서 만들어 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-145">Now we'll create a simple model in the EF Designer to access our database:</span></span>
+<span data-ttu-id="901fa-145">이제 EF Designer에서 간단한 모델을 만들어 데이터베이스에 액세스 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-145">Now we'll create a simple model in the EF Designer to access our database:</span></span>
 
--   <span data-ttu-id="cd89f-146">**프로젝트-&gt; 새 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-146">**Project -&gt; Add New Item...**</span></span>
--   <span data-ttu-id="cd89f-147">선택 **데이터** 왼쪽된 창에서 다음 **ADO.NET 엔터티 데이터 모델**</span><span class="sxs-lookup"><span data-stu-id="cd89f-147">Select **Data** from the left pane and then **ADO.NET Entity Data Model**</span></span>
--   <span data-ttu-id="cd89f-148">입력 **BloggingModel** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-148">Enter **BloggingModel** as the name and click **OK**</span></span>
--   <span data-ttu-id="cd89f-149">선택 **데이터베이스에서 생성** 를 클릭 하 고 **다음**</span><span class="sxs-lookup"><span data-stu-id="cd89f-149">Select **Generate from database** and click **Next**</span></span>
--   <span data-ttu-id="cd89f-150">이전 섹션에서 만든 데이터베이스에 대 한 연결 정보를 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-150">Enter the connection information for the database that you created in the previous section</span></span>
--   <span data-ttu-id="cd89f-151">입력 **BloggingContext** 연결 문자열 및 클릭에 대 한 이름으로 **다음**</span><span class="sxs-lookup"><span data-stu-id="cd89f-151">Enter **BloggingContext** as the name for the connection string and click **Next**</span></span>
--   <span data-ttu-id="cd89f-152">옆에 확인란 **테이블** 를 클릭 하 고 **마침**</span><span class="sxs-lookup"><span data-stu-id="cd89f-152">Check the box next to **Tables** and click **Finish**</span></span>
+-   <span data-ttu-id="901fa-146">**프로젝트-&gt; 새 항목 추가 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-146">**Project -&gt; Add New Item...**</span></span>
+-   <span data-ttu-id="901fa-147">왼쪽 창에서 **데이터** 를 선택 하 고 **ADO.NET** 를 선택 엔터티 데이터 모델</span><span class="sxs-lookup"><span data-stu-id="901fa-147">Select **Data** from the left pane and then **ADO.NET Entity Data Model**</span></span>
+-   <span data-ttu-id="901fa-148">이름으로 **BloggingModel** 를 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-148">Enter **BloggingModel** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-149">**데이터베이스에서 생성** 을 선택 하 고 **다음** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-149">Select **Generate from database** and click **Next**</span></span>
+-   <span data-ttu-id="901fa-150">이전 섹션에서 만든 데이터베이스에 대 한 연결 정보를 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-150">Enter the connection information for the database that you created in the previous section</span></span>
+-   <span data-ttu-id="901fa-151">연결 문자열 이름으로 **BloggingContext** 를 입력 하 고 **다음** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-151">Enter **BloggingContext** as the name for the connection string and click **Next**</span></span>
+-   <span data-ttu-id="901fa-152">**테이블** 옆의 확인란을 선택 하 고 **마침** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-152">Check the box next to **Tables** and click **Finish**</span></span>
 
-## <a name="swap-to-ste-code-generation"></a><span data-ttu-id="cd89f-153">STE 코드 생성을 교환 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-153">Swap to STE Code Generation</span></span>
+## <a name="swap-to-ste-code-generation"></a><span data-ttu-id="901fa-153">붙여넣기 코드 생성으로 전환</span><span class="sxs-lookup"><span data-stu-id="901fa-153">Swap to STE Code Generation</span></span>
 
-<span data-ttu-id="cd89f-154">이제 기본 코드 생성 및 교환 작업을 자동 추적 엔터티를 사용 하지 않도록 설정 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-154">Now we need to disable the default code generation and swap to Self-Tracking Entities.</span></span>
+<span data-ttu-id="901fa-154">이제 기본 코드 생성을 사용 하지 않도록 설정 하 고 자동 추적 엔터티로 교환 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-154">Now we need to disable the default code generation and swap to Self-Tracking Entities.</span></span>
 
-### <a name="if-you-are-using-visual-studio-2012"></a><span data-ttu-id="cd89f-155">Visual Studio 2012를 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="cd89f-155">If you are using Visual Studio 2012</span></span>
+### <a name="if-you-are-using-visual-studio-2012"></a><span data-ttu-id="901fa-155">Visual Studio 2012을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="901fa-155">If you are using Visual Studio 2012</span></span>
 
--   <span data-ttu-id="cd89f-156">확장 **BloggingModel.edmx** 에 **솔루션 탐색기** 삭제 하 고는 **BloggingModel.tt** 고 **BloggingModel.Context.tt** 
-     *기본 코드 생성을 사용 하지 않도록 설정 됩니다*</span><span class="sxs-lookup"><span data-stu-id="cd89f-156">Expand **BloggingModel.edmx** in **Solution Explorer** and delete the **BloggingModel.tt** and **BloggingModel.Context.tt**
-*This will disable the default code generation*</span></span>
--   <span data-ttu-id="cd89f-157">EF 디자이너 화면에서 빈 영역을 마우스 오른쪽 단추로 클릭 **코드 생성 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-157">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
--   <span data-ttu-id="cd89f-158">선택 **Online** 검색에 대 한 확인 하 고 왼쪽된 창에서 **STE 생성기**</span><span class="sxs-lookup"><span data-stu-id="cd89f-158">Select **Online** from the left pane and search for **STE Generator**</span></span>
--   <span data-ttu-id="cd89f-159">선택 된 **C에 대 한 STE 생성기\#**  템플릿에 입력 **STETemplate** 이름과 클릭 **추가**</span><span class="sxs-lookup"><span data-stu-id="cd89f-159">Select the **STE Generator for C\#** template, enter **STETemplate** as the name and click **Add**</span></span>
--   <span data-ttu-id="cd89f-160">합니다 **STETemplate.tt** 하 고 **STETemplate.Context.tt** 파일은 BloggingModel.edmx 파일 아래에 중첩 추가</span><span class="sxs-lookup"><span data-stu-id="cd89f-160">The **STETemplate.tt** and **STETemplate.Context.tt** files are added nested under the BloggingModel.edmx file</span></span>
+-   <span data-ttu-id="901fa-156">**솔루션 탐색기** 에서 **BloggingModel** 를 확장 하 고 **BloggingModel.tt** 및 **BloggingModel.Context.tt**@no__t를 삭제 합니다.*이는 기본 코드 생성을 사용 하지 않도록 설정* 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-156">Expand **BloggingModel.edmx** in **Solution Explorer** and delete the **BloggingModel.tt** and **BloggingModel.Context.tt**
+    *This will disable the default code generation*</span></span>
+-   <span data-ttu-id="901fa-157">EF 디자이너 화면에서 빈 영역을 마우스 오른쪽 단추로 클릭 하 고 **코드 생성 항목 추가** ...를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-157">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
+-   <span data-ttu-id="901fa-158">왼쪽 창에서 **온라인** 을 선택 하 고 **붙여넣기 생성기** 를 검색 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-158">Select **Online** from the left pane and search for **STE Generator**</span></span>
+-   <span data-ttu-id="901fa-159">**붙여넣기 생성기 For C no__t** 템플릿을 선택 하 고 이름으로 **STETemplate** 를 입력 한 다음 **추가** 를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-159">Select the **STE Generator for C\#** template, enter **STETemplate** as the name and click **Add**</span></span>
+-   <span data-ttu-id="901fa-160">**STETemplate.tt** 및 **STETemplate.Context.tt** 파일은 BloggingModel 파일 아래에 중첩 되어 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-160">The **STETemplate.tt** and **STETemplate.Context.tt** files are added nested under the BloggingModel.edmx file</span></span>
 
-### <a name="if-you-are-using-visual-studio-2010"></a><span data-ttu-id="cd89f-161">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="cd89f-161">If you are using Visual Studio 2010</span></span>
+### <a name="if-you-are-using-visual-studio-2010"></a><span data-ttu-id="901fa-161">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="901fa-161">If you are using Visual Studio 2010</span></span>
 
--   <span data-ttu-id="cd89f-162">EF 디자이너 화면에서 빈 영역을 마우스 오른쪽 단추로 클릭 **코드 생성 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-162">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
--   <span data-ttu-id="cd89f-163">선택 **코드** 왼쪽된 창에서 다음 **ADO.NET 자동 추적 엔터티 생성기**</span><span class="sxs-lookup"><span data-stu-id="cd89f-163">Select **Code** from the left pane and then **ADO.NET Self-Tracking Entity Generator**</span></span>
--   <span data-ttu-id="cd89f-164">입력 **STETemplate** 이름과 클릭 **추가**</span><span class="sxs-lookup"><span data-stu-id="cd89f-164">Enter **STETemplate** as the name and click **Add**</span></span>
--   <span data-ttu-id="cd89f-165">합니다 **STETemplate.tt** 하 고 **STETemplate.Context.tt** 파일은 프로젝트에 직접 추가</span><span class="sxs-lookup"><span data-stu-id="cd89f-165">The **STETemplate.tt** and **STETemplate.Context.tt** files are added directly to your project</span></span>
+-   <span data-ttu-id="901fa-162">EF 디자이너 화면에서 빈 영역을 마우스 오른쪽 단추로 클릭 하 고 **코드 생성 항목 추가** ...를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-162">Right-click an empty area on the EF Designer surface and select **Add Code Generation Item...**</span></span>
+-   <span data-ttu-id="901fa-163">왼쪽 창에서 **코드** 를 선택한 다음 **자동 추적 엔터티 생성기를 ADO.NET** .</span><span class="sxs-lookup"><span data-stu-id="901fa-163">Select **Code** from the left pane and then **ADO.NET Self-Tracking Entity Generator**</span></span>
+-   <span data-ttu-id="901fa-164">이름으로 **STETemplate** 를 입력 하 고 **추가** 를 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-164">Enter **STETemplate** as the name and click **Add**</span></span>
+-   <span data-ttu-id="901fa-165">**STETemplate.tt** 및 **STETemplate.Context.tt** 파일은 프로젝트에 직접 추가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-165">The **STETemplate.tt** and **STETemplate.Context.tt** files are added directly to your project</span></span>
 
-## <a name="move-entity-types-into-separate-project"></a><span data-ttu-id="cd89f-166">엔터티 형식은 별도 프로젝트로 이동</span><span class="sxs-lookup"><span data-stu-id="cd89f-166">Move Entity Types into Separate Project</span></span>
+## <a name="move-entity-types-into-separate-project"></a><span data-ttu-id="901fa-166">엔터티 형식을 개별 프로젝트로 이동</span><span class="sxs-lookup"><span data-stu-id="901fa-166">Move Entity Types into Separate Project</span></span>
 
-<span data-ttu-id="cd89f-167">자동 추적 엔터티를 사용 하는 클라이언트 응용 프로그램 모델에서 생성 된 엔터티 클래스에 대 한 액세스를 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-167">To use Self-Tracking Entities our client application needs access to the entity classes generated from our model.</span></span> <span data-ttu-id="cd89f-168">클라이언트 응용 프로그램 전체 모델을 노출 하지 않으려는 것 때문에 엔터티 클래스에는 별도 프로젝트로 이동 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-168">Because we don't want to expose the whole model to the client application we're going to move the entity classes into a separate project.</span></span>
+<span data-ttu-id="901fa-167">자동 추적 엔터티를 사용 하려면 클라이언트 응용 프로그램에 모델에서 생성 된 엔터티 클래스에 대 한 액세스 권한이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-167">To use Self-Tracking Entities our client application needs access to the entity classes generated from our model.</span></span> <span data-ttu-id="901fa-168">전체 모델을 클라이언트 응용 프로그램에 노출 하지 않으려는 경우 엔터티 클래스를 개별 프로젝트로 이동 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-168">Because we don't want to expose the whole model to the client application we're going to move the entity classes into a separate project.</span></span>
 
-<span data-ttu-id="cd89f-169">첫 번째 단계는 기존 프로젝트에서 엔터티 클래스 생성을 중지 하려면:</span><span class="sxs-lookup"><span data-stu-id="cd89f-169">The first step is to stop generating entity classes in the existing project:</span></span>
+<span data-ttu-id="901fa-169">첫 번째 단계는 기존 프로젝트에서 엔터티 클래스를 생성 하는 것을 중지 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-169">The first step is to stop generating entity classes in the existing project:</span></span>
 
--   <span data-ttu-id="cd89f-170">마우스 오른쪽 단추로 클릭 **STETemplate.tt** 에 **솔루션 탐색기** 선택한 **속성**</span><span class="sxs-lookup"><span data-stu-id="cd89f-170">Right-click on **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
--   <span data-ttu-id="cd89f-171">에 **속성** 창 지우기 **TextTemplatingFileGenerator** 에서 합니다 **CustomTool** 속성</span><span class="sxs-lookup"><span data-stu-id="cd89f-171">In the **Properties** window clear **TextTemplatingFileGenerator** from the **CustomTool** property</span></span>
--   <span data-ttu-id="cd89f-172">확장 **STETemplate.tt** 에 **솔루션 탐색기** 그 아래에 중첩 된 모든 파일을 삭제 하 고</span><span class="sxs-lookup"><span data-stu-id="cd89f-172">Expand **STETemplate.tt** in **Solution Explorer** and delete all files nested under it</span></span>
+-   <span data-ttu-id="901fa-170">**솔루션 탐색기** 에서 **STETemplate.tt** 을 마우스 오른쪽 단추로 클릭 하 고 **속성** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-170">Right-click on **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
+-   <span data-ttu-id="901fa-171">**속성** 창의 **사용자 지정 도구** 속성에서 **texttemplatingfilegenerator** 의 선택을 취소 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-171">In the **Properties** window clear **TextTemplatingFileGenerator** from the **CustomTool** property</span></span>
+-   <span data-ttu-id="901fa-172">**솔루션 탐색기** 에서 **STETemplate.tt** 를 확장 하 고 그 아래 중첩 된 모든 파일을 삭제 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-172">Expand **STETemplate.tt** in **Solution Explorer** and delete all files nested under it</span></span>
 
-<span data-ttu-id="cd89f-173">새 프로젝트를 추가 하 여 엔터티 클래스를 생성 하겠습니다 다음으로,</span><span class="sxs-lookup"><span data-stu-id="cd89f-173">Next, we are going to add a new project and generate the entity classes in it</span></span>
+<span data-ttu-id="901fa-173">다음으로 새 프로젝트를 추가 하 고 여기에 엔터티 클래스를 생성 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-173">Next, we are going to add a new project and generate the entity classes in it</span></span>
 
--   <span data-ttu-id="cd89f-174">**파일만&gt; 추가-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-174">**File -&gt; Add -&gt; Project...**</span></span>
--   <span data-ttu-id="cd89f-175">선택 **Visual C\#**  왼쪽된 창에서 다음 **클래스 라이브러리**</span><span class="sxs-lookup"><span data-stu-id="cd89f-175">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
--   <span data-ttu-id="cd89f-176">입력 **STESample.Entities** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-176">Enter **STESample.Entities** as the name and click **OK**</span></span>
--   <span data-ttu-id="cd89f-177">**프로젝트-&gt; 기존 항목 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-177">**Project -&gt; Add Existing Item...**</span></span>
--   <span data-ttu-id="cd89f-178">로 이동 합니다 **STESample** 프로젝트 폴더</span><span class="sxs-lookup"><span data-stu-id="cd89f-178">Navigate to the **STESample** project folder</span></span>
--   <span data-ttu-id="cd89f-179">보려는 선택 **모든 파일 (\*.\*)**</span><span class="sxs-lookup"><span data-stu-id="cd89f-179">Select to view **All Files (\*.\*)**</span></span>
--   <span data-ttu-id="cd89f-180">선택 된 **STETemplate.tt** 파일</span><span class="sxs-lookup"><span data-stu-id="cd89f-180">Select the **STETemplate.tt** file</span></span>
--   <span data-ttu-id="cd89f-181">옆에 드롭다운 화살표를 클릭 합니다 **추가** 단추를 선택 **링크로 추가**</span><span class="sxs-lookup"><span data-stu-id="cd89f-181">Click on the drop down arrow next to the **Add** button and select **Add As Link**</span></span>
+-   <span data-ttu-id="901fa-174">**파일 &gt; 추가 &gt; 프로젝트 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-174">**File -&gt; Add -&gt; Project...**</span></span>
+-   <span data-ttu-id="901fa-175">왼쪽 창에서 **Visual C @ no__t-1** 을 선택한 다음 **클래스 라이브러리** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-175">Select **Visual C\#** from the left pane and then **Class Library**</span></span>
+-   <span data-ttu-id="901fa-176">이름으로 STESample를 입력 하 고 **확인을** 클릭 **합니다.**</span><span class="sxs-lookup"><span data-stu-id="901fa-176">Enter **STESample.Entities** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-177">**프로젝트-&gt; 기존 항목 추가 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-177">**Project -&gt; Add Existing Item...**</span></span>
+-   <span data-ttu-id="901fa-178">**STESample** 프로젝트 폴더로 이동 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-178">Navigate to the **STESample** project folder</span></span>
+-   <span data-ttu-id="901fa-179">모든 파일을 보려면 선택 **합니다 (\*. \*).**</span><span class="sxs-lookup"><span data-stu-id="901fa-179">Select to view **All Files (\*.\*)**</span></span>
+-   <span data-ttu-id="901fa-180">**STETemplate.tt** 파일 선택</span><span class="sxs-lookup"><span data-stu-id="901fa-180">Select the **STETemplate.tt** file</span></span>
+-   <span data-ttu-id="901fa-181">**추가** 단추 옆에 있는 드롭다운 화살표를 클릭 하 고 **링크로 추가** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-181">Click on the drop down arrow next to the **Add** button and select **Add As Link**</span></span>
 
     ![연결 된 템플릿 추가](~/ef6/media/addlinkedtemplate.png)
 
-<span data-ttu-id="cd89f-183">또한 엔터티 클래스에는 동일한 컨텍스트에서 네임 스페이스에 생성 되도록 것입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-183">We're also going to make sure the entity classes get generated in the same namespace as the context.</span></span> <span data-ttu-id="cd89f-184">이 바로 응용 프로그램 전체에서 추가 해야 하는 문을 사용 하 여의 수를 줄입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-184">This just reduces the number of using statements we need to add throughout our application.</span></span>
+<span data-ttu-id="901fa-183">또한 컨텍스트와 동일한 네임 스페이스에서 엔터티 클래스가 생성 되도록 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-183">We're also going to make sure the entity classes get generated in the same namespace as the context.</span></span> <span data-ttu-id="901fa-184">이렇게 하면 응용 프로그램 전체에서 추가 해야 하는 using 문 수가 줄어듭니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-184">This just reduces the number of using statements we need to add throughout our application.</span></span>
 
--   <span data-ttu-id="cd89f-185">연결 된 마우스 오른쪽 단추로 클릭 **STETemplate.tt** 에 **솔루션 탐색기** 선택한 **속성**</span><span class="sxs-lookup"><span data-stu-id="cd89f-185">Right-click on the linked **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
--   <span data-ttu-id="cd89f-186">에 **속성** 창 집합 **사용자 지정 도구 Namespace** 에 **STESample**</span><span class="sxs-lookup"><span data-stu-id="cd89f-186">In the **Properties** window set **Custom Tool Namespace** to **STESample**</span></span>
+-   <span data-ttu-id="901fa-185">**솔루션 탐색기** 에서 연결 된 **STETemplate.tt** 를 마우스 오른쪽 단추로 클릭 하 고 **속성** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-185">Right-click on the linked **STETemplate.tt** in **Solution Explorer** and select **Properties**</span></span>
+-   <span data-ttu-id="901fa-186">**속성** 창에서 **사용자 지정 도구 네임 스페이스** 를 **STESample** 로 설정 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-186">In the **Properties** window set **Custom Tool Namespace** to **STESample**</span></span>
 
-<span data-ttu-id="cd89f-187">STE 템플릿에 의해 생성 된 코드에 대 한 참조 해야 합니다. **System.Runtime.Serialization** 컴파일하기 위해.</span><span class="sxs-lookup"><span data-stu-id="cd89f-187">The code generated by the STE template will need a reference to **System.Runtime.Serialization** in order to compile.</span></span> <span data-ttu-id="cd89f-188">이 라이브러리는 WCF에 필요한 **DataContract** 하 고 **DataMember** 직렬화 가능 엔터티 형식에 사용 되는 특성입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-188">This library is needed for the WCF **DataContract** and **DataMember** attributes that are used on the serializable entity types.</span></span>
+<span data-ttu-id="901fa-187">붙여넣기 템플릿에서 생성 된 코드에는 컴파일을 위해 **system.object** 에 대 한 참조가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-187">The code generated by the STE template will need a reference to **System.Runtime.Serialization** in order to compile.</span></span> <span data-ttu-id="901fa-188">이 라이브러리는 serialize 할 수 있는 엔터티 형식에서 사용 되는 WCF **DataContract** 및 **DataMember** 특성에 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-188">This library is needed for the WCF **DataContract** and **DataMember** attributes that are used on the serializable entity types.</span></span>
 
--   <span data-ttu-id="cd89f-189">마우스 오른쪽 단추로 클릭 합니다 **STESample.Entities** 프로젝트 **솔루션 탐색기** 선택한 **참조 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-189">Right click on the **STESample.Entities** project in **Solution Explorer** and select **Add Reference...**</span></span>
-    -   <span data-ttu-id="cd89f-190">Visual Studio 2012-확인란 옆 **System.Runtime.Serialization** 를 클릭 하 고 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-190">In Visual Studio 2012 - check the box next to **System.Runtime.Serialization** and click **OK**</span></span>
-    -   <span data-ttu-id="cd89f-191">Visual Studio 2010-에서 선택 **System.Runtime.Serialization** 를 클릭 하 고 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-191">In Visual Studio 2010 - select **System.Runtime.Serialization** and click **OK**</span></span>
+-   <span data-ttu-id="901fa-189">**솔루션 탐색기** 에서 **STESample** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **참조 추가** ...를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-189">Right click on the **STESample.Entities** project in **Solution Explorer** and select **Add Reference...**</span></span>
+    -   <span data-ttu-id="901fa-190">Visual Studio 2012에서- **system.web** 옆의 확인란을 선택 하 고 **확인** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-190">In Visual Studio 2012 - check the box next to **System.Runtime.Serialization** and click **OK**</span></span>
+    -   <span data-ttu-id="901fa-191">Visual Studio 2010에서, 선택 하 고 **확인** 을 클릭 합니다 **.**</span><span class="sxs-lookup"><span data-stu-id="901fa-191">In Visual Studio 2010 - select **System.Runtime.Serialization** and click **OK**</span></span>
 
-<span data-ttu-id="cd89f-192">마지막으로,이 컨텍스트에서 사용 하 여 프로젝트에 엔터티 형식에 대 한 참조를 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-192">Finally, the project with our context in it will need a reference to the entity types.</span></span>
+<span data-ttu-id="901fa-192">마지막으로 컨텍스트를 포함 하는 프로젝트에는 엔터티 형식에 대 한 참조가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-192">Finally, the project with our context in it will need a reference to the entity types.</span></span>
 
--   <span data-ttu-id="cd89f-193">마우스 오른쪽 단추로 클릭 합니다 **STESample** 프로젝트 **솔루션 탐색기** 선택한 **참조 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-193">Right click on the **STESample** project in **Solution Explorer** and select **Add Reference...**</span></span>
-    -   <span data-ttu-id="cd89f-194">Visual Studio 2012-에서 선택 **솔루션** 왼쪽된 창에서 확인란 옆에 **STESample.Entities** 를 클릭 하 고 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-194">In Visual Studio 2012 - select **Solution** from the left pane, check the box next to **STESample.Entities** and click **OK**</span></span>
-    -   <span data-ttu-id="cd89f-195">Visual Studio 2010-에서 선택 합니다 **프로젝트** 탭을 선택 **STESample.Entities** 를 클릭 하 고 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-195">In Visual Studio 2010 - select the **Projects** tab, select **STESample.Entities** and click **OK**</span></span>
+-   <span data-ttu-id="901fa-193">**솔루션 탐색기** 에서 **STESample** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **참조 추가** ...를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-193">Right click on the **STESample** project in **Solution Explorer** and select **Add Reference...**</span></span>
+    -   <span data-ttu-id="901fa-194">Visual Studio 2012-왼쪽 창에서 **솔루션** 을 선택 하 고 STESample 옆에 있는 확인란을 선택 하 고 **확인** 을 클릭 **합니다.**</span><span class="sxs-lookup"><span data-stu-id="901fa-194">In Visual Studio 2012 - select **Solution** from the left pane, check the box next to **STESample.Entities** and click **OK**</span></span>
+    -   <span data-ttu-id="901fa-195">Visual Studio 2010- **프로젝트** 탭을 선택 하 고 STESample를 선택한 다음 **확인** 을 클릭 **합니다.**</span><span class="sxs-lookup"><span data-stu-id="901fa-195">In Visual Studio 2010 - select the **Projects** tab, select **STESample.Entities** and click **OK**</span></span>
 
 >[!NOTE]
-> <span data-ttu-id="cd89f-196">엔터티 형식은 별도 프로젝트를 이동 하는 또 다른 옵션의 기본 위치에서 연결 하는 것이 아니라 템플릿 파일을 옮기는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-196">Another option for moving the entity types to a separate project is to move the template file, rather than linking it from its default location.</span></span> <span data-ttu-id="cd89f-197">이 작업을 수행 하는 경우 업데이트 해야 합니다는 **inputFile** .edmx 파일에 상대 경로 제공 하는 템플릿에 변수 (이 예제는 **... \\BloggingModel.edmx**).</span><span class="sxs-lookup"><span data-stu-id="cd89f-197">If you do this, you will need to update the **inputFile** variable in the template to provide the relative path to the edmx file (in this example that would be **..\\BloggingModel.edmx**).</span></span>
+> <span data-ttu-id="901fa-196">엔터티 형식을 개별 프로젝트로 이동 하는 또 다른 옵션은 템플릿 파일을 기본 위치에서 연결 하는 대신 이동 하는 것입니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-196">Another option for moving the entity types to a separate project is to move the template file, rather than linking it from its default location.</span></span> <span data-ttu-id="901fa-197">이렇게 하려면 템플릿에서 **inputFile** 변수를 업데이트 하 여 edmx 파일 (이 예제에서는)에 대 한 상대 경로를 제공 해야 **합니다. \\BloggingModel**).</span><span class="sxs-lookup"><span data-stu-id="901fa-197">If you do this, you will need to update the **inputFile** variable in the template to provide the relative path to the edmx file (in this example that would be **..\\BloggingModel.edmx**).</span></span>
 
-## <a name="create-a-wcf-service"></a><span data-ttu-id="cd89f-198">WCF 서비스 만들기</span><span class="sxs-lookup"><span data-stu-id="cd89f-198">Create a WCF Service</span></span>
+## <a name="create-a-wcf-service"></a><span data-ttu-id="901fa-198">WCF 서비스 만들기</span><span class="sxs-lookup"><span data-stu-id="901fa-198">Create a WCF Service</span></span>
 
-<span data-ttu-id="cd89f-199">이제 데이터를 노출 하는 WCF 서비스를 추가 하려면, 프로젝트를 만들어 시작 하겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-199">Now it's time to add a WCF Service to expose our data, we'll start by creating the project.</span></span>
+<span data-ttu-id="901fa-199">이제 데이터를 노출 하는 WCF 서비스를 추가할 때 프로젝트를 만들어 시작 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-199">Now it's time to add a WCF Service to expose our data, we'll start by creating the project.</span></span>
 
--   <span data-ttu-id="cd89f-200">**파일만&gt; 추가-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-200">**File -&gt; Add -&gt; Project...**</span></span>
--   <span data-ttu-id="cd89f-201">선택 **Visual C\#**  왼쪽된 창에서 다음 **WCF 서비스 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="cd89f-201">Select **Visual C\#** from the left pane and then **WCF Service Application**</span></span>
--   <span data-ttu-id="cd89f-202">입력 **STESample.Service** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-202">Enter **STESample.Service** as the name and click **OK**</span></span>
--   <span data-ttu-id="cd89f-203">에 대 한 참조를 추가 합니다 **System.Data.Entity** 어셈블리</span><span class="sxs-lookup"><span data-stu-id="cd89f-203">Add a reference to the **System.Data.Entity** assembly</span></span>
--   <span data-ttu-id="cd89f-204">에 대 한 참조를 추가 합니다 **STESample** 하 고 **STESample.Entities** 프로젝트</span><span class="sxs-lookup"><span data-stu-id="cd89f-204">Add a reference to the **STESample** and **STESample.Entities** projects</span></span>
+-   <span data-ttu-id="901fa-200">**파일 &gt; 추가 &gt; 프로젝트 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-200">**File -&gt; Add -&gt; Project...**</span></span>
+-   <span data-ttu-id="901fa-201">왼쪽 창에서 **Visual C @ no__t-1** 을 선택 하 고 **WCF 서비스 응용 프로그램** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-201">Select **Visual C\#** from the left pane and then **WCF Service Application**</span></span>
+-   <span data-ttu-id="901fa-202">이름으로 STESample를 입력 하 고 **확인을** 클릭 **합니다.**</span><span class="sxs-lookup"><span data-stu-id="901fa-202">Enter **STESample.Service** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-203">System.object 어셈블리에 참조를 추가 합니다 **.**</span><span class="sxs-lookup"><span data-stu-id="901fa-203">Add a reference to the **System.Data.Entity** assembly</span></span>
+-   <span data-ttu-id="901fa-204">**STESample** 및 **STESample** 프로젝트에 대 한 참조 추가</span><span class="sxs-lookup"><span data-stu-id="901fa-204">Add a reference to the **STESample** and **STESample.Entities** projects</span></span>
 
-<span data-ttu-id="cd89f-205">런타임 시 검색 되도록이 프로젝트에 EF 연결 문자열을 복사 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-205">We need to copy the EF connection string to this project so that it is found at runtime.</span></span>
+<span data-ttu-id="901fa-205">런타임에 발견 되도록 EF 연결 문자열을이 프로젝트에 복사 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-205">We need to copy the EF connection string to this project so that it is found at runtime.</span></span>
 
--   <span data-ttu-id="cd89f-206">열기를 **App.Config** 에 대 한 파일을 \* \* STESample \* \* 프로젝트 및 복사 합니다 **connectionStrings** 요소</span><span class="sxs-lookup"><span data-stu-id="cd89f-206">Open the **App.Config** file for the \*\*STESample \*\*project and copy the **connectionStrings** element</span></span>
--   <span data-ttu-id="cd89f-207">붙여넣기를 **connectionStrings** 의 자식 요소로 요소를 **구성** 의 요소를 **Web.Config** 파일을 **STESample.Service** 프로젝트</span><span class="sxs-lookup"><span data-stu-id="cd89f-207">Paste the **connectionStrings** element as a child element of the **configuration** element of the **Web.Config** file in the **STESample.Service** project</span></span>
+-   <span data-ttu-id="901fa-206"> **STESample **프로젝트에 대 한 app.config 파일을 열고 **connectionStrings** 요소를 복사 합니다 **.**</span><span class="sxs-lookup"><span data-stu-id="901fa-206">Open the **App.Config** file for the **STESample **project and copy the **connectionStrings** element</span></span>
+-   <span data-ttu-id="901fa-207">**ConnectionStrings** 요소를 STESample **프로젝트에서 web.config 파일의** **구성** 요소에 대 한 자식 요소로 붙여넣습니다 **.**</span><span class="sxs-lookup"><span data-stu-id="901fa-207">Paste the **connectionStrings** element as a child element of the **configuration** element of the **Web.Config** file in the **STESample.Service** project</span></span>
 
-<span data-ttu-id="cd89f-208">이제 실제 서비스를 구현 하는 시간입니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-208">Now it's time to implement the actual service.</span></span>
+<span data-ttu-id="901fa-208">이제 실제 서비스를 구현할 때입니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-208">Now it's time to implement the actual service.</span></span>
 
--   <span data-ttu-id="cd89f-209">오픈 **IService1.cs** 내용을 다음 코드로 바꾸고</span><span class="sxs-lookup"><span data-stu-id="cd89f-209">Open **IService1.cs** and replace the contents with the following code</span></span>
+-   <span data-ttu-id="901fa-209">**IService1.cs** 를 열고 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-209">Open **IService1.cs** and replace the contents with the following code</span></span>
 
 ``` csharp
     using System.Collections.Generic;
@@ -202,7 +201,7 @@ ms.locfileid: "45490276"
     }
 ```
 
--   <span data-ttu-id="cd89f-210">오픈 **Service1.svc** 내용을 다음 코드로 바꾸고</span><span class="sxs-lookup"><span data-stu-id="cd89f-210">Open **Service1.svc** and replace the contents with the following code</span></span>
+-   <span data-ttu-id="901fa-210">Service1을 열고 내용을 다음 코드로 바꿉니다 **.**</span><span class="sxs-lookup"><span data-stu-id="901fa-210">Open **Service1.svc** and replace the contents with the following code</span></span>
 
 ``` csharp
     using System;
@@ -255,24 +254,24 @@ ms.locfileid: "45490276"
     }
 ```
 
-## <a name="consume-the-service-from-a-console-application"></a><span data-ttu-id="cd89f-211">콘솔 응용 프로그램에서 서비스 사용</span><span class="sxs-lookup"><span data-stu-id="cd89f-211">Consume the Service from a Console Application</span></span>
+## <a name="consume-the-service-from-a-console-application"></a><span data-ttu-id="901fa-211">콘솔 응용 프로그램에서 서비스 사용</span><span class="sxs-lookup"><span data-stu-id="901fa-211">Consume the Service from a Console Application</span></span>
 
-<span data-ttu-id="cd89f-212">서비스를 사용 하는 콘솔 응용 프로그램을 만들어 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-212">Let's create a console application that uses our service.</span></span>
+<span data-ttu-id="901fa-212">서비스를 사용 하는 콘솔 응용 프로그램을 만들어 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-212">Let's create a console application that uses our service.</span></span>
 
--   <span data-ttu-id="cd89f-213">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-213">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="cd89f-214">선택 **Visual C\#**  왼쪽된 창에서 다음 **콘솔 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="cd89f-214">Select **Visual C\#** from the left pane and then **Console Application**</span></span>
--   <span data-ttu-id="cd89f-215">입력 **STESample.ConsoleTest** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-215">Enter **STESample.ConsoleTest** as the name and click **OK**</span></span>
--   <span data-ttu-id="cd89f-216">에 대 한 참조를 추가 합니다 **STESample.Entities** 프로젝트</span><span class="sxs-lookup"><span data-stu-id="cd89f-216">Add a reference to the **STESample.Entities** project</span></span>
+-   <span data-ttu-id="901fa-213">**파일-&gt; 새 &gt; 프로젝트 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-213">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="901fa-214">왼쪽 창에서 **Visual C @ no__t-1** 을 선택 하 고 **콘솔 응용 프로그램** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-214">Select **Visual C\#** from the left pane and then **Console Application**</span></span>
+-   <span data-ttu-id="901fa-215">이름으로 **STESample. ConsoleTest** 를 입력 하 고 **확인** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-215">Enter **STESample.ConsoleTest** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-216">**STESample** 프로젝트에 대 한 참조 추가</span><span class="sxs-lookup"><span data-stu-id="901fa-216">Add a reference to the **STESample.Entities** project</span></span>
 
-<span data-ttu-id="cd89f-217">WCF 서비스에 대 한 서비스 참조 필요</span><span class="sxs-lookup"><span data-stu-id="cd89f-217">We need a service reference to our WCF service</span></span>
+<span data-ttu-id="901fa-217">WCF 서비스에 대 한 서비스 참조가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-217">We need a service reference to our WCF service</span></span>
 
--   <span data-ttu-id="cd89f-218">마우스 오른쪽 단추로 클릭 합니다 **STESample.ConsoleTest** 프로젝트 **솔루션 탐색기** 선택한 **서비스 참조 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-218">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
--   <span data-ttu-id="cd89f-219">클릭 **검색**</span><span class="sxs-lookup"><span data-stu-id="cd89f-219">Click **Discover**</span></span>
--   <span data-ttu-id="cd89f-220">입력 **BloggingService** 네임 스페이스와 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-220">Enter **BloggingService** as the namespace and click **OK**</span></span>
+-   <span data-ttu-id="901fa-218">**솔루션 탐색기** 에서 **STESample ConsoleTest** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **서비스 참조 추가 ...** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-218">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
+-   <span data-ttu-id="901fa-219">**검색** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-219">Click **Discover**</span></span>
+-   <span data-ttu-id="901fa-220">네임 스페이스로 **BloggingService** 를 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-220">Enter **BloggingService** as the namespace and click **OK**</span></span>
 
-<span data-ttu-id="cd89f-221">이제 서비스를 사용 하는 일부 코드를 작성할 수 했습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-221">Now we can write some code to consume the service.</span></span>
+<span data-ttu-id="901fa-221">이제 서비스를 사용 하는 코드를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-221">Now we can write some code to consume the service.</span></span>
 
--   <span data-ttu-id="cd89f-222">오픈 **Program.cs** 그 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-222">Open **Program.cs** and replace the contents with the following code.</span></span>
+-   <span data-ttu-id="901fa-222">**Program.cs** 를 열고 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-222">Open **Program.cs** and replace the contents with the following code.</span></span>
 
 ``` csharp
     using STESample.ConsoleTest.BloggingService;
@@ -399,13 +398,13 @@ ms.locfileid: "45490276"
     }
 ```
 
-<span data-ttu-id="cd89f-223">이제 응용 프로그램을 실행하여 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-223">You can now run the application to see it in action.</span></span>
+<span data-ttu-id="901fa-223">이제 애플리케이션을 실행하여 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-223">You can now run the application to see it in action.</span></span>
 
--   <span data-ttu-id="cd89f-224">마우스 오른쪽 단추로 클릭 합니다 **STESample.ConsoleTest** 프로젝트 **솔루션 탐색기** 선택한 **디버그-&gt; 새 인스턴스 시작**</span><span class="sxs-lookup"><span data-stu-id="cd89f-224">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
+-   <span data-ttu-id="901fa-224">**솔루션 탐색기** 에서 **STESample ConsoleTest** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **디버그-&gt; 새 인스턴스 시작** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-224">Right-click the **STESample.ConsoleTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
 
-<span data-ttu-id="cd89f-225">응용 프로그램을 실행 하는 경우 다음과 같은 출력이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-225">You'll see the following output when the application executes.</span></span>
+<span data-ttu-id="901fa-225">응용 프로그램이 실행 되 면 다음과 같은 출력이 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-225">You'll see the following output when the application executes.</span></span>
 
-```
+```console
 Initial Data:
 ADO.NET Blog
 - Intro to EF
@@ -435,24 +434,24 @@ ADO.NET Blog
 Press any key to exit...
 ```
 
-## <a name="consume-the-service-from-a-wpf-application"></a><span data-ttu-id="cd89f-226">WPF 응용 프로그램에서 서비스 사용</span><span class="sxs-lookup"><span data-stu-id="cd89f-226">Consume the Service from a WPF Application</span></span>
+## <a name="consume-the-service-from-a-wpf-application"></a><span data-ttu-id="901fa-226">WPF 응용 프로그램에서 서비스 사용</span><span class="sxs-lookup"><span data-stu-id="901fa-226">Consume the Service from a WPF Application</span></span>
 
-<span data-ttu-id="cd89f-227">서비스를 사용 하는 WPF 응용 프로그램을 만들어 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-227">Let's create a WPF application that uses our service.</span></span>
+<span data-ttu-id="901fa-227">서비스를 사용 하는 WPF 응용 프로그램을 만들어 보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-227">Let's create a WPF application that uses our service.</span></span>
 
--   <span data-ttu-id="cd89f-228">**파일만&gt; 새로운 기능-&gt; 프로젝트...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-228">**File -&gt; New -&gt; Project...**</span></span>
--   <span data-ttu-id="cd89f-229">선택 **Visual C\#**  왼쪽된 창에서 다음 **WPF 응용 프로그램**</span><span class="sxs-lookup"><span data-stu-id="cd89f-229">Select **Visual C\#** from the left pane and then **WPF Application**</span></span>
--   <span data-ttu-id="cd89f-230">입력 **STESample.WPFTest** 이름과 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-230">Enter **STESample.WPFTest** as the name and click **OK**</span></span>
--   <span data-ttu-id="cd89f-231">에 대 한 참조를 추가 합니다 **STESample.Entities** 프로젝트</span><span class="sxs-lookup"><span data-stu-id="cd89f-231">Add a reference to the **STESample.Entities** project</span></span>
+-   <span data-ttu-id="901fa-228">**파일-&gt; 새 &gt; 프로젝트 ...**</span><span class="sxs-lookup"><span data-stu-id="901fa-228">**File -&gt; New -&gt; Project...**</span></span>
+-   <span data-ttu-id="901fa-229">왼쪽 창에서 **Visual C @ no__t-1** 을 선택한 다음 **WPF 응용 프로그램** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-229">Select **Visual C\#** from the left pane and then **WPF Application**</span></span>
+-   <span data-ttu-id="901fa-230">이름으로 **STESample. WPFTest** 를 입력 하 고 **확인** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-230">Enter **STESample.WPFTest** as the name and click **OK**</span></span>
+-   <span data-ttu-id="901fa-231">**STESample** 프로젝트에 대 한 참조 추가</span><span class="sxs-lookup"><span data-stu-id="901fa-231">Add a reference to the **STESample.Entities** project</span></span>
 
-<span data-ttu-id="cd89f-232">WCF 서비스에 대 한 서비스 참조 필요</span><span class="sxs-lookup"><span data-stu-id="cd89f-232">We need a service reference to our WCF service</span></span>
+<span data-ttu-id="901fa-232">WCF 서비스에 대 한 서비스 참조가 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-232">We need a service reference to our WCF service</span></span>
 
--   <span data-ttu-id="cd89f-233">마우스 오른쪽 단추로 클릭 합니다 **STESample.WPFTest** 프로젝트 **솔루션 탐색기** 선택한 **서비스 참조 추가...**</span><span class="sxs-lookup"><span data-stu-id="cd89f-233">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
--   <span data-ttu-id="cd89f-234">클릭 **검색**</span><span class="sxs-lookup"><span data-stu-id="cd89f-234">Click **Discover**</span></span>
--   <span data-ttu-id="cd89f-235">입력 **BloggingService** 네임 스페이스와 클릭 **확인**</span><span class="sxs-lookup"><span data-stu-id="cd89f-235">Enter **BloggingService** as the namespace and click **OK**</span></span>
+-   <span data-ttu-id="901fa-233">**솔루션 탐색기** 에서 **STESample WPFTest** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **서비스 참조 추가 ...** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-233">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Add Service Reference...**</span></span>
+-   <span data-ttu-id="901fa-234">**검색** 을 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-234">Click **Discover**</span></span>
+-   <span data-ttu-id="901fa-235">네임 스페이스로 **BloggingService** 를 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-235">Enter **BloggingService** as the namespace and click **OK**</span></span>
 
-<span data-ttu-id="cd89f-236">이제 서비스를 사용 하는 일부 코드를 작성할 수 했습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-236">Now we can write some code to consume the service.</span></span>
+<span data-ttu-id="901fa-236">이제 서비스를 사용 하는 코드를 작성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-236">Now we can write some code to consume the service.</span></span>
 
--   <span data-ttu-id="cd89f-237">오픈 **MainWindow.xaml** 그 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-237">Open **MainWindow.xaml** and replace the contents with the following code.</span></span>
+-   <span data-ttu-id="901fa-237">**Mainwindow.xaml** 를 열고 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-237">Open **MainWindow.xaml** and replace the contents with the following code.</span></span>
 
 ``` xaml
     <Window
@@ -496,7 +495,7 @@ Press any key to exit...
     </Window>
 ```
 
--   <span data-ttu-id="cd89f-238">MainWindow에 대 한 코드 숨김 엽니다 (**MainWindow.xaml.cs**) 콘텐츠를 다음 코드로 바꾸고</span><span class="sxs-lookup"><span data-stu-id="cd89f-238">Open the code behind for MainWindow (**MainWindow.xaml.cs**) and replace the contents with the following code</span></span>
+-   <span data-ttu-id="901fa-238">Mainwindow.xaml (**MainWindow.xaml.cs**)에 대 한 코드를 열고 내용을 다음 코드로 바꿉니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-238">Open the code behind for MainWindow (**MainWindow.xaml.cs**) and replace the contents with the following code</span></span>
 
 ``` csharp
     using STESample.WPFTest.BloggingService;
@@ -548,9 +547,9 @@ Press any key to exit...
     }
 ```
 
-<span data-ttu-id="cd89f-239">이제 응용 프로그램을 실행하여 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="cd89f-239">You can now run the application to see it in action.</span></span>
+<span data-ttu-id="901fa-239">이제 애플리케이션을 실행하여 작동하는지 확인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-239">You can now run the application to see it in action.</span></span>
 
--   <span data-ttu-id="cd89f-240">마우스 오른쪽 단추로 클릭 합니다 **STESample.WPFTest** 프로젝트 **솔루션 탐색기** 선택한 **디버그-&gt; 새 인스턴스 시작**</span><span class="sxs-lookup"><span data-stu-id="cd89f-240">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
--   <span data-ttu-id="cd89f-241">화면을 사용 하 여 데이터를 조작 하 고 사용 하 여 서비스를 통해 저장 된 **저장할** 단추</span><span class="sxs-lookup"><span data-stu-id="cd89f-241">You can manipulate the data using the screen and save it via the service using the **Save** button</span></span>
+-   <span data-ttu-id="901fa-240">**솔루션 탐색기** 에서 **STESample WPFTest** 프로젝트를 마우스 오른쪽 단추로 클릭 하 고 **디버그-&gt; 새 인스턴스 시작** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-240">Right-click the **STESample.WPFTest** project in **Solution Explorer** and select **Debug -&gt; Start new instance**</span></span>
+-   <span data-ttu-id="901fa-241">화면을 사용 하 여 데이터를 조작 하 고 **저장** 단추를 사용 하 여 서비스를 통해 데이터를 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="901fa-241">You can manipulate the data using the screen and save it via the service using the **Save** button</span></span>
 
 ![WPF 주 창](~/ef6/media/wpf.png)
