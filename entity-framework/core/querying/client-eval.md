@@ -1,75 +1,68 @@
 ---
 title: 클라이언트 및 서버 평가 - EF Core
-author: rowanmiller
-ms.date: 10/27/2016
+author: smitpatel
+ms.date: 10/03/2019
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: cb207d9e1b1004a4084dd6fc66712183b5bdd5dc
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.openlocfilehash: 3d70324f0b57a0ea9b165b5140a2154001c326f4
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921709"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181910"
 ---
-# <a name="client-vs-server-evaluation"></a><span data-ttu-id="bbdac-102">클라이언트 및 서버 평가</span><span class="sxs-lookup"><span data-stu-id="bbdac-102">Client vs. Server Evaluation</span></span>
+# <a name="client-vs-server-evaluation"></a><span data-ttu-id="26c33-102">클라이언트 및 서버 평가</span><span class="sxs-lookup"><span data-stu-id="26c33-102">Client vs. Server Evaluation</span></span>
 
-<span data-ttu-id="bbdac-103">Entity Framework Core는 클라이언트에서 평가되는 쿼리 부분과 데이터베이스로 푸시되는 쿼리 부분을 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-103">Entity Framework Core supports parts of the query being evaluated on the client and parts of it being pushed to the database.</span></span> <span data-ttu-id="bbdac-104">데이터베이스에서 평가될 쿼리의 부분은 데이터베이스 공급자가 결정합니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-104">It is up to the database provider to determine which parts of the query will be evaluated in the database.</span></span>
+<span data-ttu-id="26c33-103">일반적으로 Entity Framework Core는 서버에서 쿼리를 가능한 한 많이 평가하려고 시도합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-103">As a general rule, Entity Framework Core attempts to evaluate a query on the server as much as possible.</span></span> <span data-ttu-id="26c33-104">EF Core는 쿼리 부분들을 클라이언트 쪽에서 평가할 수 있는 매개 변수로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-104">EF Core converts parts of the query into parameters, which it can evaluate on the client side.</span></span> <span data-ttu-id="26c33-105">쿼리의 나머지 부분(과 생성된 매개 변수)은 서버에서 평가할 동등한 데이터베이스 쿼리를 확인할 수 있도록 데이터베이스 공급자에게 제공됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-105">The rest of the query (along with the generated parameters) is given to the database provider to determine the equivalent database query to evaluate on the server.</span></span> <span data-ttu-id="26c33-106">EF Core는 최상위 프로젝션(`Select()`에 대한 마지막 호출)에서 부분적인 클라이언트 평가를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-106">EF Core supports partial client evaluation in the top-level projection (essentially, the last call to `Select()`).</span></span> <span data-ttu-id="26c33-107">쿼리의 최상위 프로젝션이 서버로 변환될 수 없는 경우, EF Core는 서버에서 필요한 데이터를 가져와서 쿼리의 나머지 부분을 클라이언트에서 평가합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-107">If the top-level projection in the query can't be translated to the server, EF Core will fetch any required data from the server and evaluate remaining parts of the query on the client.</span></span> <span data-ttu-id="26c33-108">EF Core가 최상위 프로젝션이 아닌 다른 모든 곳에서 서버로 변환할 수 없는 식을 발견하면 런타임 예외를 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-108">If EF Core detects an expression, in any place other than the top-level projection, which can't be translated to the server, then it throws a runtime exception.</span></span> <span data-ttu-id="26c33-109">EF Core가 서버로 변환될 수 없는 항목을 판단하는 방식은 [쿼리가 작동하는 방법](xref:core/querying/how-query-works)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-109">See [how query works](xref:core/querying/how-query-works) to understand how EF Core determines what can't be translated to server.</span></span>
 
-> [!TIP]  
-> <span data-ttu-id="bbdac-105">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-105">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
+> [!NOTE]
+> <span data-ttu-id="26c33-110">버전 3.0 전까지는 Entity Framework Core가 쿼리의 모든 곳에서 클라이언트 평가를 지원했습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-110">Prior to version 3.0, Entity Framework Core supported client evaluation anywhere in the query.</span></span> <span data-ttu-id="26c33-111">자세한 내용은 [이전 버전 섹션](#previous-versions)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-111">For more information, see the [previous versions section](#previous-versions).</span></span>
 
-## <a name="client-evaluation"></a><span data-ttu-id="bbdac-106">클라이언트 평가</span><span class="sxs-lookup"><span data-stu-id="bbdac-106">Client evaluation</span></span>
+## <a name="client-evaluation-in-the-top-level-projection"></a><span data-ttu-id="26c33-112">최상위 프로젝션에서의 클라이언트 평가</span><span class="sxs-lookup"><span data-stu-id="26c33-112">Client evaluation in the top-level projection</span></span>
 
-<span data-ttu-id="bbdac-107">다음 예제에서는 도우미 메서드가 SQL Server 데이터베이스에 반환되는 블로그의 URL을 표준화하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-107">In the following example a helper method is used to standardize URLs for blogs that are returned from a SQL Server database.</span></span> <span data-ttu-id="bbdac-108">SQL Server 공급자는 이 메서드가 구현되는 방법에 대한 인사이트가 없기 때문에 이 메서드를 SQL로 변환할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-108">Because the SQL Server provider has no insight into how this method is implemented, it is not possible to translate it into SQL.</span></span> <span data-ttu-id="bbdac-109">쿼리의 다른 모든 측면은 데이터베이스에서 평가되지만 이 메서드를 통해 반환된 `URL`을 전달하는 작업은 클라이언트에서 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-109">All other aspects of the query are evaluated in the database, but passing the returned `URL` through this method is performed on the client.</span></span>
+> [!TIP]
+> <span data-ttu-id="26c33-113">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-113">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying) on GitHub.</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/ClientEval/Sample.cs?highlight=6)] -->
-``` csharp
-var blogs = context.Blogs
-    .OrderByDescending(blog => blog.Rating)
-    .Select(blog => new
-    {
-        Id = blog.BlogId,
-        Url = StandardizeUrl(blog.Url)
-    })
-    .ToList();
-```
+<span data-ttu-id="26c33-114">다음 예제에서는 도우미 메서드가 SQL Server 데이터베이스에 반환되는 블로그의 URL을 표준화하는 데 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-114">In the following example, a helper method is used to standardize URLs for blogs, which are returned from a SQL Server database.</span></span> <span data-ttu-id="26c33-115">SQL Server 공급자는 이 메서드가 구현되는 방법에 대한 인사이트가 없기 때문에 이 메서드를 SQL로 변환할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-115">Since the SQL Server provider has no insight into how this method is implemented, it isn't possible to translate it into SQL.</span></span> <span data-ttu-id="26c33-116">쿼리의 다른 모든 측면은 데이터베이스에서 평가되지만 이 메서드를 통해 반환된 `URL`을 전달하는 작업은 클라이언트에서 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-116">All other aspects of the query are evaluated in the database, but passing the returned `URL` through this method is done on the client.</span></span>
 
-<!-- [!code-csharp[Main](samples/core/Querying/ClientEval/Sample.cs)] -->
-``` csharp
-public static string StandardizeUrl(string url)
-{
-    url = url.ToLower();
+[!code-csharp[Main](../../../samples/core/Querying/ClientEval/Sample.cs#ClientProjection)]
 
-    if (!url.StartsWith("http://"))
-    {
-        url = string.Concat("http://", url);
-    }
+[!code-csharp[Main](../../../samples/core/Querying/ClientEval/Sample.cs#ClientMethod)]
 
-    return url;
-}
-```
+## <a name="unsupported-client-evaluation"></a><span data-ttu-id="26c33-117">지원되지 않는 클라이언트 평가</span><span class="sxs-lookup"><span data-stu-id="26c33-117">Unsupported client evaluation</span></span>
 
-## <a name="client-evaluation-performance-issues"></a><span data-ttu-id="bbdac-110">클라이언트 평가 성능 문제</span><span class="sxs-lookup"><span data-stu-id="bbdac-110">Client evaluation performance issues</span></span>
+<span data-ttu-id="26c33-118">클라이언트 평가는 유용하긴 하나 때로 성능 저하를 유발할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-118">While client evaluation is useful, it can result in poor performance sometimes.</span></span> <span data-ttu-id="26c33-119">도우미 메서드가 where 필터에서 사용되는 다음 쿼리를 살펴보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-119">Consider the following query, in which the helper method is now used in a where filter.</span></span> <span data-ttu-id="26c33-120">필터를 데이터베이스에 적용할 수 없으므로 클라이언트에 필터를 적용하려면 모든 데이터를 메모리로 가져와야 합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-120">Because the filter can't be applied in the database, all the data needs to be pulled into memory to apply the filter on the client.</span></span> <span data-ttu-id="26c33-121">필터와 서버에 있는 데이터의 양에 따라 클라이언트 평가는 성능 저하를 유발할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-121">Based on the filter and the amount of data on the server, client evaluation could result in poor performance.</span></span> <span data-ttu-id="26c33-122">따라서 Entity Framework Core는 이러한 클라이언트 평가를 차단하고 런타임 예외를 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-122">So Entity Framework Core blocks such client evaluation and throws a runtime exception.</span></span>
 
-<span data-ttu-id="bbdac-111">클라이언트 평가는 매우 유용할 수 있지만 경우에 따라 성능이 저하될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-111">While client evaluation can be very useful, in some instances it can result in poor performance.</span></span> <span data-ttu-id="bbdac-112">이제 도우미 메서드가 필터에서 사용되는 다음 쿼리를 살펴보겠습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-112">Consider the following query, where the helper method is now used in a filter.</span></span> <span data-ttu-id="bbdac-113">데이터베이스에서는 이 작업을 수행할 수 없으므로 모든 데이터를 메모리로 풀한 다음, 클라이언트에서 필터를 적용합니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-113">Because this can't be performed in the database, all the data is pulled into memory and then the filter is applied on the client.</span></span> <span data-ttu-id="bbdac-114">데이터양과 해당 데이터가 필터링되는 양에 따라 성능이 저하될 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-114">Depending on the amount of data, and how much of that data is filtered out, this could result in poor performance.</span></span>
+[!code-csharp[Main](../../../samples/core/Querying/ClientEval/Sample.cs#ClientWhere)]
 
-<!-- [!code-csharp[Main](samples/core/Querying/ClientEval/Sample.cs)] -->
-``` csharp
-var blogs = context.Blogs
-    .Where(blog => StandardizeUrl(blog.Url).Contains("dotnet"))
-    .ToList();
-```
+## <a name="explicit-client-evaluation"></a><span data-ttu-id="26c33-123">명시적 클라이언트 평가</span><span class="sxs-lookup"><span data-stu-id="26c33-123">Explicit client evaluation</span></span>
 
-## <a name="client-evaluation-logging"></a><span data-ttu-id="bbdac-115">클라이언트 평가 로깅</span><span class="sxs-lookup"><span data-stu-id="bbdac-115">Client evaluation logging</span></span>
+<span data-ttu-id="26c33-124">다음과 같은 특정 경우에는 클라이언트 평가를 명시적으로 강제해야 할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-124">You may need to force into client evaluation explicitly in certain cases like following</span></span>
 
-<span data-ttu-id="bbdac-116">기본적으로 EF Core는 클라이언트 평가가 수행될 때 표시되는 경고를 로깅합니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-116">By default, EF Core will log a warning when client evaluation is performed.</span></span> <span data-ttu-id="bbdac-117">로깅 출력 보기에 대한 자세한 내용은 [로깅](../miscellaneous/logging.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="bbdac-117">See [Logging](../miscellaneous/logging.md) for more information on viewing logging output.</span></span> 
+- <span data-ttu-id="26c33-125">데이터의 양이 적어서 클라이언트에서 평가하는 것이 대단한 성능 저하를 유발하지 않는 경우.</span><span class="sxs-lookup"><span data-stu-id="26c33-125">The amount of data is small so that evaluating on the client doesn't incur a huge performance penalty.</span></span>
+- <span data-ttu-id="26c33-126">사용되는 LINQ 연산자의 서버 쪽 변환이 없는 경우.</span><span class="sxs-lookup"><span data-stu-id="26c33-126">The LINQ operator being used has no server-side translation.</span></span>
 
-## <a name="optional-behavior-throw-an-exception-for-client-evaluation"></a><span data-ttu-id="bbdac-118">선택적 동작: 클라이언트 평가에 대한 예외를 발생시킵니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-118">Optional behavior: throw an exception for client evaluation</span></span>
+<span data-ttu-id="26c33-127">위와 같은 경우에는 `AsEnumerable` 또는 `ToList`(비동기의 경우 `AsAsyncEnumerable` 또는 `ToListAsync`)와 같은 메서드를 호출하여 명시적으로 클라이언트 평가에 옵트인할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-127">In such cases, you can explicitly opt into client evaluation by calling methods like `AsEnumerable` or `ToList` (`AsAsyncEnumerable` or `ToListAsync` for async).</span></span> <span data-ttu-id="26c33-128">`AsEnumerable`을 사용하면 결과를 스트리밍하게 되는 반면 `ToList`를 사용하면 목록을 생성하여 버퍼를 유발하므로 이로 인해 추가 메모리가 사용됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-128">By using `AsEnumerable` you would be streaming the results, but using `ToList` would cause buffering by creating a list, which also takes additional memory.</span></span> <span data-ttu-id="26c33-129">단, 여러 번 열거할 경우에는 결과를 목록에 저장하는 것이 더 낫습니다. 데이터베이스에 대한 쿼리가 하나밖에 없기 때문입니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-129">Though if you're enumerating multiple times, then storing results in a list helps more since there's only one query to the database.</span></span> <span data-ttu-id="26c33-130">구체적인 용도에 따라 어느 메서드가 더 유용한지 판단해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-130">Depending on the particular usage, you should evaluate which method is more useful for the case.</span></span>
 
-<span data-ttu-id="bbdac-119">클라이언트 평가가 수행될 때 동작을 throw나 아무 작업도 하지 않음으로 변경할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-119">You can change the behavior when client evaluation occurs to either throw or do nothing.</span></span> <span data-ttu-id="bbdac-120">이 작업은 컨텍스트에 대한 옵션을 설정할 때 수행하며, 일반적으로 `DbContext.OnConfiguring`에서나 `Startup.cs`(ASP.NET Core를 사용하는 경우)에서 수행합니다.</span><span class="sxs-lookup"><span data-stu-id="bbdac-120">This is done when setting up the options for your context - typically in `DbContext.OnConfiguring`, or in `Startup.cs` if you are using ASP.NET Core.</span></span>
+[!code-csharp[Main](../../../samples/core/Querying/ClientEval/Sample.cs#ExplicitClientEval)]
 
-<!-- [!code-csharp[Main](samples/core/Querying/ClientEval/ThrowOnClientEval/BloggingContext.cs?highlight=5)] -->
-``` csharp
+## <a name="potential-memory-leak-in-client-evaluation"></a><span data-ttu-id="26c33-131">클라이언트 평가의 잠재적인 메모리 누수</span><span class="sxs-lookup"><span data-stu-id="26c33-131">Potential memory leak in client evaluation</span></span>
+
+<span data-ttu-id="26c33-132">쿼리 변환과 컴파일에는 비용이 많이 들기 때문에 EF Core는 컴파일된 쿼리 계획을 캐시에 저장합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-132">Since query translation and compilation are expensive, EF Core caches the compiled query plan.</span></span> <span data-ttu-id="26c33-133">캐시된 대리자는 최상위 프로젝션의 클라이언트 평가를 수행할 때 클라이언트 코드를 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-133">The cached delegate may use client code while doing client evaluation of top-level projection.</span></span> <span data-ttu-id="26c33-134">EF Core는 트리에서 클라이언트 평가된 부분에 대한 매개 변수를 생성한 다음 매개 변수 값을 대체하여 쿼리 계획을 재사용합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-134">EF Core generates parameters for the client-evaluated parts of the tree and reuses the query plan by replacing the parameter values.</span></span> <span data-ttu-id="26c33-135">그러나 식 트리의 특정 상수는 매개 변수로 변환할 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-135">But certain constants in the expression tree can't be converted into parameters.</span></span> <span data-ttu-id="26c33-136">캐시된 대리자가 이러한 상수를 포함하는 경우, 해당 개체는 여전히 참조되고 있으므로 가비지 수집될 수 없습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-136">If the cached delegate contains such constants, then those objects can't be garbage collected since they're still being referenced.</span></span> <span data-ttu-id="26c33-137">이러한 개체가 DbContext 또는 기타 서비스를 포함할 경우, 이로 인해 시간이 흐름에 따라 앱의 메모리 사용량이 늘어날 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-137">If such an object contains a DbContext or other services in it, then it could cause the memory usage of the app to grow over time.</span></span> <span data-ttu-id="26c33-138">이 동작은 일반적으로 메모리 누수의 신호가 됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-138">This behavior is generally a sign of a memory leak.</span></span> <span data-ttu-id="26c33-139">EF Core는 현재 데이터베이스 공급자를 사용하여 매핑할 수 없는 유형의 상수를 발견할 때마다 예외를 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-139">EF Core throws an exception whenever it comes across constants of a type that can't be mapped using current database provider.</span></span> <span data-ttu-id="26c33-140">일반적인 원인과 해결 방법은 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-140">Common causes and their solutions are as follows:</span></span>
+
+- <span data-ttu-id="26c33-141">**인스턴스 메서드 사용**: 클라이언트 프로젝션에서 인스턴스 메서드를 사용하는 경우, 식 트리는 인스턴스의 상수를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-141">**Using an instance method**: When using instance methods in a client projection, the expression tree contains a constant of the instance.</span></span> <span data-ttu-id="26c33-142">메서드가 인스턴스의 데이터를 사용하지 않는다면 메서드를 정적으로 만드는 방법을 고려하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-142">If your method doesn't use any data from the instance, consider making the method static.</span></span> <span data-ttu-id="26c33-143">메서드 본문에 인스턴스 데이터가 필요하다면 해당 데이터를 메서드에 인수로 전달하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-143">If you need instance data in the method body, then pass the specific data as an argument to the method.</span></span>
+- <span data-ttu-id="26c33-144">**메서드에 상수 인수 전달**: 이 경우는 일반적으로 클라이언트 메서드에 대한 인수에서 `this`를 사용할 때 발생합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-144">**Passing constant arguments to method**: This case arises generally by using `this` in an argument to client method.</span></span> <span data-ttu-id="26c33-145">인수를 데이터베이스 공급자에 의해 매핑될 수 있는 여러 개의 스칼라 인수로 분할하는 방안을 고려하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-145">Consider splitting the argument in to multiple scalar arguments, which can be mapped by the database provider.</span></span>
+- <span data-ttu-id="26c33-146">**다른 상수**: 그 밖의 다른 경우에 상수가 발견될 경우, 해당 상수가 처리에 필요한지 여부를 평가할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-146">**Other constants**: If a constant is come across in any other case, then you can evaluate whether the constant is needed in processing.</span></span> <span data-ttu-id="26c33-147">상수를 가지고 있어야 하거나 위 경우의 해결 방법을 사용할 수 없다면 값을 저장할 지역 변수를 만든 다음 쿼리에서 이 지역 변수를 사용하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-147">If it's necessary to have the constant, or if you can't use a solution from the above cases, then create a local variable to store the value and use local variable in the query.</span></span> <span data-ttu-id="26c33-148">EF Core가 지역 변수를 매개 변수로 변환합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-148">EF Core will convert the local variable into a parameter.</span></span>
+
+## <a name="previous-versions"></a><span data-ttu-id="26c33-149">이전 버전</span><span class="sxs-lookup"><span data-stu-id="26c33-149">Previous versions</span></span>
+
+<span data-ttu-id="26c33-150">다음 섹션은 3.0 이전의 EF Core 버전에 적용됩니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-150">The following section applies to EF Core versions before 3.0.</span></span>
+
+<span data-ttu-id="26c33-151">이전의 EF Core 버전에서는 최상위 프로젝션만이 아닌 쿼리의 모든 부분에서 클라이언트 평가를 지원합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-151">Older EF Core versions supported client evaluation in any part of the query--not just the top-level projection.</span></span> <span data-ttu-id="26c33-152">따라서 [지원되지 않는 클라이언트 평가](#unsupported-client-evaluation) 섹션에 있는 것과 비슷한 쿼리가 올바르게 작동했던 것입니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-152">That's why queries similar to one posted under the [Unsupported client evaluation](#unsupported-client-evaluation) section worked correctly.</span></span> <span data-ttu-id="26c33-153">이 동작은 발견되지 않은 성능 문제를 야기할 수 있기 때문에 EF Core는 클라이언트 평가 경고를 기록했습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-153">Since this behavior could cause unnoticed performance issues, EF Core logged a client evaluation warning.</span></span> <span data-ttu-id="26c33-154">로그 출력을 보는 방법은 [로깅](xref:core/miscellaneous/logging)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="26c33-154">For more information on viewing logging output, see [Logging](xref:core/miscellaneous/logging).</span></span>
+
+<span data-ttu-id="26c33-155">선택적으로, EF Core에서 클라이언트 평가를 수행할 때(프로젝션에서의 수행은 제외) 기본 동작을 예외 throw하거나 아무것도 하지 않음으로 변경할 수 있었습니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-155">Optionally EF Core allowed you to change the default behavior to either throw an exception or do nothing when doing client evaluation (except for in the projection).</span></span> <span data-ttu-id="26c33-156">예외 throw 동작을 선택하면 3.0에서의 동작과 비슷해집니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-156">The exception throwing behavior would make it similar to the behavior in 3.0.</span></span> <span data-ttu-id="26c33-157">동작을 변경하려면 컨텍스트의 옵션을 설정할 때 `DbContext.OnConfiguring`에서(ASP.NET Core를 사용하는 경우에는 `Startup.cs`에서) 경고를 구성해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="26c33-157">To change the behavior, you need to configure warnings while setting up the options for your context - typically in `DbContext.OnConfiguring`, or in `Startup.cs` if you're using ASP.NET Core.</span></span>
+
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
     optionsBuilder
