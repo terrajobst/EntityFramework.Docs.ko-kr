@@ -3,12 +3,12 @@ title: Entity Framework 6 시작 - EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 66ce9113-81d2-480f-8c16-d00ec405b2f7
-ms.openlocfilehash: c25bf16bd2c39530d54b286b7743ceb83c941e4d
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.openlocfilehash: bf54879ea94e597dfeac3e4bd70571dad290dd9e
+ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489292"
+ms.lasthandoff: 10/09/2019
+ms.locfileid: "72181405"
 ---
 # <a name="get-started-with-entity-framework-6"></a>Entity Framework 6 시작
 
@@ -18,7 +18,7 @@ ms.locfileid: "45489292"
 
 * [Entity Framework 가져오기](~/ef6/fundamentals/install.md)
 
-  다음으로 Entity Framework를 응용 프로그램에 추가하고, EF 디자이너를 사용하려는 경우 Visual Studio에 설치됐는지 확인하는 방법을 알아봅니다.
+  다음으로 Entity Framework를 애플리케이션에 추가하고, EF 디자이너를 사용하려는 경우 Visual Studio에 설치됐는지 확인하는 방법을 알아봅니다.
 
 * [모델 만들기: Code First, EF 디자이너 및 EF 워크플로](~/ef6/modeling/index.md)
 
@@ -35,7 +35,7 @@ EF 디자이너 및 Code First 등 EF6를 사용하는 다른 두 방식에 대�
 
   전문가의 도움을 받고 커뮤니티에 고유의 답변을 기여하는 방법을 알아봅니다.
 
-* [참가](http://github.com/aspnet/EntityFramework6/)
+* [참가](https://github.com/aspnet/EntityFramework6/)
 
   Entity Framework 6는 오픈 개발 모델을 사용합니다. GitHub 리포지토리를 방문하여 EF를 더 좋게 만들 수 있는 방법을 알아봅니다.
 

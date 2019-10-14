@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 0dd4c5c4aa1a5d241fb48abf1372a678d0f7a7a3
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: f7f04efa8fb8ebc1eb06f256b8ccbd3110af47ab
+ms.sourcegitcommit: 705e898b4684e639a57c787fb45c932a27650c2d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813627"
+ms.lasthandoff: 10/03/2019
+ms.locfileid: "71934879"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 3\.0.0으로 업그레이드할 때 기존 애플리케이션의 호환성이 손상될 수 있는 API 및 동작 변경 내용은 다음과 같습니다.
@@ -27,6 +27,7 @@ ms.locfileid: "71813627"
 | [쿼리 형식은 엔터티 형식과 통합됩니다.](#qt) | 높음      |
 | [Entity Framework Core는 더 이상 ASP.NET Core 공유 프레임워크의 일부가 아닙니다.](#no-longer) | 중간      |
 | [계단식 삭제는 기본적으로 즉시 발생합니다.](#cascade) | 중간      |
+| [관련 엔터티의 즉시 로드가 이제 단일 쿼리에서 이루어집니다.](#eager-loading-single-query) | 중간      |
 | [DeleteBehavior.Restrict에 더 명확한 의미 체계가 적용되었습니다.](#deletebehavior) | 중간      |
 | [소유 형식 관계에 대한 구성 API가 변경되었습니다.](#config) | 중간      |
 | [각 속성은 독립적인 메모리 내 정수 키 생성을 사용합니다.](#each) | 중간      |
@@ -34,6 +35,7 @@ ms.locfileid: "71813627"
 | [메타데이터 API 변경 내용](#metadata-api-changes) | 중간      |
 | [공급자별 메타데이터 API 변경 내용](#provider) | 중간      |
 | [UseRowNumberForPaging이 제거되었습니다.](#urn) | 중간      |
+| [저장 프로시저와 함께 사용할 경우 FromSql 메서드를 구성할 수 없습니다.](#fromsqlsproc) | 중간      |
 | [FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.](#fromsql) | 낮음      |
 | [~~쿼리 실행은 디버그 수준에서 로깅됩니다.~~ 되돌림](#qe) | 낮음      |
 | [임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.](#tkv) | 낮음      |
@@ -210,6 +212,35 @@ context.Products.FromSqlInterpolated(
 
 새 메서드 이름을 사용하도록 전환합니다.
 
+<a name="fromsqlsproc"></a>
+### <a name="fromsql-method-when-used-with-stored-procedure-cannot-be-composed"></a>저장 프로시저와 함께 사용할 경우 FromSql 메서드를 구성할 수 없습니다.
+
+[추적 문제 #15392](https://github.com/aspnet/EntityFrameworkCore/issues/15392)
+
+**이전 동작**
+
+EF Core 3.0 전에는 FromSql 메서드가 전달된 SQL 위에 구성이 가능한지 감지하려고 시도했습니다. SQL이 저장 프로시저처럼 구성 가능하지 않은 경우 클라이언트 평가를 수행했습니다. 다음 쿼리는 서버에서 저장 프로시저를 실행하고 클라이언트 쪽에서 FirstOrDefault를 수행하여 작동했습니다.
+
+```C#
+context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").FirstOrDefault();
+```
+
+**새 동작**
+
+EF Core 3.0부터 EF Core가 SQL의 구문 분석을 시도하지 않습니다. 따라서 FromSqlRaw/FromSqlInterpolated 후에 구성하는 경우 EF Core가 하위 쿼리를 발생시켜 SQL을 구성합니다. 구성과 함께 저장 프로시저를 사용하는 경우에는 잘못된 SQL 구문이라는 예외가 발생하게 됩니다.
+
+**이유**
+
+EF Core 3.0은 [여기](#linq-queries-are-no-longer-evaluated-on-the-client)에서 설명하는 것처럼 오류가 많은 자동 클라이언트 평가를 지원하지 않습니다.
+
+**해결 방법**
+
+FromSqlRaw/FromSqlInterpolated에서 저장 프로시저를 사용하는 경우, 이 위에 구성할 수 없다는 사실을 알고 있으므로 FromSql 메서드 호출 직후에 __AsEnumerable/AsAsyncEnumerable__을 추가하여 서버 쪽에서 구성이 이루어지지 않도록 할 수 있습니다.
+
+```C#
+context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").AsEnumerable().FirstOrDefault();
+```
+
 <a name="fromsql"></a>
 
 ### <a name="fromsql-methods-can-only-be-specified-on-query-roots"></a>FromSql 메서드는 쿼리 루트에만 지정할 수 있습니다.
@@ -366,6 +397,29 @@ public string Id { get; set; }
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
 context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 ```
+<a name="eager-loading-single-query"></a>
+### <a name="eager-loading-of-related-entities-now-happens-in-a-single-query"></a>관련 엔터티의 즉시 로드가 이제 단일 쿼리에서 이루어집니다.
+
+[추적 문제 issue #18022](https://github.com/aspnet/EntityFrameworkCore/issues/18022)
+
+**이전 동작**
+
+3\.0 전에는 `Include` 연산자를 통한 컬렉션 탐색의 즉시 로드로 인해 관계형 데이터베이스에서 각 관련된 엔터티 형식에 대해 하나씩, 여러 개의 쿼리를 생성했습니다.
+
+**새 동작**
+
+3\.0부터는 EF Core가 관계형 데이터베이스에서 JOIN으로 단일 쿼리를 생성합니다.
+
+**이유**
+
+단일 LINQ 쿼리를 구현하기 위해 여러 개의 쿼리를 발행하는 것은 여러 번의 데이터베이스 왕복이 필요하기 때문에 성능이 저하되고 각 쿼리가 서로 다른 데이터베이스 상태를 관찰할 수 있으므로 데이터 일관성 문제가 발생하는 등 여러 문제의 원인이 되었습니다.
+
+**완화 방법**
+
+엄밀히 말해 이것은 호환성이 손상되는 변경은 아니지만, 단일 쿼리가 컬렉션 탐색에 대해 다량의 `Include` 연산자를 포함하는 경우 애플리케이션 성능에 상당한 영향을 줄 수 있습니다. 자세한 내용 및 보다 효율적인 방법으로 쿼리를 재작성하는 방법은 [이 주석](https://github.com/aspnet/EntityFrameworkCore/issues/18022#issuecomment-537219137)을 참조하세요.
+
+**
+
 <a name="deletebehavior"></a>
 ### <a name="deletebehaviorrestrict-has-cleaner-semantics"></a>DeleteBehavior.Restrict에는 명확한 의미 체계가 있습니다.
 
