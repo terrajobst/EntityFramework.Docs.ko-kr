@@ -1,40 +1,68 @@
 ---
-title: 디자인 타임 DbContext 만들기-EF Core
+title: 디자인 타임 DbContext 생성-EF Core
 author: bricelam
 ms.author: bricelam
-ms.date: 10/27/2017
+ms.date: 09/16/2019
 uid: core/miscellaneous/cli/dbcontext-creation
-ms.openlocfilehash: 66fec7605b6ac2da0af1e801f8a1dca0789aea35
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: f83d4b16227d114a1cac1514667484a908fea4ac
+ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42993720"
+ms.lasthandoff: 09/23/2019
+ms.locfileid: "71197569"
 ---
-<a name="design-time-dbcontext-creation"></a><span data-ttu-id="5d3e8-102">디자인 타임 DbContext 만들기</span><span class="sxs-lookup"><span data-stu-id="5d3e8-102">Design-time DbContext Creation</span></span>
+<a name="design-time-dbcontext-creation"></a><span data-ttu-id="962fe-102">디자인 타임 DbContext 만들기</span><span class="sxs-lookup"><span data-stu-id="962fe-102">Design-time DbContext Creation</span></span>
 ==============================
-<span data-ttu-id="5d3e8-103">EF Core 도구 명령 중 일부 (예를 들어,를 [마이그레이션] [ 1] 명령) 파생 필요 `DbContext` 응용 프로그램에 대 한 세부 정보를 수집 하기 위해 디자인 타임에 만들려는 인스턴스 엔터티 형식 및 데이터베이스 스키마에 매핑하는 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-103">Some of the EF Core Tools commands (for example, the [Migrations][1] commands) require a derived `DbContext` instance to be created at design time in order to gather details about the application's entity types and how they map to a database schema.</span></span> <span data-ttu-id="5d3e8-104">대부분의 경우에서 것이 바람직한는 `DbContext` 있으므로 만든 어떻게 것을 비슷한 방식으로 구성 된 [런타임에 구성][2]합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-104">In most cases, it is desirable that the `DbContext` thereby created is configured in a similar way to how it would be [configured at run time][2].</span></span>
+<span data-ttu-id="962fe-103">응용 프로그램의 엔터티 형식에 대한 세부 정보를 수집하고 데이터베이스 스키마에 매핑하는 방법에 대한 세부 정보를 수집하기 위해 일부 EF Core 도구 명령(예: [마이그레이션][1] 명령)에는 디자인 타임에 파생 `DbContext` 인스턴스를 만들어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-103">Some of the EF Core Tools commands (for example, the [Migrations][1] commands) require a derived `DbContext` instance to be created at design time in order to gather details about the application's entity types and how they map to a database schema.</span></span> <span data-ttu-id="962fe-104">대부분의 경우 생성 되는는 `DbContext` [런타임에 구성][2]되는 방법과 비슷한 방식으로 구성 하는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-104">In most cases, it is desirable that the `DbContext` thereby created is configured in a similar way to how it would be [configured at run time][2].</span></span>
 
-<span data-ttu-id="5d3e8-105">여러 가지 도구를 만들려고 시도 합니다 `DbContext`:</span><span class="sxs-lookup"><span data-stu-id="5d3e8-105">There are various ways the tools try to create the `DbContext`:</span></span>
+<span data-ttu-id="962fe-105">도구에서를 `DbContext`만드는 데는 여러 가지 방법이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-105">There are various ways the tools try to create the `DbContext`:</span></span>
 
-<a name="from-application-services"></a><span data-ttu-id="5d3e8-106">응용 프로그램 서비스에서</span><span class="sxs-lookup"><span data-stu-id="5d3e8-106">From application services</span></span>
+<a name="from-application-services"></a><span data-ttu-id="962fe-106">응용 프로그램 서비스에서</span><span class="sxs-lookup"><span data-stu-id="962fe-106">From application services</span></span>
 -------------------------
-<span data-ttu-id="5d3e8-107">시작 프로젝트는 ASP.NET Core 앱 인 경우 도구는 응용 프로그램의 서비스 공급자에서 DbContext 개체를 가져올 하려고 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-107">If your startup project is an ASP.NET Core app, the tools try to obtain the DbContext object from the application's service provider.</span></span>
+<span data-ttu-id="962fe-107">시작 프로젝트가 [ASP.NET Core 웹 호스트][3] 또는 [.Net Core 일반 호스트][4]를 사용 하는 경우 도구는 응용 프로그램의 서비스 공급자에서 DbContext 개체를 가져오려고 시도 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-107">If your startup project uses the [ASP.NET Core Web Host][3] or [.NET Core Generic Host][4], the tools try to obtain the DbContext object from the application's service provider.</span></span>
 
-<span data-ttu-id="5d3e8-108">도구를 호출 하 여 서비스 공급자를 가져오려면 먼저 `Program.BuildWebHost()` 에 액세스 하 고는 `IWebHost.Services` 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-108">The tools first try to obtain the service provider by invoking `Program.BuildWebHost()` and accessing the `IWebHost.Services` property.</span></span>
+<span data-ttu-id="962fe-108">도구는 먼저 `Program.CreateHostBuilder()`를 호출 하 고를 호출한 `Build()`다음 `Services` 속성에 액세스 하 여 서비스 공급자를 가져오려고 시도 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-108">The tools first try to obtain the service provider by invoking `Program.CreateHostBuilder()`, calling `Build()`, then accessing the `Services` property.</span></span>
+
+``` csharp
+public class Program
+{
+    public static void Main(string[] args)
+        => CreateHostBuilder(args).Build().Run();
+
+    // EF Core uses this method at design time to access the DbContext
+    public static IHostBuilder CreateHostBuilder(string[] args)
+        => Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(
+                webBuilder => webBuilder.UseStartup<Startup>());
+}
+
+public class Startup
+{
+    public void ConfigureServices(IServiceCollection services)
+        => services.AddDbContext<ApplicationDbContext>();
+}
+
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+        : base(options)
+    {
+    }
+}
+```
 
 > [!NOTE]
-> <span data-ttu-id="5d3e8-109">새 ASP.NET Core 2.0 응용 프로그램을 만들면 기본적으로이 연결 고리 포함 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-109">When you create a new ASP.NET Core 2.0 application, this hook is included by default.</span></span> <span data-ttu-id="5d3e8-110">EF Core 및 ASP.NET Core의 이전 버전에서는 도구를 호출 하려고 `Startup.ConfigureServices` 더 이상 응용 프로그램의 서비스 공급자에 있지만이 패턴을 얻기 위해 제대로 작동 ASP.NET Core 2.0 응용 프로그램에서 직접.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-110">In previous versions of EF Core and ASP.NET Core, the tools try to invoke `Startup.ConfigureServices` directly in order to obtain the application's service provider, but this pattern no longer works correctly in ASP.NET Core 2.0 applications.</span></span> <span data-ttu-id="5d3e8-111">2.0에는 ASP.NET Core 1.x 응용 프로그램을 업그레이드 하는 경우 [수정 하 `Program` 새 패턴을 따르는 클래스][3]합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-111">If you are upgrading an ASP.NET Core 1.x application to 2.0, you can [modify your `Program` class to follow the new pattern][3].</span></span>
+> <span data-ttu-id="962fe-109">새 ASP.NET Core 응용 프로그램을 만드는 경우이 후크는 기본적으로 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-109">When you create a new ASP.NET Core application, this hook is included by default.</span></span>
 
-<span data-ttu-id="5d3e8-112">`DbContext` 자체 및 해당 생성자에서 종속성 서비스 응용 프로그램의 서비스 공급자에 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-112">The `DbContext` itself and any dependencies in its constructor need to be registered as services in the application's service provider.</span></span> <span data-ttu-id="5d3e8-113">함으로써 쉽게 수행할 수 있습니다 [에 있는 생성자는 `DbContext` 의 인스턴스를 사용 하 `DbContextOptions<TContext>` 인수로][4] 사용 하는 [`AddDbContext<TContext>` 메서드][5].</span><span class="sxs-lookup"><span data-stu-id="5d3e8-113">This can be easily achieved by having [a constructor on the `DbContext` that takes an instance of `DbContextOptions<TContext>` as an argument][4] and using the [`AddDbContext<TContext>` method][5].</span></span>
+<span data-ttu-id="962fe-110">`DbContext` 자체와 해당 생성자의 모든 종속성을 응용 프로그램의 서비스 공급자에 서비스로 등록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-110">The `DbContext` itself and any dependencies in its constructor need to be registered as services in the application's service provider.</span></span> <span data-ttu-id="962fe-111">이 작업 [은 `DbContext` 의 `DbContextOptions<TContext>` 인스턴스를 인수로][5] 사용 하 고 [ `AddDbContext<TContext>` 메서드][6]를 사용 하는에 생성자를 사용 하 여 쉽게 달성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-111">This can be easily achieved by having [a constructor on the `DbContext` that takes an instance of `DbContextOptions<TContext>` as an argument][5] and using the [`AddDbContext<TContext>` method][6].</span></span>
 
-<a name="using-a-constructor-with-no-parameters"></a><span data-ttu-id="5d3e8-114">매개 변수가 없는 생성자를 사용 하 여</span><span class="sxs-lookup"><span data-stu-id="5d3e8-114">Using a constructor with no parameters</span></span>
+<a name="using-a-constructor-with-no-parameters"></a><span data-ttu-id="962fe-112">매개 변수 없이 생성자 사용</span><span class="sxs-lookup"><span data-stu-id="962fe-112">Using a constructor with no parameters</span></span>
 --------------------------------------
-<span data-ttu-id="5d3e8-115">DbContext를 응용 프로그램 서비스 공급자에서 가져올 수 없습니다. 도구를 찾아보십시오 파생 `DbContext` 프로젝트 형식.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-115">If the DbContext can't be obtained from the application service provider, the tools look for the derived `DbContext` type inside the project.</span></span> <span data-ttu-id="5d3e8-116">다음 매개 변수가 없는 생성자를 사용 하 여 인스턴스를 만들려고 시도 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-116">Then they try to create an instance using a constructor with no parameters.</span></span> <span data-ttu-id="5d3e8-117">이 경우 기본 생성자를 수 있습니다 합니다 `DbContext` 을 사용 하도록 구성 합니다 [`OnConfiguring`][6] 메서드.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-117">This can be the default constructor if the `DbContext` is configured using the [`OnConfiguring`][6] method.</span></span>
+<span data-ttu-id="962fe-113">응용 프로그램 서비스 공급자에서 DbContext를 가져올 수 없는 경우 도구는 프로젝트 내에서 파생 `DbContext` 된 형식을 찾습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-113">If the DbContext can't be obtained from the application service provider, the tools look for the derived `DbContext` type inside the project.</span></span> <span data-ttu-id="962fe-114">그런 다음 매개 변수 없이 생성자를 사용 하 여 인스턴스를 만들려고 시도 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-114">Then they try to create an instance using a constructor with no parameters.</span></span> <span data-ttu-id="962fe-115">`DbContext` 가 메서드를 [`OnConfiguring`][7] 사용 하 여 구성 된 경우이 생성자는 기본 생성자 일 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-115">This can be the default constructor if the `DbContext` is configured using the [`OnConfiguring`][7] method.</span></span>
 
-<a name="from-a-design-time-factory"></a><span data-ttu-id="5d3e8-118">디자인 타임 팩터리에서</span><span class="sxs-lookup"><span data-stu-id="5d3e8-118">From a design-time factory</span></span>
+<a name="from-a-design-time-factory"></a><span data-ttu-id="962fe-116">디자인 타임 팩터리에서</span><span class="sxs-lookup"><span data-stu-id="962fe-116">From a design-time factory</span></span>
 --------------------------
-<span data-ttu-id="5d3e8-119">알 수 있습니다 도구를 구현 하 여 DbContext를 만드는 방법 합니다 `IDesignTimeDbContextFactory<TContext>` 인터페이스: 있으면이 인터페이스를 구현 하는 클래스에서 파생 된 동일한 프로젝트 `DbContext` 또는 응용 프로그램의 시작 프로젝트에서 도구는 다음과 같이 무시 됩니다. 대신 DbContext 및 디자인 타임 팩터리를 사용 하 여 만드는 다른 방법입니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-119">You can also tell the tools how to create your DbContext by implementing the `IDesignTimeDbContextFactory<TContext>` interface: If a class implementing this interface is found in either the same project as the derived `DbContext` or in the application's startup project, the tools bypass the other ways of creating the DbContext and use the design-time factory instead.</span></span>
+<span data-ttu-id="962fe-117">인터페이스를 `IDesignTimeDbContextFactory<TContext>` 구현 하 여 DbContext를 만드는 방법을 도구에 지시할 수도 있습니다. 이 인터페이스를 구현 하는 클래스가 파생 `DbContext` 된 프로젝트 또는 응용 프로그램의 시작 프로젝트에 있는 경우 도구는 DbContext를 만드는 다른 방법을 우회 하 고 대신 디자인 타임 팩터리를 사용 합니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-117">You can also tell the tools how to create your DbContext by implementing the `IDesignTimeDbContextFactory<TContext>` interface: If a class implementing this interface is found in either the same project as the derived `DbContext` or in the application's startup project, the tools bypass the other ways of creating the DbContext and use the design-time factory instead.</span></span>
 
 ``` csharp
 using Microsoft.EntityFrameworkCore;
@@ -57,14 +85,15 @@ namespace MyProject
 ```
 
 > [!NOTE]
-> <span data-ttu-id="5d3e8-120">`args` 매개 변수가 현재 사용 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-120">The `args` parameter is currently unused.</span></span> <span data-ttu-id="5d3e8-121">있기 [문제일][7] 도구에서 디자인 타임에 인수를 지정 하는 기능을 추적 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-121">There is [an issue][7] tracking the ability to specify design-time arguments from the tools.</span></span>
+> <span data-ttu-id="962fe-118">`args` 매개 변수가 현재 사용 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-118">The `args` parameter is currently unused.</span></span> <span data-ttu-id="962fe-119">도구에서 디자인 타임 인수를 지정 하는 기능을 추적 하는 [문제가][8] 있습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-119">There is [an issue][8] tracking the ability to specify design-time arguments from the tools.</span></span>
 
-<span data-ttu-id="5d3e8-122">디자인 타임 팩터리 경우 런타임 시 보다 디자인 타임에 대 한 DbContext를 다르게 구성 해야 하는 경우에 특히 유용할 수 있습니다는 `DbContext` 생성자는 DI를 전혀 사용 하지 않는 경우 추가 매개 변수 DI를에 등록 되지 않은 또는 일부에 대 한 경우 유지할 필요가 없으며 하려는 이유는 `BuildWebHost` ASP.NET Core 응용 프로그램의 메서드 `Main` 클래스입니다.</span><span class="sxs-lookup"><span data-stu-id="5d3e8-122">A design-time factory can be especially useful if you need to configure the DbContext differently for design time than at run time, if the `DbContext` constructor takes additional parameters are not registered in DI, if you are not using DI at all, or if for some reason you prefer not to have a `BuildWebHost` method in your ASP.NET Core application's `Main` class.</span></span>
+<span data-ttu-id="962fe-120">디자인 타임 팩터리는 런타임에 보다 디자인 시간에 대해 DbContext를 다르게 구성 해야 하는 경우, `DbContext` 추가 매개 변수가 di에 등록 되지 않거나, di를 사용 하지 않거나, 일부 경우에는를 사용 하는 경우에 특히 유용할 수 있습니다. ASP.NET Core 응용 프로그램의 `BuildWebHost` `Main` 클래스에 메서드를 사용 하지 않는 것이 좋습니다.</span><span class="sxs-lookup"><span data-stu-id="962fe-120">A design-time factory can be especially useful if you need to configure the DbContext differently for design time than at run time, if the `DbContext` constructor takes additional parameters are not registered in DI, if you are not using DI at all, or if for some reason you prefer not to have a `BuildWebHost` method in your ASP.NET Core application's `Main` class.</span></span>
 
   [1]: xref:core/managing-schemas/migrations/index
   [2]: xref:core/miscellaneous/configuring-dbcontext
-  [3]: https://docs.microsoft.com/aspnet/core/migration/1x-to-2x/#update-main-method-in-programcs
-  [4]: xref:core/miscellaneous/configuring-dbcontext#constructor-argument
-  [5]: xref:core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection
-  [6]: xref:core/miscellaneous/configuring-dbcontext#onconfiguring
-  [7]: https://github.com/aspnet/EntityFrameworkCore/issues/8332
+  [3]: /aspnet/core/fundamentals/host/web-host
+  [4]: /aspnet/core/fundamentals/host/generic-host
+  [5]: xref:core/miscellaneous/configuring-dbcontext#constructor-argument
+  [6]: xref:core/miscellaneous/configuring-dbcontext#using-dbcontext-with-dependency-injection
+  [7]: xref:core/miscellaneous/configuring-dbcontext#onconfiguring
+  [8]: https://github.com/aspnet/EntityFrameworkCore/issues/8332
