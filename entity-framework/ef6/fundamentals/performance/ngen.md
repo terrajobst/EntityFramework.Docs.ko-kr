@@ -3,12 +3,12 @@ title: NGen을 사용 하 여 시작 성능 향상 EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: dc6110a0-80a0-4370-8190-cea942841cee
-ms.openlocfilehash: c9b5f8a06add9133d30955e3cc97a92e9b189bdf
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 841aec645abdb2a56076d0b70bfb2614b0acafb4
+ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182674"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72446003"
 ---
 # <a name="improving-startup-performance-with-ngen"></a>NGen을 사용 하 여 시작 성능 향상
 > [!NOTE]
@@ -24,22 +24,26 @@ ms.locfileid: "72182674"
 
 Ngen.exe 도구의 가장 기본적인 기능은 어셈블리 및 모든 직접 종속성에 대 한 네이티브 이미지를 "설치" (즉, 디스크에 생성 및 유지) 하는 것입니다. 이렇게 하려면 다음을 수행 합니다.  
 
-1. 관리자 권한으로 명령 프롬프트 창을 엽니다.  
-2. 현재 작업 디렉터리를 네이티브 이미지를 생성할 어셈블리의 위치로 변경 합니다.  
+1. 관리자 권한으로 명령 프롬프트 창을 엽니다.
+2. 현재 작업 디렉터리를 네이티브 이미지를 생성할 어셈블리의 위치로 변경 합니다.
 
-  ``` console
-    cd <*Assemblies location*>  
-  ```
-3. 운영 체제 및 응용 프로그램의 구성에 따라 32 비트 아키텍처, 64 비트 아키텍처 또는 둘 다에 대 한 네이티브 이미지를 생성 해야 할 수 있습니다.  
+   ``` console
+   cd <*Assemblies location*>  
+   ```
 
-    32 비트 실행의 경우:  
-  ``` console
-    %WINDIR%\Microsoft.NET\Framework\v4.0.30319\ngen install <Assembly name>  
-  ```
-    64 비트 실행의 경우:
-  ``` console
-    %WINDIR%\Microsoft.NET\Framework64\v4.0.30319\ngen install <Assembly name>  
-  ```
+3. 운영 체제 및 응용 프로그램의 구성에 따라 32 비트 아키텍처, 64 비트 아키텍처 또는 둘 다에 대 한 네이티브 이미지를 생성 해야 할 수 있습니다.
+
+   32 비트 실행의 경우:
+
+   ``` console
+   %WINDIR%\Microsoft.NET\Framework\v4.0.30319\ngen install <Assembly name>  
+   ```
+
+   64 비트 실행의 경우:
+  
+   ``` console
+   %WINDIR%\Microsoft.NET\Framework64\v4.0.30319\ngen install <Assembly name>  
+   ```
 
 > [!TIP]
 > 잘못 된 아키텍처에 대 한 네이티브 이미지를 생성 하는 것은 매우 일반적인 실수입니다. 확실 하지 않은 경우에는 컴퓨터에 설치 된 운영 체제에 적용 되는 모든 아키텍처에 대해 네이티브 이미지를 생성할 수 있습니다.  
@@ -50,9 +54,9 @@ Ngen.exe 도구의 가장 기본적인 기능은 어셈블리 및 모든 직접 
 
 EF 버전 6 이상을 기반으로 하는 응용 프로그램에서 네이티브 이미지를 생성할 어셈블리를 결정 하는 경우 다음 옵션을 고려해 야 합니다.  
 
-- **주 EF runtime 어셈블리, EntityFramework .dll**: 일반적인 EF 기반 응용 프로그램은 시작 시 또는 데이터베이스에 처음 액세스할 때이 어셈블리에서 상당한 양의 코드를 실행 합니다. 결과적으로이 어셈블리의 네이티브 이미지를 만들면 시작 성능이 가장 크게 향상 됩니다.  
-- **응용 프로그램에서 사용 하는 모든 EF 공급자 어셈블리**: 시작 시간은 이러한 항목의 네이티브 이미지를 생성 하는 데 약간의 이점을 누릴 수 있습니다. 예를 들어 응용 프로그램에서 SQL Server에 대 한 EF 공급자를 사용 하는 경우에는 EntityFramework. SqlServer .dll에 대 한 네이티브 이미지를 생성 하는 것이 좋습니다.  
-- **응용 프로그램의 어셈블리 및 기타 종속성**: [Ngen.exe 설명서](https://msdn.microsoft.com/library/6t9t5wcf.aspx) 는 네이티브 이미지를 생성할 어셈블리를 선택 하 고, 네이티브 이미지를 보안에 적용 하 고, "하드 바인딩"과 같은 고급 옵션, 디버깅에서 네이티브 이미지 사용과 같은 시나리오에 대 한 일반적인 조건을 설명 합니다. 프로 파일링 시나리오 등  
+- **주 ef runtime 어셈블리인 EntityFramework .dll**: 일반적인 ef 기반 응용 프로그램은 시작 시 또는 데이터베이스에 처음 액세스할 때이 어셈블리에서 상당한 양의 코드를 실행 합니다. 결과적으로이 어셈블리의 네이티브 이미지를 만들면 시작 성능이 가장 크게 향상 됩니다.  
+- **응용 프로그램에서 사용 하는 모든 EF 공급자 어셈블리**: 시작 시간은 이러한 응용 프로그램의 네이티브 이미지를 생성할 때 약간의 이점을 누릴 수 있습니다. 예를 들어 응용 프로그램에서 SQL Server에 대 한 EF 공급자를 사용 하는 경우에는 EntityFramework. SqlServer .dll에 대 한 네이티브 이미지를 생성 하는 것이 좋습니다.  
+- **응용 프로그램의 어셈블리 및 기타 종속성**: [ngen.exe 설명서](https://msdn.microsoft.com/library/6t9t5wcf.aspx) 는 네이티브 이미지를 생성할 어셈블리를 선택 하 고, 보안에 대 한 네이티브 이미지의 영향 및 "하드"와 같은 고급 옵션에 대 한 일반적인 기준을 다룹니다. 바인딩 ", 디버깅 및 프로 파일링 시나리오에서 네이티브 이미지를 사용 하는 등의 시나리오  
 
 > [!TIP]
 > 응용 프로그램의 시작 성능 및 전반적인 성능 모두에서 네이티브 이미지를 사용 하는 경우의 영향을 신중 하 게 측정 하 여 실제 요구 사항과 비교 해야 합니다. 일반적으로 네이티브 이미지는 시작 성능을 개선 하는 데 도움이 되지만 일부 경우에는 메모리 사용량을 줄일 수 있지만 일부 시나리오에서는 동일한 이점을 누릴 수 없습니다. 예를 들어, 안정적인 상태 실행에서 (즉, 응용 프로그램에서 사용 하는 모든 메서드가 한 번 이상 호출 된 경우) JIT 컴파일러에서 생성 된 코드는 실제로 네이티브 이미지 보다 성능이 약간 향상 될 수 있습니다.  

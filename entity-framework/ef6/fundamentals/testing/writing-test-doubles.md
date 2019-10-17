@@ -3,12 +3,12 @@ title: 사용자 고유의 테스트를 사용 하 여 테스트 EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 16a8b7c0-2d23-47f4-9cc0-e2eb2e738ca3
-ms.openlocfilehash: 4631206ae26d364e92c932857fa1970804a7a335
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 3d8933fb5e17f8c01f3971495a1fcdb5b8cfab57
+ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181409"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72446032"
 ---
 # <a name="testing-with-your-own-test-doubles"></a>사용자 고유의 테스트를 사용 하 여 테스트 두 배
 > [!NOTE]
@@ -157,9 +157,9 @@ namespace TestingDemo
         }
     }
 }
-```  
+```
 
-<a name="creating-the-in-memory-test-doubles"/> # # 메모리 내 테스트 만들기 double  
+## <a name="creating-the-in-memory-test-doubles"></a>메모리 내 테스트 double 만들기  
 
 이제 실제 EF 모델 및이를 사용할 수 있는 서비스가 있으므로 테스트에 사용할 수 있는 메모리 내 테스트 double을 만들 시간입니다. 컨텍스트에 대해 TestContext test double을 만들었습니다. 테스트의 두 배에서는 실행할 테스트를 지원 하기 위해 원하는 동작을 선택 합니다. 이 예제에서는 SaveChanges가 호출 되는 횟수를 캡처 하지만 테스트 중인 시나리오를 확인 하는 데 필요한 모든 논리를 포함할 수 있습니다.  
 

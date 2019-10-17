@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: f7f04efa8fb8ebc1eb06f256b8ccbd3110af47ab
-ms.sourcegitcommit: 705e898b4684e639a57c787fb45c932a27650c2d
+ms.openlocfilehash: 690c7828cfe5019f4e7ae904c92430fab4726cb9
+ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/03/2019
-ms.locfileid: "71934879"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72446020"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 3\.0.0으로 업그레이드할 때 기존 애플리케이션의 호환성이 손상될 수 있는 API 및 동작 변경 내용은 다음과 같습니다.
@@ -416,7 +416,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 **완화 방법**
 
-엄밀히 말해 이것은 호환성이 손상되는 변경은 아니지만, 단일 쿼리가 컬렉션 탐색에 대해 다량의 `Include` 연산자를 포함하는 경우 애플리케이션 성능에 상당한 영향을 줄 수 있습니다. 자세한 내용 및 보다 효율적인 방법으로 쿼리를 재작성하는 방법은 [이 주석](https://github.com/aspnet/EntityFrameworkCore/issues/18022#issuecomment-537219137)을 참조하세요.
+엄밀히 말해 이것은 호환성이 손상되는 변경은 아니지만, 단일 쿼리가 컬렉션 탐색에 대해 다량의 `Include` 연산자를 포함하는 경우 애플리케이션 성능에 상당한 영향을 줄 수 있습니다. 자세한 내용 및 보다 효율적인 방법으로 쿼리를 재작성하는 방법은 [이 주석](https://github.com/aspnet/EntityFrameworkCore/issues/18022#issuecomment-542397085)을 참조하세요.
 
 **
 

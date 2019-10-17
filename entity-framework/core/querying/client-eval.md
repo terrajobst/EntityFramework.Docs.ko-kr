@@ -4,12 +4,12 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 3d70324f0b57a0ea9b165b5140a2154001c326f4
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 5cfb05041f04246712fb699f58b407f70a75ce92
+ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181910"
+ms.lasthandoff: 10/16/2019
+ms.locfileid: "72445959"
 ---
 # <a name="client-vs-server-evaluation"></a>클라이언트 및 서버 평가
 
@@ -18,10 +18,10 @@ ms.locfileid: "72181910"
 > [!NOTE]
 > 버전 3.0 전까지는 Entity Framework Core가 쿼리의 모든 곳에서 클라이언트 평가를 지원했습니다. 자세한 내용은 [이전 버전 섹션](#previous-versions)을 참조하세요.
 
-## <a name="client-evaluation-in-the-top-level-projection"></a>최상위 프로젝션에서의 클라이언트 평가
-
 > [!TIP]
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+
+## <a name="client-evaluation-in-the-top-level-projection"></a>최상위 프로젝션에서의 클라이언트 평가
 
 다음 예제에서는 도우미 메서드가 SQL Server 데이터베이스에 반환되는 블로그의 URL을 표준화하는 데 사용됩니다. SQL Server 공급자는 이 메서드가 구현되는 방법에 대한 인사이트가 없기 때문에 이 메서드를 SQL로 변환할 수 없습니다. 쿼리의 다른 모든 측면은 데이터베이스에서 평가되지만 이 메서드를 통해 반환된 `URL`을 전달하는 작업은 클라이언트에서 수행됩니다.
 
