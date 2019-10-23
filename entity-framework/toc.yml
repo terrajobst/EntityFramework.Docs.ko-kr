@@ -25,9 +25,9 @@
               href: core/what-is-new/index.md
             - name: EF Core 3.0
               items:
-                - name: 새로운 기능
+                - name: 새 기능
                   href: core/what-is-new/ef-core-3.0/index.md
-                - name: 주요 변경 내용
+                - name: 호환성이 손상되는 변경
                   href: core/what-is-new/ef-core-3.0/breaking-changes.md
             - name: EF Core 2.2
               href: core/what-is-new/ef-core-2.2.md
@@ -175,22 +175,24 @@
           items:
             - name: 개요
               href: core/querying/index.md
-            - name: 관련 데이터 로드
-              href: core/querying/related-data.md
             - name: 클라이언트 및 서버 평가
               href: core/querying/client-eval.md
             - name: 추적 및 비추적
               href: core/querying/tracking.md
-            - name: 원시 SQL 쿼리
-              href: core/querying/raw-sql.md
+            - name: 복합 쿼리 연산자
+              href: core/querying/complex-query-operators.md
+            - name: 관련 데이터 로드
+              href: core/querying/related-data.md
             - name: 비동기 쿼리
               href: core/querying/async.md
-            - name: 쿼리가 작동하는 방법
-              href: core/querying/how-query-works.md
+            - name: 원시 SQL 쿼리
+              href: core/querying/raw-sql.md
             - name: 전역 쿼리 필터
               href: core/querying/filters.md
             - name: 쿼리 태그
               href: core/querying/tags.md
+            - name: 쿼리가 작동하는 방법
+              href: core/querying/how-query-works.md
         - name: 데이터 저장
           items:
             - name: 개요
@@ -203,7 +205,7 @@
               href: core/saving/cascade-delete.md
             - name: 동시성 충돌
               href: core/saving/concurrency.md
-            - name: 트랜잭션
+            - name: 의
               href: core/saving/transactions.md
             - name: 비동기 저장
               href: core/saving/async.md
@@ -217,7 +219,7 @@
           items:
             - name: 개요
               href: core/providers/index.md
-            - name: Microsoft SQL Server에 대한 연결 문자열
+            - name: Microsoft SQL Server
               items:
                 - name: 개요
                   href: core/providers/sql-server/index.md
@@ -285,7 +287,7 @@
               href: ef6/fundamentals/relationships.md
             - name: 비동기 쿼리 및 저장
               href: ef6/fundamentals/async.md
-            - name: 구성
+            - name: Configuration
               items:
                 - name: 코드 기반
                   href: ef6/fundamentals/configuring/code-based.md
@@ -503,7 +505,7 @@
               href: ef6/resources/blogs.md
             - name: 사례 연구
               href: ef6/resources/case-studies.md
-            - name: 기고
+            - name: 참가
               href: ef6/resources/contribute.md
             - name: 도움말 보기
               href: ef6/resources/get-help.md

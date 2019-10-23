@@ -4,15 +4,14 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: ffa9a34f13ab29f0ba93f9fd1f469398630604ce
-ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
+ms.openlocfilehash: e9c4013d17a2d41772822f77b3ceba15702ffc48
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005453"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812064"
 ---
-<a name="migrations"></a>마이그레이션
-==========
+# <a name="migrations"></a>마이그레이션
 
 데이터 모델은 개발 중에 변경되고 데이터베이스와 동기화되지 않습니다. 데이터베이스를 삭제하고 EF가 모델과 일치하는 새 데이터베이스를 만들게 할 수 있지만, 이 절차로 인해 데이터가 손실됩니다. EF Core의 마이그레이션 기능은 데이터베이스 스키마를 증분 방식으로 업데이트하여 애플리케이션 데이터 모델과의 동기 상태를 유지하면서 데이터베이스에 기존 데이터를 보존하는 방법을 제공합니다.
 
@@ -29,21 +28,21 @@ ms.locfileid: "71005453"
 > [!TIP]
 > `DbContext`가 시작 프로젝트와 다른 어셈블리에 있는 경우 [패키지 관리자 콘솔 도구](xref:core/miscellaneous/cli/powershell#target-and-startup-project) 또는 [.NET Core CLI 도구](xref:core/miscellaneous/cli/dotnet#target-project-and-startup-project)에서 대상 및 시작 프로젝트를 명시적으로 지정할 수 있습니다.
 
-<a name="install-the-tools"></a>도구 설치
------------------
+## <a name="install-the-tools"></a>도구 설치
 
 [명령줄 도구](xref:core/miscellaneous/cli/index)를 설치합니다.
+
 * Visual Studio의 경우 [패키지 관리자 콘솔 도구](xref:core/miscellaneous/cli/powershell)를 사용하는 것이 좋습니다.
 * 기타 개발 환경의 경우 [.NET Core CLI 도구](xref:core/miscellaneous/cli/dotnet)를 선택합니다.
 
-<a name="create-a-migration"></a>마이그레이션 만들기
-------------------
+## <a name="create-a-migration"></a>마이그레이션 만들기
 
 [초기 모델 정의](xref:core/modeling/index) 후에는 데이터베이스를 만듭니다. 초기 마이그레이션을 추가하려면 다음 명령을 실행합니다.
 
 ``` powershell
 Add-Migration InitialCreate
 ```
+
 ``` Console
 dotnet ef migrations add InitialCreate
 ```
@@ -59,26 +58,26 @@ dotnet ef migrations add InitialCreate
 > [!TIP]
 > 마이그레이션 파일을 자유롭게 이동하고 네임스페이스를 변경할 수 있습니다. 새 마이그레이션은 지난 번 마이그레이션의 형제 항목으로 만들어집니다.
 
-<a name="update-the-database"></a>데이터베이스 업데이트
--------------------
+## <a name="update-the-database"></a>데이터베이스 업데이트
 
 그런 다음 스키마를 만들기 위해 데이터베이스에 마이그레이션을 적용합니다.
 
 ``` powershell
 Update-Database
 ```
+
 ``` Console
 dotnet ef database update
 ```
 
-<a name="customize-migration-code"></a>마이그레이션 코드 사용자 지정
-------------------------
+## <a name="customize-migration-code"></a>마이그레이션 코드 사용자 지정
 
 EF Core 모델을 변경한 후에는 데이터베이스 스키마가 동기화되지 않을 수 있습니다. 최신 상태로 하기 위해 다른 마이그레이션을 추가합니다. 마이그레이션 이름은 버전 제어 시스템의 커밋 메시지처럼 사용할 수 있습니다. 예를 들어 변경이 검토를 위한 새 엔터티 클래스인 경우 *AddProductReviews*와 같은 이름을 선택할 수 있습니다.
 
 ``` powershell
 Add-Migration AddProductReviews
 ```
+
 ``` Console
 dotnet ef migrations add AddProductReviews
 ```
@@ -133,6 +132,7 @@ migrationBuilder.DropColumn(
 ``` powershell
 Update-Database
 ```
+
 ``` Console
 dotnet ef database update
 ```
@@ -145,39 +145,42 @@ dotnet ef database update
 * 함수
 * 저장 프로시저
 * 트리거
-* 보기
+* 뷰
 
-<a name="remove-a-migration"></a>마이그레이션 제거
-------------------
+## <a name="remove-a-migration"></a>마이그레이션 제거
+
 때때로 마이그레이션을 추가하고 적용하기 전에 EF Core 모델에 추가적인 변경이 필요한 경우가 있습니다. 마지막 마이그레이션을 제거하려면다음 명령을 사용합니다.
 
 ``` powershell
 Remove-Migration
 ```
+
 ``` Console
 dotnet ef migrations remove
 ```
 
 마이그레이션을 제거한 후 추가적인 모델 변경을 수행하고 다시 추가합니다.
 
-<a name="revert-a-migration"></a>마이그레이션 되돌리기
-------------------
+## <a name="revert-a-migration"></a>마이그레이션 되돌리기
+
 이미 한 번 이상의 마이그레이션을 데이터베이스에 적용했으나 되돌려야 하는 경우 같은 명령을 사용하여 마이그레이션을 적용할 수 있으나, 롤백하려는 대상 마이그레이션의 이름을 지정합니다.
 
 ``` powershell
 Update-Database LastGoodMigration
 ```
+
 ``` Console
 dotnet ef database update LastGoodMigration
 ```
 
-<a name="generate-sql-scripts"></a>SQL 스크립트 생성
---------------------
+## <a name="generate-sql-scripts"></a>SQL 스크립트 생성
+
 마이그레이션을 디버깅하거나 프로덕션 데이터베이스에 배포할 경우 SQL 스크립트를 생성하는 것이 유용합니다. 그런 다음 스크립트가 정확한지 추가적으로 검토하고 프로덕션 데이터베이스에 맞게 조정합니다. 또한 배포 기술과 함께 스크립트를 사용할 수도 있습니다. 기본 명령은 다음과 같습니다.
 
 ``` powershell
 Script-Migration
 ```
+
 ``` Console
 dotnet ef migrations script
 ```
@@ -190,8 +193,8 @@ dotnet ef migrations script
 
 **idempotent** 스크립트는 선택적으로 생성할 수 있습니다. 이 스크립트는 기존에 데이터베이스에 적용되지 않은 경우 마이그레이션만 적용합니다. 데이터베이스에 적용된 마지막 마이그레이션을 잘 모르거나 각기 다른 마이그레이션 상태일 수 있는 여러 데이터베이스에 배포할 때 이것이 유용합니다.
 
-<a name="apply-migrations-at-runtime"></a>런타임에 마이그레이션 적용
----------------------------
+## <a name="apply-migrations-at-runtime"></a>런타임에 마이그레이션 적용
+
 일부 앱은 시작이나 최초 실행 중에 런타임에서 마이그레이션을 적용하려 할 수 있습니다. 이 작업은 `Migrate()` 메서드로 수행합니다.
 
 이 메서드는 `IMigrator` 서비스를 기반으로 구성되므로 더 고급 시나리오에 사용할 수 있습니다. `myDbContext.GetInfrastructure().GetService<IMigrator>()`를 사용하여 액세스합니다.
@@ -201,10 +204,10 @@ myDbContext.Database.Migrate();
 ```
 
 > [!WARNING]
+>
 > * 이 방법은 모두에게 적합한 것이 아닙니다. 로컬 데이터베이스가 있는 앱에는 훌륭하나 대부분의 애플리케이션에는 SQL 스크립트 생성 등과 같이 더 강력한 배포 전략이 필요합니다.
 > * `Migrate()`에 앞서 `EnsureCreated()`를 호출하지 않습니다. `EnsureCreated()`는 마이그레이션을 무시하고 스키마를 만들어 `Migrate()`에 실패합니다.
 
-<a name="next-steps"></a>다음 단계
-----------
+## <a name="next-steps"></a>다음 단계
 
 자세한 내용은 <xref:core/miscellaneous/cli/index>을 참조하세요.
