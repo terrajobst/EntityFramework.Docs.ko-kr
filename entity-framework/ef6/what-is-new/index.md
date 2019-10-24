@@ -4,12 +4,12 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: c49f4cba0066d1e218f11c3959d96f9cafa913f4
-ms.sourcegitcommit: 7bc43f21e7bdd64926314ea949aae689f1911956
+ms.openlocfilehash: 9daae787d0cec0ca536413e6263bb363ba76ff2c
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71266790"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812141"
 ---
 # <a name="whats-new-in-ef6"></a>EF6의 새로운 기능
 
@@ -25,7 +25,7 @@ EF 6.3.0 런타임은 2019년 9월에 NuGet에서 출시되었습니다. 이 릴
   - 이제 EntityFramework 패키지는 .NET Framework 4.x. 외에도 .NET Standard 2.1을 대상으로 합니다.
   - 즉, EF 6.3은 플랫폼 간이며 Windows 외에도 Linux 및 macOS와 같은 다른 운영 체제에서도 지원됨을 의미합니다.
   - 마이그레이션 명령이 프로세스에서 실행되고 SDK 스타일 프로젝트에서 사용할 수 있도록 다시 작성되었습니다.
-- SQL Server HierarchyId 지원
+- SQL Server HierarchyId 지원.
 - Roslyn 및 NuGet PackageReference와의 호환성이 향상되었습니다.
 - 어셈블리로부터 마이그레이션을 사용, 추가, 스크립팅 및 적용하기 위한 `ef6.exe` 유틸리티를 추가했습니다. 이는 `migrate.exe`를 대체합니다.
 
