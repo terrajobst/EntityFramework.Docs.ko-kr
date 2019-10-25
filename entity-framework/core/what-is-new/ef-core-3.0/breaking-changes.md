@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/19/2019
 ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: 690c7828cfe5019f4e7ae904c92430fab4726cb9
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: b2e3881e3454377dab7851cba999ed6b891def4e
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72446020"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812125"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 3\.0.0으로 업그레이드할 때 기존 애플리케이션의 호환성이 손상될 수 있는 API 및 동작 변경 내용은 다음과 같습니다.
@@ -69,6 +69,7 @@ ms.locfileid: "72446020"
 | [이제 Microsoft.EntityFrameworkCore.Design은 DevelopmentDependency 패키지입니다.](#dip) | 낮음      |
 | [SQLitePCL.raw가 버전 2.0.0으로 업데이트되었습니다.](#SQLitePCL) | 낮음      |
 | [NetTopologySuite가 버전 2.0.0으로 업데이트되었습니다.](#NetTopologySuite) | 낮음      |
+| [System.Data.SqlClient 대신 Microsoft.Data.SqlClient가 사용됩니다.](#SqlClient) | 낮음      |
 | [복수의 모호한 자기 참조 관계를 구성해야 합니다.](#mersa) | 낮음      |
 | [DbFunction.Schema가 null 또는 빈 문자열이면 모델의 기본 스키마에 있도록 구성됩니다.](#udf-empty-string) | 낮음      |
 
@@ -118,7 +119,7 @@ ms.locfileid: "72446020"
 
 이는 .NET Core와 Xamarin 같은 기타 최신 .NET 플랫폼에 에너지를 집중하기 위한 .NET 기술의 전략적 결정의 일부입니다.
 
-**완화 방법**
+**해결 방법**
 
 최신 .NET 플랫폼으로 이동하세요. 가능하지 않는 경우, EF Core 2.1 또는 EF Core 2.2를 계속 사용하세요. 둘 다 .NET Framework를 지원합니다.
 
@@ -163,7 +164,7 @@ ASP.NET Core 3.0 애플리케이션 또는 기타 지원되는 애플리케이�
 
 이 변경으로 인해 `dotnet ef`을 NuGet에서 일반 .NET CLI 도구로 배포 및 업데이트할 수 있으며, EF Core 3.0도 항상 NuGet 패키지로 배포된다는 사실과 일치합니다.
 
-**완화 방법**
+**해결 방법**
 
 마이그레이션을 관리하거나 `DbContext`의 스캐폴드를 수행하려면 `dotnet-ef`를 전역 도구로 설치합니다.
 
@@ -208,7 +209,7 @@ context.Products.FromSqlInterpolated(
 이와 같은 메서드 오버로드를 적용할 경우 보간된 문자열 메서드를 호출하려다 실수로 원시 문자열 메서드를 호출하거나, 반대로 후자를 호출하려다 전자를 호출하는 실수를 저지를 가능성이 매우 높습니다.
 쿼리에는 매개 변수가 있어야 하는데, 이 경우 매개 변수가 없는 쿼리가 나올 수 있습니다.
 
-**완화 방법**
+**해결 방법**
 
 새 메서드 이름을 사용하도록 전환합니다.
 
@@ -259,7 +260,7 @@ EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(
 
 `DbSet`가 아닌 위치에 `FromSql`을 지정하는 것은 추가 의미 또는 추가 가치가 없으므로 특정 시나리오에서 모호성을 발생시킬 수 있습니다.
 
-**완화 방법**
+**해결 방법**
 
 `FromSql` 호출은 이 호출이 적용되는 `DbSet`로 직접 이동해야 합니다.
 
@@ -285,7 +286,7 @@ EF Core 3.0부터 지정된 형식 및 ID의 엔터티가 반환된 그래프의
 
 ID 확인(즉 이전에 발생한 엔터티와 동일한 형식과 ID를 가진 엔터티 확인)이 추가 성능 및 메모리 오버헤드를 추가합니다. 이는 일반적으로 비 추적 쿼리가 먼저 사용되는 이유와 상반됩니다. 또한 ID 확인이 때때로 유용할 수 있지만, 엔터티가 직렬화되고 클라이언트로 전송되는 경우(비 추적 쿼리에 일반적임)에는 필요하지 않습니다.
 
-**완화 방법**
+**해결 방법**
 
 ID 확인이 필요한 경우 추적 쿼리를 사용합니다.
 
@@ -414,7 +415,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 단일 LINQ 쿼리를 구현하기 위해 여러 개의 쿼리를 발행하는 것은 여러 번의 데이터베이스 왕복이 필요하기 때문에 성능이 저하되고 각 쿼리가 서로 다른 데이터베이스 상태를 관찰할 수 있으므로 데이터 일관성 문제가 발생하는 등 여러 문제의 원인이 되었습니다.
 
-**완화 방법**
+**해결 방법**
 
 엄밀히 말해 이것은 호환성이 손상되는 변경은 아니지만, 단일 쿼리가 컬렉션 탐색에 대해 다량의 `Include` 연산자를 포함하는 경우 애플리케이션 성능에 상당한 영향을 줄 수 있습니다. 자세한 내용 및 보다 효율적인 방법으로 쿼리를 재작성하는 방법은 [이 주석](https://github.com/aspnet/EntityFrameworkCore/issues/18022#issuecomment-542397085)을 참조하세요.
 
@@ -437,7 +438,7 @@ context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
 이 변경은 예기치 않은 부작용 없이 직관적인 방식으로 `DeleteBehavior`를 사용하는 환경을 개선하기 위해 이루어졌습니다.
 
-**완화 방법**
+**해결 방법**
 
 이전 동작은 `DeleteBehavior.ClientNoAction`을 사용하여 복원할 수 있습니다.
 
@@ -558,7 +559,7 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 3\.0부터는 EF Core가 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
 EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
 
-**완화 방법**
+**해결 방법**
 
 사용하는 모델이 모든 선택적 열에 따라 다르게 공유되는 테이블을 포함하지만 해당 테이블을 가리키는 탐색이 `null`로 예상되지 않는 경우 `null`을 탐색하는 경우를 처리하도록 애플리케이션을 수정해야 합니다. 이렇게 할 수 없는 경우 엔터티 형식에 필수 속성을 추가하거나 하나 이상의 속성에 `null`이 아닌 값을 할당해야 합니다.
 
@@ -603,7 +604,7 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 
 같은 테이블에 매핑된 엔터티 중 한 개만 업데이트하는 경우 부실 동시성 토큰 값을 방지하기 위해 이렇게 변경되었습니다.
 
-**완화 방법**
+**해결 방법**
 
 테이블을 공유하는 모든 엔터티는 동시성 토큰 열에 매핑되는 속성을 포함해야 합니다. 해당 속성을 섀도 상태로 만들 수 있습니다.
 ```C#
@@ -661,7 +662,7 @@ EF Core 3.0 전에는 `ShippingAddress` 속성이 기본적으로 `BulkOrder` �
 
 이전 동작은 예상할 수 없었습니다.
 
-**완화 방법**
+**해결 방법**
 
 이 속성을 여전히 파생 형식에 대한 별도의 열에 명시적으로 매핑할 수 있습니다.
 
@@ -778,7 +779,7 @@ using (new TransactionScope())
 
 같은 `TransactionScope`에 복수의 컨텍스트를 사용할 수 있도록 이렇게 변경했습니다. 새 동작은 EF6과도 일치합니다.
 
-**완화 방법**
+**해결 방법**
 
 연결이 열린 상태로 유지되어야 하는 경우 `OpenConnection()`을 명시적으로 호출하여 EF Core가 연결을 조기에 닫지 않도록 합니다.
 
@@ -839,7 +840,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 
 이 변경으로 인해 엔터티가 포함된 데이터베이스 작업을 수행할 때 EF Core가 기본적으로 비즈니스 논리를 잘못 트리거하는 것을 방지합니다.
 
-**완화 방법**
+**해결 방법**
 
 `ModelBuilder`에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
 예:
@@ -909,7 +910,7 @@ modelBuilder
 
 이 변경은 유사한 이름의 두 속성에 대해 동일한 필드를 사용하지 않도록 하기 위해 이루어졌으며, 필드 전용 속성에 대한 일치 규칙을 CLR 속성에 매핑된 속성과 동일하게 만듭니다.
 
-**완화 방법**
+**해결 방법**
 
 필드 전용 속성의 이름은 매핑되는 필드와 동일한 이름을 지정해야 합니다.
 3\.0 이후 EF Core의 향후 릴리스에서는 속성 이름과 다른 필드 이름을 명시적으로 다시 사용하도록 설정할 계획입니다([#15307](https://github.com/aspnet/EntityFrameworkCore/issues/15307) 이슈 참조).
@@ -939,7 +940,7 @@ EF Core 3.0부터 `AddDbContext` 및 `AddDbContextPool`은 DI(종속성 주입)�
 
 EF Core 3.0에서는 이러한 서비스가 애플리케이션의 DI 컨테이너에 있을 필요가 없습니다. 그러나 `ILoggerFactory`가 애플리케이션의 DI 컨테이너에 등록된 경우 EF Core에서 여전히 DI를 사용합니다.
 
-**완화 방법**
+**해결 방법**
 
 애플리케이션에 이러한 서비스가 필요한 경우 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 또는 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 DI 컨테이너에 명시적으로 등록합니다.
 
@@ -1114,7 +1115,7 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 
 이전 동작은 특히 구성 코드를 읽고 오류를 찾을 때 매우 혼란스럽습니다.
 
-**완화 방법**
+**해결 방법**
 
 새 동작은 형식 이름의 문자열을 사용하고 탐색 속성을 명시적으로 지정하지 않은 채 명시적으로 관계를 구성하는 애플리케이션만 중단됩니다.
 이는 일반적이지 않습니다.
@@ -1149,7 +1150,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 
 이 변경은 해당 메서드를 호출할 때 발생하는 힙 할당 수를 줄여서 일반적인 성능을 개선합니다.
 
-**완화 방법**
+**해결 방법**
 
 단순히 위의 API를 대기 중인 애플리케이션은 다시 컴파일하기만 하면 됩니다. 소스 변경은 필요 없습니다.
 더 복잡한 사용(예: 반환된 `Task`를 `Task.WhenAny()`에 전달)의 경우 일반적으로 반환된 `ValueTask<T>`에 대해 `AsTask()`를 호출하여 `Task<T>`로 변환해야 합니다.
@@ -1210,7 +1211,7 @@ EF Core 3.0 이전에는 `ForSqlServerHasIndex().ForSqlServerInclude()`가 `INCL
 **새 동작**
 
 EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준에서 지원됩니다.
-`HasIndex().ForSqlServerInclude()`을 사용하십시오.
+`HasIndex().ForSqlServerInclude()`를 사용합니다.
 
 **이유**
 
@@ -1238,7 +1239,7 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 이 변경은 앞서 언급한 인터페이스의 구현을 단순화합니다.
 
-**완화 방법**
+**해결 방법**
 
 새로운 확장 메서드를 사용합니다.
 
@@ -1260,7 +1261,7 @@ EF Core 3.0부터 인덱스에 `Include`를 사용하여 이제 관계형 수준
 
 이 변경은 앞서 언급한 확장 메서드의 구현을 단순화합니다.
 
-**완화 방법**
+**해결 방법**
 
 새로운 확장 메서드를 사용합니다.
 
@@ -1325,7 +1326,7 @@ Guid 값은 이제 텍스트로 저장됩니다.
 
 Guid의 이진 형식은 표준화되지 않았습니다. 값을 텍스트로 저장하면 데이터베이스가 다른 기술과 더 잘 호환됩니다.
 
-**완화 방법**
+**해결 방법**
 
 다음과 같이 SQL을 실행하여 기존 데이터베이스를 새 형식으로 마이그레이션할 수 있습니다.
 
@@ -1375,7 +1376,7 @@ Char 값은 이제 텍스트로 저장됩니다.
 
 값을 텍스트로 저장하는 것이 더 자연스럽고 데이터베이스가 다른 기술과 더 잘 호환됩니다.
 
-**완화 방법**
+**해결 방법**
 
 다음과 같이 SQL을 실행하여 기존 데이터베이스를 새 형식으로 마이그레이션할 수 있습니다.
 
@@ -1416,7 +1417,7 @@ modelBuilder
 
 데이터베이스를 업데이트하거나 병합 충돌을 해결할 때 마이그레이션 순서가 중요합니다. 고정 달력을 사용하면 팀 멤버가 서로 다른 시스템 캘린더로 인해 발생할 수 있는 주문 문제를 방지할 수 있습니다.
 
-**완화 방법**
+**해결 방법**
 
 이 변경은 그레고리력(예: 태국 불교식 달력)보다 큰 년도가 있는 그레고리력이 아닌 달력을 사용하는 사용자에게 영향을 줍니다. 기존 마이그레이션 ID를 업데이트하여 기존 마이그레이션 후 새 마이그레이션 순서를 지정해야 합니다.
 
@@ -1455,7 +1456,7 @@ EF Core 3.0부터 EF는 SQL Server 2008 이후 버전하고만 호환되는 페�
 
 [SQL Server 2008은 더 이상 지원되는 제품이 아니며](https://blogs.msdn.microsoft.com/sqlreleaseservices/end-of-mainstream-support-for-sql-server-2008-and-sql-server-2008-r2/), EF Core 3.0에서 수행되는 쿼리 변경 내용에 맞게 이 기능을 업데이트하는 것이 중요하므로 이 변경 작업을 수행하고 있습니다.
 
-**완화 방법**
+**해결 방법**
 
 생성된 SQL이 지원을 받을 수 있도록 최신 버전의 SQL Server 또는 더 높은 호환성 수준을 사용하여 업데이트하는 것이 좋습니다. 따라서, 이 작업을 수행할 수 없는 경우 세부 정보를 사용하여 [추적 문제에 대해 설명](https://github.com/aspnet/EntityFrameworkCore/issues/16400)해주세요. 사용자 의견에 따라 이 결정을 다시 검토할 수 있습니다.
 
@@ -1478,7 +1479,7 @@ EF Core 3.0부터 EF는 SQL Server 2008 이후 버전하고만 호환되는 페�
 2\.0부터 3.0까지의 릴리스에서 이러한 메서드를 추가하거나 여러 번 변경해야 했습니다.
 해당 메서드를 새 추상 기본 클래스로 세분화하면 기존 확장을 중단하지 않고도 이러한 종류의 변경을 더 쉽게 할 수 있습니다.
 
-**완화 방법**
+**해결 방법**
 
 새 패턴에 따라 확장을 업데이트합니다.
 EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOptionsExtension`을 여러 번 구현한 예가 확인되었습니다.
@@ -1489,7 +1490,7 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 [추적 문제 #10985](https://github.com/aspnet/EntityFrameworkCore/issues/10985)
 
-**변경 내용**
+**변경**
 
 `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperator` 이름이 `RelationalEventId.LogQueryPossibleExceptionWithAggregateOperatorWarning`으로 바뀌었습니다.
 
@@ -1497,7 +1498,7 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 이 경고 이벤트의 이름 지정을 다른 모든 경고 이벤트에 맞춥니다.
 
-**완화 방법**
+**해결 방법**
 
 새 이름을 사용합니다. (이벤트 ID 번호가 변경되지 않았습니다.)
 
@@ -1527,7 +1528,7 @@ var constraintName = myForeignKey.ConstraintName;
 
 이러한 변경으로 인해 이 영역에서 이름을 일관되게 지정하고, 또한 일관되게 외래 키가 정의된 열 또는 속성 이름이 아닌 외래 키 제약 조건의 이름임을 명확히 합니다.
 
-**완화 방법**
+**해결 방법**
 
 새 이름을 사용합니다.
 
@@ -1549,7 +1550,7 @@ EF Core 3.0부터 이러한 메서드는 공개입니다.
 
 이러한 메서드는 데이터베이스가 생성되었지만 비어 있는지 확인하기 위해 EF에서 사용됩니다. 이것은 EF 외부에서 마이그레이션을 적용할지 여부를 결정할 때도 유용합니다.
 
-**완화 방법**
+**해결 방법**
 
 재정의의 접근성을 변경합니다.
 
@@ -1571,7 +1572,7 @@ EF Core 3.0부터는 DevelopmentDependency 패키지입니다. 따라서 종속�
 
 이 패키지는 디자인 타임에만 사용할 수 있습니다. 배포된 애플리케이션은 해당 패키지를 참조할 수 없습니다. 패키지를 DevelopmentDependency로 만들면 이 권장 사항이 강화됩니다.
 
-**완화 방법**
+**해결 방법**
 
 이 패키지를 참조하여 EF Core의 디자인 타임 동작을 재정의해야 하는 경우 프로젝트에서 PackageReference 항목 메타데이터를 업데이트할 수 있습니다. 패키지가 Microsoft.EntityFrameworkCore.Tools를 통해 전이적으로 참조되는 경우에는 명시적 PackageReference를 패키지에 추가하여 해당 메타데이터를 변경해야 합니다.
 
@@ -1601,7 +1602,7 @@ EF Core 3.0부터는 DevelopmentDependency 패키지입니다. 따라서 종속�
 
 SQLitePCL.raw의 버전 2.0.0은 .NET Standard 2.0을 대상으로 합니다. 이전에는 .NET Standard 1.1을 대상으로 했기 때문에 전이적 패키지를 대부분 종료해야 작동이 가능했습니다.
 
-**완화 방법**
+**해결 방법**
 
 SQLitePCL.raw 버전 2.0.0에 중대한 변경이 포함되었습니다. 자세한 내용은 [릴리스 정보](https://github.com/ericsink/SQLitePCL.raw/blob/v2/v2.md)를 참조하세요.
 
@@ -1623,9 +1624,32 @@ SQLitePCL.raw 버전 2.0.0에 중대한 변경이 포함되었습니다. 자세�
 
 NetTopologySuite 버전 2.0.0은 EF Core 사용자에게 발생하는 여러 가지 유용성 문제를 해결하는 것이 목적입니다.
 
-**완화 방법**
+**해결 방법**
 
 NetTopologySuite 버전 2.0.0에는 호환성이 손상되는 변경이 포함되어 있습니다. 자세한 내용은 [릴리스 정보](https://www.nuget.org/packages/NetTopologySuite/2.0.0-pre001)를 참조하세요.
+
+<a name="SqlClient"></a>
+
+### <a name="microsoftdatasqlclient-is-used-instead-of-systemdatasqlclient"></a>System.Data.SqlClient 대신 Microsoft.Data.SqlClient가 사용됩니다.
+
+[추적 이슈 #15636](https://github.com/aspnet/EntityFrameworkCore/issues/15636)
+
+**이전 동작**
+
+이전에는 Microsoft.EntityFrameworkCore.SqlServer가 System.Data.SqlClient에 의존했습니다.
+
+**새 동작**
+
+Microsoft.Data.SqlClient에 의존하도록 패키지를 업데이트했습니다.
+
+**이유**
+
+지금부터 Microsoft.Data.SqlClient가 SQL Server의 플래그십 데이터 액세스 드라이버로 사용되며, System.Data.SqlClient는 더 이상 개발 시 중점 사항이 되지 않습니다.
+Always Encrypted와 같은 일부 중요한 기능은 Microsoft.Data.SqlClient에서만 사용할 수 있습니다.
+
+**해결 방법**
+
+코드가 System.Data.SqlClient에 직접적인 종속성을 갖는 경우, 대신 Microsoft.Data.SqlClient를 참조하도록 변경해야 합니다. 두 패키지는 높은 수준의 API 호환성을 유지하므로 간단하게 패키지와 네임스페이스를 변경하기만 하면 됩니다.
 
 <a name="mersa"></a>
 
@@ -1656,7 +1680,7 @@ public class User
 
 결과로 생성되는 모델이 모호하고 잘못 사용될 가능성이 컸습니다.
 
-**완화 방법**
+**해결 방법**
 
 관계의 전체 구성을 사용합니다. 예:
 
@@ -1695,7 +1719,7 @@ public static int? DatePart(string datePartArg, DateTime? date) => throw new Exc
 
 이전에 스키마가 비어 있던 것은 해당 함수를 기본 제공으로 처리하는 방법이었지만 그 논리는 기본 제공 함수가 어떤 스키마에도 속하지 않는 SqlServer에만 적용됩니다.
 
-**완화 방법**
+**해결 방법**
 
 DbFunction의 변환이 기본 제공 함수에 매핑되도록 수동으로 구성합니다.
 
