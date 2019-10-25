@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 9a7c5488-aaf4-4b40-b1ff-f435ff30f6ec
 uid: core/modeling/relational/inheritance
-ms.openlocfilehash: a7fb19f9c86d1768967d172c006eb5d894254e0c
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: c660107619470a726fe13ad8eee2850749e6dcd9
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71196937"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72812087"
 ---
 # <a name="inheritance-relational-database"></a>상속(관계형데이터베이스)
 
@@ -58,7 +58,7 @@ public class RssBlog : Blog
 
 데이터 주석은 상속을 구성 하는 데 사용할 수 없습니다.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
 흐름 API를 사용 하 여 판별자 열의 이름 및 유형과 계층의 각 유형을 식별 하는 데 사용 되는 값을 구성할 수 있습니다.
 
@@ -99,7 +99,8 @@ modelBuilder.Entity<Blog>()
     .HasMaxLength(200);
 ```
 
-판별자는 엔터티의 실제 CLR 속성에 매핑될 수도 있습니다. 예:
+판별자는 엔터티의 실제 CLR 속성에 매핑될 수도 있습니다. 예를 들면,
+
 ```C#
 class MyContext : DbContext
 {
@@ -126,6 +127,7 @@ public class RssBlog : Blog
 ```
 
 이러한 두 항목을 함께 결합 하 여 판별자를 실제 속성에 매핑하고 구성할 수 있습니다.
+
 ```C#
 modelBuilder.Entity<Blog>(b =>
 {

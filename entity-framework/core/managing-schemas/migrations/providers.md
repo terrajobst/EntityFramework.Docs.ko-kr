@@ -1,26 +1,27 @@
 ---
-title: 여러 공급자-EF Core 사용 하 여 마이그레이션
+title: 여러 공급자를 사용 하 여 마이그레이션-EF Core
 author: bricelam
 ms.author: bricelam
 ms.date: 11/08/2017
-ms.openlocfilehash: 75c055221609679db3f00016b9cb44c6c8c6e473
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+uid: core/managing-schemas/migrations/providers
+ms.openlocfilehash: c9b1a2563ef548e592374f90a6242b0bd851bc98
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45488779"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72811950"
 ---
-<a name="migrations-with-multiple-providers"></a>여러 공급자를 사용 하 여 마이그레이션
-==================================
-합니다 [EF Core 도구] [ 1] 만 활성 공급자에 대 한 마이그레이션을 스 캐 폴딩 합니다. 그러나 경우에 따라 하려는 DbContext를 사용 하 여 둘 이상의 공급자 (예: Microsoft SQL Server 및 SQLite)를 사용 합니다. 마이그레이션을 사용 하 여이 처리 하는 방법은 두 가지가 있습니다. 두 집합을 유지 관리할 수 있습니다-마이그레이션의 다른 각 공급자에는 단일으로 설정 하는 병합 작업 둘 다에서.
+# <a name="migrations-with-multiple-providers"></a>여러 공급자를 사용 하 여 마이그레이션
 
-<a name="two-migration-sets"></a>두 마이그레이션
-------------------
-첫 번째 접근 방식에서는 각 모델 변경에 대 한 두 마이그레이션을 생성합니다.
+[EF Core 도구][1] 는 활성 공급자의 마이그레이션만 스 캐 폴드 합니다. 그러나 경우에 따라 DbContext에서 둘 이상의 공급자 (예: Microsoft SQL Server 및 SQLite)를 사용 하는 것이 좋습니다. 마이그레이션을 사용 하 여이를 처리 하는 방법에는 두 가지가 있습니다. 각 공급자에 대해 하나씩 두 개의 마이그레이션 집합을 유지 관리할 수 있으며 둘 다에서 작동할 수 있는 단일 집합으로 병합할 수 있습니다.
 
-작업을 수행 하는 한 가지 방법은이 방법은 각 마이그레이션 마련 [별도 어셈블리에] [ 2] 수동으로 전환할 활성 공급자 (및 마이그레이션 어셈블리) 두 마이그레이션을 추가 합니다.
+## <a name="two-migration-sets"></a>마이그레이션 집합 2 개
 
-도구를 사용 하 여 작업을 더 쉽게 하는 또 다른 방법은 DbContext에서 파생 되 고 활성 공급자를 재정의 하는 새 형식을 만드는 것입니다. 이 형식은 디자인에는 추가 하거나 마이그레이션 적용 시점입니다.
+첫 번째 방법에서는 각 모델 변경에 대해 두 개의 마이그레이션을 생성 합니다.
+
+이 작업을 수행 하는 한 가지 방법은 각 마이그레이션 집합을 [별도의 어셈블리에][2] 배치 하 고 두 마이그레이션 추가 간에 활성 공급자 (및 마이그레이션 어셈블리)를 수동으로 전환 하는 것입니다.
+
+도구를 쉽게 사용 하는 또 다른 방법은 DbContext에서 파생 되는 새 형식을 만들고 활성 공급자를 재정의 하는 것입니다. 이 형식은 마이그레이션을 추가 하거나 적용할 때 디자인 타임에 사용 됩니다.
 
 ``` csharp
 class MySqliteDbContext : MyDbContext
@@ -31,27 +32,28 @@ class MySqliteDbContext : MyDbContext
 ```
 
 > [!NOTE]
-> 각 마이그레이션 집합 DbContext 형식을 자체를 사용 하므로이 방법은 별도 마이그레이션을 어셈블리를 사용 하 여 필요 하지 않습니다.
+> 각 마이그레이션 집합은 자체 DbContext 유형을 사용 하므로이 방법은 별도의 마이그레이션 어셈블리를 사용할 필요가 없습니다.
 
-새 마이그레이션에 추가할 때 컨텍스트 형식을 지정 합니다.
+새 마이그레이션을 추가할 때 컨텍스트 유형을 지정 합니다.
 
 ``` powershell
 Add-Migration InitialCreate -Context MyDbContext -OutputDir Migrations\SqlServerMigrations
 Add-Migration InitialCreate -Context MySqliteDbContext -OutputDir Migrations\SqliteMigrations
 ```
+
 ``` Console
 dotnet ef migrations add InitialCreate --context MyDbContext --output-dir Migrations/SqlServerMigrations
 dotnet ef migrations add InitialCreate --context MySqliteDbContext --output-dir Migrations/SqliteMigrations
 ```
 
 > [!TIP]
-> 마지막 형제 항목으로 만들어지므로 이후 마이그레이션에 대 한 출력 디렉터리를 지정할 필요가 없습니다.
+> 마지막 마이그레이션에 대 한 형제로 만들어지기 때문에 후속 마이그레이션의 출력 디렉터리를 지정할 필요가 없습니다.
 
-<a name="one-migration-set"></a>하나의 마이그레이션 설정
------------------
-두 집합을 마이그레이션의 마음에 들지 않으면 두 공급자 모두에 적용할 수 있는 단일 집합을 수동으로 결합할 수 있습니다.
+## <a name="one-migration-set"></a>마이그레이션 집합 하나
 
-공급자를 인식 하지 못하는 모든 주석을 무시 하므로 주석 공존할 수 있습니다. 예를 들어 Microsoft SQL Server 및 SQLite를 사용 하 여 작동 하는 기본 키 열이 같습니다.
+두 개의 마이그레이션 집합이 없는 경우 두 공급자에 모두 적용할 수 있는 단일 집합으로 수동으로 결합할 수 있습니다.
+
+공급자는 인식 되지 않는 주석을 무시 하므로 주석이 공존할 수 있습니다. 예를 들어 Microsoft SQL Server와 SQLite 모두에서 작동 하는 기본 키 열은 다음과 같습니다.
 
 ``` csharp
 Id = table.Column<int>(nullable: false)
@@ -60,7 +62,7 @@ Id = table.Column<int>(nullable: false)
     .Annotation("Sqlite:Autoincrement", true),
 ```
 
-사용 하 여 작업 공급자가 하나에 적용할 수 있습니다 (또는 공급자 간에 다르게 들은) 하는 경우는 `ActiveProvider` 는 공급자가 활성 구별 하는 속성입니다.
+한 공급자에 대해서만 작업을 적용할 수 있거나 공급자 간에 다르게 적용 될 수 있는 경우에는 `ActiveProvider` 속성을 사용 하 여 활성화 된 공급자를 알려 주십시오.
 
 ``` csharp
 if (migrationBuilder.ActiveProvider == "Microsoft.EntityFrameworkCore.SqlServer")
@@ -69,7 +71,6 @@ if (migrationBuilder.ActiveProvider == "Microsoft.EntityFrameworkCore.SqlServer"
         name: "EntityFrameworkHiLoSequence");
 }
 ```
-
 
   [1]: ../../miscellaneous/cli/index.md
   [2]: projects.md

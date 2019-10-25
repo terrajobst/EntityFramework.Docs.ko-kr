@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a628795e-64df-4f24-a5e8-76bc261e7ed8
 uid: core/modeling/backing-field
-ms.openlocfilehash: c3ca8bb97992c192672e8c2f2040b0de029df68d
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 288440a4494117fe59d27187e24424c4d2fd44ab
+ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197487"
+ms.lasthandoff: 10/23/2019
+ms.locfileid: "72811881"
 ---
 # <a name="backing-fields"></a>지원 필드
 
@@ -35,7 +35,7 @@ ms.locfileid: "71197487"
 
 데이터 주석으로는 지원 필드를 구성할 수 없습니다.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
 흐름 API를 사용 하 여 속성에 대 한 지원 필드를 구성할 수 있습니다.
 
@@ -55,12 +55,8 @@ EF에서 필드 또는 속성을 사용 하는 경우을 구성할 수 있습니
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/BackingFieldNoProperty.cs#Sample)]
 
-필드 이름 이외의 이름을 속성에 지정 하도록 선택할 수도 있습니다. 이 이름은 모델을 만들 때 사용 되며, 특히 데이터베이스의에 매핑되는 열 이름에 사용 됩니다.
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/BackingFieldConceptualProperty.cs#Sample)]
-
 엔터티 클래스에 속성이 없는 경우 LINQ 쿼리에서 `EF.Property(...)` 메서드를 사용 하 여 개념적으로 모델의 일부인 속성을 참조할 수 있습니다.
 
 ``` csharp
-var blogs = db.blogs.OrderBy(b => EF.Property<string>(b, "Url"));
+var blogs = db.blogs.OrderBy(b => EF.Property<string>(b, "_validatedUrl"));
 ```
