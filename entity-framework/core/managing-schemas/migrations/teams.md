@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/30/2017
 uid: core/managing-schemas/migrations/teams
-ms.openlocfilehash: e6a1b86761a201cbcae34cced7e64f11df37a420
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: 6c17c56277821159962884aef72d46c624442e20
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811978"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655539"
 ---
 # <a name="migrations-in-team-environments"></a>팀 환경의 마이그레이션
 
@@ -19,11 +19,13 @@ ms.locfileid: "72811978"
 
 팀 동료 로부터 마이그레이션을 병합할 때 모델 스냅숏 파일에서 충돌이 발생할 수 있습니다. 두 변경 사항이 관련이 없는 경우에는 병합이 간단 하 고 두 개의 마이그레이션이 공존할 수 있습니다. 예를 들어 고객 엔터티 형식 구성에서 다음과 같은 병합 충돌이 발생할 수 있습니다.
 
-    <<<<<<< Mine
-    b.Property<bool>("Deactivated");
-    =======
-    b.Property<int>("LoyaltyPoints");
-    >>>>>>> Theirs
+``` output
+<<<<<<< Mine
+b.Property<bool>("Deactivated");
+=======
+b.Property<int>("LoyaltyPoints");
+>>>>>>> Theirs
+```
 
 이러한 속성은 모두 최종 모델에 있어야 하므로 두 속성을 추가 하 여 병합을 완료 합니다. 대부분의 경우 버전 제어 시스템에서 자동으로 이러한 변경 내용을 병합할 수 있습니다.
 
@@ -38,11 +40,13 @@ b.Property<int>("LoyaltyPoints");
 
 모델 스냅숏 모델을 병합할 때 true 충돌이 발생할 수 있습니다. 예를 들어 사용자와 사용자의 동료가 각각 동일한 속성의 이름을 바꿀 수 있습니다.
 
-    <<<<<<< Mine
-    b.Property<string>("Username");
-    =======
-    b.Property<string>("Alias");
-    >>>>>>> Theirs
+``` output
+<<<<<<< Mine
+b.Property<string>("Username");
+=======
+b.Property<string>("Alias");
+>>>>>>> Theirs
+```
 
 이러한 종류의 충돌이 발생 하면 마이그레이션을 다시 만들어 문제를 해결 합니다. 아래 단계를 수행합니다.
 

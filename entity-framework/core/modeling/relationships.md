@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0ff736a3-f1b0-4b58-a49c-4a7094bd6935
 uid: core/modeling/relationships
-ms.openlocfilehash: 1e9c62bec47263ef452c7ac425a0bb446f9371d8
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1e59ce9e19c12aa5564bc8467dcfcb3be8ee8996
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197646"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655666"
 ---
 # <a name="relationships"></a>관계
 
@@ -38,21 +38,21 @@ ms.locfileid: "71197646"
 
   * **역방향 탐색 속성:** 특정 탐색 속성을 설명할 때이 용어는 관계의 다른 쪽 end에 있는 탐색 속성을 나타냅니다.
 
-다음 코드 목록에서는 및 간의 `Blog` 일 대 다 관계를 보여 줍니다.`Post`
+다음 코드 목록에서는 `Blog`와 간의 일 대 다 관계를 보여 줍니다 `Post`
 
-* `Post`종속 엔터티입니다.
+* `Post` 종속 엔터티입니다.
 
-* `Blog`주 엔터티입니다.
+* `Blog`는 주 엔터티입니다.
 
-* `Post.BlogId`외래 키입니다.
+* 외래 키 `Post.BlogId`
 
-* `Blog.BlogId`주 키 (이 경우에는 대체 키가 아닌 기본 키)입니다.
+* `Blog.BlogId`는 주 키 (이 경우에는 대체 키가 아닌 기본 키)입니다.
 
-* `Post.Blog`참조 탐색 속성입니다.
+* `Post.Blog`은 참조 탐색 속성입니다.
 
-* `Blog.Posts`컬렉션 탐색 속성입니다.
+* `Blog.Posts` 컬렉션 탐색 속성입니다.
 
-* `Post.Blog`는의 `Blog.Posts` 역 탐색 속성 이며 그 반대의 경우도 마찬가지입니다.
+* `Post.Blog`은 `Blog.Posts`의 역 탐색 속성 이며 그 반대의 경우도 마찬가지입니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs#Entities)]
 
@@ -69,7 +69,7 @@ ms.locfileid: "71197646"
 
 * 두 형식 사이에 탐색 속성 쌍이 있으면 동일한 관계의 반전 탐색 속성으로 구성 됩니다.
 
-* 종속 엔터티에, `<primary key property name>` `<navigation property name><primary key property name>`또는 `<principal entity name><primary key property name>` 라는 속성이 포함 되어 있으면 외래 키로 구성 됩니다.
+* 종속 엔터티에 `<primary key property name>`, `<navigation property name><primary key property name>`또는 `<principal entity name><primary key property name>` 라는 속성이 포함 되어 있으면 외래 키로 구성 됩니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs?name=Entities&highlight=6,15,16)]
 
@@ -78,7 +78,7 @@ ms.locfileid: "71197646"
 
 ### <a name="no-foreign-key-property"></a>외래 키 속성이 없습니다.
 
-종속 엔터티 클래스에 외래 키 속성을 정의 하는 것이 좋지만 필수는 아닙니다. 외래 키 속성이 없으면 이름 `<navigation property name><principal key property name>` 으로 섀도 외래 키 속성이 추가 됩니다. 자세한 내용은 [섀도 속성](shadow-properties.md) 을 참조 하세요.
+종속 엔터티 클래스에 외래 키 속성을 정의 하는 것이 좋지만 필수는 아닙니다. 외래 키 속성이 없는 경우 `<navigation property name><principal key property name>` 이름으로 섀도 외래 키 속성이 도입 됩니다 (자세한 내용은 [섀도 속성](shadow-properties.md) 참조).
 
 [!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/NoForeignKey.cs?name=Entities&highlight=6,15)]
 
@@ -98,7 +98,7 @@ ms.locfileid: "71197646"
 
 ## <a name="data-annotations"></a>데이터 주석
 
-관계를 구성 하는 데 사용할 수 있는 데이터 주석으로는 `[ForeignKey]` 및 `[InverseProperty]`의 두 가지가 있습니다. 이러한는 `System.ComponentModel.DataAnnotations.Schema` 네임 스페이스에서 사용할 수 있습니다.
+관계, `[ForeignKey]` 및 `[InverseProperty]`를 구성 하는 데 사용할 수 있는 두 가지 데이터 주석이 있습니다. 이러한 기능은 `System.ComponentModel.DataAnnotations.Schema` 네임 스페이스에서 사용할 수 있습니다.
 
 ### <a name="foreignkey"></a>[ForeignKey]
 
@@ -115,15 +115,15 @@ ms.locfileid: "71197646"
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/InverseProperty.cs?highlight=33,36)]
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
-흐름 API에서 관계를 구성 하려면 먼저 관계를 구성 하는 탐색 속성을 식별 합니다. `HasOne`또는 `HasMany` 에서 구성을 시작 하는 엔터티 형식에 대 한 탐색 속성을 식별 합니다. 그런 다음 또는 `WithOne` `WithMany` 에 대 한 호출을 연결 하 여 역 탐색을 식별 합니다. `HasOne`/`WithOne`는 참조 탐색 속성 `HasMany` / `WithMany` 에 사용 되며 컬렉션 탐색 속성에 사용 됩니다.
+흐름 API에서 관계를 구성 하려면 먼저 관계를 구성 하는 탐색 속성을 식별 합니다. `HasOne` 또는 `HasMany`는 구성을 시작 하는 엔터티 형식에 대 한 탐색 속성을 식별 합니다. 그런 다음 `WithOne` 또는 `WithMany`에 대 한 호출을 연결 하 여 역 탐색을 식별 합니다. `HasOne`/`WithOne` 참조 탐색 속성에 사용 되 고 `HasMany`/`WithMany` 컬렉션 탐색 속성에 사용 됩니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoForeignKey.cs?highlight=14-16)]
 
 ### <a name="single-navigation-property"></a>단일 탐색 속성
 
-탐색 속성이 하나만 있는 경우 및 `WithOne` `WithMany`의 매개 변수가 없는 오버 로드가 있습니다. 이는 개념적으로 관계의 다른 쪽 끝에 참조 또는 컬렉션이 있지만 엔터티 클래스에 포함 된 탐색 속성이 없다는 것을 나타냅니다.
+탐색 속성이 하나만 있는 경우에는 `WithOne` 및 `WithMany`에 대 한 매개 변수가 없는 오버 로드가 있습니다. 이는 개념적으로 관계의 다른 쪽 끝에 참조 또는 컬렉션이 있지만 엔터티 클래스에 포함 된 탐색 속성이 없다는 것을 나타냅니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneNavigation.cs?highlight=14-16)]
 
@@ -137,7 +137,7 @@ ms.locfileid: "71197646"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositeForeignKey.cs?highlight=20)]
 
-의 `HasForeignKey(...)` 문자열 오버 로드를 사용 하 여 그림자 속성을 외래 키로 구성할 수 있습니다. 자세한 내용은 [섀도 속성](shadow-properties.md) 을 참조 하세요. 섀도 속성을 외래 키로 사용 하기 전에이를 명시적으로 모델에 추가 하는 것이 좋습니다 (아래 참조).
+`HasForeignKey(...)`의 문자열 오버 로드를 사용 하 여 그림자 속성을 외래 키로 구성할 수 있습니다. 자세한 내용은 [섀도 속성](shadow-properties.md) 을 참조 하세요. 섀도 속성을 외래 키로 사용 하기 전에이를 명시적으로 모델에 추가 하는 것이 좋습니다 (아래 참조).
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ShadowForeignKey.cs#Sample)]
 
@@ -151,83 +151,11 @@ ms.locfileid: "71197646"
 
 외래 키가 기본 키 이외의 속성을 참조 하도록 하려는 경우 흐름 API를 사용 하 여 관계에 대 한 principal key 속성을 구성할 수 있습니다. 주 키로 구성 하는 속성은 대체 키로 자동으로 설정 됩니다 (자세한 내용은 [대체 키](alternate-keys.md) 참조).
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Car> Cars { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<RecordOfSale>()
-            .HasOne(s => s.Car)
-            .WithMany(c => c.SaleHistory)
-            .HasForeignKey(s => s.CarLicensePlate)
-            .HasPrincipalKey(c => c.LicensePlate);
-    }
-}
-
-public class Car
-{
-    public int CarId { get; set; }
-    public string LicensePlate { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
-
-    public List<RecordOfSale> SaleHistory { get; set; }
-}
-
-public class RecordOfSale
-{
-    public int RecordOfSaleId { get; set; }
-    public DateTime DateSold { get; set; }
-    public decimal Price { get; set; }
-
-    public string CarLicensePlate { get; set; }
-    public Car Car { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?name=PrincipalKey&highlight=11)]
 
 다음 코드 목록에서는 복합 주체 키를 구성 하는 방법을 보여 줍니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Car> Cars { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<RecordOfSale>()
-            .HasOne(s => s.Car)
-            .WithMany(c => c.SaleHistory)
-            .HasForeignKey(s => new { s.CarState, s.CarLicensePlate })
-            .HasPrincipalKey(c => new { c.State, c.LicensePlate });
-    }
-}
-
-public class Car
-{
-    public int CarId { get; set; }
-    public string State { get; set; }
-    public string LicensePlate { get; set; }
-    public string Make { get; set; }
-    public string Model { get; set; }
-
-    public List<RecordOfSale> SaleHistory { get; set; }
-}
-
-public class RecordOfSale
-{
-    public int RecordOfSaleId { get; set; }
-    public DateTime DateSold { get; set; }
-    public decimal Price { get; set; }
-
-    public string CarState { get; set; }
-    public string CarLicensePlate { get; set; }
-    public Car Car { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?name=Composite&highlight=11)]
 
 > [!WARNING]  
 > 보안 주체 키 속성을 지정 하는 순서는 외래 키에 대해 지정 된 순서와 일치 해야 합니다.
@@ -236,39 +164,7 @@ public class RecordOfSale
 
 흐름 API를 사용 하 여 관계가 필수 또는 선택 사항 인지 여부를 구성할 수 있습니다. 이는 궁극적으로 외래 키 속성이 필수 또는 선택 사항 인지 여부를 제어 합니다. 이는 섀도 상태 외래 키를 사용 하는 경우에 가장 유용 합니다. 엔터티 클래스에 외래 키 속성이 있는 경우 외래 키 속성이 필수 인지 선택 사항에 따라 관계를 결정 합니다. 자세한 내용은 [필수 및 선택적 속성](required-optional.md) 을 참조 하세요.
 
-<!-- [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Post>()
-            .HasOne(p => p.Blog)
-            .WithMany(b => b.Posts)
-            .IsRequired();
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?name=Required&highlight=11)]
 
 ### <a name="cascade-delete"></a>하위 삭제
 
@@ -276,40 +172,7 @@ public class Post
 
 각 옵션에 대 한 자세한 내용은 데이터 저장 섹션의 [계단식 삭제](../saving/cascade-delete.md) 를 참조 하세요.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<Post> Posts { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Post>()
-            .HasOne(p => p.Blog)
-            .WithMany(b => b.Posts)
-            .OnDelete(DeleteBehavior.Cascade);
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public int? BlogId { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?name=CascadeDelete&highlight=11)]
 
 ## <a name="other-relationship-patterns"></a>기타 관계 패턴
 
@@ -317,119 +180,19 @@ public class Post
 
 일대일 관계에는 양쪽 모두에 대 한 참조 탐색 속성이 있습니다. 이는 일 대 다 관계와 동일한 규칙을 따르고 외래 키 속성에 고유 인덱스가 도입 되어 각 보안 주체와 하나의 종속만 관련 되도록 합니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/Relationships/OneToOne.cs?highlight=6,15,16)] -->
-``` csharp
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public BlogImage BlogImage { get; set; }
-}
-
-public class BlogImage
-{
-    public int BlogImageId { get; set; }
-    public byte[] Image { get; set; }
-    public string Caption { get; set; }
-
-    public int BlogId { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneToOne.cs?name=Property&highlight=6,15,16)]
 
 > [!NOTE]  
 > EF는 외래 키 속성을 검색 하는 기능에 따라 엔터티 중 하나를 종속 항목으로 선택 합니다. 잘못 된 엔터티가 종속 항목으로 선택 된 경우 흐름 API를 사용 하 여이를 수정할 수 있습니다.
 
-흐름 API와의 관계를 구성 하는 경우 `HasOne` 및 `WithOne` 메서드를 사용 합니다.
+흐름 API를 사용 하 여 관계를 구성 하는 경우 `HasOne` 및 `WithOne` 메서드를 사용 합니다.
 
-외래 키를 구성 하는 경우 종속 엔터티 형식-아래 목록에서에 `HasForeignKey` 제공 된 제네릭 매개 변수를 지정 해야 합니다. 일 대 다 관계에서 참조 탐색을 사용 하는 엔터티가 종속 항목 이며 컬렉션이 포함 된 엔터티가 주 서버 인지를 명확 하 게 알 수 있습니다. 그러나이는 일 대 일 관계가 아니므로 명시적으로 정의 해야 합니다.
+외래 키를 구성 하는 경우 종속 엔터티 형식-아래 목록에서 `HasForeignKey`에 제공 된 제네릭 매개 변수를 지정 해야 합니다. 일 대 다 관계에서 참조 탐색을 사용 하는 엔터티가 종속 항목 이며 컬렉션이 포함 된 엔터티가 주 서버 인지를 명확 하 게 알 수 있습니다. 그러나이는 일 대 일 관계가 아니므로 명시적으로 정의 해야 합니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/OneToOne.cs?highlight=11)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-    public DbSet<BlogImage> BlogImages { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<Blog>()
-            .HasOne(p => p.BlogImage)
-            .WithOne(i => i.Blog)
-            .HasForeignKey<BlogImage>(b => b.BlogForeignKey);
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public BlogImage BlogImage { get; set; }
-}
-
-public class BlogImage
-{
-    public int BlogImageId { get; set; }
-    public byte[] Image { get; set; }
-    public string Caption { get; set; }
-
-    public int BlogForeignKey { get; set; }
-    public Blog Blog { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneToOne.cs?name=OneToOne&highlight=11)]
 
 ### <a name="many-to-many"></a>다 대 다
 
 조인 테이블을 나타내기 위해 엔터티 클래스가 없는 다 대 다 관계는 아직 지원 되지 않습니다. 그러나 조인 테이블에 대해 엔터티 클래스를 포함 하 고 두 개의 개별 일대다 관계를 매핑하여 다대다 관계를 나타낼 수 있습니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?highlight=11,12,13,14,16,17,18,19,39,40,41,42,43,44,45,46)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Post> Posts { get; set; }
-    public DbSet<Tag> Tags { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<PostTag>()
-            .HasKey(pt => new { pt.PostId, pt.TagId });
-
-        modelBuilder.Entity<PostTag>()
-            .HasOne(pt => pt.Post)
-            .WithMany(p => p.PostTags)
-            .HasForeignKey(pt => pt.PostId);
-
-        modelBuilder.Entity<PostTag>()
-            .HasOne(pt => pt.Tag)
-            .WithMany(t => t.PostTags)
-            .HasForeignKey(pt => pt.TagId);
-    }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public List<PostTag> PostTags { get; set; }
-}
-
-public class Tag
-{
-    public string TagId { get; set; }
-
-    public List<PostTag> PostTags { get; set; }
-}
-
-public class PostTag
-{
-    public int PostId { get; set; }
-    public Post Post { get; set; }
-
-    public string TagId { get; set; }
-    public Tag Tag { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?name=ManyToMany&highlight=11,12,13,14,16,17,18,19,39,40,41,42,43,44,45,46)]

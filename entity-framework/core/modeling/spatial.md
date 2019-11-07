@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
-ms.openlocfilehash: cced53edadb890e4e86753ec2628218ffc4d1d5b
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 335d4f3a601624f7c994b7dcacefe4ef6798beb3
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181385"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655607"
 ---
 # <a name="spatial-data"></a>공간 데이터
 
@@ -46,10 +46,10 @@ optionsBuilder.UseSqlServer(
     x => x.UseNetTopologySuite());
 ```
 
-여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. @No__t-0 네임 스페이스 내에 있습니다.
+여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. `NetTopologySuite.Geometries` 네임 스페이스 내에 있습니다.
 
 * 기하학
-  * 점
+  * 요소
   * LineString
   * 다각형
   * GeometryCollection
@@ -213,15 +213,15 @@ SQL Server를 사용 하는 경우 알아야 할 몇 가지 추가 사항이 있
 
 ### <a name="geography-or-geometry"></a>지리 또는 기 하 도형
 
-기본적으로 공간 속성은 SQL Server의 `geography` 열에 매핑됩니다. @No__t-0을 사용 하려면 모델에서 [열 유형을 구성](xref:core/modeling/relational/data-types) 합니다.
+기본적으로 공간 속성은 SQL Server의 `geography` 열에 매핑됩니다. `geometry`를 사용 하려면 모델에서 [열 유형을 구성](xref:core/modeling/relational/data-types) 합니다.
 
 ### <a name="geography-polygon-rings"></a>지리 다각형 링
 
-@No__t-0 열 형식을 사용 하는 경우 SQL Server는 외부 링 (또는 셸) 및 내부 링 (또는 구멍)에 추가 요구 사항을 적용 합니다. 외부 링은 시계 반대 방향으로, 내부는 시계 방향으로 링 해야 합니다. NTS는 데이터베이스에 값을 보내기 전에 유효성을 검사 합니다.
+`geography` 열 유형을 사용 하는 경우 SQL Server는 외부 링 (또는 셸) 및 내부 링 (또는 구멍)에 추가 요구 사항을 적용 합니다. 외부 링은 시계 반대 방향으로, 내부는 시계 방향으로 링 해야 합니다. NTS는 데이터베이스에 값을 보내기 전에 유효성을 검사 합니다.
 
 ### <a name="fullglobe"></a>FullGlobe
 
-SQL Server에는 `geography` 열 형식을 사용할 때 전체 전세계를 나타내는 비표준 geometry 형식이 있습니다. 또한 전체 구형 (외부 링 제외)을 기반으로 하는 다각형을 나타내는 방법도 있습니다. 이러한 두 가지 모두 NTS에서 지원 되지 않습니다.
+SQL Server에는 `geography` 열 형식을 사용할 때 전체 구형을 나타내는 비표준 geometry 형식이 있습니다. 또한 전체 구형 (외부 링 제외)을 기반으로 하는 다각형을 나타내는 방법도 있습니다. 이러한 두 가지 모두 NTS에서 지원 되지 않습니다.
 
 > [!WARNING]
 > 이를 기반으로 하는 FullGlobe 및 다각형은 NTS에서 지원 되지 않습니다.
@@ -244,14 +244,14 @@ brew install libspatialite
 
 ### <a name="configuring-srid"></a>SRID 구성
 
-SpatiaLite에서 열은 열 당 SRID를 지정 해야 합니다. 기본 SRID는 `0`입니다. ForSqliteHasSrid 메서드를 사용 하 여 다른 SRID를 지정 합니다.
+SpatiaLite에서 열은 열 당 SRID를 지정 해야 합니다. 기본 SRID `0`입니다. ForSqliteHasSrid 메서드를 사용 하 여 다른 SRID를 지정 합니다.
 
 ``` csharp
 modelBuilder.Entity<City>().Property(c => c.Location)
     .ForSqliteHasSrid(4326);
 ```
 
-### <a name="dimension"></a>차원
+### <a name="dimension"></a>크기
 
 SRID와 마찬가지로 열의 차원 (또는 좌표)도 열의 일부로 지정 됩니다. 기본 좌표는 X 및 Y입니다. ForSqliteHasDimension 메서드를 사용 하 여 추가 좌표 (Z 및 M)를 사용 하도록 설정 합니다.
 
@@ -271,7 +271,7 @@ Geometry. AsBinary () | ✔ | ✔ | ✔ | ✔
 기 하 도형. 고가 () | ✔ | ✔ | ✔ | ✔
 Geometry. 경계 | ✔ | | ✔ | ✔
 Geometry. Buffer (double) | ✔ | ✔ | ✔ | ✔
-Geometry. Buffer (double, int) | | | ✔
+Geometry. Buffer (double, int) | | | ✔ | ✔
 중심 | ✔ | | ✔ | ✔
 Geometry. Contains (Geometry) | ✔ | ✔ | ✔ | ✔
 ConvexHull () | ✔ | ✔ | ✔ | ✔
@@ -287,17 +287,17 @@ Geometry. EqualsExact (Geometry) | | | | ✔
 Geometry. EqualsTopologically (Geometry) | ✔ | ✔ | ✔ | ✔
 GeometryType | ✔ | ✔ | ✔ | ✔
 GetGeometryN (int) | ✔ | | ✔ | ✔
-InteriorPoint | ✔ | | ✔
+InteriorPoint | ✔ | | ✔ | ✔
 기 하 도형. 교차로 (Geometry) | ✔ | ✔ | ✔ | ✔
 기 하 도형. 교차 (기 하 도형) | ✔ | ✔ | ✔ | ✔
 IsEmpty | ✔ | ✔ | ✔ | ✔
 Geometry. IsSimple | ✔ | | ✔ | ✔
 Geometry. IsValid | ✔ | ✔ | ✔ | ✔
-Geometry. IsWithinDistance (Geometry, double) | ✔ | | ✔
+Geometry. IsWithinDistance (Geometry, double) | ✔ | | ✔ | ✔
 기 하 도형. 길이 | ✔ | ✔ | ✔ | ✔
 기 하 도형. NumGeometries | ✔ | ✔ | ✔ | ✔
 기 하 도형. NumPoints | ✔ | ✔ | ✔ | ✔
-OgcGeometryType | ✔ | ✔ | ✔
+OgcGeometryType | ✔ | ✔ | ✔ | ✔
 기 하 도형. 겹치기 (기 하 도형) | ✔ | ✔ | ✔ | ✔
 기 하 도형. PointOnSurface | ✔ | | ✔ | ✔
 Geometry. Relate (Geometry, string) | ✔ | | ✔ | ✔
@@ -307,7 +307,7 @@ Geometry. SymmetricDifference (Geometry) | ✔ | ✔ | ✔ | ✔
 Geometry. ToBinary () | ✔ | ✔ | ✔ | ✔
 Geometry. ToText () | ✔ | ✔ | ✔ | ✔
 기 하 도형 (기 하 도형) | ✔ | | ✔ | ✔
-Geometry. Union () | | | ✔
+Geometry. Union () | | | ✔ | ✔
 Geometry. Union (Geometry) | ✔ | ✔ | ✔ | ✔
 Geometry. 내 (기 하 도형) | ✔ | ✔ | ✔ | ✔
 GeometryCollection | ✔ | ✔ | ✔ | ✔

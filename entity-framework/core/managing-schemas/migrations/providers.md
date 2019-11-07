@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/08/2017
 uid: core/managing-schemas/migrations/providers
-ms.openlocfilehash: c9b1a2563ef548e592374f90a6242b0bd851bc98
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: c764a7c7858dc46a5e478f79476f55a34e0fdabd
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811950"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655581"
 ---
 # <a name="migrations-with-multiple-providers"></a>여러 공급자를 사용 하 여 마이그레이션
 
@@ -36,15 +36,21 @@ class MySqliteDbContext : MyDbContext
 
 새 마이그레이션을 추가할 때 컨텍스트 유형을 지정 합니다.
 
-``` powershell
-Add-Migration InitialCreate -Context MyDbContext -OutputDir Migrations\SqlServerMigrations
-Add-Migration InitialCreate -Context MySqliteDbContext -OutputDir Migrations\SqliteMigrations
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef migrations add InitialCreate --context MyDbContext --output-dir Migrations/SqlServerMigrations
 dotnet ef migrations add InitialCreate --context MySqliteDbContext --output-dir Migrations/SqliteMigrations
 ```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Add-Migration InitialCreate -Context MyDbContext -OutputDir Migrations\SqlServerMigrations
+Add-Migration InitialCreate -Context MySqliteDbContext -OutputDir Migrations\SqliteMigrations
+```
+
+***
 
 > [!TIP]
 > 마지막 마이그레이션에 대 한 형제로 만들어지기 때문에 후속 마이그레이션의 출력 디렉터리를 지정할 필요가 없습니다.

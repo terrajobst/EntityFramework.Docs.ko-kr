@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 09/16/2019
 uid: core/miscellaneous/cli/dbcontext-creation
-ms.openlocfilehash: c36dae150085b1ab509288f6fabfdd8ed7201ca8
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: f44f0648678af5a70e5171d69692bde1c1d5e0eb
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72812024"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655534"
 ---
 # <a name="design-time-dbcontext-creation"></a>디자인 타임 DbContext 만들기
 
@@ -23,33 +23,7 @@ ms.locfileid: "72812024"
 
 도구는 먼저 `Program.CreateHostBuilder()`를 호출 하 고 `Build()`를 호출한 다음 `Services` 속성에 액세스 하 여 서비스 공급자를 가져오려고 시도 합니다.
 
-``` csharp
-public class Program
-{
-    public static void Main(string[] args)
-        => CreateHostBuilder(args).Build().Run();
-
-    // EF Core uses this method at design time to access the DbContext
-    public static IHostBuilder CreateHostBuilder(string[] args)
-        => Host.CreateDefaultBuilder(args)
-            .ConfigureWebHostDefaults(
-                webBuilder => webBuilder.UseStartup<Startup>());
-}
-
-public class Startup
-{
-    public void ConfigureServices(IServiceCollection services)
-        => services.AddDbContext<ApplicationDbContext>();
-}
-
-public class ApplicationDbContext : DbContext
-{
-    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
-        : base(options)
-    {
-    }
-}
-```
+[!code-csharp[Main](../../../../samples/core/Miscellaneous/CommandLine/ApplicationService.cs)]
 
 > [!NOTE]
 > 새 ASP.NET Core 응용 프로그램을 만드는 경우이 후크는 기본적으로 포함 되어 있습니다.
@@ -64,25 +38,7 @@ public class ApplicationDbContext : DbContext
 
 `IDesignTimeDbContextFactory<TContext>` 인터페이스를 구현 하 여 도구에 DbContext를 만드는 방법을 지시할 수도 있습니다 .이 인터페이스를 구현 하는 클래스가 파생 된 `DbContext`와 동일한 프로젝트 또는 응용 프로그램의 시작 프로젝트에 있는 경우 도구에서 다른 도구를 사용 하지 않습니다. DbContext를 만들고 디자인 타임 팩터리를 대신 사용 하는 방법
 
-``` csharp
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
-using Microsoft.EntityFrameworkCore.Infrastructure;
-
-namespace MyProject
-{
-    public class BloggingContextFactory : IDesignTimeDbContextFactory<BloggingContext>
-    {
-        public BloggingContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<BloggingContext>();
-            optionsBuilder.UseSqlite("Data Source=blog.db");
-
-            return new BloggingContext(optionsBuilder.Options);
-        }
-    }
-}
-```
+[!code-csharp[Main](../../../../samples/core/Miscellaneous/CommandLine/BloggingContextFactory.cs)]
 
 > [!NOTE]
 > `args` 매개 변수는 현재 사용 되지 않습니다. 도구에서 디자인 타임 인수를 지정 하는 기능을 추적 하는 [문제가][8] 있습니다.

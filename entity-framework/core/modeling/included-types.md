@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: cbe6935e-2679-4b77-8914-a8d772240cf1
 uid: core/modeling/included-types
-ms.openlocfilehash: ca83b1c432bdf4853dba81e12ec4a739bc8218dc
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1249e71c02e58afe7fe06b3fdcf523dfa0c9b17c
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197380"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655733"
 ---
 # <a name="including--excluding-types"></a>형식 포함 및 제외
 
@@ -17,52 +17,17 @@ ms.locfileid: "71197380"
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 컨텍스트의 속성에 `DbSet` 노출 되는 형식이 모델에 포함 됩니다. 또한 `OnModelCreating` 메서드에 언급 된 형식도 포함 됩니다. 마지막으로 검색 된 형식의 탐색 속성을 재귀적으로 탐색 하 여 발견 되는 모든 형식은 모델에도 포함 됩니다.
+규칙에 따라 컨텍스트의 `DbSet` 속성에 노출 된 형식이 모델에 포함 됩니다. 또한 `OnModelCreating` 메서드에 설명 된 형식도 포함 되어 있습니다. 마지막으로 검색 된 형식의 탐색 속성을 재귀적으로 탐색 하 여 발견 되는 모든 형식은 모델에도 포함 됩니다.
 
 **예를 들어 다음 코드 목록에서는 세 가지 형식이 모두 검색 됩니다.**
 
-* `Blog`컨텍스트의 `DbSet` 속성에 노출 되기 때문에
+* `Blog`는 컨텍스트의 `DbSet` 속성에 노출 되기 때문입니다.
 
-* `Post`탐색 속성을 `Blog.Posts` 통해 검색 되기 때문에
+* `Post` `Blog.Posts` 탐색 속성을 통해 검색 되기 때문입니다.
 
-* `AuditEntry`에 설명 되어 있으므로`OnModelCreating`
+* `AuditEntry` `OnModelCreating`에 설명 되어 있습니다.
 
-<!-- [!code-csharp[Main](samples/core/Modeling/Conventions/IncludedTypes.cs?highlight=3,7,16)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<AuditEntry>();
-    }
-}
-
-public class Blog
-{
-    public int BlogId { get; set; }
-    public string Url { get; set; }
-
-    public List<Post> Posts { get; set; }
-}
-
-public class Post
-{
-    public int PostId { get; set; }
-    public string Title { get; set; }
-    public string Content { get; set; }
-
-    public Blog Blog { get; set; }
-}
-
-public class AuditEntry
-{
-    public int AuditEntryId { get; set; }
-    public string Username { get; set; }
-    public string Action { get; set; }
-}
-```
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/IncludedTypes.cs?name=IncludedTypes&highlight=3,7,16)]
 
 ## <a name="data-annotations"></a>데이터 주석
 
@@ -70,7 +35,7 @@ public class AuditEntry
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreType.cs?highlight=20)]
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
 흐름 API를 사용 하 여 모델에서 형식을 제외할 수 있습니다.
 

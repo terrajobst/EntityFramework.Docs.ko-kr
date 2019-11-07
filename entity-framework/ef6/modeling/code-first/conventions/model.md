@@ -3,30 +3,30 @@ title: 모델 기반 규칙-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 0fc4eef8-29b8-4192-9c77-08fd33d3db3a
-ms.openlocfilehash: 80b722730b4ca6c9d00a8611b6c9027e8bc9fe61
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.openlocfilehash: c873e9a216bd9bd1934f2149ae6af602072f3608
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283709"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656164"
 ---
 # <a name="model-based-conventions"></a>모델 기반 규칙
 > [!NOTE]
 > **EF6 이상만** - 이 페이지에서 다루는 기능, API 등은 Entity Framework 6에 도입되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.  
 
-모델 기반 규칙은 규칙 기반 모델 구성의 고급 방법을 합니다. 대부분의 시나리오에는 [DbModelBuilder에 사용자 지정 Code First 규칙 API](~/ef6/modeling/code-first/conventions/custom.md) 사용 해야 합니다. 모델 기반 규칙을 사용 하기 전에 DbModelBuilder API 규칙에 대 한 이해가 것이 좋습니다.  
+모델 기반 규칙은 규칙 기반 모델 구성의 고급 방법입니다. 대부분의 시나리오에서는 [DbModelBuilder의 사용자 지정 Code First 규칙 API](~/ef6/modeling/code-first/conventions/custom.md) 를 사용 해야 합니다. 모델 기반 규칙을 사용 하기 전에 규칙에 대 한 DbModelBuilder API를 이해 하는 것이 좋습니다.  
 
-모델 기반 규칙 속성과 표준 규칙을 통해 구성 가능 하지 않은 테이블에 영향을 주는 규칙 생성을 허용 합니다. 이러한 예로 계층 모델 당 테이블의 판별자 열 및 독립 연결 열이 있습니다.  
+모델 기반 규칙을 사용 하면 표준 규칙을 통해 구성할 수 없는 속성 및 테이블에 영향을 주는 규칙을 만들 수 있습니다. 이러한 예로는 계층 구조 모델 및 독립 연결 열에 따라 테이블의 판별자 열이 있습니다.  
 
 ## <a name="creating-a-convention"></a>규칙 만들기   
 
-모델 기반 규칙을 만드는 첫 번째 단계는 파이프라인에서 규칙을 모델에 적용 해야 하는 경우 선택 됩니다. 모델 규칙, 개념 (C-영역) 및 저장소 (S-영역)는 다음과 같은 두 종류가 있습니다. C-공간 규칙에서 S 공간의 규칙 데이터베이스를 나타내는 모델의 버전에 적용 되는 반면 응용 프로그램을 빌드 및 컨트롤 등 방법을 자동으로 생성 된 열 이름을 지정 하는 모델에 적용 됩니다.  
+모델 기반 규칙을 만드는 첫 번째 단계는 파이프라인에서 규칙을 모델에 적용 해야 하는 경우를 선택 하는 것입니다. 모델 규칙에는 개념적 (C 공백) 및 저장소 (S-Space)의 두 가지 유형이 있습니다. C 공백 규칙은 응용 프로그램에서 작성 하는 모델에 적용 되는 반면, 데이터베이스를 나타내는 모델 버전에는 공백 규칙이 적용 되 고 자동으로 생성 된 열의 이름은와 같은 항목을 제어 합니다.  
 
-모델 규칙은 IConceptualModelConvention 또는 IStoreModelConvention에서 확장 하는 클래스입니다.  이러한 인터페이스 둘 다 수락할 수 있는 제네릭 형식을 MetadataItem 필터 규칙에 적용 되는 데이터 형식에 사용 되는 입력 합니다.  
+모델 규칙은 IConceptualModelConvention 또는 IStoreModelConvention에서 확장 되는 클래스입니다.  이러한 인터페이스는 규칙이 적용 되는 데이터 형식을 필터링 하는 데 사용 되는 MetadataItem 형식일 수 있는 제네릭 형식을 모두 허용 합니다.  
 
-## <a name="adding-a-convention"></a>규칙을 추가합니다.   
+## <a name="adding-a-convention"></a>규칙 추가   
 
-규칙은 규칙 일반 클래스와 동일한 방식으로 추가 됩니다. 에 **OnModelCreating** 메서드를 모델에 대 한 규칙의 목록에는 규칙을 추가 합니다.  
+모델 규칙은 일반 규칙 클래스와 동일한 방식으로 추가 됩니다. **Onmodelcreating** 메서드에서 모델의 규칙 목록에 규칙을 추가 합니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -46,7 +46,7 @@ public class BlogContext : DbContext
 }
 ```  
 
-다른 규칙을 Conventions.AddBefore를 사용 하 여 관련 된 규칙을 추가할 수 있습니다\< \> 또는 Conventions.AddAfter\< \> 메서드. Entity Framework에 적용 되는 규칙에 대 한 자세한 내용은 참고 섹션을 참조 하세요.  
+규칙을 사용 하 여 다른 규칙과 관련 하 여 규칙을 추가할 수도 있습니다. AddBefore\<\> 또는 규칙. Addbefore\<\> 메서드. Entity Framework 적용 되는 규칙에 대 한 자세한 내용은 참고 섹션을 참조 하세요.  
 
 ``` csharp
 protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -57,9 +57,9 @@ protected override void OnModelCreating(DbModelBuilder modelBuilder)
 
 ## <a name="example-discriminator-model-convention"></a>예: 판별자 모델 규칙  
 
-EF에서 생성 된 열 이름 바꾸기는 다른 규칙 Api 사용 하 여 수행할 수 없는 항목의 예시입니다.  이 상황 여기서 유일한 옵션은 모델 규칙을 사용 합니다.  
+EF에 의해 생성 된 열의 이름은 다른 규칙 Api로 수행할 수 없는 경우의 예입니다.  이 경우 모델 규칙을 사용 하는 것이 유일한 옵션입니다.  
 
-생성 된 열을 구성 하는 모델 기반 규칙을 사용 하는 방법의 예로 판별자 열의 이름은 방식을 사용자 지정 됩니다.  "EntityType"을 "Discriminator" 이라는 모델의 모든 열 이름을 변경 하는 간단한 모델 기반 규칙의 예는 다음과 같습니다.  이는 개발자에 간단히 "Discriminator" 라는 열이 포함 됩니다. "Discriminator" 열에 생성된 된 열이 있으므로 S 공간에서 실행 해야 합니다.  
+모델 기반 규칙을 사용 하 여 생성 된 열을 구성 하는 방법의 예는 판별자 열의 이름을 지정 하는 방식을 사용자 지정 하는 것입니다.  다음은 "판별자" 라는 모델의 모든 열을 "EntityType"으로 바꾸는 간단한 모델 기반 규칙의 예입니다.  여기에는 개발자가 단순히 "판별자" 라는 열이 포함 됩니다. "판별자" 열은 생성 된 열 이므로이를 S 공간에서 실행 해야 합니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -79,11 +79,11 @@ class DiscriminatorRenamingConvention : IStoreModelConvention<EdmProperty>
 }
 ```  
 
-## <a name="example-general-ia-renaming-convention"></a>예: 일반 IA 규칙 이름 바꾸기   
+## <a name="example-general-ia-renaming-convention"></a>예: 일반 IA 이름 바꾸기 규칙   
 
-실행 중인 규칙 기반 모델의 더 복잡 한 다른 예제 독립 연결 (IAs) 라고 하는 방법은 구성 하는 것입니다.  이 모델 규칙 IAs EF에서 생성 되기 때문에 적용할 수 있는 않았고 DbModelBuilder API에 액세스할 수 있는 모델에 없는 상황입니다.  
+작업에 사용 되는 모델 기반 규칙의 또 다른 예는 독립 연결 (IAs)의 이름을 지정 하는 방법을 구성 하는 것입니다.  이는 IAs가 EF에 의해 생성 되 고 DbModelBuilder API가 액세스할 수 있는 모델에 없는 경우에 모델 규칙이 적용 되는 상황입니다.  
 
-EF는 IA를 생성할 때 EntityType_KeyName 라는 열을 만듭니다. 예를 들어 고객 키 열이 있는 명명 된 연결에 대 한 이름이 CustomerId Customer_CustomerId 라는 열 생성 되는 것입니다. 다음 규칙 줄무늬를 '\_' 문자는 IA.에 대해 생성 된 열 이름에서  
+EF는 IA를 생성할 때 EntityType_KeyName 라는 열을 만듭니다. 예를 들어 CustomerId 라는 키 열이 있는 Customer 라는 연결의 경우 이름이 Customer_CustomerId 인 열을 생성 합니다. 다음 규칙은 IA에 대해 생성 된 열 이름에서 '\_' 문자를 제거 합니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -132,7 +132,7 @@ public class ForeignKeyNamingConvention : IStoreModelConvention<AssociationType>
 
     private void NormalizeForeignKeyProperties(ReadOnlyMetadataCollection<EdmProperty> properties)
     {
-        for (int i = 0; i \< properties.Count; ++i)
+        for (int i = 0; i < properties.Count; ++i)
         {
             int underscoreIndex = properties[i].Name.IndexOf('_');
             if (underscoreIndex > 0)
@@ -146,7 +146,7 @@ public class ForeignKeyNamingConvention : IStoreModelConvention<AssociationType>
 
 ## <a name="extending-existing-conventions"></a>기존 규칙 확장   
 
-Entity Framework는 이미 모델에 적용 되는 규칙 중 하나에 유사한 규칙을 작성 하는 경우에 항상 처음부터 다시 작성 하지 않으려면 해당 규칙을 확장할 수 있습니다.  이 예제를 사용자 지정 규칙을 일치 하는 기존 Id를 바꾸는 것입니다.   주요 규칙을 재정의 하는 추가 혜택은 키가 없는 이미 있거나 명시적으로 구성 하는 경우에 재정의 된 메서드는 호출 됩니다. 규칙의 목록을 Entity Framework에서 사용 하는 사용할 수 있는 여기: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  
+모델에 이미 적용 Entity Framework 규칙 중 하 나와 비슷한 규칙을 작성 해야 하는 경우 처음부터 다시 작성 하지 않아도 되도록 해당 규칙을 항상 확장할 수 있습니다.  이에 대 한 예는 기존 Id 일치 규칙을 사용자 지정으로 바꾸는 것입니다.   키 규칙을 재정의 하는 추가 혜택은 이미 검색 되거나 명시적으로 구성 된 키가 없는 경우에만 재정의 된 메서드를 호출 한다는 것입니다. Entity Framework에서 사용 하는 규칙 목록은 [http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)에서 사용할 수 있습니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -191,7 +191,7 @@ public class CustomKeyDiscoveryConvention : KeyDiscoveryConvention
 }
 ```  
 
-그런 다음 기존 키 규칙 전에 새 규칙을 추가 해야 합니다. CustomKeyDiscoveryConvention를 추가한 후 IdKeyDiscoveryConvention를 제거할 수 있습니다.  이 규칙은 여전히 우선 Id 검색 규칙을 먼저 하지만 "키" 속성이 있는 경우 실행 되므로 기존 IdKeyDiscoveryConvention를 제거 하지 않은 경우 "id" 규칙 실행 됩니다.  각 규칙은 이전 규칙의 일치 하는 열 이름을 업데이트 경우 예를 들어 되도록에 독립적으로 운영 보다는 함께 조합 하는 모든 이전 규칙에 따라 업데이트 모델을 확인 하므로이 동작은 표시 (이전에 이름이 없을 때 관심)에 사용자 지정 규칙을 관련 열에 적용 됩니다.  
+그런 다음 기존 키 규칙 앞에 새 규칙을 추가 해야 합니다. CustomKeyDiscoveryConvention 규칙을 추가 하면 IdKeyDiscoveryConvention을 제거할 수 있습니다.  기존 IdKeyDiscoveryConvention을 제거 하지 않은 경우이 규칙은 먼저 실행 되기 때문에 Id 검색 규칙 보다 우선적으로 적용 되지만 "key" 속성이 없는 경우 "id" 규칙이 실행 됩니다.  각 규칙은 모델을 독립적으로 작동 하 고 모든 것을 함께 결합 하는 것이 아니라 이전 규칙에 의해 업데이트 된 것으로 확인 하기 때문에이 동작을 볼 수 있습니다. 예를 들어 이전 규칙은 열 이름을 사용자 지정 규칙 (이름이 관심이 없는 경우)에 관심이 있으면 해당 열에 적용 됩니다.  
 
 ``` csharp
 public class BlogContext : DbContext
@@ -209,4 +209,4 @@ public class BlogContext : DbContext
 
 ## <a name="notes"></a>노트  
 
-현재 Entity Framework에서 적용 되는 규칙 목록은 MSDN 설명서를 여기에서 사용할 수 있습니다: [ http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx ](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx)합니다.  이 목록은 소스 코드에서 직접 가져옵니다.  Entity Framework 6에 대 한 소스 코드는에서 사용할 수 있습니다 [GitHub](https://github.com/aspnet/entityframework6/) 좋은 다양 한 Entity Framework에서 사용 하는 규칙 및 규칙 기반 사용자 지정 모델에 대 한 시작점입니다.  
+Entity Framework에서 현재 적용 하는 규칙 목록은 MSDN 설명서 ( [http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx))에서 확인할 수 있습니다.  이 목록은 소스 코드에서 직접 가져옵니다.  Entity Framework 6의 소스 코드는 [GitHub](https://github.com/aspnet/entityframework6/) 에서 사용할 수 있으며 Entity Framework에서 사용 하는 대부분의 규칙은 사용자 지정 모델 기반 규칙을 위한 좋은 출발점입니다.  

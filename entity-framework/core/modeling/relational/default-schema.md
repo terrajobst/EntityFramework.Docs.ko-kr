@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: e6e58473-9f5e-4a1f-ac0f-b87d2cbb667e
 uid: core/modeling/relational/default-schema
-ms.openlocfilehash: ae903ed7200859430aecc55073651236759bc6ce
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1579fed007997aa4cf49b4c1290aee86c81c0000
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197135"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655976"
 ---
 # <a name="default-schema"></a>기본 스키마
 
@@ -20,25 +20,14 @@ ms.locfileid: "71197135"
 
 ## <a name="conventions"></a>규칙
 
-규칙에 따라 데이터베이스 공급자가 가장 적합 한 기본 스키마를 선택 합니다. 예를 들어 `dbo` 스키마를 사용 하는 Microsoft SQL Server는 sqlite에서 스키마가 지원 되지 않으므로 sqlite는 스키마를 사용 하지 않습니다.
+규칙에 따라 데이터베이스 공급자가 가장 적합 한 기본 스키마를 선택 합니다. 예를 들어 Microsoft SQL Server는 `dbo` 스키마를 사용 하 고 SQLite는 스키마를 사용 하지 않습니다. 즉, 스키마는 SQLite에서 지원 되지 않기 때문입니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
 데이터 주석을 사용 하 여 기본 스키마를 설정할 수 없습니다.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
 흐름 API를 사용 하 여 기본 스키마를 지정할 수 있습니다.
 
-<!-- [!code-csharp[Main](samples/core/relational/Modeling/FluentAPI/Relational/DefaultSchema.cs?highlight=7)] -->
-``` csharp
-class MyContext : DbContext
-{
-    public DbSet<Blog> Blogs { get; set; }
-
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.HasDefaultSchema("blogging");
-    }
-}
-```
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/DefaultSchema.cs?name=DefaultSchema&highlight=7)]

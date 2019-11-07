@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 11/07/2017
 uid: core/managing-schemas/migrations/history-table
-ms.openlocfilehash: 0db393ff3101564f8d8081d0a57b264c2c459df7
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: 0007da7ce3d78fd8f17007ac79a395bb2e6efd86
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72812078"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655714"
 ---
 # <a name="custom-migrations-history-table"></a>사용자 지정 마이그레이션 기록 테이블
 
@@ -22,40 +22,15 @@ ms.locfileid: "72812078"
 
 `OnConfiguring()` (또는 ASP.NET Core에서 `ConfigureServices()`)의 `MigrationsHistoryTable()` 메서드를 사용 하 여 스키마 및 테이블 이름을 변경할 수 있습니다. SQL Server EF Core 공급자를 사용 하는 예제는 다음과 같습니다.
 
-``` csharp
-protected override void OnConfiguring(DbContextOptionsBuilder options)
-    => options.UseSqlServer(
-        connectionString,
-        x => x.MigrationsHistoryTable("__MyMigrationsHistory", "mySchema"));
-```
+[!code-csharp[Main](../../../../samples/core/Schemas/Migrations/MigrationTableNameContext.cs#TableNameContext)]
 
 ## <a name="other-changes"></a>기타 변경 내용
 
 테이블의 추가 측면을 구성 하려면 공급자별 `IHistoryRepository` 서비스를 재정의 하 고 대체 합니다. SQL Server에서 MigrationId 열 이름을 *Id* 로 변경 하는 예는 다음과 같습니다.
 
-``` csharp
-protected override void OnConfiguring(DbContextOptionsBuilder options)
-    => options
-        .UseSqlServer(connectionString)
-        .ReplaceService<IHistoryRepository, MyHistoryRepository>();
-```
+[!code-csharp[Main](../../../../samples/core/Schemas/Migrations/MyHistoryRepository.cs#HistoryRepositoryContext)]
 
 > [!WARNING]
 > `SqlServerHistoryRepository`은 내부 네임 스페이스 내에 있으며 이후 릴리스에서 변경 될 수 있습니다.
 
-``` csharp
-class MyHistoryRepository : SqlServerHistoryRepository
-{
-    public MyHistoryRepository(HistoryRepositoryDependencies dependencies)
-        : base(dependencies)
-    {
-    }
-
-    protected override void ConfigureTable(EntityTypeBuilder<HistoryRow> history)
-    {
-        base.ConfigureTable(history);
-
-        history.Property(h => h.MigrationId).HasColumnName("Id");
-    }
-}
-```
+[!code-csharp[Main](../../../../samples/core/Schemas/Migrations/MyHistoryRepository.cs#HistoryRepository)]
