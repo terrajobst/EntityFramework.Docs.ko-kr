@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: e9c4013d17a2d41772822f77b3ceba15702ffc48
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: bf9aa32dd731b60d2985a9fe8bebd703af4af03b
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72812064"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655566"
 ---
 # <a name="migrations"></a>마이그레이션
 
@@ -39,13 +39,19 @@ ms.locfileid: "72812064"
 
 [초기 모델 정의](xref:core/modeling/index) 후에는 데이터베이스를 만듭니다. 초기 마이그레이션을 추가하려면 다음 명령을 실행합니다.
 
-``` powershell
-Add-Migration InitialCreate
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef migrations add InitialCreate
 ```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Add-Migration InitialCreate
+```
+
+***
 
 프로젝트의 **Migrations** 디렉터리 아래 3개 파일이 추가됩니다.
 
@@ -62,25 +68,37 @@ dotnet ef migrations add InitialCreate
 
 그런 다음 스키마를 만들기 위해 데이터베이스에 마이그레이션을 적용합니다.
 
-``` powershell
-Update-Database
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef database update
 ```
 
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Update-Database
+```
+
+***
+
 ## <a name="customize-migration-code"></a>마이그레이션 코드 사용자 지정
 
 EF Core 모델을 변경한 후에는 데이터베이스 스키마가 동기화되지 않을 수 있습니다. 최신 상태로 하기 위해 다른 마이그레이션을 추가합니다. 마이그레이션 이름은 버전 제어 시스템의 커밋 메시지처럼 사용할 수 있습니다. 예를 들어 변경이 검토를 위한 새 엔터티 클래스인 경우 *AddProductReviews*와 같은 이름을 선택할 수 있습니다.
+
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
+
+``` Console
+dotnet ef migrations add AddProductReviews
+```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Add-Migration AddProductReviews
 ```
 
-``` Console
-dotnet ef migrations add AddProductReviews
-```
+***
 
 마이그레이션이 스캐폴드되면(마이그레이션을 위한 코드가 생성됨) 코드가 정확한지 검토하고 올바르게 적용하는 데 필요한 모든 작업을 추가, 제거 또는 수정합니다.
 
@@ -129,13 +147,19 @@ migrationBuilder.DropColumn(
 
 적합한 명령을 사용하여 데이터베이스에 마이그레이션을 적용합니다.
 
-``` powershell
-Update-Database
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef database update
 ```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Update-Database
+```
+
+***
 
 ### <a name="empty-migrations"></a>빈 마이그레이션
 
@@ -151,13 +175,19 @@ dotnet ef database update
 
 때때로 마이그레이션을 추가하고 적용하기 전에 EF Core 모델에 추가적인 변경이 필요한 경우가 있습니다. 마지막 마이그레이션을 제거하려면다음 명령을 사용합니다.
 
-``` powershell
-Remove-Migration
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef migrations remove
 ```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Remove-Migration
+```
+
+***
 
 마이그레이션을 제거한 후 추가적인 모델 변경을 수행하고 다시 추가합니다.
 
@@ -165,25 +195,37 @@ dotnet ef migrations remove
 
 이미 한 번 이상의 마이그레이션을 데이터베이스에 적용했으나 되돌려야 하는 경우 같은 명령을 사용하여 마이그레이션을 적용할 수 있으나, 롤백하려는 대상 마이그레이션의 이름을 지정합니다.
 
-``` powershell
-Update-Database LastGoodMigration
-```
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` Console
 dotnet ef database update LastGoodMigration
 ```
 
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+
+``` powershell
+Update-Database LastGoodMigration
+```
+
+***
+
 ## <a name="generate-sql-scripts"></a>SQL 스크립트 생성
 
 마이그레이션을 디버깅하거나 프로덕션 데이터베이스에 배포할 경우 SQL 스크립트를 생성하는 것이 유용합니다. 그런 다음 스크립트가 정확한지 추가적으로 검토하고 프로덕션 데이터베이스에 맞게 조정합니다. 또한 배포 기술과 함께 스크립트를 사용할 수도 있습니다. 기본 명령은 다음과 같습니다.
+
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
+
+``` Console
+dotnet ef migrations script
+```
+
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Script-Migration
 ```
 
-``` Console
-dotnet ef migrations script
-```
+***
 
 이 명령에는 몇 가지 옵션이 있습니다.
 

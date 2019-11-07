@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 0c9671eb77181d85cd493341cd1abf842d13fb0e
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: e70011b42818e4df1ec5b9b88d7adb9d36bb26f1
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181265"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654806"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -28,7 +28,7 @@ LLBLGen Pro는 Entity Framework 및 Entity Framework Core 지원을 함께 제�
 
 ### <a name="devart-entity-developer"></a>Devart Entity Developer
 
-Entity Developer는 ADO.NET Entity Framework, NHibernate, LinqConnect, Telerik Data Access 및 LINQ to SQL을 위한 강력한 ORM 디자이너입니다. 모델 우선 접근법 또는 데이터베이스 우선 접근법 및 C# 또는 Visual Basic Code 생성을 사용하여 EF Core 모델을 시각적으로 지원합니다. 
+Entity Developer는 ADO.NET Entity Framework, NHibernate, LinqConnect, Telerik Data Access 및 LINQ to SQL을 위한 강력한 ORM 디자이너입니다. 모델 우선 접근법 또는 데이터베이스 우선 접근법 및 C# 또는 Visual Basic Code 생성을 사용하여 EF Core 모델을 시각적으로 지원합니다.
 
 [웹 사이트](https://www.devart.com/entitydeveloper/)
 
@@ -52,7 +52,7 @@ CatFactory는 SQL Server 데이터베이스에서 DbContext 클래스, 엔터티
 
 ### <a name="loresofts-entity-framework-core-generator"></a>LoreSoft의 Entity Framework Core 생성기
 
-Entity Framework Core 생성기(efg)는 `dotnet ef dbcontext scaffold`와 비슷하게 기존 데이터베이스에서 EF Core 모델을 생성할 수 있는 .NET Core CLI 도구이지만 지역 교체를 통하거나 매핑 파일을 구문 분석하여 안전한 코드 [재생성](https://efg.loresoft.com/en/latest/regeneration/)도 지원합니다. 이 도구는 보기 모델, 유효성 검사 및 개체 매퍼 코드를 생성하도록 지원합니다. 
+Entity Framework Core 생성기(efg)는 `dotnet ef dbcontext scaffold`와 비슷하게 기존 데이터베이스에서 EF Core 모델을 생성할 수 있는 .NET Core CLI 도구이지만 지역 교체를 통하거나 매핑 파일을 구문 분석하여 안전한 코드 [재생성](https://efg.loresoft.com/en/latest/regeneration/)도 지원합니다. 이 도구는 보기 모델, 유효성 검사 및 개체 매퍼 코드를 생성하도록 지원합니다.
 
 [자습서](https://www.loresoft.com/Generate-ASP-NET-Web-API)
 [설명서](https://efg.loresoft.com/en/latest/)
@@ -86,7 +86,7 @@ EF Core와 비동기 지원 기능을 포함하는 System.Linq.Dynamic의 .NET C
 
 ### <a name="entityframeworkcoretypedoriginalvalues"></a>EntityFrameworkCore.TypedOriginalValues
 
-이 라이브러리를 사용하면 엔터티 속성의 원래 값에 대한 강력한 형식의 액세스를 허용할 수 있습니다. 
+이 라이브러리를 사용하면 엔터티 속성의 원래 값에 대한 강력한 형식의 액세스를 허용할 수 있습니다.
 
 [GitHub 리포지토리](https://github.com/NickStrupat/EntityFramework.TypedOriginalValues/)
 
