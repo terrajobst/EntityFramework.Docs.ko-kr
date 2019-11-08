@@ -4,18 +4,19 @@ author: rowanmiller
 ms.date: 02/23/2018
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/providers/index
-ms.openlocfilehash: 24b633d17347c7749a02dee1c04c310c2677ff8c
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 0995c2cb403cf4f0db1462f1e3446a13563a1064
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181344"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654808"
 ---
 # <a name="database-providers"></a>데이터베이스 공급자
 
 Entity Framework Core는 플러그 인 라이브러리 호출 데이터베이스 공급자를 통해 다양한 데이터베이스에 액세스할 수 있습니다.
 
 ## <a name="current-providers"></a>현재 공급자
+
 > [!IMPORTANT]  
 > EF Core 공급자는 다양한 원본을 바탕으로 작성됩니다. 일부 공급자는 [Entity Framework Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore)의 일부로 유지되지 않습니다. 공급자를 고려할 때는 품질, 라이선싱, 지원 등을 평가하여 요구 사항을 충족하는지 확인해야 합니다. 또한 자세한 버전 호환성 정보는 각 공급자의 설명서를 검토해야 합니다.
 
@@ -33,28 +34,29 @@ Entity Framework Core는 플러그 인 라이브러리 호출 데이터베이스
 | [FirebirdSql.EntityFrameworkCore.Firebird](https://www.nuget.org/packages/FirebirdSql.EntityFrameworkCore.Firebird/) | Firebird 2.5 및 3.x       | [Jiří Činčura](https://github.com/cincuranet)                                 |                      | [docs](https://github.com/cincuranet/FirebirdSql.Data.FirebirdClient/blob/master/Provider/docs/entity-framework-core.md)                                                                           |
 | [EntityFrameworkCore.FirebirdSql](https://www.nuget.org/packages/EntityFrameworkCore.FirebirdSql/)                   | Firebird 2.5 및 3.x       | [Rafael Almeida](https://github.com/ralmsdeveloper)                           |                      | [wiki](https://github.com/ralmsdeveloper/EntityFrameworkCore.FirebirdSQL/wiki)                                                                                                                     |
 | [MySql.Data.EntityFrameworkCore](https://www.nuget.org/packages/MySql.Data.EntityFrameworkCore)                      | MySQL                      | [MySQL 프로젝트](https://dev.mysql.com)(Oracle)                               |                      | [docs](https://dev.mysql.com/doc/connector-net/en/connector-net-entityframework-core.html)                                                                                                         |
-| [Oracle.EntityFrameworkCore](https://www.nuget.org/packages/Oracle.EntityFrameworkCore/)                             | Oracle DB 11.2 이상     | [Oracle](https://www.oracle.com/technetwork/topics/dotnet/)                   | 시험판           | [website](https://www.oracle.com/technetwork/topics/dotnet/)                                                                                                                                       |
+| [Oracle.EntityFrameworkCore](https://www.nuget.org/packages/Oracle.EntityFrameworkCore/)                             | Oracle DB 11.2 이상     | [Oracle](https://www.oracle.com/technetwork/topics/dotnet/)                   | 시험판           | [웹 사이트](https://www.oracle.com/technetwork/topics/dotnet/)                                                                                                                                       |
 | [IBM.EntityFrameworkCore](https://www.nuget.org/packages/IBM.EntityFrameworkCore)                                    | Db2, Informix              | [IBM](https://ibm.com)                                                        | Windows 버전      | [블로그](https://www.ibm.com/developerworks/community/blogs/96960515-2ea1-4391-8170-b0515d08e4da/entry/Creating_Entity_Data_Model_using_IBM_Data_Server_providers_for_Entity_Framework_Core?lang=en) |
 | [IBM.EntityFrameworkCore-lnx](https://www.nuget.org/packages/IBM.EntityFrameworkCore-lnx)                            | Db2, Informix              | [IBM](https://ibm.com)                                                        | Linux 버전        | [블로그](https://www.ibm.com/developerworks/community/blogs/96960515-2ea1-4391-8170-b0515d08e4da/entry/Creating_Entity_Data_Model_using_IBM_Data_Server_providers_for_Entity_Framework_Core?lang=en) |
 | [IBM.EntityFrameworkCore-osx](https://www.nuget.org/packages/IBM.EntityFrameworkCore-osx)                            | Db2, Informix              | [IBM](https://ibm.com)                                                        | macOS 버전        | [블로그](https://www.ibm.com/developerworks/community/blogs/96960515-2ea1-4391-8170-b0515d08e4da/entry/Creating_Entity_Data_Model_using_IBM_Data_Server_providers_for_Entity_Framework_Core?lang=en) |
 | [EntityFrameworkCore.Jet](https://www.nuget.org/packages/EntityFrameworkCore.Jet/)                                   | Microsoft Access 파일     | [Bubi](https://github.com/bubibubi)                                           | .NET Framework       | [readme](https://github.com/bubibubi/EntityFrameworkCore.Jet/blob/master/docs/README.md)                                                                                                           |
 | [EntityFrameworkCore.OpenEdge](https://www.nuget.org/packages/EntityFrameworkCore.OpenEdge/)                         | Progress OpenEdge          | [Alex Wiese](https://github.com/alexwiese)                                    |                      | [readme](https://github.com/alexwiese/EntityFrameworkCore.OpenEdge/blob/master/README.md)                                                                                                          |
-| [Devart.Data.Oracle.EFCore](https://www.nuget.org/packages/Devart.Data.Oracle.EFCore/)                               | Oracle DB 9.2.0.4 이상  | [DevArt](https://www.devart.com/)                                             | 유료                 | [docs](https://www.devart.com/dotconnect/oracle/docs/)                                                                                                                                             |
-| [Devart.Data.PostgreSql.EFCore](https://www.nuget.org/packages/Devart.Data.PostgreSql.EFCore/)                       | PostgreSQL 8.0 이상     | [DevArt](https://www.devart.com/)                                             | 유료                 | [docs](https://www.devart.com/dotconnect/postgresql/docs/)                                                                                                                                         |
-| [Devart.Data.SQLite.EFCore](https://www.nuget.org/packages/Devart.Data.SQLite.EFCore/)                               | SQLite 3 이상           | [DevArt](https://www.devart.com/)                                             | 유료                 | [docs](https://www.devart.com/dotconnect/sqlite/docs/)                                                                                                                                             |
-| [Devart.Data.MySql.EFCore](https://www.nuget.org/packages/Devart.Data.MySql.EFCore/)                                 | MySQL 5 이상            | [DevArt](https://www.devart.com/)                                             | 유료                 | [docs](https://www.devart.com/dotconnect/mysql/docs/)                                                                                                                                              |
+| [Devart.Data.Oracle.EFCore](https://www.nuget.org/packages/Devart.Data.Oracle.EFCore/)                               | Oracle DB 9.2.0.4 이상  | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/oracle/docs/)                                                                                                                                             |
+| [Devart.Data.PostgreSql.EFCore](https://www.nuget.org/packages/Devart.Data.PostgreSql.EFCore/)                       | PostgreSQL 8.0 이상     | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/postgresql/docs/)                                                                                                                                         |
+| [Devart.Data.SQLite.EFCore](https://www.nuget.org/packages/Devart.Data.SQLite.EFCore/)                               | SQLite 3 이상           | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/sqlite/docs/)                                                                                                                                             |
+| [Devart.Data.MySql.EFCore](https://www.nuget.org/packages/Devart.Data.MySql.EFCore/)                                 | MySQL 5 이상            | [DevArt](https://www.devart.com/)                                             | 지급                 | [docs](https://www.devart.com/dotconnect/mysql/docs/)                                                                                                                                              |
+| [FileContextCore](https://www.nuget.org/packages/FileContextCore/)                                 | 데이터를 파일에 저장합니다.            | [Morris Janatzek](https://github.com/morrisjdev)                                             | 개발 목적                 | [readme](https://github.com/morrisjdev/FileContextCore/blob/master/README.md)                                                                                                                                              |
 
 ## <a name="adding-a-database-provider-to-your-application"></a>애플리케이션에 데이터베이스 공급자 추가
 
 대부분의 EF Core용 데이터베이스 공급자는 NuGet 패키지로 배포되며 다음과 같이 설치할 수 있습니다.
 
-# <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
+## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ``` console
 dotnet add package provider_package_name
 ```
 
-# <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+## <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 install-package provider_package_name

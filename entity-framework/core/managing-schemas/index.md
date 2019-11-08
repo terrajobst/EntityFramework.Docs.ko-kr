@@ -2,17 +2,18 @@
 title: 데이터베이스 스키마 관리 - EF Core
 author: bricelam
 ms.date: 10/30/2017
-ms.openlocfilehash: c1ebe33b5575cab76a54721ef86ecbcb7ff8b98b
-ms.sourcegitcommit: dadee5905ada9ecdbae28363a682950383ce3e10
+ms.openlocfilehash: 2da17865cb0192fb3e6e3396e4ca5f31fde9c52a
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "42994387"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73655651"
 ---
 # <a name="managing-database-schemas"></a>데이터베이스 스키마 관리
+
 EF Core는 EF Core 모델과 데이터베이스 스키마를 동기 상태로 유지하는 두 가지 기본 방법을 제공합니다. 두 방법 중에 하나를 선택하려면 EF Core 모델 또는 데이터베이스 스키마 중 어느 것이 올바른 원본인지 판단합니다.
 
-EF Core 모델을 원본으로 사용하려면 [마이그레이션][1]을 사용합니다. 이 방법에서는 EF Core 모델을 변경하면 해당 스키마 변경 내용을 데이터베이스에 증분 적용하므로 EF Core 모델과의 호환성을 유지합니다. 
+EF Core 모델을 원본으로 사용하려면 [마이그레이션][1]을 사용합니다. 이 방법에서는 EF Core 모델을 변경하면 해당 스키마 변경 내용을 데이터베이스에 증분 적용하므로 EF Core 모델과의 호환성을 유지합니다.
 
 데이터베이스 스키마를 원본으로 하려면 [리버스 엔지니어링][2]을 사용합니다. 이 방법에서는 데이터베이스 스키마를 EF Core 모델로 리버스 엔지니어링하여 DbContext와 엔터티 형식 클래스를 스캐폴드할 수 있습니다.
 
