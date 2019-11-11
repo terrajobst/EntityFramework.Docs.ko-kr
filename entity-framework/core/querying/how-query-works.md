@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 09/26/2018
 ms.assetid: de2e34cd-659b-4cab-b5ed-7a979c6bf120
 uid: core/querying/how-query-works
-ms.openlocfilehash: bc085755f39b1288f092a8b2df892c1bf82a89f1
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: ba0d68469530e6272ffbb51946d7856122a261c7
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72186241"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656250"
 ---
 # <a name="how-queries-work"></a>쿼리 작동 방식
 
@@ -40,6 +40,7 @@ Entity Framework Core는 LINQ(Language-Integrated Query)를 사용하여 데이�
 LINQ 연산자를 호출할 때는 쿼리의 메모리 내 표현을 작성하기만 하면 됩니다. 쿼리는 결과가 사용될 때만 데이터베이스로 전송됩니다.
 
 쿼리를 데이터베이스로 전송하는 가장 일반적인 작업은 다음과 같습니다.
+
 * `for` 루프에서 결과 반복
 * `ToList`, `ToArray`, `Single`, `Count` 같은 연산자 사용
 * 쿼리 결과를 UI에 데이터 바인딩

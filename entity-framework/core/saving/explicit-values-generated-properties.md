@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: d6aa9a0a9ce34e09a39026ad7ea9195b6777858c
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: ea469b9b7199cc767b2d0da1a5999026f938d087
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197860"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656252"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>생성된 속성에 대한 명시적 값 설정
 
@@ -33,6 +33,7 @@ ms.locfileid: "71197860"
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
 다음 코드에서는 데이터베이스에 두 명의 직원을 삽입합니다.
+
 * 첫 번째의 경우 `Employee.EmploymentStarted` 속성에 값이 할당되지 않으므로 `DateTime`에 대한 CLR 기본값으로 설정됩니다.
 * 두 번째의 경우 `1-Jan-2000`이라는 명시적 값을 설정했습니다.
 
@@ -80,6 +81,7 @@ ms.locfileid: "71197860"
 [!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
 다음 코드에서는 데이터베이스에서 두 직원의 급여를 올립니다.
+
 * 첫 번째의 경우 `Employee.LastPayRaise` 속성에 값이 할당되지 않으므로 null로 설정됩니다.
 * 두 번째의 경우 1주일 전(급여 인상 날짜 소급)이라는 명시적 값을 설정했습니다.
 

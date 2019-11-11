@@ -3,12 +3,12 @@ title: 동시성 충돌 처리 - EF Core
 author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: 4d6ff24e58caa0b228e9c1e4313beda78d1025fc
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: b72fa472698e76e18f155cf96b738b0e193eee0f
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197839"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654625"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 
@@ -56,11 +56,9 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 **세 가지 값 집합을 동시성 충돌 해결에 사용할 수 있습니다.**
 
-* **현재 값**은 애플리케이션이 데이터베이스에 쓰려고 시도하는 값입니다.
-
-* **원래 값**은 편집을 수행하기 전에 데이터베이스에서 처음에 검색된 값입니다.
-
-* **데이터베이스 값**은 현재 데이터베이스에 저장된 값입니다.
+- **현재 값**은 애플리케이션이 데이터베이스에 쓰려고 시도하는 값입니다.
+- **원래 값**은 편집을 수행하기 전에 데이터베이스에서 처음에 검색된 값입니다.
+- **데이터베이스 값**은 현재 데이터베이스에 저장된 값입니다.
 
 동시성 충돌을 처리하는 일반적인 접근 방법은 다음과 같습니다.
 

@@ -4,19 +4,20 @@ author: divega
 ms.date: 11/14/2018
 ms.assetid: 73C7A627-C8E9-452D-9CD5-AFCC8FEFE395
 uid: core/querying/tags
-ms.openlocfilehash: 3a4d516cab5836c659e42d825c4f1bf89355d671
-ms.sourcegitcommit: b3c2b34d5f006ee3b41d6668f16fe7dcad1b4317
+ms.openlocfilehash: e8415b237df45ce652dcd152013f4f12a992aed7
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51688756"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654825"
 ---
 # <a name="query-tags"></a>쿼리 태그
+
 > [!NOTE]
 > 이 기능은 EF Core 2.2의 새로운 기능입니다.
 
 이 기능은 로그에서 캡처한 생성된 SQL 쿼리와 코드의 LINQ 쿼리를 서로 연관 짓는 데 도움이 됩니다.
-새 `TagWith()` 메서드를 사용하여 LINQ 쿼리에 주석을 답니다. 
+새 `TagWith()` 메서드를 사용하여 LINQ 쿼리에 주석을 답니다.
 
 ``` csharp
   var nearestFriends =
@@ -49,7 +50,7 @@ IQueryable<T> Limit<T>(IQueryable<T> source, int limit) =>
     source.TagWith("Limit").Take(limit);
 ```
 
-다음 쿼리:   
+다음 쿼리:
 
 ``` csharp
 var results = Limit(GetNearestFriends(myLocation), 25).ToList();
@@ -92,5 +93,6 @@ ORDER BY [f].[Location].STDistance(@__myLocation_0) DESC
 ```
 
 ## <a name="known-limitations"></a>알려진 제한 사항
+
 **쿼리 태그는 매개 변수화할 수 없음:** EF Core는 항상 LINQ 쿼리의 쿼리 태그를 생성된 SQL에 포함되는 문자열 리터럴로 처리합니다.
 쿼리 태그를 매개 변수로 사용하는 컴파일된 쿼리는 허용되지 않습니다.

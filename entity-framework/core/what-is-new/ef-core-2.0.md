@@ -4,16 +4,17 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 781578d9de05895cdbc777aa53c3f6d6f9777869
-ms.sourcegitcommit: cbaa6cc89bd71d5e0bcc891e55743f0e8ea3393b
+ms.openlocfilehash: 72393e96c195af1df5a169025ca2ce7a7acb16bb
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71149043"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656219"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
 ## <a name="net-standard-20"></a>.NET Standard 2.0
+
 이제 EF Core가 .NET Standard 2.0을 대상으로 하므로 .NET Core 2.0, .NET Framework 4.6.1 및 .NET Standard 2.0을 구현하는 기타 라이브러리에서 작동할 수 있습니다.
 지원 항목에 대한 자세한 내용은 [지원되는 .NET 구현](../platforms/index.md)을 참조하세요.
 
@@ -32,6 +33,7 @@ modelBuilder.Entity<Product>()
 modelBuilder.Entity<Product>().ToTable("Products");
 modelBuilder.Entity<ProductDetails>().ToTable("Products");
 ```
+
 이 기능에 대한 자세한 내용은 [테이블 분할에 대한 섹션](xref:core/modeling/table-splitting)을 참조하세요.
 
 ### <a name="owned-types"></a>소유된 형식
@@ -65,6 +67,7 @@ public class StreetAddress
     public string City { get; set; }
 }
 ```
+
 이 기능에 대한 자세한 내용은 [소유한 엔터티 형식에 대한 섹션](xref:core/modeling/owned-entities)을 참고하세요.
 
 ### <a name="model-level-query-filters"></a>모델 수준 쿼리 필터
@@ -92,6 +95,7 @@ public class BloggingContext : DbContext
     }
 }
 ```
+
 `Post` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 `TenantId`의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
 
 IgnoreQueryFilters() 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않게 설정할 수 있습니다.
@@ -298,9 +302,11 @@ public class MyPluralizer : IPluralizer
 ## <a name="others"></a>Others
 
 ### <a name="move-adonet-sqlite-provider-to-sqlitepclraw"></a>ADO.NET SQLite 공급자를 SQLitePCL.raw로 이동
+
 여기서는 다양한 플랫폼에서 원시 SQLite 바이너리를 배포하기 위한 Microsoft.Data.Sqlite의 더 강력한 솔루션을 제공합니다.
 
 ### <a name="only-one-provider-per-model"></a>모델당 단일 공급자
+
 공급자가 모델과 상호 작용하는 방식을 보완하고 규칙, 주석 및 복합 API가 다양한 공급자에서 작동하는 방식을 간소화합니다.
 
 이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/master/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 애플리케이션에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 *공통 관계형 메타데이터 개념*에 대한 모든 액세스가 항상 `.SqlServer`, `.Sqlite` 등이 아닌 `.Relational` 호출을 통해 이루어집니다.

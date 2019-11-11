@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d3e6515b-8181-482c-a790-c4a6778748c1
 uid: core/saving/transactions
-ms.openlocfilehash: ff12c4e7ace1f1b9e503cb2353bcdd53efd87cce
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 952cb891d145a47666f1d506ec00f066be9f245d
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197902"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654748"
 ---
 # <a name="using-transactions"></a>트랜잭션 사용
 
@@ -99,9 +99,9 @@ public class BloggingContext : DbContext
 
 ### <a name="limitations-of-systemtransactions"></a>System.Transactions의 제한 사항  
 
-1. EF Core는 데이터베이스 공급자를 사용하여 System.Transactions에 대한 지원을 구현합니다. .NET Framework용 ADO.NET 공급자에서는 지원이 매우 일반적이지만 .NET Core에는 API가 최근에 추가되었으므로 지원이 광범위하지 않습니다. 공급자가 System.Transactions에 대한 지원을 구현하지 않는 경우 이러한 API에 대한 호출을 완전히 무시해도 됩니다. .NET Core용 SqlClient는 2.1부터 지원을 구현합니다. .NET Core용 SqlClient 2.0에서 이 기능을 사용하려고 하면 예외가 throw됩니다. 
+1. EF Core는 데이터베이스 공급자를 사용하여 System.Transactions에 대한 지원을 구현합니다. .NET Framework용 ADO.NET 공급자에서는 지원이 매우 일반적이지만 .NET Core에는 API가 최근에 추가되었으므로 지원이 광범위하지 않습니다. 공급자가 System.Transactions에 대한 지원을 구현하지 않는 경우 이러한 API에 대한 호출을 완전히 무시해도 됩니다. .NET Core용 SqlClient는 2.1부터 지원을 구현합니다. .NET Core용 SqlClient 2.0에서 이 기능을 사용하려고 하면 예외가 throw됩니다.
 
    > [!IMPORTANT]  
-   > 트랜잭션을 관리하는 데 사용하기 전에 API가 공급자에서 올바르게 동작하는지 테스트하는 것이 좋습니다. 그렇지 않으면 데이터베이스 공급자의 유지 관리자에게 문의하는 것이 좋습니다. 
+   > 트랜잭션을 관리하는 데 사용하기 전에 API가 공급자에서 올바르게 동작하는지 테스트하는 것이 좋습니다. 그렇지 않으면 데이터베이스 공급자의 유지 관리자에게 문의하는 것이 좋습니다.
 
-2. 버전 2.1부터 .NET Core의 System.Transactions 구현에 분산 트랜잭션에 대한 지원이 포함되지 않으므로 `TransactionScope`이나 `CommittableTransaction`을 사용하여 여러 리소스 관리자 간에 트랜잭션을 조정할 수 없습니다. 
+2. 버전 2.1부터 .NET Core의 System.Transactions 구현에 분산 트랜잭션에 대한 지원이 포함되지 않으므로 `TransactionScope`이나 `CommittableTransaction`을 사용하여 여러 리소스 관리자 간에 트랜잭션을 조정할 수 없습니다.

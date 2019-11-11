@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 uid: core/saving/cascade-delete
-ms.openlocfilehash: af86383bad52c87d2874fa4f8eb247a656601312
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 51c8b6f4517a3f87821ed1e4e2d60549e06ed39d
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182005"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656068"
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
@@ -18,9 +18,11 @@ ms.locfileid: "72182005"
 EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 동작 구성을 허용합니다. 또한 EF Core는 [관계의 필수 여부](../modeling/relationships.md#required-and-optional-relationships)에 따라 각 관계에 대해 유용한 기본 삭제 동작을 자동으로 구성하는 규칙을 구현합니다.
 
 ## <a name="delete-behaviors"></a>삭제 동작
+
 삭제 동작은 *DeleteBehavior* 열거자 유형에 정의되며 *OnDelete* 흐름 API에 전달하여 주/부모 엔터티의 삭제 또는 종속/자식 엔터티에 대한 관계 끊기가 종속/자식 엔터티에 부작용을 일으키는지 여부를 제어할 수 있습니다.
 
 주/부모 엔터티가 삭제되거나 자식에 대한 관계가 끊어지는 경우 EF에서 다음 세 가지 작업을 수행할 수 있습니다.
+
 * 자식/종속을 삭제할 수 있습니다.
 * 자식의 외래 키 값을 null로 설정할 수 있습니다.
 * 자식을 변경하지 않고 그대로 유지합니다.
@@ -33,6 +35,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 아래 표에 나열된 대로 네 가지 삭제 동작이 있습니다.
 
 ### <a name="optional-relationships"></a>선택적 관계
+
 선택적 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘있습니다’. 
 
 | 동작 이름               | 메모리의 종속/자식에 대한 영향    | 데이터베이스의 종속/자식에 대한 영향  |
@@ -43,6 +46,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 | **Restrict**                | 없음                                   | 없음                                   |
 
 ### <a name="required-relationships"></a>필수 관계
+
 필수 관계(null 허용 외래 키)인 경우 null 외래 키 값을 저장하여 다음과 같은 효과가 발생하도록 할 수 ‘없습니다’. 
 
 | 동작 이름         | 메모리의 종속/자식에 대한 영향 | 데이터베이스의 종속/자식에 대한 영향 |
@@ -55,6 +59,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 위의 표에서 ‘없음’은 제약 조건 위반을 발생시킬 수 있습니다.  예를 들어 주/자식 엔터티가 삭제되었지만 종속/자식의 외래 키를 변경하는 작업을 수행하지 않으면 외래 제약 조건 위반으로 인해 데이터베이스에서 SaveChanges가 throw될 수 있습니다.
 
 상위 수준에서 다음을 수행합니다.
+
 * 부모가 있어야 엔터티가 존재할 수 있는 경우 EF에서 자동으로 하위를 삭제할 수 있도록 하려면 *Cascade*를 사용합니다.
   * 부모가 있어야 존재할 수 있는 엔터티는 일반적으로 *Cascade*가 기본값인 필수 관계를 사용합니다.
 * 엔터티에 부모가 있거나 없을 수 있는 경우 EF에서 외래 키를 자동으로 무효화하도록 하려면 *ClientSetNull*을 사용합니다.
@@ -107,7 +112,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>필수 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -130,7 +135,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>선택적 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -160,7 +165,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Restrict
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -189,7 +194,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorcascade-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Cascade
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -217,7 +222,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-required-relationship"></a>필수 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -240,7 +245,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorclientsetnull-or-deletebehaviorsetnull-with-optional-relationship"></a>선택적 관계의 DeleteBehavior.ClientSetNull 또는 DeleteBehavior.SetNull
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.
@@ -268,7 +273,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ### <a name="deletebehaviorrestrict-with-required-or-optional-relationship"></a>필수 또는 선택적 관계의 DeleteBehavior.Restrict
 
-```console
+``` output
   After loading entities:
     Blog '1' is in state Unchanged with 2 posts referenced.
       Post '1' is in state Unchanged with FK '1' and reference to blog '1'.

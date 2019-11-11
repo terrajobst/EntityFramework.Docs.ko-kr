@@ -4,16 +4,17 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: 4e4ba21cd099daab4db8a8f358800fde26980c14
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: bfabe8fd5b0a64edd5d97baff3beab9d712f1c20
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813584"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73654628"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
 Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 엔터티를 로드할 수 있습니다. 관련 데이터를 로드하는 데 사용되는 세 개의 일반적인 O/RM 패턴이 있습니다.
+
 * **즉시 로드**는 관련 데이터가 초기 쿼리의 일부로 데이터베이스에서 로드됨을 의미합니다.
 * **명시적 로드**는 관련 데이터가 나중에 데이터베이스에서 명시적으로 로드됨을 의미합니다.
 * **지연 로드**는 탐색 속성에 액세스할 때 관련 데이터가 데이터베이스에서 투명하게 로드됨을 의미합니다.
@@ -57,7 +58,7 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 ### <a name="include-on-derived-types"></a>파생 형식에 포함
 
-`Include` 및 `ThenInclude`를 사용하여 파생 형식에만 정의된 탐색의 관련 데이터를 포함할 수 있습니다. 
+`Include` 및 `ThenInclude`를 사용하여 파생 형식에만 정의된 탐색의 관련 데이터를 포함할 수 있습니다.
 
 다음과 같은 모델을 가정합니다.
 
@@ -95,17 +96,20 @@ public class School
 
 다양한 패턴을 사용하여 학생인 모든 사람의 `School` 탐색 콘텐츠를 로드할 수 있습니다.
 
-- 캐스트 사용
+* 캐스트 사용
+
   ```csharp
   context.People.Include(person => ((Student)person).School).ToList()
   ```
 
-- `as` 연산자 사용
+* `as` 연산자 사용
+
   ```csharp
   context.People.Include(person => (person as Student).School).ToList()
   ```
 
-- `string` 형식의 매개 변수를 사용하는 `Include`의 오버로드 사용
+* `string` 형식의 매개 변수를 사용하는 `Include`의 오버로드 사용
+
   ```csharp
   context.People.Include("School").ToList()
   ```
@@ -140,6 +144,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         .UseLazyLoadingProxies()
         .UseSqlServer(myConnectionString);
 ```
+
 또는 AddDbContext를 사용하는 경우:
 
 ```csharp

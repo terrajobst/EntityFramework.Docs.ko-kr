@@ -5,12 +5,12 @@ ms.author: avickers
 ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 070f2ad396ec21858096c29413ac80bdf8547328
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 88c3fa8ea5b8246a932f5cf21e674bc7cc71c0ea
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197801"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656264"
 ---
 # <a name="disconnected-entities"></a>연결이 끊긴 엔터티
 
@@ -18,11 +18,13 @@ DbContext 인스턴스는 데이터베이스에서 반환된 엔터티를 자동
 
 그러나 하나의 컨텍스트 인스턴스를 사용하여 엔터티를 쿼리하고 다른 인스턴스를 사용하여 저장하는 경우가 있습니다. 이런 상황은 엔터티를 쿼리하고, 클라이언트로 전송하고, 수정하고, 요청에서 서버로 다시 전송한 후 저장하는 웹 애플리케이션과 같이 “연결이 끊긴” 시나리오에서 종종 발생합니다. 이 경우 두 번째 컨텍스트 인스턴스는 엔터티가 삽입해야 하는 새 엔터티인지 업데이트해야 하는 기존 엔터티인지를 알고 있어야 합니다.
 
-> [!TIP]  
+<!-- markdownlint-disable MD028 -->
+> [!TIP]
 > GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Disconnected/)을 볼 수 있습니다.
 
 > [!TIP]
 > EF Core는 지정된 기본 키 값이 있는 엔터티의 인스턴스 하나만 추적할 수 있습니다. 문제가 되지 않도록 하는 가장 좋은 방법은 각 작업 단위에 대해 단기 컨텍스트를 사용하여 컨텍스트가 빈 상태로 시작되고 엔터티를 연결하고 해당 엔터티를 저장한 후 컨텍스트가 삭제되고 취소되도록 하는 것입니다.
+<!-- markdownlint-enable MD028 -->
 
 ## <a name="identifying-new-entities"></a>새 엔터티 식별
 
@@ -50,8 +52,9 @@ DbContext 인스턴스는 데이터베이스에서 반환된 엔터티를 자동
 ### <a name="with-other-keys"></a>다른 키 사용
 
 키 값이 자동으로 생성되지 않는 경우 몇 가지 다른 메커니즘으로 새 엔터티를 식별해야 합니다. 두 가지 일반적인 접근 방법이 있습니다.
- * 엔터티 쿼리
- * 클라이언트에서 플래그 전달
+
+* 엔터티 쿼리
+* 클라이언트에서 플래그 전달
 
 엔터티를 쿼리하려면 Find 메서드를 사용하면 됩니다.
 
@@ -79,6 +82,7 @@ Update 메서드는 일반적으로 엔터티를 삽입이 아닌 업데이트�
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
 
 단계는 다음과 같습니다.
+
 * Find에서 null을 반환하는 경우 데이터베이스에 이 ID를 사용하는 블로그가 아직 포함되어 있지 않으므로 Add를 호출하여 삽입하도록 표시합니다.
 * Find에서 엔터티를 반환하는 경우 엔터티가 데이터베이스에 있고 컨텍스트에서 기존 엔터티를 추적하고 있는 것입니다.
   * 그러면 SetValues를 사용하여 이 엔터티의 모든 속성에 대한 값을 클라이언트에서 가져온 값으로 설정합니다.
