@@ -4,88 +4,90 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: d6aa9a0a9ce34e09a39026ad7ea9195b6777858c
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: ea469b9b7199cc767b2d0da1a5999026f938d087
+ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197860"
+ms.lasthandoff: 11/06/2019
+ms.locfileid: "73656252"
 ---
-# <a name="setting-explicit-values-for-generated-properties"></a><span data-ttu-id="56a3f-102">생성된 속성에 대한 명시적 값 설정</span><span class="sxs-lookup"><span data-stu-id="56a3f-102">Setting Explicit Values for Generated Properties</span></span>
+# <a name="setting-explicit-values-for-generated-properties"></a><span data-ttu-id="52d68-102">생성된 속성에 대한 명시적 값 설정</span><span class="sxs-lookup"><span data-stu-id="52d68-102">Setting Explicit Values for Generated Properties</span></span>
 
-<span data-ttu-id="56a3f-103">생성된 속성은 엔터티가 추가되거나 업데이트될 때 EF나 데이터베이스에서 값이 생성되는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-103">A generated property is a property whose value is generated (either by EF or the database) when the entity is added and/or updated.</span></span> <span data-ttu-id="56a3f-104">자세한 내용은 [생성된 속성](../modeling/generated-properties.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="56a3f-104">See [Generated Properties](../modeling/generated-properties.md) for more information.</span></span>
+<span data-ttu-id="52d68-103">생성된 속성은 엔터티가 추가되거나 업데이트될 때 EF나 데이터베이스에서 값이 생성되는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-103">A generated property is a property whose value is generated (either by EF or the database) when the entity is added and/or updated.</span></span> <span data-ttu-id="52d68-104">자세한 내용은 [생성된 속성](../modeling/generated-properties.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="52d68-104">See [Generated Properties](../modeling/generated-properties.md) for more information.</span></span>
 
-<span data-ttu-id="56a3f-105">생성된 속성에 대해 값을 생성하지 않고 명시적 값을 설정하려는 경우가 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-105">There may be situations where you want to set an explicit value for a generated property, rather than having one generated.</span></span>
+<span data-ttu-id="52d68-105">생성된 속성에 대해 값을 생성하지 않고 명시적 값을 설정하려는 경우가 있을 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-105">There may be situations where you want to set an explicit value for a generated property, rather than having one generated.</span></span>
 
 > [!TIP]  
-> <span data-ttu-id="56a3f-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) on GitHub.</span></span>
+> <span data-ttu-id="52d68-106">GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-106">You can view this article's [sample](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/) on GitHub.</span></span>
 
-## <a name="the-model"></a><span data-ttu-id="56a3f-107">모델</span><span class="sxs-lookup"><span data-stu-id="56a3f-107">The model</span></span>
+## <a name="the-model"></a><span data-ttu-id="52d68-107">모델</span><span class="sxs-lookup"><span data-stu-id="52d68-107">The model</span></span>
 
-<span data-ttu-id="56a3f-108">이 문서에 사용된 모델에는 단일 `Employee` 엔터티가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-108">The model used in this article contains a single `Employee` entity.</span></span>
+<span data-ttu-id="52d68-108">이 문서에 사용된 모델에는 단일 `Employee` 엔터티가 포함되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-108">The model used in this article contains a single `Employee` entity.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Employee.cs#Sample)]
 
-## <a name="saving-an-explicit-value-during-add"></a><span data-ttu-id="56a3f-109">추가 중 명시적 값 저장</span><span class="sxs-lookup"><span data-stu-id="56a3f-109">Saving an explicit value during add</span></span>
+## <a name="saving-an-explicit-value-during-add"></a><span data-ttu-id="52d68-109">추가 중 명시적 값 저장</span><span class="sxs-lookup"><span data-stu-id="52d68-109">Saving an explicit value during add</span></span>
 
-<span data-ttu-id="56a3f-110">`Employee.EmploymentStarted` 속성은 기본값을 사용하여 새 엔터티에 대해 데이터베이스에서 값을 생성하도록 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-110">The `Employee.EmploymentStarted` property is configured to have values generated by the database for new entities (using a default value).</span></span>
+<span data-ttu-id="52d68-110">`Employee.EmploymentStarted` 속성은 기본값을 사용하여 새 엔터티에 대해 데이터베이스에서 값을 생성하도록 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-110">The `Employee.EmploymentStarted` property is configured to have values generated by the database for new entities (using a default value).</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#EmploymentStarted)]
 
-<span data-ttu-id="56a3f-111">다음 코드에서는 데이터베이스에 두 명의 직원을 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-111">The following code inserts two employees into the database.</span></span>
-* <span data-ttu-id="56a3f-112">첫 번째의 경우 `Employee.EmploymentStarted` 속성에 값이 할당되지 않으므로 `DateTime`에 대한 CLR 기본값으로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-112">For the first, no value is assigned to `Employee.EmploymentStarted` property, so it remains set to the CLR default value for `DateTime`.</span></span>
-* <span data-ttu-id="56a3f-113">두 번째의 경우 `1-Jan-2000`이라는 명시적 값을 설정했습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-113">For the second, we have set an explicit value of `1-Jan-2000`.</span></span>
+<span data-ttu-id="52d68-111">다음 코드에서는 데이터베이스에 두 명의 직원을 삽입합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-111">The following code inserts two employees into the database.</span></span>
+
+* <span data-ttu-id="52d68-112">첫 번째의 경우 `Employee.EmploymentStarted` 속성에 값이 할당되지 않으므로 `DateTime`에 대한 CLR 기본값으로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-112">For the first, no value is assigned to `Employee.EmploymentStarted` property, so it remains set to the CLR default value for `DateTime`.</span></span>
+* <span data-ttu-id="52d68-113">두 번째의 경우 `1-Jan-2000`이라는 명시적 값을 설정했습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-113">For the second, we have set an explicit value of `1-Jan-2000`.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmploymentStarted)]
 
-<span data-ttu-id="56a3f-114">출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-114">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
+<span data-ttu-id="52d68-114">출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-114">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
 
 ``` Console
 1: John Doe, 1/26/2017 12:00:00 AM
 2: Jane Doe, 1/1/2000 12:00:00 AM
 ```
 
-### <a name="explicit-values-into-sql-server-identity-columns"></a><span data-ttu-id="56a3f-115">SQL Server IDENTITY 열의 명시적 값</span><span class="sxs-lookup"><span data-stu-id="56a3f-115">Explicit values into SQL Server IDENTITY columns</span></span>
+### <a name="explicit-values-into-sql-server-identity-columns"></a><span data-ttu-id="52d68-115">SQL Server IDENTITY 열의 명시적 값</span><span class="sxs-lookup"><span data-stu-id="52d68-115">Explicit values into SQL Server IDENTITY columns</span></span>
 
-<span data-ttu-id="56a3f-116">일반적으로 `Employee.EmployeeId` 속성은 저장소 생성 `IDENTITY` 열입니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-116">By convention the `Employee.EmployeeId` property is a store generated `IDENTITY` column.</span></span>
+<span data-ttu-id="52d68-116">일반적으로 `Employee.EmployeeId` 속성은 저장소 생성 `IDENTITY` 열입니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-116">By convention the `Employee.EmployeeId` property is a store generated `IDENTITY` column.</span></span>
 
-<span data-ttu-id="56a3f-117">대부분의 경우 위에 표시된 접근 방법은 주요 속성에 대해 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-117">For most situations, the approach shown above will work for key properties.</span></span> <span data-ttu-id="56a3f-118">그러나 SQL Server `IDENTITY` 열에 명시적 값을 삽입하려면 `SaveChanges()`를 호출하기 전에 `IDENTITY_INSERT`를 수동으로 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-118">However, to insert explicit values into a SQL Server `IDENTITY` column, you need to manually enable `IDENTITY_INSERT` before calling `SaveChanges()`.</span></span>
+<span data-ttu-id="52d68-117">대부분의 경우 위에 표시된 접근 방법은 주요 속성에 대해 작동합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-117">For most situations, the approach shown above will work for key properties.</span></span> <span data-ttu-id="52d68-118">그러나 SQL Server `IDENTITY` 열에 명시적 값을 삽입하려면 `SaveChanges()`를 호출하기 전에 `IDENTITY_INSERT`를 수동으로 사용해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-118">However, to insert explicit values into a SQL Server `IDENTITY` column, you need to manually enable `IDENTITY_INSERT` before calling `SaveChanges()`.</span></span>
 
 > [!NOTE]  
-> <span data-ttu-id="56a3f-119">SQL Server 공급자 내에서 자동으로 이 작업을 수행하려면 백로그에 [기능 요청](https://github.com/aspnet/EntityFramework/issues/703)이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-119">We have a [feature request](https://github.com/aspnet/EntityFramework/issues/703) on our backlog to do this automatically within the SQL Server provider.</span></span>
+> <span data-ttu-id="52d68-119">SQL Server 공급자 내에서 자동으로 이 작업을 수행하려면 백로그에 [기능 요청](https://github.com/aspnet/EntityFramework/issues/703)이 있어야 합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-119">We have a [feature request](https://github.com/aspnet/EntityFramework/issues/703) on our backlog to do this automatically within the SQL Server provider.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#EmployeeId)]
 
-<span data-ttu-id="56a3f-120">출력에서는 제공된 ID가 데이터베이스에 저장되었음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-120">Output shows that the supplied ids were saved to the database.</span></span>
+<span data-ttu-id="52d68-120">출력에서는 제공된 ID가 데이터베이스에 저장되었음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-120">Output shows that the supplied ids were saved to the database.</span></span>
 
 ``` Console
 100: John Doe
 101: Jane Doe
 ```
 
-## <a name="setting-an-explicit-value-during-update"></a><span data-ttu-id="56a3f-121">업데이트 중 명시적 값 설정</span><span class="sxs-lookup"><span data-stu-id="56a3f-121">Setting an explicit value during update</span></span>
+## <a name="setting-an-explicit-value-during-update"></a><span data-ttu-id="52d68-121">업데이트 중 명시적 값 설정</span><span class="sxs-lookup"><span data-stu-id="52d68-121">Setting an explicit value during update</span></span>
 
-<span data-ttu-id="56a3f-122">`Employee.LastPayRaise` 속성은 업데이트 중에 데이터베이스에서 값을 생성하도록 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-122">The `Employee.LastPayRaise` property is configured to have values generated by the database during updates.</span></span>
+<span data-ttu-id="52d68-122">`Employee.LastPayRaise` 속성은 업데이트 중에 데이터베이스에서 값을 생성하도록 구성됩니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-122">The `Employee.LastPayRaise` property is configured to have values generated by the database during updates.</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/EmployeeContext.cs#LastPayRaise)]
 
 > [!NOTE]  
-> <span data-ttu-id="56a3f-123">기본적으로 업데이트 중에 생성되도록 구성된 속성에 대한 명시적 값을 저장하려고 하면 EF Core에서 예외를 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-123">By default, EF Core will throw an exception if you try to save an explicit value for a property that is configured to be generated during update.</span></span> <span data-ttu-id="56a3f-124">이를 방지하려면 하위 수준 메타데이터 API로 드롭다운하고 위에 표시된 대로 `AfterSaveBehavior`를 설정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-124">To avoid this, you need to drop down to the lower level metadata API and set the `AfterSaveBehavior` (as shown above).</span></span>
+> <span data-ttu-id="52d68-123">기본적으로 업데이트 중에 생성되도록 구성된 속성에 대한 명시적 값을 저장하려고 하면 EF Core에서 예외를 throw합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-123">By default, EF Core will throw an exception if you try to save an explicit value for a property that is configured to be generated during update.</span></span> <span data-ttu-id="52d68-124">이를 방지하려면 하위 수준 메타데이터 API로 드롭다운하고 위에 표시된 대로 `AfterSaveBehavior`를 설정해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-124">To avoid this, you need to drop down to the lower level metadata API and set the `AfterSaveBehavior` (as shown above).</span></span>
 
 > [!NOTE]  
-> <span data-ttu-id="56a3f-125">**EF Core 2.0의 변경 내용:** 이전 릴리스에서는 after-save 동작이 `IsReadOnlyAfterSave` 플래그를 통해 제어되었습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-125">**Changes in EF Core 2.0:** In previous releases the after-save behavior was controlled through the `IsReadOnlyAfterSave` flag.</span></span> <span data-ttu-id="56a3f-126">이 플래그는 사용되지 않으며 `AfterSaveBehavior`로 대체되었습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-126">This flag has been obsoleted and replaced by `AfterSaveBehavior`.</span></span>
+> <span data-ttu-id="52d68-125">**EF Core 2.0의 변경 내용:** 이전 릴리스에서는 after-save 동작이 `IsReadOnlyAfterSave` 플래그를 통해 제어되었습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-125">**Changes in EF Core 2.0:** In previous releases the after-save behavior was controlled through the `IsReadOnlyAfterSave` flag.</span></span> <span data-ttu-id="52d68-126">이 플래그는 사용되지 않으며 `AfterSaveBehavior`로 대체되었습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-126">This flag has been obsoleted and replaced by `AfterSaveBehavior`.</span></span>
 
-<span data-ttu-id="56a3f-127">데이터베이스에는 `UPDATE` 작업 중에 `LastPayRaise` 열에 대한 값을 생성하는 트리거도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-127">There is also a trigger in the database to generate values for the `LastPayRaise` column during `UPDATE` operations.</span></span>
+<span data-ttu-id="52d68-127">데이터베이스에는 `UPDATE` 작업 중에 `LastPayRaise` 열에 대한 값을 생성하는 트리거도 있습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-127">There is also a trigger in the database to generate values for the `LastPayRaise` column during `UPDATE` operations.</span></span>
 
 [!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 
-<span data-ttu-id="56a3f-128">다음 코드에서는 데이터베이스에서 두 직원의 급여를 올립니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-128">The following code increases the salary of two employees in the database.</span></span>
-* <span data-ttu-id="56a3f-129">첫 번째의 경우 `Employee.LastPayRaise` 속성에 값이 할당되지 않으므로 null로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-129">For the first, no value is assigned to `Employee.LastPayRaise` property, so it remains set to null.</span></span>
-* <span data-ttu-id="56a3f-130">두 번째의 경우 1주일 전(급여 인상 날짜 소급)이라는 명시적 값을 설정했습니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-130">For the second, we have set an explicit value of one week ago (back dating the pay raise).</span></span>
+<span data-ttu-id="52d68-128">다음 코드에서는 데이터베이스에서 두 직원의 급여를 올립니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-128">The following code increases the salary of two employees in the database.</span></span>
+
+* <span data-ttu-id="52d68-129">첫 번째의 경우 `Employee.LastPayRaise` 속성에 값이 할당되지 않으므로 null로 설정됩니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-129">For the first, no value is assigned to `Employee.LastPayRaise` property, so it remains set to null.</span></span>
+* <span data-ttu-id="52d68-130">두 번째의 경우 1주일 전(급여 인상 날짜 소급)이라는 명시적 값을 설정했습니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-130">For the second, we have set an explicit value of one week ago (back dating the pay raise).</span></span>
 
 [!code-csharp[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/Sample.cs#LastPayRaise)]
 
-<span data-ttu-id="56a3f-131">출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="56a3f-131">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
+<span data-ttu-id="52d68-131">출력에서는 데이터베이스가 첫 번째 직원에 대해서는 값을 생성하고 두 번째에는 명시적 값을 사용했음을 보여줍니다.</span><span class="sxs-lookup"><span data-stu-id="52d68-131">Output shows that the database generated a value for the first employee and our explicit value was used for the second.</span></span>
 
 ``` Console
 1: John Doe, 1/26/2017 12:00:00 AM
