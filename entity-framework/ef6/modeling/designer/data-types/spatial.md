@@ -27,9 +27,9 @@ ms.locfileid: "72182509"
 ## <a name="watch-the-video"></a>비디오 시청
 이 비디오에서는 공간 형식을 Entity Framework Designer에 매핑하는 방법을 보여 줍니다. LINQ 쿼리를 사용 하 여 두 위치 간의 거리를 찾는 방법도 보여 줍니다.
 
-**제공**: 줄리아 Kornich
+제공한 **사람**: 줄리아 Kornich
 
-**비디오**: [WMV](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-winvideo-spatialwithdesigner.wmv)@NO__T-[1MP4](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-mp4video-spatialwithdesigner.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-winvideo-spatialwithdesigner.zip)
+**비디오**: [wmv](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-winvideo-spatialwithdesigner.wmv) | [MP4](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-mp4video-spatialwithdesigner.m4v) | [wmv (ZIP)](https://download.microsoft.com/download/E/C/9/EC9E6547-8983-4C1F-A919-D33210E4B213/HDI-ITPro-MSDN-winvideo-spatialwithdesigner.zip)
 
 ## <a name="pre-requisites"></a>필수 구성 요소
 
@@ -39,7 +39,7 @@ ms.locfileid: "72182509"
 
 1.  Visual Studio 2012 열기
 2.  **파일** 메뉴에서 **새로 만들기**를 가리킨 다음 **프로젝트** 를 클릭 합니다.
-3.  왼쪽 창에서 **Visual C @ no__t-1**을 클릭 한 다음 **콘솔** 템플릿을 선택 합니다.
+3.  왼쪽 창에서 **Visual C\#** 을 클릭 한 다음 **콘솔** 템플릿을 선택 합니다.
 4.  프로젝트 이름으로 **SpatialEFDesigner** 를 입력 하 고 **확인을** 클릭 합니다.
 
 ## <a name="create-a-new-model-using-the-ef-designer"></a>EF Designer를 사용 하 여 새 모델 만들기
@@ -55,14 +55,14 @@ ms.locfileid: "72182509"
 마법사에서는 다음 작업을 수행합니다.
 
 -   개념적 모델, 저장소 모델 및 두 모델 간의 매핑을 정의 하는 EnumTestModel .edmx 파일을 생성 합니다. 생성 된 메타 데이터 파일이 어셈블리에 포함 되도록 .edmx 파일의 메타 데이터 아티팩트 처리 속성을 출력 어셈블리에 포함 하도록 설정 합니다.
--   다음 어셈블리에 대 한 참조를 추가 합니다. EntityFramework, System.componentmodel 및 System.object를 모두.
+-   EntityFramework, System.componentmodel 및 System.object 어셈블리에 대 한 참조를 추가 합니다.
 -   UniversityModel.tt 및 UniversityModel.Context.tt 파일을 만들고 .edmx 파일 아래에 추가 합니다. 이러한 T4 템플릿 파일은 .edmx 모델의 엔터티에 매핑되는 DbContext 파생 형식 및 POCO 형식을 정의 하는 코드를 생성 합니다.
 
 ## <a name="add-a-new-entity-type"></a>새 엔터티 형식 추가
 
 1.  디자인 화면의 빈 영역을 마우스 오른쪽 단추로 클릭 하 고 **추가-&gt; 엔터티**를 선택 합니다. 새 엔터티 대화 상자가 나타납니다.
 2.  유형 이름에 대해 **대학** 을 지정 하 고 키 속성 이름에 **UniversityID** 를 지정 하 고 형식을 **Int32** 로 그대로 둡니다.
-3.  **확인** 을 클릭합니다.
+3.  **확인**을 클릭합니다.
 4.  엔터티를 마우스 오른쪽 단추로 클릭 하 고 **추가 새로 만들기-&gt; 스칼라 속성** 을 선택 합니다.
 5.  새 속성의 이름을 **Name** 으로 바꿉니다.
 6.  다른 스칼라 속성을 추가 하 고 **위치** 에 이름 변경 속성 창를 열고 새 속성의 형식을 **Geography** 로 변경 합니다.
@@ -75,11 +75,11 @@ ms.locfileid: "72182509"
 이제 모델을 기반으로 하는 데이터베이스를 생성할 수 있습니다.
 
 1.  Entity Designer 화면의 빈 공간을 마우스 오른쪽 단추로 클릭 하 고 **모델에서 데이터베이스 생성** 을 선택 합니다.
-2.  데이터베이스 생성 마법사의 데이터 연결 선택 대화 상자가 표시 되 면 **새 연결** 단추를 클릭 하 여 데이터베이스의 서버 이름 및 **대학** 에 대해 **2mssqllocaldb를 @no__t** 지정 하 고 확인을 클릭 합니다.
+2.  데이터베이스 생성 마법사의 데이터 연결 선택 대화 상자가 표시 됩니다. 데이터베이스에 대 한 서버 이름 및 **대학** 에 대해 **새 연결** 단추 지정 **(Localdb)\\Mssqllocaldb** 를 클릭 하 고 **확인** 을 클릭 합니다.
 3.  새 데이터베이스를 만들지 여부를 묻는 대화 상자가 표시 되 면 **예**를 클릭 합니다.
-4.  **다음** 을 클릭 하 고 데이터베이스 만들기 마법사에서 데이터베이스를 만들기 위한 ddl (데이터 정의 언어)을 생성 합니다. 생성 된 Ddl은 요약 및 설정 대화 상자에 표시 되며, ddl에는에 매핑되는 테이블에 대 한 정의가 포함 되지 않습니다. 열거형 형식
+4.  **다음** 을 클릭 하 고 데이터베이스 만들기 마법사에서 데이터베이스를 만들기 위한 ddl (데이터 정의 언어)을 생성 합니다. 생성 된 Ddl은 요약 및 설정 대화 상자에 표시 되며, 해당 ddl에는 열거형 형식에 매핑되는 테이블에 대 한 정의가 포함 되지 않습니다.
 5.  마침 **을 클릭 하면 DDL** 스크립트가 실행 되지 않습니다 .를 클릭 합니다.
-6.  데이터베이스 만들기 마법사는 다음을 수행 합니다. T-sql 편집기에서 **UniversityModel** 을 엽니다. edmx 파일의 저장소 스키마 및 매핑 섹션을 생성 하 여 app.config 파일에 연결 문자열 정보를 추가 합니다.
+6.  데이터베이스 만들기 마법사는 다음을 수행 합니다. T-sql 편집기에서 **UniversityModel** 를 열면 .edmx 파일의 저장소 스키마 및 매핑 섹션이 생성 되어 app.config 파일에 연결 문자열 정보가 추가 됩니다.
 7.  T-sql 편집기에서 마우스 오른쪽 단추를 클릭 하 고 서버에 연결 대화 상자가 나타납니다 .를 선택 하 고 2 단계의 연결 정보를 입력 한 다음 **연결** 을 **클릭 합니다.**
 8.  생성 된 스키마를 보려면 SQL Server 개체 탐색기에서 데이터베이스 이름을 마우스 오른쪽 단추로 클릭 하 고 **새로 고침** 을 선택 합니다.
 

@@ -27,9 +27,9 @@ ms.locfileid: "72182658"
 ## <a name="watch-the-video"></a>비디오 시청
 이 비디오는 Entity Framework Code First를 사용 하 여 공간 형식을 매핑하는 방법을 보여 줍니다. LINQ 쿼리를 사용 하 여 두 위치 간의 거리를 찾는 방법도 보여 줍니다.
 
-**제공**: 줄리아 Kornich
+제공한 **사람**: 줄리아 Kornich
 
-**비디오**: [WMV](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-winvideo-spatialwithcodefirst.wmv)@NO__T-[1MP4](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-mp4video-spatialwithcodefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-winvideo-spatialwithcodefirst.zip)
+**비디오**: [wmv](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-winvideo-spatialwithcodefirst.wmv) | [MP4](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-mp4video-spatialwithcodefirst.m4v) | [wmv (ZIP)](https://download.microsoft.com/download/9/1/3/913EA17E-6F97-41D8-A4FE-805A0D83D26A/HDI-ITPro-MSDN-winvideo-spatialwithcodefirst.zip)
 
 ## <a name="pre-requisites"></a>필수 구성 요소
 
@@ -39,7 +39,7 @@ ms.locfileid: "72182658"
 
 1.  Visual Studio 2012 열기
 2.  **파일** 메뉴에서 **새로 만들기**를 가리킨 다음 **프로젝트** 를 클릭 합니다.
-3.  왼쪽 창에서 **Visual C @ no__t-1**을 클릭 한 다음 **콘솔** 템플릿을 선택 합니다.
+3.  왼쪽 창에서 **Visual C\#** 을 클릭 한 다음 **콘솔** 템플릿을 선택 합니다.
 4.  프로젝트 이름으로 **SpatialCodeFirst** 를 입력 하 고 **확인을** 클릭 합니다.
 
 ## <a name="define-a-new-model-using-code-first"></a>Code First를 사용 하 여 새 모델 정의
@@ -67,7 +67,7 @@ public class University
 
 ## <a name="define-the-dbcontext-derived-type"></a>DbContext 파생 형식 정의
 
-엔터티를 정의 하는 것 외에도 DbContext에서 파생 되는 클래스를 정의 하 고 DbSet @ no__t-0D@ no__t-1 속성을 노출 해야 합니다. DbSet @ no__t-0D@ no__t 속성을 사용 하면 모델에 포함 하려는 유형을 컨텍스트에 알 수 있습니다.
+엔터티를 정의 하는 것 외에도 DbContext에서 파생 되 고 DbSet&lt;&gt; 속성을 노출 하는 클래스를 정의 해야 합니다. DbSet&lt;&gt; 속성을 사용 하면 컨텍스트에서 모델에 포함 하려는 형식을 알 수 있습니다.
 
 DbContext 파생 형식의 인스턴스는 런타임 중에 엔터티 개체를 관리 합니다. 여기에는 데이터베이스의 데이터로 개체 채우기, 변경 내용 추적 및 데이터베이스에 데이터 유지가 포함 됩니다.
 
@@ -144,7 +144,7 @@ The closest University to you is: School of Fine Art.
 
 데이터베이스 및 데이터를 보려면 다음을 수행 합니다.
 
-1.  Visual Studio 2012 주 메뉴에서 **보기** - @ no__t **SQL Server 개체 탐색기**를 선택 합니다.
+1.  Visual Studio 2012 주 메뉴에서 **보기** -&gt; **SQL Server 개체 탐색기**를 선택 합니다.
 2.  LocalDB가 서버 목록에 없으면 **SQL Server** 에서 마우스 오른쪽 단추를 클릭 하 고 추가를 선택 **SQL Server** 기본 **Windows 인증** 을 사용 하 여 localdb 인스턴스에 연결 합니다.
 3.  LocalDB 노드 확장
 4.  **데이터베이스** 폴더를 펼침 하 여 새 데이터베이스를 확인 하 고 **대학** 테이블로 이동 합니다.

@@ -84,7 +84,7 @@ namespace TestingDemo
 
 컨텍스트의 DbSet 속성은 virtual로 표시 됩니다. 이렇게 하면 모의 프레임 워크가 컨텍스트에서 파생 되 고 모의 구현으로 이러한 속성을 재정의할 수 있습니다.  
 
-Code First를 사용 하는 경우 클래스를 직접 편집할 수 있습니다. EF Designer를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. @No__t-0model_name @ no__t-1을 엽니다. Context.tt 파일은 edmx 파일에 중첩 되어 있습니다. 다음 코드 조각을 찾아 virtual 키워드에 다음과 같이 추가 합니다.  
+Code First를 사용 하는 경우 클래스를 직접 편집할 수 있습니다. EF Designer를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. \<model_name\>를 엽니다. Context.tt 파일은 edmx 파일에 중첩 되어 있습니다. 다음 코드 조각을 찾아 virtual 키워드에 다음과 같이 추가 합니다.  
 
 ``` csharp
 public string DbSet(EntitySet entitySet)
@@ -150,7 +150,7 @@ namespace TestingDemo
 
 ## <a name="testing-non-query-scenarios"></a>쿼리가 아닌 시나리오 테스트  
 
-쿼리가 아닌 메서드 테스트를 시작 하기 위해 수행 해야 하는 작업입니다. 다음 테스트에서는 Moq를 사용 하 여 컨텍스트를 만듭니다. 그런 다음 DbSet @ no__t-0Blog @ no__t-1을 만들어 컨텍스트의 블로그 속성에서 반환 됩니다. 그런 다음, 컨텍스트를 사용 하 여 새 BlogService를 만든 다음 AddBlog 메서드를 사용 하 여 새 블로그를 만드는 데 사용 합니다. 마지막으로 테스트는 서비스에서 새 블로그를 추가 하 고 컨텍스트에서 SaveChanges를 호출 했는지 확인 합니다.  
+쿼리가 아닌 메서드 테스트를 시작 하기 위해 수행 해야 하는 작업입니다. 다음 테스트에서는 Moq를 사용 하 여 컨텍스트를 만듭니다. 그런 다음 DbSet\<블로그\>를 만들고, 컨텍스트의 블로그 속성에서 반환 될 와이어를 만듭니다. 그런 다음, 컨텍스트를 사용 하 여 새 BlogService를 만든 다음 AddBlog 메서드를 사용 하 여 새 블로그를 만드는 데 사용 합니다. 마지막으로 테스트는 서비스에서 새 블로그를 추가 하 고 컨텍스트에서 SaveChanges를 호출 했는지 확인 합니다.  
 
 ``` csharp
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -182,7 +182,7 @@ namespace TestingDemo
 
 ## <a name="testing-query-scenarios"></a>쿼리 시나리오 테스트  
 
-DbSet 테스트 double에 대해 쿼리를 실행할 수 있으려면 IQueryable의 구현을 설정 해야 합니다. 첫 번째 단계는 일부 메모리 내 데이터를 만드는 것입니다. 이때 @ no__t-0Blog @ no__t-1 목록을 사용 하 고 있습니다. 다음으로, 컨텍스트와 DBSet @ no__t-0Blog @ no__t-1을 만든 다음, DbSet에 대 한 IQueryable 구현을 연결 합니다. 즉, List @ no__t-2T no__t-3에서 작동 하는 LINQ to Objects 공급자에만 위임 됩니다.  
+DbSet 테스트 double에 대해 쿼리를 실행할 수 있으려면 IQueryable의 구현을 설정 해야 합니다. 첫 번째 단계는 일부 메모리 내 데이터를 만드는 것입니다.\<블로그\>목록을 사용 합니다. 다음으로는 컨텍스트 및 DBSet\<블로그\> 만든 다음, DbSet에 대 한 IQueryable 구현을 연결 합니다 .이는 목록\<T\>에서 작동 하는 LINQ to Objects 공급자에 게 위임 됩니다.  
 
 그런 다음 테스트 double을 기반으로 BlogService를 만들고 GetAllBlogs 데이터를 이름별로 정렬할 수 있습니다.  
 
@@ -235,7 +235,7 @@ Entity Framework 6에서는 쿼리를 비동기적으로 실행 하는 데 사�
 
 쿼리에서 LINQ를 사용 Entity Framework 하기 때문에 확장 메서드는 IQueryable 및 IEnumerable에 정의 됩니다. 그러나 Entity Framework 사용 하도록 디자인 되었기 때문에 Entity Framework 쿼리가 아닌 LINQ 쿼리에서 사용 하려고 하면 다음 오류가 나타날 수 있습니다.
 
-> 원본 IQueryable은 IDbAsyncEnumerable @ no__t-0을 구현 하지 않습니다. IDbAsyncEnumerable을 구현 하는 원본만 Entity Framework 비동기 작업에 사용할 수 있습니다. 자세한 내용은 [http://go.microsoft.com/fwlink/?LinkId=287068](https://go.microsoft.com/fwlink/?LinkId=287068)을 참조 하세요.  
+> 원본 IQueryable은 IDbAsyncEnumerable{0}를 구현 하지 않습니다. IDbAsyncEnumerable을 구현 하는 원본만 Entity Framework 비동기 작업에 사용할 수 있습니다. 자세한 내용은 [http://go.microsoft.com/fwlink/?LinkId=287068](https://go.microsoft.com/fwlink/?LinkId=287068)를 참조 하세요.  
 
 비동기 메서드는 EF 쿼리를 실행 하는 경우에만 지원 되지만 DbSet의 메모리 내 테스트 double에 대해 실행 될 때 단위 테스트에서 사용 하는 것이 좋습니다.  
 

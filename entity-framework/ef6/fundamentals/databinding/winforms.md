@@ -13,7 +13,7 @@ ms.locfileid: "72181796"
 # <a name="databinding-with-winforms"></a>WinForms를 사용 하 여 데이터 바인딩
 이 단계별 연습에서는 POCO 형식을 "마스터-세부 정보" 폼의 WinForms (Window Forms) 컨트롤에 바인딩하는 방법을 보여 줍니다. 응용 프로그램은 Entity Framework를 사용 하 여 데이터베이스의 데이터로 개체를 채우고, 변경 내용을 추적 하 고, 데이터를 데이터베이스에 보관 합니다.
 
-이 모델은 일 대 다 관계에 참여 하는 두 가지 형식을 정의 합니다. Category (principal @ no__t-0master) 및 Product (dependent @ no__t-1 detail). 그런 다음 Visual Studio 도구를 사용 하 여 모델에 정의 된 형식을 WinForms 컨트롤에 바인딩합니다. WinForms 데이터 바인딩 프레임 워크를 사용 하면 관련 개체 간을 탐색할 수 있습니다. 즉, 마스터 뷰에서 행을 선택 하면 세부 정보 보기가 해당 자식 데이터로 업데이트 됩니다.
+이 모델은 일 대 다 관계에 참여 하는 두 가지 유형, 즉 Category (principal\\master) 및 Product (종속\\세부 정보)를 정의 합니다. 그런 다음 Visual Studio 도구를 사용 하 여 모델에 정의 된 형식을 WinForms 컨트롤에 바인딩합니다. WinForms 데이터 바인딩 프레임 워크를 사용 하면 관련 개체 간을 탐색할 수 있습니다. 즉, 마스터 뷰에서 행을 선택 하면 세부 정보 보기가 해당 자식 데이터로 업데이트 됩니다.
 
 이 연습의 스크린 샷 및 코드 목록은 Visual Studio 2013에서 가져온 것 이지만 Visual Studio 2012 또는 Visual Studio 2010를 사용 하 여이 연습을 완료할 수 있습니다.
 
@@ -26,7 +26,7 @@ Visual Studio 2010을 사용 하는 경우 NuGet도 설치 해야 합니다. 자
 ## <a name="create-the-application"></a>애플리케이션 만들기
 
 -   Visual Studio를 엽니다.
--   **파일-&gt; &gt; 프로젝트 ....**
+-   **파일&gt; 새&gt; 프로젝트 ....**
 -   왼쪽 창에서 **windows** 를 선택 하 고 오른쪽 창에서 **windows 양식 응용 프로그램** 을 선택 합니다.
 -   **Win양식 Withefsample** 을 이름으로 입력 합니다.
 -   **확인**을 선택합니다.
@@ -46,11 +46,11 @@ Windows Forms를 사용할 때 정렬에 양방향 데이터 바인딩을 사용
 
 -   프로젝트에 **ObservableListSource** 클래스를 추가 합니다.
     -   프로젝트 이름을 마우스 오른쪽 단추로 클릭 합니다.
-    -   **추가-&gt; 새 항목을** 선택 합니다.
+    -   **추가&gt; 새 항목을** 선택 합니다.
     -   클래스 **를 선택 하** 고 클래스 이름으로 **ObservableListSource** 를 입력 합니다.
 -   기본적으로 생성 된 코드를 다음 코드로 바꿉니다.
 
-*이 클래스는 양방향 데이터 바인딩과 정렬을 모두 사용 합니다. 클래스는 System.collections.objectmodel.observablecollection @ no__t-0T @ no__t-1에서 파생 되 고 IListSource의 명시적 구현을 추가 합니다. IListSource의 GetList () 메서드는 System.collections.objectmodel.observablecollection와 동기화 상태로 유지 되는 IBindingList 구현을 반환 하도록 구현 됩니다. ToBindingList에 의해 생성 된 IBindingList 구현에서는 정렬을 지원 합니다. ToBindingList 확장 메서드는 EntityFramework 어셈블리에서 정의 됩니다.*
+*이 클래스를 사용 하면 양방향 데이터 바인딩과 정렬을 사용할 수 있습니다. 클래스는 System.collections.objectmodel.observablecollection&lt;T&gt;에서 파생 되며 IListSource의 명시적 구현을 추가 합니다. IListSource의 GetList () 메서드는 System.collections.objectmodel.observablecollection와 동기화 상태로 유지 되는 IBindingList 구현을 반환 하도록 구현 됩니다. ToBindingList에 의해 생성 된 IBindingList 구현에서는 정렬을 지원 합니다. ToBindingList 확장 메서드는 EntityFramework 어셈블리에서 정의 됩니다.*
 
 ``` csharp
     using System.Collections;
@@ -81,9 +81,9 @@ Windows Forms를 사용할 때 정렬에 양방향 데이터 바인딩을 사용
 
 이 연습에서는 Code First 또는 EF Designer를 사용 하 여 모델을 구현 하도록 선택할 수 있습니다. 다음 두 섹션 중 하나를 완료 합니다.
 
-### <a name="option-1-define-a-model-using-code-first"></a>옵션 1: Code First를 사용 하 여 모델 정의
+### <a name="option-1-define-a-model-using-code-first"></a>옵션 1: Code First을 사용 하 여 모델 정의
 
-이 섹션에서는 Code First를 사용 하 여 모델 및 연결 된 데이터베이스를 만드는 방법을 보여 줍니다. 다음 섹션으로 건너뜁니다 (**Option 2: Database First를 사용 하 여 모델 정의) @no__t EF designer를 사용 하 여 데이터베이스에서 모델을 리버스 엔지니어링 하려면 Database First를 사용 합니다.
+이 섹션에서는 Code First를 사용 하 여 모델 및 연결 된 데이터베이스를 만드는 방법을 보여 줍니다. EF designer를 사용 하 여 데이터베이스에서 모델을 리버스 엔지니어링 하기 위해 Database First를 사용 하는 경우 다음 섹션 (**옵션 2: Database First을 사용 하 여 모델 정의)** 으로 건너뜁니다.
 
 Code First 개발을 사용 하는 경우 일반적으로 개념 (도메인) 모델을 정의 하는 .NET Framework 클래스를 작성 하는 것으로 시작 합니다.
 
@@ -134,7 +134,7 @@ Code First 개발을 사용 하는 경우 일반적으로 개념 (도메인) 모
     }
 ```
 
-엔터티를 정의 하는 것 외에도 **DbContext** 에서 파생 되 고 **dbset @ no__t-2d@ no__t** 속성을 노출 하는 클래스를 정의 해야 합니다. **Dbset** 속성을 사용 하면 컨텍스트에서 모델에 포함 하려는 형식을 알 수 있습니다. **DbContext** 및 **Dbset** 형식은 entityframework 어셈블리에서 정의 됩니다.
+엔터티를 정의 하는 것 외에도 **DbContext** 에서 파생 되 고 **dbset&lt;&gt;** 속성을 노출 하는 클래스를 정의 해야 합니다. **Dbset** 속성을 사용 하면 컨텍스트에서 모델에 포함 하려는 형식을 알 수 있습니다. **DbContext** 및 **Dbset** 형식은 entityframework 어셈블리에서 정의 됩니다.
 
 DbContext 파생 형식의 인스턴스는 런타임 중에 엔터티 개체를 관리 합니다. 여기에는 데이터베이스의 데이터로 개체 채우기, 변경 내용 추적 및 데이터베이스에 데이터 유지가 포함 됩니다.
 
@@ -160,9 +160,9 @@ DbContext 파생 형식의 인스턴스는 런타임 중에 엔터티 개체를 
 
 프로젝트를 컴파일합니다.
 
-### <a name="option-2-define-a-model-using-database-first"></a>옵션 2: Database First를 사용 하 여 모델 정의
+### <a name="option-2-define-a-model-using-database-first"></a>옵션 2: Database First을 사용 하 여 모델 정의
 
-이 섹션에서는 EF designer를 사용 하 여 데이터베이스에서 모델을 리버스 엔지니어링 하는 Database First를 사용 하는 방법을 보여 줍니다. 이전 섹션을 완료 한 경우 (**Option 1: Code First @no__t)를 사용 하 여 모델을 정의한 다음이 섹션을 건너뛰고 **지연 로드** 섹션으로 바로 이동 합니다.
+이 섹션에서는 EF designer를 사용 하 여 데이터베이스에서 모델을 리버스 엔지니어링 하는 Database First를 사용 하는 방법을 보여 줍니다. 이전 섹션을 완료 한 경우 (**옵션 1: Code First를 사용 하 여 모델 정의)** 이 섹션을 건너뛰고 **지연 로드** 섹션으로 바로 이동 합니다.
 
 #### <a name="create-an-existing-database"></a>기존 데이터베이스 만들기
 
@@ -175,7 +175,7 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버는 설치한 Vis
 
 계속 해 서 데이터베이스를 생성 해 보겠습니다.
 
--   **뷰-&gt; 서버 탐색기**
+-   **뷰&gt; 서버 탐색기**
 -   데이터 연결을 마우스 오른쪽 단추로 클릭 하 **&gt; 연결 추가** ...를 클릭 합니다.
 -   서버 탐색기 데이터베이스에 연결 하지 않은 경우 Microsoft SQL Server를 데이터 원본으로 선택 해야 합니다.
 
@@ -217,7 +217,7 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버는 설치한 Vis
 
 Visual Studio의 일부로 포함 된 Entity Framework Designer를 사용 하 여 모델을 만들 예정입니다.
 
--   **프로젝트-&gt; 새 항목 추가 ...**
+-   **프로젝트-새 항목 추가&gt; ...**
 -   왼쪽 메뉴에서 **데이터** 를 선택 하 고 **ADO.NET** 를 선택 엔터티 데이터 모델
 -   이름으로 **제품 모델** 을 입력 하 고 **확인을** 클릭 합니다.
 -   그러면 **엔터티 데이터 모델 마법사** 가 시작 됩니다.
@@ -241,11 +241,11 @@ Visual Studio 2010에서 작업 하는 경우 EF6 코드 생성을 사용 하도
 
 -   EF 디자이너에서 모델의 빈 지점을 마우스 오른쪽 단추로 클릭 하 고 **코드 생성 항목 추가** ...를 선택 합니다.
 -   왼쪽 메뉴에서 **온라인 템플릿** 을 선택 하 고 **DbContext** 를 검색 합니다.
--   **EF 버전과 DbContext 생성기 for C @ no__t-1을** 선택 하 고 이름으로 **ProductsModel** 를 입력 한 다음 추가를 클릭 합니다.
+-   **C\#에 대해 EF 6.X DbContext 생성기를 선택 하** 고 이름으로 **ProductsModel** 를 입력 한 다음 추가를 클릭 합니다.
 
 #### <a name="updating-code-generation-for-data-binding"></a>데이터 바인딩에 대 한 코드 생성 업데이트
 
-EF는 T4 템플릿을 사용 하 여 모델에서 코드를 생성 합니다. Visual Studio와 함께 제공 되거나 Visual Studio 갤러리에서 다운로드 한 템플릿은 일반적인 용도로 사용 하기 위한 것입니다. 즉, 이러한 템플릿에서 생성 된 엔터티에는 간단한 ICollection @ no__t-0T @ no__t-1 속성이 있습니다. 그러나 데이터 바인딩을 수행할 때 IListSource를 구현 하는 컬렉션 속성을 갖는 것이 좋습니다. 위의 ObservableListSource 클래스를 만들었으므로 이제이 클래스를 사용 하 여 템플릿을 수정 하겠습니다.
+EF는 T4 템플릿을 사용 하 여 모델에서 코드를 생성 합니다. Visual Studio와 함께 제공 되거나 Visual Studio 갤러리에서 다운로드 한 템플릿은 일반적인 용도로 사용 하기 위한 것입니다. 즉, 이러한 템플릿에서 생성 된 엔터티에는 간단한 ICollection&lt;T&gt; 속성이 있습니다. 그러나 데이터 바인딩을 수행할 때 IListSource를 구현 하는 컬렉션 속성을 갖는 것이 좋습니다. 위의 ObservableListSource 클래스를 만들었으므로 이제이 클래스를 사용 하 여 템플릿을 수정 하겠습니다.
 
 -   **솔루션 탐색기** 를 열고 **제품 모델 .edmx** 파일을 찾습니다.
 -   **ProductModel.tt** 파일을 찾습니다 .이 파일은 제품 모델 .edmx 파일 아래에 중첩 될 수 있습니다.
@@ -257,7 +257,7 @@ EF는 T4 템플릿을 사용 하 여 모델에서 코드를 생성 합니다. Vi
 -   "**Hashset**"의 첫 번째 항목을 찾아 "**ObservableListSource**"로 바꿉니다. 이 항목은 약 50 줄에 있습니다. 코드에서 나중에 발견 된 두 번째 HashSet을 바꾸지 **마십시오** .
 -   ProductModel.tt 파일을 저장 합니다. 이로 인해 엔터티가 다시 생성 됩니다. 코드가 자동으로 다시 생성 되지 않는 경우 ProductModel.tt를 마우스 오른쪽 단추로 클릭 하 고 "사용자 지정 도구 실행"을 선택 합니다.
 
-이제 ProductModel.tt 아래에 중첩 된 Category.cs 파일을 열면 Products 컬렉션의 형식이 **ObservableListSource @ no__t-1Product @ no__t-2**인지 확인 해야 합니다.
+이제 ProductModel.tt 아래에 중첩 된 Category.cs 파일을 열면 Products 컬렉션에 **ObservableListSource&lt;Product&gt;** 형식이 표시 됩니다.
 
 프로젝트를 컴파일합니다.
 
@@ -274,14 +274,14 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임 중에 파생 된 
 모델에 정의 된 클래스를이 WinForms 응용 프로그램의 데이터 원본으로 추가 합니다.
 
 -   주 메뉴에서 **프로젝트-&gt; 새 데이터 소스 추가** ...를 선택 합니다.
-    Visual Studio 2010에서는 **데이터-&gt; 새 데이터 소스 추가**...를 선택 해야 합니다.
+    Visual Studio 2010에서는 데이터&gt; 선택 하 고 **새 데이터 소스 추가**...를 선택 해야 합니다.
 -   데이터 소스 형식 선택 창에서 **개체** 를 선택 하 고 **다음** 을 클릭 합니다.
 -   데이터 개체 선택 대화 상자에서 **win펼침** 을 두 번 선택 하 고 **범주** 를 선택 합니다. 범주 데이터 원본에서 제품의 속성을 통해 제품 데이터 원본을 선택할 필요가 없습니다.
 
     ![데이터 원본](~/ef6/media/datasource.png)
 
--   **마침을 클릭 합니다.**
-    데이터 소스 창이 표시 되지 않으면 **보기-&gt; 기타 Windows-&gt; 데이터 원본** 을 선택 합니다.
+-   **마침**을 클릭합니다.
+    데이터 소스 창이 표시 되지 않으면 **보기-&gt; 다른 창-&gt; 데이터 원본** 을 선택 합니다.
 -   데이터 소스 창이 자동으로 숨겨지지 않도록 고정 아이콘을 누릅니다. 창이 이미 표시 되는 경우 새로 고침 단추를 눌러야 할 수 있습니다.
 
     ![데이터 원본 2](~/ef6/media/datasource2.png)
@@ -297,14 +297,14 @@ POCO 엔터티 형식을 사용 하는 경우 EF는 런타임 중에 파생 된 
     -   DataGridView 컨트롤을 마우스 오른쪽 단추로 클릭 하 고 **열 편집**...을 선택 합니다.
     -   **ProductId** 열을 선택 하 고 **ReadOnly** 를 **True**로 설정 합니다.
     -   **CategoryId** 열을 선택 하 고 **제거** 단추를 누릅니다. **Category** 열을 사용 하 여 동일한 작업을 수행 합니다.
-    -   키를 눌러 **확인**합니다.
+    -   **확인**을 누릅니다.
 
     지금까지 DataGridView 컨트롤과 디자이너의 BindingSource 구성 요소를 연결 했습니다. 다음 섹션에서는 코드를 코드 뒤에 추가 하 여 DbContext에서 현재 추적 하는 엔터티 컬렉션에 categoryBindingSource를 설정 합니다. 범주에서 제품을 끌어다 놓으면 WinForms는 productsBindingSource 속성을 categoryBindingSource로 설정 하 고 productsBindingSource 속성을 Products로 설정 하는 작업을 처리 했습니다. 이 바인딩으로 인해 현재 선택 된 범주에 속하는 제품만 products Datagridview에 표시 됩니다.
 -   마우스 오른쪽 단추를 클릭 하 고 **사용**을 선택 하 여 탐색 도구 모음에서 **저장** 단추를 사용 하도록 설정 합니다.
 
     ![양식 1 디자이너](~/ef6/media/form1-designer.png)
 
--   단추를 두 번 클릭 하 여 저장 단추에 대 한 이벤트 처리기를 추가 합니다. 이렇게 하면 이벤트 처리기가 추가 되 고 폼의 코드 숨김으로 이동 합니다. **CategoryBindingNavigatorSaveItem @ no__t-1click** 이벤트 처리기에 대 한 코드는 다음 섹션에 추가 됩니다.
+-   단추를 두 번 클릭 하 여 저장 단추에 대 한 이벤트 처리기를 추가 합니다. 이렇게 하면 이벤트 처리기가 추가 되 고 폼의 코드 숨김으로 이동 합니다. **CategoryBindingNavigatorSaveItem\_클릭** 이벤트 처리기에 대 한 코드는 다음 섹션에 추가 됩니다.
 
 ## <a name="add-the-code-that-handles-data-interaction"></a>데이터 상호 작용을 처리 하는 코드 추가
 

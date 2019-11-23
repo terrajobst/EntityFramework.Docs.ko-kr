@@ -11,7 +11,7 @@ ms.lasthandoff: 10/09/2019
 ms.locfileid: "72182665"
 ---
 # <a name="fluent-api-with-vbnet"></a>VB.NET를 사용 하는 흐름 API
-Code First를 사용 하면 C @ no__t-0 또는 VB.NET 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다. 이 연습에서는 VB.NET을 사용 하 여 흐름 API 구성을 수행 하는 방법을 보여 줍니다.
+Code First를 사용 하면 C\# 또는 VB.NET 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다. 이 연습에서는 VB.NET을 사용 하 여 흐름 API 구성을 수행 하는 방법을 보여 줍니다.
 
 이 페이지에서는 Code First에 대해 기본적으로 이해 하 고 있다고 가정 합니다. Code First에 대 한 자세한 내용은 다음 연습을 확인 하세요.
 
@@ -29,7 +29,7 @@ Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.m
 간단 하 게 유지 하기 위해 Code First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
 
 -   Visual Studio를 엽니다.
--   **파일-&gt; 새 &gt; 프로젝트 ...**
+-   **파일&gt; 새&gt; 프로젝트 ...**
 -   왼쪽 메뉴 및 **콘솔 응용 프로그램** 에서 **Windows** 를 선택 합니다.
 -   이름으로 **Codefirstvbsample** 을 입력 합니다.
 -   **확인**을 선택합니다.
@@ -137,14 +137,14 @@ Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.m
 
 Entity Framework에서 형식을 사용 하기 시작 하므로 EntityFramework NuGet 패키지를 추가 해야 합니다.
 
--   \* * 프로젝트 – &gt; **NuGet 패키지 관리** ...
+-   \* * 프로젝트 – **NuGet 패키지를 관리**&gt; ...
 > [!NOTE]
 > **NuGet 패키지 관리** ...가 없는 경우 옵션을 선택 하면 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
 -   **설치** 클릭
 
-이제 데이터베이스와의 세션을 나타내는 파생 컨텍스트를 정의 하 여 데이터를 쿼리하고 저장할 수 있습니다. DbContext에서 파생 되는 컨텍스트를 정의 하 고 모델의 각 클래스에 대해 형식화 된 DbSet @ no__t-0TEntity-1을 노출 합니다.
+이제 데이터베이스와의 세션을 나타내는 파생 컨텍스트를 정의 하 여 데이터를 쿼리하고 저장할 수 있습니다. DbContext에서 파생 되는 컨텍스트를 정의 하 고 모델의 각 클래스에 대해 형식화 된 DbSet&lt;&gt;를 노출 합니다.
 
 -   프로젝트에 새 클래스를 추가 하 고 클래스 이름으로 **schoolcontext.cs** 를 입력 합니다.
 -   새 클래스의 내용을 다음 코드로 바꿉니다.
@@ -171,7 +171,7 @@ Entity Framework에서 형식을 사용 하기 시작 하므로 EntityFramework 
 
 ## <a name="configuring-with-the-fluent-api"></a>흐름 API를 사용 하 여 구성
 
-이 섹션에서는 흐름 Api를 사용 하 여 모델에서 테이블 매핑, 속성-열 매핑 및 테이블 @ no__t 간 관계를 구성 하는 방법을 보여 줍니다. 흐름 API는 **Dbmodelbuilder** 형식을 통해 노출 되며 **DbContext**에서 **onmodelcreating** 메서드를 재정의 하 여 가장 일반적으로 액세스 합니다.
+이 섹션에서는 흐름 Api를 사용 하 여 테이블 매핑, 속성에 대 한 속성 매핑 및 테이블 간의 관계를 모델 형식\\구성 하는 방법을 보여 줍니다. 흐름 API는 **Dbmodelbuilder** 형식을 통해 노출 되며 **DbContext**에서 **onmodelcreating** 메서드를 재정의 하 여 가장 일반적으로 액세스 합니다.
 
 -   다음 코드를 복사 하 여 **schoolcontext.cs** 클래스에 정의 된 **onmodelcreating** 메서드에 추가 합니다. 주석은 각 매핑의 의미를 설명 합니다.
 

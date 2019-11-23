@@ -13,7 +13,7 @@ ms.locfileid: "72181584"
 # <a name="testability-and-entity-framework-40"></a>테스트 용이성 및 Entity Framework 4.0
 Scott Allen
 
-게시할지 2010년 5월
+게시일: 2010년 5월
 
 ## <a name="introduction"></a>소개
 
@@ -120,7 +120,7 @@ Employee 개체의 IRepository가 지정 된 경우 코드는 다음 작업을 �
 
 코드는 인터페이스 (Employee의 IRepository)를 사용 하기 때문에 인터페이스의 여러 구현에 코드를 제공할 수 있습니다. 한 가지 구현은 EF4에서 지원 되는 구현 이며 개체를 Microsoft SQL Server 데이터베이스에 유지할 수 있습니다. 다른 구현 (테스트 중에 사용 하는 것)은 Employee 개체의 메모리 내 목록에서 지원할 수 있습니다. 인터페이스는 코드에서 격리를 얻는 데 도움이 됩니다.
 
-IRepository @ no__t-0T @ no__t 인터페이스는 저장 작업을 노출 하지 않습니다. 기존 개체를 업데이트 하는 방법 저장 작업을 포함 하는 IRepository 정의에 걸쳐 있을 수 있으며, 이러한 리포지토리의 구현에서 개체를 데이터베이스에 즉시 보관 해야 합니다. 그러나 대부분의 응용 프로그램에서는 개체를 개별적으로 유지 하지 않으려고 합니다. 대신 다른 리포지토리에서 개체를 수명으로 가져오고, 비즈니스 활동의 일부로 개체를 수정한 다음, 단일 원자성 작업의 일부로 모든 개체를 유지 하려고 합니다. 다행히 이러한 유형의 동작을 허용 하는 패턴이 있습니다.
+IRepository&lt;T&gt; 인터페이스가 저장 작업을 노출 하지 않습니다. 기존 개체를 업데이트 하는 방법 저장 작업을 포함 하는 IRepository 정의에 걸쳐 있을 수 있으며, 이러한 리포지토리의 구현에서 개체를 데이터베이스에 즉시 보관 해야 합니다. 그러나 대부분의 응용 프로그램에서는 개체를 개별적으로 유지 하지 않으려고 합니다. 대신 다른 리포지토리에서 개체를 수명으로 가져오고, 비즈니스 활동의 일부로 개체를 수정한 다음, 단일 원자성 작업의 일부로 모든 개체를 유지 하려고 합니다. 다행히 이러한 유형의 동작을 허용 하는 패턴이 있습니다.
 
 ### <a name="the-unit-of-work-pattern"></a>작업 단위 패턴
 
@@ -198,7 +198,7 @@ POCOs를 사용 하 여 Visual Studio에서 EDM (엔터티 데이터 모델)을 
 
 **그림 1**
 
-참고: EDM 모델을 먼저 개발 하려는 경우 EDM에서 정리 된 POCO 코드를 생성할 수 있습니다. 데이터 프로그래밍 팀에서 제공 하는 Visual Studio 2010 확장을 사용 하 여이 작업을 수행할 수 있습니다. 확장을 다운로드 하려면 Visual Studio의 도구 메뉴에서 확장 관리자를 시작 하 고 "POCO" 템플릿의 온라인 갤러리를 검색 합니다 (그림 2 참조). EF에 사용할 수 있는 몇 가지 POCO 템플릿이 있습니다. 템플릿 사용에 대 한 자세한 내용은 다음을 참조 하세요. "[ 연습: Entity Framework @ no__t에 대 한 POCO 템플릿입니다.
+참고: EDM 모델을 먼저 개발 하려는 경우 EDM에서 정리 된 POCO 코드를 생성할 수 있습니다. 데이터 프로그래밍 팀에서 제공 하는 Visual Studio 2010 확장을 사용 하 여이 작업을 수행할 수 있습니다. 확장을 다운로드 하려면 Visual Studio의 도구 메뉴에서 확장 관리자를 시작 하 고 "POCO" 템플릿의 온라인 갤러리를 검색 합니다 (그림 2 참조). EF에 사용할 수 있는 몇 가지 POCO 템플릿이 있습니다. 템플릿 사용에 대 한 자세한 내용은 " [연습: Entity Framework에 대 한 POCO 템플릿](https://blogs.msdn.com/adonet/pages/walkthrough-poco-template-for-the-entity-framework.aspx)"을 참조 하십시오.
 
 ![ef test_02](~/ef6/media/eftest-02.png)
 
@@ -220,7 +220,7 @@ ASP.NET MVC 프로젝트에서 다음 컨트롤러 작업을 고려 합니다. �
 
 코드를 테스트할 수 있나요? 작업의 동작을 확인 하는 데 필요한 두 개 이상의 테스트가 있습니다. 먼저 작업에서 올바른 뷰를 반환 하는지 확인 합니다. 간단히 테스트 합니다. 또한 작업에서 올바른 직원을 검색 하는지 확인 하는 테스트를 작성 하 고, 데이터베이스를 쿼리 하는 코드를 실행 하지 않고이 작업을 수행 하려고 합니다. 테스트 중인 코드를 격리 하려고 합니다. 격리는 데이터 액세스 코드 또는 데이터베이스 구성의 버그로 인해 테스트가 실패 하지 않도록 합니다. 테스트에 실패 하는 경우 일부 낮은 수준의 시스템 구성 요소가 아니라 컨트롤러 논리에 버그가 있음을 알게 됩니다.
 
-격리를 위해 앞에서 리포지토리 및 작업 단위에 대해 제공한 인터페이스와 같은 일부 추상화가 필요 합니다. 리포지토리 패턴은 도메인 개체와 데이터 매핑 계층 간에 중재 설계 되었습니다. 이 시나리오에서 EF4 *는* 데이터 매핑 계층 이며 IObjectSet @ No__t-1t @ no__t-2 (system.object 네임 스페이스에서) 라는 리포지토리와 유사한 추상화를 이미 제공 합니다. 인터페이스 정의는 다음과 같습니다.
+격리를 위해 앞에서 리포지토리 및 작업 단위에 대해 제공한 인터페이스와 같은 일부 추상화가 필요 합니다. 리포지토리 패턴은 도메인 개체와 데이터 매핑 계층 간에 중재 설계 되었습니다. 이 시나리오에서 EF4 *는* 데이터 매핑 계층 이며 IObjectSet&lt;t&gt; 라는 리포지토리와 유사한 추상화를 이미 제공 합니다 (네임 스페이스에서). 인터페이스 정의는 다음과 같습니다.
 
 ``` csharp
     public interface IObjectSet<TEntity> :
@@ -237,7 +237,7 @@ ASP.NET MVC 프로젝트에서 다음 컨트롤러 작업을 고려 합니다. �
     }
 ```
 
-IObjectSet @ no__t-0T @ no__t-1은 개체의 컬렉션 (IEnumerable @ no__t-2T @ no__t-3를 통해)과 비슷하며 시뮬레이션 된 컬렉션에서 개체를 추가 및 제거 하는 메서드를 제공 하므로 리포지토리에 대 한 요구 사항을 충족 합니다. 연결 및 분리 메서드는 EF4 API의 추가 기능을 노출 합니다. 리포지토리의 인터페이스에 IObjectSet @ no__t-0T @ no__t-1을 사용 하려면 리포지토리를 함께 바인딩하는 작업 단위 추상화가 필요 합니다.
+IObjectSet&lt;T&gt;는 개체 컬렉션 (IEnumerable&lt;T&gt;를 통해)과 비슷하며 시뮬레이션 된 컬렉션에서 개체를 추가 하 고 제거 하는 메서드를 제공 하기 때문에 리포지토리에 대 한 요구 사항을 충족 합니다. 연결 및 분리 메서드는 EF4 API의 추가 기능을 노출 합니다. 리포지토리에 대 한 인터페이스로 IObjectSet&lt;T&gt;를 사용 하려면 리포지토리를 함께 바인딩하는 작업 단위가 필요 합니다.
 
 ``` csharp
     public interface IUnitOfWork {
@@ -276,7 +276,7 @@ IObjectSet @ no__t-0T @ no__t-1은 개체의 컬렉션 (IEnumerable @ no__t-2T @
     }
 ```
 
-IObjectSet @ no__t-0T @ no__t-1을 life로 가져오는 것은 ObjectContext 개체의 Createobjectset<tentity> 메서드를 호출 하는 것 만큼 쉽습니다. 내부적으로 프레임 워크는 EDM에서 제공한 메타 데이터를 사용 하 여 구체적인 ObjectSet @ no__t-0T @ no__t-1을 생성 합니다. 클라이언트 코드에서 테스트 용이성을 유지 하는 데 도움이 되므로 IObjectSet @ no__t-0T no__t 인터페이스를 반환 하는 것이 좋습니다.
+IObjectSet&lt;T&gt;를 life로 가져오는 것은 ObjectContext 개체의 Createobjectset<tentity> 메서드를 호출 하는 것 만큼 쉽습니다. 내부적으로 프레임 워크는 EDM에서 제공한 메타 데이터를 사용 하 여 구체적인 ObjectSet&lt;T&gt;을 생성 합니다. 클라이언트 코드에서 테스트 용이성을 유지 하는 데 도움이 되는 IObjectSet&lt;T&gt; 인터페이스를 반환 합니다.
 
 이 구체적 구현은 프로덕션에서 유용 하지만 테스트를 용이 하 게 하기 위해 Iwork 추상화를 사용 하는 방법에 중점을 두어야 합니다.
 
@@ -321,7 +321,7 @@ IObjectSet @ no__t-0T @ no__t-1을 life로 가져오는 것은 ObjectContext 개
 
 가짜 작업 단위가 커밋된 속성을 노출 합니다. 테스트를 용이 하 게 하는 가짜 클래스에 기능을 추가 하는 것이 유용한 경우도 있습니다. 이 경우, 코드에서 커밋된 속성을 확인 하 여 작업 단위를 커밋하는 지 쉽게 확인할 수 있습니다.
 
-또한 메모리에서 직원과 출퇴근 기록 개체를 보유 하려면 가짜 IObjectSet @ no__t-0T no__t-1이 필요 합니다. 제네릭을 사용 하 여 단일 구현을 제공할 수 있습니다.
+또한 메모리에 직원 및 출퇴근 시간 기록표 개체를 보관 하는 가짜 IObjectSet&lt;T&gt; 필요 합니다. 제네릭을 사용 하 여 단일 구현을 제공할 수 있습니다.
 
 ``` csharp
     public class InMemoryObjectSet<T> : IObjectSet<T> where T : class
@@ -368,7 +368,7 @@ IObjectSet @ no__t-0T @ no__t-1을 life로 가져오는 것은 ObjectContext 개
     }
 ```
 
-이 테스트는 대부분의 작업을 기본 HashSet @ no__t-0T @ no__t-1 개체에 두 배로 위임 합니다. IObjectSet @ no__t-0T @ no__t-1에는 T를 클래스 (참조 형식)로 적용 하는 제네릭 제약 조건이 필요 하며,이 경우에도 IQueryable @ no__t-2T @ no__t-3을 구현 합니다. 표준 LINQ 연산자를 사용 하 여 메모리 내 컬렉션을 IQueryable @ no__t-0T @ no__t-1로 쉽게 표시할 수 있습니다.
+이 테스트는 대부분의 작업을 기본 HashSet&lt;T&gt; 개체로 위임 합니다. IObjectSet&lt;T&gt;에는 T를 클래스 (참조 형식)로 적용 하는 제네릭 제약 조건이 필요 하며,이를 통해 IQueryable&lt;T&gt;도 구현 합니다. 표준 LINQ 연산자를 사용 하 여 메모리 내 컬렉션을 IQueryable&lt;T&gt;으로 표시 하는 것이 쉽습니다.
 
 ### <a name="the-tests"></a>테스트
 
@@ -541,7 +541,7 @@ EmployeeSummaryViewModel는 엔터티가 아닙니다. 즉, 데이터베이스�
     }
 ```
 
-두 번째 주목할 만한 기능은 코드를 사용 하 여 직원 및 시간 카드 정보를 함께 EF4 하는 효율적인 단일 쿼리를 생성 하는 방법입니다. 특별 한 Api를 사용 하지 않고 직원 정보 및 시간 카드 정보를 동일한 개체에 로드 했습니다. 이 코드는 메모리 내 데이터 원본 및 원격 데이터 원본에 대해 작동 하는 표준 LINQ 연산자를 사용 하 여 필요한 정보만 표시 합니다. EF4는 LINQ 쿼리 및 C @ no__t-0 컴파일러에 의해 생성 된 식 트리를 하나의 효율적인 T-sql 쿼리로 변환할 수 있었습니다.
+두 번째 주목할 만한 기능은 코드를 사용 하 여 직원 및 시간 카드 정보를 함께 EF4 하는 효율적인 단일 쿼리를 생성 하는 방법입니다. 특별 한 Api를 사용 하지 않고 직원 정보 및 시간 카드 정보를 동일한 개체에 로드 했습니다. 이 코드는 메모리 내 데이터 원본 및 원격 데이터 원본에 대해 작동 하는 표준 LINQ 연산자를 사용 하 여 필요한 정보만 표시 합니다. EF4는 LINQ 쿼리 및 C\# 컴파일러로 생성 된 식 트리를 하나의 효율적인 T-sql 쿼리로 변환할 수 있었습니다.
 
 ``` SQL
     SELECT
@@ -569,14 +569,14 @@ EmployeeSummaryViewModel는 엔터티가 아닙니다. 즉, 데이터베이스�
 
 ### <a name="explicit-eager-loading"></a>명시적인 즉시 로드
 
-관련 엔터티 정보를 적극적으로 로드 하려면 비즈니스 논리 (또는이 시나리오에서는 컨트롤러 동작 논리)에 대 한 몇 가지 메커니즘을 통해 리포지토리를 원하는 것으로 요구 합니다. EF4 ObjectQuery @ no__t-0T @ no__t-1 클래스는 쿼리 중에 검색할 관련 개체를 지정 하는 Include 메서드를 정의 합니다. EF4 ObjectContext는 ObjectQuery @ no__t-2T @ no__t-3에서 상속 되는 구체적인 ObjectSet @ no__t-0T @ no__t-1 클래스를 통해 엔터티를 노출 합니다.  컨트롤러 작업에서 ObjectSet @ no__t-0T @ no__t-1 참조를 사용 하는 경우 다음 코드를 작성 하 여 각 직원의 시간 카드 정보에 대 한 즉시 로드를 지정할 수 있습니다.
+관련 엔터티 정보를 적극적으로 로드 하려면 비즈니스 논리 (또는이 시나리오에서는 컨트롤러 동작 논리)에 대 한 몇 가지 메커니즘을 통해 리포지토리를 원하는 것으로 요구 합니다. EF4 ObjectQuery&lt;T&gt; 클래스는 쿼리 중에 검색할 관련 개체를 지정 하는 Include 메서드를 정의 합니다. EF4 ObjectContext는 ObjectQuery&lt;T&gt;에서 상속 되는 구체적인 ObjectSet&lt;T&gt; 클래스를 통해 엔터티를 노출 합니다.  컨트롤러 작업에서 ObjectSet&lt;T&gt; 참조를 사용 하는 경우 다음 코드를 작성 하 여 각 직원의 시간 카드 정보에 대 한 즉시 로드를 지정할 수 있습니다.
 
 ``` csharp
     _employees.Include("TimeCards")
               .Where(e => e.HireDate.Year > 2009);
 ```
 
-그러나 코드를 테스트할 수 있기 때문에 실제 작업 단위 클래스 외부에서 ObjectSet @ no__t-0T @ no__t-1을 노출 하지 않습니다. 대신 IObjectSet @ no__t-0T @ no__t 인터페이스를 사용 하 여 보다 쉽게 가짜를 사용할 수 있지만 IObjectSet @ no__t-2T no__t-3은 Include 메서드를 정의 하지 않습니다. LINQ의 장점은 자체 Include 연산자를 만들 수 있다는 것입니다.
+그러나 코드를 테스트 가능 하 게 유지 하려고 하기 때문에 실제 작업 단위 클래스 외부에서&lt;T&gt;의 ObjectSet을 노출 하지 않습니다. 대신, 가짜 하기가 더 쉬운 IObjectSet&lt;T&gt; 인터페이스를 사용 하지만 IObjectSet&lt;T&gt;는 Include 메서드를 정의 하지 않습니다. LINQ의 장점은 자체 Include 연산자를 만들 수 있다는 것입니다.
 
 ``` csharp
     public static class QueryableExtensions {
@@ -592,7 +592,7 @@ EmployeeSummaryViewModel는 엔터티가 아닙니다. 즉, 데이터베이스�
     }
 ```
 
-이 Include 연산자는 IObjectSet @ no__t-2T @ no__t-3이 아닌 IQueryable @ no__t-0T @ no__t-1에 대 한 확장 메서드로 정의 됩니다. 이를 통해 IQueryable @ no__t-0T @ no__t-1, IObjectSet @ no__t-2T @ no__t-3, ObjectQuery @ no__t-4T에서는 @ no__t-5 및 ObjectSet @ no__t-6T no__t-7을 포함 하 여 더 광범위 한 형식의 메서드를 사용할 수 있습니다. 기본 시퀀스가 진짜 EF4 ObjectQuery @ no__t-0T @ no__t-1이 아닌 경우에는 나쁜 작업이 없으며 Include 연산자는 작동 하지 않습니다. 기본 시퀀스가 ObjectQuery @ no__t-1T @ no__t (또는 ObjectQuery @ no__t-3T no__t-4)에서 *파생 된 경우* EF4는 추가 데이터에 대 한 요구 사항을 확인 하 고 적절 한 SQL 쿼리를 작성 합니다.
+이 Include 연산자는 IObjectSet&lt;T&gt;대신 IQueryable&lt;T&gt;에 대 한 확장 메서드로 정의 됩니다. 이를 통해 IQueryable&lt;T&gt;, IObjectSet&lt;T&gt;, ObjectQuery&lt;T&gt;및 ObjectSet&lt;T&gt;를 비롯 하 여 더 광범위 한 형식으로 메서드를 사용할 수 있습니다. 기본 시퀀스가 진짜 EF4 ObjectQuery&lt;T&gt;가 아닌 경우에는 피해를 주지 않으며 Include 연산자는 작동 하지 않습니다. 기본 시퀀스가 ObjectQuery&lt;T&gt; 이거나 ObjectQuery&lt;T&gt;에서 파생 *됨* ) 이면 추가 데이터에 대 한 요구 사항이 표시 되 고 적절 한 SQL 쿼리가 작성 됩니다.
 
 이 new 연산자를 사용 하면 리포지토리에서 시간 카드 정보를 즉시 로드할 수 있습니다.
 
@@ -660,7 +660,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
     }
 ```
 
-직원 엔터티가 대부분 지 속성을 무시 하는 것으로 말할 수도 있습니다. 유일한 요구 사항은 가상 멤버를 사용 하는 것 이며,이는 코드의 테스트 용이성에 영향을 주지 않습니다. 특별 한 기본 클래스에서 파생 되거나 지연 로드 전용 특수 컬렉션을 사용할 필요가 없습니다. 코드에서 보여 주는 것 처럼, ICollection @ no__t-0T @ no__t-1을 구현 하는 모든 클래스를 사용 하 여 관련 엔터티를 저장할 수 있습니다.
+직원 엔터티가 대부분 지 속성을 무시 하는 것으로 말할 수도 있습니다. 유일한 요구 사항은 가상 멤버를 사용 하는 것 이며,이는 코드의 테스트 용이성에 영향을 주지 않습니다. 특별 한 기본 클래스에서 파생 되거나 지연 로드 전용 특수 컬렉션을 사용할 필요가 없습니다. 코드에서 설명 하는 것 처럼 ICollection&lt;T&gt;를 구현 하는 모든 클래스는 관련 엔터티를 보유 하는 데 사용할 수 있습니다.
 
 작업 단위 내에서 수행 해야 하는 한 가지 사소한 변경도 있습니다. ObjectContext 개체로 직접 작업할 때 지연 로드는 기본적으로 *해제* 되어 있습니다. 지연 된 로드를 사용 하도록 ContextOptions 속성에 설정할 수 있는 속성이 있으며, 모든 위치에서 지연 로드를 사용 하도록 설정 하려는 경우 실제 작업 단위 내에서이 속성을 설정할 수 있습니다.
 
@@ -687,7 +687,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
 
 지연 로드를 사용 하면 응용 프로그램 코드를 더 쉽게 작성할 수 있으며 프록시 매직을 사용 하면 코드를 완전히 테스트할 수 있습니다. 작업 단위에 대 한 메모리 내 fakes는 테스트 중에 필요한 경우 연결 된 데이터를 사용 하 여 가짜 엔터티를 미리 로드할 수 있습니다.
 
-이 시점에서 IObjectSet @ no__t-0T @ no__t-1을 사용 하 여 리포지토리를 작성 하 고, 지 속성 프레임 워크의 모든 부호를 숨기려면 추상화를 살펴보겠습니다.
+이 시점에서 IObjectSet&lt;T&gt;를 사용 하 여 리포지토리를 작성 하 고, 지 속성 프레임 워크의 모든 기호를 숨기는 추상화를 살펴볼 것입니다.
 
 ## <a name="custom-repositories"></a>사용자 지정 리포지토리
 
@@ -701,9 +701,9 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
     }
 ```
 
-이 작업 단위와 마지막 섹션에서 만든 작업 단위 간의 주요 차이점은이 작업 단위가 EF4 프레임 워크의 추상화를 사용 하지 않는 것입니다 (IObjectSet @ no__t-0T @ no__t-1). IObjectSet @ no__t-0T @ no__t는 리포지토리 인터페이스와 잘 작동 하지만, 노출 되는 API는 응용 프로그램의 요구 사항에 완벽 하 게 맞지 않을 수 있습니다. 이 예정 된 방법에서는 사용자 지정 IRepository @ no__t-0T @ no__t-1 추상화를 사용 하는 리포지토리를 나타냅니다.
+이 작업 단위와 마지막 섹션에서 만든 작업 단위 간의 주요 차이점은이 작업 단위가 EF4 프레임 워크의 추상화를 사용 하지 않는 것입니다 (IObjectSet&lt;T&gt;). IObjectSet&lt;T&gt;는 리포지토리 인터페이스와 잘 작동 하지만 노출 하는 API는 응용 프로그램의 요구 사항에 완벽 하 게 맞지 않을 수 있습니다. 이 예정 된 방법에서는 사용자 지정 IRepository&lt;T&gt; 추상화를 사용 하 여 리포지토리를 나타냅니다.
 
-테스트 기반 디자인, 동작 중심 디자인 및 도메인 기반 방법론 디자인을 따르는 대부분의 개발자는 여러 가지 이유로 IRepository @ no__t-0T @ no__t-1 방법을 선호 합니다. 먼저 IRepository @ no__t-0T @ no__t 인터페이스는 "손상 방지" 계층을 나타냅니다. 도메인 기반 디자인 설명서에서 Eric Evans에 설명 된 대로 손상 방지 계층은 지 속성 API와 같은 인프라 Api에서 도메인 코드를 유지 합니다. 둘째로, 개발자는 테스트를 작성 하는 동안 검색 된 대로 응용 프로그램의 정확한 요구를 충족 하는 메서드를 리포지토리에 빌드할 수 있습니다. 예를 들어 ID 값을 사용 하 여 단일 엔터티를 찾아야 하는 경우가 많으므로 리포지토리 인터페이스에 FindById 메서드를 추가할 수 있습니다.  IRepository @ no__t-0T @ no__t 정의는 다음과 같습니다.
+테스트 기반 디자인, 동작 중심 디자인 및 도메인 기반 방법론 디자인을 따르는 개발자는 여러 가지 이유로 IRepository&lt;T&gt; 접근법을 선호 합니다. 먼저 IRepository&lt;T&gt; 인터페이스는 "손상 방지" 계층을 나타냅니다. 도메인 기반 디자인 설명서에서 Eric Evans에 설명 된 대로 손상 방지 계층은 지 속성 API와 같은 인프라 Api에서 도메인 코드를 유지 합니다. 둘째로, 개발자는 테스트를 작성 하는 동안 검색 된 대로 응용 프로그램의 정확한 요구를 충족 하는 메서드를 리포지토리에 빌드할 수 있습니다. 예를 들어 ID 값을 사용 하 여 단일 엔터티를 찾아야 하는 경우가 많으므로 리포지토리 인터페이스에 FindById 메서드를 추가할 수 있습니다.  IRepository&lt;T&gt; 정의는 다음과 같습니다.
 
 ``` csharp
     public interface IRepository<T>
@@ -716,9 +716,9 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
     }
 ```
 
-이 경우에는 IQueryable @ no__t-0T @ no__t 인터페이스를 사용 하 여 엔터티 컬렉션을 노출 하도록 다시 삭제 합니다. IQueryable @ no__t-0T @ no__t-1을 사용 하면 LINQ 식 트리가 EF4 공급자로 이동 하 여 공급자에 게 쿼리를 전체적으로 볼 수 있습니다. 두 번째 옵션은 IEnumerable @ no__t-0T @ no__t-1을 반환 하는 것입니다. 즉, EF4 LINQ 공급자가 리포지토리 내에서 빌드된 식만 볼 수 있습니다. 리포지토리 외부에서 수행 되는 모든 그룹화, 정렬 및 프로젝션은 데이터베이스로 전송 된 SQL 명령으로 구성 되지 않으므로 성능이 저하 될 수 있습니다. 반면에 IEnumerable @ no__t-0T @ no__t 결과만 반환 하는 리포지토리는 새 SQL 명령을 사용 하지 않습니다. 두 방법을 모두 사용할 수 있으며 두 가지 방법을 모두 테스트할 수 있습니다.
+여기서는 IQueryable&lt;T&gt; 인터페이스를 사용 하 여 엔터티 컬렉션을 노출 하도록 다시 삭제 합니다. IQueryable&lt;T&gt;를 사용 하면 LINQ 식 트리가 EF4 공급자로 이동 하 고 공급자에 게 쿼리를 전체적으로 볼 수 있습니다. 두 번째 옵션은 IEnumerable&lt;T&gt;를 반환 하는 것입니다. 즉, EF4 LINQ 공급자는 리포지토리 내부에서 빌드된 식만 볼 수 있습니다. 리포지토리 외부에서 수행 되는 모든 그룹화, 정렬 및 프로젝션은 데이터베이스로 전송 된 SQL 명령으로 구성 되지 않으므로 성능이 저하 될 수 있습니다. 반면에 IEnumerable&lt;T&gt; 결과만 반환 하는 리포지토리는 새 SQL 명령을 사용 하지 않습니다. 두 방법을 모두 사용할 수 있으며 두 가지 방법을 모두 테스트할 수 있습니다.
 
-제네릭과 EF4 ObjectContext API를 사용 하 여 IRepository @ no__t-0T @ no__t 인터페이스의 단일 구현을 제공 하는 것이 간단 합니다.
+제네릭과 EF4 ObjectContext API를 사용 하 여 IRepository&lt;T&gt; 인터페이스의 단일 구현을 제공 하는 것이 간단 합니다.
 
 ``` csharp
     public class SqlRepository<T> : IRepository<T>
@@ -746,7 +746,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
     }
 ```
 
-클라이언트에서 엔터티를 가져오기 위해 메서드를 호출 해야 하기 때문에 IRepository @ no__t-0T @ no__t 메서드는 쿼리에 대 한 추가 제어를 제공 합니다. 메서드 내에서 추가 검사 및 LINQ 연산자를 제공 하 여 응용 프로그램 제약 조건을 적용할 수 있습니다. 인터페이스에는 제네릭 형식 매개 변수에 대 한 두 개의 제약 조건이 있습니다. 첫 번째 제약 조건은 ObjectSet @ no__t-0T @ no__t-1에 필요한 taint 클래스이 고, 두 번째 제약 조건은 엔터티가 IEntity를 구현 하도록 합니다 .이는 응용 프로그램에 대해 생성 된 추상입니다. IEntity 인터페이스를 사용 하면 엔터티는 읽을 수 있는 Id 속성을 갖게 되 고 FindById 메서드에서이 속성을 사용할 수 있습니다. IEntity는 다음 코드를 사용 하 여 정의 됩니다.
+클라이언트에서 엔터티를 가져오기 위해 메서드를 호출 해야 하기 때문에 IRepository&lt;T&gt; 접근 방식은 쿼리를 추가로 제어 합니다. 메서드 내에서 추가 검사 및 LINQ 연산자를 제공 하 여 응용 프로그램 제약 조건을 적용할 수 있습니다. 인터페이스에는 제네릭 형식 매개 변수에 대 한 두 개의 제약 조건이 있습니다. 첫 번째 제약 조건은 ObjectSet&lt;T&gt;에 필요한 클래스 단점입니다. 두 번째 제약 조건은 엔터티가 IEntity (응용 프로그램에 대해 생성 된 추상화)를 구현 하도록 합니다. IEntity 인터페이스를 사용 하면 엔터티는 읽을 수 있는 Id 속성을 갖게 되 고 FindById 메서드에서이 속성을 사용할 수 있습니다. IEntity는 다음 코드를 사용 하 여 정의 됩니다.
 
 ``` csharp
     public interface IEntity {
@@ -756,7 +756,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
 
 엔터티는이 인터페이스를 구현 하는 데 필요 하므로 IEntity는 지 속성 무시의 작은 위반으로 간주 될 수 있습니다. 지 속성 무시은 절충에 대 한 것 이며, 대부분의 FindById 기능은 인터페이스에 의해 적용 되는 제약 조건 보다 더 큽니다. 인터페이스는 테스트 용이성에 영향을 주지 않습니다.
 
-라이브 IRepository @ no__t-0T @ no__t-1를 인스턴스화하면 EF4 ObjectContext가 필요 하므로 구체적인 작업 단위 구현은 인스턴스화를 관리 해야 합니다.
+&lt;T&gt; 라이브 IRepository를 인스턴스화하면 EF4 ObjectContext가 필요 하므로 구체적인 작업 단위 구현은 인스턴스화를 관리 해야 합니다.
 
 ``` csharp
     public class SqlUnitOfWork : IUnitOfWork {
@@ -801,7 +801,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
 
 ### <a name="using-the-custom-repository"></a>사용자 지정 리포지토리 사용
 
-사용자 지정 리포지토리를 사용 하는 것은 IObjectSet @ no__t-0T @ no__t-1을 기반으로 리포지토리를 사용 하는 것과 크게 다르지 않습니다. LINQ 연산자를 속성에 직접 적용 하는 대신, 먼저 IQueryable @ no__t-0T @ no__t-1 참조를 잡기 위해 리포지토리의 메서드 하나를 호출 해야 합니다.
+사용자 지정 리포지토리를 사용 하는 것은 IObjectSet&lt;T&gt;기반 리포지토리를 사용 하는 것과 크게 다르지 않습니다. LINQ 연산자를 속성에 직접 적용 하는 대신, 먼저 리포지토리의 메서드 하나를 호출 하 여 IQueryable&lt;T&gt; 참조를 잡기를 수행 해야 합니다.
 
 ``` csharp
     public ViewResult Index() {
@@ -821,7 +821,7 @@ POCO 개체를 사용 하는 경우 EF4는 엔터티에 대 한 런타임 프록
     }
 ```
 
-검사 한 두 방법의 테스트 용이성에는 중요 한 차이점이 없습니다. 마지막 섹션에서 했던 것과 마찬가지로, HashSet @ no__t-2Employee @ no__t-3에서 지원 되는 구체적인 클래스를 빌드하여 IRepository @ no__t-0T @ no__t-1의 가짜 구현을 제공할 수 있습니다. 그러나 일부 개발자는 fakes를 빌드하는 대신 모의 개체와 모의 개체 프레임 워크를 사용 하는 것이 좋습니다. Mock를 사용 하 여 구현을 테스트 하 고 다음 섹션에서 mock와 fakes의 차이점에 대해 살펴보겠습니다.
+검사 한 두 방법의 테스트 용이성에는 중요 한 차이점이 없습니다. 마지막 섹션에서 했던 것과 마찬가지로, HashSet&lt;직원&gt;에서 지 원하는 구체적인 클래스를 빌드하여 IRepository&lt;T&gt;의 가짜 구현을 제공할 수 있습니다. 그러나 일부 개발자는 fakes를 빌드하는 대신 모의 개체와 모의 개체 프레임 워크를 사용 하는 것이 좋습니다. Mock를 사용 하 여 구현을 테스트 하 고 다음 섹션에서 mock와 fakes의 차이점에 대해 살펴보겠습니다.
 
 ### <a name="testing-with-mocks"></a>Mock로 테스트
 
@@ -841,7 +841,7 @@ Martin Fowler에서 "test double"을 호출 하는 방법을 다양 하 게 빌�
     var employee = repository.FindById(1);
 ```
 
-IRepository @ no__t-0Employee @ no__t-1 구현에 대해 Moq를 요청 하 고 동적으로 빌드합니다. No__t 개체의 개체 속성에 액세스 하 여 IRepository @ no__t-0Employee @-1을 구현 하는 개체를 가져올 수 있습니다. 이 개체는 컨트롤러에 전달할 수 있는 내부 개체 이며 테스트 double 또는 실제 리포지토리입니다. 실제 구현을 사용 하 여 개체에서 메서드를 호출 하는 것 처럼 개체에서 메서드를 호출할 수 있습니다.
+IRepository&lt;Employee&gt; 구현에 대해 Moq를 요청 하 고이를 동적으로 작성 합니다. 모의&lt;T&gt; 개체의 개체 속성에 액세스 하 여 IRepository&lt;Employee&gt;를 구현 하는 개체를 가져올 수 있습니다. 이 개체는 컨트롤러에 전달할 수 있는 내부 개체 이며 테스트 double 또는 실제 리포지토리입니다. 실제 구현을 사용 하 여 개체에서 메서드를 호출 하는 것 처럼 개체에서 메서드를 호출할 수 있습니다.
 
 Add 메서드를 호출할 때 모의 리포지토리에서 수행할 작업을 알고 있어야 합니다. 모의 개체 뒤에는 구현이 없으므로 추가는 아무 작업도 수행 하지 않습니다. 우리가 작성 한 fakes와 마찬가지로 내부적으로는 구체적인 컬렉션이 없으므로 직원은 무시 됩니다. FindById의 반환 값은 무엇 인가요? 이 경우 모의 개체는 기본값을 반환 하는 유일한 작업을 수행 합니다. 참조 형식 (직원)을 반환 하기 때문에 반환 값은 null 값입니다.
 
@@ -862,7 +862,7 @@ Mock는 쓸모가 없을 수 있습니다. 그러나 두 가지 이상의 모의
     }
 ```
 
-이 샘플에서는 리포지토리를 동적으로 빌드하기 위해 Moq를 요청 하 고 예상 대로 리포지토리를 프로그래밍 합니다. 예상은 사용자가 값 5를 전달 하는 FindById 메서드를 호출할 때 Id 값이 5 인 새 employee 개체를 반환 하도록 모의 개체에 지시 합니다. 이 테스트는 통과 하 고 가짜 IRepository @ no__t-0T @ no__t-1에 대 한 전체 구현을 빌드할 필요가 없습니다.
+이 샘플에서는 리포지토리를 동적으로 빌드하기 위해 Moq를 요청 하 고 예상 대로 리포지토리를 프로그래밍 합니다. 예상은 사용자가 값 5를 전달 하는 FindById 메서드를 호출할 때 Id 값이 5 인 새 employee 개체를 반환 하도록 모의 개체에 지시 합니다. 이 테스트는 통과 하 고&lt;T&gt;가짜 IRepository에 전체 구현을 빌드할 필요가 없습니다.
 
 이전에 작성 한 테스트를 다시 방문 하 고 fakes 대신 mock를 사용 하도록 재작업 해 보겠습니다. 이전과 마찬가지로 기본 클래스를 사용 하 여 모든 컨트롤러의 테스트에 필요한 인프라의 공통 부분을 설정 합니다.
 
@@ -917,7 +917,7 @@ Mock는 쓸모가 없을 수 있습니다. 그러나 두 가지 이상의 모의
 -   인덱스가 실행 된 후 모델에 모든 직원 목록이 포함 되어 있는지 확인 합니다.
 -   삭제를 실행 한 후 리포지토리에 지정 된 직원이 포함 되지 않았는지 확인 합니다.
 
-모의 개체로 표시 되는 다른 방법은 *상호 작용*을 확인 하는 것입니다. 상태 기반 테스트는 개체의 상태에 대 한 어설션을 만들며, 상호 작용 기반 테스트는 개체가 상호 작용 하는 방식에 대 한 어설션을 만듭니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+모의 개체로 표시 되는 다른 방법은 *상호 작용*을 확인 하는 것입니다. 상태 기반 테스트는 개체의 상태에 대 한 어설션을 만들며, 상호 작용 기반 테스트는 개체가 상호 작용 하는 방식에 대 한 어설션을 만듭니다. 예를 들면 다음과 같습니다.
 
 -   만들기가 실행 될 때 컨트롤러가 리포지토리의 Add 메서드를 호출 하는지 확인 합니다.
 -   인덱스가 실행 될 때 컨트롤러가 리포지토리의 FindAll 메서드를 호출 하는지 확인 합니다.
@@ -957,14 +957,14 @@ Mock 또는 fakes 중에서 선택 하는 항목은 주로 테스트 하는 시�
 
 ## <a name="conclusions"></a>결론
 
-이 문서에서는 ADO.NET Entity Framework를 사용 하 여 데이터 지 속성에 대해 테스트 가능한 코드를 만드는 몇 가지 방법을 보여 주었습니다. IObjectSet @ no__t-0T @ no__t-1과 같은 기본 제공 추상화를 활용 하거나 IRepository @ no__t-2T @ no__t-3과 같은 고유한 추상화를 만들 수 있습니다.  두 경우 모두 ADO.NET Entity Framework 4.0의 POCO 지원을 통해 이러한 추상화를 지속적으로 무시 하 고 매우 테스트할 수 있습니다. 암시적 지연 로드와 같은 추가 EF4 기능을 사용 하면 관계형 데이터 저장소의 세부 정보를 걱정 하지 않고 비즈니스 및 응용 프로그램 서비스 코드를 사용할 수 있습니다. 마지막으로, 만든 추상화는 단위 테스트 내에서 모의 이거나 가짜를 쉽게 수행할 수 있으며, 이러한 테스트 double을 사용 하 여 신속 하 게 실행 되 고 매우 격리 되 고 신뢰할 수 있는 테스트를 수행할 수 있습니다.
+이 문서에서는 ADO.NET Entity Framework를 사용 하 여 데이터 지 속성에 대해 테스트 가능한 코드를 만드는 몇 가지 방법을 보여 주었습니다. IObjectSet&lt;T&gt;와 같은 기본 제공 추상화를 활용 하거나 IRepository&lt;T&gt;와 같은 고유한 추상화를 만들 수 있습니다.  두 경우 모두 ADO.NET Entity Framework 4.0의 POCO 지원을 통해 이러한 추상화를 지속적으로 무시 하 고 매우 테스트할 수 있습니다. 암시적 지연 로드와 같은 추가 EF4 기능을 사용 하면 관계형 데이터 저장소의 세부 정보를 걱정 하지 않고 비즈니스 및 응용 프로그램 서비스 코드를 사용할 수 있습니다. 마지막으로, 만든 추상화는 단위 테스트 내에서 모의 이거나 가짜를 쉽게 수행할 수 있으며, 이러한 테스트 double을 사용 하 여 신속 하 게 실행 되 고 매우 격리 되 고 신뢰할 수 있는 테스트를 수행할 수 있습니다.
 
 ### <a name="additional-resources"></a>추가 리소스
 
 -   Robert C. Martin, " [단일 책임 원칙](https://www.objectmentor.com/resources/articles/srp.pdf)"
 -   Martin Fowler, *엔터프라이즈 응용 프로그램 아키텍처 패턴* 의 [패턴 카탈로그](https://www.martinfowler.com/eaaCatalog/index.html)
 -   Griffin Caprio, " [종속성 주입](https://msdn.microsoft.com/magazine/cc163739.aspx)"
--   데이터 프로그래밍 기능 블로그, "[ 연습: Entity Framework 4.0 @ no__t-0 "을 사용 하 여 테스트 기반 개발
+-   데이터 프로그래밍 블로그, " [연습: Entity Framework 4.0를 사용 하는 테스트 기반 개발](https://blogs.msdn.com/adonet/pages/walkthrough-test-driven-development-with-the-entity-framework-4-0.aspx)"
 -   데이터 프로그래밍 블로그, " [Entity Framework 4.0에서 리포지토리 및 작업 단위 패턴 사용](https://blogs.msdn.com/adonet/archive/2009/06/16/using-repository-and-unit-of-work-patterns-with-entity-framework-4-0.aspx)"
 -   Aaron Jensen, " [컴퓨터 사양 소개](http://codebetter.com/blogs/aaron.jensen/archive/2008/05/08/introducing-machine-specifications-or-mspec-for-short.aspx)"
 -   Eric Lee, " [MSTest를 사용](https://blogs.msdn.com/elee/archive/2009/01/20/bdd-with-mstest.aspx)하는 BDD"
@@ -975,4 +975,4 @@ Mock 또는 fakes 중에서 선택 하는 항목은 주로 테스트 하는 시�
 
 ### <a name="biography"></a>소개
 
-Scott Allen는 Pluralsight 및 창립자 OdeToCode.com의 기술 직원의 멤버입니다. 상업적 소프트웨어 개발의 15 년 동안 Scott은 8 비트 embedded 장치에서 확장성이 뛰어난 ASP.NET 웹 응용 프로그램을 위한 솔루션에 대해 노력 했습니다. OdeToCode의 블로그 또는 [https://twitter.com/OdeToCode](https://twitter.com/OdeToCode)의 Twitter에서 Scott에 게 연락할 수 있습니다.
+Scott Allen는 Pluralsight 및 창립자 OdeToCode.com의 기술 직원의 멤버입니다. 상업적 소프트웨어 개발의 15 년 동안 Scott은 8 비트 embedded 장치에서 확장성이 뛰어난 ASP.NET 웹 응용 프로그램을 위한 솔루션에 대해 노력 했습니다. OdeToCode의 블로그 또는 [https://twitter.com/OdeToCode](https://twitter.com/OdeToCode)에서 Scott에 게 연락할 수 있습니다.

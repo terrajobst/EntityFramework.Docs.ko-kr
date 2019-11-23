@@ -102,7 +102,7 @@ namespace TestingDemo
 
 이 컨텍스트는 IBloggingContext 인터페이스를 구현 합니다.  
 
-Code First를 사용 하는 경우 컨텍스트를 직접 편집 하 여 인터페이스를 구현할 수 있습니다. EF Designer를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. @No__t-0model_name @ no__t-1을 엽니다. Edmx 파일에 중첩 된 Context.tt 파일, 다음 코드 조각을 찾고 인터페이스에서 다음과 같이를 추가 합니다.  
+Code First를 사용 하는 경우 컨텍스트를 직접 편집 하 여 인터페이스를 구현할 수 있습니다. EF Designer를 사용 하는 경우 컨텍스트를 생성 하는 T4 템플릿을 편집 해야 합니다. \<model_name\>를 엽니다. Edmx 파일에 중첩 된 Context.tt 파일, 다음 코드 조각을 찾고 인터페이스에서 다음과 같이를 추가 합니다.  
 
 ``` csharp  
 <#=Accessibility.ForType(container)#> partial class <#=code.Escape(container)#> : DbContext, IBloggingContext

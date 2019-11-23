@@ -44,7 +44,7 @@ MSL (매핑 사양 언어)의 **Alias** 요소는 개념적 모델 및 저장소
 
 ### <a name="example"></a>예제
 
-다음 예제에서는 개념적 모델에 정의 된 형식에 대 한 별칭 `c`을 정의 하는 **alias** 요소를 보여 줍니다.
+다음 예제에서는 개념적 모델에 정의 된 형식에 대 한 `c`별칭을 정의 하는 **alias** 요소를 보여 줍니다.
 
 ``` xml
  <Mapping Space="C-S"
@@ -81,7 +81,7 @@ MSL (매핑 사양 언어)의 **Alias** 요소는 개념적 모델 및 저장소
 
 MSL (매핑 사양 언어)의 **AssociationEnd** 요소는 개념적 모델의 엔터티 형식에 대 한 수정 함수가 기본 데이터베이스의 저장 프로시저에 매핑될 때 사용 됩니다. 수정 저장 프로시저가 association 속성에 값을 보유 하는 매개 변수를 사용 하는 경우 **AssociationEnd** 요소는 속성 값을 매개 변수에 매핑합니다. 자세한 내용은 아래 예제를 참조하십시오.
 
-엔터티 형식의 수정 함수를 저장 프로시저에 매핑하는 방법에 대 한 자세한 내용은 ModificationFunctionMapping 요소 (MSL) 및 연습을 참조 하세요. 저장 프로시저에 엔터티 매핑
+엔터티 형식의 수정 함수를 저장 프로시저에 매핑하는 방법에 대 한 자세한 내용은 ModificationFunctionMapping 요소 (MSL) 및 연습: 저장 프로시저에 엔터티 매핑을 참조 하세요.
 
 **AssociationEnd** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
@@ -131,7 +131,7 @@ MSL (매핑 사양 언어)의 **AssociationEnd** 요소는 개념적 모델의 �
                                 WHERE CourseID=@CourseID;
 ```
 
-@No__t-0 엔터티의 업데이트 함수를이 저장 프로시저에 매핑하려면 **DepartmentID** 매개 변수에 값을 제공 해야 합니다. `DepartmentID`의 값은 엔터티 형식의 속성에 해당하지 않으며, 여기에 표시된 매핑을 사용하는 독립 연결에 포함되어 있습니다.
+`Course` 엔터티의 업데이트 함수를이 저장 프로시저에 매핑하려면 **DepartmentID** 매개 변수에 값을 제공 해야 합니다. `DepartmentID`의 값은 엔터티 형식의 속성에 해당하지 않으며, 여기에 표시된 매핑을 사용하는 독립 연결에 포함되어 있습니다.
 
 ``` xml
  <AssociationSetMapping Name="FK_Course_Department"
@@ -146,7 +146,7 @@ MSL (매핑 사양 언어)의 **AssociationEnd** 요소는 개념적 모델의 �
  </AssociationSetMapping>
 ```
 
-다음 코드에서는 **FK @ no__t-3course @ no__t-4Department** 연결의 **DepartmentID** 속성을 **UpdateCourse** 저장 프로시저에 매핑하는 데 사용 되는 **AssociationEnd** 요소를 보여 줍니다. **강좌** 엔터티 형식이 매핑됨):
+다음 코드에서는 **FK\_과정\_학과** 연결의 **DepartmentID** 속성을 **UpdateCourse** 저장 프로시저에 매핑하는 데 사용 되는 **AssociationEnd** 요소를 보여 줍니다 ( **과정** 엔터티 형식의 업데이트 기능이 매핑되는).
 
 ``` xml
  <EntitySetMapping Name="Courses">
@@ -182,7 +182,7 @@ MSL (매핑 사양 언어)의 **AssociationEnd** 요소는 개념적 모델의 �
 
 MSL (매핑 사양 언어)의 **AssociationSetMapping** 요소는 개념적 모델의 연결과 기본 데이터베이스의 테이블 열 간의 매핑을 정의 합니다.
 
-개념적 모델의 연결은 기본 데이터베이스의 기본 및 외래 키 열을 나타내는 속성이 있는 형식입니다. **AssociationSetMapping** 요소는 두 개의 endproperty 요소를 사용 하 여 데이터베이스의 연결 유형 속성과 열 간의 매핑을 정의 합니다. 조건 요소를 사용 하 여 이러한 매핑에 조건을 입력할 수 있습니다. 연결에 대 한 삽입, 업데이트 및 삭제 함수를 ModificationFunctionMapping 요소를 사용 하 여 데이터베이스의 저장 프로시저에 매핑합니다. QueryView 요소의 Entity SQL 문자열을 사용 하 여 연결과 테이블 열 간의 읽기 전용 매핑을 정의 합니다.
+개념적 모델의 연결은 기본 데이터베이스의 기본 및 외래 키 열을 나타내는 속성이 있는 형식입니다. **AssociationSetMapping** 요소는 두 개의 endproperty 요소를 사용 하 여 데이터베이스의 연결 유형 속성과 열 간의 매핑을 정의 합니다. Condition 요소를 사용하여 이러한 매핑에 조건을 적용할 수 있습니다. ModificationFunctionMapping 요소를 사용하여 연결에 대한 삽입, 업데이트 및 삭제 함수를 데이터베이스의 저장 프로시저에 매핑할 수 있습니다. QueryView 요소의 Entity SQL 문자열을 사용 하 여 연결과 테이블 열 간의 읽기 전용 매핑을 정의 합니다.
 
 > [!NOTE]
 > 개념적 모델의 연결에 대해 참조 제약 조건이 정의 된 경우 **AssociationSetMapping** 요소를 사용 하 여 연결을 매핑할 필요가 없습니다. 참조 제약 조건이 있는 연결에 대해 **AssociationSetMapping** 요소가 있으면 **AssociationSetMapping** 요소에 정의 된 매핑이 무시 됩니다. 자세한 내용은 참조를 참조 하세요.
@@ -190,7 +190,7 @@ MSL (매핑 사양 언어)의 **AssociationSetMapping** 요소는 개념적 모�
 **AssociationSetMapping** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
 -   QueryView (0 개 또는 1 개)
--   EndProperty (0 개 또는 2 개)
+-   EndProperty(0개 또는 2개)
 -   조건 (0 개 이상)
 -   ModificationFunctionMapping (0 개 또는 1 개)
 
@@ -206,7 +206,7 @@ MSL (매핑 사양 언어)의 **AssociationSetMapping** 요소는 개념적 모�
 
 ### <a name="example"></a>예제
 
-다음 예에서는 개념적 모델에 설정 된 **FK @ no__t-2ab@ no__t-3Department** association이 데이터베이스의 **과정** 테이블에 매핑되는 **AssociationSetMapping** 요소를 보여 줍니다. 연결 형식 속성과 테이블 열 간의 매핑은 자식 **Endproperty** 요소에 지정 됩니다.
+다음 예에서는 개념적 모델에 설정 된 **FK\_과정\_부서** 연결이 데이터베이스의 **과정** 테이블에 매핑되는 **AssociationSetMapping** 요소를 보여 줍니다. 연결 형식 속성과 테이블 열 간의 매핑은 자식 **Endproperty** 요소에 지정 됩니다.
 
 ``` xml
  <AssociationSetMapping Name="FK_Course_Department"
@@ -223,7 +223,7 @@ MSL (매핑 사양 언어)의 **AssociationSetMapping** 요소는 개념적 모�
 
 ## <a name="complexproperty-element-msl"></a>ComplexProperty 요소(MSL)
 
-MSL (매핑 사양 언어)의 **complexproperty** 요소는 개념적 모델 엔터티 형식의 복합 형식 속성과 기본 데이터베이스의 테이블 열 간의 매핑을 정의 합니다. 속성-열 매핑은 자식 ScalarProperty 요소에 지정 됩니다.
+MSL (매핑 사양 언어)의 **complexproperty** 요소는 개념적 모델 엔터티 형식의 복합 형식 속성과 기본 데이터베이스의 테이블 열 간의 매핑을 정의 합니다. 속성-열 매핑은 자식 ScalarProperty 요소에 지정됩니다.
 
 **ComplexType** property 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
@@ -291,7 +291,7 @@ MSL (매핑 사양 언어)의 **complexproperty** 요소는 개념적 모델 엔
 
 ## <a name="complextypemapping-element-msl"></a>ComplexTypeMapping 요소(MSL)
 
-MSL (매핑 사양 언어)의 **Complextypemapping** 요소는 resultmapping 요소의 자식 이며, 다음과 같은 경우 개념적 모델의 function import와 기본 데이터베이스의 저장 프로시저 간 매핑을 정의 합니다. true입니다.
+MSL (매핑 사양 언어)의 **Complextypemapping** 요소는 resultmapping 요소의 자식 이며, 다음과 같은 경우 개념적 모델의 function import와 기본 데이터베이스의 저장 프로시저 간 매핑을 정의 합니다.
 
 -   Function Import가 개념적 복합 형식을 반환하는 경우
 -   저장 프로시저에서 반환되는 열 이름이 복합 형식의 속성 이름과 정확히 일치하지 않는 경우
@@ -431,7 +431,7 @@ EntityTypeMapping 요소에 적용 될 때 **Deletefunction** 요소는 개념�
 **Deletefunction** 요소는 **entitytypemapping** 요소에 적용 될 때 다음과 같은 자식 요소를 포함할 수 있습니다.
 
 -   AssociationEnd (0 개 이상)
--   ComplexProperty (0 개 이상)
+-   ComplexProperty(0개 이상)
 -   ScarlarProperty (0 개 이상)
 
 #### <a name="applicable-attributes"></a>적용 가능한 특성
@@ -544,7 +544,7 @@ EntityTypeMapping 요소에 적용 될 때 **Deletefunction** 요소는 개념�
 
 ## <a name="endproperty-element-msl"></a>EndProperty 요소(MSL)
 
-MSL (매핑 사양 언어)의 **Endproperty** 요소는 개념적 모델 연결의 끝 또는 수정 함수와 기본 데이터베이스 간의 매핑을 정의 합니다. 속성-열 매핑은 자식 ScalarProperty 요소에 지정 됩니다.
+MSL (매핑 사양 언어)의 **Endproperty** 요소는 개념적 모델 연결의 끝 또는 수정 함수와 기본 데이터베이스 간의 매핑을 정의 합니다. 속성-열 매핑은 자식 ScalarProperty 요소에서 지정됩니다.
 
 **Endproperty** 요소를 사용 하 여 개념적 모델 연결의 끝에 대 한 매핑을 정의할 경우이 요소는 AssociationSetMapping 요소의 자식입니다. **Endproperty** 요소를 사용 하 여 개념적 모델 연결의 수정 함수에 대 한 매핑을 정의할 경우이 요소는 insertfunction 요소 또는 deletefunction 요소의 자식입니다.
 
@@ -562,7 +562,7 @@ MSL (매핑 사양 언어)의 **Endproperty** 요소는 개념적 모델 연결�
 
 ### <a name="example"></a>예제
 
-다음 예에서는 개념적 모델의 **FK @ no__t-2Course; no__t-3Department** 연결이 데이터베이스의 **과정** 테이블에 매핑되는 요소를 보여 줍니다. 연결 형식 속성과 테이블 열 간의 매핑은 자식 **Endproperty** 요소에 지정 됩니다.
+다음 예에서는 개념적 모델의 **FK\_과정\_부서** 연결이 데이터베이스의 **과정** 테이블에 매핑되는 **AssociationSetMapping** 요소를 보여 줍니다. 연결 형식 속성과 테이블 열 간의 매핑은 자식 **Endproperty** 요소에 지정 됩니다.
 
 ``` xml
  <AssociationSetMapping Name="FK_Course_Department"
@@ -618,7 +618,7 @@ MSL (매핑 사양 언어)의 **EntityContainerMapping** 요소는 개념적 모
 
 **EntityContainerMapping** 요소는 다음과 같은 자식 요소를 나열 된 순서 대로 포함할 수 있습니다.
 
--   EntitySetMapping (0 개 이상)
+-   EntitySetMapping(0개 이상)
 -   AssociationSetMapping (0 개 이상)
 -   FunctionImportMapping (0 개 이상)
 
@@ -634,7 +634,7 @@ MSL (매핑 사양 언어)의 **EntityContainerMapping** 요소는 개념적 모
 
 ### <a name="example"></a>예제
 
-다음 예제에서는 **SchoolModelEntities** 컨테이너 (개념적 모델 엔터티 컨테이너)를 **SchoolModelStoreContainer** 컨테이너 (저장소 모델 엔터티)에 매핑하는 **EntityContainerMapping** 요소를 보여 줍니다. 컨테이너):
+다음 예제에서는 **SchoolModelEntities** 컨테이너 (개념적 모델 엔터티 컨테이너)를 **SchoolModelStoreContainer** 컨테이너 (저장소 모델 엔터티 컨테이너)에 매핑하는 **EntityContainerMapping** 요소를 보여 줍니다.
 
 ``` xml
  <EntityContainerMapping StorageEntityContainer="SchoolModelStoreContainer"
@@ -665,11 +665,11 @@ MSL (매핑 사양 언어)의 **EntityContainerMapping** 요소는 개념적 모
 
 ## <a name="entitysetmapping-element-msl"></a>EntitySetMapping 요소(MSL)
 
-MSL (매핑 사양 언어)의 **EntitySetMapping** 요소는 개념적 모델 엔터티 집합의 모든 형식을 저장소 모델의 엔터티 집합에 매핑합니다. 개념적 모델의 엔터티 집합은 동일한 형식 (및 파생 형식)의 엔터티 인스턴스에 대 한 논리적 컨테이너입니다. 저장소 모델의 엔터티 집합은 기본 데이터베이스의 테이블 또는 뷰를 나타냅니다. 개념적 모델 엔터티 집합은 **EntitySetMapping** 요소의 **Name** 특성 값으로 지정 됩니다. 매핑되는 테이블 또는 뷰는 각 자식 MappingFragment 요소 또는 **EntitySetMapping** 요소 자체의 자동 연결 **entityset** 특성에 의해 지정 됩니다.
+MSL (매핑 사양 언어)의 **EntitySetMapping** 요소는 개념적 모델 엔터티 집합의 모든 형식을 저장소 모델의 엔터티 집합에 매핑합니다. 개념적 모델의 엔터티 집합은 동일한 형식 및 파생된 형식을 갖는 엔터티 인스턴스의 논리적 컨테이너입니다. 저장소 모델의 엔터티 집합은 기본 데이터베이스의 테이블 또는 뷰를 나타냅니다. 개념적 모델 엔터티 집합은 **EntitySetMapping** 요소의 **Name** 특성 값으로 지정 됩니다. 매핑되는 테이블 또는 뷰는 각 자식 MappingFragment 요소 또는 **EntitySetMapping** 요소 자체의 자동 연결 **entityset** 특성에 의해 지정 됩니다.
 
 **EntitySetMapping** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
--   EntityTypeMapping (0 개 이상)
+-   EntityTypeMapping(0개 이상)
 -   QueryView (0 개 또는 1 개)
 -   MappingFragment (0 개 이상)
 
@@ -721,9 +721,9 @@ MSL (매핑 사양 언어)의 **EntitySetMapping** 요소는 개념적 모델 �
 
 ## <a name="entitytypemapping-element-msl"></a>EntityTypeMapping 요소(MSL)
 
-MSL (매핑 사양 언어)의 **Entitytypemapping** 요소는 개념적 모델의 엔터티 형식과 기본 데이터베이스의 테이블 또는 뷰 간의 매핑을 정의 합니다. 개념적 모델 엔터티 형식과 기본 데이터베이스 테이블 또는 뷰에 대 한 자세한 내용은 EntityType 요소 (CSDL) 및 EntitySet 요소 (SSDL)를 참조 하세요. 매핑되는 개념적 모델 엔터티 형식은 **Entitytypemapping** 요소의 **TypeName** 특성에 의해 지정 됩니다. 매핑되는 테이블 또는 뷰는 자식 MappingFragment 요소의 **entityset** 특성에 의해 지정 됩니다.
+MSL (매핑 사양 언어)의 **Entitytypemapping** 요소는 개념적 모델의 엔터티 형식과 기본 데이터베이스의 테이블 또는 뷰 간의 매핑을 정의 합니다. 개념적 모델 엔터티 형식과 기본 데이터베이스 테이블 또는 뷰에 대한 자세한 내용은 EntityType 요소(CSDL) 및 EntitySet 요소(SSDL)를 참조하십시오. 매핑되는 개념적 모델 엔터티 형식은 **Entitytypemapping** 요소의 **TypeName** 특성에 의해 지정 됩니다. 매핑되는 테이블 또는 뷰는 자식 MappingFragment 요소의 **entityset** 특성에 의해 지정 됩니다.
 
-ModificationFunctionMapping 자식 요소를 사용 하 여 엔터티 형식의 삽입, 업데이트 또는 삭제 함수를 데이터베이스의 저장 프로시저에 매핑할 수 있습니다.
+ModificationFunctionMapping 자식 요소를 사용하여 엔터티 형식의 삽입, 업데이트 또는 삭제 함수를 데이터베이스의 저장 프로시저에 매핑할 수 있습니다.
 
 **Entitytypemapping** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
@@ -879,7 +879,7 @@ EntityTypeMapping 요소에 적용 될 때 **Insertfunction** 요소는 개념�
 **Insertfunction** 요소는 **entitytypemapping** 요소에 적용 될 때 다음과 같은 자식 요소를 포함할 수 있습니다.
 
 -   AssociationEnd (0 개 이상)
--   ComplexProperty (0 개 이상)
+-   ComplexProperty(0개 이상)
 -   ResultBinding (0 개 또는 1 개)
 -   ScarlarProperty (0 개 이상)
 
@@ -982,14 +982,14 @@ AssociationSetMapping 요소에 적용 될 때 **insertfunction** 요소는 개�
 
 MSL (매핑 사양 언어)의 **mapping** 요소에는 개념적 모델에 정의 된 개체를 데이터베이스에 매핑하기 위한 정보 (저장소 모델에 설명 된 대로)가 포함 되어 있습니다. 자세한 내용은 CSDL 사양 및 SSDL 사양을 참조 하세요.
 
-매핑 **요소는** 매핑 사양에 대 한 루트 요소입니다. 매핑 사양에 대 한 XML 네임 스페이스는 https://schemas.microsoft.com/ado/2009/11/mapping/cs 입니다.
+매핑 **요소는** 매핑 사양에 대 한 루트 요소입니다. 매핑 사양에 대 한 XML 네임 스페이스를 https://schemas.microsoft.com/ado/2009/11/mapping/cs합니다.
 
 Mapping 요소는 다음에 나열된 순서대로 자식 요소를 포함할 수 있습니다.
 
 -   별칭 (0 개 이상)
 -   EntityContainerMapping (정확히 1 개)
 
-MSL에서 참조하는 개념적 모델 형식과 스토리지 모델 형식의 이름은 해당 네임스페이스 이름으로 한정되어야 합니다. 개념적 모델 네임 스페이스 이름에 대 한 자세한 내용은 Schema 요소 (CSDL)를 참조 하세요. 저장소 모델 네임 스페이스 이름에 대 한 자세한 내용은 Schema 요소 (SSDL)를 참조 하세요. MSL에서 사용 되는 네임 스페이스에 대 한 별칭은 Alias 요소를 사용 하 여 정의할 수 있습니다.
+MSL에서 참조하는 개념적 모델 형식과 스토리지 모델 형식의 이름은 해당 네임스페이스 이름으로 한정되어야 합니다. 개념적 모델 네임 스페이스 이름에 대 한 자세한 내용은 Schema 요소 (CSDL)를 참조 하세요. 저장소 모델 네임 스페이스 이름에 대 한 자세한 내용은 Schema 요소 (SSDL)를 참조 하세요. MSL에서 사용되는 네임스페이스의 별칭은 Alias 요소를 사용하여 정의할 수 있습니다.
 
 ### <a name="applicable-attributes"></a>적용 가능한 특성
 
@@ -1036,7 +1036,7 @@ MSL에서 참조하는 개념적 모델 형식과 스토리지 모델 형식의 
 
 ## <a name="mappingfragment-element-msl"></a>MappingFragment 요소(MSL)
 
-MSL (매핑 사양 언어)의 **MappingFragment** 요소는 개념적 모델 엔터티 형식의 속성과 데이터베이스의 테이블 또는 뷰 간의 매핑을 정의 합니다. 개념적 모델 엔터티 형식과 기본 데이터베이스 테이블 또는 뷰에 대 한 자세한 내용은 EntityType 요소 (CSDL) 및 EntitySet 요소 (SSDL)를 참조 하세요. **MappingFragment** 는 entitytypemapping 요소 또는 EntitySetMapping 요소의 자식 요소일 수 있습니다.
+MSL (매핑 사양 언어)의 **MappingFragment** 요소는 개념적 모델 엔터티 형식의 속성과 데이터베이스의 테이블 또는 뷰 간의 매핑을 정의 합니다. 개념적 모델 엔터티 형식과 기본 데이터베이스 테이블 또는 뷰에 대한 자세한 내용은 EntityType 요소(CSDL) 및 EntitySet 요소(SSDL)를 참조하십시오. **MappingFragment** 는 entitytypemapping 요소 또는 EntitySetMapping 요소의 자식 요소일 수 있습니다.
 
 **MappingFragment** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
@@ -1193,7 +1193,7 @@ MSL (매핑 사양 언어)의 **ModificationFunctionMapping** 요소는 개념�
 
 ## <a name="queryview-element-msl"></a>QueryView 요소(MSL)
 
-MSL (매핑 사양 언어)의 **QueryView** 요소는 개념적 모델의 엔터티 형식 또는 연결 및 기본 데이터베이스의 테이블 간에 읽기 전용 매핑을 정의 합니다. 매핑은 저장소 모델에 대해 평가 되는 Entity SQL 쿼리로 정의 되며, 개념적 모델에서 엔터티 또는 연결을 기준으로 결과 집합을 표현 합니다. 쿼리 뷰는 읽기 전용이므로 표준 업데이트 명령을 사용하여 쿼리 뷰에서 정의된 형식을 업데이트할 수 없습니다. 수정 함수를 사용하여 이러한 형식을 업데이트할 수 있습니다. 자세한 내용은 방법: 수정 함수를 저장 프로시저에 매핑합니다.
+MSL (매핑 사양 언어)의 **QueryView** 요소는 개념적 모델의 엔터티 형식 또는 연결 및 기본 데이터베이스의 테이블 간에 읽기 전용 매핑을 정의 합니다. 매핑은 저장소 모델에 대해 평가 되는 Entity SQL 쿼리로 정의 되며, 개념적 모델에서 엔터티 또는 연결을 기준으로 결과 집합을 표현 합니다. 쿼리 뷰는 읽기 전용이므로 표준 업데이트 명령을 사용하여 쿼리 뷰에서 정의된 형식을 업데이트할 수 없습니다. 수정 함수를 사용하여 이러한 형식을 업데이트할 수 있습니다. 자세한 내용은 방법: 저장 프로시저에 수정 함수 매핑을 참조 하세요.
 
 > [!NOTE]
 > **QueryView** 요소에는 **GroupBy**, group 집계 또는 탐색 속성을 포함 하는 Entity SQL 식이 지원 되지 않습니다.
@@ -1253,7 +1253,7 @@ MSL (매핑 사양 언어)의 **QueryView** 요소는 개념적 모델의 엔터
 
 ### <a name="example"></a>예제
 
-다음 예제에서는 **QueryView** 요소를 **AssociationSetMapping** 요소의 자식으로 표시 하 고 School 모델에서 `FK_Course_Department` 연결에 대 한 읽기 전용 매핑을 정의 합니다.
+다음 예제에서는 **QueryView** 요소를 **AssociationSetMapping** 요소의 자식으로 보여 주고 School 모델에서 `FK_Course_Department` 연결에 대 한 읽기 전용 매핑을 정의 합니다.
 
 ``` xml
  <EntityContainerMapping StorageEntityContainer="SchoolModelStoreContainer"
@@ -1287,7 +1287,7 @@ MSL (매핑 사양 언어)의 **QueryView** 요소는 개념적 모델의 엔터
  </EntityContainerMapping>
 ```
  
-### <a name="comments"></a>주석
+### <a name="comments"></a>설명
 
 다음 시나리오가 가능하도록 쿼리 뷰를 정의할 수 있습니다.
 
@@ -1315,7 +1315,7 @@ MSL (매핑 사양 언어)의 **QueryView** 요소는 개념적 모델의 엔터
 
 ## <a name="resultbinding-element-msl"></a>ResultBinding 요소(MSL)
 
-MSL (매핑 사양 언어)의 **Resultbinding** 요소는 엔터티 형식 수정 함수가의 저장 프로시저에 매핑될 때 저장 프로시저에 의해 반환 되는 열 값을 개념적 모델의 엔터티 속성에 매핑합니다. 기본 데이터베이스입니다. 예를 들어 insert 저장 프로시저에서 identity 열의 값을 반환 하는 경우 **Resultbinding** 요소는 반환 된 값을 개념적 모델의 엔터티 형식 속성에 매핑합니다.
+MSL (매핑 사양 언어)의 **Resultbinding** 요소는 엔터티 형식 수정 함수를 기본 데이터베이스의 저장 프로시저에 매핑할 때 저장 프로시저에서 반환 되는 열 값을 개념적 모델의 엔터티 속성에 매핑합니다. 예를 들어 insert 저장 프로시저에서 identity 열의 값을 반환 하는 경우 **Resultbinding** 요소는 반환 된 값을 개념적 모델의 엔터티 형식 속성에 매핑합니다.
 
 **Resultbinding** 요소는 insertfunction 요소 또는 updatefunction 요소의 자식일 수 있습니다.
 
@@ -1398,7 +1398,7 @@ MSL (매핑 사양 언어)의 **Resultmapping** 요소는 다음이 true 일 때
 
 **Resultmapping** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
--   EntityTypeMapping (0 개 이상)
+-   EntityTypeMapping(0개 이상)
 -   ComplexTypeMapping
 
 **Resultmapping** 요소에는 특성을 적용할 수 없습니다.
@@ -1488,7 +1488,7 @@ MSL (매핑 사양 언어)의 **ScalarProperty** 요소는 개념적 모델 엔�
 |:------------------|:------------|:------------------------------------------------------------------------------------------------------------------------------------------------|
 | **이름**          | 예         | 매핑되는 개념적 모델 속성의 이름입니다.                                                                                 |
 | **ParameterName** | 예         | 매핑되는 매개 변수의 이름입니다.                                                                                                 |
-| **버전(Version)**       | 아니요          | 현재 값 또는 속성의 원래 값이 동시성 검사에 사용 되어야 하는지 여부에 따라 **현재** 또는 **원래** 값입니다. |
+| **버전**       | 아니요          | 현재 값 또는 속성의 원래 값이 동시성 검사에 사용 되어야 하는지 여부에 따라 **현재** 또는 **원래** 값입니다. |
 
 ### <a name="example"></a>예제
 
@@ -1587,7 +1587,7 @@ MSL (매핑 사양 언어)의 **updatefunction** 요소는 개념적 모델의 �
 **Updatefunction** 요소에는 다음과 같은 자식 요소가 있을 수 있습니다.
 
 -   AssociationEnd (0 개 이상)
--   ComplexProperty (0 개 이상)
+-   ComplexProperty(0개 이상)
 -   ResultBinding (0 개 또는 1 개)
 -   ScarlarProperty (0 개 이상)
 

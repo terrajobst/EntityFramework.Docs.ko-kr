@@ -16,9 +16,9 @@ ms.locfileid: "72182458"
 ## <a name="watch-the-video"></a>비디오 시청
 이 비디오는 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. Database First를 사용 하 여 기존 데이터베이스에서 모델을 리버스 엔지니어링할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
-**제공**: [행](https://romiller.com/)
+**작성자**: [Rowan Miller](https://romiller.com/)
 
-**비디오**: [WMV](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv)@NO__T-[1MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)
+**비디오**: [wmv](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.wmv) | [MP4](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-mp4video-databasefirst.m4v) | [wmv (ZIP)](https://download.microsoft.com/download/8/F/0/8F0B5F63-4939-4DC8-A726-FF139B37F8D8/HDI-ITPro-MSDN-winvideo-databasefirst.zip)
 
 ## <a name="pre-requisites"></a>필수 구성 요소
 
@@ -28,7 +28,7 @@ Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.m
 
  
 
-## <a name="1-create-an-existing-database"></a>1. 기존 데이터베이스 만들기
+## <a name="1-create-an-existing-database"></a>1. 기존 데이터베이스를 만듭니다.
 
 일반적으로 기존 데이터베이스를 대상으로 하는 경우에는 이미 생성 되지만이 연습에서는 액세스할 데이터베이스를 만들어야 합니다.
 
@@ -42,7 +42,7 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버는 설치한 Vis
 계속 해 서 데이터베이스를 생성 해 보겠습니다.
 
 -   Visual Studio를 엽니다.
--   **뷰-&gt; 서버 탐색기**
+-   **뷰&gt; 서버 탐색기**
 -   데이터 연결을 마우스 오른쪽 단추로 클릭 하 **&gt; 연결 추가** ...를 클릭 합니다.
 -   서버 탐색기 데이터베이스에 연결 하지 않은 경우 Microsoft SQL Server를 데이터 원본으로 선택 해야 합니다.
 
@@ -79,12 +79,12 @@ CREATE TABLE [dbo].[Posts] (
 );
 ```
 
-## <a name="2-create-the-application"></a>2. 애플리케이션 만들기
+## <a name="2-create-the-application"></a>2. 응용 프로그램 만들기
 
 간단 하 게 유지 하기 위해 Database First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
 
 -   Visual Studio를 엽니다.
--   **파일-&gt; 새 &gt; 프로젝트 ...**
+-   **파일&gt; 새&gt; 프로젝트 ...**
 -   왼쪽 메뉴 및 **콘솔 응용 프로그램** 에서 **Windows** 를 선택 합니다.
 -   **Databasefirstsample** 을 이름으로 입력 합니다.
 -   **확인**을 선택합니다.
@@ -95,7 +95,7 @@ CREATE TABLE [dbo].[Posts] (
 
 Visual Studio의 일부로 포함 된 Entity Framework Designer를 사용 하 여 모델을 만들 예정입니다.
 
--   **프로젝트-&gt; 새 항목 추가 ...**
+-   **프로젝트-새 항목 추가&gt; ...**
 -   왼쪽 메뉴에서 **데이터** 를 선택 하 고 **ADO.NET** 를 선택 엔터티 데이터 모델
 -   이름으로 **BloggingModel** 를 입력 하 고 **확인을** 클릭 합니다.
 -   그러면 **엔터티 데이터 모델 마법사** 가 시작 됩니다.
@@ -123,8 +123,8 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
 
 먼저 NuGet에서 최신 버전의 Entity Framework을 가져와야 합니다.
 
--   **프로젝트 – &gt; NuGet 패키지 관리** ... 
-     nuget* **패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
+-   **프로젝트 – NuGet 패키지를 관리&gt;** ...
+    * **Nuget 패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
 -   **설치** 클릭
@@ -133,13 +133,13 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
 
 -   EF 디자이너에서 모델의 빈 지점을 마우스 오른쪽 단추로 클릭 하 고 **코드 생성 항목 추가** ...를 선택 합니다.
 -   왼쪽 메뉴에서 **온라인 템플릿** 을 선택 하 고 **DbContext** 를 검색 합니다.
--   EF **.x DbContext 생성기 for C @ no__t-1**을 선택 하 고 이름으로 **BloggingModel** 를 입력 한 다음 **추가** 를 클릭 합니다.
+-   **C\#에 대해 EF 5.X DbContext 생성기** 를 선택 하 고 이름으로 **BloggingModel** 를 입력 한 다음 **추가** 를 클릭 합니다.
 
     ![DbContext 템플릿](~/ef6/media/dbcontexttemplate.png)
 
  
 
-## <a name="4-reading--writing-data"></a>4. 데이터 읽기 & 쓰기
+## <a name="4-reading--writing-data"></a>4. 데이터 쓰기 & 읽기
 
 이제 모델을 사용 하 여 일부 데이터에 액세스 하는 데 사용할 수 있습니다. 데이터에 액세스 하는 데 사용할 클래스는 EDMX 파일을 기반으로 자동으로 생성 됩니다.
 
@@ -194,7 +194,7 @@ Press any key to exit...
 ```
  
 
-## <a name="5-dealing-with-database-changes"></a>5. 데이터베이스 변경 내용 처리
+## <a name="5-dealing-with-database-changes"></a>5. 데이터베이스 변경 처리
 
 이제 데이터베이스 스키마를 변경할 때 이러한 변경을 수행할 때 이러한 변경 내용을 반영 하기 위해 모델을 업데이트 해야 합니다.
 
@@ -215,7 +215,7 @@ CREATE TABLE [dbo].[Users]
 
 -   EF 디자이너에서 모델의 빈 지점을 마우스 오른쪽 단추로 클릭 하 고 ' 데이터베이스에서 모델 업데이트 ... '를 선택 하면 업데이트 마법사가 시작 됩니다.
 -   업데이트 마법사의 추가 탭에서 테이블 옆의 확인란을 선택 합니다 .이는 스키마에서 새 테이블을 추가 하려고 함을 나타냅니다.
-    @no__t-새로 고침 탭에는 업데이트 중에 변경 내용이 확인 될 모델의 기존 테이블이 표시 됩니다. 삭제 탭에는 스키마에서 제거 되 고 업데이트의 일부로 모델에서 제거 되는 모든 테이블이 표시 됩니다. 이러한 두 탭에 대 한 정보는 자동으로 검색 되며 정보 제공을 위해서만 제공 되며 설정을 변경할 수 없습니다. *
+    *새로 고침 탭에는 업데이트 중에 변경 내용이 확인 될 모델의 기존 테이블이 표시 됩니다. 삭제 탭에는 스키마에서 제거 되 고 업데이트의 일부로 모델에서 제거 되는 모든 테이블이 표시 됩니다. 이러한 두 탭에 대 한 정보는 자동으로 검색 되며 정보 제공을 위해서만 제공 되며 설정을 변경할 수 없습니다.*
 
     ![새로 고침 마법사](~/ef6/media/refreshwizard.png)
 

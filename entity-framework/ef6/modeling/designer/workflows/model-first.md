@@ -16,9 +16,9 @@ ms.locfileid: "72182436"
 ## <a name="watch-the-video"></a>비디오 시청
 이 비디오 및 단계별 연습은 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다. Model First를 사용 하면 Entity Framework Designer를 사용 하 여 새 모델을 만든 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
-**제공**: [행](https://romiller.com/)
+**작성자**: [Rowan Miller](https://romiller.com/)
 
-**비디오**: [WMV](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv)@NO__T-[1MP4](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [WMV (ZIP)](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)
+**비디오**: [wmv](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.wmv) | [MP4](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-mp4video-modelfirst.m4v) | [wmv (ZIP)](https://download.microsoft.com/download/5/B/1/5B1C338C-AFA7-4F68-B304-48BB008146EF/HDI-ITPro-MSDN-winvideo-modelfirst.zip)
 
 ## <a name="pre-requisites"></a>필수 구성 요소
 
@@ -26,12 +26,12 @@ ms.locfileid: "72182436"
 
 Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 도 설치 해야 합니다.
 
-## <a name="1-create-the-application"></a>1. 애플리케이션 만들기
+## <a name="1-create-the-application"></a>1. 응용 프로그램 만들기
 
 간단 하 게 유지 하기 위해 Model First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
 
 -   Visual Studio를 엽니다.
--   **파일-&gt; 새 &gt; 프로젝트 ...**
+-   **파일&gt; 새&gt; 프로젝트 ...**
 -   왼쪽 메뉴 및 **콘솔 응용 프로그램** 에서 **Windows** 를 선택 합니다.
 -   **Modelfirstsample** 을 이름으로 입력 합니다.
 -   **확인**을 선택합니다.
@@ -40,7 +40,7 @@ Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.m
 
 Visual Studio의 일부로 포함 된 Entity Framework Designer를 사용 하 여 모델을 만들 예정입니다.
 
--   **프로젝트-&gt; 새 항목 추가 ...**
+-   **프로젝트-새 항목 추가&gt; ...**
 -   왼쪽 메뉴에서 **데이터** 를 선택 하 고 **ADO.NET** 를 선택 엔터티 데이터 모델
 -   이름으로 **BloggingModel** 를 입력 하 고 **확인**을 클릭 하면 엔터티 데이터 모델 마법사가 시작 됩니다.
 -   **빈 모델** 을 선택 하 고 **마침** 을 클릭 합니다.
@@ -50,25 +50,25 @@ Visual Studio의 일부로 포함 된 Entity Framework Designer를 사용 하 �
 빈 모델을 사용 하 여 Entity Framework Designer를 엽니다. 이제 모델에 엔터티, 속성 및 연결을 추가 하기 시작할 수 있습니다.
 
 -   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **속성** 을 선택 합니다.
--   속성 창에서 **엔터티 컨테이너 이름을** **BloggingContext**
-    로 변경 합니다.*이 이름은 사용자를 위해 생성 되는 파생 컨텍스트의 이름이 며, 컨텍스트는 데이터베이스와의 세션을 나타내며, 쿼리 및 저장을 허용 합니다. 데이터*
--   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **추가 새-&gt; 엔터티** ...를 선택 합니다.
+-   속성 창 **엔터티 컨테이너 이름을** **BloggingContext**
+    변경 합니다. *이 이름은 사용자를 위해 생성 되는 파생 컨텍스트의 이름이 며, 컨텍스트는 데이터베이스와의 세션을 나타내며,이를 통해 데이터를 쿼리하고 저장할 수 있습니다* .
+-   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **추가 새-&gt; 엔터티 ...** 를 선택 합니다.
 -   **블로그** 를 엔터티 이름으로 입력 하 고 키 이름으로 **BlogId** 를 입력 하 고 **확인을** 클릭 합니다.
 
     ![블로그 엔터티 추가](~/ef6/media/addblogentity.png)
 
--   디자인 화면에서 새 엔터티를 마우스 오른쪽 단추로 클릭 하 고 **Add new-&gt; 스칼라 속성**을 선택 하 고 **name** 을 속성 이름으로 입력 합니다.
+-   디자인 화면에서 새 엔터티를 마우스 오른쪽 단추로 클릭 하 고 **추가 새-&gt; 스칼라 속성**을 선택 하 고 **이름** 을 속성 이름으로 입력 합니다.
 -   **Url** 속성을 추가 하려면이 프로세스를 반복 합니다.
--   디자인 화면에서 **url** 속성을 마우스 오른쪽 단추로 클릭 하 고 **속성**을 선택 하 속성 창 **Nullable** 설정을 **True**
-    로 변경 합니다.*이를 통해 url을 할당 하지 않고 데이터베이스에 블로그를 저장할 수 있습니다. *
+-   디자인 화면에서 **url** 속성을 마우스 오른쪽 단추로 클릭 하 고 **속성**을 선택 하 속성 창 **Nullable** 설정을 **True** 로 변경
+    합니다. *그러면 url을 할당 하지 않고 데이터베이스에 블로그를 저장할 수 있습니다* .
 -   방금 학습 된 기법을 사용 하 여 **PostId** key 속성이 있는 **Post** 엔터티를 추가 합니다.
 -   **게시** 엔터티에 **제목** 및 **내용** 스칼라 속성 추가
 
 이제 두 개의 엔터티가 있으므로 두 엔터티 간에 연결 (또는 관계)을 추가 합니다.
 
--   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **추가 &gt; 연결 추가** ...를 선택 합니다.
--   복합성이 **하나** 이 고 다른 끝점은 **여러**
-    의 다중성 **을 사용 하** 여 **게시물** 에 대 한 관계 지점의 한쪽 끝을 만듭니다 .이는*블로그에 많은 게시물이 있고 게시물이 하나의 블로그에 속해 있음을 의미* 합니다.
+-   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **추가 새-&gt; 연결** ...을 선택 합니다.
+-   복합성이 **하나** 이 고 다른 끝점을 사용 하 **여 복합성이** **많은**
+    에 대 한 관계 지점의 한쪽 **끝을 만듭니다** . 즉, *블로그의 게시물이 많고 게시물 하나가 블로그 하나에 속합니다* .
 -   **' Post ' 엔터티 상자에 외래 키 속성 추가** 가 선택 되어 있는지 확인 하 고 **확인** 을 클릭 합니다.
 
     ![연결 MF 추가](~/ef6/media/addassociationmf.png)
@@ -83,8 +83,8 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
 
 먼저 NuGet에서 최신 버전의 Entity Framework을 가져와야 합니다.
 
--   **프로젝트 – &gt; NuGet 패키지 관리** ... 
-     nuget* **패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
+-   **프로젝트 – NuGet 패키지를 관리&gt;** ...
+    * **Nuget 패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
 -   **설치** 클릭
@@ -93,7 +93,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
 
 -   EF 디자이너에서 모델의 빈 지점을 마우스 오른쪽 단추로 클릭 하 고 **코드 생성 항목 추가** ...를 선택 합니다.
 -   왼쪽 메뉴에서 **온라인 템플릿** 을 선택 하 고 **DbContext** 를 검색 합니다.
--   EF **.x DbContext 생성기 for C @ no__t-1**을 선택 하 고 이름으로 **BloggingModel** 를 입력 한 다음 **추가** 를 클릭 합니다.
+-   **C\#에 대해 EF 5.X DbContext 생성기** 를 선택 하 고 이름으로 **BloggingModel** 를 입력 한 다음 **추가** 를 클릭 합니다.
 
     ![DbContext 템플릿](~/ef6/media/dbcontexttemplate.png)
 
@@ -120,7 +120,7 @@ Visual Studio와 함께 설치 되는 데이터베이스 서버는 설치한 Vis
 -   스크립트가 표시 되 면 **마침** 을 클릭 하면 스크립트가 프로젝트에 추가 되 고 열립니다.
 -   스크립트를 마우스 오른쪽 단추로 클릭 하 고 **실행**을 선택 합니다. 사용 중인 Visual Studio 버전에 따라 연결할 데이터베이스를 지정 하 고 LocalDB 또는 SQL Server Express를 지정 하 라는 메시지가 표시 됩니다.
 
-## <a name="4-reading--writing-data"></a>4. 데이터 읽기 & 쓰기
+## <a name="4-reading--writing-data"></a>4. 데이터 쓰기 & 읽기
 
 이제 모델을 사용 하 여 일부 데이터에 액세스 하는 데 사용할 수 있습니다. 데이터에 액세스 하는 데 사용할 클래스는 EDMX 파일을 기반으로 자동으로 생성 됩니다.
 
@@ -172,7 +172,7 @@ ADO.NET Blog
 Press any key to exit...
 ```
 
-## <a name="5-dealing-with-model-changes"></a>5. 모델 변경 내용 처리
+## <a name="5-dealing-with-model-changes"></a>5. 모델 변경 처리
 
 이제 모델을 변경할 때 이러한 변경 작업을 수행 하면 데이터베이스 스키마도 업데이트 해야 합니다.
 
@@ -183,7 +183,7 @@ Press any key to exit...
     ![사용자 엔터티 추가](~/ef6/media/adduserentity.png)
 
 -   디자인 화면에서 **username** 속성을 마우스 오른쪽 단추로 클릭 하 고 **속성**을 선택 하 속성 창 **MaxLength** 설정을 **50**
-    로 변경 합니다.*이렇게 하면 사용자 이름에 저장할 수 있는 데이터를 50으로 제한 합니다. 문자*
+    하 여 *사용자 이름에 저장할 수 있는 데이터를 50 자로 제한* 합니다.
 -   **사용자** 엔터티에 **DisplayName** 스칼라 속성 추가
 
 이제 업데이트 된 모델이 있으며 새 사용자 엔터티 유형을 수용 하기 위해 데이터베이스를 업데이트할 준비가 되었습니다.
@@ -192,7 +192,7 @@ Press any key to exit...
 -   **마침** 클릭
 -   기존 DDL 스크립트와 모델의 매핑 및 저장소 부분을 덮어쓰는 방법에 대 한 경고 메시지가 표시 될 수 있습니다. 이러한 경고에 대해 모두 **예** 를 클릭 합니다.
 -   데이터베이스를 만들기 위해 업데이트 된 SQL 스크립트가 열립니다.  
-    @no__t-생성 된 스크립트는 모든 기존 테이블을 삭제 한 다음 스키마를 처음부터 다시 만듭니다. 로컬 개발에는 적용 되지만 이미 배포 된 데이터베이스에 변경 내용을 푸시할 수는 없습니다. 이미 배포 된 데이터베이스에 변경 내용을 게시 해야 하는 경우에는 스크립트를 편집 하거나 스키마 비교 도구를 사용 하 여 마이그레이션 스크립트를 계산 해야 합니다. *
+    *생성 된 스크립트는 모든 기존 테이블을 삭제 한 다음 스키마를 처음부터 다시 만듭니다. 로컬 개발에는 적용 되지만 이미 배포 된 데이터베이스에 변경 내용을 푸시할 수는 없습니다. 이미 배포 된 데이터베이스에 변경 내용을 게시 해야 하는 경우에는 스크립트를 편집 하거나 스키마 비교 도구를 사용 하 여 마이그레이션 스크립트를 계산 해야 합니다.*
 -   스크립트를 마우스 오른쪽 단추로 클릭 하 고 **실행**을 선택 합니다. 사용 중인 Visual Studio 버전에 따라 연결할 데이터베이스를 지정 하 고 LocalDB 또는 SQL Server Express를 지정 하 라는 메시지가 표시 됩니다.
 
 ## <a name="summary"></a>요약

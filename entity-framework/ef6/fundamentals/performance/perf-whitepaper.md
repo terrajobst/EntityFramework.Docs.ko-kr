@@ -13,9 +13,9 @@ ms.locfileid: "72181662"
 # <a name="performance-considerations-for-ef-4-5-and-6"></a>EF 4, 5 및 6에 대 한 성능 고려 사항
 David Obando, Eric Dettinger 및 기타
 
-게시할지 4 월 2012
+게시일: 4 월 2012
 
-마지막 업데이트: 2014 년 5 월
+마지막 업데이트: 5 월 2014
 
 ------------------------------------------------------------------------
 
@@ -43,7 +43,7 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 되�
 |:-----------------------------------------------------------------------------------------------------|:--------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `using(var db = new MyContext())` <br/> `{`                                                          | 컨텍스트 만들기          | 보통                                                                                                                                                                                                                                                                                                                                                                                                                        | 보통                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 | `  var q1 = ` <br/> `    from c in db.Customers` <br/> `    where c.Id == id1` <br/> `    select c;` | 쿼리 식 생성 | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                           | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 잠재적으로 매우 높음 (캐시 됨) <br/> -매개 변수 평가: 보통 <br/> -쿼리 변환: 보통 <br/> -구체화 생성: 보통 (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 보통 <br/> -Id 조회: 보통 | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 잠재적으로 매우 높음 (캐시 됨) <br/> -매개 변수 평가: 낮음 <br/> -쿼리 변환: 보통 (캐시 됨) <br/> -구체화 생성: 보통 (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 보통 <br/> -Id 조회: 보통 | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 보통 (캐시 됨) <br/> -매개 변수 평가: 낮음 <br/> -쿼리 변환: 보통 (캐시 됨) <br/> -구체화 생성: 보통 (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 보다 빠름) <br/> -Id 조회: 보통 |
+| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 매우 높음, 캐시 됨 <br/> -매개 변수 평가: 중형 <br/> -쿼리 변환: 중형 <br/> -구체화 generation: Medium (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중형 <br/> -Id 조회: 중간 | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 매우 높음, 캐시 됨 <br/> -매개 변수 평가: 낮음 <br/> -쿼리 변환: Medium (캐시 됨) <br/> -구체화 generation: Medium (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중형 <br/> -Id 조회: 중간 | -메타 데이터 로드: 높음 (캐시 됨) <br/> -뷰 생성: 보통 (캐시 됨) <br/> -매개 변수 평가: 낮음 <br/> -쿼리 변환: Medium (캐시 됨) <br/> -구체화 generation: Medium (캐시 됨) <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: Medium (EF5 보다 빠름) <br/> -Id 조회: 중간 |
 | `}`                                                                                                  | 연결. 닫기          | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                           | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
 
 
@@ -53,7 +53,7 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 되�
 |:-----------------------------------------------------------------------------------------------------|:--------------------------|:--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | `using(var db = new MyContext())` <br/> `{`                                                          | 컨텍스트 만들기          | 보통                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | 보통                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | `  var q1 = ` <br/> `    from c in db.Customers` <br/> `    where c.Id == id1` <br/> `    select c;` | 쿼리 식 생성 | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
-| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | -메타 데이터 ~~로드~~ 조회: ~~높음 (캐시~~ 됨) 거의 <br/> - ~~생성~~ 조회 보기: ~~잠재적으로 매우 높음 (캐시~~ 됨) 거의 <br/> -매개 변수 평가: 보통 <br/> -쿼리 ~~변환~~ 조회: 보통 <br/> -구체화 ~~생성~~ 조회: ~~보통 (캐시~~ 됨) 거의 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 보통 <br/> -Id 조회: 보통 | -메타 데이터 ~~로드~~ 조회: ~~높음 (캐시~~ 됨) 거의 <br/> - ~~생성~~ 조회 보기: ~~잠재적으로 매우 높음 (캐시~~ 됨) 거의 <br/> -매개 변수 평가: 낮음 <br/> -쿼리 ~~변환~~ 조회: ~~보통 (캐시~~ 됨) 거의 <br/> -구체화 ~~생성~~ 조회: ~~보통 (캐시~~ 됨) 거의 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 보통 <br/> -Id 조회: 보통 | -메타 데이터 ~~로드~~ 조회: ~~높음 (캐시~~ 됨) 거의 <br/> - ~~생성~~ 조회 보기: ~~보통 (캐시~~ 됨) 거의 <br/> -매개 변수 평가: 낮음 <br/> -쿼리 ~~변환~~ 조회: ~~보통 (캐시~~ 됨) 거의 <br/> -구체화 ~~생성~~ 조회: ~~보통 (캐시~~ 됨) 거의 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중간 (EF5 보다 빠름) <br/> -Id 조회: 보통 |
+| `  var c1 = q1.First();`                                                                             | LINQ 쿼리 실행      | -메타 데이터 ~~로드~~ 조회: ~~높음, 캐시 된~~ 낮음 <br/> - ~~생성~~ 조회 조회: ~~매우 높음, 캐시 된~~ 낮음 <br/> -매개 변수 평가: 중형 <br/> -쿼리 ~~변환~~ 조회: 중형 <br/> -구체화 ~~생성~~ 조회: ~~보통 이지만 캐시 된~~ 낮음 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중형 <br/> -Id 조회: 중간 | -메타 데이터 ~~로드~~ 조회: ~~높음, 캐시 된~~ 낮음 <br/> - ~~생성~~ 조회 조회: ~~매우 높음, 캐시 된~~ 낮음 <br/> -매개 변수 평가: 낮음 <br/> -쿼리 ~~변환~~ 조회: ~~보통 이지만 캐시 된~~ 낮음 <br/> -구체화 ~~생성~~ 조회: ~~보통 이지만 캐시 된~~ 낮음 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: 중형 <br/> -Id 조회: 중간 | -메타 데이터 ~~로드~~ 조회: ~~높음, 캐시 된~~ 낮음 <br/> - ~~생성~~ 조회 보기: ~~보통 이지만 캐시 된~~ 낮음 <br/> -매개 변수 평가: 낮음 <br/> -쿼리 ~~변환~~ 조회: ~~보통 이지만 캐시 된~~ 낮음 <br/> -구체화 ~~생성~~ 조회: ~~보통 이지만 캐시 된~~ 낮음 <br/> -데이터베이스 쿼리 실행: 잠재적으로 높음 (경우에 따라 더 나은 쿼리) <br/> + 연결 열기 <br/> + ExecuteReader <br/> + DataReader.Read <br/> 개체 구체화: Medium (EF5 보다 빠름) <br/> -Id 조회: 중간 |
 | `}`                                                                                                  | 연결. 닫기          | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | 낮음                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 
 
@@ -68,7 +68,7 @@ Entity Framework를 사용 하 여 쿼리를 실행할 때 시간이 소요 되�
 
 개념적 모델은 다양 한 방식으로 데이터베이스 스키마와 다를 수 있습니다. 예를 들어 하나의 단일 테이블을 사용 하 여 두 개의 서로 다른 엔터티 형식에 대 한 데이터를 저장할 수 있습니다. 상속 및 특수 한 매핑은 매핑 뷰의 복잡성에서 역할을 수행 합니다.
 
-매핑 사양에 따라 이러한 뷰를 계산 하는 프로세스는 뷰 생성을 호출 하는 것입니다. 뷰 생성은 모델이 로드 될 때 또는 빌드 시 "미리 생성 된 뷰"를 사용 하 여 동적으로 발생 될 수 있습니다. 후자는 C @ no__t-0 또는 VB 파일에 대 한 Entity SQL 문 형식으로 직렬화 됩니다.
+매핑 사양에 따라 이러한 뷰를 계산 하는 프로세스는 뷰 생성을 호출 하는 것입니다. 뷰 생성은 모델이 로드 될 때 또는 빌드 시 "미리 생성 된 뷰"를 사용 하 여 동적으로 발생 될 수 있습니다. 후자는 Entity SQL 문 형식으로 C\# 또는 VB 파일에 serialize 됩니다.
 
 뷰가 생성 될 때에도 유효성 검사가 수행 됩니다. 성능 관점에서 볼 때 대부분의 뷰 생성 비용은 실제로 엔터티 간의 연결이 적합 하 고 지원 되는 모든 작업에 대해 올바른 카디널리티를 갖도록 하는 뷰의 유효성을 검사 하는 것입니다.
 
@@ -96,7 +96,7 @@ Entity Framework 6에서 미리 생성 된 뷰를 사용 하는 방법에 대 �
 
 #### <a name="232-how-to-use-pre-generated-views-with-a-model-created-by-edmgen"></a>Edmgen.exe에서 만든 모델을 사용 하 여 미리 생성 된 뷰를 사용 하는 방법 2.3.2
 
-Edmgen.exe는 .NET과 함께 제공 되 고 Entity Framework 4 및 5와 함께 작동 하지만 Entity Framework 6에서는 작동 하지 않는 유틸리티입니다. Edmgen.exe를 사용 하면 명령줄에서 모델 파일, 개체 계층 및 뷰를 생성할 수 있습니다. 출력 중 하나는 원하는 언어의 뷰 파일 (VB 또는 C @ no__t-0)입니다. 각 엔터티 집합에 대 한 Entity SQL 코드 조각이 포함 된 코드 파일입니다. 미리 생성 된 뷰를 사용 하도록 설정 하려면 프로젝트에 파일을 포함 하기만 하면 됩니다.
+Edmgen.exe는 .NET과 함께 제공 되 고 Entity Framework 4 및 5와 함께 작동 하지만 Entity Framework 6에서는 작동 하지 않는 유틸리티입니다. Edmgen.exe를 사용 하면 명령줄에서 모델 파일, 개체 계층 및 뷰를 생성할 수 있습니다. 출력 중 하나는 선택, VB 또는 C\#언어의 뷰 파일이 됩니다. 각 엔터티 집합에 대 한 Entity SQL 코드 조각이 포함 된 코드 파일입니다. 미리 생성 된 뷰를 사용 하도록 설정 하려면 프로젝트에 파일을 포함 하기만 하면 됩니다.
 
 모델에 대 한 스키마 파일을 수동으로 편집 하는 경우 뷰 파일을 다시 생성 해야 합니다. **/Mode: ViewGeneration** 플래그를 사용 하 여 edmgen.exe를 실행 하 여이 작업을 수행할 수 있습니다.
 
@@ -104,12 +104,12 @@ Edmgen.exe는 .NET과 함께 제공 되 고 Entity Framework 4 및 5와 함께 �
 
 Edmgen.exe를 사용 하 여 EDMX 파일에 대 한 보기를 생성할 수도 있습니다. 이전에 참조 한 MSDN 항목에서는이 작업을 수행 하기 위해 빌드 전 이벤트를 추가 하는 방법에 대해 설명 합니다. 그러나이 작업은 복잡 하며 가능 하지 않은 경우도 있습니다. 일반적으로 모델이 edmx 파일에 있을 때 T4 템플릿을 사용 하 여 뷰를 생성 하는 것이 더 쉽습니다.
 
-ADO.NET 팀 블로그는 뷰를 생성 하기 위해 T4 템플릿을 사용 하는 방법에 설명 하는 게시물 ( \<http://blogs.msdn.com/b/adonet/archive/2008/06/20/how-to-use-a-t4-template-for-view-generation.aspx>) 합니다. 이 게시물에는 다운로드 하 여 프로젝트에 추가할 수 있는 템플릿이 포함 되어 있습니다. 템플릿은 Entity Framework의 첫 번째 버전용으로 작성 되었기 때문에 최신 버전의 Entity Framework에서 작동 하지 않을 수 있습니다. 그러나 Visual Studio 갤러리에서 Entity Framework 4 및 5에 대 한 최신 보기 생성 템플릿 집합을 다운로드할 수 있습니다.
+ADO.NET 팀 블로그는 뷰를 생성 하기 위해 T4 템플릿을 사용 하는 방법에 설명 하는 게시물 ( \<http://blogs.msdn.com/b/adonet/archive/2008/06/20/how-to-use-a-t4-template-for-view-generation.aspx>)합니다. 이 게시물에는 다운로드 하 여 프로젝트에 추가할 수 있는 템플릿이 포함 되어 있습니다. 템플릿은 Entity Framework의 첫 번째 버전용으로 작성 되었기 때문에 최신 버전의 Entity Framework에서 작동 하지 않을 수 있습니다. 그러나 Visual Studio 갤러리에서 Entity Framework 4 및 5에 대 한 최신 보기 생성 템플릿 집합을 다운로드할 수 있습니다.
 
--   VB.NET: \< @ NO__T-1
+-   VB.NET: \<http://visualstudiogallery.msdn.microsoft.com/118b44f2-1b91-4de2-a584-7a680418941d>
 -   C\#: \<http://visualstudiogallery.msdn.microsoft.com/ae7730ce-ddab-470f-8456-1b313cd2c44d>
 
-Entity Framework 6을 사용 하는 경우에서 가져올 수 있습니다 뷰 생성 T4 템플릿 아래에 있는 Visual Studio 갤러리 \<http://visualstudiogallery.msdn.microsoft.com/18a7db90-6705-4d19-9dd1-0a6c23d0751f> 합니다.
+Entity Framework 6을 사용 하는 경우에서 가져올 수 있습니다 뷰 생성 T4 템플릿 아래에 있는 Visual Studio 갤러리 \<http://visualstudiogallery.msdn.microsoft.com/18a7db90-6705-4d19-9dd1-0a6c23d0751f>합니다.
 
 ### <a name="24-reducing-the-cost-of-view-generation"></a>2.4 보기 생성 비용 절감
 
@@ -133,11 +133,11 @@ Entity Framework 4 및 5의 미리 생성 보기는 Edmgen.exe 또는 Entity Fra
 
 Visual Studio에서 Edmgen.exe 또는 Entity Designer를 사용 하는 경우 기본적으로 FKs를 가져오고, FKs와 IAs 간을 전환 하는 단일 확인란 또는 명령줄 플래그를 사용 합니다.
 
-Code First 모델이 클 경우 독립 연결을 사용 하는 것은 뷰 생성에 동일한 효과를 가집니다. 종속 개체에 대 한 클래스에 외래 키 속성을 포함 하 여 이러한 영향을 방지할 수 있습니다. 하지만 일부 개발자는 개체 모델을 polluting 하는 것으로 간주 합니다. 이 주제에 대 한 자세한 정보를 찾을 수 있습니다 \<http://blog.oneunicorn.com/2011/12/11/whats-the-deal-with-mapping-foreign-keys-using-the-entity-framework/> 합니다.
+Code First 모델이 클 경우 독립 연결을 사용 하는 것은 뷰 생성에 동일한 효과를 가집니다. 종속 개체에 대 한 클래스에 외래 키 속성을 포함 하 여 이러한 영향을 방지할 수 있습니다. 하지만 일부 개발자는 개체 모델을 polluting 하는 것으로 간주 합니다. 이 주제에 대 한 자세한 정보를 찾을 수 있습니다 \<http://blog.oneunicorn.com/2011/12/11/whats-the-deal-with-mapping-foreign-keys-using-the-entity-framework/>합니다.
 
 | 사용 하는 경우      | 단계                                                                                                                                                                                                                                                                                                                              |
 |:----------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Entity Designer | 두 엔터티 간의 연결을 추가한 후에는 참조 제약 조건이 있는지 확인 합니다. 참조 제약 조건은 독립적인 연결 대신 외래 키를 사용 Entity Framework에 게 알려 줍니다. 추가 세부 정보를 참조 하세요 \<http://blogs.msdn.com/b/efdesign/archive/2009/03/16/foreign-keys-in-the-entity-framework.aspx> 합니다. |
+| Entity Designer | 두 엔터티 간의 연결을 추가한 후에는 참조 제약 조건이 있는지 확인 합니다. 참조 제약 조건은 독립적인 연결 대신 외래 키를 사용 Entity Framework에 게 알려 줍니다. 추가 세부 정보를 참조 하세요 \<http://blogs.msdn.com/b/efdesign/archive/2009/03/16/foreign-keys-in-the-entity-framework.aspx>합니다. |
 | EDMGen          | Edmgen.exe를 사용 하 여 데이터베이스에서 파일을 생성 하는 경우 외래 키가 적용 되 고 모델에 추가 됩니다. EDMGen에 의해 노출 된 다양 한 옵션에 대 한 자세한 내용은 방문 [http://msdn.microsoft.com/library/bb387165.aspx](https://msdn.microsoft.com/library/bb387165.aspx)합니다.                           |
 | Code First      | Code First를 사용할 때 종속 개체에 외래 키 속성을 포함 하는 방법에 대 한 자세한 내용은 [Code First 규칙](~/ef6/modeling/code-first/conventions/built-in.md) 항목의 "관계 규칙" 섹션을 참조 하세요.                                                                                              |
 
@@ -145,7 +145,7 @@ Code First 모델이 클 경우 독립 연결을 사용 하는 것은 뷰 생성
 
 모델이 응용 프로그램의 프로젝트에 직접 포함 되어 있고 빌드 전 이벤트 또는 T4 템플릿을 통해 뷰를 생성 하는 경우 모델이 변경 되지 않은 경우에도 프로젝트를 다시 빌드할 때마다 생성 및 유효성 검사가 수행 됩니다. 모델을 별도의 어셈블리로 이동 하 고 응용 프로그램의 프로젝트에서 참조 하는 경우에는 모델을 포함 하는 프로젝트를 다시 빌드할 필요 없이 응용 프로그램을 다른 방법으로 변경할 수 있습니다.
 
-*참고:*   모델을 개별 어셈블리로 이동 하는 경우 모델에 대 한 연결 문자열을 클라이언트 프로젝트의 응용 프로그램 구성 파일에 복사 해야 합니다.
+*참고:* 모델을 개별 어셈블리로 이동할 때  모델에 대 한 연결 문자열을 클라이언트 프로젝트의 응용 프로그램 구성 파일에 복사 해야 합니다.
 
 #### <a name="243-disable-validation-of-an-edmx-based-model"></a>2.4.3 edmx 기반 모델의 유효성 검사를 사용 하지 않도록 설정
 
@@ -191,7 +191,7 @@ Find 메서드를 사용할 때 고려해 야 할 사항은 다음과 같습니�
 1.  개체가 캐시에 없으면 Find의 이점이 부정 되지만 구문은 키로 쿼리 하는 것 보다 간단 합니다.
 2.  자동 검색을 사용 하는 경우에는 찾기 방법의 비용이 한 크기 만큼 증가 하거나 모델의 복잡도와 개체 캐시에 있는 엔터티의 양에 따라 달라질 수 있습니다.
 
-또한 Find는 찾으려는 엔터티만 반환 하 고, 개체 캐시에 아직 연결 되지 않은 경우 연결 된 엔터티를 자동으로 로드 하지 않는다는 점에 유의 하세요. 연결 된 엔터티를 검색 해야 하는 경우 즉시 로드와 함께 키로 쿼리를 사용할 수 있습니다. 자세한 내용은 **8.1 지연 로드 및 즉시 로드 @ no__t-0.
+또한 Find는 찾으려는 엔터티만 반환 하 고, 개체 캐시에 아직 연결 되지 않은 경우 연결 된 엔터티를 자동으로 로드 하지 않는다는 점에 유의 하세요. 연결 된 엔터티를 검색 해야 하는 경우 즉시 로드와 함께 키로 쿼리를 사용할 수 있습니다. 자세한 내용은 **8.1 지연 로드 및 즉시 로드**를 참조 하세요.
 
 #### <a name="312-performance-issues-when-the-object-cache-has-many-entities"></a>개체 캐시에 많은 엔터티가 있는 경우 성능 문제 3.1.2
 
@@ -207,9 +207,9 @@ Entity Framework 6을 사용 하는 경우 개발자는 컬렉션을 반복 하 
 
 #### <a name="321-some-notes-about-query-plan-caching"></a>쿼리 계획 캐싱에 대 한 몇 가지 참고 사항 3.2.1
 
--   쿼리 계획 캐시는 모든 쿼리 유형에 대해 공유 됩니다. Entity SQL, LINQ to Entities 및 CompiledQuery 개체입니다.
+-   쿼리 계획 캐시는 Entity SQL, LINQ to Entities 및 CompiledQuery 개체의 모든 쿼리 유형에 대해 공유 됩니다.
 -   기본적으로 EntityCommand 또는 ObjectQuery를 통해 실행 되는지에 관계 없이 쿼리 계획 캐싱은 Entity SQL 쿼리에 대해 사용 하도록 설정 됩니다. .NET 4.5에서 Entity Framework의 LINQ to Entities 쿼리에 대해서도 기본적으로 사용 하도록 설정 되며, Entity Framework 6
-    -   EnablePlanCaching 속성 (EntityCommand 또는 ObjectQuery)을 false로 설정 하 여 쿼리 계획 캐싱을 사용 하지 않도록 설정할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+    -   EnablePlanCaching 속성 (EntityCommand 또는 ObjectQuery)을 false로 설정 하 여 쿼리 계획 캐싱을 사용 하지 않도록 설정할 수 있습니다. 예를 들면 다음과 같습니다.
 ``` csharp
                     var query = from customer in context.Customer
                                 where customer.CustomerId == id
@@ -396,7 +396,7 @@ Entity Framework는 메타 데이터 캐싱도 지원 합니다. 이는 기본�
 4.  ItemCollection은 주기적으로 사용 하기 위해 확인 됩니다. 작업 영역에 최근에 액세스 하지 않은 것으로 확인 되 면 다음 캐시 스윕에서 정리 하도록 표시 됩니다.
 5.  EntityConnection을 만들면 메타 데이터 캐시가 생성 됩니다 .이 경우에는 연결을 열 때까지 항목 컬렉션이 초기화 되지 않습니다. 이 작업 영역은 캐싱 알고리즘이 "사용 도중"이 아닌 것으로 확인 될 때까지 메모리에 유지 됩니다.
 
-고객 자문 팀 설명 큰 모델을 사용 하는 경우 "사용 중단"를 방지 하기 위해 ItemCollection에 대 한 참조를 보유 하는 블로그 게시물을 작성 했습니다: \<http://blogs.msdn.com/b/appfabriccat/archive/2010/10/22/metadataworkspace-reference-in-wcf-services.aspx> 합니다.
+고객 자문 팀 설명 큰 모델을 사용 하는 경우 "사용 중단"를 방지 하기 위해 ItemCollection에 대 한 참조를 보유 하는 블로그 게시물을 작성 했습니다: \<http://blogs.msdn.com/b/appfabriccat/archive/2010/10/22/metadataworkspace-reference-in-wcf-services.aspx>합니다.
 
 #### <a name="342-the-relationship-between-metadata-caching-and-query-plan-caching"></a>3.4.2 메타 데이터 캐싱 및 쿼리 계획 캐싱 간의 관계
 
@@ -411,7 +411,7 @@ Entity Framework는 메타 데이터 캐싱도 지원 합니다. 이는 기본�
 #### <a name="351-additional-references-for-results-caching-with-the-wrapping-provider"></a>래핑 공급자를 사용 하 여 결과 캐싱에 대 한 추가 참조 3.5.1
 
 -   Julie Lerman는 Windows Server AppFabric 캐싱을 사용 하도록 샘플 래핑 공급자를 업데이트 하는 방법을 포함 하는 "두 번째 수준 캐싱 Entity Framework 및 Windows Azure" MSDN 문서를 작성 했습니다. [https://msdn.microsoft.com/magazine/hh394143.aspx](https://msdn.microsoft.com/magazine/hh394143.aspx)
--   팀 블로그 Entity Framework 5에 대 한 캐싱 공급자와 함께 실행 하는 방법을 설명 하는 게시물에 Entity Framework 5를 사용 하 여 작업 하는 경우: \<http://blogs.msdn.com/b/adonet/archive/2010/09/13/ef-caching-with-jarek-kowalski-s-provider.aspx> 합니다. 또한 프로젝트에 2 단계 캐싱 추가를 자동화 하는 데 도움이 되는 T4 템플릿도 포함 합니다.
+-   팀 블로그 Entity Framework 5에 대 한 캐싱 공급자와 함께 실행 하는 방법을 설명 하는 게시물에 Entity Framework 5를 사용 하 여 작업 하는 경우: \<http://blogs.msdn.com/b/adonet/archive/2010/09/13/ef-caching-with-jarek-kowalski-s-provider.aspx>합니다. 또한 프로젝트에 2 단계 캐싱 추가를 자동화 하는 데 도움이 되는 T4 템플릿도 포함 합니다.
 
 ## <a name="4-autocompiled-queries"></a>자동 컴파일된 쿼리 4 개
 
@@ -426,14 +426,14 @@ Entity Framework는 쿼리를 다시 컴파일해야 하는 경우를 감지 하
 
 다른 조건으로 인해 쿼리에서 캐시를 사용 하지 못할 수 있습니다. 일반적인 예는 다음과 같습니다.
 
--   IEnumerable @ no__t-0T @ no__t-1을 사용 합니다. @ No__t-2 @ no__t (T 값)를 포함 합니다.
+-   IEnumerable&lt;T&gt;를 사용 합니다.&lt;&gt;(T 값)을 포함 합니다.
 -   상수를 사용 하 여 쿼리를 생성 하는 함수 사용.
 -   매핑되지 않은 개체의 속성 사용
 -   다시 컴파일해야 하는 다른 쿼리에 쿼리를 연결 합니다.
 
-### <a name="41-using-ienumerablelttgtcontainslttgtt-value"></a>4.1 IEnumerable @ no__t-0T @ no__t-1을 사용 합니다. Contains @ no__t-2T @ no__t-3 (T 값)
+### <a name="41-using-ienumerablelttgtcontainslttgtt-value"></a>4.1 IEnumerable&lt;T&gt;를 사용 합니다. T 값&lt;T&gt;를 포함 합니다.
 
-Entity Framework는 IEnumerable @ no__t-0T @ no__t-1을 호출 하는 쿼리를 캐시 하지 않습니다. 컬렉션의 값이 volatile로 간주 되기 때문에 메모리 내 컬렉션에 대해 @ no__t-2T @ no__t-3 (T 값)을 포함 합니다. 다음 예제 쿼리는 캐시 되지 않으므로 항상 계획 컴파일러에 의해 처리 됩니다.
+Entity Framework는 IEnumerable&lt;T&gt;를 호출 하는 쿼리를 캐시 하지 않습니다. 컬렉션의 값이 volatile로 간주 되기 때문에 메모리 내 컬렉션에 대 한&lt;T&gt;(T 값)를 포함 합니다. 다음 예제 쿼리는 캐시 되지 않으므로 항상 계획 컴파일러에 의해 처리 됩니다.
 
 ``` csharp
 int[] ids = new int[10000];
@@ -450,11 +450,11 @@ using (var context = new MyContext())
 
 Contains를 포함 하는 IEnumerable의 크기는 쿼리 컴파일 속도 또는 속도를 결정 합니다. 위의 예제에 나와 있는 것과 같은 큰 컬렉션을 사용 하는 경우 성능이 크게 저하 될 수 있습니다.
 
-Entity Framework 6에는 IEnumerable @ no__t-0T @ no__t-1 방법에 대 한 최적화가 포함 되어 있습니다. 쿼리가 실행 될 때 @ no__t-2T @ no__t-3 (T 값)이 포함 됩니다. 생성 되는 SQL 코드는 생성 하 고 읽기는 훨씬 더 빠르며, 대부분의 경우 서버 에서도 더 빠르게 실행 됩니다.
+Entity Framework 6에는 IEnumerable&lt;T&gt;하는 방법에 대 한 최적화가 포함 되어 있습니다. 쿼리가 실행 될 때&lt;T&gt;(T 값)을 포함 합니다. 생성 되는 SQL 코드는 생성 하 고 읽기는 훨씬 더 빠르며, 대부분의 경우 서버 에서도 더 빠르게 실행 됩니다.
 
 ### <a name="42-using-functions-that-produce-queries-with-constants"></a>4.2 상수를 사용 하 여 쿼리를 생성 하는 함수 사용
 
-Skip (), Take (), Contains () 및 DefautIfEmpty () LINQ 연산자는 매개 변수를 사용 하 여 SQL 쿼리를 생성 하지 않고 대신 전달 되는 값을 상수로 추가 합니다. 이로 인해 동일 하지 않을 수 있는 쿼리는 EF stack과 데이터베이스 서버 모두에서 쿼리 계획 캐시를 polluting 하 고 후속 쿼리 실행에서 동일한 상수를 사용 하지 않으면 다시 사용 되지 않습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+Skip (), Take (), Contains () 및 DefautIfEmpty () LINQ 연산자는 매개 변수를 사용 하 여 SQL 쿼리를 생성 하지 않고 대신 전달 되는 값을 상수로 추가 합니다. 이로 인해 동일 하지 않을 수 있는 쿼리는 EF stack과 데이터베이스 서버 모두에서 쿼리 계획 캐시를 polluting 하 고 후속 쿼리 실행에서 동일한 상수를 사용 하지 않으면 다시 사용 되지 않습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 var id = 10;
@@ -508,7 +508,7 @@ for (; i < count; ++i)
 
 ### <a name="43-using-the-properties-of-a-non-mapped-object"></a>4.3 매핑되지 않은 개체의 속성 사용
 
-쿼리에서 매핑되지 않은 개체 형식의 속성을 매개 변수로 사용 하는 경우 쿼리가 캐시 되지 않습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+쿼리에서 매핑되지 않은 개체 형식의 속성을 매개 변수로 사용 하는 경우 쿼리가 캐시 되지 않습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 using (var context = new MyContext())
@@ -689,7 +689,7 @@ var q = context.Products.AsNoTracking()
     -   외부 조인 쿼리에 대해 System.linq.enumerable.defaultifempty를 사용 하는 패턴은 Entity SQL의 단순 외부 조인 문 보다 더 복잡 한 쿼리를 생성 합니다.
     -   여전히 일반 패턴 일치와 마찬가지로를 사용할 수 없습니다.
 
-스칼라 속성을 프로젝션 하는 쿼리는 NoTracking가 지정 되지 않은 경우에도 추적 되지 않습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+스칼라 속성을 프로젝션 하는 쿼리는 NoTracking가 지정 되지 않은 경우에도 추적 되지 않습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 var q = context.Products.Where(p => p.Category.CategoryName == "Beverages").Select(p => new { p.ProductName });
@@ -857,7 +857,7 @@ var q = context.InvokeProductsForCategoryCQ("Beverages");
 > [!NOTE]
 > 완전성을 위해 EntityCommand에 대 한 Entity SQL 쿼리를 실행 하는 변형이 포함 되었습니다. 그러나 이러한 쿼리에 대 한 결과가 구체화 되지 않기 때문에 이러한 비교는 반드시 사과를 사과로 변환할 수 없습니다. 테스트에는 비교 fairer를 시도 하기 위해 구체화 하는 근접 한 근사값이 포함 됩니다.
 
-이 종단 간 사례에서는 DbContext 초기화 속도가 훨씬 더 작고 MetadataCollection @ no__t-0T @ no__t 조회를 포함 하 여 스택의 여러 부분에 대 한 성능 향상으로 인해 6 우수함 Entity Framework 5를 Entity Framework 합니다.
+이 종단 간 사례에서는 DbContext 초기화가 훨씬 더 빠르고 MetadataCollection&lt;T&gt; 조회를 포함 하 여 몇 가지 스택의 일부에 대 한 성능 향상으로 인해 Entity Framework 6 우수함 Entity Framework 5입니다.
 
 ## <a name="7-design-time-performance-considerations"></a>7 디자인 타임 성능 고려 사항
 
@@ -871,13 +871,13 @@ Entity Framework를 사용 하는 경우 다른 성능 고려 사항은 사용 �
 
 모델에서 TPT 상속을 사용 하는 경우 생성 되는 쿼리는 다른 상속 전략을 사용 하 여 생성 되는 쿼리보다 복잡 하므로 저장소에서 실행 시간이 길어질 수 있습니다.  일반적으로 TPT 모델에 대 한 쿼리를 생성 하 고 결과 개체를 구체화 하는 데 더 많은 시간이 걸립니다.
 
-"성능 고려 사항을 참조 Entity Framework에서 TPT (형식당 하나의 테이블) 상속을 사용 하는 경우" MSDN 블로그 게시: \<http://blogs.msdn.com/b/adonet/archive/2010/08/17/performance-considerations-when-using-tpt-table-per-type-inheritance-in-the-entity-framework.aspx> 합니다.
+"성능 고려 사항을 참조 Entity Framework에서 TPT (형식당 하나의 테이블) 상속을 사용 하는 경우" MSDN 블로그 게시: \<http://blogs.msdn.com/b/adonet/archive/2010/08/17/performance-considerations-when-using-tpt-table-per-type-inheritance-in-the-entity-framework.aspx>합니다.
 
 #### <a name="711-avoiding-tpt-in-model-first-or-code-first-applications"></a>Model First 또는 Code First 응용 프로그램의 TPT 방지 7.1.1
 
 TPT 스키마가 있는 기존 데이터베이스를 통해 모델을 만드는 경우에는 여러 가지 옵션을 사용할 수 없습니다. 그러나 Model First 또는 Code First를 사용 하 여 응용 프로그램을 만들 때 성능 문제에 대 한 TPT 상속을 피해 야 합니다.
 
-Entity Designer 마법사에서 Model First 사용 하는 경우 모델의 모든 상속에 대 한 TPT을 얻게 됩니다. Model First를 사용 하 여 TPH 상속 전략으로 전환 하려는 경우 Visual Studio 갤러리에서 "엔터티 디자이너 데이터베이스 생성 전원 팩" 사용 가능한를 사용할 수 있습니다 ( \<http://visualstudiogallery.msdn.microsoft.com/df3541c3-d833-4b65-b942-989e7ec74c87/>) 합니다.
+Entity Designer 마법사에서 Model First 사용 하는 경우 모델의 모든 상속에 대 한 TPT을 얻게 됩니다. Model First를 사용 하 여 TPH 상속 전략으로 전환 하려는 경우 Visual Studio 갤러리에서 "엔터티 디자이너 데이터베이스 생성 전원 팩" 사용 가능한를 사용할 수 있습니다 ( \<http://visualstudiogallery.msdn.microsoft.com/df3541c3-d833-4b65-b942-989e7ec74c87/>)합니다.
 
 Code First를 사용 하 여 상속 된 모델의 매핑을 구성 하는 경우 EF는 기본적으로 TPH를 사용 하므로 상속 계층 구조의 모든 엔터티는 동일한 테이블에 매핑됩니다. MSDN Magazine의 "코드 엔터티 Framework4.1에서 첫 번째." 문서 "매핑 Fluent API를 사용한" 섹션을 참조 하세요 ( [http://msdn.microsoft.com/magazine/hh126815.aspx](https://msdn.microsoft.com/magazine/hh126815.aspx)) 대 한 자세한 내용은 합니다.
 
@@ -887,19 +887,19 @@ Code First를 사용 하 여 상속 된 모델의 매핑을 구성 하는 경우
 
 모델에는 1005 엔터티 집합과 4227 연결 집합이 포함 되어 있습니다.
 
-| Configuration                              | 사용 된 시간 분석                                                                                                                                               |
+| 구성                              | 사용 된 시간 분석                                                                                                                                               |
 |:-------------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | Visual Studio 2010, Entity Framework 4     | SSDL 생성: 2 hr 27 분 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 생성 보기: 2 h 14 분 |
 | Visual Studio 2010 SP1, Entity Framework 4 | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 생성 보기: 1 hr 53 분   |
 | Visual Studio 2013, Entity Framework 5     | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 생성 보기: 65 분    |
-| Visual Studio 2013, Entity Framework 6     | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 생성 보기: 28 초.   |
+| Visual Studio 2013, Entity Framework 6     | SSDL 생성: 1 초 <br/> 매핑 생성: 1 초 <br/> CSDL 생성: 1 초 <br/> ObjectLayer 생성: 1 초 <br/> 뷰 생성: 28 초.   |
 
 
 SSDL을 생성할 때 클라이언트 개발 컴퓨터가 서버에서 결과가 반환 될 때까지 유휴 상태로 대기 하는 동안에는 SQL Server에서 로드가 거의 완전히 소비 됩니다. Dba는 특히 이러한 개선 사항을 이해 해야 합니다. 또한 기본적으로 모델 생성의 전체 비용이 생성 된 보기에서 발생 합니다.
 
 ### <a name="73-splitting-large-models-with-database-first-and-model-first"></a>7.3 Database First 및 Model First으로 많은 모델 분할
 
-모델 크기가 늘어나면 디자이너 화면이 복잡해 집니다. 일반적으로 디자이너를 효과적으로 사용 하기 위해 너무 많은 엔터티가 300 개 이상인 모델을 고려 합니다. 큰 모델을 분할 하기 위한 여러 옵션을 설명 하는 다음 블로그 게시물: \<http://blogs.msdn.com/b/adonet/archive/2008/11/25/working-with-large-models-in-entity-framework-part-2.aspx> 합니다.
+모델 크기가 늘어나면 디자이너 화면이 복잡해 집니다. 일반적으로 디자이너를 효과적으로 사용 하기 위해 너무 많은 엔터티가 300 개 이상인 모델을 고려 합니다. 큰 모델을 분할 하기 위한 여러 옵션을 설명 하는 다음 블로그 게시물: \<http://blogs.msdn.com/b/adonet/archive/2008/11/25/working-with-large-models-in-entity-framework-part-2.aspx>합니다.
 
 첫 번째 버전의 Entity Framework에 대 한 게시물이 작성 되었지만 단계가 여전히 적용 됩니다.
 
@@ -925,7 +925,7 @@ POCO 엔터티에 변경 내용 추적 프록시가 없으면 엔터티의 콘�
 
 ## <a name="8-loading-related-entities"></a>8 개 관련 엔터티 로드 중
 
-### <a name="81-lazy-loading-vs-eager-loading"></a>8.1 지연 로드 및 즉시 로드
+### <a name="81-lazy-loading-vs-eager-loading"></a>8.1 지연 로드 대비 즉시 로드
 
 Entity Framework는 대상 엔터티와 관련 된 엔터티를 로드 하는 여러 가지 방법을 제공 합니다. 예를 들어 제품을 쿼리 하는 경우 관련 주문이 개체 상태 관리자에 로드 되는 방법이 다릅니다. 성능 관점에서 볼 때 관련 엔터티를 로드할 때 가장 중요 한 질문은 지연 로드를 사용할지 즉시 로드를 사용할지 여부입니다.
 
@@ -1141,7 +1141,7 @@ using (NorthwindEntities context = new NorthwindEntities())
 
 Entity Framework 현재 스칼라 또는 복합 속성의 지연 로드를 지원 하지 않습니다. 그러나 BLOB과 같은 커다란 개체를 포함 하는 테이블이 있는 경우 테이블 분할을 사용 하 여 대량 속성을 개별 엔터티로 구분할 수 있습니다. 예를 들어 varbinary photo 열을 포함 하는 Product 테이블이 있다고 가정 합니다. 쿼리에서이 속성에 액세스할 필요가 없는 경우 테이블 분할을 사용 하 여 일반적으로 필요한 엔터티 부분만 가져올 수 있습니다. 제품 사진을 나타내는 엔터티는 명시적으로 필요한 경우에만 로드 됩니다.
 
-테이블 분할을 사용 하도록 설정 하는 방법을 보여주는 좋은 리소스는 Gil Fink "테이블 분할에서 Entity Framework" 블로그 게시물: \<http://blogs.microsoft.co.il/blogs/gilf/archive/2009/10/13/table-splitting-in-entity-framework.aspx> 합니다.
+테이블 분할을 사용 하도록 설정 하는 방법을 보여주는 좋은 리소스는 Gil Fink "테이블 분할에서 Entity Framework" 블로그 게시물: \<http://blogs.microsoft.co.il/blogs/gilf/archive/2009/10/13/table-splitting-in-entity-framework.aspx>합니다.
 
 ## <a name="9-other-considerations"></a>9 기타 고려 사항
 
@@ -1179,7 +1179,7 @@ finally
 }
 ```
 
-AutoDetectChanges를 해제 하기 전에 엔터티에서 발생 하는 변경 내용에 대 한 특정 정보를 추적 하는 기능이 손실 될 Entity Framework 수 있다는 것을 이해 하는 것이 좋습니다. 올바르게 처리 되지 않으면 응용 프로그램에서 데이터가 일치 하지 않을 수 있습니다. AutoDetectChanges 해제에 대 한 자세한 내용은 읽을 \<http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/> 합니다.
+AutoDetectChanges를 해제 하기 전에 엔터티에서 발생 하는 변경 내용에 대 한 특정 정보를 추적 하는 기능이 손실 될 Entity Framework 수 있다는 것을 이해 하는 것이 좋습니다. 올바르게 처리 되지 않으면 응용 프로그램에서 데이터가 일치 하지 않을 수 있습니다. AutoDetectChanges 해제에 대 한 자세한 내용은 읽을 \<http://blog.oneunicorn.com/2012/03/12/secrets-of-detectchanges-part-3-switching-off-automatic-detectchanges/>합니다.
 
 ### <a name="93-context-per-request"></a>9.3 요청 당 컨텍스트
 
@@ -1187,7 +1187,7 @@ AutoDetectChanges를 해제 하기 전에 엔터티에서 발생 하는 변경 �
 
 ### <a name="94-database-null-semantics"></a>9.4 데이터베이스 null 의미 체계
 
-기본적으로 Entity Framework C @ no__t-0 null 비교 의미 체계가 있는 SQL 코드를 생성 합니다. 다음 예제 쿼리를 참조 하세요.
+기본적으로 Entity Framework는 C\# null 비교 의미 체계가 있는 SQL 코드를 생성 합니다. 다음 예제 쿼리를 살펴 보십시오.
 
 ``` csharp
             int? categoryId = 7;
@@ -1210,9 +1210,9 @@ AutoDetectChanges를 해제 하기 전에 엔터티에서 발생 하는 변경 �
             var r = q.ToList();
 ```
 
-이 예제에서는 공급자 및 UnitPrice와 같이 엔터티의 nullable 속성에 대해 다양 한 nullable 변수를 비교 합니다. 이 쿼리에 대해 생성 된 SQL은 매개 변수 값이 열 값과 같은지 또는 매개 변수와 열 값이 모두 null 인지를 요청 합니다. 이렇게 하면 데이터베이스 서버에서 null을 처리 하는 방식이 숨겨지고 여러 데이터베이스 공급 업체에 일관 된 C @ no__t null 환경이 제공 됩니다. 반면에 생성 된 코드는 비트 복잡 쿼리의 where 문에 있는 비교의 양이 증가 하는 경우 제대로 수행 되지 않을 수 있습니다.
+이 예제에서는 공급자 및 UnitPrice와 같이 엔터티의 nullable 속성에 대해 다양 한 nullable 변수를 비교 합니다. 이 쿼리에 대해 생성 된 SQL은 매개 변수 값이 열 값과 같은지 또는 매개 변수와 열 값이 모두 null 인지를 요청 합니다. 이렇게 하면 데이터베이스 서버에서 null을 처리 하는 방식이 숨겨지고 여러 데이터베이스 공급 업체에서 일관 된 C\# null 환경을 제공 하 게 됩니다. 반면에 생성 된 코드는 비트 복잡 쿼리의 where 문에 있는 비교의 양이 증가 하는 경우 제대로 수행 되지 않을 수 있습니다.
 
-이러한 상황을 처리 하는 한 가지 방법은 데이터베이스 null 의미 체계를 사용 하는 것입니다. 이는 no__t null 의미 체계와 다르게 동작할 수 있으며,이는 데이터베이스 엔진에서 null 값을 처리 하는 방법을 제공 하는 간단한 SQL을 생성 하기 Entity Framework 때문입니다. 데이터베이스 null 의미 체계는 컨텍스트 구성에 대해 하나의 단일 구성 줄을 사용 하 여 컨텍스트별으로 활성화 될 수 있습니다.
+이러한 상황을 처리 하는 한 가지 방법은 데이터베이스 null 의미 체계를 사용 하는 것입니다. 이는 데이터베이스 엔진에서 null 값을 처리 하는 방법을 제공 하는 보다 간단한 SQL을 생성 Entity Framework 하기 때문에 C\# null 의미 체계와 다르게 동작할 수 있습니다. 데이터베이스 null 의미 체계는 컨텍스트 구성에 대해 하나의 단일 구성 줄을 사용 하 여 컨텍스트별으로 활성화 될 수 있습니다.
 
 ``` csharp
                 context.Configuration.UseDatabaseNullSemantics = true;
@@ -1226,7 +1226,8 @@ AutoDetectChanges를 해제 하기 전에 엔터티에서 발생 하는 변경 �
 
 Entity Framework 6에서는 .NET 4.5 이상에서 실행 될 때 비동기 작업에 대 한 지원이 도입 되었습니다. 대부분의 경우 IO 관련 경합이 있는 응용 프로그램은 비동기 쿼리 및 저장 작업을 사용 하는 데 가장 유용 합니다. 응용 프로그램의 IO 경합이 발생 하지 않는 경우에는 async를 사용 하는 것이 가장 좋습니다. 비동기를 사용 하는 경우 동기식으로 실행 되 고 동기 호출과 같은 시간 내에 결과를 반환 하는 것입니다. 또는 최악의 경우에는 단순히 비동기 작업에 대 한 실행을 연기 하 고 추가 tim을 추가 합니다. e-시나리오를 완료 합니다.
 
-방문 비동기 응용 프로그램의 성능이 향상 됩니다 하는 경우를 결정 하는 데 도움이 되는 비동기 프로그래밍 작업에 대 한 내용은 [http://msdn.microsoft.com/library/hh191443.aspx ](https://msdn.microsoft.com/library/hh191443.aspx)합니다. Entity Framework에서 비동기 작업을 사용 하는 방법에 대 한 자세한 내용은 [ 비동기 쿼리 및 저장 @ no__t-1을 참조 하세요.
+방문 비동기 응용 프로그램의 성능이 향상 됩니다 하는 경우를 결정 하는 데 도움이 되는 비동기 프로그래밍 작업에 대 한 내용은 [http://msdn.microsoft.com/library/hh191443.aspx ](https://msdn.microsoft.com/library/hh191443.aspx)합니다. Entity Framework에서 비동기 작업을 사용 하는 방법에 대 한 자세한 내용은 [비동기 쿼리 및 저장](~/ef6/fundamentals/async.md
+)을 참조 하세요.
 
 ### <a name="96-ngen"></a>9.6 NGEN
 
@@ -1248,15 +1249,15 @@ EDMX와 Code First를 사용 하도록 선택 하는 경우 Code First에서 도
 
 Entity Framework에서 성능 문제가 발생 하는 경우 Visual Studio에 기본 제공 된 것과 같은 프로파일러를 사용 하 여 응용 프로그램이 시간을 소비 하는 위치를 확인할 수 있습니다. "ADO.NET Entity Framework-1 부의 성능 알아보기" 블로그 게시물에서 원형 차트를 생성 하는 데에서는 도구입니다 ( \<http://blogs.msdn.com/b/adonet/archive/2008/02/04/exploring-the-performance-of-the-ado-net-entity-framework-part-1.aspx>) Entity Framework 동작 콜드 및 웜 쿼리 중의 시간을 소모 하는 위치를 보여 주는 합니다.
 
-데이터 및 모델링 고객 자문 팀에서 작성 한 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 프로파일러를 사용 하 여 성능 문제를 조사 하는 방법에 대 한 실제 예제를 보여 줍니다.  \<http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>. 이 게시물은 windows 응용 프로그램용으로 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 해야 하는 경우 Visual Studio에서 작업 하는 것 보다 Windows 성능 레코더 (WPR) 및 Windows 성능 분석기 (WPA) 도구를 사용 하는 것이 좋습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [http://www.microsoft.com/download/details.aspx?id=39982](https://www.microsoft.com/download/details.aspx?id=39982)).
+데이터 및 모델링 고객 자문 팀에서 작성 한 "Visual Studio 2010 Profiler를 사용 하 여 프로 파일링 Entity Framework" 블로그 게시물에서는 프로파일러를 사용 하 여 성능 문제를 조사 하는 방법에 대 한 실제 예제를 보여 줍니다.  http://blogs.msdn.com/b/dmcat/archive/2010/04/30/profiling-entity-framework-using-the-visual-studio-2010-profiler.aspx>를 \<합니다. 이 게시물은 windows 응용 프로그램용으로 작성 되었습니다. 웹 응용 프로그램을 프로 파일링 해야 하는 경우 Visual Studio에서 작업 하는 것 보다 Windows 성능 레코더 (WPR) 및 Windows 성능 분석기 (WPA) 도구를 사용 하는 것이 좋습니다. WPR 및 WPA는 Windows 성능 도구 키트는 Windows 평가 및 배포 키트에 포함 된 부분 ( [http://www.microsoft.com/download/details.aspx?id=39982](https://www.microsoft.com/download/details.aspx?id=39982)).
 
 ### <a name="102-applicationdatabase-profiling"></a>10.2 응용 프로그램/데이터베이스 프로 파일링
 
 Visual Studio에 기본 제공 되는 프로파일러와 같은 도구를 통해 응용 프로그램에서 시간이 소요 되는 위치를 알 수 있습니다.  실행 중인 응용 프로그램에 대 한 동적 분석을 수행 하는 또 다른 유형의 프로파일러를 사용할 수 있으며,이는 요구 사항에 따라 프로덕션 또는 사전 프로덕션 환경에서 실행 되는 응용 프로그램을 확인 하 고 일반적인 문제 및 데이터베이스 액세스의 패턴
 
-상업적으로 사용할 수 있는 두 가지 프로파일러는 Entity Framework Profiler ( \<http://efprof.com>) ORMProfiler 및 ( \<http://ormprofiler.com>) 합니다.
+상업적으로 사용할 수 있는 두 가지 프로파일러는 Entity Framework Profiler ( \<http://efprof.com>) ORMProfiler 및 ( \<http://ormprofiler.com>)합니다.
 
-응용 프로그램이 Code First를 사용 하는 MVC 응용 프로그램 인 경우 StackExchange의 미니 프로파일러를 사용할 수 있습니다. Scott Hanselman 블로그가이 도구 설명: \<http://www.hanselman.com/blog/NuGetPackageOfTheWeek9ASPNETMiniProfilerFromStackExchangeRocksYourWorld.aspx> 합니다.
+응용 프로그램이 Code First를 사용 하는 MVC 응용 프로그램 인 경우 StackExchange의 미니 프로파일러를 사용할 수 있습니다. Scott Hanselman 블로그가이 도구 설명: \<http://www.hanselman.com/blog/NuGetPackageOfTheWeek9ASPNETMiniProfilerFromStackExchangeRocksYourWorld.aspx>합니다.
 
 응용 프로그램의 데이터베이스 작업을 프로 파일링 하는 방법에 대 한 자세한 내용은 [Entity Framework의 데이터베이스 작업 프로 파일링](https://msdn.microsoft.com/magazine/gg490349.aspx)이라는 Julie LERMAN의 MSDN Magazine 문서를 참조 하세요.
 
@@ -1273,7 +1274,7 @@ Entity Framework 6을 사용 하는 경우 기본 제공 로깅 기능을 사용
     }
 ```
 
-이 예에서 데이터베이스 작업은 콘솔에 기록 되지만 Log 속성은 모든 Action @ no__t-0string @ no__t-1 대리자를 호출 하도록 구성할 수 있습니다.
+이 예제에서 데이터베이스 작업은 콘솔에 기록 되지만 Log 속성은 Action&lt;문자열&gt; delegate를 호출 하도록 구성할 수 있습니다.
 
 다시 컴파일하지 않고 데이터베이스 로깅을 사용 하도록 설정 하 고 Entity Framework 6.1 이상을 사용 하려는 경우 응용 프로그램의 web.config 또는 app.config 파일에 인터셉터를 추가 하 여이 작업을 수행할 수 있습니다.
 
@@ -1287,7 +1288,7 @@ Entity Framework 6을 사용 하는 경우 기본 제공 로깅 기능을 사용
   </interceptors>
 ```
 
-이동 다시 컴파일하지 않고도 로깅을 추가 하는 방법에 대 한 자세한 내용은 \<http://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/> 합니다.
+이동 다시 컴파일하지 않고도 로깅을 추가 하는 방법에 대 한 자세한 내용은 \<http://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/>합니다.
 
 ## <a name="11-appendix"></a>11 부록
 
@@ -1300,7 +1301,7 @@ Entity Framework 6을 사용 하는 경우 기본 제공 로깅 기능을 사용
 ##### <a name="11111-software-environment"></a>11.1.1.1 소프트웨어 환경
 
 -   Entity Framework 4 소프트웨어 환경
-    -   OS 이름: Windows Server 2008 R2 Enterprise SP1
+    -   OS 이름: Windows Server 2008 R2 Enterprise SP1.
     -   Visual Studio 2010 – Ultimate.
     -   Visual Studio 2010 SP1 (일부 비교에만 해당)
 -   Entity Framework 5 및 6 소프트웨어 환경
@@ -1309,7 +1310,7 @@ Entity Framework 6을 사용 하는 경우 기본 제공 로깅 기능을 사용
 
 ##### <a name="11112-hardware-environment"></a>11.1.1.2 하드웨어 환경
 
--   이중 프로세서:     Intel (R) Xeon (R) CPU L5520 W3530 @ 2.27 GHz, 2261 Mhz8 GHz, 4 개 코어, 84 개의 논리적 프로세서.
+-   이중 프로세서: Intel (R) Xeon (R) CPU L5520 W3530 @ 2.27 GHz, 2261 Mhz8 GHz, 4 개 코어, 84 개의 논리적 프로세서.
 -   2412 GB의 Ram
 -   136 GB SCSI250GB SATA 7200 rpm/s 드라이브를 4 개의 파티션으로 분할 합니다.
 
@@ -1317,7 +1318,7 @@ Entity Framework 6을 사용 하는 경우 기본 제공 로깅 기능을 사용
 
 ##### <a name="11121-software-environment"></a>11.1.2.1 소프트웨어 환경
 
--   OS 이름: Windows Server 2008 R 28.1 Enterprise SP1
+-   OS 이름: Windows Server 2008 R 28.1 Enterprise SP1.
 -   SQL Server 2008 R22012.
 
 ##### <a name="11122-hardware-environment"></a>11.1.2.2 하드웨어 환경
@@ -1529,7 +1530,7 @@ Navision 모델에 사용 되는 쿼리 목록에는 다음과 같은 3 가지 �
   </Query>
 ```
 
-여기서 MDF @ no__t-0SessionLogin @ no__t-1Time @ no__t-2Max ()는 모델에서 다음과 같이 정의 됩니다.
+MDF\_SessionLogin\_Time\_Max ()는 모델에서 다음과 같이 정의 됩니다.
 
 ``` xml
   <Function Name="MDF_SessionLogin_Time_Max" ReturnType="Collection(DateTime)">

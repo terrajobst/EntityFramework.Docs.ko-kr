@@ -100,7 +100,7 @@ WHERE @@ROWCOUNT > 0 AND [Id] = scope_identity()
 
 Log 속성이 설정 되 면 다음 내용이 모두 로깅됩니다.  
 
-- 모든 유형의 명령에 대 한 SQL 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+- 모든 유형의 명령에 대 한 SQL 예를 들면 다음과 같습니다.  
     - 일반 LINQ 쿼리, eSQL 쿼리 및 SqlQuery와 같은 메서드의 원시 쿼리를 포함 하는 쿼리  
     - SaveChanges의 일부로 생성 된 삽입, 업데이트 및 삭제  
     - 지연 로드에 의해 생성 된 것과 같은 관계 로딩 쿼리  
@@ -227,7 +227,7 @@ public class OneLineFormatter : DatabaseLogFormatter
 
 ### <a name="setting-the-databaselogformatter"></a>DatabaseLogFormatter 설정  
 
-새 DatabaseLogFormatter 클래스를 만든 후에는 EF를 사용 하 여 등록 해야 합니다. 코드 기반 구성을 사용 하 여이 작업을 수행 합니다. 즉, DbContext 클래스와 동일한 어셈블리의 DbConfiguration에서 파생 되는 새 클래스를 만든 후이 새 클래스의 생성자에서 SetDatabaseLogFormatter를 호출 하는 것을 의미 합니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+새 DatabaseLogFormatter 클래스를 만든 후에는 EF를 사용 하 여 등록 해야 합니다. 코드 기반 구성을 사용 하 여이 작업을 수행 합니다. 즉, DbContext 클래스와 동일한 어셈블리의 DbConfiguration에서 파생 되는 새 클래스를 만든 후이 새 클래스의 생성자에서 SetDatabaseLogFormatter를 호출 하는 것을 의미 합니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 public class MyDbConfiguration : DbConfiguration
@@ -261,11 +261,11 @@ Context 'BlogContext' is executing command 'insert [dbo].[Posts]([Title], [BlogI
 
 ### <a name="the-interception-context"></a>가로채기 컨텍스트입니다.  
 
-인터셉터 인터페이스에 정의 된 메서드를 살펴보면 모든 호출에 DbInterceptionContext 형식의 개체 또는이에서 파생 된 형식 (예: DbCommandInterceptionContext @ no__t-0 @ no__t-1)을 지정 하는 것이 명백 합니다. 이 개체는 EF에서 수행 하는 동작에 대 한 컨텍스트 정보를 포함 합니다. 예를 들어 DbContext를 대신 하 여 작업을 수행 하는 경우 DbContext는 DbInterceptionContext에 포함 됩니다. 마찬가지로, 비동기적으로 실행 되는 명령의 경우 IsAsync 플래그는 DbCommandInterceptionContext에 설정 됩니다.  
+인터셉터 인터페이스에 정의 된 메서드를 살펴보면 모든 호출에 DbInterceptionContext 형식의 개체 또는 DbCommandInterceptionContext\<\>와 같이이에서 파생 된 일부 형식의 개체가 지정 되는 것을 알 수 있습니다. 이 개체는 EF에서 수행 하는 동작에 대 한 컨텍스트 정보를 포함 합니다. 예를 들어 DbContext를 대신 하 여 작업을 수행 하는 경우 DbContext는 DbInterceptionContext에 포함 됩니다. 마찬가지로, 비동기적으로 실행 되는 명령의 경우 IsAsync 플래그는 DbCommandInterceptionContext에 설정 됩니다.  
 
 ### <a name="result-handling"></a>결과 처리  
 
-DbCommandInterceptionContext @ no__t-0 @ no__t 클래스에는 Result, OriginalResult, Exception 및 Originalresult 이라는 속성이 포함 되어 있습니다. 이러한 속성은 작업이 실행 되기 전에 호출 되는 가로채기 메서드를 호출 하는 경우 null/0으로 설정 됩니다. 즉, ... 메서드를 실행 합니다. 작업이 실행 되 고 성공 하면 Result와 OriginalResult가 작업의 결과로 설정 됩니다. 이러한 값은 작업이 실행 된 후 호출 되는 가로채기 메서드에서 관찰 될 수 있습니다. 즉, ... 메서드를 실행 했습니다. 마찬가지로 작업에서을 throw 하는 경우 Exception 및 OriginalException 속성이 설정 됩니다.  
+DbCommandInterceptionContext\<\> 클래스에는 Result, OriginalResult, Exception 및 Originalresult 이라는 속성이 포함 되어 있습니다. 이러한 속성은 작업이 실행 되기 전에 호출 되는 가로채기 메서드를 호출 하는 경우 null/0으로 설정 됩니다. 즉, ... 메서드를 실행 합니다. 작업이 실행 되 고 성공 하면 Result와 OriginalResult가 작업의 결과로 설정 됩니다. 이러한 값은 작업이 실행 된 후 호출 되는 가로채기 메서드에서 관찰 될 수 있습니다. 즉, ... 메서드를 실행 했습니다. 마찬가지로 작업에서을 throw 하는 경우 Exception 및 OriginalException 속성이 설정 됩니다.  
 
 #### <a name="suppressing-execution"></a>실행 억제  
 
@@ -289,7 +289,7 @@ OriginalResult 및 Originalresult 속성은 읽기 전용 이며 실제로 작�
 
 ### <a name="registering-interceptors"></a>인터셉터 등록  
 
-하나 이상의 가로채기 인터페이스를 구현 하는 클래스를 만든 후에는 DbInterception 클래스를 사용 하 여 EF에 등록할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+하나 이상의 가로채기 인터페이스를 구현 하는 클래스를 만든 후에는 DbInterception 클래스를 사용 하 여 EF에 등록할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 DbInterception.Add(new NLogCommandInterceptor());

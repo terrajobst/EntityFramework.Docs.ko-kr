@@ -26,7 +26,7 @@ C#8은 null을 포함할 수 있는지 여부를 나타내는 [nullable 참조 �
 
 ## <a name="dbcontext-and-dbset"></a>DbContext 및 DbSet
 
-Nullable 참조 형식을 사용 하도록 설정 하면 C# 컴파일러가 null을 포함 하므로 초기화 되지 않은 null을 허용 하지 않는 속성에 대 한 경고를 내보냅니다. 결과적으로 컨텍스트에 대해 null을 허용 하지 않는 `DbSet`을 정의 하는 일반적인 방법은 이제 경고를 생성 하는 것입니다. 그러나 EF Core는 항상 DbContext 파생 형식에서 모든 `DbSet` 속성을 초기화 하므로 컴파일러에서이를 인식 하지 못하는 경우에도 null이 되지 않도록 보장 됩니다. 따라서 `DbSet` 속성을 null이 아닌 속성에 액세스할 수 있도록 하는 것이 좋습니다. null 검사 없이 해당 속성에 액세스할 수 있도록 하 고, null로 명시적으로 설정 하는 연산자 (!)를 사용 하 여 명시적으로 null로 설정 하 여 컴파일러 경고를 대기 합니다.
+Nullable 참조 형식을 사용 하도록 설정 하면 C# 컴파일러가 null을 포함 하므로 초기화 되지 않은 null을 허용 하지 않는 속성에 대 한 경고를 내보냅니다. 결과적으로 컨텍스트에 대해 null을 허용 하지 않는 `DbSet`를 정의 하는 일반적인 방법은 이제 경고를 생성 하는 것입니다. 그러나 EF Core는 항상 DbContext 파생 형식에서 모든 `DbSet` 속성을 초기화 하므로 컴파일러에서이를 인식 하지 못하는 경우에도 null이 되지 않도록 보장 됩니다. 따라서 `DbSet` 속성을 nullable이 아닌 상태로 유지 하는 것이 좋습니다. null 검사 없이 해당 속성에 액세스할 수 있도록 하 고, null로 명시적으로 설정 합니다 (!).
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/NullableReferenceTypesContext.cs?name=Context&highlight=3-4)]
 
@@ -34,7 +34,7 @@ Nullable 참조 형식을 사용 하도록 설정 하면 C# 컴파일러가 null
 
 초기화 되지 않은 null을 허용 하지 않는 참조 형식에 대 한 컴파일러 경고도 엔터티 형식에 대 한 일반 속성의 문제입니다. 위의 예제에서는 null을 허용 하지 않는 속성과 완벽 하 게 작동 하는 기능인 [생성자 바인딩을](xref:core/modeling/constructors)사용 하 여 이러한 경고를 사용 하지 않는 것을 방지 하 여 항상 초기화 되도록 합니다. 그러나 일부 시나리오에서는 생성자 바인딩이 옵션이 아닙니다. 예를 들어,를 이런 방식으로 초기화할 수 없습니다.
 
-필요한 탐색 속성은 추가 어려움이 있습니다. 특정 보안 주체에 대 한 종속 항목이 항상 존재 하지만 프로그램의 해당 지점에 있는 요구 사항에 따라 특정 쿼리에서 로드 될 수도 있고 로드 되지 않을 수도 있습니다 ([의 다른 패턴 참조). 데이터를 로드 하는 중](xref:core/querying/related-data)). 이와 동시에 이러한 속성을 nullable로 설정 하는 것은 바람직하지 않습니다. 이러한 속성은 필요한 경우에도 모든 액세스에서 null을 확인 하도록 합니다.
+필요한 탐색 속성은 추가 어려움이 있습니다. 즉, 특정 보안 주체에 대 한 종속 항목이 항상 존재 하지만 프로그램의 해당 지점에 있는 요구 사항에 따라 특정 쿼리에서 로드 될 수도 있고 로드 되지 않을 수도 있습니다 ([데이터를 로드 하는 다양 한 패턴 참조](xref:core/querying/related-data)). 이와 동시에 이러한 속성을 nullable로 설정 하는 것은 바람직하지 않습니다. 이러한 속성은 필요한 경우에도 모든 액세스에서 null을 확인 하도록 합니다.
 
 이러한 시나리오를 처리 하는 한 가지 방법은 nullable [지원 필드](xref:core/modeling/backing-field)를 사용 하는 null을 허용 하지 않는 속성을 사용 하는 것입니다.
 
@@ -65,4 +65,4 @@ Terser 대안은 null 인 경우에만 null로 속성을 초기화 하 여 null�
 
 ## <a name="scaffolding"></a>스캐폴딩
 
-[8 C# nullable 참조 형식 기능은](/dotnet/csharp/tutorials/nullable-reference-types) 현재 리버스 엔지니어링에서 지원 되지 않습니다. EF Core는 기능이 C# 해제 된 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하는 데 사용 되는 흐름 API 또는 데이터 주석을 사용 하 여 @no__t가 아닌 `string` 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
+[8 C# nullable 참조 형식 기능은](/dotnet/csharp/tutorials/nullable-reference-types) 현재 리버스 엔지니어링에서 지원 되지 않습니다. EF Core는 기능이 C# 해제 된 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하는 데 사용 되는 흐름 API 또는 데이터 주석을 사용 하 여 `string?`아닌 `string` 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.

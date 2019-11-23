@@ -15,7 +15,7 @@ ms.locfileid: "72182417"
 
 ## <a name="ef-team-blogs"></a>EF 팀 블로그
 
-- 0\.NET 블로그 태그: @no__t Entity Framework @ no__t-0
+- [.NET 블로그 태그: Entity Framework](https://blogs.msdn.microsoft.com/dotnet/tag/entity-framework/)
 - [ADO.NET 블로그 (더 이상 사용 하지 않음)](https://blogs.msdn.microsoft.com/adonet/)
 - [EF 디자인 블로그 (더 이상 사용 하지 않음)](https://blogs.msdn.microsoft.com/efdesign/)
 
@@ -24,7 +24,7 @@ ms.locfileid: "72182417"
 - [Arthur Vickers](https://blog.oneunicorn.com/tag/entity-framework/)
 - [Brice Lambson](https://www.bricelam.net/)
 - [Diego Vega](https://blogs.msdn.microsoft.com/diego/)
-- [행](https://romiller.com/category/entity-framework/)
+- [Rowan Miller](https://romiller.com/category/entity-framework/)
 - [Pawel Kadluczka](https://blog.3d-logic.com/category/entity-framework/)
 - [Alex James](https://blogs.msdn.microsoft.com/alexj/tag/entity-framework/)
 - [Zlatko Michailov](https://blogs.msdn.microsoft.com/esql/tag/entity-framework/)
