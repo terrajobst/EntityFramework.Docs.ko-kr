@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 29434c26a503fabb16b43ee8f0c36136a0b5b745
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.openlocfilehash: 5686d28e6847797130476cd858bd3fb611620140
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811969"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824475"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Entity Framework Core 도구 참조-.NET CLI
 
@@ -33,17 +33,17 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 
 * `dotnet ef`는 전역 또는 로컬 도구로 설치 되어야 합니다. 대부분의 개발자는 다음 명령을 사용 하 여 `dotnet ef`를 전역 도구로 설치 합니다.
 
-  ``` console
+  ```dotnetcli
   dotnet tool install --global dotnet-ef
   ```
 
   `dotnet ef`를 로컬 도구로 사용할 수도 있습니다. 로컬 도구로 사용 하려면 [도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용 하 여 도구를 도구 종속성으로 선언 하는 프로젝트의 종속성을 복원 합니다.
 
-* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0))를 설치 합니다. 최신 버전의 Visual Studio가 설치 되어 있는 경우에도 SDK를 설치 해야 합니다.
+* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)을 설치 합니다. 최신 버전의 Visual Studio가 설치 되어 있는 경우에도 SDK를 설치 해야 합니다.
 
 * 최신 `Microsoft.EntityFrameworkCore.Design` 패키지를 설치 합니다.
 
-  ``` Console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
 
@@ -61,7 +61,7 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 
 * 안정적인 최신 `Microsoft.EntityFrameworkCore.Design` 패키지를 설치 합니다.
 
-  ``` Console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design
   ```
 
@@ -75,7 +75,7 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 
 * `Microsoft.EntityFrameworkCore.Design` 패키지의 최신 1.x 버전을 설치 합니다. 예를 들면 다음과 같습니다.
 
-  ```console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.Design -v 1.1.6
   ```
 
@@ -105,7 +105,7 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 
 다음 명령을 실행 하 EF Core CLI 도구가 올바르게 설치 되었는지 확인 합니다.
 
-  ``` Console
+  ```dotnetcli
   dotnet restore
   dotnet ef
   ```
@@ -173,7 +173,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 
 ## <a name="dotnet-ef-database-drop"></a>dotnet ef 데이터베이스 삭제
 
-데이터베이스를 삭제 합니다.
+데이터베이스를 삭제합니다.
 
 옵션:
 
@@ -194,7 +194,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 
 다음 예에서는 데이터베이스를 지정 된 마이그레이션으로 업데이트 합니다. 첫 번째는 마이그레이션 이름을 사용 하 고 두 번째는 마이그레이션 ID를 사용 합니다.
 
-```console
+```dotnetcli
 dotnet ef database update InitialCreate
 dotnet ef database update 20180904195021_InitialCreate
 ```
@@ -215,31 +215,31 @@ dotnet ef database update 20180904195021_InitialCreate
 
 | 인수       | 설명                                                                                                                                                                                                             |
 |:---------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `<CONNECTION>` | 데이터베이스에 대 한 연결 문자열입니다. ASP.NET Core 2.x 프로젝트의 경우 값은 *이름 =\<연결 문자열 > 이름일*수 있습니다. 이 경우 프로젝트에 대해 설정 된 구성 소스에서 이름이 제공 됩니다. |
+| `<CONNECTION>` | 데이터베이스에 대한 연결 문자열입니다. ASP.NET Core 2.x 프로젝트의 경우 값은 *이름 =\<연결 문자열 > 이름일*수 있습니다. 이 경우 프로젝트에 대해 설정 된 구성 소스에서 이름이 제공 됩니다. |
 | `<PROVIDER>`   | 사용할 공급자입니다. 일반적으로 NuGet 패키지의 이름입니다 (예: `Microsoft.EntityFrameworkCore.SqlServer`).                                                                                           |
 
 옵션:
 
 |                 | 옵션                                   | 설명                                                                                                                                                                    |
 |:----------------|:-----------------------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <nobr>-d.ddd...e</nobr> | `--data-annotations`                     | 특성을 사용 하 여 모델을 구성 합니다 (가능한 경우). 이 옵션을 생략 하면 흐름 API만 사용 됩니다.                                                                |
+| <nobr>-d</nobr> | `--data-annotations`                     | 특성을 사용 하 여 모델을 구성 합니다 (가능한 경우). 이 옵션을 생략 하면 흐름 API만 사용 됩니다.                                                                |
 | `-c`            | `--context <NAME>`                       | 생성할 `DbContext` 클래스의 이름입니다.                                                                                                                                 |
 |                 | `--context-dir <PATH>`                   | `DbContext` 클래스 파일을 저장할 디렉터리입니다. 경로는 프로젝트 디렉터리에 상대적입니다. 네임 스페이스는 폴더 이름에서 파생 됩니다.                                 |
 | `-f`            | `--force`                                | 기존 파일을 덮어씁니다.                                                                                                                                                      |
 | `-o`            | `--output-dir <PATH>`                    | 엔터티 클래스 파일을 배치할 디렉터리입니다. 경로는 프로젝트 디렉터리에 상대적입니다.                                                                                       |
 |                 | <nobr>`--schema <SCHEMA_NAME>...`</nobr> | 엔터티 형식을 생성할 테이블의 스키마입니다. 여러 스키마를 지정 하려면 각 스키마에 대해 `--schema`를 반복 합니다. 이 옵션을 생략 하면 모든 스키마가 포함 됩니다.          |
-| `-t`            | `--table <TABLE_NAME>`...                | 엔터티 형식을 생성할 테이블입니다. 여러 테이블을 지정 하려면 각 항목에 대해 `-t` 또는 `--table`를 반복 합니다. 이 옵션을 생략 하면 모든 테이블이 포함 됩니다.                |
+| `-t`            | `--table <TABLE_NAME>`..."입니다.                | 엔터티 형식을 생성할 테이블입니다. 여러 테이블을 지정 하려면 각 항목에 대해 `-t` 또는 `--table`를 반복 합니다. 이 옵션을 생략 하면 모든 테이블이 포함 됩니다.                |
 |                 | `--use-database-names`                   | 테이블 및 열 이름은 데이터베이스에 표시 된 대로 정확 하 게 사용 합니다. 이 옵션을 생략 하는 경우 데이터베이스 이름이 이름 스타일 규칙을 C# 더욱 잘 준수 하도록 변경 됩니다. |
 
 다음 예에서는 모든 스키마 및 테이블을 스 캐 폴드 하 고 새 파일을 *모델* 폴더에 넣습니다.
 
-```console
+```dotnetcli
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models
 ```
 
 다음 예에서는 선택한 테이블만 스 캐 폴드 지정 된 이름의 개별 폴더에 컨텍스트를 만듭니다.
 
-```console
+```dotnetcli
 dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -o Models -t Blog -t Post --context-dir Context -c BlogContext
 ```
 
@@ -293,13 +293,13 @@ dotnet ef dbcontext scaffold "Server=(localdb)\mssqllocaldb;Database=Blogging;Tr
 
 다음 예에서는 InitialCreate migration에 대 한 스크립트를 만듭니다.
 
-```console
+```dotnetcli
 dotnet ef migrations script 0 InitialCreate
 ```
 
 다음 예에서는 InitialCreate migration 후 모든 마이그레이션에 대 한 스크립트를 만듭니다.
 
-```console
+```dotnetcli
 dotnet ef migrations script 20180904195021_InitialCreate
 ```
 

@@ -3,19 +3,19 @@ title: VB.NET를 사용 하는 흐름 API-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 763dc6a2-764a-4600-896c-f6f13abf56ec
-ms.openlocfilehash: df3e61fa5e2d24873336511e90231a7d78d32535
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 1c889877b827408919c6170cf997e8805cc607cf
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182665"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824821"
 ---
 # <a name="fluent-api-with-vbnet"></a>VB.NET를 사용 하는 흐름 API
 Code First를 사용 하면 C\# 또는 VB.NET 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다. 이 연습에서는 VB.NET을 사용 하 여 흐름 API 구성을 수행 하는 방법을 보여 줍니다.
 
 이 페이지에서는 Code First에 대해 기본적으로 이해 하 고 있다고 가정 합니다. Code First에 대 한 자세한 내용은 다음 연습을 확인 하세요.
 
--   [새 데이터베이스에 Code First](~/ef6/modeling/code-first/workflows/new-database.md)
+-   [새 데이터베이스에 대한 Code First](~/ef6/modeling/code-first/workflows/new-database.md)
 -   [기존 데이터베이스로 Code First](~/ef6/modeling/code-first/workflows/existing-database.md)
 
 ## <a name="pre-requisites"></a>필수 구성 요소
@@ -42,95 +42,95 @@ Visual Studio 2010을 사용 하는 경우 [NuGet](https://visualstudiogallery.m
 -   새 클래스의 내용을 다음 코드로 바꿉니다.
 
 ``` vb
-   Public Class Department
-        Public Sub New()
-            Me.Courses = New List(Of Course)()
-        End Sub
+Public Class Department
+    Public Sub New()
+        Me.Courses = New List(Of Course)()
+    End Sub
 
-        ' Primary key
-        Public Property DepartmentID() As Integer
-        Public Property Name() As String
-        Public Property Budget() As Decimal
-        Public Property StartDate() As Date
-        Public Property Administrator() As Integer?
-        Public Overridable Property Courses() As ICollection(Of Course)
-    End Class
+    ' Primary key
+    Public Property DepartmentID() As Integer
+    Public Property Name() As String
+    Public Property Budget() As Decimal
+    Public Property StartDate() As Date
+    Public Property Administrator() As Integer?
+    Public Overridable Property Courses() As ICollection(Of Course)
+End Class
 
-    Public Class Course
-        Public Sub New()
-            Me.Instructors = New HashSet(Of Instructor)()
-        End Sub
+Public Class Course
+    Public Sub New()
+        Me.Instructors = New HashSet(Of Instructor)()
+    End Sub
 
-        ' Primary key
-        Public Property CourseID() As Integer
-        Public Property Title() As String
-        Public Property Credits() As Integer
+    ' Primary key
+    Public Property CourseID() As Integer
+    Public Property Title() As String
+    Public Property Credits() As Integer
 
-        ' Foreign  key that does not follow the Code First convention.
-        ' The fluent API will be used to configure DepartmentID_FK  to be the foreign key for this entity.
-        Public Property DepartmentID_FK() As Integer
+    ' Foreign  key that does not follow the Code First convention.
+    ' The fluent API will be used to configure DepartmentID_FK  to be the foreign key for this entity.
+    Public Property DepartmentID_FK() As Integer
 
-        ' Navigation properties
-         Public Overridable Property Department() As Department
-         Public Overridable Property Instructors() As ICollection(Of Instructor)
-    End Class
+    ' Navigation properties
+    Public Overridable Property Department() As Department
+    Public Overridable Property Instructors() As ICollection(Of Instructor)
+End Class
 
-    Public Class OnlineCourse
-        Inherits Course
+Public Class OnlineCourse
+    Inherits Course
 
-        Public Property URL() As String
-    End Class
+    Public Property URL() As String
+End Class
 
-    Partial Public Class OnsiteCourse
-        Inherits Course
+Partial Public Class OnsiteCourse
+    Inherits Course
 
-        Public Sub New()
-            Details = New OnsiteCourseDetails()
-        End Sub
+    Public Sub New()
+        Details = New OnsiteCourseDetails()
+    End Sub
 
-        Public Property Details() As OnsiteCourseDetails
-     End Class
+    Public Property Details() As OnsiteCourseDetails
+ End Class
 
-    ' Complex type
-    Public Class OnsiteCourseDetails
-        Public Property Time() As Date
-        Public Property Location() As String
-        Public Property Days() As String
-    End Class
+' Complex type
+Public Class OnsiteCourseDetails
+    Public Property Time() As Date
+    Public Property Location() As String
+    Public Property Days() As String
+End Class
 
-    Public Class Person
-        ' Primary key
-        Public Property PersonID() As Integer
-        Public Property LastName() As String
-        Public Property FirstName() As String
-    End Class
+Public Class Person
+    ' Primary key
+    Public Property PersonID() As Integer
+    Public Property LastName() As String
+    Public Property FirstName() As String
+End Class
 
-    Public Class Instructor
-        Inherits Person
+Public Class Instructor
+    Inherits Person
 
-        Public Sub New()
-            Me.Courses = New List(Of Course)()
-        End Sub
+    Public Sub New()
+        Me.Courses = New List(Of Course)()
+    End Sub
 
-        Public Property HireDate() As Date
+    Public Property HireDate() As Date
 
-        ' Navigation properties
-        Private privateCourses As ICollection(Of Course)
-        Public Overridable Property Courses() As ICollection(Of Course)
-        Public Overridable Property OfficeAssignment() As OfficeAssignment
-    End Class
+    ' Navigation properties
+    Private privateCourses As ICollection(Of Course)
+    Public Overridable Property Courses() As ICollection(Of Course)
+    Public Overridable Property OfficeAssignment() As OfficeAssignment
+End Class
 
-    Public Class OfficeAssignment
-        ' Primary key that does not follow the Code First convention.
-        ' The HasKey method is used later to configure the primary key for the entity.
-        Public Property InstructorID() As Integer
+Public Class OfficeAssignment
+    ' Primary key that does not follow the Code First convention.
+    ' The HasKey method is used later to configure the primary key for the entity.
+    Public Property InstructorID() As Integer
 
-        Public Property Location() As String
-        Public Property Timestamp() As Byte()
+    Public Property Location() As String
+    Public Property Timestamp() As Byte()
 
-        ' Navigation property
-        Public Overridable Property Instructor() As Instructor
-    End Class
+    ' Navigation property
+    Public Overridable Property Instructor() As Instructor
+End Class
 ```
 
 ## <a name="define-a-derived-context"></a>파생 컨텍스트 정의
@@ -142,31 +142,31 @@ Entity Framework에서 형식을 사용 하기 시작 하므로 EntityFramework 
 > **NuGet 패키지 관리** ...가 없는 경우 옵션을 선택 하면 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
--   **설치** 클릭
+-   **설치**를 클릭합니다.
 
 이제 데이터베이스와의 세션을 나타내는 파생 컨텍스트를 정의 하 여 데이터를 쿼리하고 저장할 수 있습니다. DbContext에서 파생 되는 컨텍스트를 정의 하 고 모델의 각 클래스에 대해 형식화 된 DbSet&lt;&gt;를 노출 합니다.
 
 -   프로젝트에 새 클래스를 추가 하 고 클래스 이름으로 **schoolcontext.cs** 를 입력 합니다.
 -   새 클래스의 내용을 다음 코드로 바꿉니다.
 
-``` vb
-    Imports System.Data.Entity
-    Imports System.Data.Entity.Infrastructure
-    Imports System.Data.Entity.ModelConfiguration.Conventions
-    Imports System.ComponentModel.DataAnnotations
-    Imports System.ComponentModel.DataAnnotations.Schema
+```vb
+Imports System.ComponentModel.DataAnnotations
+Imports System.ComponentModel.DataAnnotations.Schema
+Imports System.Data.Entity
+Imports System.Data.Entity.Infrastructure
+Imports System.Data.Entity.ModelConfiguration.Conventions
 
-    Public Class SchoolContext
-        Inherits DbContext
+Public Class SchoolContext
+    Inherits DbContext
 
-        Public Property OfficeAssignments() As DbSet(Of OfficeAssignment)
-        Public Property Instructors() As DbSet(Of Instructor)
-        Public Property Courses() As DbSet(Of Course)
-        Public Property Departments() As DbSet(Of Department)
+    Public Property OfficeAssignments() As DbSet(Of OfficeAssignment)
+    Public Property Instructors() As DbSet(Of Instructor)
+    Public Property Courses() As DbSet(Of Course)
+    Public Property Departments() As DbSet(Of Department)
 
-        Protected Overrides Sub OnModelCreating(ByVal modelBuilder As DbModelBuilder)
-        End Sub
-    End Class
+    Protected Overrides Sub OnModelCreating(ByVal modelBuilder As DbModelBuilder)
+    End Sub
+End Class
 ```
 
 ## <a name="configuring-with-the-fluent-api"></a>흐름 API를 사용 하 여 구성
@@ -377,7 +377,7 @@ Module Module1
 
     Sub Main()
 
-    Using context As New SchoolContext()
+        Using context As New SchoolContext()
 
             ' Create and save a new Department.
             Console.Write("Enter a name for a new Department: ")

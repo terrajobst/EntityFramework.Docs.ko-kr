@@ -1,14 +1,14 @@
 ---
 title: 연결 복원 력 및 재시도 논리-EF6
-author: divega
-ms.date: 10/23/2016
+author: AndriySvyryd
+ms.date: 11/20/2019
 ms.assetid: 47d68ac1-927e-4842-ab8c-ed8c8698dff2
-ms.openlocfilehash: a01216c3399ca4a04943563435eacd0047337a5f
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.openlocfilehash: 50e65bed32d0cfcf42746da0d632f9e990424b97
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306569"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824843"
 ---
 # <a name="connection-resiliency-and-retry-logic"></a>연결 복원 력 및 재시도 논리
 > [!NOTE]
@@ -124,77 +124,14 @@ using (var db = new BloggingContext())
 
 EF는 이전 작업을 인식 하지 못하고 다시 시도 하는 방법을 인식 하지 못하기 때문에 다시 시도 하는 실행 전략을 사용 하는 경우에는 지원 되지 않습니다. 예를 들어 두 번째 SaveChanges가 실패 한 경우 EF는 첫 번째 SaveChanges 호출을 다시 시도 하는 데 필요한 정보를 더 이상 포함 하지 않습니다.  
 
-### <a name="workaround-suspend-execution-strategy"></a>해결 방법: 실행 중단 전략  
+### <a name="solution-manually-call-execution-strategy"></a>해결 방법: 실행 전략을 수동으로 호출 합니다.  
 
-가능한 해결 방법 중 하나는 사용자가 시작한 트랜잭션을 사용 해야 하는 코드 조각에 대 한 재시도 실행 전략을 일시 중단 하는 것입니다. 이 작업을 수행 하는 가장 쉬운 방법은 코드 기반 구성 클래스에 SuspendExecutionStrategy 플래그를 추가 하 고 실행 전략 람다를 변경 하 여 플래그가 설정 되 면 기본 (비 보존) 실행 전략을 반환 하는 것입니다.  
-
-``` csharp
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Data.Entity.SqlServer;
-using System.Runtime.Remoting.Messaging;
-
-namespace Demo
-{
-    public class MyConfiguration : DbConfiguration
-    {
-        public MyConfiguration()
-        {
-            this.SetExecutionStrategy("System.Data.SqlClient", () => SuspendExecutionStrategy
-              ? (IDbExecutionStrategy)new DefaultExecutionStrategy()
-              : new SqlAzureExecutionStrategy());
-        }
-
-        public static bool SuspendExecutionStrategy
-        {
-            get
-            {
-                return (bool?)CallContext.LogicalGetData("SuspendExecutionStrategy") ?? false;
-            }
-            set
-            {
-                CallContext.LogicalSetData("SuspendExecutionStrategy", value);
-            }
-        }
-    }
-}
-```  
-
-CallContext를 사용 하 여 플래그 값을 저장 합니다. 이는 스레드 로컬 저장소와 유사한 기능을 제공 하지만 비동기 쿼리를 포함 하는 비동기 코드와 함께 사용 하는 것이 안전 하 고 Entity Framework로 저장 됩니다.  
-
-이제 사용자가 시작한 트랜잭션을 사용 하는 코드 섹션에 대 한 실행 전략을 일시 중단할 수 있습니다.  
-
-``` csharp
-using (var db = new BloggingContext())
-{
-    MyConfiguration.SuspendExecutionStrategy = true;
-
-    using (var trn = db.Database.BeginTransaction())
-    {
-        db.Blogs.Add(new Blog { Url = "http://msdn.com/data/ef" });
-        db.Blogs.Add(new Blog { Url = "http://blogs.msdn.com/adonet" });
-        db.SaveChanges();
-
-        db.Blogs.Add(new Blog { Url = "http://twitter.com/efmagicunicorns" });
-        db.SaveChanges();
-
-        trn.Commit();
-    }
-
-    MyConfiguration.SuspendExecutionStrategy = false;
-}
-```  
-
-### <a name="workaround-manually-call-execution-strategy"></a>해결 방법: 수동으로 실행 전략 호출  
-
-또 다른 옵션은 작업 중 하나가 실패할 경우 모든 작업을 다시 시도할 수 있도록 실행 전략을 수동으로 사용 하 고 전체 논리 집합을 제공 하는 것입니다. 다시 시도할 수 있는 코드 블록 내에서 사용 되는 모든 컨텍스트가 다시 시도 하지 않도록 하려면 위에 표시 된 기법을 사용 하 여 실행 전략을 일시 중단 해야 합니다.  
+이 솔루션은 실행 전략을 수동으로 사용 하 고 작업 중 하나가 실패할 경우 모든 작업을 다시 시도할 수 있도록 실행할 전체 논리 집합을 제공 하는 것입니다. DbExecutionStrategy에서 파생 된 실행 전략을 실행 하는 경우 SaveChanges에서 사용 된 암시적 실행 전략을 일시 중단 합니다.  
 
 다시 시도할 모든 컨텍스트를 코드 블록 내에서 생성 해야 합니다. 이렇게 하면 각 다시 시도에 대해 정리 상태로 시작 됩니다.  
 
 ``` csharp
 var executionStrategy = new SqlAzureExecutionStrategy();
-
-MyConfiguration.SuspendExecutionStrategy = true;
 
 executionStrategy.Execute(
     () =>
@@ -214,6 +151,4 @@ executionStrategy.Execute(
             }
         }
     });
-
-MyConfiguration.SuspendExecutionStrategy = false;
 ```  

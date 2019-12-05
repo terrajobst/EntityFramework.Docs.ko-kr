@@ -1,15 +1,14 @@
 ---
 title: Foreign Key 제약 조건-EF Core
-author: rowanmiller
-ms.date: 10/27/2016
-ms.assetid: dbaf4bac-1fd5-46c0-ac57-64d7153bc574
+author: AndriySvyryd
+ms.date: 11/21/2019
 uid: core/modeling/relational/fk-constraints
-ms.openlocfilehash: df739f01a799ec8edad4cf44d8cf50edf292992f
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 2855137adf2ba3c9edaabd15a05f7a209f00f685
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655993"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824585"
 ---
 # <a name="foreign-key-constraints"></a>외래 키 제약 조건
 
@@ -18,7 +17,7 @@ ms.locfileid: "73655993"
 
 외래 키 제약 조건은 모델의 각 관계에 대해 도입 됩니다.
 
-## <a name="conventions"></a>규칙
+## <a name="conventions"></a>표기 규칙
 
 규칙에 따라 foreign key 제약 조건의 이름은 `FK_<dependent type name>_<principal type name>_<foreign key property name>`입니다. 복합 외래 키의 경우에는 쉼표로 구분 된 외래 키 속성 이름 목록이 `<foreign key property name>` 됩니다.
 

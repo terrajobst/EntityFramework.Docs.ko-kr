@@ -1,16 +1,16 @@
 ---
 title: 소유 엔터티 형식-EF Core
+description: Entity Framework Core를 사용할 때 소유 엔터티 형식 또는 집계를 구성 하는 방법
 author: AndriySvyryd
 ms.author: ansvyryd
-ms.date: 02/26/2018
-ms.assetid: 2B0BADCE-E23E-4B28-B8EE-537883E16DF3
+ms.date: 11/06/2019
 uid: core/modeling/owned-entities
-ms.openlocfilehash: a0665bfa27134b8dc3eba854ff3f7b1af4b69217
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 7b6d1b3bccbfceb85f03a580ba03a45984d29c74
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655930"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824600"
 ---
 # <a name="owned-entity-types"></a>소유한 엔터티 형식
 
@@ -19,7 +19,7 @@ ms.locfileid: "73655930"
 
 EF Core를 사용 하면 다른 엔터티 형식의 탐색 속성에만 나타날 수 있는 엔터티 형식을 모델링할 수 있습니다. 이러한 엔터티를 _소유 된 엔터티 형식_이라고 합니다. 소유 된 엔터티 형식을 포함 하는 엔터티는 해당 _소유자_입니다.
 
-소유 된 엔터티는 기본적으로 소유자의 일부 이며이를 제외 하 고는 [집계](https://martinfowler.com/bliki/DDD_Aggregate.html)와 개념적으로 유사 합니다.
+소유 된 엔터티는 기본적으로 소유자의 일부 이며이를 제외 하 고는 [집계](https://martinfowler.com/bliki/DDD_Aggregate.html)와 개념적으로 유사 합니다. 즉, 소유 된 형식은 소유자와 관계의 종속 측에 정의 됩니다.
 
 ## <a name="explicit-configuration"></a>명시적 구성
 
@@ -74,17 +74,20 @@ EF Core에서 이러한 개체를 추적 하는 방법을 이해 하기 위해 �
 [!code-csharp[OwnsMany](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsMany)]
 
 > [!NOTE]
-> EF Core 3.0 `WithOwner()` 메서드가 없으므로이 호출을 제거 해야 합니다.
+> EF Core 3.0 `WithOwner()` 메서드가 없으므로이 호출을 제거 해야 합니다. 또한 기본 키는 자동으로 검색 되지 않으므로 항상 지정 해야 합니다.
 
 ## <a name="mapping-owned-types-with-table-splitting"></a>테이블 분할을 사용 하 여 소유 된 형식 매핑
 
 관계형 데이터베이스를 사용 하는 경우 기본적으로 소유 하는 참조는 소유자와 동일한 테이블에 매핑됩니다. 이렇게 하려면 두 개의 테이블을 분할 해야 합니다. 일부 열은 소유자의 데이터를 저장 하는 데 사용 되 고 일부 열은 소유 된 엔터티의 데이터를 저장 하는 데 사용 됩니다. 이는 [테이블 분할](table-splitting.md)이라는 일반적인 기능입니다.
 
-기본적으로 EF Core는 패턴 _Navigation_OwnedEntityProperty_따라 소유 된 엔터티 형식의 속성에 대 한 데이터베이스 열 이름을로 합니다. 따라서 `StreetAddress` 속성은 이름이 ' ShippingAddress_Street ' 및 ' ShippingAddress_City ' 인 ' Orders ' 테이블에 표시 됩니다.
+기본적으로 EF Core는 패턴 _Navigation_OwnedEntityProperty_따라 소유 된 엔터티 형식의 속성에 대 한 데이터베이스 열 이름을로 합니다. 따라서 `StreetAddress` 속성은 이름이 ' ShippingAddress_Street '이 고 ' ShippingAddress_City ' 인 ' Orders ' 테이블에 표시 됩니다.
 
 `HasColumnName` 메서드를 사용 하 여 해당 열의 이름을 바꿀 수 있습니다.
 
 [!code-csharp[ColumnNames](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=ColumnNames)]
+
+> [!NOTE]
+> [Ignore](/dotnet/api/microsoft.entityframeworkcore.metadata.builders.ownednavigationbuilder.ignore) 와 같은 일반적인 엔터티 형식 구성 메서드는 대부분 동일한 방식으로 호출할 수 있습니다.
 
 ## <a name="sharing-the-same-net-type-among-multiple-owned-types"></a>여러 개의 소유 된 형식 간에 동일한 .NET 형식 공유
 
@@ -106,6 +109,8 @@ EF Core에서 이러한 개체의 추적 된 인스턴스를 구분 하는 방�
 
 [!code-csharp[OrderStatus](../../../samples/core/Modeling/OwnedEntities/OrderStatus.cs?name=OrderStatus)]
 
+소유 된 형식에 대 한 각 탐색은 완전히 독립적으로 구성 된 별도의 엔터티 형식을 정의 합니다.
+
 중첩 된 소유 형식 외에도 소유 된 형식은 정규 엔터티를 참조할 수 있으며 소유 된 엔터티가 종속 측에 있으면 소유자 이거나 다른 엔터티가 될 수 있습니다. 이 기능은 소유 하는 엔터티 형식을 EF6의 복합 형식과 분리 하 여 설정 합니다.
 
 [!code-csharp[OrderDetails](../../../samples/core/Modeling/OwnedEntities/OrderDetails.cs?name=OrderDetails)]
@@ -114,15 +119,17 @@ EF Core에서 이러한 개체의 추적 된 인스턴스를 구분 하는 방�
 
 [!code-csharp[OwnsOneNested](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsOneNested)]
 
-소유자에서 뒤로 가리키기 탐색 속성을 구성 하는 데 사용 되는 `WithOwner` 호출을 확인 합니다.
+소유자에서 뒤로 가리키기 탐색 속성을 구성 하는 데 사용 되는 `WithOwner` 호출을 확인 합니다. 소유권 관계의 일부가 아닌 소유자 엔터티 형식에 대 한 탐색을 구성 하려면 `WithOwner()` 인수 없이 호출 해야 합니다.
 
-`OrderDetails`와 `StreetAdress`에서 `OwnedAttribute`를 사용 하 여 결과를 얻을 수 있습니다.
+`OrderDetails`와 `StreetAddress`에서 `OwnedAttribute`를 사용 하 여 결과를 얻을 수 있습니다.
 
 ## <a name="storing-owned-types-in-separate-tables"></a>소유 형식을 별도의 테이블에 저장
 
 또한 EF6 복합 형식과 달리 소유 된 형식은 소유자와는 별도의 테이블에 저장 될 수 있습니다. 소유 된 형식을 소유자와 동일한 테이블에 매핑하는 규칙을 재정의 하려면 단순히 `ToTable`를 호출 하 고 다른 테이블 이름을 제공 하면 됩니다. 다음 예에서는 `OrderDetails` 및 두 개의 주소를 `DetailedOrder`별도의 테이블에 매핑합니다.
 
 [!code-csharp[OwnsOneTable](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsOneTable)]
+
+또한 `TableAttribute`를 사용 하 여이를 수행할 수 있지만, 소유 된 형식에 여러 개의 탐색이 있는 경우에는이 작업이 실패 합니다 .이 경우 여러 엔터티 형식이 동일한 테이블에 매핑됩니다.
 
 ## <a name="querying-owned-types"></a>소유 형식 쿼리
 
@@ -141,7 +148,7 @@ EF Core에서 이러한 개체의 추적 된 인스턴스를 구분 하는 방�
 
 ### <a name="current-shortcomings"></a>현재 단점
 
-- 소유 된 엔터티 형식을 포함 하는 상속 계층은 지원 되지 않습니다.
+- 소유 된 엔터티 형식에는 상속 계층을 사용할 수 없습니다.
 - 소유 된 엔터티 형식에 대 한 참조 탐색은 소유자와 별도의 테이블에 명시적으로 매핑되지 않는 한 null 일 수 없습니다.
 - 소유 된 엔터티 형식의 인스턴스는 여러 소유자가 공유할 수 없습니다 .이는 소유 된 엔터티 형식을 사용 하 여 구현할 수 없는 값 개체에 대 한 잘 알려진 시나리오입니다.
 

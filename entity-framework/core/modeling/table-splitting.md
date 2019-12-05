@@ -1,16 +1,16 @@
 ---
 title: 테이블 분할-EF Core
+description: Entity Framework Core를 사용 하 여 테이블 분할을 구성 하는 방법
 author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 04/10/2019
-ms.assetid: 0EC2CCE1-BD55-45D8-9EA9-20634987F094
 uid: core/modeling/table-splitting
-ms.openlocfilehash: a3a2e5842a6c6b4b490084d205a0d44bb46c17ee
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 0e48c516de43cdc2b54c56f1a96f5e01f9fbbbc4
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656035"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824563"
 ---
 # <a name="table-splitting"></a>테이블 분할
 
@@ -19,7 +19,7 @@ ms.locfileid: "73656035"
 
 EF Core를 사용 하 여 둘 이상의 엔터티를 단일 행에 매핑할 수 있습니다. 이를 _테이블 분할_ 또는 _테이블 공유_라고 합니다.
 
-## <a name="configuration"></a>Configuration
+## <a name="configuration"></a>구성
 
 테이블 분할을 사용 하려면 엔터티 형식을 동일한 테이블에 매핑해야 하며, 기본 키가 동일한 열에 매핑되고, 한 엔터티 형식의 기본 키와 동일한 테이블에 있는 하나 이상의 관계가 구성 되어 있어야 합니다.
 
@@ -38,7 +38,7 @@ EF Core를 사용 하 여 둘 이상의 엔터티를 단일 행에 매핑할 수
 > [!TIP]
 > 자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/TableSplitting) 를 참조 하세요.
 
-## <a name="usage"></a>사용 현황
+## <a name="usage"></a>용도
 
 테이블 분할을 사용 하 여 엔터티를 저장 하 고 쿼리 하는 작업은 다른 엔터티와 동일한 방식으로 수행 됩니다. EF Core 3.0부터 종속 엔터티 참조를 `null`수 있습니다. 종속 엔터티에서 사용 하는 모든 열이 데이터베이스 `NULL` 이면 쿼리할 때 생성 되는 인스턴스가 없습니다. 이는 또한 모든 속성이 선택 사항이 며 `null`로 설정 되어 예상 되지 않을 수 있습니다.
 

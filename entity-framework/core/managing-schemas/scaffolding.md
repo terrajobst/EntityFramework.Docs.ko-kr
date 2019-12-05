@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/13/2018
 ms.assetid: 6263EF7D-4989-42E6-BDEE-45DA770342FB
 uid: core/managing-schemas/scaffolding
-ms.openlocfilehash: afe2c865305ade93dd10c8838b80c8b4177e7e8e
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 1ba9352d261f1c131b0d70f8cdad2128d9afaefe
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197190"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824460"
 ---
 # <a name="reverse-engineering"></a>리버스 엔지니어링
 
@@ -32,7 +32,7 @@ ms.locfileid: "71197190"
 Scaffold-DbContext 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook' Microsoft.EntityFrameworkCore.SqlServer
 ```
 
-``` Console
+```dotnetcli
 dotnet ef dbcontext scaffold "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook" Microsoft.EntityFrameworkCore.SqlServer
 ```
 
@@ -42,7 +42,7 @@ ASP.NET Core 프로젝트를 만든 경우 `Name=<connection-string>` 구문을 
 
 이 기능은 [암호 관리자 도구](https://docs.microsoft.com/aspnet/core/security/app-secrets#secret-manager)와 잘 작동하여 데이터베이스 암호를 코드베이스와 별도로 유지합니다.
 
-``` Console
+```dotnetcli
 dotnet user-secrets set ConnectionStrings.Chinook "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Chinook"
 dotnet ef dbcontext scaffold Name=Chinook Microsoft.EntityFrameworkCore.SqlServer
 ```
@@ -67,7 +67,7 @@ Scaffold-DbContext ... -Tables Artist, Album
 
 CLI에서 여러 테이블을 포함하려면 옵션을 여러 번 지정합니다.
 
-``` Console
+```dotnetcli
 dotnet ef dbcontext scaffold ... --table Artist --table Album
 ```
 
@@ -109,7 +109,7 @@ public string Title { get; set; }
 Scaffold-DbContext ... -ContextDir Data -OutputDir Models
 ```
 
-``` Console
+```dotnetcli
 dotnet ef dbcontext scaffold ... --context-dir Data --output-dir Models
 ```
 
@@ -126,7 +126,7 @@ dotnet ef dbcontext scaffold ... --context-dir Data --output-dir Models
 * 모델에 대한 모든 것이 데이터베이스 스키마를 사용하여 표현될 수 있는 것은 아닙니다. 예를 들어 [**상속 계층 구조**](../modeling/inheritance.md), [**소유 된 형식**](../modeling/owned-entities.md)및 [**테이블 분할**](../modeling/table-splitting.md) 에 대 한 정보는 데이터베이스 스키마에 없습니다. 이 때문에 이러한 구조는 결코 리버스 엔지니어링되지 않습니다.
 * 또한 **몇 가지 열 형식**은 EF Core 공급자가 지원되지 않습니다. 이러한 열은 모델에 포함되지 않습니다.
 * EF Core 모델에서 [**동시성 토큰**](../modeling/concurrency.md)을 정의 하 여 두 사용자가 동시에 동일한 엔터티를 업데이트 하지 못하게 할 수 있습니다. 일부 데이터베이스에는 이 형식의 열(예: SQL Server의 rowversion)을 나타내는 특수한 형식이 있습니다. 이 경우 이 정보를 리버스 엔지니어링할 수 있습니다. 그러나 다른 동시성 토큰은 리버스 엔지니어링되지 않습니다.
-* [8 nullable 참조 형식 기능은 현재 리버스 엔지니어링에서 지원 되지 않습니다. C# ](/dotnet/csharp/tutorials/nullable-reference-types) EF Core는 기능 C# 을 사용할 수 없는 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하 `string` 는 데 `string?`사용 되는 흐름 API 또는 데이터 주석을 사용 하지 않고 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
+* [8 C# nullable 참조 형식 기능은](/dotnet/csharp/tutorials/nullable-reference-types) 현재 리버스 엔지니어링에서 지원 되지 않습니다. EF Core 항상 기능 C# 을 사용할 수 없는 것으로 가정 하는 코드를 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하는 데 사용 되는 흐름 API 또는 데이터 주석을 사용 하 여 `string?`아닌 `string` 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
 
 ## <a name="customizing-the-model"></a>모델을 사용자 지정
 
@@ -142,7 +142,7 @@ EF Core에서 생성된 코드는 자유롭게 변경할 수 있습니다. 자�
 
 그러나 더 중요한 변경 사항은 수동으로 작성하기가 쉽지 않습니다. 일반적인 워크플로 중 하나는 `-Force`(PMC) 또는 `--force`(CLI)를 사용하여 데이터베이스에서 모델을 다시 리버스 엔지니어링하여 기존 모델을 업데이트된 모델로 덮어 쓰는 것입니다.
 
-다른 일반적으로 요구되는 또 다른 기능은 이름 변경, 형식 계층 구조 등과 같은 사용자 정의를 유지하면서 데이터베이스에서 모델을 업데이트하는 기능입니다. 이 기능의 진행 상황을 추적하려면 이슈 [#831](https://github.com/aspnet/EntityFrameworkCore/issues/831)을 사용합니다.
+일반적으로 요청 하는 또 다른 기능은 이름 바꾸기, 형식 계층 등의 사용자 지정을 유지 하면서 데이터베이스에서 모델을 업데이트 하는 기능입니다. 문제 [#831](https://github.com/aspnet/EntityFrameworkCore/issues/831) 를 사용 하 여이 기능의 진행률을 추적할 수 있습니다.
 
 > [!WARNING]
 > 모델을 데이터베이스에서 다시 리버스 엔지니어링하면 파일에 대한 모든 변경 사항이 손실됩니다.

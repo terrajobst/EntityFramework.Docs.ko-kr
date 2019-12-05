@@ -1,15 +1,16 @@
 ---
 title: 생성 된 값-EF Core
-author: rowanmiller
-ms.date: 10/27/2016
-ms.assetid: eb082011-11a1-41b4-a108-15daafa03e80
+description: Entity Framework Core를 사용 하는 경우 속성에 대 한 값 생성을 구성 하는 방법
+author: AndriySvyryd
+ms.author: ansvyryd
+ms.date: 11/06/2019
 uid: core/modeling/generated-properties
-ms.openlocfilehash: 6643d3c5c9b3363e450e820793f449a41e2eba80
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 7fa3eae5e2edb7b4c40ed4f99ce4a29f367e622a
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655755"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824707"
 ---
 # <a name="generated-values"></a>생성된 값
 
@@ -51,9 +52,9 @@ ms.locfileid: "73655755"
 >
 > [!code-sql[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAddOrUpdate.sql)]
 
-## <a name="conventions"></a>규칙
+## <a name="conventions"></a>표기 규칙
 
-규칙에 따라 short, int, long 또는 Guid 형식의 비 복합 기본 키는 add에 생성 된 값을 갖도록 설정 됩니다. 다른 모든 속성은 값을 생성 하지 않고 설정 됩니다.
+기본적으로 short, int, long 또는 Guid 형식의 비 복합 기본 키는 add에 생성 된 값을 갖도록 설정 됩니다. 다른 모든 속성은 값을 생성 하지 않고 설정 됩니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 

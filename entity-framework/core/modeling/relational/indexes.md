@@ -1,15 +1,15 @@
 ---
 title: 인덱스 (관계형 데이터베이스)-EF Core
-author: rowanmiller
-ms.date: 10/27/2016
-ms.assetid: 4581e7ba-5e7f-452c-9937-0aaf790ba10a
+author: AndriySvyryd
+ms.author: ansvyryd
+ms.date: 11/05/2019
 uid: core/modeling/relational/indexes
-ms.openlocfilehash: 7bb74d0bfa6090b597eb988a46f00494e25f233e
-ms.sourcegitcommit: 6c28926a1e35e392b198a8729fc13c1c1968a27b
+ms.openlocfilehash: e14615275f85ee9b6b32d080905465d33963feca
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71813641"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824567"
 ---
 # <a name="indexes-relational-database"></a>인덱스 (관계형 데이터베이스)
 
@@ -18,15 +18,15 @@ ms.locfileid: "71813641"
 
 관계형 데이터베이스의 인덱스는 Entity Framework의 핵심 인덱스와 동일한 개념에 매핑됩니다.
 
-## <a name="conventions"></a>규칙
+## <a name="conventions"></a>표기 규칙
 
-규칙에 따라 인덱스의 이름은 `IX_<type name>_<property name>`입니다. 복합 인덱스 `<property name>` 의 경우 속성 이름의 밑줄로 구분 된 목록이 됩니다.
+규칙에 따라 인덱스는 `IX_<type name>_<property name>`이름이 지정 됩니다. 복합 인덱스의 경우에는 `<property name>` 속성 이름의 밑줄로 구분 된 목록이 됩니다.
 
 ## <a name="data-annotations"></a>데이터 주석
 
 데이터 주석을 사용 하 여 인덱스를 구성할 수 없습니다.
 
-## <a name="fluent-api"></a>Fluent API
+## <a name="fluent-api"></a>흐름 API
 
 흐름 API를 사용 하 여 인덱스 이름을 구성할 수 있습니다.
 
@@ -36,7 +36,7 @@ ms.locfileid: "71813641"
 
 [!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexFilter.cs?name=Model&highlight=9)]
 
-SQL Server 공급자 EF를 사용 하는 경우 고유 인덱스의 일부인 모든 null 허용 열에 대해 ' IS NOT NULL ' 필터를 추가 합니다. 이 규칙을 재정의 하려면 값을 `null` 제공할 수 있습니다.
+SQL Server 공급자를 사용 하는 경우 EF는 고유 인덱스의 일부인 모든 nullable 열에 대해 `'IS NOT NULL'` 필터를 추가 합니다. 이 규칙을 재정의 하려면 `null` 값을 제공 하면 됩니다.
 
 [!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexNoFilter.cs?name=Model&highlight=10)]
 
@@ -44,4 +44,4 @@ SQL Server 공급자 EF를 사용 하는 경우 고유 인덱스의 일부인 �
 
 쿼리의 모든 열이 키 또는 키가 아닌 열로 인덱스에 포함 되는 경우에는 [포괄 열이 있는 인덱스](https://docs.microsoft.com/sql/relational-databases/indexes/create-indexes-with-included-columns) 를 구성 하 여 쿼리 성능을 크게 향상 시킬 수 있습니다.
 
-[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/ForSqlServerHasIndex.cs?name=Model)]
+[!code-csharp[Main](../../../../samples/core/Modeling/FluentAPI/Relational/IndexInclude.cs?name=Model)]
