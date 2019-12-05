@@ -5,23 +5,23 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 6cac695288d9ba84968b7fab6361f55e9b51be67
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 162e5d387bcbfbf1e90baf27fc62dd2ed562ae58
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656085"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824543"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>EF Core Azure Cosmos DB 공급자
 
->[!NOTE]
+> [!NOTE]
 > 이 공급자는 EF Core 3.0에서 새로 제공됩니다.
 
 이 데이터베이스 공급자를 설치하면 Entity Framework Core를 Azure Cosmos DB에서 사용할 수 있습니다. 공급자는 [Entity Framework Core 프로젝트](https://github.com/aspnet/EntityFrameworkCore)의 일부로 유지 관리됩니다.
 
 이 섹션을 읽기 전에 [Azure Cosmos DB 설명서](/azure/cosmos-db/introduction)를 숙지하는 것이 좋습니다.
 
->[!NOTE]
+> [!NOTE]
 > 이 공급자는 Azure Cosmos DB의 SQL API에서만 작동합니다.
 
 ## <a name="install"></a>설치
@@ -30,7 +30,7 @@ ms.locfileid: "73656085"
 
 ## <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
-``` console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Cosmos
 ```
 
@@ -89,7 +89,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 
 [!code-csharp[PartitionKey](../../../../samples/core/Cosmos/ModelBuilding/OrderContext.cs?name=PartitionKey)]
 
->[!NOTE]
+> [!NOTE]
 >파티션 키 속성은 [문자열로 변환](xref:core/modeling/value-conversions)되는 경우 모든 형식을 사용할 수 있습니다.
 
 일단 구성된 경우, 파티션 키 속성에는 항상 null이 아닌 값이 있어야 합니다. 쿼리를 발행하는 경우 단일 파티션으로 만들 수 있는 조건을 추가할 수 있습니다.

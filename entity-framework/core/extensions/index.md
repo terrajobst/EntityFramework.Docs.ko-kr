@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 01/07/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: e70011b42818e4df1ec5b9b88d7adb9d36bb26f1
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 86befa151adc8278ff8c76bdef023ca26a12508b
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654806"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824635"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -168,9 +168,3 @@ EF Core에 대한 두 번째 수준 고성능 쿼리 캐시입니다.
 고성능 대량 작업을 통해 DbContext를 확장합니다. BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge 등이 있습니다.
 
 [웹 사이트](https://entityframework-extensions.net/)
-
-### <a name="reconciler"></a>조정자
-
-각 엔터티를 삽입, 업데이트 및 제거하여 저장소의 엔터티 그래프를 지정된 항목으로 업데이트합니다.
-
-[GitHub 리포지토리](https://github.com/jtheisen/reconciler)

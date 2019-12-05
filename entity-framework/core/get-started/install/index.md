@@ -4,12 +4,12 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: aeb3ed1af8725ed6f92e0c0ba022a89b651bff80
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 1121b2bde1ada74ee189287501bc770aeb65e358
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655591"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824445"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
@@ -37,7 +37,7 @@ NuGet 패키지를 설치하거나 업데이트하려면 .NET Core CLI(명령줄
 
 * 운영 체제의 명령줄에서 다음 .NET Core CLI 명령을 사용하여 EF Core SQL Server 공급자를 설치하거나 업데이트합니다.
 
-  ``` Console
+  ```dotnetcli
   dotnet add package Microsoft.EntityFrameworkCore.SqlServer
   ```
 
@@ -95,7 +95,7 @@ NuGet 패키지를 설치하거나 업데이트하려면 .NET Core CLI(명령줄
 
 `dotnet ef` 명령은 .NET Core SDK의 최신 버전에 포함되어 있지만, 특정 프로젝트에서 명령을 사용하려면 `Microsoft.EntityFrameworkCore.Design` 패키지를 설치해야 합니다.
 
-``` Console
+```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
 
