@@ -225,6 +225,8 @@
                   href: core/providers/sql-server/index.md
                 - name: 메모리 최적화 테이블
                   href: core/providers/sql-server/memory-optimized-tables.md
+                - name: Azure SQL Database 옵션 지정
+                  href: core/providers/sql-server/azure-sql-database.md
             - name: SQLite
               items:
                 - name: 개요
