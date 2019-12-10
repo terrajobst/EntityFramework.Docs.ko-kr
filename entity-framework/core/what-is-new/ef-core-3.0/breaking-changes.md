@@ -1,15 +1,14 @@
 ---
 title: EF Core 3.0의 호환성이 손상되는 변경 - EF Core
-author: divega
-ms.date: 02/19/2019
-ms.assetid: EE2878C9-71F9-4FA5-9BC4-60517C7C9830
+author: ajcvickers
+ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: f02825f5303959997dca6e14e4efe64020b3cb22
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: d614103169837238810fabd0a8889043c851ef14
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655884"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824870"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 
@@ -42,6 +41,7 @@ ms.locfileid: "73655884"
 | [임시 키 값은 더 이상 엔터티 인스턴스에 설정되지 않습니다.](#tkv) | 낮음      |
 | [보안 주체와 테이블을 공유하는 종속 엔터티는 이제 선택 사항입니다.](#de) | 낮음      |
 | [동시 토큰 열을 사용하여 테이블을 공유하는 모든 엔터티는 해당 열을 속성에 매핑해야 합니다.](#aes) | 낮음      |
+| [추적 쿼리를 사용하는 소유자 없이 소유된 엔터티를 쿼리할 수 없습니다.](#owned-query) | 낮음      |
 | [매핑되지 않은 형식에서 상속된 속성은 이제 모든 파생 형식에 대해 단일 열에 매핑됩니다.](#ip) | 낮음      |
 | [외래 키 속성 규칙이 더 이상 보안 주체 속성과 동일한 이름을 일치시키지 않습니다.](#fkp) | 낮음      |
 | [데이터베이스 연결은 이제 TransactionScope가 완료되기 전에 더 이상 사용되지 않으면 닫힙니다.](#dbc) | 낮음      |
@@ -49,6 +49,7 @@ ms.locfileid: "73655884"
 | [호환이 가능한 여러 지원 필드가 발견되면 throw합니다.](#throw-if-multiple-compatible-backing-fields-are-found) | 낮음      |
 | [필드 전용 속성 이름은 필드 이름과 일치해야 합니다.](#field-only-property-names-should-match-the-field-name) | 낮음      |
 | [AddDbContext/AddDbContextPool이 더 이상 AddLogging 및 AddMemoryCache를 호출하지 않습니다.](#adddbc) | 낮음      |
+| [AddEntityFramework*에서 IMemoryCache를 크기 제한하여 추가합니다.](#addentityframework-adds-imemorycache-with-a-size-limit) | 낮음      |
 | [DbContext.Entry는 이제 로컬 DetectChanges를 수행합니다.](#dbe) | 낮음      |
 | [문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.](#string-and-byte-array-keys-are-not-client-generated-by-default) | 낮음      |
 | [ILoggerFactory는 이제 범위가 지정된 서비스입니다.](#ilf) | 낮음      |
@@ -189,7 +190,7 @@ EF Core 3.0이 나오기 전에는 이런 메서드 이름이 일반 문자열 �
 EF Core 3.0부터는 `FromSqlRaw`, `ExecuteSqlRaw` 및 `ExecuteSqlRawAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
 예:
 
-```C#
+```csharp
 context.Products.FromSqlRaw(
     "SELECT * FROM Products WHERE Name = {0}",
     product.Name);
@@ -198,7 +199,7 @@ context.Products.FromSqlRaw(
 `FromSqlInterpolated`, `ExecuteSqlInterpolated` 및 `ExecuteSqlInterpolatedAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
 예:
 
-```C#
+```csharp
 context.Products.FromSqlInterpolated(
     $"SELECT * FROM Products WHERE Name = {product.Name}");
 ```
@@ -223,7 +224,7 @@ context.Products.FromSqlInterpolated(
 
 EF Core 3.0 전에는 FromSql 메서드가 전달된 SQL 위에 구성이 가능한지 감지하려고 시도했습니다. SQL이 저장 프로시저처럼 구성 가능하지 않은 경우 클라이언트 평가를 수행했습니다. 다음 쿼리는 서버에서 저장 프로시저를 실행하고 클라이언트 쪽에서 FirstOrDefault를 수행하여 작동했습니다.
 
-```C#
+```csharp
 context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").FirstOrDefault();
 ```
 
@@ -239,7 +240,7 @@ EF Core 3.0은 [여기](#linq-queries-are-no-longer-evaluated-on-the-client)에�
 
 FromSqlRaw/FromSqlInterpolated에서 저장 프로시저를 사용하는 경우, 이 위에 구성할 수 없다는 사실을 알고 있으므로 FromSql 메서드 호출 직후에 __AsEnumerable/AsAsyncEnumerable__을 추가하여 서버 쪽에서 구성이 이루어지지 않도록 할 수 있습니다.
 
-```C#
+```csharp
 context.Products.FromSqlRaw("[dbo].[Ten Most Expensive Products]").AsEnumerable().FirstOrDefault();
 ```
 
@@ -274,7 +275,7 @@ EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(
 
 EF Core 3.0 이전에는 지정된 형식 및 ID의 엔터티가 발생할 때마다 동일한 엔터티 인스턴스가 사용되었습니다. 이는 추적 쿼리의 동작과 일치합니다. 예를 들어 다음 쿼리는
 
-```C#
+```csharp
 var results = context.Products.Include(e => e.Category).AsNoTracking().ToList();
 ```
 지정된 범주와 연결된 각 `Product`에 대해 동일한 `Category` 인스턴스를 반환합니다.
@@ -298,7 +299,7 @@ ID 확인이 필요한 경우 추적 쿼리를 사용합니다.
 [추적 문제 #14523](https://github.com/aspnet/EntityFrameworkCore/issues/14523)
 
 EF Core 3.0의 새 구성으로 모든 이벤트의 로그 수준을 애플리케이션에서 지정할 수 있기 때문에 이 변경 내용을 되돌렸습니다. 예를 들어 SQL의 로깅을 `Debug`로 전환하고 `OnConfiguring` 또는 `AddDbContext`에서 명시적으로 수준을 구성할 수 있습니다.
-```C#
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     => optionsBuilder
         .UseSqlServer(connectionString)
@@ -359,7 +360,7 @@ EF Core 3.0부터 생성된 키 값을 사용하고 일부 키 값을 설정한 
 해결 방법은 생성된 값을 사용하지 않도록 키 속성을 명시적으로 구성하는 것입니다.
 예를 들어 흐름 API가 있는 경우:
 
-```C#
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property(e => e.Id)
@@ -368,7 +369,7 @@ modelBuilder
 
 데이터 주석이 있는 경우:
 
-```C#
+```csharp
 [DatabaseGenerated(DatabaseGeneratedOption.None)]
 public string Id { get; set; }
 ```
@@ -395,7 +396,7 @@ public string Id { get; set; }
 이전 동작은 `context.ChangedTracker`의 설정을 통해 복원할 수 있습니다.
 예:
 
-```C#
+```csharp
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
 context.ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 ```
@@ -488,7 +489,7 @@ EF Core 3.0 이전에는 소유 관계의 구성은 `OwnsOne` 또는 `OwnsMany` 
 EF Core 3.0부터 이제 `WithOwner()`를 사용하여 소유자에게 탐색 속성을 구성하는 흐름 API가 있습니다.
 예:
 
-```C#
+```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
 ```
 
@@ -496,7 +497,7 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
 소유 형식 자체에 대한 구성은 `OwnsOne()/OwnsMany()` 이후에도 여전히 연결됩니다.
 예:
 
-```C#
+```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
     {
         eb.WithOwner()
@@ -538,7 +539,7 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
 **이전 동작**
 
 다음 모델을 살펴보세요.
-```C#
+```csharp
 public class Order
 {
     public int Id { get; set; }
@@ -573,7 +574,7 @@ EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 �
 **이전 동작**
 
 다음 모델을 살펴보세요.
-```C#
+```csharp
 public class Order
 {
     public int Id { get; set; }
@@ -608,12 +609,44 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 **완화 방법**
 
 테이블을 공유하는 모든 엔터티는 동시성 토큰 열에 매핑되는 속성을 포함해야 합니다. 해당 속성을 섀도 상태로 만들 수 있습니다.
-```C#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Entity<OrderDetails>()
         .Property<byte[]>("Version").IsRowVersion().HasColumnName("Version");
 }
+```
+
+<a name="owned-query"></a>
+
+### <a name="owned-entities-cannot-be-queried-without-the-owner-using-a-tracking-query"></a>추적 쿼리를 사용하는 소유자 없이 소유된 엔터티를 쿼리할 수 없습니다.
+
+[추적 문제 #18876](https://github.com/aspnet/EntityFrameworkCore/issues/18876)
+
+**이전 동작**
+
+EF Core 3.0 전에는 소유된 엔터티를 다른 탐색으로 쿼리할 수 있었습니다.
+
+```csharp
+context.People.Select(p => p.Address);
+```
+
+**새 동작**
+
+3\.0부터 추적 쿼리가 소유자 없이 소유된 엔터티를 프로젝션하는 경우 EF Core가 throw됩니다.
+
+**이유**
+
+소유된 엔터티는 소유자 없이 조작할 수 없으므로, 이러한 방식으로 쿼리하면 대부분의 경우에는 오류가 발생합니다.
+
+**완화 방법**
+
+나중에 어떤 방식으로든 소유된 엔터티를 수정해야 하는 경우, 소유자를 쿼리에 포함해야 합니다.
+
+그렇지 않으면 `AsNoTracking()` 호출을 추가합니다.
+
+```csharp
+context.People.Select(p => p.Address).AsNoTracking();
 ```
 
 <a name="ip"></a>
@@ -625,7 +658,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 **이전 동작**
 
 다음 모델을 살펴보세요.
-```C#
+```csharp
 public abstract class EntityBase
 {
     public int Id { get; set; }
@@ -667,7 +700,7 @@ EF Core 3.0 전에는 `ShippingAddress` 속성이 기본적으로 `BulkOrder` �
 
 이 속성을 여전히 파생 형식에 대한 별도의 열에 명시적으로 매핑할 수 있습니다.
 
-```C#
+```csharp
 protected override void OnModelCreating(ModelBuilder modelBuilder)
 {
     modelBuilder.Ignore<OrderBase>();
@@ -688,7 +721,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 **이전 동작**
 
 다음 모델을 살펴보세요.
-```C#
+```csharp
 public class Customer
 {
     public int CustomerId { get; set; }
@@ -710,7 +743,7 @@ EF Core 3.0 이전에는 규칙에 따라 외래 키에 대해 `CustomerId` 속�
 보안 주체 속성 이름과 연결된 보안 주체 유형 이름 및 보안 주체 속성 이름 패턴과 연결된 탐색 이름은 여전히 일치합니다.
 예:
 
-```C#
+```csharp
 public class Customer
 {
     public int Id { get; set; }
@@ -724,7 +757,7 @@ public class Order
 }
 ```
 
-```C#
+```csharp
 public class Customer
 {
     public int Id { get; set; }
@@ -757,7 +790,7 @@ public class Order
 
 EF Core 3.0 전에는 컨텍스트가 `TransactionScope` 내에서 연결을 여는 경우 현재 `TransactionScope`가 활성화되어 있는 동안 해당 연결이 열린 상태로 유지됩니다.
 
-```C#
+```csharp
 using (new TransactionScope())
 {
     using (AdventureWorks context = new AdventureWorks())
@@ -766,7 +799,7 @@ using (new TransactionScope())
         context.SaveChanges();
 
         // Old behavior: Connection is still open at this point
-        
+
         var categories = context.ProductCategories().ToList();
     }
 }
@@ -784,7 +817,7 @@ using (new TransactionScope())
 
 연결이 열린 상태로 유지되어야 하는 경우 `OpenConnection()`을 명시적으로 호출하여 EF Core가 연결을 조기에 닫지 않도록 합니다.
 
-```C#
+```csharp
 using (new TransactionScope())
 {
     using (AdventureWorks context = new AdventureWorks())
@@ -792,7 +825,7 @@ using (new TransactionScope())
         context.Database.OpenConnection();
         context.ProductCategories.Add(new ProductCategory());
         context.SaveChanges();
-        
+
         var categories = context.ProductCategories().ToList();
         context.Database.CloseConnection();
     }
@@ -846,7 +879,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 `ModelBuilder`에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
 예:
 
-```C#
+```csharp
 modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
 ```
 
@@ -872,7 +905,7 @@ EF Core 3.0부터 여러 필드가 동일한 속성과 일치하면 예외가 th
 모호한 지원 필드가 있는 속성은 사용할 필드가 명시적으로 지정되어야 합니다.
 예를 들어 흐름 API 사용:
 
-```C#
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property(e => e.Id)
@@ -884,14 +917,16 @@ modelBuilder
 **이전 동작**
 
 EF Core 3.0 이전에는 문자열 값으로 속성을 지정할 수 있었고 .NET 형식에서 해당 이름을 가진 속성을 찾을 수 없는 경우, EF Core는 변환 규칙을 사용하여 필드에 일치시키려고 했습니다.
-```C#
+
+```csharp
 private class Blog
 {
     private int _id;
     public string Name { get; set; }
 }
 ```
-```C#
+
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property("Id");
@@ -901,7 +936,7 @@ modelBuilder
 
 EF Core 3.0부터 필드 전용 속성은 필드 이름과 정확히 일치해야 합니다.
 
-```C#
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property("_id");
@@ -916,7 +951,7 @@ modelBuilder
 필드 전용 속성의 이름은 매핑되는 필드와 동일한 이름을 지정해야 합니다.
 3\.0 이후 EF Core의 향후 릴리스에서는 속성 이름과 다른 필드 이름을 명시적으로 다시 사용하도록 설정할 계획입니다([#15307](https://github.com/aspnet/EntityFrameworkCore/issues/15307) 이슈 참조).
 
-```C#
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property("Id")
@@ -931,7 +966,7 @@ modelBuilder
 
 **이전 동작**
 
-EF Core 3.0 이전에는 `AddDbContext` 또는 `AddDbContextPool`을 호출하면 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 및 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)에 대한 호출을 통해 D.I를 사용하여 로깅 및 메모리 캐시 서비스도 등록합니다.
+EF Core 3.0 이전에는, `AddDbContext` 또는 `AddDbContextPool`을(를) 호출하면 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 및 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)에 대한 호출을 통해 DI를 사용하여 로깅 및 메모리 캐싱 서비스도 등록되었습니다.
 
 **새 동작**
 
@@ -944,6 +979,28 @@ EF Core 3.0에서는 이러한 서비스가 애플리케이션의 DI 컨테이�
 **완화 방법**
 
 애플리케이션에 이러한 서비스가 필요한 경우 [AddLogging](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.loggingservicecollectionextensions.addlogging) 또는 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 DI 컨테이너에 명시적으로 등록합니다.
+
+### <a name="addentityframework-adds-imemorycache-with-a-size-limit"></a>AddEntityFramework*에서 IMemoryCache를 크기 제한하여 추가합니다.
+
+[추적 문제 #12905](https://github.com/aspnet/EntityFrameworkCore/issues/12905)
+
+**이전 동작**
+
+EF Core 3.0 전에는 `AddEntityFramework*` 메서드를 호출하여 크기 제한 없이 DI로 메모리 캐싱 서비스를 등록합니다.
+
+**새 동작**
+
+EF Core 3.0부터 `AddEntityFramework*`은(는) 크기 제한으로 IMemoryCache 서비스를 등록합니다. 이후에 추가된 다른 서비스가 IMemoryCache에 따라 달라지는 경우 예외 또는 성능 저하를 야기하는 기본 제한에 빠르게 도달할 수 있습니다.
+
+**이유**
+
+제한 없이 IMemoryCache를 사용하면 쿼리 캐싱 논리에 버그가 있거나 쿼리가 동적으로 생성되는 경우 제어되지 않는 메모리 사용이 발생할 수 있습니다. 기본 제한을 사용하며 잠재적인 DoS 공격을 완화할 수 있습니다.
+
+**완화 방법**
+
+대부분의 경우 `AddDbContext` 또는 `AddDbContextPool`을(를) 호출하면 `AddEntityFramework*`을(를) 호출할 필요가 없습니다. 따라서 가장 좋은 완화 방법은 `AddEntityFramework*` 호출을 제거하는 것입니다.
+
+애플리케이션에 이 서비스가 필요한 경우 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 미리 DI 컨테이너로 IMemoryCache 구현을 명시적으로 등록합니다.
 
 <a name="dbe"></a>
 
@@ -995,7 +1052,7 @@ EF Core 3.0부터 키 값이 설정되지 않았음을 나타내는 예외가 th
 다른 null이 아닌 값이 설정되지 않은 경우 키 속성이 생성된 값을 사용해야 함을 명시적으로 지정하면 3.0 이전 버전 동작을 얻을 수 있습니다.
 예를 들어 흐름 API가 있는 경우:
 
-```C#
+```csharp
 modelBuilder
     .Entity<Blog>()
     .Property(e => e.Id)
@@ -1004,7 +1061,7 @@ modelBuilder
 
 데이터 주석이 있는 경우:
 
-```C#
+```csharp
 [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
 public string Id { get; set; }
 ```
@@ -1082,7 +1139,7 @@ EF Core 3.0부터 이제 이 경고가 고려되며 오류와 예외가 throw됩
 그러나 오류는 `DbContextOptionsBuilder`의 구성을 통해 경고(또는 무시)로 다시 변환될 수 있습니다.
 예:
 
-```C#
+```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 {
     optionsBuilder
@@ -1100,7 +1157,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
 EF Core 3.0 이전에는 단일 문자열을 사용하여 `HasOne` 또는 `HasMany`를 호출하는 코드가 혼란스러운 방식으로 해석되었습니다.
 예:
-```C#
+```csharp
 modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 ```
 
@@ -1123,7 +1180,7 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 이전 동작은 탐색 속성 이름에 대해 `null`을 전달하여 명시적으로 얻을 수 있습니다.
 예:
 
-```C#
+```csharp
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 ```
 
@@ -1513,7 +1570,7 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예:
 
-```C#
+```csharp
 var constraintName = myForeignKey.Name;
 ```
 
@@ -1521,7 +1578,7 @@ var constraintName = myForeignKey.Name;
 
 이제 EF Core 3.0부터 외래 키 제약 조건 이름은 “제약 조건 이름”이라고 합니다. 예:
 
-```C#
+```csharp
 var constraintName = myForeignKey.ConstraintName;
 ```
 
@@ -1662,7 +1719,7 @@ Always Encrypted와 같은 일부 중요한 기능은 Microsoft.Data.SqlClient�
 
 복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예:
 
-```C#
+```csharp
 public class User 
 {
         public Guid Id { get; set; }
@@ -1685,7 +1742,7 @@ public class User
 
 관계의 전체 구성을 사용합니다. 예:
 
-```C#
+```csharp
 modelBuilder
      .Entity<User>()
      .HasOne(e => e.CreatedBy)
@@ -1706,7 +1763,7 @@ modelBuilder
 
 스키마가 빈 문자열로 구성된 DbFunction은 스키마가 없는 기본 제공 함수로 처리되었습니다. 예를 들어 다음 코드는 `DatePart` CLR 함수를 SqlServer의 `DATEPART` 기본 제공 함수에 매핑합니다.
 
-```C#
+```csharp
 [DbFunction("DATEPART", Schema = "")]
 public static int? DatePart(string datePartArg, DateTime? date) => throw new Exception();
 
@@ -1724,7 +1781,7 @@ public static int? DatePart(string datePartArg, DateTime? date) => throw new Exc
 
 DbFunction의 변환이 기본 제공 함수에 매핑되도록 수동으로 구성합니다.
 
-```C#
+```csharp
 modelBuilder
     .HasDbFunction(typeof(MyContext).GetMethod(nameof(MyContext.DatePart)))
     .HasTranslation(args => SqlFunctionExpression.Create("DatePart", args, typeof(int?), null));

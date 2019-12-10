@@ -4,12 +4,12 @@ author: divega
 ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
-ms.openlocfilehash: 72393e96c195af1df5a169025ca2ce7a7acb16bb
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 83f6b819409d502dba17a678d44a0746a4a77f4b
+ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656219"
+ms.lasthandoff: 12/04/2019
+ms.locfileid: "74824885"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
 
@@ -91,12 +91,12 @@ public class BloggingContext : DbContext
     {
         modelBuilder.Entity<Post>().HasQueryFilter(
             p => !p.IsDeleted
-            && p.TenantId == this.TenantId );
+            && p.TenantId == this.TenantId);
     }
 }
 ```
 
-`Post` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. DbContext 인스턴스 수준 속성 `TenantId`의 사용을 살펴봅니다. 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
+`Post` 엔터티 형식의 인스턴스에 대해 멀티 테넌트 및 일시 삭제를 구현하는 모델 수준 필터를 정의합니다. `DbContext` 인스턴스 수준 속성`TenantId` 사용: 모델 수준 필터는 올바른 컨텍스트 인스턴스(즉, 쿼리를 실행하는 컨텍스트 인스턴스)의 값을 사용합니다.
 
 IgnoreQueryFilters() 연산자를 사용하여 개별 LINQ 쿼리에 대해 필터를 사용하지 않게 설정할 수 있습니다.
 
@@ -119,7 +119,7 @@ public class BloggingContext : DbContext
     [DbFunction]
     public static int PostReadCount(int blogId)
     {
-        throw new Exception();
+        throw new NotImplementedException();
     }
 }
 ```
@@ -137,7 +137,7 @@ var query =
 
 - 규칙에 따라, SQL을 생성할 때 메서드 이름은 함수 이름으로 사용되나(이 경우 사용자 정의 함수) 메서드 이름 중에 이 이름과 스키마를 재정의할 수 있습니다.
 - 현재 스칼라 함수만 지원됩니다.
-- 데이터베이스에 매핑된 함수를 만들어야 합니다. EF Core 마이그레이션을 생성할 필요가 없음
+- 데이터베이스에 매핑된 함수를 만들어야 합니다. EF Core 마이그레이션을 생성할 필요가 없습니다.
 
 ### <a name="self-contained-type-configuration-for-code-first"></a>코드 우선에 대해 자체 포함된 형식 구성
 
@@ -146,11 +146,11 @@ EF6에서는 *EntityTypeConfiguration*에서 파생하여 특정 엔터티 형�
 ``` csharp
 class CustomerConfiguration : IEntityTypeConfiguration<Customer>
 {
-  public void Configure(EntityTypeBuilder<Customer> builder)
-  {
-     builder.HasKey(c => c.AlternateKey);
-     builder.Property(c => c.Name).HasMaxLength(200);
-   }
+    public void Configure(EntityTypeBuilder<Customer> builder)
+    {
+        builder.HasKey(c => c.AlternateKey);
+        builder.Property(c => c.Name).HasMaxLength(200);
+    }
 }
 
 ...
@@ -223,7 +223,7 @@ EF Core는 다양한 메커니즘을 통해 키 값의 자동 생성을 지원�
 
 ### <a name="string-interpolation-in-fromsql-and-executesqlcommand"></a>FromSql 및 ExecuteSqlCommand의 문자열 보간
 
-C# 6에는 C# 식을 직접 문자열 리터럴에 포함할 수 있게 하여 런타임에서 문자열을 빌드할 수 있는 훌륭한 방법을 제공하는 문자열 보간이 도입되었습니다. EF Core 2.0에서는 원시 SQL 문자열 `FromSql` 및 `ExecuteSqlCommand`를 허용하는 두 기본 API에 보간 문자열에 대한 특수 지원을 추가했습니다. 이 새로운 지원을 통해 C# 문자열 보간을 '안전한' 방법으로 사용할 수 있습니다. 즉 동적으로 런타임 시 SQL을 생성할 때 발생할 수 있는 일반적인 SQL 주입 실수로부터 보호할 수 있습니다.
+C# 6에는 C# 식을 직접 문자열 리터럴에 포함할 수 있게 하여 런타임에서 문자열을 빌드할 수 있는 훌륭한 방법을 제공하는 문자열 보간이 도입되었습니다. EF Core 2.0에서는 원시 SQL 문자열 `FromSql` 및 `ExecuteSqlCommand`를 허용하는 두 기본 API에 보간 문자열에 대한 특수 지원을 추가했습니다. 이 새로운 지원을 통해 C# 문자열 보간을 "안전한" 방법으로 사용할 수 있습니다. 즉 동적으로 런타임 시 SQL을 생성할 때 발생할 수 있는 일반적인 SQL 주입 실수로부터 보호할 수 있습니다.
 
 예를 들면 다음과 같습니다.
 
