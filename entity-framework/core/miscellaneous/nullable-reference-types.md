@@ -4,12 +4,12 @@ author: roji
 ms.date: 09/09/2019
 ms.assetid: bde4e0ee-fba3-4813-a849-27049323d301
 uid: core/miscellaneous/nullable-reference-types
-ms.openlocfilehash: 055f492214596506ce2c28485ade359d175c4ac2
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: 0d05902566b6b166f1267915d9f698ed29dff588
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445904"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502069"
 ---
 # <a name="working-with-nullable-reference-types"></a>Nullable 참조 형식 사용
 
@@ -19,7 +19,7 @@ C#8은 null을 포함할 수 있는지 여부를 나타내는 [nullable 참조 �
 
 ## <a name="required-and-optional-properties"></a>필수 및 선택적 속성
 
-필수 및 선택적 속성에 대 한 기본 설명서와 nullable 참조 형식과의 상호 작용은 [필수 및 선택적 속성](xref:core/modeling/required-optional) 페이지입니다. 먼저 해당 페이지를 읽어 시작 하는 것이 좋습니다.
+필수 및 선택적 속성에 대 한 기본 설명서와 nullable 참조 형식과의 상호 작용은 [필수 및 선택적 속성](xref:core/modeling/entity-properties#required-and-optional-properties) 페이지입니다. 먼저 해당 페이지를 읽어 시작 하는 것이 좋습니다.
 
 > [!NOTE]
 > 기존 프로젝트에서 nullable 참조 형식을 사용 하도록 설정 하는 경우 주의 해야 합니다. 이전에 선택적으로 구성 된 참조 형식 속성은 nullable로 명시적으로 주석 처리 되지 않는 한 이제 필수로 구성 됩니다. 관계형 데이터베이스 스키마를 관리할 때이로 인해 데이터베이스 열의 null 허용 여부를 변경 하는 마이그레이션이 생성 될 수 있습니다.

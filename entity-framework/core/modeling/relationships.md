@@ -4,12 +4,12 @@ description: Entity Framework Core를 사용할 때 엔터티 형식 간의 관�
 author: AndriySvyryd
 ms.date: 11/21/2019
 uid: core/modeling/relationships
-ms.openlocfilehash: 452169c902d56fda0a65a5c2846a9b42c80640fd
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 6b3e0636bfa266b78baafe1b6e318c9707294560
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824766"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502190"
 ---
 # <a name="relationships"></a>관계
 
@@ -42,7 +42,7 @@ ms.locfileid: "74824766"
 
 다음 코드에서는 `Blog`와 간의 일 대 다 관계를 보여 줍니다 `Post`
 
-[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs#Entities)]
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs#Full)]
 
 * `Post` 종속 엔터티입니다.
 
@@ -71,13 +71,13 @@ ms.locfileid: "74824766"
 
 * 두 형식 사이에 탐색 속성 쌍이 있으면 동일한 관계의 반전 탐색 속성으로 구성 됩니다.
 
-* 종속 엔터티에 이러한 패턴 중 하나에 해당 하는 이름의 속성이 있는 경우 외래 키로 구성 됩니다.
+* 종속 엔터티에 이러한 패턴 중 하 나와 일치 하는 이름의 속성이 포함 되어 있으면 외래 키로 구성 됩니다.
   * `<navigation property name><principal key property name>`
   * `<navigation property name>Id`
   * `<principal entity name><principal key property name>`
   * `<principal entity name>Id`
 
-[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs?name=Entities&highlight=6,15,16)]
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/Full.cs?name=Full&highlight=6,15-16)]
 
 이 예제에서는 강조 표시 된 속성을 사용 하 여 관계를 구성 합니다.
 
@@ -91,7 +91,7 @@ ms.locfileid: "74824766"
 
 종속 엔터티 클래스에 외래 키 속성을 정의 하는 것이 좋지만 필수는 아닙니다. 외래 키 속성을 찾을 수 없는 경우에는 이름 `<navigation property name><principal key property name>` 또는 종속 형식에 탐색이 없는 경우 `<principal entity name><principal key property name>` [섀도 외래 키 속성이](shadow-properties.md) 추가 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/NoForeignKey.cs?name=Entities&highlight=6,15)]
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/NoForeignKey.cs?name=NoForeignKey&highlight=6,15)]
 
 이 예제에서는 탐색 이름이 중복 되기 때문에 그림자 외래 키가 `BlogId` 됩니다.
 
@@ -102,7 +102,7 @@ ms.locfileid: "74824766"
 
 탐색 속성을 하나만 포함 하 고 (역 탐색은 없고 외래 키 속성이 없는 경우) 규칙으로 정의 된 관계를 가질 수 있습니다. 단일 탐색 속성과 외래 키 속성을 사용할 수도 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneNavigation.cs?name=Entities&highlight=6)]
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneNavigation.cs?name=OneNavigation&highlight=6)]
 
 ### <a name="limitations"></a>제한 사항
 
@@ -118,17 +118,17 @@ ms.locfileid: "74824766"
 
 ## <a name="manual-configuration"></a>수동 구성
 
-#### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
 
 흐름 API에서 관계를 구성 하려면 먼저 관계를 구성 하는 탐색 속성을 식별 합니다. `HasOne` 또는 `HasMany`는 구성을 시작 하는 엔터티 형식에 대 한 탐색 속성을 식별 합니다. 그런 다음 `WithOne` 또는 `WithMany`에 대 한 호출을 연결 하 여 역 탐색을 식별 합니다. `HasOne`/`WithOne` 참조 탐색 속성에 사용 되 고 `HasMany`/`WithMany` 컬렉션 탐색 속성에 사용 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoForeignKey.cs?highlight=14-16)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoForeignKey.cs?name=NoForeignKey&highlight=8-10)]
 
-#### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 데이터 주석을 사용 하 여 종속 및 주요 엔터티의 탐색 속성이 페어링 되는 방법을 구성할 수 있습니다. 이는 일반적으로 두 엔터티 형식 간에 둘 이상의 탐색 속성 쌍이 있는 경우에 수행 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/InverseProperty.cs?highlight=33,36)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/InverseProperty.cs?name=InverseProperty&highlight=20,23)]
 
 > [!NOTE]
 > 종속 엔터티의 속성에 [Required]만 사용 하 여 관계의 requiredness에 영향을 줄 수 있습니다. [필수]는 일반적으로 주 엔터티 탐색에서 무시 되지만 엔터티가 종속 항목이 되도록 할 수 있습니다.
@@ -142,21 +142,27 @@ ms.locfileid: "74824766"
 
 탐색 속성이 하나만 있는 경우에는 `WithOne` 및 `WithMany`에 대 한 매개 변수가 없는 오버 로드가 있습니다. 이는 개념적으로 관계의 다른 쪽 끝에 참조 또는 컬렉션이 있지만 엔터티 클래스에 포함 된 탐색 속성이 없다는 것을 나타냅니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneNavigation.cs?highlight=14-16)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneNavigation.cs?name=OneNavigation&highlight=8-10)]
 
 ### <a name="foreign-key"></a>외래 키
 
-#### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+#### <a name="fluent-api-simple-keytabfluent-api-simple-key"></a>[흐름 API (단순 키)](#tab/fluent-api-simple-key)
 
 흐름 API를 사용 하 여 지정 된 관계에 대 한 외래 키 속성으로 사용할 속성을 구성할 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ForeignKey.cs?highlight=17)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ForeignKey.cs?name=ForeignKey&highlight=11)]
 
-#### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+#### <a name="fluent-api-composite-keytabfluent-api-composite-key"></a>[흐름 API (복합 키)](#tab/fluent-api-composite-key)
+
+흐름 API를 사용 하 여 지정 된 관계에 대 한 복합 외래 키 속성으로 사용할 속성을 구성할 수 있습니다.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositeForeignKey.cs?name=CompositeForeignKey&highlight=13)]
+
+#### <a name="data-annotations-simple-keytabdata-annotations-simple-key"></a>[데이터 주석 (단순 키)](#tab/data-annotations-simple-key)
 
 데이터 주석을 사용 하 여 지정 된 관계에 대 한 외래 키 속성으로 사용할 속성을 구성할 수 있습니다. 이는 일반적으로 외래 키 속성이 규칙에 의해 검색 되지 않는 경우에 수행 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/ForeignKey.cs?highlight=30)]
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Relationships/ForeignKey.cs?name=ForeignKey&highlight=17)]
 
 > [!TIP]  
 > `[ForeignKey]` 주석은 관계의 탐색 속성 중 하나에 배치할 수 있습니다. 종속 엔터티 클래스의 탐색 속성으로 이동할 필요가 없습니다.
@@ -166,38 +172,48 @@ ms.locfileid: "74824766"
 
 ---
 
-다음 코드에서는 복합 외래 키를 구성 하는 방법을 보여 줍니다.
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositeForeignKey.cs?highlight=20)]
+#### <a name="shadow-foreign-key"></a>섀도 외래 키
 
 `HasForeignKey(...)`의 문자열 오버 로드를 사용 하 여 그림자 속성을 외래 키로 구성할 수 있습니다. 자세한 내용은 [섀도 속성](shadow-properties.md) 을 참조 하세요. 섀도 속성을 외래 키로 사용 하기 전에이를 명시적으로 모델에 추가 하는 것이 좋습니다 (아래 참조).
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ShadowForeignKey.cs#Sample)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ShadowForeignKey.cs?name=ShadowForeignKey&highlight=10,16)]
+
+#### <a name="foreign-key-constraint-name"></a>Foreign key 제약 조건 이름
+
+규칙에 따라 관계형 데이터베이스를 대상으로 지정 하는 경우 foreign key 제약 조건의 이름은<foreign key property name> _<principal type name>_ <dependent type name>FK_ 됩니다. 복합 외래 키의 경우에는 쉼표로 구분 된 외래 키 속성 이름 목록이 <foreign key property name> 됩니다.
+
+제약 조건 이름을 다음과 같이 구성할 수도 있습니다.
+
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ConstraintName.cs?name=ConstraintName&highlight=6-7)]
 
 ### <a name="without-navigation-property"></a>탐색 속성 없음
 
 탐색 속성을 반드시 제공할 필요는 없습니다. 관계의 한쪽에 외래 키를 제공 하기만 하면 됩니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoNavigation.cs?highlight=14-17)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoNavigation.cs?name=NoNavigation&highlight=8-11)]
 
 ### <a name="principal-key"></a>주 키
 
 외래 키가 기본 키 이외의 속성을 참조 하도록 하려는 경우 흐름 API를 사용 하 여 관계에 대 한 principal key 속성을 구성할 수 있습니다. 주 키로 구성 하는 속성은 자동으로 [대체 키](alternate-keys.md)로 설정 됩니다.
 
+#### <a name="simple-keytabsimple-key"></a>[단순 키](#tab/simple-key)
+
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?name=PrincipalKey&highlight=11)]
 
-다음 코드에서는 복합 주체 키를 구성 하는 방법을 보여 줍니다.
+#### <a name="composite-keytabcomposite-key"></a>[복합 키](#tab/composite-key)
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?name=Composite&highlight=11)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?name=CompositePrincipalKey&highlight=11)]
 
 > [!WARNING]  
 > 보안 주체 키 속성을 지정 하는 순서는 외래 키에 대해 지정 된 순서와 일치 해야 합니다.
+
+---
 
 ### <a name="required-and-optional-relationships"></a>필수 및 선택적 관계
 
 흐름 API를 사용 하 여 관계가 필수 또는 선택 사항 인지 여부를 구성할 수 있습니다. 이는 궁극적으로 외래 키 속성이 필수 또는 선택 사항 인지 여부를 제어 합니다. 이는 섀도 상태 외래 키를 사용 하는 경우에 가장 유용 합니다. 엔터티 클래스에 외래 키 속성이 있는 경우 외래 키 속성이 필수 인지 선택 사항에 따라 관계를 결정 합니다. 자세한 내용은 [필수 및 선택적 속성](required-optional.md) 을 참조 하세요.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?name=Required&highlight=11)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/Required.cs?name=Required&highlight=6)]
 
 > [!NOTE]
 > 또한 `IsRequired(false)`를 호출 하면 외래 키 속성이 다르게 구성 된 경우를 제외 하 고이 옵션을 선택 합니다.
@@ -208,7 +224,7 @@ ms.locfileid: "74824766"
 
 각 옵션에 대 한 자세한 내용은 [계단식 삭제](../saving/cascade-delete.md) 를 참조 하세요.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?name=CascadeDelete&highlight=11)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CascadeDelete.cs?name=CascadeDelete&highlight=6)]
 
 ## <a name="other-relationship-patterns"></a>기타 관계 패턴
 
@@ -216,7 +232,7 @@ ms.locfileid: "74824766"
 
 일대일 관계에는 양쪽 모두에 대 한 참조 탐색 속성이 있습니다. 이는 일 대 다 관계와 동일한 규칙을 따르고 외래 키 속성에 고유 인덱스가 도입 되어 각 보안 주체와 하나의 종속만 관련 되도록 합니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneToOne.cs?name=Property&highlight=6,15,16)]
+[!code-csharp[Main](../../../samples/core/Modeling/Conventions/Relationships/OneToOne.cs?name=OneToOne&highlight=6,15-16)]
 
 > [!NOTE]  
 > EF는 외래 키 속성을 검색 하는 기능에 따라 엔터티 중 하나를 종속 항목으로 선택 합니다. 잘못 된 엔터티가 종속 항목으로 선택 된 경우 흐름 API를 사용 하 여이를 수정할 수 있습니다.
@@ -231,4 +247,4 @@ ms.locfileid: "74824766"
 
 조인 테이블을 나타내기 위해 엔터티 클래스가 없는 다 대 다 관계는 아직 지원 되지 않습니다. 그러나 조인 테이블에 대해 엔터티 클래스를 포함 하 고 두 개의 개별 일대다 관계를 매핑하여 다대다 관계를 나타낼 수 있습니다.
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?name=ManyToMany&highlight=11,12,13,14,16,17,18,19,39,40,41,42,43,44,45,46)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ManyToMany.cs?name=ManyToMany&highlight=11-14,16-19,39-46)]

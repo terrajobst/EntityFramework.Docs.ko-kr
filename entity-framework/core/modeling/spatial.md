@@ -5,12 +5,12 @@ ms.author: bricelam
 ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
-ms.openlocfilehash: 335d4f3a601624f7c994b7dcacefe4ef6798beb3
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 8dae1ab949c77ffa08904b12a5716b729e6913a1
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655607"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502242"
 ---
 # <a name="spatial-data"></a>공간 데이터
 
@@ -48,12 +48,12 @@ optionsBuilder.UseSqlServer(
 
 여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. `NetTopologySuite.Geometries` 네임 스페이스 내에 있습니다.
 
-* 기하학
+* geometry
   * 요소
   * LineString
   * 다각형
   * GeometryCollection
-    * 다
+    * 다중 포인트
     * MultiLineString
     * MultiPolygon
 
@@ -213,7 +213,7 @@ SQL Server를 사용 하는 경우 알아야 할 몇 가지 추가 사항이 있
 
 ### <a name="geography-or-geometry"></a>지리 또는 기 하 도형
 
-기본적으로 공간 속성은 SQL Server의 `geography` 열에 매핑됩니다. `geometry`를 사용 하려면 모델에서 [열 유형을 구성](xref:core/modeling/relational/data-types) 합니다.
+기본적으로 공간 속성은 SQL Server의 `geography` 열에 매핑됩니다. `geometry`를 사용 하려면 모델에서 [열 유형을 구성](xref:core/modeling/entity-properties#column-data-types) 합니다.
 
 ### <a name="geography-polygon-rings"></a>지리 다각형 링
 
@@ -251,7 +251,7 @@ modelBuilder.Entity<City>().Property(c => c.Location)
     .ForSqliteHasSrid(4326);
 ```
 
-### <a name="dimension"></a>크기
+### <a name="dimension"></a>Dimension
 
 SRID와 마찬가지로 열의 차원 (또는 좌표)도 열의 일부로 지정 됩니다. 기본 좌표는 X 및 Y입니다. ForSqliteHasDimension 메서드를 사용 하 여 추가 좌표 (Z 및 M)를 사용 하도록 설정 합니다.
 
