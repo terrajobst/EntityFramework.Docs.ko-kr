@@ -79,18 +79,14 @@
           items:
             - name: 개요
               href: core/modeling/index.md
-            - name: 형식 포함 및 제외
-              href: core/modeling/included-types.md
-            - name: 속성 포함 및 제외
-              href: core/modeling/included-properties.md
-            - name: 키(기본)
+            - name: 엔터티 형식
+              href: core/modeling/entity-types.md
+            - name: 엔터티 속성
+              href: core/modeling/entity-properties.md
+            - name: 키
               href: core/modeling/keys.md
             - name: 생성된 값
               href: core/modeling/generated-properties.md
-            - name: 필수 및 선택 속성
-              href: core/modeling/required-optional.md
-            - name: 최대 길이
-              href: core/modeling/max-length.md
             - name: 동시성 토큰
               href: core/modeling/concurrency.md
             - name: 섀도 속성
@@ -99,10 +95,10 @@
               href: core/modeling/relationships.md
             - name: 인덱스
               href: core/modeling/indexes.md
-            - name: 대체 키
-              href: core/modeling/alternate-keys.md
             - name: 상속
               href: core/modeling/inheritance.md
+            - name: 시퀀스
+              href: core/modeling/sequences.md
             - name: 지원 필드
               href: core/modeling/backing-field.md
             - name: 값 변환
@@ -119,36 +115,13 @@
               href: core/modeling/keyless-entity-types.md
             - name: 동일한 DbContext를 갖는 대체 모델
               href: core/modeling/dynamic-model.md
-            - name: 공간 데이터(GIS)
+            - name: 공간 데이터
+              displayName: GIS
               href: core/modeling/spatial.md
             - name: 관계형 데이터베이스 모델링
               items:
                 - name: 개요
                   href: core/modeling/relational/index.md
-                - name: 테이블 매핑
-                  href: core/modeling/relational/tables.md
-                - name: 열 매핑
-                  href: core/modeling/relational/columns.md
-                - name: 데이터 형식
-                  href: core/modeling/relational/data-types.md
-                - name: 기본 키
-                  href: core/modeling/relational/primary-keys.md
-                - name: 기본 스키마
-                  href: core/modeling/relational/default-schema.md
-                - name: 계산된 열
-                  href: core/modeling/relational/computed-columns.md
-                - name: 시퀀스
-                  href: core/modeling/relational/sequences.md
-                - name: 기본값
-                  href: core/modeling/relational/default-values.md
-                - name: 인덱스
-                  href: core/modeling/relational/indexes.md
-                - name: 외래 키 제약 조건
-                  href: core/modeling/relational/fk-constraints.md
-                - name: 대체 키(고유 제약 조건)
-                  href: core/modeling/relational/unique-constraints.md
-                - name: 상속(관계형데이터베이스)
-                  href: core/modeling/relational/inheritance.md
         - name: 데이터베이스 스키마 관리
           items:
             - name: 개요

@@ -5,12 +5,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: a6b9cd22-6803-4c6c-a4d4-21147c0a81cb
 uid: efcore-and-ef6/index
-ms.openlocfilehash: 9fe4905de5bd81fce083d620724b7fad4c6dd11b
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 62f7da64bbb6289edd38b877af71fc126e03d0f6
+ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182040"
+ms.lasthandoff: 12/27/2019
+ms.locfileid: "75502291"
 ---
 # <a name="compare-ef-core--ef6"></a>EF Core & EF6 비교
 
@@ -30,7 +30,7 @@ EF Core는 EF6와 유사한 개발자 환경을 제공하도록 디자인되었�
 
 ## <a name="feature-comparison"></a>기능 비교
 
-EF Core에서는 EF6에서 구현되지 않을 몇 가지 중요한 기능(예: LINQ 쿼리에서의 [대체 키](xref:core/modeling/alternate-keys), [일괄 업데이트](xref:core/what-is-new/ef-core-1.0#relational-batching-of-statements), [혼합 클라이언트/데이터베이스 평가](xref:core/querying/client-eval))을 제공합니다. 그러나 EF Core는 새로운 코드 기반이므로 EF6에 있는 일부 기능이 EF Core에 없습니다.
+EF Core에서는 EF6에서 구현되지 않을 몇 가지 중요한 기능(예: LINQ 쿼리에서의 [대체 키](xref:core/modeling/keys#alternate-keys), [일괄 업데이트](xref:core/what-is-new/ef-core-1.0#relational-batching-of-statements), [혼합 클라이언트/데이터베이스 평가](xref:core/querying/client-eval))을 제공합니다. 그러나 EF Core는 새로운 코드 기반이므로 EF6에 있는 일부 기능이 EF Core에 없습니다.
 
 다음 표에서는 EF Core 및 EF6에서 사용할 수 있는 기능을 비교합니다. 이는 상위 수준준 비교로서, 모든 기능을 나열하거나 다른 EF 버전에 있는 동일한 기능 간의 차이를 설명하지 않습니다.
 
@@ -62,9 +62,9 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 | 그래픽 모델 편집기                                | 예      |                                       |
 | 모델 형식: 코드                                    | 예      | 1.0                                   |
 | 모델 형식: EDMX(XML)                              | 예      |                                       |
-| 데이터베이스에서 모델 만들기: 명령 줄              | 예      | 1.0                                   |
+| 데이터베이스에서 모델 만들기: 명령줄              | 예      | 1.0                                   |
 | 데이터베이스에서 모델 만들기: VS 마법사                 | 예      |                                       |
-| 데이터베이스에서 모델 업데이트                            | 부분  |                                       |
+| 데이터베이스에서 모델 업데이트                            | Partial  |                                       |
 | 전역 쿼리 필터                                  |          | 2.0                                   |
 | 테이블 분할                                       | 예      | 2.0                                   |
 | 엔터티 분할                                      | 예      |                                       |
@@ -96,10 +96,10 @@ EF Core 열은 기능이 처음 나타나는 제품 버전을 나타냅니다.
 |:------------------------------------------------------|:---------|:--------------------------------------|
 | 변경 내용 추적: 스냅샷                             | 예      | 1.0                                   |
 | 변경 내용 추적: 알림                         | 예      | 1.0                                   |
-| 변경 내용 추적: 프록시                              | 예      |                                       |
+| 변경 내용 추적: Proxy                              | 예      |                                       |
 | 추적된 상태 액세스                               | 예      | 1.0                                   |
 | 낙관적 동시성                                | 예      | 1.0                                   |
-| 트랜잭션                                          | 예      | 1.0                                   |
+| 의                                          | 예      | 1.0                                   |
 | 문 일괄 처리                                |          | 1.0                                   |
 | 저장 프로시저 매핑                              | 예      |                                       |
 | 연결이 끊긴 그래프 하위 수준 API                     | 나쁨     | 1.0                                   |
