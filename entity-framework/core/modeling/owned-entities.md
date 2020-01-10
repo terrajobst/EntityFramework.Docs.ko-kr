@@ -5,17 +5,14 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/06/2019
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 7b6d1b3bccbfceb85f03a580ba03a45984d29c74
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 30b91b6e66b6c0f516d1ba12485304b52770cbef
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824600"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781237"
 ---
 # <a name="owned-entity-types"></a>소유한 엔터티 형식
-
-> [!NOTE]
-> 이 기능은 EF Core 2.0의 새로운 기능입니다.
 
 EF Core를 사용 하면 다른 엔터티 형식의 탐색 속성에만 나타날 수 있는 엔터티 형식을 모델링할 수 있습니다. 이러한 엔터티를 _소유 된 엔터티 형식_이라고 합니다. 소유 된 엔터티 형식을 포함 하는 엔터티는 해당 _소유자_입니다.
 
@@ -56,7 +53,7 @@ EF Core에서 이러한 개체를 추적 하는 방법을 이해 하기 위해 �
 
 소유 된 형식의 컬렉션을 구성 하려면 `OnModelCreating`에서 `OwnsMany`를 사용 합니다.
 
-소유 된 형식에는 기본 키가 필요 합니다. .NET 형식에 적합 한 후보 속성이 없으면 하나를 만들 수 EF Core. 그러나 소유 된 형식이 컬렉션을 통해 정의 되는 경우에는 `OwnsOne`에 대 한 것과 같이 소유 된 인스턴스의 소유자 및 기본 키로 외래 키 역할을 수행 하기 위해 섀도 속성을 만드는 것 만으로는 충분 하지 않습니다. 각각에 대해 소유 된 형식 인스턴스가 여러 개 있을 수 있습니다. 소유자 이므로 소유자의 키로는 소유 된 각 인스턴스에 대 한 고유 id를 제공 하기에 충분 하지 않습니다.
+소유 된 형식에는 기본 키가 필요 합니다. .NET 형식에 적합 한 후보 속성이 없으면 하나를 만들 수 EF Core. 그러나 소유 된 형식이 컬렉션을 통해 정의 되는 경우에는 `OwnsOne`와 같이 소유 된 인스턴스의 소유자 및 기본 키에 대 한 외래 키 역할을 수행 하기 위해 섀도 속성을 만드는 것 만으로는 충분 하지 않습니다. 각 소유자에 대해 소유 된 형식 인스턴스가 여러 개 있을 수 있으므로 소유자의 키가 소유한 각 인스턴스에 대해 고유한 id를 제공 하기에 충분 하지 않습니다.
 
 이에 대 한 가장 간단한 두 가지 솔루션은 다음과 같습니다.
 

@@ -1,15 +1,15 @@
 ---
 title: 동시성 토큰-EF Core
-author: rowanmiller
-ms.date: 03/03/2018
+author: AndriySvyryd
+ms.date: 01/03/2020
 ms.assetid: bc8b1cb0-befe-4b67-8004-26e6c5f69385
 uid: core/modeling/concurrency
-ms.openlocfilehash: db768c1de99000be91d33764ccd3c3924237f8bb
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 8a5f3aa09c2a83d5be0998a11ef2ee8100437514
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197458"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781146"
 ---
 # <a name="concurrency-tokens"></a>동시성 토큰
 
@@ -18,40 +18,30 @@ ms.locfileid: "71197458"
 
 동시성 토큰으로 구성 된 속성은 낙관적 동시성 제어를 구현 하는 데 사용 됩니다.
 
-## <a name="conventions"></a>규칙
+## <a name="configuration"></a>구성
 
-규칙에 따라 속성은 동시성 토큰으로 구성 되지 않습니다.
+### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
 
-## <a name="data-annotations"></a>데이터 주석
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs?name=Concurrency&highlight=5)]
 
-데이터 주석을 사용 하 여 속성을 동시성 토큰으로 구성할 수 있습니다.
+### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs#ConfigureConcurrencyAnnotations)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs?name=Concurrency&highlight=5)]
 
-## <a name="fluent-api"></a>Fluent API
+***
 
-흐름 API를 사용 하 여 속성을 동시성 토큰으로 구성할 수 있습니다.
+## <a name="timestamprowversion"></a>Timestamp/rowversion
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs#ConfigureConcurrencyFluent)]
+Timestamp/rowversion는 행이 삽입 되거나 업데이트 될 때마다 데이터베이스에서 새 값이 자동으로 생성 되는 속성입니다. 또한 속성은 동시성 토큰으로 처리 되므로 업데이트 하는 행이 쿼리 이후 변경 된 경우 예외를 받게 됩니다. 정확한 세부 정보는 사용 되는 데이터베이스 공급자에 따라 달라 집니다. SQL Server의 경우 일반적으로 *byte []* 속성이 사용 됩니다 .이 속성은 데이터베이스에서 *ROWVERSION* 열로 설정 됩니다.
 
-## <a name="timestamprow-version"></a>타임 스탬프/행 버전
+다음과 같이 속성을 timestamp/rowversion로 구성할 수 있습니다.
 
-타임 스탬프는 행이 삽입 되거나 업데이트 될 때마다 데이터베이스에서 새 값이 생성 되는 속성입니다. 속성도 동시성 토큰으로 처리 됩니다. 이렇게 하면 다른 사용자가 데이터에 대해 쿼리 한 이후에 업데이트 하려고 하는 행을 수정한 경우 예외가 발생 합니다.
+### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
 
-이 작업을 수행 하는 방법은 사용 되는 데이터베이스 공급자에 따라 결정 됩니다. SQL Server에 대 한 타임 스탬프는 일반적으로 *byte []* 속성에 사용 됩니다 .이 속성은 데이터베이스에서 *ROWVERSION* 열로 설정 됩니다.
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs?name=Timestamp&highlight=7)]
 
-### <a name="conventions"></a>규칙
+### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
 
-규칙에 따라 속성은 타임 스탬프로 구성 되지 않습니다.
+[! code-csharp [Main] (.. /.. /.. /samples/core/Modeling/FluentAPI/Timestamp.cs? name = Timestamp & 강조 = 9, 17]
 
-### <a name="data-annotations"></a>데이터 주석
-
-데이터 주석을 사용 하 여 속성을 타임 스탬프로 구성할 수 있습니다.
-
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs#ConfigureTimestampAnnotations)]
-
-### <a name="fluent-api"></a>Fluent API
-
-흐름 API를 사용 하 여 속성을 타임 스탬프로 구성할 수 있습니다.
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs#ConfigureTimestampFluent)]
+***
