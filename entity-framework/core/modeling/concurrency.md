@@ -1,57 +1,47 @@
 ---
 title: 동시성 토큰-EF Core
-author: rowanmiller
-ms.date: 03/03/2018
+author: AndriySvyryd
+ms.date: 01/03/2020
 ms.assetid: bc8b1cb0-befe-4b67-8004-26e6c5f69385
 uid: core/modeling/concurrency
-ms.openlocfilehash: db768c1de99000be91d33764ccd3c3924237f8bb
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 8a5f3aa09c2a83d5be0998a11ef2ee8100437514
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197458"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781146"
 ---
-# <a name="concurrency-tokens"></a><span data-ttu-id="239d9-102">동시성 토큰</span><span class="sxs-lookup"><span data-stu-id="239d9-102">Concurrency Tokens</span></span>
+# <a name="concurrency-tokens"></a><span data-ttu-id="2948c-102">동시성 토큰</span><span class="sxs-lookup"><span data-stu-id="2948c-102">Concurrency Tokens</span></span>
 
 > [!NOTE]
-> <span data-ttu-id="239d9-103">이 페이지에서는 동시성 토큰을 구성 하는 방법을 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-103">This page documents how to configure concurrency tokens.</span></span> <span data-ttu-id="239d9-104">응용 프로그램에서 동시성 충돌을 처리 하는 방법에 대 한 예제와 동시성 제어의 EF Core 작동 방식에 대 한 자세한 설명은 [동시성 충돌 처리](../saving/concurrency.md) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="239d9-104">See [Handling Concurrency Conflicts](../saving/concurrency.md) for a detailed explanation of how concurrency control works on EF Core and examples of how to handle concurrency conflicts in your application.</span></span>
+> <span data-ttu-id="2948c-103">이 페이지에서는 동시성 토큰을 구성 하는 방법을 설명 합니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-103">This page documents how to configure concurrency tokens.</span></span> <span data-ttu-id="2948c-104">응용 프로그램에서 동시성 충돌을 처리 하는 방법에 대 한 예제와 동시성 제어의 EF Core 작동 방식에 대 한 자세한 설명은 [동시성 충돌 처리](../saving/concurrency.md) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="2948c-104">See [Handling Concurrency Conflicts](../saving/concurrency.md) for a detailed explanation of how concurrency control works on EF Core and examples of how to handle concurrency conflicts in your application.</span></span>
 
-<span data-ttu-id="239d9-105">동시성 토큰으로 구성 된 속성은 낙관적 동시성 제어를 구현 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-105">Properties configured as concurrency tokens are used to implement optimistic concurrency control.</span></span>
+<span data-ttu-id="2948c-105">동시성 토큰으로 구성 된 속성은 낙관적 동시성 제어를 구현 하는 데 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-105">Properties configured as concurrency tokens are used to implement optimistic concurrency control.</span></span>
 
-## <a name="conventions"></a><span data-ttu-id="239d9-106">규칙</span><span class="sxs-lookup"><span data-stu-id="239d9-106">Conventions</span></span>
+## <a name="configuration"></a><span data-ttu-id="2948c-106">구성</span><span class="sxs-lookup"><span data-stu-id="2948c-106">Configuration</span></span>
 
-<span data-ttu-id="239d9-107">규칙에 따라 속성은 동시성 토큰으로 구성 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-107">By convention, properties are never configured as concurrency tokens.</span></span>
+### <a name="data-annotationstabdata-annotations"></a>[<span data-ttu-id="2948c-107">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="2948c-107">Data Annotations</span></span>](#tab/data-annotations)
 
-## <a name="data-annotations"></a><span data-ttu-id="239d9-108">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="239d9-108">Data Annotations</span></span>
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs?name=Concurrency&highlight=5)]
 
-<span data-ttu-id="239d9-109">데이터 주석을 사용 하 여 속성을 동시성 토큰으로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-109">You can use the Data Annotations to configure a property as a concurrency token.</span></span>
+### <a name="fluent-apitabfluent-api"></a>[<span data-ttu-id="2948c-108">흐름 API</span><span class="sxs-lookup"><span data-stu-id="2948c-108">Fluent API</span></span>](#tab/fluent-api)
 
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Concurrency.cs#ConfigureConcurrencyAnnotations)]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs?name=Concurrency&highlight=5)]
 
-## <a name="fluent-api"></a><span data-ttu-id="239d9-110">Fluent API</span><span class="sxs-lookup"><span data-stu-id="239d9-110">Fluent API</span></span>
+***
 
-<span data-ttu-id="239d9-111">흐름 API를 사용 하 여 속성을 동시성 토큰으로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-111">You can use the Fluent API to configure a property as a concurrency token.</span></span>
+## <a name="timestamprowversion"></a><span data-ttu-id="2948c-109">Timestamp/rowversion</span><span class="sxs-lookup"><span data-stu-id="2948c-109">Timestamp/rowversion</span></span>
 
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Concurrency.cs#ConfigureConcurrencyFluent)]
+<span data-ttu-id="2948c-110">Timestamp/rowversion는 행이 삽입 되거나 업데이트 될 때마다 데이터베이스에서 새 값이 자동으로 생성 되는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-110">A timestamp/rowversion is a property for which a new value is automatically generated by the database every time a row is inserted or updated.</span></span> <span data-ttu-id="2948c-111">또한 속성은 동시성 토큰으로 처리 되므로 업데이트 하는 행이 쿼리 이후 변경 된 경우 예외를 받게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-111">The property is also treated as a concurrency token, ensuring that you get an exception if a row you are updating has changed since you queried it.</span></span> <span data-ttu-id="2948c-112">정확한 세부 정보는 사용 되는 데이터베이스 공급자에 따라 달라 집니다. SQL Server의 경우 일반적으로 *byte []* 속성이 사용 됩니다 .이 속성은 데이터베이스에서 *ROWVERSION* 열로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-112">The precise details depend on the database provider being used; for SQL Server, a *byte[]* property is usually used, which will be set up as a *ROWVERSION* column in the database.</span></span>
 
-## <a name="timestamprow-version"></a><span data-ttu-id="239d9-112">타임 스탬프/행 버전</span><span class="sxs-lookup"><span data-stu-id="239d9-112">Timestamp/row version</span></span>
+<span data-ttu-id="2948c-113">다음과 같이 속성을 timestamp/rowversion로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="2948c-113">You can configure a property to be a timestamp/rowversion as follows:</span></span>
 
-<span data-ttu-id="239d9-113">타임 스탬프는 행이 삽입 되거나 업데이트 될 때마다 데이터베이스에서 새 값이 생성 되는 속성입니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-113">A timestamp is a property where a new value is generated by the database every time a row is inserted or updated.</span></span> <span data-ttu-id="239d9-114">속성도 동시성 토큰으로 처리 됩니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-114">The property is also treated as a concurrency token.</span></span> <span data-ttu-id="239d9-115">이렇게 하면 다른 사용자가 데이터에 대해 쿼리 한 이후에 업데이트 하려고 하는 행을 수정한 경우 예외가 발생 합니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-115">This ensures you will get an exception if anyone else has modified a row that you are trying to update since you queried for the data.</span></span>
+### <a name="data-annotationstabdata-annotations"></a>[<span data-ttu-id="2948c-114">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="2948c-114">Data Annotations</span></span>](#tab/data-annotations)
 
-<span data-ttu-id="239d9-116">이 작업을 수행 하는 방법은 사용 되는 데이터베이스 공급자에 따라 결정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-116">How this is achieved is up to the database provider being used.</span></span> <span data-ttu-id="239d9-117">SQL Server에 대 한 타임 스탬프는 일반적으로 *byte []* 속성에 사용 됩니다 .이 속성은 데이터베이스에서 *ROWVERSION* 열로 설정 됩니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-117">For SQL Server, timestamp is usually used on a *byte[]* property, which will be setup as a *ROWVERSION* column in the database.</span></span>
+[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs?name=Timestamp&highlight=7)]
 
-### <a name="conventions"></a><span data-ttu-id="239d9-118">규칙</span><span class="sxs-lookup"><span data-stu-id="239d9-118">Conventions</span></span>
+### <a name="fluent-apitabfluent-api"></a>[<span data-ttu-id="2948c-115">흐름 API</span><span class="sxs-lookup"><span data-stu-id="2948c-115">Fluent API</span></span>](#tab/fluent-api)
 
-<span data-ttu-id="239d9-119">규칙에 따라 속성은 타임 스탬프로 구성 되지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-119">By convention, properties are never configured as timestamps.</span></span>
+<span data-ttu-id="2948c-116">[! code-csharp [Main] (.. /.. /.. /samples/core/Modeling/FluentAPI/Timestamp.cs? name = Timestamp & 강조 = 9, 17]</span><span class="sxs-lookup"><span data-stu-id="2948c-116">[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs?name=Timestamp&highlight=9,17]</span></span>
 
-### <a name="data-annotations"></a><span data-ttu-id="239d9-120">데이터 주석</span><span class="sxs-lookup"><span data-stu-id="239d9-120">Data Annotations</span></span>
-
-<span data-ttu-id="239d9-121">데이터 주석을 사용 하 여 속성을 타임 스탬프로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-121">You can use Data Annotations to configure a property as a timestamp.</span></span>
-
-[!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Timestamp.cs#ConfigureTimestampAnnotations)]
-
-### <a name="fluent-api"></a><span data-ttu-id="239d9-122">Fluent API</span><span class="sxs-lookup"><span data-stu-id="239d9-122">Fluent API</span></span>
-
-<span data-ttu-id="239d9-123">흐름 API를 사용 하 여 속성을 타임 스탬프로 구성할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="239d9-123">You can use the Fluent API to configure a property as a timestamp.</span></span>
-
-[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs#ConfigureTimestampFluent)]
+***
