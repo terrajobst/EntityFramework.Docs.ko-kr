@@ -53,7 +53,7 @@
               href: core/get-started/index.md
             - name: EF Core 설치
               href: core/get-started/install/index.md
-            - name: ⤤ ASP.NET Core 자습서
+            - name: ASP.NET Core 자습서
               href: /aspnet/core/data/ef-rp/intro
         - name: 기본 사항
           items:
@@ -118,10 +118,6 @@
             - name: 공간 데이터
               displayName: GIS
               href: core/modeling/spatial.md
-            - name: 관계형 데이터베이스 모델링
-              items:
-                - name: 개요
-                  href: core/modeling/relational/index.md
         - name: 데이터베이스 스키마 관리
           items:
             - name: 개요
@@ -234,8 +230,8 @@
               href: core/miscellaneous/cli/dbcontext-creation.md
             - name: 디자인 타임 서비스
               href: core/miscellaneous/cli/services.md
-        - name: ⤤ EF Core API 참조
-          href: 'https://docs.microsoft.com/dotnet/api/?view=efcore-2.1'
+        - name: EF Core API 참조 >>
+          href: /dotnet/api/?view=efcore-3.1
     - name: Entity Framework 6
       items:
         - name: 개요
@@ -542,5 +538,5 @@
                       href: ef6/resources/licenses/ef6/kor.md
                     - name: 러시아어
                       href: ef6/resources/licenses/ef6/rus.md
-        - name: ⤤ EF6 API 참조
+        - name: EF6 API 참조 >>
           href: 'https://docs.microsoft.com/dotnet/api/?view=entity-framework-6.2.0'
