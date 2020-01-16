@@ -3,12 +3,12 @@ title: EF Core 3.0의 호환성이 손상되는 변경 - EF Core
 author: ajcvickers
 ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
-ms.openlocfilehash: cac166e9e194e512de7d730d27c061e6deaf5191
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 0626ffe98843fbf5ee0e2de4b269da6c395c07f6
+ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502229"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75781224"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 
@@ -1028,7 +1028,7 @@ EF Core 3.0부터 `DbContext.Entry` 호출은 지정된 엔터티와 이와 관�
 
 **완화 방법**
 
-`Entry`를 호출하기 전에 명시적으로 `ChgangeTracker.DetectChanges()`를 호출하여 3.0 이전 버전의 동작을 확인합니다.
+`Entry`를 호출하기 전에 명시적으로 `ChangeTracker.DetectChanges()`를 호출하여 3.0 이전 버전의 동작을 확인합니다.
 
 ### <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.
 
