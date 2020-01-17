@@ -4,12 +4,12 @@ author: roji
 ms.date: 09/09/2019
 ms.assetid: bde4e0ee-fba3-4813-a849-27049323d301
 uid: core/miscellaneous/nullable-reference-types
-ms.openlocfilehash: 0d05902566b6b166f1267915d9f698ed29dff588
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: c16a475c363320cd18804a4efe78ccae1ae22f0d
+ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502069"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76124355"
 ---
 # <a name="working-with-nullable-reference-types"></a>Nullable 참조 형식 사용
 
@@ -38,9 +38,9 @@ Nullable 참조 형식을 사용 하도록 설정 하면 C# 컴파일러가 null
 
 이러한 시나리오를 처리 하는 한 가지 방법은 nullable [지원 필드](xref:core/modeling/backing-field)를 사용 하는 null을 허용 하지 않는 속성을 사용 하는 것입니다.
 
-[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/Order.cs?range=12-17)]
+[!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/Order.cs?range=10-17)]
 
-탐색 속성은 null을 허용 하지 않으므로 필요한 탐색이 구성 됩니다. 탐색이 적절히 로드 되는 동안에는 속성을 통해 종속에 액세스할 수 있습니다. 그러나 관련 엔터티를 먼저 제대로 로드 하지 않고 속성에 액세스 하는 경우 API 계약이 잘못 사용 되었으므로 InvalidOperationException이 throw 됩니다.
+탐색 속성은 null을 허용 하지 않으므로 필요한 탐색이 구성 됩니다. 탐색이 적절히 로드 되는 동안에는 속성을 통해 종속에 액세스할 수 있습니다. 그러나 관련 엔터티를 먼저 제대로 로드 하지 않고 속성에 액세스 하는 경우 API 계약이 잘못 사용 되었으므로 InvalidOperationException이 throw 됩니다. EF는 설정 되지 않은 경우에도 값을 읽을 수 있도록 하므로 항상 지원 필드에 액세스 하도록 구성 해야 합니다. 이 작업을 수행 하는 방법에 대 한 [지원 필드](xref:core/modeling/backing-field) 에 대 한 설명서를 참조 하 고 구성이 올바른지 확인 하기 위해 `PropertyAccessMode.Field`를 지정 하는 것이 좋습니다.
 
 Terser 대안은 null 인 경우에만 null로 속성을 초기화 하 여 null로 지정할 수 있습니다 (!).
 
@@ -63,6 +63,7 @@ Terser 대안은 null 인 경우에만 null로 속성을 초기화 하 여 null�
 
 이 작업을 많이 수행 하 고 있는 엔터티 형식이 EF Core 쿼리에 주로 사용 되거나 단독으로 사용 되는 경우 탐색 속성을 null을 허용 하지 않는 것으로 설정 하 고 흐름 API 또는 데이터 주석을 통해 선택적으로 구성 하는 것이 좋습니다. 이렇게 하면 관계를 선택적으로 유지 하면서 모든 컴파일러 경고가 제거 됩니다. 그러나 엔터티가 EF Core 외부에서 이동 하는 경우에는 속성에 null을 허용 하지 않는 것으로 주석이 지정 되기는 하지만 null 값을 관찰할 수 있습니다.
 
-## <a name="scaffolding"></a>스캐폴딩
+## <a name="limitations"></a>제한 사항
 
-[8 C# nullable 참조 형식 기능은](/dotnet/csharp/tutorials/nullable-reference-types) 현재 리버스 엔지니어링에서 지원 되지 않습니다. EF Core는 기능이 C# 해제 된 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하는 데 사용 되는 흐름 API 또는 데이터 주석을 사용 하 여 `string?`아닌 `string` 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
+* 리버스 엔지니어링은 현재 [ C# nrts (nullable reference types) 8](/dotnet/csharp/tutorials/nullable-reference-types)을 지원 하지 않습니다. EF Core C# 은 기능이 해제 된 것으로 가정 하는 코드를 항상 생성 합니다. 예를 들어 nullable 텍스트 열은 속성이 필수 인지 여부를 구성 하는 데 사용 되는 흐름 API 또는 데이터 주석을 사용 하 여 `string?`아닌 `string` 형식의 속성으로 스 캐 폴드 됩니다. 스 캐 폴드 코드를 편집 하 여 null 허용 여부 주석 C# 으로 바꿀 수 있습니다. Nullable 참조 형식에 대 한 스 캐 폴딩 지원은 [#15520](https://github.com/aspnet/EntityFrameworkCore/issues/15520)문제에 의해 추적 됩니다.
+* EF Core의 공용 API 표면이 null 허용 여부에 대 한 주석 처리 되지 않았습니다 (공용 API가 "null 명확한"). NRT 기능이 설정 되어 있을 때 사용 하기 어려울 수 있습니다. 여기에는 EF Core에서 노출 하는 비동기 LINQ 연산자 (예: [FirstOrDefaultAsync](/dotnet/api/microsoft.entityframeworkcore.entityframeworkqueryableextensions.firstordefaultasync#Microsoft_EntityFrameworkCore_EntityFrameworkQueryableExtensions_FirstOrDefaultAsync__1_System_Linq_IQueryable___0__System_Linq_Expressions_Expression_System_Func___0_System_Boolean___System_Threading_CancellationToken_))가 포함 됩니다. 5\.0 릴리스를 위해이를 해결할 예정입니다.

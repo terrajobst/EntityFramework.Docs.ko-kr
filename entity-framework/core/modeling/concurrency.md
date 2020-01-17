@@ -4,12 +4,12 @@ author: AndriySvyryd
 ms.date: 01/03/2020
 ms.assetid: bc8b1cb0-befe-4b67-8004-26e6c5f69385
 uid: core/modeling/concurrency
-ms.openlocfilehash: 8a5f3aa09c2a83d5be0998a11ef2ee8100437514
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: bfeb611f222f7195fe22d920b452b40cc4addf90
+ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781146"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76124368"
 ---
 # <a name="concurrency-tokens"></a>동시성 토큰
 
@@ -42,6 +42,6 @@ Timestamp/rowversion는 행이 삽입 되거나 업데이트 될 때마다 데�
 
 ### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
 
-[! code-csharp [Main] (.. /.. /.. /samples/core/Modeling/FluentAPI/Timestamp.cs? name = Timestamp & 강조 = 9, 17]
+[!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Timestamp.cs?name=Timestamp&highlight=9,17)]
 
 ***
