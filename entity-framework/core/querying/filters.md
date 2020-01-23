@@ -3,12 +3,12 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: c9bbb8a5889834ea078ddb7e432863b3d0cf2ffe
-ms.sourcegitcommit: 0cc9578fd49802789a00c0044b4e57325476ca2e
+ms.openlocfilehash: f4ee9b77411290249e763f9cb8492eea61803e91
+ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70271454"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76124394"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
 
@@ -55,5 +55,4 @@ _블로그_ 엔터티에서 _tenantId_ 필드의 선언을 확인하세요. 이 
 
 전역 쿼리 필터에는 다음 제한 사항이 있습니다.
 
-* 필터에 탐색 속성에 대한 참조를 포함할 수 없습니다.
 * 상속 계층 구조의 루트 엔터티 형식에 대해서만 필터를 정의할 수 있습니다.
