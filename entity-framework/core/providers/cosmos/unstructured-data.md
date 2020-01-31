@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/unstructured-data
-ms.openlocfilehash: 0bfccbfd3af6e209967004752b5a3947d644544b
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 69f979d46174ff56310b334f28438ac271f45155
+ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655512"
+ms.lasthandoff: 01/30/2020
+ms.locfileid: "76888098"
 ---
 # <a name="working-with-unstructured-data-in-ef-core-azure-cosmos-db-provider"></a>EF Core Azure Cosmos DB 공급자에서 비구조적 데이터 작업
 
@@ -55,11 +55,11 @@ EF Core은 모델에 정의 된 스키마를 따르는 데이터를 쉽게 사�
 
 ## <a name="missing-property-values"></a>누락 된 속성 값
 
-이전 예제에서는 순서에서 `"TrackingNumber"` 속성을 제거 했습니다. Cosmos DB에서 인덱싱이 작동 하는 방식 때문에, 누락 된 속성을 참조 하는 쿼리가 프로젝션의 다른 위치에서 예기치 않은 결과를 반환할 수 있습니다. 예를 들면,
+이전 예제에서는 순서에서 `"TrackingNumber"` 속성을 제거 했습니다. Cosmos DB에서 인덱싱이 작동 하는 방식 때문에, 누락 된 속성을 참조 하는 쿼리가 프로젝션의 다른 위치에서 예기치 않은 결과를 반환할 수 있습니다. 예를 들면 다음과 같습니다.:
 
 [!code-csharp[MissingProperties](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?name=MissingProperties)]
 
 정렬 된 쿼리는 실제로 결과를 반환 하지 않습니다. 즉, 저장소를 직접 사용 하는 경우 EF Core에 의해 매핑되는 속성을 항상 채워야 합니다.
 
 > [!NOTE]
-> 이 동작은 Cosmos의 이후 버전에서 변경 될 수 있습니다. 예를 들어 현재 인덱싱 정책이 복합 인덱스 {Id/?를 정의 하는 경우 ASC, TrackingNumber/? ASC)}의 경우 ' ORDER BY c.Id ASC, ASC '가 있는 쿼리는 `"TrackingNumber"` 속성이 누락 된 항목 __을 반환 합니다__ .
+> 이 동작은 Cosmos의 이후 버전에서 변경 될 수 있습니다. 예를 들어 현재 인덱싱 정책이 복합 인덱스 {Id/?를 정의 하는 경우 ASC, TrackingNumber/? ASC)}는 ' ORDER BY c.Id ASC, ASC '가 포함 된 쿼리가 `"TrackingNumber"` 속성이 누락 된 항목 __을 반환 합니다__ .
