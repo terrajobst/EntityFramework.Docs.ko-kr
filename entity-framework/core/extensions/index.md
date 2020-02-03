@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 12/17/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: bab725afffe1fbf9f8c0abeef58579ac9dc842d2
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 99f59153a452a2f4aad5811110ebc5b5da7717ef
+ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502084"
+ms.lasthandoff: 01/30/2020
+ms.locfileid: "76888048"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -31,6 +31,12 @@ LLBLGen Pro는 Entity Framework 및 Entity Framework Core 지원을 함께 제�
 Entity Developer는 ADO.NET Entity Framework, NHibernate, LinqConnect, Telerik Data Access 및 LINQ to SQL을 위한 강력한 ORM 디자이너입니다. 모델 우선 접근법 또는 데이터베이스 우선 접근법 및 C# 또는 Visual Basic Code 생성을 사용하여 EF Core 모델을 시각적으로 지원합니다. EF Core용: 2.
 
 [웹 사이트](https://www.devart.com/entitydeveloper/)
+
+### <a name="nhydrate-orm-for-entity-framework"></a>Entity Framework에 대한 ORM nHydrate
+
+Entity Framework용 강력한 형식의 확장 가능한 클래스를 만드는 ORM입니다. 생성된 코드는 Entity Framework Core입니다. 차이가 없습니다. 이것은 EF 또는 사용자 지정 ORM을 대체하지 않습니다. 팀이 복잡한 데이터베이스 스키마를 관리할 수 있는 시각적 모델링 계층입니다. Git 같은 SCM 소프트웨어에서 잘 작동하므로 충돌을 최소화하면서 모델에 대한 다중 사용자 액세스를 허용합니다. 설치 프로그램이 모델 변경 내용을 추적하고 업그레이드 스크립트를 만듭니다. EF Core용: 3.
+
+[Github 사이트](https://github.com/nHydrate/nHydrate)
 
 ### <a name="ef-core-power-tools"></a>EF Core Power Tools
 
@@ -163,3 +169,9 @@ SQL Server를 사용하여 임시 테이블을 쉽게 사용할 수 있도록 �
 고성능 대량 작업을 통해 DbContext를 확장합니다. BulkSaveChanges, BulkInsert, BulkUpdate, BulkDelete, BulkMerge 등이 있습니다. EF Core용: 2, 3.
 
 [웹 사이트](https://entityframework-extensions.net/)
+
+### <a name="expressionify"></a>Expressionify
+
+LINQ 람다에서 확장 메서드를 호출하기 위한 지원을 추가합니다. EF Core용: 3.1
+
+[GitHub 리포지토리](https://github.com/ClaveConsulting/Expressionify)
