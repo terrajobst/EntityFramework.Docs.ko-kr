@@ -21,7 +21,7 @@
           href: core/index.md
         - name: 릴리스 및 계획
           items:
-            - name: 개요
+            - name: 현재 및 계획된 릴리스(로드맵)
               href: core/what-is-new/index.md
             - name: 릴리스 계획 프로세스
               href: core/what-is-new/release-planning.md
