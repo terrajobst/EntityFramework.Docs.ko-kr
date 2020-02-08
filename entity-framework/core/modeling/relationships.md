@@ -4,12 +4,12 @@ description: Entity Framework Core를 사용할 때 엔터티 형식 간의 관�
 author: AndriySvyryd
 ms.date: 11/21/2019
 uid: core/modeling/relationships
-ms.openlocfilehash: 6b3e0636bfa266b78baafe1b6e318c9707294560
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: 6d68e813cec6c989e8e4cb848f8740489645c65c
+ms.sourcegitcommit: 89567d08c9d8bf9c33bb55a62f17067094a4065a
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502190"
+ms.lasthandoff: 02/06/2020
+ms.locfileid: "77051409"
 ---
 # <a name="relationships"></a>관계
 
@@ -26,9 +26,9 @@ ms.locfileid: "75502190"
 
 * **주 엔터티:** 기본/대체 키 속성을 포함 하는 엔터티입니다. 경우에 따라 관계의 ' 부모 ' 라고도 합니다.
 
-* **외래 키:** 관련 엔터티의 주 키 값을 저장 하는 데 사용 되는 종속 엔터티의 속성입니다.
-
 * **주 키:** 주 엔터티를 고유 하 게 식별 하는 속성입니다. 기본 키 또는 대체 키 일 수 있습니다.
+
+* **외래 키:** 관련 엔터티의 주 키 값을 저장 하는 데 사용 되는 종속 엔터티의 속성입니다.
 
 * **탐색 속성:** 관련 엔터티를 참조 하는 보안 주체 및/또는 종속 엔터티에 대해 정의 된 속성입니다.
 
@@ -48,9 +48,9 @@ ms.locfileid: "75502190"
 
 * `Blog`는 주 엔터티입니다.
 
-* 외래 키 `Post.BlogId`
-
 * `Blog.BlogId`는 주 키 (이 경우에는 대체 키가 아닌 기본 키)입니다.
+
+* 외래 키 `Post.BlogId`
 
 * `Post.Blog`은 참조 탐색 속성입니다.
 
@@ -58,7 +58,7 @@ ms.locfileid: "75502190"
 
 * `Post.Blog`은 `Blog.Posts`의 역 탐색 속성 이며 그 반대의 경우도 마찬가지입니다.
 
-## <a name="conventions"></a>표기 규칙
+## <a name="conventions"></a>규칙
 
 기본적으로 형식에서 탐색 속성이 검색 되 면 관계가 생성 됩니다. 속성은 가리키는 형식이 현재 데이터베이스 공급자에 의해 스칼라 형식으로 매핑될 수 없는 경우 탐색 속성으로 간주 됩니다.
 
@@ -228,7 +228,7 @@ ms.locfileid: "75502190"
 
 ## <a name="other-relationship-patterns"></a>기타 관계 패턴
 
-### <a name="one-to-one"></a>일대일
+### <a name="one-to-one"></a>일 대 일
 
 일대일 관계에는 양쪽 모두에 대 한 참조 탐색 속성이 있습니다. 이는 일 대 다 관계와 동일한 규칙을 따르고 외래 키 속성에 고유 인덱스가 도입 되어 각 보안 주체와 하나의 종속만 관련 되도록 합니다.
 
@@ -243,7 +243,7 @@ ms.locfileid: "75502190"
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/OneToOne.cs?name=OneToOne&highlight=11)]
 
-### <a name="many-to-many"></a>다 대 다
+### <a name="many-to-many"></a>다대다
 
 조인 테이블을 나타내기 위해 엔터티 클래스가 없는 다 대 다 관계는 아직 지원 되지 않습니다. 그러나 조인 테이블에 대해 엔터티 클래스를 포함 하 고 두 개의 개별 일대다 관계를 매핑하여 다대다 관계를 나타낼 수 있습니다.
 
