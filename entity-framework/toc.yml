@@ -19,9 +19,9 @@
       items:
         - name: 개요
           href: core/index.md
-        - name: 릴리스 및 계획
+        - name: 릴리스 및 계획(로드맵)
           items:
-            - name: 현재 및 계획된 릴리스(로드맵)
+            - name: 현재 및 계획된 릴리스
               href: core/what-is-new/index.md
             - name: 릴리스 계획 프로세스
               href: core/what-is-new/release-planning.md
@@ -29,6 +29,8 @@
               items:
                 - name: 고급 계획
                   href: core/what-is-new/ef-core-5.0/plan.md
+                - name: 새로운 기능
+                  href: core/what-is-new/ef-core-5.0/whatsnew.md
             - name: EF Core 3.0
               items:
                 - name: 새 기능
