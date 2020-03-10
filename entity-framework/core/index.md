@@ -5,40 +5,40 @@ ms.date: 10/27/2016
 ms.assetid: bc2a2676-bc46-493f-bf49-e3cc97994d57
 uid: core/index
 ms.openlocfilehash: e6127f775d6bbbdf81debf5519388fe252fe079d
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655616"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412838"
 ---
-# <a name="entity-framework-core"></a><span data-ttu-id="1a802-102">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="1a802-102">Entity Framework Core</span></span>
+# <a name="entity-framework-core"></a><span data-ttu-id="89cb9-102">Entity Framework Core</span><span class="sxs-lookup"><span data-stu-id="89cb9-102">Entity Framework Core</span></span>
 
-<span data-ttu-id="1a802-103">EF(Entity Framework) Core는 널리 사용되는 Entity Framework 데이터 액세스 기술의 가볍고 확장 가능한 [오픈 소스](https://github.com/aspnet/EntityFrameworkCore) 플랫폼 교차 버전입니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-103">Entity Framework (EF) Core is a lightweight, extensible, [open source](https://github.com/aspnet/EntityFrameworkCore) and cross-platform version of the popular Entity Framework data access technology.</span></span>
+<span data-ttu-id="89cb9-103">EF(Entity Framework) Core는 널리 사용되는 Entity Framework 데이터 액세스 기술의 가볍고 확장 가능한 [오픈 소스](https://github.com/aspnet/EntityFrameworkCore) 플랫폼 교차 버전입니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-103">Entity Framework (EF) Core is a lightweight, extensible, [open source](https://github.com/aspnet/EntityFrameworkCore) and cross-platform version of the popular Entity Framework data access technology.</span></span>
 
-<span data-ttu-id="1a802-104">EF Core는 O/RM(개체 관계형 매퍼)으로 사용될 수 있으며, 이를 통해 .NET 개발자는 .NET 개체를 사용하여 데이터베이스를 작업할 수 있으며 일반적으로 써야 하는 대부분의 데이터 액세스 코드가 필요하지 않게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-104">EF Core can serve as an object-relational mapper (O/RM), enabling .NET developers to work with a database using .NET objects, and eliminating the need for most of the data-access code they usually need to write.</span></span>
+<span data-ttu-id="89cb9-104">EF Core는 O/RM(개체 관계형 매퍼)으로 사용될 수 있으며, 이를 통해 .NET 개발자는 .NET 개체를 사용하여 데이터베이스를 작업할 수 있으며 일반적으로 써야 하는 대부분의 데이터 액세스 코드가 필요하지 않게 됩니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-104">EF Core can serve as an object-relational mapper (O/RM), enabling .NET developers to work with a database using .NET objects, and eliminating the need for most of the data-access code they usually need to write.</span></span>
 
-<span data-ttu-id="1a802-105">EF Core 는 여러 데이터베이스 엔진을 지원합니다. 자세한 내용은 [데이터베이스 공급자](providers/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="1a802-105">EF Core supports many database engines, see [Database Providers](providers/index.md) for details.</span></span>
+<span data-ttu-id="89cb9-105">EF Core 는 여러 데이터베이스 엔진을 지원합니다. 자세한 내용은 [데이터베이스 공급자](providers/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="89cb9-105">EF Core supports many database engines, see [Database Providers](providers/index.md) for details.</span></span>
 
-## <a name="the-model"></a><span data-ttu-id="1a802-106">모델</span><span class="sxs-lookup"><span data-stu-id="1a802-106">The Model</span></span>
+## <a name="the-model"></a><span data-ttu-id="89cb9-106">모델</span><span class="sxs-lookup"><span data-stu-id="89cb9-106">The Model</span></span>
 
-<span data-ttu-id="1a802-107">EF Core에서는 데이터 액세스가 모델을 통해 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-107">With EF Core, data access is performed using a model.</span></span> <span data-ttu-id="1a802-108">모델은 엔터티 클래스와, 데이터베이스와의 세션을 나타내는 컨텍스트 개체로 구성되어 데이터를 쿼리하고 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-108">A model is made up of entity classes and a context object that represents a session with the database, allowing you to query and save data.</span></span> <span data-ttu-id="1a802-109">자세한 내용은 [모델 만들기](modeling/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="1a802-109">See [Creating a Model](modeling/index.md) to learn more.</span></span>
+<span data-ttu-id="89cb9-107">EF Core에서는 데이터 액세스가 모델을 통해 수행됩니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-107">With EF Core, data access is performed using a model.</span></span> <span data-ttu-id="89cb9-108">모델은 엔터티 클래스와, 데이터베이스와의 세션을 나타내는 컨텍스트 개체로 구성되어 데이터를 쿼리하고 저장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-108">A model is made up of entity classes and a context object that represents a session with the database, allowing you to query and save data.</span></span> <span data-ttu-id="89cb9-109">자세한 내용은 [모델 만들기](modeling/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="89cb9-109">See [Creating a Model](modeling/index.md) to learn more.</span></span>
 
-<span data-ttu-id="1a802-110">기존 데이터베이스에서 모델을 생성하거나, 데이터베이스에 맞는 모델을 직접 코딩하거나, [EF 마이그레이션](managing-schemas/migrations/index.md)을 사용하여 모델에서 데이터베이스를 만들고 시간에 따라 모델이 변경되면서 확장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-110">You can generate a model from an existing database, hand code a model to match your database, or use [EF Migrations](managing-schemas/migrations/index.md) to create a database from your model, and then evolve it as your model changes over time.</span></span>
+<span data-ttu-id="89cb9-110">기존 데이터베이스에서 모델을 생성하거나, 데이터베이스에 맞는 모델을 직접 코딩하거나, [EF 마이그레이션](managing-schemas/migrations/index.md)을 사용하여 모델에서 데이터베이스를 만들고 시간에 따라 모델이 변경되면서 확장할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-110">You can generate a model from an existing database, hand code a model to match your database, or use [EF Migrations](managing-schemas/migrations/index.md) to create a database from your model, and then evolve it as your model changes over time.</span></span>
 
 [!code-csharp[Main](../../samples/core/Intro/Model.cs)]
 
-## <a name="querying"></a><span data-ttu-id="1a802-111">쿼리</span><span class="sxs-lookup"><span data-stu-id="1a802-111">Querying</span></span>
+## <a name="querying"></a><span data-ttu-id="89cb9-111">쿼리</span><span class="sxs-lookup"><span data-stu-id="89cb9-111">Querying</span></span>
 
-<span data-ttu-id="1a802-112">엔터티 클래스의 인스턴스는 LINQ(Language Integrated Query)를 사용하여 데이터베이스에서 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-112">Instances of your entity classes are retrieved from the database using Language Integrated Query (LINQ).</span></span> <span data-ttu-id="1a802-113">자세한 내용은 [데이터 쿼리](querying/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="1a802-113">See [Querying Data](querying/index.md) to learn more.</span></span>
+<span data-ttu-id="89cb9-112">엔터티 클래스의 인스턴스는 LINQ(Language Integrated Query)를 사용하여 데이터베이스에서 검색됩니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-112">Instances of your entity classes are retrieved from the database using Language Integrated Query (LINQ).</span></span> <span data-ttu-id="89cb9-113">자세한 내용은 [데이터 쿼리](querying/index.md)를 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="89cb9-113">See [Querying Data](querying/index.md) to learn more.</span></span>
 
 [!code-csharp[Main](../../samples/core/Intro/Program.cs#Querying)]
 
-## <a name="saving-data"></a><span data-ttu-id="1a802-114">데이터 저장</span><span class="sxs-lookup"><span data-stu-id="1a802-114">Saving Data</span></span>
+## <a name="saving-data"></a><span data-ttu-id="89cb9-114">데이터 저장</span><span class="sxs-lookup"><span data-stu-id="89cb9-114">Saving Data</span></span>
 
-<span data-ttu-id="1a802-115">데이터는 엔터티 클래스의 인스턴스를 통해 데이터베이스에서 만들어지고 삭제되며 수정됩니다.</span><span class="sxs-lookup"><span data-stu-id="1a802-115">Data is created, deleted, and modified in the database using instances of your entity classes.</span></span> <span data-ttu-id="1a802-116">자세한 내용은 자세한 내용은 [데이터 저장](saving/index.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="1a802-116">See [Saving Data](saving/index.md) to learn more.</span></span>
+<span data-ttu-id="89cb9-115">데이터는 엔터티 클래스의 인스턴스를 통해 데이터베이스에서 만들어지고 삭제되며 수정됩니다.</span><span class="sxs-lookup"><span data-stu-id="89cb9-115">Data is created, deleted, and modified in the database using instances of your entity classes.</span></span> <span data-ttu-id="89cb9-116">자세한 내용은 자세한 내용은 [데이터 저장](saving/index.md)을 참조하세요.</span><span class="sxs-lookup"><span data-stu-id="89cb9-116">See [Saving Data](saving/index.md) to learn more.</span></span>
 
 [!code-csharp[Main](../../samples/core/Intro/Program.cs#SavingData)]
 
-## <a name="next-steps"></a><span data-ttu-id="1a802-117">다음 단계</span><span class="sxs-lookup"><span data-stu-id="1a802-117">Next steps</span></span>
+## <a name="next-steps"></a><span data-ttu-id="89cb9-117">다음 단계</span><span class="sxs-lookup"><span data-stu-id="89cb9-117">Next steps</span></span>
 
-<span data-ttu-id="1a802-118">기본 자습서는 [Entity Framework Core 시작](get-started/index.md)을 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="1a802-118">For introductory tutorials, see [Getting Started with Entity Framework Core](get-started/index.md).</span></span>
+<span data-ttu-id="89cb9-118">기본 자습서는 [Entity Framework Core 시작](get-started/index.md)을 참조하십시오.</span><span class="sxs-lookup"><span data-stu-id="89cb9-118">For introductory tutorials, see [Getting Started with Entity Framework Core](get-started/index.md).</span></span>
