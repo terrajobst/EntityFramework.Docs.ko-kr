@@ -4,19 +4,19 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 7c65ec3e-46c8-48f8-8232-9e31f96c277b
 uid: core/querying/index
-ms.openlocfilehash: 009235c3673a414e06d1a64f9877b60e7cde97b0
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 0e1e50d1a3f647d65301552d0a447f9fcae81438
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181926"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413118"
 ---
 # <a name="querying-data"></a>데이터 쿼리
 
 Entity Framework Core는 LINQ(Language-Integrated Query)를 사용하여 데이터베이스에서 데이터를 쿼리합니다. LINQ를 사용하면 C#(또는 원하는 .NET 언어)을 사용하여 강력한 형식의 쿼리를 작성할 수 있습니다. 파생된 컨텍스트 및 엔터티 클래스를 사용하여 데이터베이스 개체를 참조합니다. EF Core는 LINQ 쿼리 표현을 데이터베이스 공급자에게 전달합니다. 그러면 데이터베이스 공급자는 LINQ 쿼리 표현을 데이터베이스별 쿼리 언어(예: 관계형 데이터베이스의 경우 SQL)로 변환합니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 다음 코드 조각은 Entity Framework Core로 일반 작업을 수행하는 몇 가지 예제를 보여줍니다.
 
@@ -28,7 +28,7 @@ Entity Framework Core는 LINQ(Language-Integrated Query)를 사용하여 데이�
 
 [!code-csharp[Main](../../../samples/core/Querying/Basics/Sample.cs#LoadingSingleEntity)]
 
-## <a name="filtering"></a>Filtering
+## <a name="filtering"></a>필터링
 
 [!code-csharp[Main](../../../samples/core/Querying/Basics/Sample.cs#Filtering)]
 

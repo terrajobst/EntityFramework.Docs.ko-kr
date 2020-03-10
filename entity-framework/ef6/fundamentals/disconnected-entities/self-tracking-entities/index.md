@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 5e60f5be-7bbb-4bf8-835e-0ac808d6c84a
 ms.openlocfilehash: 3bb9759d89fbd0c10b911625aa7d0afd7747de14
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181723"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413358"
 ---
 # <a name="self-tracking-entities"></a>자동 추적 엔터티
 
@@ -46,7 +46,7 @@ Entity Framework 기반 애플리케이션에서 컨텍스트는 개체의 변�
 - 자동 추적 엔터티는 지연 로드를 수행할 수 있도록 설정되지 않습니다.  
 - ASP.NET 상태 관리 개체로의 이진 serialization 및 serialization은 자동 추적 엔터티에서 지원되지 않습니다. 하지만 템플릿을 사용자 지정하여 이진 serialization 지원을 추가할 수 있습니다. 자세한 내용은 [자동 추적 엔터티에서 이진 serialization 및 ViewState 사용](https://go.microsoft.com/fwlink/?LinkId=199208)을 참조하세요.  
 
-## <a name="security-considerations"></a>보안 고려사항  
+## <a name="security-considerations"></a>보안 고려 사항  
 
 자동 추적 엔터티를 사용할 때 다음과 같은 보안 사항을 고려해야 합니다.  
 

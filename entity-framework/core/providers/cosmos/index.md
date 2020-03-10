@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
-ms.openlocfilehash: 7451ce6e8d5d7078b3f56a6865aa7698e6fc63ca
-ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
+ms.openlocfilehash: 74284bf78f404e376436a1ef5d5933186c85ae49
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/30/2020
-ms.locfileid: "76888124"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413058"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>EF Core Azure Cosmos DB 공급자
 
@@ -28,13 +28,13 @@ ms.locfileid: "76888124"
 
 [Microsoft.EntityFrameworkCore.Cosmos NuGet 패키지](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Cosmos/)를 설치합니다.
 
-### <a name="net-core-clitabdotnet-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
+### <a name="net-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
 ```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Cosmos
 ```
 
-### <a name="visual-studiotabvs"></a>[Visual Studio](#tab/vs)
+### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
 ``` powershell
 Install-Package Microsoft.EntityFrameworkCore.Cosmos
@@ -45,7 +45,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 ## <a name="get-started"></a>시작
 
 > [!TIP]  
-> [GitHub에서 이 문서의 샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Cosmos)을 볼 수 있습니다.
+> [GitHub에서 이 문서의 샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Cosmos)을 볼 수 있습니다.
 
 다른 공급자와 마찬가지로, 첫 번째 단계는 [UseCosmos](/dotnet/api/Microsoft.EntityFrameworkCore.CosmosDbContextOptionsExtensions.UseCosmos)를 호출하는 것입니다.
 

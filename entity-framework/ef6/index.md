@@ -5,11 +5,11 @@ ms.date: 10/23/2016
 ms.assetid: 8ae74d63-6bad-4686-b325-bbf9d68f3743
 uid: ef6/index
 ms.openlocfilehash: 28a13879416a52cbe8035c23013f16390c75c4c9
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656174"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412758"
 ---
 # <a name="entity-framework-6"></a>Entity Framework 6
 EF6(Entity Framework 6)는 수년에 걸친 기능 개발 및 안정화 과정을 통해 테스트를 거친 .NET용 O/RM(개체 관계형 매퍼)입니다.
@@ -40,7 +40,7 @@ EF Core는 완전히 다시 작성되었으며, EF6의 고급 매핑 기능 중 
 기능 집합이 요구 사항과 일치하는 경우 새 애플리케이션에서 EF Core를 사용해 보세요.
 [EF Core & EF6 비교](xref:efcore-and-ef6/index)에서는 이 선택에 대해 자세히 살펴봅니다.
 
-## <a name="get-startedxrefef6get-started"></a>[시작](xref:ef6/get-started)
+## <a name="get-started"></a>[시작](xref:ef6/get-started)
 
 프로젝트에 EntityFramework NuGet 패키지를 추가하거나 [Visual Studio용 Entity Framework Tools](https://aka.ms/AA6i8c5)를 설치합니다. 그런 다음, EF6를 최대한 활용하는 방법을 알려주는 비디오를 시청하고, 자습서 및 고급 설명서를 읽습니다.
 

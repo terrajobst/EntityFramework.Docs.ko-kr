@@ -4,16 +4,16 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 1121b2bde1ada74ee189287501bc770aeb65e358
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 987b6f38954c291f88b5167fa9b061853b15a6cb
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824445"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78412858"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>사전 요구 사항
 
 * EF Core는 [.NET Standard 2.1](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.1을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.1 라이브러리에서도 참조할 수 있습니다.
 
@@ -98,8 +98,6 @@ NuGet 패키지를 설치하거나 업데이트하려면 .NET Core CLI(명령줄
 ```dotnetcli
 dotnet add package Microsoft.EntityFrameworkCore.Design
 ```
-
-ASP.NET Core 앱의 경우 이 패키지는 자동으로 포함됩니다.
 
 > [!IMPORTANT]
 > 항상 런타임 패키지의 주 버전에 부합하는 도구 패키지 버전을 사용합니다.

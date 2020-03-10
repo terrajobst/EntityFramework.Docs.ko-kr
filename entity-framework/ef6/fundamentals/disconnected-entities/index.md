@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 12138003-a373-4817-b1b7-724130202f5f
 ms.openlocfilehash: f1ce44e7b00ec4c60a81ed850ce5c9d866495e1b
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181764"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413368"
 ---
 # <a name="working-with-disconnected-entities"></a>연결이 끊긴 엔터티 사용
 Entity Framework 기반 애플리케이션에서 컨텍스트 클래스는 추적된 엔터티에 적용된 변경 내용을 검색합니다. SaveChanges 메서드를 호출하면 컨텍스트에서 추적한 변경 내용이 데이터베이스에 유지됩니다. n 계층 애플리케이션을 작업할 때 엔터티 개체는 일반적으로 컨텍스트와 연결이 끊어진 동안 수정되므로 변경 내용을 추적하고 변경 내용을 컨텍스트에 보고하는 방법을 결정해야 합니다. 이 토픽에서는 엔터티 연결이 끊어진 Entity Framework를 사용할 때 제공되는 여러 옵션을 알아보겠습니다.   
