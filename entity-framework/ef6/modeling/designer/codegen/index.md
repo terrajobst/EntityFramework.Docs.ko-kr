@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 56e00fa2-f9f0-48b3-8006-f8266ca7e74b
 ms.openlocfilehash: e4e99a86e7c273682c85eba06042af9a2a837d12
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283864"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413288"
 ---
 # <a name="designer-code-generation-templates"></a>디자이너 코드 생성 템플릿
 Entity Framework Designer를 사용하여 모델을 만들면 클래스와 파생된 컨텍스트가 자동으로 생성됩니다. 기본 코드 생성 외에도 생성된 코드를 사용자 지정하는 데 사용할 수 있는 다양한 템플릿을 제공합니다. 이러한 템플릿은 T4 텍스트 템플릿으로 제공되므로 필요한 경우 템플릿을 사용자 지정할 수 있습니다.
@@ -30,7 +30,7 @@ Entity Framework 팀에서 제공하는 템플릿은 다음과 같습니다.
 
 이 템플릿은 간단한 POCO 엔터티 클래스와 EF6를 사용하여 DbContext에서 파생되는 컨텍스트를 생성합니다.
 아래에 나열된 다른 템플릿 중 하나를 사용해야 하는 이유가 없는 한 이 템플릿을 사용하는 것이 좋습니다.
-또한 최신 버전의 Visual Studio(Visual Studio 2013 이후)를 사용하는 경우 기본적으로 제공되는 코드 생성 템플릿입니다. 새 모델을 만들 때 이 템플릿이 기본적으로 사용되고 T4 파일(.tt)이 .edmx 파일 아래에 중첩됩니다.
+최신 버전의 Visual Studio(Visual Studio 2013 이상)를 사용하는 경우 기본적으로 가져오는 코드 생성 템플릿이기도 합니다. 새 모델을 만들 때 이 템플릿은 기본적으로 사용되고 T4 파일(.tt)은 .edmx 파일 아래에 중첩됩니다.
 
 #### <a name="older-versions-of-visual-studio"></a>이전 버전의 Visual Studio
 - **Visual Studio 2012:** **EF 6.x DbContext 생성기** 템플릿을 얻으려면 최신 **Visual Studio용 Entity Framework Tools**를 설치해야 합니다. 자세한 내용은 [Entity Framework 가져오기](~/ef6/fundamentals/install.md) 페이지를 참조하세요.
@@ -65,7 +65,7 @@ Visual Studio 2010을 사용하는 경우 템플릿을 추가할 때 **온라인
 > [!NOTE]
 > DbContext 생성기를 사용하는 것이 좋습니다.
 
-DbContext 생성기는 이제 새 응용 프로그램에 권장되는 템플릿입니다. DbContext 생성기는 더 간단한 DbContext API를 활용합니다. EntityObject 생성기는 기존 응용 프로그램을 지원하는 데 계속 사용할 수 있습니다.
+DbContext 생성기는 이제 새 애플리케이션에 권장되는 템플릿입니다. DbContext 생성기는 더 간단한 DbContext API를 활용합니다. EntityObject 생성기는 기존 애플리케이션을 지원하는 데 계속 사용할 수 있습니다.
 
 **Visual Studio 2010, 2012 및 2013**
 
@@ -92,12 +92,12 @@ Visual Studio 2010을 사용하는 경우 이 템플릿은 이미 설치되어 �
 
 ### <a name="self-tracking-entities-ste-generator"></a>STE(자체 추적 엔터티) 생성기
 
-이 템플릿은 자체 추적 엔터티 클래스와 ObjectContext에서 파생되는 컨텍스트를 생성합니다. EF 응용 프로그램에서 컨텍스트는 엔터티의 변경 내용을 추적합니다. 그러나 N 계층 시나리오의 경우 엔터티를 수정하는 계층에서는 컨텍스트를 사용하지 못할 수도 있습니다. 자체 추적 엔터티를 사용하면 모든 계층의 변경 내용을 추적할 수 있습니다. 자세한 내용은 [자체 추적 엔터티](~/ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md)를 참조하세요.
+이 템플릿은 자체 추적 엔터티 클래스와 ObjectContext에서 파생되는 컨텍스트를 생성합니다. EF 애플리케이션에서 컨텍스트는 엔터티의 변경 내용을 추적합니다. 그러나 N 계층 시나리오의 경우 엔터티를 수정하는 계층에서는 컨텍스트를 사용하지 못할 수도 있습니다. 자체 추적 엔터티를 사용하면 모든 계층의 변경 내용을 추적할 수 있습니다. 자세한 내용은 [자체 추적 엔터티](~/ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md)를 참조하세요.
 
 > [!NOTE]
 > STE 템플릿은 권장되지 않습니다.
 
-STE 템플릿은 새 응용 프로그램에서 더 이상 사용하지 않는 것이 좋으며, 기존 응용 프로그램을 지원하기 위해 계속 사용할 수 있습니다. N 계층 시나리오에 권장되는 다른 옵션은 [연결이 중단된 엔터티 문서](~/ef6/fundamentals/disconnected-entities/index.md)를 참조하세요.
+STE 템플릿은 새 애플리케이션에서 더 이상 사용하지 않는 것이 좋으며, 기존 애플리케이션을 지원하기 위해 계속 사용할 수 있습니다. N 계층 시나리오에 권장되는 다른 옵션은 [연결이 중단된 엔터티 문서](~/ef6/fundamentals/disconnected-entities/index.md)를 참조하세요.
 
 > [!NOTE]
 > EF 6.x 버전에는 STE 템플릿이 없습니다.
@@ -126,7 +126,7 @@ Visual Studio 2010을 사용하는 경우 이 템플릿은 이미 설치되어 �
 > [!NOTE]
 > DbContext 생성기를 사용하는 것이 좋습니다.
 
-DbContext 생성기는 이제 새 응용 프로그램에서 POCO 클래스를 생성하는 데 권장되는 템플릿입니다. DbContext 생성기는 새 DbContext API를 활용하고, 더 간단한 POCO 클래스를 생성할 수 있습니다. POCO 엔터티 생성기는 기존 응용 프로그램을 지원하는 데 계속 사용할 수 있습니다.
+DbContext 생성기는 이제 새 애플리케이션에서 POCO 클래스를 생성하는 데 권장되는 템플릿입니다. DbContext 생성기는 새 DbContext API를 활용하고, 더 간단한 POCO 클래스를 생성할 수 있습니다. POCO 엔터티 생성기는 기존 애플리케이션을 지원하는 데 계속 사용할 수 있습니다.
 
 > [!NOTE]
 > EF 5.x 또는 EF 6.x 버전에는 STE 템플릿이 없습니다.
@@ -145,7 +145,7 @@ DbContext 생성기는 이제 새 응용 프로그램에서 POCO 클래스를 �
 
 ### <a name="what-are-the-web-sites-templates"></a>"웹 사이트" 템플릿이란?
 
-"웹 사이트"(예: **C\#용 EF 5.x DbContext 생성기 웹 사이트**) 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 웹 사이트...** 를 통해 만든 [웹 사이트] 프로젝트에서 사용됩니다. 이러한 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 프로젝트...** 를 통해 만든 [웹 응용 프로그램]\(표준 템플릿 사용)과 다릅니다. Visual Studio의 항목 템플릿 시스템에 필요하므로 별도의 템플릿이 제공됩니다.
+"웹 사이트"(예: **C\#용 EF 5.x DbContext 생성기 웹 사이트**) 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 웹 사이트...** 를 통해 만든 [웹 사이트] 프로젝트에서 사용됩니다. 이러한 템플릿은 **파일 -&gt; 새로 만들기 -&gt; 프로젝트...** 를 통해 만든 [웹 애플리케이션](표준 템플릿 사용)과 다릅니다. Visual Studio의 항목 템플릿 시스템에 필요하므로 별도의 템플릿이 제공됩니다.
 
 ## <a name="using-a-template"></a>템플릿 사용
 
@@ -159,15 +159,15 @@ DbContext 생성기는 이제 새 응용 프로그램에서 POCO 클래스를 �
 
 템플릿이 아직 설치되지 않은 경우 왼쪽 메뉴에서 **온라인**을 선택하고 원하는 템플릿을 검색합니다.
 
-![검색](~/ef6/media/search.png) 
+![검색](~/ef6/media/search.png) 
 
 Visual Studio 2012를 사용하는 경우 새 .tt 파일은 .edmx 파일 아래에 중첩됩니다.*
 
 > [!NOTE]
-> Visual Studio 2012에서 만든 모델의 경우 기본 코드 생성에 사용되는 템플릿을 삭제해야 합니다. 그렇지 않으면 중복 클래스와 컨텍스트가 생성됩니다. 기본 파일은 **&lt;모델 이름&gt;.tt** 및 **&lt;모델 이름&gt;.context.tt**입니다. 
+> Visual Studio 2012에서 만든 모델의 경우 기본 코드 생성에 사용되는 템플릿을 삭제해야 합니다. 그렇지 않으면 중복 클래스와 컨텍스트가 생성됩니다. 기본 파일은 **&lt;모델 이름&gt;.tt** 및 **&lt;모델 이름&gt;.context.tt**입니다. 
 
 ![VS2012 템플릿](~/ef6/media/vs2012-templates.png)
 
-Visual Studio 2010을 사용하는 경우 tt 파일은 프로젝트에 직접 추가됩니다.  
+Visual Studio 2010을 사용하는 경우 tt 파일은 프로젝트에 직접 추가됩니다.  
 
 ![VS2010 템플릿](~/ef6/media/vs2010-templates.png)
