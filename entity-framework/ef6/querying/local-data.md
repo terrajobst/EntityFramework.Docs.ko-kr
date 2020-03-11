@@ -4,18 +4,18 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 2eda668b-1e5d-487d-9a8c-0e3beef03fcb
 ms.openlocfilehash: efd646348d8a18bbeed2d0a0e708d4d36eb26eac
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414484"
 ---
 # <a name="local-data"></a>로컬 데이터
 DbSet에 대해 LINQ 쿼리를 직접 실행 하면 항상 데이터베이스에 쿼리가 전송 되지만 DbSet. Local 속성을 사용 하 여 현재 메모리 내 데이터에 액세스할 수 있습니다. DbContext 및 DbContext 메서드를 사용 하 여 EF가 엔터티에 대해 추적 하는 추가 정보에 액세스할 수도 있습니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
 
 ## <a name="using-local-to-look-at-local-data"></a>로컬 데이터를 확인 하기 위해 로컬 사용  
 
-DbSet의 Local 속성은 현재 컨텍스트에서 추적 되 고 있고 삭제 된 것으로 표시 되지 않은 집합의 엔터티에 대 한 간단한 액세스를 제공 합니다. 로컬 속성에 액세스 하면 쿼리가 데이터베이스로 전송 되지 않습니다. 즉, 쿼리를 이미 수행한 후에 일반적으로 사용 됩니다. 로드 확장 메서드를 사용 하 여 컨텍스트가 결과를 추적 하도록 쿼리를 실행할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+DbSet의 Local 속성은 현재 컨텍스트에서 추적 되 고 있고 삭제 된 것으로 표시 되지 않은 집합의 엔터티에 대 한 간단한 액세스를 제공 합니다. 로컬 속성에 액세스 하면 쿼리가 데이터베이스로 전송 되지 않습니다. 즉, 쿼리를 이미 수행한 후에 일반적으로 사용 됩니다. 로드 확장 메서드를 사용 하 여 컨텍스트가 결과를 추적 하도록 쿼리를 실행할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -73,7 +73,7 @@ Found 2: The Visual Studio Blog with state Unchanged
 
 ## <a name="using-local-to-add-and-remove-entities-from-the-context"></a>로컬를 사용 하 여 컨텍스트에서 엔터티 추가 및 제거  
 
-DbSet의 Local 속성은 컨텍스트의 내용과 동기화 된 상태로 유지 되도록 후크 된 이벤트가 포함 된 [system.collections.objectmodel.observablecollection](https://msdn.microsoft.com/library/ms668604.aspx) 를 반환 합니다. 이는 로컬 컬렉션 또는 DbSet에서 엔터티를 추가 하거나 제거할 수 있음을 의미 합니다. 또한 새 엔터티를 컨텍스트에 가져오는 쿼리를 통해 로컬 컬렉션이 해당 엔터티로 업데이트 됩니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+DbSet의 Local 속성은 컨텍스트의 내용과 동기화 된 상태로 유지 되도록 후크 된 이벤트가 포함 된 [system.collections.objectmodel.observablecollection](https://msdn.microsoft.com/library/ms668604.aspx) 를 반환 합니다. 이는 로컬 컬렉션 또는 DbSet에서 엔터티를 추가 하거나 제거할 수 있음을 의미 합니다. 또한 새 엔터티를 컨텍스트에 가져오는 쿼리를 통해 로컬 컬렉션이 해당 엔터티로 업데이트 됩니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -155,7 +155,7 @@ DbSet의 로컬 속성은 System.collections.objectmodel.observablecollection의
 
 ## <a name="wpf-binding-to-navigation-properties"></a>탐색 속성에 WPF 바인딩  
 
-마스터/세부 데이터 바인딩을 수행 하는 경우 엔터티 중 하나의 탐색 속성에 세부 정보 보기를 바인딩할 수 있습니다. 이 작업을 수행 하는 쉬운 방법은 탐색 속성에 System.collections.objectmodel.observablecollection를 사용 하는 것입니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+마스터/세부 데이터 바인딩을 수행 하는 경우 엔터티 중 하나의 탐색 속성에 세부 정보 보기를 바인딩할 수 있습니다. 이 작업을 수행 하는 쉬운 방법은 탐색 속성에 System.collections.objectmodel.observablecollection를 사용 하는 것입니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 public class Blog
@@ -175,7 +175,7 @@ public class Blog
 
 ## <a name="using-local-to-clean-up-entities-in-savechanges"></a>로컬를 사용 하 여 SaveChanges에서 엔터티 정리  
 
-대부분의 경우 탐색 속성에서 제거 된 엔터티는 컨텍스트에서 자동으로 삭제 된 것으로 표시 되지 않습니다. 예를 들어 블로그에서 게시 개체를 제거 하는 경우에는 SaveChanges가 호출 될 때 해당 게시물이 자동으로 삭제 되지 않습니다. 이를 삭제 해야 하는 경우에는 SaveChanges를 호출 하기 전에 이러한 현 수 엔터티를 찾아서 삭제 됨으로 표시 해야 합니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+대부분의 경우 탐색 속성에서 제거 된 엔터티는 컨텍스트에서 자동으로 삭제 된 것으로 표시 되지 않습니다. 예를 들어 블로그에서 게시 개체를 제거 하는 경우에는 SaveChanges가 호출 될 때 해당 게시물이 자동으로 삭제 되지 않습니다. 이를 삭제 해야 하는 경우에는 SaveChanges를 호출 하기 전에 이러한 현 수 엔터티를 찾아서 삭제 됨으로 표시 해야 합니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 public override int SaveChanges()
@@ -208,7 +208,7 @@ Windows Forms는 System.collections.objectmodel.observablecollection를 직접 �
 
 이 시리즈의 많은 예제에서는 Entry 메서드를 사용 하 여 엔터티에 대 한 DbEntityEntry 인스턴스를 반환 합니다. 그런 다음이 항목 개체는 현재 상태와 같은 엔터티에 대 한 정보를 수집 하기 위한 시작 지점 역할을 하며 관련 엔터티를 명시적으로 로드 하는 것과 같은 엔터티에 대 한 작업을 수행 합니다.  
 
-항목 메서드는 컨텍스트에 의해 추적 되는 여러 엔터티 또는 모든 엔터티에 대해 DbEntityEntry 개체를 반환 합니다. 이를 통해 단일 항목 뿐만 아니라 많은 엔터티에서 정보를 수집 하거나 작업을 수행할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+항목 메서드는 컨텍스트에 의해 추적 되는 여러 엔터티 또는 모든 엔터티에 대해 DbEntityEntry 개체를 반환 합니다. 이를 통해 단일 항목 뿐만 아니라 많은 엔터티에서 정보를 수집 하거나 작업을 수행할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())

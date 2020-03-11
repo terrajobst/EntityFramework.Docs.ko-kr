@@ -5,11 +5,11 @@ ms.author: bricelam
 ms.date: 09/18/2018
 uid: core/miscellaneous/cli/powershell
 ms.openlocfilehash: a9ce6d5b5f36a72e3715a9de787f1f00e989a58c
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811907"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414202"
 ---
 # <a name="entity-framework-core-tools-reference---package-manager-console-in-visual-studio"></a>Entity Framework Core 도구 참조-Visual Studio의 패키지 관리자 콘솔
 
@@ -127,7 +127,7 @@ SHORT DESCRIPTION
 
 ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행 하기 전에 **env: ASPNETCORE_ENVIRONMENT** 를 설정 합니다.
 
-## <a name="common-parameters"></a>일반 매개 변수
+## <a name="common-parameters"></a>공통 매개 변수
 
 다음 표에서는 모든 EF Core 명령에 공통적인 매개 변수를 보여 줍니다.
 
@@ -136,7 +136,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 | -Context \<문자열 >        | 사용할 `DbContext` 클래스입니다. 네임 스페이스를 포함 하거나 정규화 된 클래스 이름입니다.  이 매개 변수를 생략 하면 EF Core 컨텍스트 클래스를 찾습니다. 컨텍스트 클래스가 여러 개인 경우이 매개 변수는 필수입니다. |
 | -Project \<문자열 >        | 대상 프로젝트입니다. 이 매개 변수를 생략 하면 **패키지 관리자 콘솔** 의 **기본 프로젝트가** 대상 프로젝트로 사용 됩니다.                                                                             |
 | -StartupProject \<문자열 > | 시작 프로젝트입니다. 이 매개 변수를 생략 하면 **솔루션 속성** 의 **시작 프로젝트가** 대상 프로젝트로 사용 됩니다.                                                                                 |
-| -자세한 정보                  | 자세한 정보 출력을 표시합니다.                                                                                                                                                                                                 |
+| -Verbose                  | 자세한 정보 출력을 표시합니다.                                                                                                                                                                                                 |
 
 명령에 대 한 도움말 정보를 표시 하려면 PowerShell의 `Get-Help` 명령을 사용 합니다.
 
@@ -156,7 +156,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 
 ## <a name="drop-database"></a>Drop Database
 
-데이터베이스를 삭제 합니다.
+데이터베이스를 삭제합니다.
 
 매개 변수:
 
@@ -164,7 +164,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 |:----------|:---------------------------------------------------------|
 | -WhatIf   | 삭제할 데이터베이스를 표시 하지만 삭제할 데이터베이스를 표시 하지 않습니다. |
 
-## <a name="get-dbcontext"></a>DbContext
+## <a name="get-dbcontext"></a>Get-DbContext
 
 `DbContext` 형식에 대 한 정보를 가져옵니다.
 
@@ -186,7 +186,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 
 | 매개 변수                          | 설명                                                                                                                                                                                                                                                             |
 |:-----------------------------------|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| <nobr>-연결 \<문자열 ></nobr> | 데이터베이스에 대 한 연결 문자열입니다. ASP.NET Core 2.x 프로젝트의 경우 값은 *이름 =\<연결 문자열 > 이름일*수 있습니다. 이 경우 프로젝트에 대해 설정 된 구성 소스에서 이름이 제공 됩니다. 이 매개 변수는 위치 매개 변수 이며 필수입니다. |
+| <nobr>-연결 \<문자열 ></nobr> | 데이터베이스에 대한 연결 문자열입니다. ASP.NET Core 2.x 프로젝트의 경우 값은 *이름 =\<연결 문자열 > 이름일*수 있습니다. 이 경우 프로젝트에 대해 설정 된 구성 소스에서 이름이 제공 됩니다. 이 매개 변수는 위치 매개 변수 이며 필수입니다. |
 | <nobr>-공급자 \<문자열 ></nobr>   | 사용할 공급자입니다. 일반적으로 NuGet 패키지의 이름입니다 (예: `Microsoft.EntityFrameworkCore.SqlServer`). 이 매개 변수는 위치 매개 변수 이며 필수입니다.                                                                                           |
 | -OutputDir \<문자열 >               | 파일을 저장할 디렉터리입니다. 경로는 프로젝트 디렉터리에 상대적입니다.                                                                                                                                                                                             |
 | -ContextDir \<문자열 >              | `DbContext` 파일을 저장할 디렉터리입니다. 경로는 프로젝트 디렉터리에 상대적입니다.                                                                                                                                                                              |
@@ -197,7 +197,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 | -UseDatabaseNames                  | 테이블 및 열 이름은 데이터베이스에 표시 된 대로 정확 하 게 사용 합니다. 이 매개 변수를 생략 하는 경우 데이터베이스 이름이 이름 스타일 규칙을 C# 더욱 잘 준수 하도록 변경 됩니다.                                                                                       |
 | -Force                             | 기존 파일을 덮어씁니다.                                                                                                                                                                                                                                               |
 
-예제:
+예:
 
 ```powershell
 Scaffold-DbContext "Server=(localdb)\mssqllocaldb;Database=Blogging;Trusted_Connection=True;" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models
@@ -261,7 +261,7 @@ Update-Database -Migration InitialCreate
 Update-Database -Migration 20180904195021_InitialCreate
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [마이그레이션](xref:core/managing-schemas/migrations/index)
 * [리버스 엔지니어링](xref:core/managing-schemas/scaffolding)

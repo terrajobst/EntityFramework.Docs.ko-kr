@@ -4,36 +4,36 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: e83a6a06-e63b-4530-8656-614bf609b12b
 ms.openlocfilehash: 1e9dc98edb8590021bbf3393e9edda1929d505e0
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490716"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414394"
 ---
 # <a name="school-sample-database"></a>School 샘플 데이터베이스
-이 항목에서는 스키마 및 School 데이터베이스에 대 한 데이터를 포함합니다. 샘플 School 데이터베이스는 Entity Framework 설명서의 여러 위치에서 사용 됩니다.  
+이 항목에는 School 데이터베이스의 스키마 및 데이터가 포함 되어 있습니다. 샘플 School 데이터베이스는 Entity Framework 설명서 전체에서 다양 한 위치에 사용 됩니다.  
 
 > [!NOTE]
-> Visual Studio와 함께 설치 되는 데이터베이스 서버 사용 하면 Visual Studio의 버전에 따라 다릅니다. 참조 [Visual Studio 릴리스](~/ef6/what-is-new/visual-studio.md) 사용에 대 한 자세한 내용은 합니다.  
+> Visual Studio와 함께 설치 되는 데이터베이스 서버는 사용 하는 Visual Studio 버전에 따라 다릅니다. 사용할 항목에 대 한 자세한 내용은 [Visual Studio 릴리스](~/ef6/what-is-new/visual-studio.md) 를 참조 하세요.  
 
 데이터베이스를 만드는 단계는 다음과 같습니다.
 
 - Visual Studio를 엽니다.  
-- **뷰** -> **서버 탐색기**  
-- 마우스 오른쪽 단추로 클릭 **데이터 연결** -> **연결 추가 중...**  
-- 선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않았으면 **Microsoft SQL Server** 데이터 원본으로  
-- LocalDB 또는 어느에 따라 설치한 SQL Express에 연결  
-- 입력 **학교** 데이터베이스 이름으로  
-- 선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**  
-- 새 데이터베이스 서버 탐색기에 나타납니다.  
-- Visual Studio 2012 이상 사용 하는 경우
-    - 서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 선택 **새 쿼리**  
-    - 새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**  
+-  -> **서버 탐색기** **보기**  
+- **연결 추가** -> **데이터 연결** 을 마우스 오른쪽 단추로 클릭 합니다.  
+- 서버 탐색기 데이터베이스에 연결 하지 않은 경우 **Microsoft SQL Server** 를 데이터 원본으로 선택 해야 합니다.  
+- 설치한 항목에 따라 LocalDB 또는 SQL Express에 연결  
+- 데이터베이스 이름으로 **School** 을 입력 합니다.  
+- **확인** 을 선택 하 고 새 데이터베이스를 만들지 여부를 묻는 메시지가 표시 되 면 **예** 를 선택 합니다.  
+- 이제 새 데이터베이스가 서버 탐색기에 표시 됩니다.  
+- Visual Studio 2012 이상 버전을 사용 하는 경우
+    - 서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 **새 쿼리** 를 선택 합니다.  
+    - 다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **실행** 을 선택 합니다.  
 - Visual Studio 2010을 사용 하는 경우  
-    - 선택 **데이터** -> **Transact SQL 편집기** -> **새 쿼리 연결 하는 중...**  
-    - 입력 **. \SQLEXPRESS** 서버 이름 및 클릭으로 **확인**  
-    - 선택 된 **STESample** 쿼리 편집기의 맨 위에 있는 드롭다운에서 아래로 데이터베이스  
-    - 새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **SQL 실행**  
+    - **새 쿼리 연결** -> **데이터** -> **transact-sql 편집기** 를 선택 합니다.  
+    - 서버 이름으로 **.\SQLEXPRESS** 를 입력 하 고 **확인을** 클릭 합니다.  
+    - 쿼리 편집기 위쪽의 드롭다운에서 **STESample** 데이터베이스를 선택 합니다.  
+    - 다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **Sql 실행** 을 선택 합니다.  
 
 ``` SQL  
 SET ANSI_NULLS ON

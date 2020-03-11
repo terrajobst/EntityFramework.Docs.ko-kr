@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 4c2d9a95-de6f-4e97-9738-c1f8043eff69
 ms.openlocfilehash: b3c4c35d636caf4ddd251dd78e026587abc57d42
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182607"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415612"
 ---
 # <a name="code-first-migrations-in-team-environments"></a>팀 환경에서 Code First 마이그레이션
 > [!NOTE]
@@ -107,7 +107,7 @@ EF가 모델 스냅숏을 유지 하는 이유는 여러 가지가 있습니다.
 
 개발자 \#1이 변경 내용을 먼저 제출 하는 것과 같은 1 일이 있습니다. 다른 사용자가 리포지토리를 동기화 한 후 체크 인하지 않았기 때문에 병합을 수행 하지 않고 변경 내용을 전송할 수 있습니다.
 
-![전송](~/ef6/media/submit.png)
+![제출](~/ef6/media/submit.png)
 
 이제 개발자 \#2가 제출 하는 시간입니다. 그렇다면 운이 좋은 것은 아닙니다. 다른 사용자가 동기화 된 후에 변경 내용을 전송 했기 때문에 변경 내용을 가져와서 병합 해야 합니다. 소스 제어 시스템은 매우 간단 하므로 코드 수준에서 변경 내용을 자동으로 병합할 수 있습니다. 다음 그림에서는 동기화 후의 개발자 \#2 로컬 리포지토리의 상태를 보여 줍니다. 
 

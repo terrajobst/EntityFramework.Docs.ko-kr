@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 77d6a095-c0d0-471e-80b9-8f9aea6108b2
 ms.openlocfilehash: 2c5e6f1b3f60862124bafcac42e8859a7591f8e6
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72812154"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414370"
 ---
 # <a name="data-validation"></a>데이터 유효성 검사
 > [!NOTE]
@@ -71,7 +71,7 @@ public string Title { get; set; }
 
 클라이언트 쪽 유효성 검사를 사용 하지 않도록 설정한 경우에도 응용 프로그램에서 동일한 응답을 받게 됩니다. "제목 필드가 필요 합니다." 라는 오류 메시지는 이전 처럼 표시 됩니다. 지금은 서버 쪽 유효성 검사의 결과를 제외 하 고, Entity Framework는 `Required` 주석에 대해 유효성 검사를 수행 하 고 (데이터베이스에 전송 하는 `INSERT` 명령을 작성 하기 전에도), 메시지를 표시 하는 MVC로 오류를 반환 합니다.
 
-## <a name="fluent-api"></a>흐름 API
+## <a name="fluent-api"></a>Fluent API
 
 주석 대신 code first의 흐름 API를 사용 하 여 동일한 클라이언트 쪽 & 서버 쪽 유효성 검사를 가져올 수 있습니다. `Required`를 사용 하는 대신 MaxLength 유효성 검사를 사용 하 여이를 표시 합니다.
 
@@ -158,7 +158,7 @@ public class Blog : IValidatableObject
 
 ![그림 2](~/ef6/media/figure02.png)
 
-## <a name="dbcontextvalidateentity"></a>DbContext 엔터티
+## <a name="dbcontextvalidateentity"></a>DbContext.ValidateEntity
 
 `DbContext`에는 `ValidateEntity`라는 재정의 가능한 메서드가 있습니다. `SaveChanges`를 호출 하면 Entity Framework는 해당 캐시의 각 엔터티에 대해이 메서드를 호출 하 여 상태를 `Unchanged`하지 않습니다. 여기에 유효성 검사 논리를 직접 추가 하거나이 메서드를 사용 하 여 이전 섹션에서 추가 된 `Blog.Validate` 메서드를 호출할 수도 있습니다.
 

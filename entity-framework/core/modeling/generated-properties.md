@@ -6,11 +6,11 @@ ms.author: ansvyryd
 ms.date: 11/06/2019
 uid: core/modeling/generated-properties
 ms.openlocfilehash: 9c616e157ff1bdb9700f436a7ae2788330fe5d45
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502034"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413902"
 ---
 # <a name="generated-values"></a>생성된 값
 
@@ -58,11 +58,11 @@ ms.locfileid: "75502034"
 
 다음과 같이 삽입 된 엔터티에 대해 값이 생성 되도록 속성을 구성할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAdd.cs?name=ValueGeneratedOnAdd&highlight=5)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAdd.cs?name=ValueGeneratedOnAdd&highlight=5)]
 
@@ -87,11 +87,11 @@ ms.locfileid: "75502034"
 
 ## <a name="value-generated-on-add-or-update"></a>추가 또는 업데이트 시 생성 되는 값
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedOnAddOrUpdate.cs?name=ValueGeneratedOnAddOrUpdate&highlight=5)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedOnAddOrUpdate.cs?name=ValueGeneratedOnAddOrUpdate&highlight=5)]
 
@@ -113,11 +113,11 @@ ms.locfileid: "75502034"
 
 속성에 대해 값 생성을 비활성화 하는 것은 일반적으로 규칙에서 값 생성을 위해 구성 하는 경우에 필요 합니다. 예를 들어 int 형식의 기본 키가 있는 경우에는 add에 생성 된 값으로 암시적으로 설정 됩니다. 다음을 통해이를 사용 하지 않도록 설정할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ValueGeneratedNever.cs?name=ValueGeneratedNever&highlight=3)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ValueGeneratedNever.cs?name=ValueGeneratedNever&highlight=5)]
 

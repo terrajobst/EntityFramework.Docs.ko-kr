@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 07/11/2019
 uid: core/miscellaneous/cli/dotnet
-ms.openlocfilehash: 5686d28e6847797130476cd858bd3fb611620140
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 7dc7a4404820a7c935648169cc6ff8d0f0118d87
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824475"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414226"
 ---
 # <a name="entity-framework-core-tools-reference---net-cli"></a>Entity Framework Core 도구 참조-.NET CLI
 
@@ -39,7 +39,7 @@ Visual Studio를 사용 하는 경우 대신 [패키지 관리자 콘솔 도구]
 
   `dotnet ef`를 로컬 도구로 사용할 수도 있습니다. 로컬 도구로 사용 하려면 [도구 매니페스트 파일](https://github.com/dotnet/cli/issues/10288)을 사용 하 여 도구를 도구 종속성으로 선언 하는 프로젝트의 종속성을 복원 합니다.
 
-* [.NET Core SDK 3.0](https://dotnet.microsoft.com/download/dotnet-core/3.0)을 설치 합니다. 최신 버전의 Visual Studio가 설치 되어 있는 경우에도 SDK를 설치 해야 합니다.
+* [.NET Core SDK](https://www.microsoft.com/net/download/core)를 설치합니다.
 
 * 최신 `Microsoft.EntityFrameworkCore.Design` 패키지를 설치 합니다.
 
@@ -166,7 +166,7 @@ ASP.NET Core 프로젝트에 대 한 환경을 지정 하려면 명령을 실행
 |                   | `--framework <FRAMEWORK>`         | [대상 프레임 워크](/dotnet/standard/frameworks)에 대 한 [대상 프레임 워크 모니커입니다](/dotnet/standard/frameworks#supported-target-framework-versions) .  프로젝트 파일이 여러 대상 프레임 워크를 지정 하 고 그 중 하나를 선택 하려는 경우에 사용 합니다. |
 |                   | `--configuration <CONFIGURATION>` | 빌드 구성입니다 (예: `Debug` 또는 `Release`).                                                                                                                                                                                                   |
 |                   | `--runtime <IDENTIFIER>`          | 패키지를 복원할 대상 런타임의 식별자입니다. RID(런타임 식별자) 목록은 [RID 카탈로그](/dotnet/core/rid-catalog)를 참조하세요.                                                                                                      |
-| `-h`              | `--help`                          | 도움말 정보를 표시 합니다.                                                                                                                                                                                                                                        |
+| `-h`              | `--help`                          | 도움말 정보를 표시합니다.                                                                                                                                                                                                                                        |
 | `-v`              | `--verbose`                       | 자세한 정보 출력을 표시합니다.                                                                                                                                                                                                                                          |
 |                   | `--no-color`                      | 출력에 색을 표시 하지 않습니다.                                                                                                                                                                                                                                        |
 |                   | `--prefix-output`                 | 수준으로 출력을 접두사로 사용 합니다.                                                                                                                                                                                                                                     |
@@ -228,7 +228,7 @@ dotnet ef database update 20180904195021_InitialCreate
 | `-f`            | `--force`                                | 기존 파일을 덮어씁니다.                                                                                                                                                      |
 | `-o`            | `--output-dir <PATH>`                    | 엔터티 클래스 파일을 배치할 디렉터리입니다. 경로는 프로젝트 디렉터리에 상대적입니다.                                                                                       |
 |                 | <nobr>`--schema <SCHEMA_NAME>...`</nobr> | 엔터티 형식을 생성할 테이블의 스키마입니다. 여러 스키마를 지정 하려면 각 스키마에 대해 `--schema`를 반복 합니다. 이 옵션을 생략 하면 모든 스키마가 포함 됩니다.          |
-| `-t`            | `--table <TABLE_NAME>`..."입니다.                | 엔터티 형식을 생성할 테이블입니다. 여러 테이블을 지정 하려면 각 항목에 대해 `-t` 또는 `--table`를 반복 합니다. 이 옵션을 생략 하면 모든 테이블이 포함 됩니다.                |
+| `-t`            | `--table <TABLE_NAME>`...                | 엔터티 형식을 생성할 테이블입니다. 여러 테이블을 지정 하려면 각 항목에 대해 `-t` 또는 `--table`를 반복 합니다. 이 옵션을 생략 하면 모든 테이블이 포함 됩니다.                |
 |                 | `--use-database-names`                   | 테이블 및 열 이름은 데이터베이스에 표시 된 대로 정확 하 게 사용 합니다. 이 옵션을 생략 하는 경우 데이터베이스 이름이 이름 스타일 규칙을 C# 더욱 잘 준수 하도록 변경 됩니다. |
 
 다음 예에서는 모든 스키마 및 테이블을 스 캐 폴드 하 고 새 파일을 *모델* 폴더에 넣습니다.
@@ -303,7 +303,7 @@ dotnet ef migrations script 0 InitialCreate
 dotnet ef migrations script 20180904195021_InitialCreate
 ```
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [마이그레이션](xref:core/managing-schemas/migrations/index)
 * [리버스 엔지니어링](xref:core/managing-schemas/scaffolding)

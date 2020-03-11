@@ -6,11 +6,11 @@ ms.date: 11/01/2018
 ms.assetid: 2BDE29FC-4161-41A0-841E-69F51CCD9341
 uid: core/modeling/spatial
 ms.openlocfilehash: 5b45f83ca7f02665f52ccfe16b5af506a6046a62
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76124433"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414706"
 ---
 # <a name="spatial-data"></a>공간 데이터
 
@@ -49,7 +49,7 @@ optionsBuilder.UseSqlServer(
 여러 공간 데이터 형식이 있습니다. 사용할 형식은 허용할 셰이프 유형에 따라 달라 집니다. 모델의 속성에 사용할 수 있는 NTS 형식의 계층 구조는 다음과 같습니다. `NetTopologySuite.Geometries` 네임 스페이스 내에 있습니다.
 
 * geometry
-  * 요소
+  * 점
   * LineString
   * 다각형
   * GeometryCollection
@@ -343,7 +343,7 @@ ExteriorRing | ✔ | ✔ | ✔ | ✔
 GetInteriorRingN (int) | ✔ | ✔ | ✔ | ✔
 NumInteriorRings | ✔ | ✔ | ✔ | ✔
 
-## <a name="additional-resources"></a>추가 자료
+## <a name="additional-resources"></a>추가 리소스
 
 * [SQL Server의 공간 데이터](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server)
 * [SpatiaLite 홈 페이지](https://www.gaia-gis.it/fossil/libspatialite)

@@ -4,32 +4,32 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: ecaa5a27-b19e-4bf9-8142-a3fb00642270
 ms.openlocfilehash: a6352bbbc38c38bd5f30536736ec969056df2c7d
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489338"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414868"
 ---
 # <a name="connection-management"></a>연결 관리
-이 페이지는 컨텍스트 및의 기능에 연결을 전달 하는 관련 하 여 Entity Framework의 동작을 설명 합니다 **Database.Connection.Open()** API.  
+이 페이지에서는 컨텍스트와 데이터베이스의 기능에 연결을 전달 하는 것과 관련 된 Entity Framework 동작에 대해 설명 합니다. **Open ()** API.  
 
-## <a name="passing-connections-to-the-context"></a>컨텍스트에 전달 연결  
+## <a name="passing-connections-to-the-context"></a>컨텍스트에 연결 전달  
 
-### <a name="behavior-for-ef5-and-earlier-versions"></a>EF5 및 이전 버전에 대 한 동작  
+### <a name="behavior-for-ef5-and-earlier-versions"></a>EF5 이전 버전에 대 한 동작  
 
-연결을 허용 하는 생성자 두 가지가 있습니다.  
+연결을 허용 하는 두 개의 생성자가 있습니다.  
 
 ``` csharp
 public DbContext(DbConnection existingConnection, bool contextOwnsConnection)
 public DbContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
 ```  
 
-이 방법을 사용 하는 것이 가능 하지만 몇 가지 제한 사항 해결 해야:  
+이러한 작업은 사용할 수 있지만 몇 가지 제한 사항을 해결 해야 합니다.  
 
-1. 그런 다음 처음 프레임 워크를 InvalidOperationException 예외가 사용 하려고 합니다. 이러한 열려 있는 연결을 전달 하면 말하고 다시 열 수 없습니다 이미 열려 있는 연결 합니다.  
-2. ContextOwnsConnection 플래그 컨텍스트가 삭제 될 때 기본 저장소 연결을 삭제 해야 하는지 여부를 의미로 해석 됩니다. 그러나 해당 설정에 관계 없이 저장소 연결이 항상 닫힌 컨텍스트가 삭제 될 때. 동일한 연결을 사용 하 여 DbContext를 둘 이상 있는 경우 어떤 컨텍스트가 먼저 연결을 종료 합니다 (마찬가지로 DbContext 사용 하 여 기존 ADO.NET 연결을 혼합 한 경우 DbContext 항상 연결이 닫힙니다 삭제 되 면) 하므로 .  
+1. 이러한 두 개체 중 하나에 대 한 열린 연결을 전달 하는 경우 프레임 워크에서 처음으로 사용 하려고 하면 이미 열려 있는 연결을 다시 열 수 없다는 InvalidOperationException이 throw 됩니다.  
+2. ContextOwnsConnection 플래그는 컨텍스트가 삭제 될 때 기본 저장소 연결을 삭제 해야 하는지 여부를 의미 하는 것으로 해석 됩니다. 그러나이 설정에 관계 없이 컨텍스트가 삭제 되 면 항상 저장소 연결이 닫힙니다. 따라서 동일한 연결을 사용 하는 DbContext이 두 개 이상 있는 경우 어떤 컨텍스트가 먼저 삭제 되는지는 먼저 연결을 닫습니다. 예를 들어 DbContext를 사용 하 여 기존 ADO.NET 연결을 혼합 한 경우 DbContext는 항상 연결이 삭제 될 때 해당 연결을 닫습니다. .  
 
-닫힌된 연결을 전달 하 고만 열리는 것 모든 컨텍스트에서 생성 된 후 코드를 실행 하 여 위의 첫 번째 제한 사항을 해결 하는 것이 가능 합니다.  
+닫힌 연결을 전달 하 고, 모든 컨텍스트를 만든 후에 해당 연결을 여는 코드를 실행 하는 경우 위의 첫 번째 제한 사항을 해결할 수 있습니다.  
 
 ``` csharp
 using System.Collections.Generic;
@@ -71,11 +71,11 @@ namespace ConnectionManagementExamples
 }
 ```  
 
-두 번째 제한은 의미에서 닫을 수에 대 한 연결에 대 한 준비가 될 때까지 DbContext 개체를 삭제 하지 않도록 해야 합니다.  
+두 번째 제한은 연결을 닫을 준비가 될 때까지 DbContext 개체를 삭제 하는 것을 방지 해야 한다는 것을 의미 합니다.  
 
 ### <a name="behavior-in-ef6-and-future-versions"></a>EF6 및 이후 버전의 동작  
 
-EF6 및 이후 버전에서 DbContext 동일한 두 명의 생성자가 있지만 수신 될 때 생성자에 전달 된 연결을 닫을 수 있음을 더 이상 필요 합니다. 따라서이 수 있게 되었습니다.  
+EF6 및 이후 버전에서 DbContext는 동일한 두 개의 생성자를 포함 하지만 수신 될 때 생성자에 전달 된 연결을 닫을 필요가 없습니다. 이제 다음과 같은 작업을 수행할 수 있습니다.  
 
 ``` csharp
 using System.Collections.Generic;
@@ -123,24 +123,24 @@ namespace ConnectionManagementExamples
 }
 ```  
 
-ContextOwnsConnection 플래그를 지금 제어 여부는 연결이 모두 닫히고 DbContext가 삭제 될 때 삭제 합니다. 위의 예제에서 연결이 닫혀 있지 않으면 컨텍스트가 경우 하므로 이전 버전의 EF 되었을 있지만 자체 연결이 삭제 될 때가 아니라 (줄 32)를 삭제 (40 줄).  
+또한 contextOwnsConnection 플래그는 이제 DbContext 삭제 될 때 연결이 닫히고 삭제 되는지 여부를 제어 합니다. 따라서 위의 예에서는 컨텍스트가 삭제 될 때 (32 줄) 연결이 닫혀 있지 않습니다. 즉, 이전 버전의 EF에서와 같이 연결 자체가 삭제 된 경우 (40 줄)에는 연결이 닫혀 있지 않습니다.  
 
-물론 것도 가능 (방금 true 또는 다른 생성자 중 하나를 사용 하려면 집합 contextOwnsConnection) 연결을 제어할 수 dbcontext 따라서 하려는 경우.  
+물론 원하는 경우에도 DbContext가 연결을 제어할 수 있습니다 (contextOwnsConnection를 true로 설정 하거나 다른 생성자 중 하나를 사용).  
 
 > [!NOTE]
-> 이 새 모델을 사용 하 여 트랜잭션을 사용할 때는 몇 가지 추가 고려 사항이 있습니다. 자세한 내용은 참조 하십시오 [트랜잭션과 작업](~/ef6/saving/transactions.md)합니다.  
+> 이 새 모델에서 트랜잭션을 사용할 때 몇 가지 사항을 추가로 고려해 야 합니다. 자세한 내용은 [트랜잭션 작업](~/ef6/saving/transactions.md)을 참조 하세요.  
 
-## <a name="databaseconnectionopen"></a>Database.Connection.Open()  
+## <a name="databaseconnectionopen"></a>Database. Connection. Open ()  
 
-### <a name="behavior-for-ef5-and-earlier-versions"></a>EF5 및 이전 버전에 대 한 동작  
+### <a name="behavior-for-ef5-and-earlier-versions"></a>EF5 이전 버전에 대 한 동작  
 
-EF5 및 이전 버전에는 버그는 합니다 **ObjectContext.Connection.State** 기본 저장소 연결의 실제 상태를 반영 하도록 업데이트 되지 않았습니다. 예를 들어, 다음 코드를 실행 하는 경우 있습니다 수 반환할 상태 **닫힘** 기본 연결을 저장 하는 사실 없지만입니다 **오픈**합니다.  
+EF5 이전 버전에서는 기본 저장소 연결의 실제 상태를 반영 하도록 **ObjectContext** 를 업데이트 하지 않은 버그가 있습니다. 예를 들어 다음 코드를 실행 하는 경우 기본 저장소 연결이 **열려**있더라도 상태를 **닫을** 수 있습니다.  
 
 ``` csharp
 ((IObjectContextAdapter)context).ObjectContext.Connection.State
 ```  
 
-별도로 Database.Connection.Open()를 호출 하 여 데이터베이스 연결을 열면 됩니다 열린 다음에 하면 쿼리를 실행 하거나 데이터베이스에 연결 해야 하는 호출 될 때까지 (예를 들어 SaveChanges()) 뒤는 기본 저장소 연결을 닫습니다. 컨텍스트를 다시 열리고 다시 다른 데이터베이스 작업은 필요 하 든 지 연결을 닫습니다.  
+데이터베이스 연결을 호출 하 여 데이터베이스 연결을 여는 경우에는 다음에 쿼리를 실행 하거나 데이터베이스 연결을 필요로 하는 모든 항목 (예: SaveChanges ())을 호출 하는 경우를 제외 하 고 기본 저장소 연결을 닫습니다. 그러면 컨텍스트는 다른 데이터베이스 작업이 필요한 경우 언제 든 지 다시 열고 다시 연결을 닫습니다.  
 
 ``` csharp
 using System;
@@ -186,12 +186,12 @@ namespace ConnectionManagementExamples
 
 ### <a name="behavior-in-ef6-and-future-versions"></a>EF6 및 이후 버전의 동작  
 
-EF6 및 이후 버전에 대 한 이동 방법은 호출 코드에서 호출 컨텍스트와 연결 하 여 하기로 선택한 경우. Database.Connection.Open() 고 이렇게 하는 것에 대 한 이유가 있으며 열기 및 연결의 닫기에 대 한 제어 하려고 하면 연결이 자동으로 닫힙니다 더 이상를 프레임 워크를 가정 합니다.  
+EF6 및 이후 버전의 경우 호출 하는 코드가 컨텍스트를 호출 하 여 연결을 열도록 선택 하는 방식을 수행 했습니다. Database. Connection. Open ()을 수행 하는 것이 좋습니다 .이 경우 프레임 워크는 연결 열기 및 닫기를 제어 하 고 더 이상 연결을 자동으로 닫지 않는 것으로 가정 합니다.  
 
 > [!NOTE]
-> 오랫동안 신중 하 게 되므로 사용에 대 한 열려 있는 연결을 일으킬 수 있습니다.  
+> 이로 인해 오랜 시간 동안 열려 있는 연결을 사용 하 여 신중 하 게 사용할 수 있습니다.  
 
-코드를 ObjectContext.Connection.State 이제는 추적 기본 연결 상태를 올바르게 있도록도 업데이트 했습니다.  
+또한 코드를 업데이트 하 여 이제 ObjectContext. Connection. State가 기본 연결의 상태를 올바르게 추적 합니다.  
 
 ``` csharp
 using System;

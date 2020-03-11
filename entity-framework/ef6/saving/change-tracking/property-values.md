@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: e3278b4b-9378-4fdb-923d-f64d80aaae70
 ms.openlocfilehash: d8a18182754980d79b71df3f227b30c4ce40366f
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182139"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414376"
 ---
 # <a name="working-with-property-values"></a>속성 값 사용
 대부분 Entity Framework에서는 엔터티 인스턴스의 속성에 대 한 상태, 원래 값 및 현재 값을 추적 하는 작업을 처리 합니다. 그러나 연결 되지 않은 시나리오 (예: EF에 속성에 대 한 정보를 보거나 조작 하려는 경우)가 있을 수 있습니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
@@ -55,7 +55,7 @@ CurrentValue 속성 대신 OriginalValue 속성을 사용 하 여 원래 값을 
 
 ## <a name="getting-and-setting-the-current-value-of-an-unmapped-property"></a>매핑되지 않은 속성의 현재 값 가져오기 및 설정  
 
-데이터베이스에 매핑되지 않은 속성의 현재 값을 읽을 수도 있습니다. 매핑되지 않은 속성의 예는 블로그의 RssLink 속성 일 수 있습니다. 이 값은 BlogId를 기반으로 계산 될 수 있으므로 데이터베이스에 저장할 필요가 없습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+데이터베이스에 매핑되지 않은 속성의 현재 값을 읽을 수도 있습니다. 매핑되지 않은 속성의 예는 블로그의 RssLink 속성 일 수 있습니다. 이 값은 BlogId를 기반으로 계산 될 수 있으므로 데이터베이스에 저장할 필요가 없습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -71,7 +71,7 @@ using (var context = new BloggingContext())
 
 속성이 setter를 노출 하는 경우에도 현재 값을 설정할 수 있습니다.  
 
-매핑되지 않은 속성의 값을 읽으면 매핑되지 않은 속성의 Entity Framework 유효성 검사를 수행할 때 유용 합니다. 동일한 이유로 현재 컨텍스트에 의해 추적 되 고 있지 않은 엔터티의 속성에 대해 현재 값을 읽고 설정할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+매핑되지 않은 속성의 값을 읽으면 매핑되지 않은 속성의 Entity Framework 유효성 검사를 수행할 때 유용 합니다. 동일한 이유로 현재 컨텍스트에 의해 추적 되 고 있지 않은 엔터티의 속성에 대해 현재 값을 읽고 설정할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -167,7 +167,7 @@ public static void PrintValues(DbPropertyValues values)
 
 ## <a name="setting-current-or-original-values-from-another-object"></a>다른 개체의 현재 값 또는 원래 값 설정  
 
-추적 된 엔터티의 현재 값 또는 원래 값을 다른 개체의 값을 복사 하 여 업데이트할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+추적 된 엔터티의 현재 값 또는 원래 값을 다른 개체의 값을 복사 하 여 업데이트할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -214,7 +214,7 @@ Property Name has value My Boring Blog
 
 ## <a name="setting-current-or-original-values-from-a-dictionary"></a>사전에서 현재 값 또는 원래 값 설정  
 
-추적 된 엔터티의 현재 값 또는 원래 값은 사전 또는 다른 데이터 구조에서 값을 복사 하 여 업데이트할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+추적 된 엔터티의 현재 값 또는 원래 값은 사전 또는 다른 데이터 구조에서 값을 복사 하 여 업데이트할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -242,7 +242,7 @@ CurrentValues 속성 대신 OriginalValues 속성을 사용 하 여 원래 값�
 
 ## <a name="setting-current-or-original-values-from-a-dictionary-using-property"></a>속성을 사용 하 여 사전의 현재 값 또는 원래 값 설정  
 
-위와 같이 CurrentValues 또는 OriginalValues를 사용 하는 대신 Property 메서드를 사용 하 여 각 속성의 값을 설정 합니다. 이는 복합 속성의 값을 설정 해야 하는 경우에 더 적합할 수 있습니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+위와 같이 CurrentValues 또는 OriginalValues를 사용 하는 대신 Property 메서드를 사용 하 여 각 속성의 값을 설정 합니다. 이는 복합 속성의 값을 설정 해야 하는 경우에 더 적합할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -270,7 +270,7 @@ using (var context = new BloggingContext())
 
 ## <a name="creating-a-cloned-object-containing-current-original-or-database-values"></a>현재, 원래 값 또는 데이터베이스 값을 포함 하는 복제 된 개체 만들기  
 
-CurrentValues, OriginalValues 또는 GetDatabaseValues에서 반환 된 DbPropertyValues 개체를 사용 하 여 엔터티의 클론을 만들 수 있습니다. 이 복제본은이를 만드는 데 사용 된 DbPropertyValues 개체의 속성 값을 포함 합니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.  
+CurrentValues, OriginalValues 또는 GetDatabaseValues에서 반환 된 DbPropertyValues 개체를 사용 하 여 엔터티의 클론을 만들 수 있습니다. 이 복제본은이를 만드는 데 사용 된 DbPropertyValues 개체의 속성 값을 포함 합니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())

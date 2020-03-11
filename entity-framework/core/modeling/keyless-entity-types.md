@@ -5,12 +5,12 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 9/13/2019
 uid: core/modeling/keyless-entity-types
-ms.openlocfilehash: 129e24b154ba32583435aeb742dbf478350344e8
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.openlocfilehash: 520c9ed93240c05deee36fa527a3757490fd7082
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824668"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414646"
 ---
 # <a name="keyless-entity-types"></a>키 없는 엔터티 형식
 
@@ -47,7 +47,7 @@ ms.locfileid: "74824668"
 
 ## <a name="mapping-to-database-objects"></a>데이터베이스 개체에 대 한 매핑
 
-`ToTable` 또는 `ToView` 흐름 API를 사용 하 여 키가 없는 엔터티 형식을 데이터베이스 개체에 매핑할 수 있습니다. 이 메서드에 지정 된 데이터베이스 개체는 EF Core의 관점에서을 _보기_, 읽기 전용 쿼리 원본으로 처리 됩니다 의미 및 없습니다 업데이트의 대상이 될, 삽입 또는 삭제 작업입니다. 그러나 데이터베이스 개체가 실제로 데이터베이스 뷰가 되어야 한다는 의미는 아닙니다. 또는 읽기 전용으로 처리 되는 데이터베이스 테이블 일 수도 있습니다. 반대로, 일반 엔터티 형식의 경우 EF Core `ToTable` 메서드에 지정 된 데이터베이스 개체를 _테이블로_처리할 수 있다고 가정 합니다. 즉, 쿼리 원본으로 사용할 수 있지만 업데이트, 삭제 및 삽입 작업의 대상으로 사용할 수 있습니다. 데이터베이스 뷰 이름을 지정할 수는 사실 `ToTable` 뷰는 구성 데이터베이스에서 업데이트할 수 있는으로 정상적으로 작동 해야 모든 합니다.
+`ToTable` 또는 `ToView` 흐름 API를 사용 하 여 키가 없는 엔터티 형식을 데이터베이스 개체에 매핑할 수 있습니다. EF Core 관점에서이 메서드에 지정 된 데이터베이스 개체는 _뷰가_읽기 전용 쿼리 원본으로 처리 되 고 update, insert 또는 delete 작업의 대상일 수 없음을 의미 합니다. 그러나 데이터베이스 개체가 실제로 데이터베이스 뷰가 되어야 한다는 의미는 아닙니다. 또는 읽기 전용으로 처리 되는 데이터베이스 테이블 일 수도 있습니다. 반대로, 일반 엔터티 형식의 경우 EF Core `ToTable` 메서드에 지정 된 데이터베이스 개체를 _테이블로_처리할 수 있다고 가정 합니다. 즉, 쿼리 원본으로 사용할 수 있지만 업데이트, 삭제 및 삽입 작업의 대상으로 사용할 수 있습니다. 실제로는 `ToTable`에서 데이터베이스 뷰의 이름을 지정할 수 있으며, 데이터베이스에서 뷰를 업데이트할 수 있도록 구성 하는 한 모든 것이 제대로 작동 해야 합니다.
 
 > [!NOTE]
 > `ToView`은 개체가 데이터베이스에 이미 존재 하 고 마이그레이션에 의해 생성 되지 않는다고 가정 합니다.
@@ -57,7 +57,7 @@ ms.locfileid: "74824668"
 다음 예제에서는 키가 없는 엔터티 형식을 사용 하 여 데이터베이스 뷰를 쿼리 하는 방법을 보여 줍니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/KeylessEntityTypes)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/KeylessEntityTypes)을 볼 수 있습니다.
 
 먼저 간단한 블로그 및 게시물 모델을 정의합니다.
 

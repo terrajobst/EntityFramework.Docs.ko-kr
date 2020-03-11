@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 0fc4eef8-29b8-4192-9c77-08fd33d3db3a
 ms.openlocfilehash: c873e9a216bd9bd1934f2149ae6af602072f3608
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656164"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415846"
 ---
 # <a name="model-based-conventions"></a>모델 기반 규칙
 > [!NOTE]
@@ -83,7 +83,7 @@ class DiscriminatorRenamingConvention : IStoreModelConvention<EdmProperty>
 
 작업에 사용 되는 모델 기반 규칙의 또 다른 예는 독립 연결 (IAs)의 이름을 지정 하는 방법을 구성 하는 것입니다.  이는 IAs가 EF에 의해 생성 되 고 DbModelBuilder API가 액세스할 수 있는 모델에 없는 경우에 모델 규칙이 적용 되는 상황입니다.  
 
-EF는 IA를 생성할 때 EntityType_KeyName 라는 열을 만듭니다. 예를 들어 CustomerId 라는 키 열이 있는 Customer 라는 연결의 경우 이름이 Customer_CustomerId 인 열을 생성 합니다. 다음 규칙은 IA에 대해 생성 된 열 이름에서 '\_' 문자를 제거 합니다.  
+EF는 IA를 생성할 때 EntityType_KeyName 라는 열을 만듭니다. 예를 들어 CustomerId 라는 키 열이 포함 된 Customer 라는 연결의 경우 Customer_CustomerId 이라는 열을 생성 합니다. 다음 규칙은 IA에 대해 생성 된 열 이름에서 '\_' 문자를 제거 합니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -207,6 +207,6 @@ public class BlogContext : DbContext
 }
 ```  
 
-## <a name="notes"></a>노트  
+## <a name="notes"></a>참고  
 
 Entity Framework에서 현재 적용 하는 규칙 목록은 MSDN 설명서 ( [http://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx](https://msdn.microsoft.com/library/system.data.entity.modelconfiguration.conventions.aspx))에서 확인할 수 있습니다.  이 목록은 소스 코드에서 직접 가져옵니다.  Entity Framework 6의 소스 코드는 [GitHub](https://github.com/aspnet/entityframework6/) 에서 사용할 수 있으며 Entity Framework에서 사용 하는 대부분의 규칙은 사용자 지정 모델 기반 규칙을 위한 좋은 출발점입니다.  

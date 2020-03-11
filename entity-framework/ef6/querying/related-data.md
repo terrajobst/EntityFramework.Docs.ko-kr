@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: c8417e18-a2ee-499c-9ce9-2a48cc5b468a
 ms.openlocfilehash: c359d8d32a88049213fd5e98e99fe49d7e3121a3
-ms.sourcegitcommit: d01fc19aa42ca34c3bebccbc96ee26d06fcecaa2
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/16/2019
-ms.locfileid: "71005483"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414466"
 ---
 # <a name="loading-related-entities"></a>관련 엔터티 로드
 
@@ -102,7 +102,7 @@ public class Blog
 
 ### <a name="turn-lazy-loading-off-for-serialization"></a>Serialization에 대해 지연 로드 해제
 
-지연 로드와 serialization은 함께 사용 되지 않습니다. 또한 지연 로드를 사용 하는 경우에만 전체 데이터베이스에 대 한 쿼리를 종료할 수 있습니다. 대부분의 serializer는 형식의 인스턴스에서 각 속성에 액세스 하 여 작동 합니다. 속성 액세스는 지연 로드를 트리거하고 추가 엔터티는 serialize 됩니다. 이러한 엔터티 속성에 액세스 하는 경우에도 더 많은 엔터티가 로드 됩니다. 엔터티를 serialize 하기 전에 지연 로드를 해제 하는 것이 좋습니다. 다음 섹션에서는이 작업을 수행 하는 방법을 보여 줍니다.
+지연 로드와 serialization은 함께 사용 되지 않습니다. 또한 지연 로드를 사용 하는 경우에만 전체 데이터베이스에 대 한 쿼리를 종료할 수 있습니다. 대부분의 serializer는 형식의 인스턴스에서 각 속성에 액세스 하 여 작동 합니다. 속성 액세스는 지연 로드를 트리거하고 추가 엔터티는 serialize 됩니다. 이러한 엔터티 속성에 액세스 하는 경우에도 더 많은 엔터티가 로드 됩니다. 엔터티를 serialize 하기 전에 지연 로드를 해제 하는 것이 좋습니다. 다음 섹션에서는 이 작업을 수행하는 방법을 보여 줍니다.
 
 ### <a name="turning-off-lazy-loading-for-specific-navigation-properties"></a>특정 탐색 속성에 대해 지연 로드 해제
 
@@ -124,7 +124,7 @@ public class Blog
 
 ### <a name="turn-off-lazy-loading-for-all-entities"></a>모든 엔터티에 대해 지연 로드 해제
 
-구성 속성에서 플래그를 설정 하 여 컨텍스트의 모든 엔터티에 대해 지연 로드를 해제할 수 있습니다. 예:
+구성 속성에서 플래그를 설정 하 여 컨텍스트의 모든 엔터티에 대해 지연 로드를 해제할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 public class BloggingContext : DbContext
@@ -140,7 +140,7 @@ public class BloggingContext : DbContext
 
 ## <a name="explicitly-loading"></a>명시적 로드
 
-지연 로드를 사용 하지 않도록 설정한 경우에도 관련 된 엔터티를 지연 로드 하는 것은 가능 하지만 명시적 호출을 사용 하 여 수행 해야 합니다. 이렇게 하려면 관련 엔터티의 항목에서 Load 메서드를 사용 합니다. 예:
+지연 로드를 사용 하지 않도록 설정한 경우에도 관련 된 엔터티를 지연 로드 하는 것은 가능 하지만 명시적 호출을 사용 하 여 수행 해야 합니다. 이렇게 하려면 관련 엔터티의 항목에서 Load 메서드를 사용 합니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -169,7 +169,7 @@ using (var context = new BloggingContext())
 
 ### <a name="applying-filters-when-explicitly-loading-related-entities"></a>관련 엔터티를 명시적으로 로드할 때 필터 적용
 
-쿼리 메서드는 관련 엔터티를 로드할 때 Entity Framework 사용할 기본 쿼리에 대 한 액세스를 제공 합니다. 그런 다음 linq를 사용 하 여 쿼리에 필터를 적용 한 후에는 ToList, Load 등의 LINQ 확장 메서드를 호출 하 여 필터를 실행할 수 있습니다. 쿼리 메서드는 참조 및 컬렉션 탐색 속성 모두와 함께 사용할 수 있지만 컬렉션의 일부를 로드 하는 데 사용할 수 있는 컬렉션에는 가장 유용 합니다. 예:
+쿼리 메서드는 관련 엔터티를 로드할 때 Entity Framework 사용할 기본 쿼리에 대 한 액세스를 제공 합니다. 그런 다음 linq를 사용 하 여 쿼리에 필터를 적용 한 후에는 ToList, Load 등의 LINQ 확장 메서드를 호출 하 여 필터를 실행할 수 있습니다. 쿼리 메서드는 참조 및 컬렉션 탐색 속성 모두와 함께 사용할 수 있지만 컬렉션의 일부를 로드 하는 데 사용할 수 있는 컬렉션에는 가장 유용 합니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -200,7 +200,7 @@ using (var context = new BloggingContext())
 
 ## <a name="using-query-to-count-related-entities-without-loading-them"></a>쿼리를 사용 하 여 관련 엔터티를 로드 하지 않고 계산
 
-경우에 따라 실제로 모든 엔터티를 로드 하는 데 드는 비용을 들이지 않고 데이터베이스의 다른 엔터티와 관련 된 엔터티 수를 파악 하는 것이 유용 합니다. LINQ Count 메서드를 사용 하는 쿼리 메서드를 사용 하 여이 작업을 수행할 수 있습니다. 예:
+경우에 따라 실제로 모든 엔터티를 로드 하는 데 드는 비용을 들이지 않고 데이터베이스의 다른 엔터티와 관련 된 엔터티 수를 파악 하는 것이 유용 합니다. LINQ Count 메서드를 사용 하는 쿼리 메서드를 사용 하 여이 작업을 수행할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 using (var context = new BloggingContext())

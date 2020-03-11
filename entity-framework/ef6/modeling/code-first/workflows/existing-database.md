@@ -3,17 +3,17 @@ title: 기존 데이터베이스에 Code First-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: a7e60b74-973d-4480-868f-500a3899932e
-ms.openlocfilehash: 61980bbd1f236f496a9d4fd92aa52264f1454615
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 0a51f826422d7e2bff33b968605eace1e754c425
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182625"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415600"
 ---
 # <a name="code-first-to-an-existing-database"></a>기존 데이터베이스로 Code First
 이 비디오 및 단계별 연습은 기존 데이터베이스를 대상으로 하는 Code First 개발에 대 한 소개를 제공 합니다. Code First를 사용 하면 C\# 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스와 속성 또는 흐름 API를 사용 하 여 특성을 사용 하 여 추가 구성을 수행할 수 있습니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오는 [이제 Channel 9에서 사용할 수](https://channel9.msdn.com/blogs/ef/code-first-to-existing-database-ef6-1-onwards-)있습니다.
 
 ## <a name="pre-requisites"></a>필수 구성 요소
@@ -72,7 +72,7 @@ VALUES ('.NET Framework Blog', 'http://blogs.msdn.com/dotnet/')
 
 ## <a name="2-create-the-application"></a>2. 응용 프로그램 만들기
 
-간단 하 게 유지 하기 위해 Code First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 빌드 하겠습니다.
+간단 하 게 유지 하기 위해 Code First를 사용 하 여 데이터 액세스를 수행 하는 기본 콘솔 응용 프로그램을 작성 합니다.
 
 -   Visual Studio를 엽니다.
 -   **파일&gt; 새&gt; 프로젝트 ...**
@@ -84,7 +84,7 @@ VALUES ('.NET Framework Blog', 'http://blogs.msdn.com/dotnet/')
 
 ## <a name="3-reverse-engineer-model"></a>3. 리버스 엔지니어링 모델
 
-Visual Studio에 대 한 Entity Framework Tools를 사용 하 여 데이터베이스에 매핑하는 초기 코드를 생성 하는 데 도움을 드리겠습니다. 이러한 도구는 원하는 경우 직접 입력할 수도 있는 코드를 생성 하는 것입니다.
+Visual Studio 용 Entity Framework Tools를 사용 하 여 데이터베이스에 매핑하는 초기 코드를 생성 하는 데 도움을 줍니다. 이러한 도구는 원하는 경우 직접 입력할 수도 있는 코드를 생성 하는 것입니다.
 
 -   **프로젝트-새 항목 추가&gt; ...**
 -   왼쪽 메뉴에서 **데이터** 를 선택 하 고 **ADO.NET** 를 선택 엔터티 데이터 모델

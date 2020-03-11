@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 29958ae5-85d3-4585-9ba6-550b8ec9393a
 ms.openlocfilehash: 4395a9c117a6cf38e7fc08f11ee689d6fffa6fed
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182106"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416230"
 ---
 # <a name="upgrading-to-entity-framework-6"></a>Entity Framework 6으로 업그레이드
 
@@ -18,7 +18,7 @@ EF 4.1 이상에서 제공 되는 DbContext을 사용 하는 응용 프로그램
 
 다음은 기존 응용 프로그램을 EF6로 업그레이드 하기 위해 수행 해야 하는 작업의 검사 목록입니다.
 
-## <a name="1-install-the-ef6-nuget-package"></a>1. EF6 NuGet 패키지 설치
+## <a name="1-install-the-ef6-nuget-package"></a>1. EF6 NuGet 패키지를 설치 합니다.
 
 새 Entity Framework 6 런타임으로 업그레이드 해야 합니다.
 
@@ -37,14 +37,14 @@ Install-Package EntityFramework
 
 EF6 NuGet 패키지를 설치 하면 프로젝트에서 System.object에 대 한 참조가 자동으로 제거 됩니다.
 
-## <a name="3-swap-any-ef-designer-edmx-models-to-use-ef-6x-code-generation"></a>3. EF 2.x 코드 생성을 사용 하도록 EDMX (EF Designer) 모델 교환
+## <a name="3-swap-any-ef-designer-edmx-models-to-use-ef-6x-code-generation"></a>3. ef 버전과 코드 생성을 사용 하도록 EDMX (ef Designer) 모델 교환
 
 EF Designer를 사용 하 여 모델을 만든 경우에는 EF6 호환 코드를 생성 하도록 코드 생성 템플릿을 업데이트 해야 합니다.
 
 > [!NOTE]
 > 현재는 Visual Studio 2012 및 2013에 대해 EF 6.x DbContext 생성기 템플릿만 사용할 수 있습니다.
 
-1. 기존 코드 생성 템플릿을 삭제 합니다. 이러한 파일 이름은 일반적으로 **\<edmx_file_name\>.tt** 하 고 **\<edmx_file_name\>합니다. Context.tt** 및 솔루션 탐색기에서 edmx 파일을 중첩할 수 있습니다. 솔루션 탐색기에서 템플릿을 선택 하 고 **Del** 키를 눌러 항목을 삭제할 수 있습니다.  
+1. 기존 코드 생성 템플릿을 삭제 합니다. 일반적으로 이러한 파일의 이름은 **\<edmx_file_name\>. tt** 및 **\<edmx_file_name\>입니다. Context.tt** 는 솔루션 탐색기의 edmx 파일 아래에 중첩 될 수 있습니다. 솔루션 탐색기에서 템플릿을 선택 하 고 **Del** 키를 눌러 항목을 삭제할 수 있습니다.  
    > [!NOTE]
    > 웹 사이트 프로젝트에서는 템플릿이 edmx 파일 아래에 중첩 되지 않지만 솔루션 탐색기에 함께 나열 됩니다.  
 
@@ -64,13 +64,13 @@ DbContext 및 Code First 형식에 대 한 네임 스페이스는 변경 되지 
 
 이전에 System.object에 있던 ObjectContext와 같은 형식이 새 네임 스페이스로 이동 되었습니다. 즉, EF6에 대해 빌드하기 위해 *using* 또는 *Import* 지시문을 업데이트 해야 할 수 있습니다.
 
-네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.* 에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 단순히 **Entity. Core** 를 삽입 합니다. 시스템 데이터 이후. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+네임 스페이스 변경 내용에 대 한 일반 규칙 System.Data.* 에서 모든 유형의 System.Data.Entity.Core.* 이동 됩니다. 즉, 단순히 **Entity. Core** 를 삽입 합니다. 시스템 데이터 이후. 예를 들면 다음과 같습니다.
 
 - System.object 예외 = >. 데이터입니다. **엔터티입니다**. EntityException  
 - System.object = > 시스템 데이터입니다. **엔터티입니다**. Objects. ObjectContext  
 - DataClasses. RelationshipManager = >. 데이터입니다. **엔터티입니다**. DataClasses. RelationshipManager  
 
-이러한 형식은 대부분의 DbContext 기반 응용 프로그램에 직접 사용 되지 않으므로 *핵심* 네임 스페이스에 있습니다. System.object의 일부인 일부 형식은 여전히 DbContext 기반 응용 프로그램에 대해 자주 사용 되며 *핵심* 네임 스페이스로 이동 되지 않았습니다. 이러한 항목은 다음과 같습니다.
+이러한 형식은 대부분의 DbContext 기반 응용 프로그램에 직접 사용 되지 않으므로 *핵심* 네임 스페이스에 있습니다. System.object의 일부인 일부 형식은 여전히 DbContext 기반 응용 프로그램에 대해 자주 사용 되며 *핵심* 네임 스페이스로 이동 되지 않았습니다. 이러한 설정은 다음과 같습니다.
 
 - EntityState = > 시스템 데이터입니다. **엔터티입니다**. EntityState  
 - DataClasses는 >. m a m a. **엔터티인 DbFunctionAttribute**  

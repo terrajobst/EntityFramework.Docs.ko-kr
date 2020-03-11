@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: d56e6f1d-4bd1-4b50-9558-9a30e04a8ec3
 ms.openlocfilehash: 0642dc13e7aa3906fa1495031c62701fc16f0192
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181840"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414862"
 ---
 # <a name="async-query-and-save"></a>비동기 쿼리 및 저장
 > [!NOTE]
@@ -41,7 +41,7 @@ EF6는 비동기 쿼리에 대 한 지원을 도입 하 고 .NET 4.5에 도입 �
     -   솔루션 탐색기에서 **Asyncdemo** 프로젝트를 마우스 오른쪽 단추로 클릭 합니다.
     -   **NuGet 패키지 관리 ...** 를 선택 합니다.
     -   NuGet 패키지 관리 대화 상자에서 **온라인** 탭을 선택 하 고 **entityframework** 패키지를 선택 합니다.
-    -   **설치** 클릭
+    -   **설치**를 클릭합니다.
 -   다음 구현으로 **Model.cs** 클래스를 추가 합니다.
 
 ``` csharp

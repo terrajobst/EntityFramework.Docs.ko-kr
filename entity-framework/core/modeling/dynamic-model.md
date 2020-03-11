@@ -4,12 +4,12 @@ author: AndriySvyryd
 ms.date: 01/03/2020
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/dynamic-model
-ms.openlocfilehash: 156d5666cbd9352b274ddc70c99704ca62aeb1fd
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: a160f0d382ee2a3ac7130ce1ac98eb24b3f79394
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781133"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413914"
 ---
 # <a name="alternating-between-multiple-models-with-the-same-dbcontext-type"></a>DbContext 유형이 같은 여러 모델 간에 교대로 반복
 
@@ -31,4 +31,4 @@ EF는 `IModelCacheKeyFactory`을 사용 하 여 모델에 대 한 캐시 키를 
 
 [!code-csharp[Main](../../../samples/core/Modeling/DynamicModel/DynamicContext.cs?name=OnConfiguring)]
 
-자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/DynamicModel) 를 참조 하세요.
+자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/DynamicModel) 를 참조 하세요.

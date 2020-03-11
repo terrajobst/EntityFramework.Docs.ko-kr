@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: f019c97b-87b0-4e93-98f4-2c539f77b2dc
 ms.openlocfilehash: 35684196dcd7b708a8feeb1eca3096e8d4e555ec
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182529"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415450"
 ---
 # <a name="table-valued-functions-tvfs"></a>테이블 반환 함수 (Tvf)
 > [!NOTE]
@@ -22,7 +22,7 @@ TVF 지원은 Entity Framework 버전 5에서 도입 되었습니다. 테이블 
 
 Tvf는 저장 프로시저와 매우 유사 합니다. 즉, TVF의 결과는 구성 가능 합니다. 즉, 저장 프로시저의 결과는 불가능 한 경우 TVF의 결과를 LINQ 쿼리에서 사용할 수 있습니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 
 제공한 **사람**: 줄리아 Kornich
 

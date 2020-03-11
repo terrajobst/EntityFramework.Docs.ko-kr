@@ -6,11 +6,11 @@ ms.date: 12/10/2019
 ms.assetid: e9dff604-3469-4a05-8f9e-18ac281d82a9
 uid: core/modeling/entity-properties
 ms.openlocfilehash: b67603fbffd1f1c8506bc21f8972c851eb8eef29
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502428"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414568"
 ---
 # <a name="entity-properties"></a>엔터티 속성
 
@@ -22,11 +22,11 @@ ms.locfileid: "75502428"
 
 특정 속성은 다음과 같이 제외할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreProperty.cs?name=IgnoreProperty&highlight=6)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreProperty.cs?name=IgnoreProperty&highlight=3,4)]
 
@@ -38,11 +38,11 @@ ms.locfileid: "75502428"
 
 다른 이름을 사용 하 여 열을 구성 하는 것을 선호 하는 경우 다음과 같이 할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnName.cs?Name=ColumnName&highlight=3)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnName.cs?Name=ColumnName&highlight=3-5)]
 
@@ -56,11 +56,11 @@ ms.locfileid: "75502428"
 
 열에 정확한 데이터 형식을 지정 하도록 열을 구성할 수도 있습니다. 예를 들어 다음 코드는 최대 길이가 `200` 인 비유니코드 문자열로 `Url`를 구성 하 고 `2``5` 및 소수 자릿수를 사용 하 여 `Rating` 합니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/ColumnDataType.cs?name=ColumnDataType&highlight=4,6)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/ColumnDataType.cs?name=ColumnDataType&highlight=5-6)]
 
@@ -75,11 +75,11 @@ ms.locfileid: "75502428"
 
 다음 예제에서는 최대 길이 500를 구성 하면 SQL Server에서 `nvarchar(500)` 형식의 열이 생성 됩니다.
 
-#### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+#### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/MaxLength.cs?name=MaxLength&highlight=4)]
 
-#### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+#### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/MaxLength.cs?name=MaxLength&highlight=3-5)]
 
@@ -100,11 +100,11 @@ C#8에는 null이 포함 될 수 있는지 여부를 나타내는 [nullable 참�
 
 다음 예제에서는 nullable 참조 기능을 사용 하지 않도록 설정 하 고 (기본값) 사용 하도록 설정 된 필수 및 선택적 속성이 포함 된 엔터티 형식을 보여 줍니다.
 
-#### <a name="without-nullable-reference-types-defaulttabwithout-nrt"></a>[Null을 허용 하지 않는 참조 형식 (기본값)](#tab/without-nrt)
+#### <a name="without-nullable-reference-types-default"></a>[Null을 허용 하지 않는 참조 형식 (기본값)](#tab/without-nrt)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/CustomerWithoutNullableReferenceTypes.cs?name=Customer&highlight=4-8)]
 
-#### <a name="with-nullable-reference-typestabwith-nrt"></a>[Nullable 참조 형식 사용](#tab/with-nrt)
+#### <a name="with-nullable-reference-types"></a>[Nullable 참조 형식 사용](#tab/with-nrt)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/NullableReferenceTypes/Customer.cs?name=Customer&highlight=4-6)]
 
@@ -121,11 +121,11 @@ Nullable 참조 형식 및 EF Core와 함께 사용 하는 방법에 대 한 자
 
 규칙에 따라 선택적인 속성은 다음과 같이 필수로 구성할 수 있습니다.
 
-#### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+#### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/Required.cs?name=Required&highlight=4)]
 
-#### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+#### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Required.cs?name=Required&highlight=3-5)]
 

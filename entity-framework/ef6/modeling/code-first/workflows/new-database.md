@@ -4,16 +4,16 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 2df6cb0a-7d8b-4e28-9d05-e2b9a90125af
 ms.openlocfilehash: d540fc6e84049f345ae22998f94c309e0be73fc3
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182564"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415546"
 ---
 # <a name="code-first-to-a-new-database"></a>새 데이터베이스에 Code First
 이 비디오 및 단계별 연습에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오에는 존재 하지 않는 데이터베이스를 대상으로 하 고 Code First 만들거나 새 테이블을 추가할 Code First 있는 빈 데이터베이스가 포함 됩니다. Code First를 사용 하면 C\# 또는 VB.Net 클래스를 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오에서는 새 데이터베이스를 대상으로 하는 Code First 개발에 대해 소개 합니다. 이 시나리오에는 존재 하지 않는 데이터베이스를 대상으로 하 고 Code First 만들거나 새 테이블을 추가할 Code First 있는 빈 데이터베이스가 포함 됩니다. Code First를 사용 하면 또는 VB.Net 클래스를 C# 사용 하 여 모델을 정의할 수 있습니다. 필요에 따라 클래스 및 속성의 특성을 사용 하거나 흐름 API를 사용 하 여 추가 구성을 수행할 수 있습니다.
 
 **작성자**: [Rowan Miller](https://romiller.com/)
@@ -74,7 +74,7 @@ public class Post
     참고: **NuGet 패키지 관리 ...** 옵션을 선택 하면 [최신 버전의 NuGet](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
--   **설치** 클릭
+-   **설치**를 클릭합니다.
 
 Program.cs의 맨 위에 using 문을 추가 합니다.
 

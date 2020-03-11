@@ -6,11 +6,11 @@ ms.author: ansvyryd
 ms.date: 11/06/2019
 uid: core/modeling/keys
 ms.openlocfilehash: abd65a5ea079a49fd7a3bbc84a9337f6ee19fab1
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502008"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413992"
 ---
 # <a name="keys"></a>Keys
 
@@ -25,11 +25,11 @@ ms.locfileid: "75502008"
 
 다음과 같이 단일 속성을 엔터티의 기본 키로 구성할 수 있습니다.
 
-## <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+## <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/KeySingle.cs?name=KeySingle&highlight=3)]
 
-## <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+## <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/KeySingle.cs?name=KeySingle&highlight=4)]
 

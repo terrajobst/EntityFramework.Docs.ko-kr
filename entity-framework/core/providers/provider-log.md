@@ -7,11 +7,11 @@ ms.assetid: 7CEF496E-A5B0-4F5F-B68E-529609B23EF9
 ms.technology: entity-framework-core
 uid: core/providers/provider-log
 ms.openlocfilehash: b911a2da493e20c4e4ce6f1e25024bd0efd38b44
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656122"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414772"
 ---
 # <a name="provider-impacting-changes"></a>공급자에게 영향을 미치는 변경 내용
 
@@ -19,13 +19,13 @@ ms.locfileid: "73656122"
 
 2\.1에서 2.2로 변경 하 여이 로그를 시작 하는 중입니다. 2\.1 이전에는 [`providers-beware`](https://github.com/aspnet/EntityFrameworkCore/labels/providers-beware) 를 사용 하 여 문제 및 끌어오기 요청에 대 한 레이블을 [`providers-fyi`](https://github.com/aspnet/EntityFrameworkCore/labels/providers-fyi) 했습니다.
 
-## <a name="22-----30"></a>2.2---> 3.0
+## <a name="22-----30"></a>2.2 ---> 3.0
 
 [응용 프로그램 수준 주요 변경 내용](../what-is-new/ef-core-3.0/breaking-changes.md) 대부분이 공급자에도 영향을 줍니다.
 
 * <https://github.com/aspnet/EntityFrameworkCore/pull/14022>
   * 사용 되지 않는 Api를 제거 하 고 선택적 매개 변수 오버 로드를 축소
-  * DatabaseColumn. GetUnderlyingStoreType ()을 제거 했습니다.
+  * Removed DatabaseColumn.GetUnderlyingStoreType()
 * <https://github.com/aspnet/EntityFrameworkCore/pull/14589>
   * 사용 되지 않는 Api 제거
 * <https://github.com/aspnet/EntityFrameworkCore/pull/15044>
@@ -65,7 +65,7 @@ ms.locfileid: "73656122"
 * <https://github.com/aspnet/EntityFrameworkCore/pull/15288>
   * 내부 형식을 사용할 필요가 없도록 공용 API로 데이터 시드를 리팩터링 했습니다. 이는 모든 관계형 공급자의 기본 관계형 클래스에서 시드가 처리 되므로 비관계형 공급자에만 영향을 줍니다.
 
-## <a name="21-----22"></a>2.1---> 2.2
+## <a name="21-----22"></a>2.1 ---> 2.2
 
 ### <a name="test-only-changes"></a>테스트 전용 변경 내용
 

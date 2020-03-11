@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: d617aed1-15f2-48a9-b187-186991c666e3
 ms.openlocfilehash: 018f480c1f0f1e74fc9f7a8950a6880e96f1facc
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182658"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415786"
 ---
 # <a name="spatial---code-first"></a>공간-Code First
 > [!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "72182658"
 
 두 가지 주요 공간 데이터 형식인 geography 및 geometry가 있습니다. Geography 데이터 형식은 타원 데이터 (예: GPS 위도 및 경도 좌표)를 저장 합니다. Geometry 데이터 형식은 유클리드 (평면) 좌표계를 나타냅니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오는 Entity Framework Code First를 사용 하 여 공간 형식을 매핑하는 방법을 보여 줍니다. LINQ 쿼리를 사용 하 여 두 위치 간의 거리를 찾는 방법도 보여 줍니다.
 
 제공한 **사람**: 줄리아 Kornich
@@ -76,7 +76,7 @@ DbContext 및 DbSet 형식은 EntityFramework 어셈블리에서 정의 됩니�
 1.  솔루션 탐색기에서 프로젝트 이름을 마우스 오른쪽 단추로 클릭 합니다.
 2.  **NuGet 패키지 관리 ...** 를 선택 합니다.
 3.  NuGet 패키지 관리 대화 상자에서 **온라인** 탭을 선택 하 고 **entityframework** 패키지를 선택 합니다.
-4.  **설치** 클릭
+4.  **설치**를 클릭합니다.
 
 EntityFramework 어셈블리 외에도 System.componentmodel 어셈블리에 대 한 참조도 추가 됩니다.
 

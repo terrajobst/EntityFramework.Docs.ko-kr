@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 9554ed25-c5c1-43be-acad-5da37739697f
 ms.openlocfilehash: 2e0092b526278597e8477d47eeb642598647bb91
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182478"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415204"
 ---
 # <a name="designer-query-stored-procedures"></a>디자이너 쿼리 저장 프로시저
 이 단계별 연습에서는 Entity Framework Designer (EF Designer)를 사용 하 여 저장 프로시저를 모델로 가져온 다음 가져온 저장 프로시저를 호출 하 여 결과를 검색 하는 방법을 보여 줍니다. 

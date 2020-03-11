@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 452f17c3-9f26-4de4-9894-8bc036e23b0f
 ms.openlocfilehash: f5e7532e6c0b473d8ce77cbd11e3e673b0af6cbe
-ms.sourcegitcommit: b2b9468de2cf930687f8b85c3ce54ff8c449f644
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/12/2019
-ms.locfileid: "70921786"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415012"
 ---
 # <a name="designer-table-splitting"></a>디자이너 테이블 분할
 이 연습에서는 Entity Framework Designer (EF Designer)를 사용 하 여 모델을 수정 하 여 여러 엔터티 형식을 단일 테이블에 매핑하는 방법을 보여 줍니다.
@@ -126,7 +126,7 @@ ms.locfileid: "70921786"
 
 -   다음 **INSERT** 는 컨텍스트 실행의 결과로 실행 되었습니다. SaveChanges () 및 **Person** **및 개체의 데이터를 결합** 합니다.
 
-    ![Insert](~/ef6/media/insert.png)
+    ![삽입](~/ef6/media/insert.png)
 
 -   다음 **SELECT** 는 컨텍스트 실행의 결과로 실행 되었습니다. FirstOrDefault ()를 선택 하 고 **Person** 으로 매핑된 열만 선택 합니다.
 

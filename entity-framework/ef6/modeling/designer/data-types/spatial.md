@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 06baa6e1-d680-4a95-845b-81305c87a962
 ms.openlocfilehash: a9c54fbc14dd02ce5d4d91449a0d5f9e72f7f0f7
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182509"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415330"
 ---
 # <a name="spatial---ef-designer"></a>공간-EF 디자이너
 > [!NOTE]
@@ -24,7 +24,7 @@ ms.locfileid: "72182509"
 
 두 가지 주요 공간 데이터 형식인 geography 및 geometry가 있습니다. Geography 데이터 형식은 타원 데이터 (예: GPS 위도 및 경도 좌표)를 저장 합니다. Geometry 데이터 형식은 유클리드 (평면) 좌표계를 나타냅니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오에서는 공간 형식을 Entity Framework Designer에 매핑하는 방법을 보여 줍니다. LINQ 쿼리를 사용 하 여 두 위치 간의 거리를 찾는 방법도 보여 줍니다.
 
 제공한 **사람**: 줄리아 Kornich
@@ -48,7 +48,7 @@ ms.locfileid: "72182509"
 2.  왼쪽 메뉴에서 **데이터** 를 선택 하 고 템플릿 창에서 **ADO.NET 엔터티 데이터 모델** 를 선택 합니다.
 3.  파일 이름에 UniversityModel를 입력 한 다음 **추가** 를 클릭 **합니다.**
 4.  엔터티 데이터 모델 마법사 페이지의 Model 콘텐츠 선택 대화 상자에서 **빈 모델** 을 선택 합니다.
-5.  **마침** 클릭
+5.  **마침**을 클릭합니다.
 
 모델 편집을 위한 디자인 화면을 제공 하는 Entity Designer 표시 됩니다.
 

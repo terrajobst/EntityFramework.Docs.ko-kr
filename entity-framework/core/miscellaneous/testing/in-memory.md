@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 0d0590f1-1ea3-4d5c-8f44-db17395cd3f3
 uid: core/miscellaneous/testing/in-memory
-ms.openlocfilehash: fcd2f99ad06fd30ef9e36fd1e5a6a09fe0a45d07
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: 18641677098c20d9172136b07868dcb647d189c6
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781120"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414028"
 ---
 # <a name="testing-with-inmemory"></a>InMemory 테스트
 
 InMemory 공급자는 실제 데이터베이스 작업의 오버 헤드 없이 실제 데이터베이스에 연결 하는 것과 유사한 항목을 사용 하 여 구성 요소를 테스트 하려는 경우에 유용 합니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Testing)을 볼 수 있습니다.
 
 ## <a name="inmemory-is-not-a-relational-database"></a>InMemory가 관계형 데이터베이스가 아닙니다.
 

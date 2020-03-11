@@ -4,11 +4,11 @@ author: divega
 ms.date: 06/27/2018
 ms.assetid: 066832F0-D51B-4655-8BE7-C983C557E0E4
 ms.openlocfilehash: 8bda3f51e8934f2add862c30e60f1185f068c515
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181605"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416008"
 ---
 # <a name="the-entity-framework-6-provider-model"></a>Entity Framework 6 공급자 모델
 
@@ -16,7 +16,7 @@ Entity Framework 공급자 모델을 사용 하면 다양 한 유형의 데이�
 
 Ef가 오픈 소스 라이선스에서 EF를 해제할 수 있도록 EF가 공급자와 상호 작용 하는 방식에 대 한 특정 변경이 필요 했습니다. 이러한 변경을 위해서는 공급자를 등록 하기 위한 새 메커니즘과 함께 EF6 어셈블리에 대해 EF 공급자를 다시 빌드해야 합니다.
 
-## <a name="rebuilding"></a>재구성
+## <a name="rebuilding"></a>다시 작성
 
 EF6를 사용 하 여 이전에 .NET Framework의 일부인 핵심 코드는 이제 OOB (대역 외) 어셈블리로 제공 됩니다. EF6에 대해 응용 프로그램을 빌드하는 방법에 대 한 자세한 내용은 [EF6 응용 프로그램 업데이트](~/ef6/what-is-new/upgrading-to-ef6.md) 페이지에서 찾을 수 있습니다. 이러한 지침을 사용 하 여 공급자를 다시 작성 해야 합니다.
 
@@ -28,7 +28,7 @@ EF 공급자는 이러한 서비스가 확장 (기본 클래스의 경우) 또�
 
 ### <a name="dbproviderfactory"></a>DbProviderFactory
 
-EF는 모든 하위 수준 데이터베이스 액세스를 수행 하기 위해 [DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) 에서 파생 된 형식을 사용 하는 방법에 따라 달라 집니다. DbProviderFactory는 실제로 EF의 일부가 아니라 EF, 다른 O/RMs에서 사용 하거나 응용 프로그램에서 직접 사용 하 여 연결, 명령, 매개 변수 및 인스턴스를 가져올 수 있는 ADO.NET 공급자의 진입점을 제공 하는 .NET Framework의 클래스입니다. 다른 ADO.NET 추상화는 공급자를 독립적으로 제공 합니다. DbProviderFactory에 대 한 자세한 내용은 [MSDN 설명서 (ADO.NET](https://msdn.microsoft.com/library/a6cd7c08.aspx))를 참조 하세요.
+EF는 모든 하위 수준 데이터베이스 액세스를 수행 하기 위해 [DbProviderFactory](https://msdn.microsoft.com/library/system.data.common.dbproviderfactory.aspx) 에서 파생 된 형식을 사용 하는 방법에 따라 달라 집니다. DbProviderFactory는 실제로 EF의 일부가 아니지만, 대신 EF, 다른 O/RMs에서 사용 하거나 응용 프로그램에서 직접 사용 하 여 공급자의 연결, 명령, 매개 변수 및 기타 ADO.NET 추상화 인스턴스를 가져올 수 있는 ADO.NET 공급자의 진입점을 제공 하는 .NET Framework의 클래스입니다. DbProviderFactory에 대 한 자세한 내용은 [MSDN 설명서 (ADO.NET](https://msdn.microsoft.com/library/a6cd7c08.aspx))를 참조 하세요.
 
 ### <a name="dbproviderservices"></a>DbProviderServices
 
@@ -36,9 +36,9 @@ EF는 ADO.NET 공급자가 이미 제공 하는 기능 위에 EF에서 필요한
 
 DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은 [MSDN](https://msdn.microsoft.com/library/ee789835.aspx)에서 찾을 수 있습니다. 그러나이 정보를 작성 하는 시간은 EF6에 대해 업데이트 되지 않지만 대부분의 개념은 여전히 유효 합니다. DbProviderServices의 SQL Server 및 SQL Server Compact 구현은 [오픈 소스 코드 베이스](https://github.com/aspnet/EntityFramework6/) 에도 체크 인하고 다른 구현에 대 한 유용한 참조로 사용할 수 있습니다.
 
-이전 버전의 EF에서 사용할 DbProviderServices 구현은 ADO.NET 공급자에서 직접 가져온 것입니다. 이 작업은 DbProviderFactory를 IServiceProvider로 캐스팅 하 고 GetService 메서드를 호출 하 여 수행 되었습니다. 이는 EF 공급자와 DbProviderFactory를 긴밀 하 게 결합 합니다. 이러한 결합은 EF를 .NET Framework 외부로 이동 하는 것을 차단 했기 때문에이 밀접 한 결합이 제거 되었고 DbProviderServices 구현이 응용 프로그램의 구성 파일 또는 코드 기반에 직접 등록 되어 있습니다. 아래의 _DbProviderServices 등록_ 섹션에 자세히 설명 된 대로 구성 합니다.
+이전 버전의 EF에서 사용할 DbProviderServices 구현은 ADO.NET 공급자에서 직접 가져온 것입니다. 이 작업은 DbProviderFactory를 IServiceProvider로 캐스팅 하 고 GetService 메서드를 호출 하 여 수행 되었습니다. 이는 EF 공급자와 DbProviderFactory를 긴밀 하 게 결합 합니다. 이와 같이 결합 된 EF는 .NET Framework에서 이동 되지 않으므로 EF6를 위해 이제 아래의 _Dbproviderservices 등록_ 섹션에 자세히 설명 된 대로 응용 프로그램의 구성 파일 또는 코드 기반 구성에 직접 등록 됩니다.
 
-## <a name="additional-services"></a>추가 서비스
+## <a name="additional-services"></a>서비스
 
 위에 설명 된 기본 서비스 외에도 EF에서 사용 되는 다른 많은 서비스 (always 또는 공급자별 경우)도 있습니다. 이러한 서비스의 기본 공급자별 구현은 DbProviderServices 구현에서 제공 될 수 있습니다. 응용 프로그램은 이러한 서비스의 구현을 재정의 하거나 DbProviderServices 형식이 기본값을 제공 하지 않는 경우 구현을 제공할 수도 있습니다. 이 내용은 아래의 _추가 서비스 확인_ 섹션에 자세히 설명 되어 있습니다.
 
@@ -62,7 +62,7 @@ DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은 [MSDN]
 
 ### <a name="funcdbconnection-string-historycontextfactory"></a>Func < DbConnection, string, HistoryContextFactory >
 
-이는 공급자가 EF 마이그레이션에 사용 되는 `__MigrationHistory` 테이블에 HistoryContext 매핑을 구성할 수 있도록 하는 선택적 서비스입니다. HistoryContext는 Code First DbContext, 일반 흐름 API를 사용 하 여 테이블 이름 및 열 매핑 사양과 같은 항목을 변경 하 여 구성할 수 있습니다. 모든 공급자에 대해 EF에서 반환 된이 서비스의 기본 구현은 모든 기본 테이블 및 열 매핑이 해당 공급자에 의해 지원 되는 경우 지정 된 데이터베이스 서버에 대해 작동할 수 있습니다. 이 경우 공급자는이 서비스의 구현을 제공할 필요가 없습니다.
+이는 공급자가 EF 마이그레이션에 사용 되는 `__MigrationHistory` 테이블로 HistoryContext 매핑을 구성할 수 있도록 하는 선택적 서비스입니다. HistoryContext는 Code First DbContext, 일반 흐름 API를 사용 하 여 테이블 이름 및 열 매핑 사양과 같은 항목을 변경 하 여 구성할 수 있습니다. 모든 공급자에 대해 EF에서 반환 된이 서비스의 기본 구현은 모든 기본 테이블 및 열 매핑이 해당 공급자에 의해 지원 되는 경우 지정 된 데이터베이스 서버에 대해 작동할 수 있습니다. 이 경우 공급자는이 서비스의 구현을 제공할 필요가 없습니다.
 
 ### <a name="idbproviderfactoryresolver"></a>IDbProviderFactoryResolver
 
@@ -74,7 +74,7 @@ DbProviderServices 구현의 기본 기능에 대 한 자세한 내용은 [MSDN]
 
 ### <a name="config-file-registration"></a>구성 파일 등록
 
-사용할 DbProviderServices 형식은 응용 프로그램의 구성 파일에 있는 entityFramework 섹션의 공급자 목록에 공급자 요소로 등록 됩니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+사용할 DbProviderServices 형식은 응용 프로그램의 구성 파일에 있는 entityFramework 섹션의 공급자 목록에 공급자 요소로 등록 됩니다. 예를 들면 다음과 같습니다.
 
 ``` xml
 <entityFramework>
@@ -88,7 +88,7 @@ _형식_ 문자열은 사용할 DbProviderServices 구현의 정규화 된 어�
 
 ### <a name="code-based-registration"></a>코드 기반 등록
 
-EF6 공급자부터 코드를 사용 하 여 등록할 수도 있습니다. 이를 통해 응용 프로그램의 구성 파일을 변경 하지 않고 EF 공급자를 사용할 수 있습니다. 코드 기반 구성을 사용 하려면 응용 프로그램이 [코드 기반 구성 설명서](https://msdn.com/data/jj680699)에 설명 된 대로 dbconfiguration 클래스를 만들어야 합니다. 그러면 DbConfiguration 클래스의 생성자가 SetProviderServices를 호출 하 여 EF 공급자를 등록 해야 합니다. 예를 들어 다음과 같은 가치를 제공해야 합니다.
+EF6 공급자부터 코드를 사용 하 여 등록할 수도 있습니다. 이를 통해 응용 프로그램의 구성 파일을 변경 하지 않고 EF 공급자를 사용할 수 있습니다. 코드 기반 구성을 사용 하려면 응용 프로그램이 [코드 기반 구성 설명서](https://msdn.com/data/jj680699)에 설명 된 대로 dbconfiguration 클래스를 만들어야 합니다. 그러면 DbConfiguration 클래스의 생성자가 SetProviderServices를 호출 하 여 EF 공급자를 등록 해야 합니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 public class MyConfiguration : DbConfiguration
@@ -161,7 +161,7 @@ public override object GetService(Type type, object key)
 
 EF5부터 EntityFramework NuGet 패키지는 구성 파일에 SQL Express 연결 팩터리 또는 LocalDb 연결 팩터리를 자동으로 등록 합니다.
 
-예를 들어 다음과 같은 가치를 제공해야 합니다.
+예를 들면 다음과 같습니다.
 
 ``` xml
 <entityFramework>

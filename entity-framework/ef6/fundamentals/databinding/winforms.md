@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 80fc5062-2f1c-4dbd-ab6e-b99496784b36
 ms.openlocfilehash: 4b3eee20ff238864b94ef4edfb97c1bae0713300
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181796"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416206"
 ---
 # <a name="databinding-with-winforms"></a>WinForms를 사용 하 여 데이터 바인딩
 이 단계별 연습에서는 POCO 형식을 "마스터-세부 정보" 폼의 WinForms (Window Forms) 컨트롤에 바인딩하는 방법을 보여 줍니다. 응용 프로그램은 Entity Framework를 사용 하 여 데이터베이스의 데이터로 개체를 채우고, 변경 내용을 추적 하 고, 데이터를 데이터베이스에 보관 합니다.
@@ -36,7 +36,7 @@ Visual Studio 2010을 사용 하는 경우 NuGet도 설치 해야 합니다. 자
 -   솔루션 탐색기에서 **Win양식 Withefsample** 프로젝트를 마우스 오른쪽 단추로 클릭 합니다.
 -   **NuGet 패키지 관리 ...** 를 선택 합니다.
 -   NuGet 패키지 관리 대화 상자에서 **온라인** 탭을 선택 하 고 **entityframework** 패키지를 선택 합니다.
--   **설치** 클릭  
+-   **설치**를 클릭합니다.  
     > [!NOTE]
     > EntityFramework 어셈블리 외에 System.componentmodel에 대 한 참조도 추가 됩니다. 프로젝트에 System.object에 대 한 참조가 있는 경우 EntityFramework 패키지를 설치 하면 제거 됩니다. System.object 어셈블리는 Entity Framework 6 응용 프로그램에 더 이상 사용 되지 않습니다.
 

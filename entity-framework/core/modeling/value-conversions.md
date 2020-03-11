@@ -5,11 +5,11 @@ ms.date: 02/19/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/value-conversions
 ms.openlocfilehash: 93774bc1bc3887f982faeac151825a6643c1107c
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654789"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414556"
 ---
 # <a name="value-conversions"></a>값 변환
 
@@ -63,7 +63,7 @@ protected override void OnModelCreating(ModelBuilder modelBuilder)
 
 ## <a name="the-valueconverter-class"></a>ValueConverter 클래스
 
-위에 표시 된 대로 `HasConversion`를 호출 하면 `ValueConverter` 인스턴스가 생성 되 고 속성에 설정 됩니다. 대신 `ValueConverter`을 명시적으로 만들 수 있습니다. 예를 들면,
+위에 표시 된 대로 `HasConversion`를 호출 하면 `ValueConverter` 인스턴스가 생성 되 고 속성에 설정 됩니다. 대신 `ValueConverter`을 명시적으로 만들 수 있습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 var converter = new ValueConverter<EquineBeast, string>(
@@ -83,7 +83,7 @@ modelBuilder
 
 ## <a name="built-in-converters"></a>기본 제공 변환기
 
-EF Core는 `Microsoft.EntityFrameworkCore.Storage.ValueConversion` 네임 스페이스에 있는 미리 정의 된 `ValueConverter` 클래스 집합과 함께 제공 됩니다. 이러한 방법은 다음과 같습니다.
+EF Core는 `Microsoft.EntityFrameworkCore.Storage.ValueConversion` 네임 스페이스에 있는 미리 정의 된 `ValueConverter` 클래스 집합과 함께 제공 됩니다. 이러한 설정은 다음과 같습니다.
 
 * `BoolToZeroOneConverter`-Bool to 0 및 one
 * `BoolToStringConverter`-Bool에서 "Y" 및 "N"과 같은 문자열

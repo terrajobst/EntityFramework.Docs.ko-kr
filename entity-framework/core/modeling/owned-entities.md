@@ -5,18 +5,18 @@ author: AndriySvyryd
 ms.author: ansvyryd
 ms.date: 11/06/2019
 uid: core/modeling/owned-entities
-ms.openlocfilehash: 30b91b6e66b6c0f516d1ba12485304b52770cbef
-ms.sourcegitcommit: 4e86f01740e407ff25e704a11b1f7d7e66bfb2a6
+ms.openlocfilehash: da4a459fbc40010fc14190204c8ed66fe0495b84
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75781237"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413986"
 ---
 # <a name="owned-entity-types"></a>소유한 엔터티 형식
 
 EF Core를 사용 하면 다른 엔터티 형식의 탐색 속성에만 나타날 수 있는 엔터티 형식을 모델링할 수 있습니다. 이러한 엔터티를 _소유 된 엔터티 형식_이라고 합니다. 소유 된 엔터티 형식을 포함 하는 엔터티는 해당 _소유자_입니다.
 
-소유 된 엔터티는 기본적으로 소유자의 일부 이며이를 제외 하 고는 [집계](https://martinfowler.com/bliki/DDD_Aggregate.html)와 개념적으로 유사 합니다. 즉, 소유 된 형식은 소유자와 관계의 종속 측에 정의 됩니다.
+소유 된 엔터티는 기본적으로 소유자의 일부 이며이를 제외 하 고는 [집계](https://martinfowler.com/bliki/DDD_Aggregate.html)와 개념적으로 유사 합니다. 즉, 소유 된 엔터티는 소유자와 관계의 종속 측에 정의 됩니다.
 
 ## <a name="explicit-configuration"></a>명시적 구성
 
@@ -38,7 +38,7 @@ EF Core를 사용 하면 다른 엔터티 형식의 탐색 속성에만 나타�
 
 [!code-csharp[OwnsOneString](../../../samples/core/Modeling/OwnedEntities/OwnedEntityContext.cs?name=OwnsOneString)]
 
-자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/OwnedEntities) 를 참조 하세요.
+자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/OwnedEntities) 를 참조 하세요.
 
 ## <a name="implicit-keys"></a>암시적 키
 

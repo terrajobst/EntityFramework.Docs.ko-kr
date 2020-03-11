@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 122c38a2-f9e8-4ecc-9c72-a83bc9af7814
 ms.openlocfilehash: 2bdec6a9be228fbe934d0f46aa1bfafdfb2c971c
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72181734"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416098"
 ---
 # <a name="get-entity-framework"></a>Entity Framework 가져오기
 Entity Framework는 Visual Studio 및 EF Runtime 용 EF 도구로 구성 됩니다.
@@ -45,7 +45,7 @@ EF 4.1부터 새 버전의 EF 런타임이 [Entityframework NuGet 패키지로](
 Install-Package EntityFramework -Version <number>
 ```
 
-@No__t-0은 설치할 EF의 특정 버전을 나타냅니다. 예를 들어 6.2.0는 EF 6.2에 대 한 숫자의 버전입니다.   
+`<number>`은 설치할 EF의 특정 버전을 나타냅니다. 예를 들어 6.2.0는 EF 6.2에 대 한 숫자의 버전입니다.   
 
 4\.1 이전의 EF 런타임은 .NET Framework의 일부 이며 별도로 설치할 수 없습니다.
 

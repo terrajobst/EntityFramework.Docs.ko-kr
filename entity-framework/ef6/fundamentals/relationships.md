@@ -3,19 +3,20 @@ title: 관계, 탐색 속성 및 외래 키-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 8a21ae73-6d9b-4b50-838a-ec1fddffcf37
-ms.openlocfilehash: cc7160f2d0ab7ac0c6009f820441c88590cacfaf
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 892e872e3cb11ea95084cf6d9ab43c8d500bc0de
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655872"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416002"
 ---
 # <a name="relationships-navigation-properties-and-foreign-keys"></a>관계, 탐색 속성 및 외래 키
-이 항목에서는 Entity Framework 엔터티 간의 관계를 관리 하는 방법에 대 한 개요를 제공 합니다. 또한 관계를 매핑하고 조작 하는 방법에 대 한 몇 가지 지침을 제공 합니다.
+
+이 문서에서는 Entity Framework 엔터티 간의 관계를 관리 하는 방법에 대 한 개요를 제공 합니다. 또한 관계를 매핑하고 조작 하는 방법에 대 한 몇 가지 지침을 제공 합니다.
 
 ## <a name="relationships-in-ef"></a>EF의 관계
 
-관계형 데이터베이스에서 테이블 간의 관계 (연결 라고도 함)는 외래 키를 통해 정의 됩니다. 외래 키 (FK)는 두 테이블의 데이터 간에 링크를 설정 하 고 적용 하는 데 사용 되는 열 또는 열 조합입니다. 일반적으로 일 대 일, 일 대 다 및 다 대 다와 같은 세 가지 유형의 관계가 있습니다. 일 대 다 관계에서 외래 키는 관계의 다 쪽을 나타내는 테이블에 정의 됩니다. 다 대 다 관계에는 기본 키가 두 관련 테이블의 외래 키로 구성 된 세 번째 테이블 (접합 또는 조인 테이블 이라고 함)을 정의 하는 작업이 포함 됩니다. 일 대 일 관계에서는 기본 키가 외래 키로도 적용 되 고 두 테이블에 대 한 별도의 외래 키 열이 없습니다.
+관계형 데이터베이스에서 테이블 간의 관계 (연결 라고도 함)는 외래 키를 통해 정의 됩니다. 외래 키(FK)는 두 테이블의 데이터 간 연결을 설정하고 강제 적용하는 데 사용되는 열입니다. 일반적으로 일 대 일, 일 대 다 및 다 대 다와 같은 세 가지 유형의 관계가 있습니다. 일 대 다 관계에서 외래 키는 관계의 다 쪽을 나타내는 테이블에 정의 됩니다. 다 대 다 관계에는 기본 키가 두 관련 테이블의 외래 키로 구성 된 세 번째 테이블 (접합 또는 조인 테이블 이라고 함)을 정의 하는 작업이 포함 됩니다. 일 대 일 관계에서는 기본 키가 외래 키로도 적용 되 고 두 테이블에 대 한 별도의 외래 키 열이 없습니다.
 
 다음 이미지는 일 대 다 관계에 참여 하는 두 테이블을 보여 줍니다. **과정** 테이블은 **부서** 테이블에 연결 하는 **DepartmentID** 열이 포함 되어 있으므로 종속 테이블입니다.
 
@@ -93,7 +94,7 @@ public class Department
   course.Department = department;
   ```
 
-- 관계를 삭제 하려면 탐색 속성을 `null`로 설정 합니다. .NET 4.0을 기반으로 하는 Entity Framework를 사용 하는 경우에는 관련 end를 먼저 로드 해야 null로 설정할 수 있습니다. 예를 들면,   
+- 관계를 삭제 하려면 탐색 속성을 `null`로 설정 합니다. .NET 4.0을 기반으로 하는 Entity Framework를 사용 하는 경우에는 관련 end를 먼저 로드 해야 null로 설정할 수 있습니다. 예를 들면 다음과 같습니다.   
   ``` csharp
   context.Entry(course).Reference(c => c.Department).Load();
   course.Department = null;

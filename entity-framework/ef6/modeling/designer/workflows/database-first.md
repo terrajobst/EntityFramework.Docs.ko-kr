@@ -4,16 +4,16 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: cc6ffdb3-388d-4e79-a201-01ec2577c949
 ms.openlocfilehash: d40cff4ddccf43a394ef4f244653372a5a89b05a
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182458"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415174"
 ---
 # <a name="database-first"></a>Database First
 이 비디오 및 단계별 연습은 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. Database First를 사용 하 여 기존 데이터베이스에서 모델을 리버스 엔지니어링할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오는 Entity Framework를 사용 하 여 Database First 개발에 대 한 소개를 제공 합니다. Database First를 사용 하 여 기존 데이터베이스에서 모델을 리버스 엔지니어링할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
 **작성자**: [Rowan Miller](https://romiller.com/)
@@ -127,7 +127,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
     * **Nuget 패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
--   **설치** 클릭
+-   **설치**를 클릭합니다.
 
 다음으로 Entity Framework의 이후 버전에 도입 된 DbContext API를 사용 하는 코드를 생성 하기 위해 모델을 교환 해야 합니다.
 

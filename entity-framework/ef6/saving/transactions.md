@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 0d0f1824-d781-4cb3-8fda-b7eaefced1cd
 ms.openlocfilehash: 7030dc675993339f72c935f6b430cead85fecb7f
-ms.sourcegitcommit: c9c3e00c2d445b784423469838adc071a946e7c9
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68306520"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416242"
 ---
 # <a name="working-with-transactions"></a>트랜잭션 작업
 > [!NOTE]
@@ -32,21 +32,21 @@ Entity Framework는 트랜잭션에서 쿼리를 래핑하지 않습니다.
 
 ## <a name="how-the-apis-work"></a>Api 작동 방법  
 
-EF6 Entity Framework 이전에는 데이터베이스 연결 자체를 열 때 insisted (이미 열려 있는 연결이 전달 된 경우 예외를 throw). 트랜잭션은 열린 연결 에서만 시작할 수 있으므로 사용자가 여러 작업을 하나의 트랜잭션으로 래핑할 수 있는 유일한 방법은 [TransactionScope](https://msdn.microsoft.com/library/system.transactions.transactionscope.aspx) 를 사용 하거나 ObjectContext를 사용 하는 것입니다 **. 연결** 속성 및 시작 반환 된 **Entityconnection** 개체에서 **Open ()** 및 **BeginTransaction ()** 를 직접 호출 합니다. 또한 원본 데이터베이스 연결에서 트랜잭션을 시작한 경우에는 데이터베이스에 연결 된 API 호출이 실패 합니다.  
+EF6 Entity Framework 이전에는 데이터베이스 연결 자체를 열 때 insisted (이미 열려 있는 연결이 전달 된 경우 예외를 throw). 트랜잭션은 열린 연결 에서만 시작할 수 있으므로 사용자가 여러 작업을 하나의 트랜잭션으로 래핑할 수 있는 유일한 방법은 [TransactionScope](https://msdn.microsoft.com/library/system.transactions.transactionscope.aspx) 를 사용 하거나 **ObjectContext. connection** 속성을 사용 하 고 반환 된 **entityconnection** 개체에서 **open ()** 및 **BeginTransaction ()** 를 직접 호출 하기 시작 하는 것입니다. 또한 원본 데이터베이스 연결에서 트랜잭션을 시작한 경우에는 데이터베이스에 연결 된 API 호출이 실패 합니다.  
 
 > [!NOTE]
 > 닫힌 연결 허용의 제한은 Entity Framework 6에서 제거 되었습니다. 자세한 내용은 [연결 관리](~/ef6/fundamentals/connection-management.md)를 참조 하세요.  
 
 EF6부터 프레임 워크는 이제 다음을 제공 합니다.  
 
-1. **Database.BeginTransaction()** : 사용자가 기존 DbContext 내에서 트랜잭션을 직접 시작 하 고 완료 하는 것이 더 쉬운 방법입니다. 이렇게 하면 여러 작업을 동일한 트랜잭션 내에서 결합할 수 있으므로 모두 커밋되거나 모두 롤백됩니다. 또한 사용자가 트랜잭션의 격리 수준을 더 쉽게 지정할 수 있습니다.  
+1. **BeginTransaction ()** : 사용자가 기존 DbContext 내에서 트랜잭션을 자동으로 시작 하 고 완료 하는 더 쉬운 방법으로, 여러 작업이 동일한 트랜잭션 내에서 결합 될 수 있으므로 모두 커밋되거나 모두 롤백됩니다. 또한 사용자가 트랜잭션의 격리 수준을 더 쉽게 지정할 수 있습니다.  
 2. **UseTransaction ()** : DbContext가 Entity Framework 외부에서 시작 된 트랜잭션을 사용할 수 있도록 합니다.  
 
 ### <a name="combining-several-operations-into-one-transaction-within-the-same-context"></a>동일한 컨텍스트 내에서 여러 작업을 하나의 트랜잭션으로 결합  
 
 **BeginTransaction ()** 에는 두 가지 재정의가 있습니다. 하나는 명시적 [IsolationLevel](https://msdn.microsoft.com/library/system.data.isolationlevel.aspx) 를 사용 하 고 다른 하나는 인수를 사용 하지 않고 기본 데이터베이스 공급자의 기본 IsolationLevel를 사용 합니다. 두 재정의 모두 기본 저장소 트랜잭션에서 커밋 및 롤백을 수행 하는 **commit ()** 및 **rollback ()** 메서드를 제공 하는 **dbcontexttransaction** 개체를 반환 합니다.  
 
-**Dbcontexttransaction** 은 커밋되거나 롤백된 후 삭제 됩니다. 이를 수행 하는 한 가지 쉬운 방법은 **using (...)을 사용 하는 것입니다. {...}** using 블록이 완료 되 면 **Dispose ()** 를 자동으로 호출 하는 구문입니다.  
+**Dbcontexttransaction** 은 커밋되거나 롤백된 후 삭제 됩니다. 이를 수행 하는 한 가지 쉬운 방법은 **using (...) {...}** 입니다. using 블록이 완료 되 면 **Dispose ()** 를 자동으로 호출 하는 구문입니다.  
 
 ``` csharp
 using System;
@@ -111,7 +111,7 @@ using (var conn = new SqlConnection("..."))
 
 또한 IsolationLevel를 사용 하 여 (기본 설정을 방지 하려는 경우) 트랜잭션을 직접 시작 하 고 연결에서 이미 시작 된 기존 트랜잭션이 있음을 Entity Framework 합니다 (아래의 33 줄 참조).  
 
-그런 다음 SqlConnection 자체 나 DbContext에서 직접 데이터베이스 작업을 실행할 수 있습니다. 이러한 모든 작업은 하나의 트랜잭션 내에서 실행 됩니다. 트랜잭션을 커밋하거나 롤백하고 해당 데이터베이스에서 삭제 ()를 호출 하는 일은 물론 데이터베이스 연결을 닫고 삭제 하기 위한 책임이 있습니다. 예를 들어:  
+그런 다음 SqlConnection 자체 나 DbContext에서 직접 데이터베이스 작업을 실행할 수 있습니다. 이러한 모든 작업은 하나의 트랜잭션 내에서 실행 됩니다. 트랜잭션을 커밋하거나 롤백하고 해당 데이터베이스에서 삭제 ()를 호출 하는 일은 물론 데이터베이스 연결을 닫고 삭제 하기 위한 책임이 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using System;

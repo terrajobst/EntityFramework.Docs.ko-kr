@@ -4,16 +4,16 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: e1b9c319-bb8a-4417-ac94-7890f257e7f6
 ms.openlocfilehash: 1b37805beb3d33f0b6dad2577a8abb3ea8f7b1e4
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182436"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414958"
 ---
 # <a name="model-first"></a>Model First
 이 비디오 및 단계별 연습은 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다. Model First를 사용 하면 Entity Framework Designer를 사용 하 여 새 모델을 만든 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
-## <a name="watch-the-video"></a>비디오 시청
+## <a name="watch-the-video"></a>비디오 보기
 이 비디오 및 단계별 연습은 Entity Framework를 사용 하 여 Model First 개발에 대 한 소개를 제공 합니다. Model First를 사용 하면 Entity Framework Designer를 사용 하 여 새 모델을 만든 다음 모델에서 데이터베이스 스키마를 생성할 수 있습니다. 모델은 EDMX 파일 (.edmx 확장명)에 저장 되며 Entity Framework Designer에서 보고 편집할 수 있습니다. 응용 프로그램에서 상호 작용 하는 클래스가 EDMX 파일에서 자동으로 생성 됩니다.
 
 **작성자**: [Rowan Miller](https://romiller.com/)
@@ -87,7 +87,7 @@ Visual Studio 2010에서 작업 하는 경우 Entity Framework 최신 버전으�
     * **Nuget 패키지 관리 ...** 옵션이 없는 경우 [최신 버전의 nuget](https://visualstudiogallery.msdn.microsoft.com/27077b70-9dad-4c64-adcf-c7cf6bc9970c) 을 설치 해야* 합니다.
 -   **온라인** 탭을 선택 합니다.
 -   **Entityframework** 패키지를 선택 합니다.
--   **설치** 클릭
+-   **설치**를 클릭합니다.
 
 다음으로 Entity Framework의 이후 버전에 도입 된 DbContext API를 사용 하는 코드를 생성 하기 위해 모델을 교환 해야 합니다.
 
@@ -189,7 +189,7 @@ Press any key to exit...
 이제 업데이트 된 모델이 있으며 새 사용자 엔터티 유형을 수용 하기 위해 데이터베이스를 업데이트할 준비가 되었습니다.
 
 -   디자인 화면을 마우스 오른쪽 단추로 클릭 하 고 **모델에서 데이터베이스 생성**...을 선택 하 여 업데이트 된 모델을 기반으로 스키마를 다시 만드는 스크립트를 계산 Entity Framework 합니다.
--   **마침** 클릭
+-   **마침**을 클릭합니다.
 -   기존 DDL 스크립트와 모델의 매핑 및 저장소 부분을 덮어쓰는 방법에 대 한 경고 메시지가 표시 될 수 있습니다. 이러한 경고에 대해 모두 **예** 를 클릭 합니다.
 -   데이터베이스를 만들기 위해 업데이트 된 SQL 스크립트가 열립니다.  
     *생성 된 스크립트는 모든 기존 테이블을 삭제 한 다음 스키마를 처음부터 다시 만듭니다. 로컬 개발에는 적용 되지만 이미 배포 된 데이터베이스에 변경 내용을 푸시할 수는 없습니다. 이미 배포 된 데이터베이스에 변경 내용을 게시 해야 하는 경우에는 스크립트를 편집 하거나 스키마 비교 도구를 사용 하 여 마이그레이션 스크립트를 계산 해야 합니다.*

@@ -6,11 +6,11 @@ ms.date: 12/03/2019
 ms.assetid: cbe6935e-2679-4b77-8914-a8d772240cf1
 uid: core/modeling/entity-types
 ms.openlocfilehash: b3d9ad753637d021d9aa52965da38091ae690f77
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502416"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414580"
 ---
 # <a name="entity-types"></a>엔터티 형식
 
@@ -32,27 +32,27 @@ ms.locfileid: "75502416"
 
 모델에 형식을 포함 하지 않으려면 제외할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/IgnoreType.cs?name=IgnoreType&highlight=1)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/IgnoreType.cs?name=IgnoreType&highlight=3)]
 
 ***
 
-## <a name="table-name"></a>표 이름
+## <a name="table-name"></a>테이블 이름
 
 규칙에 따라 엔터티를 노출 하는 DbSet 속성과 이름이 같은 데이터베이스 테이블에 매핑하기 위해 각 엔터티 형식이 설정 됩니다. 지정 된 엔터티에 대해 DbSet가 없으면 클래스 이름이 사용 됩니다.
 
 테이블 이름을 수동으로 구성할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/TableName.cs?Name=TableName&highlight=1)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableName.cs?Name=TableName&highlight=3-4)]
 
@@ -64,11 +64,11 @@ ms.locfileid: "75502416"
 
 다음과 같이 특정 스키마에서 테이블을 만들도록 구성할 수 있습니다.
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 [!code-csharp[Main](../../../samples/core/Modeling/DataAnnotations/TableNameAndSchema.cs?name=TableNameAndSchema&highlight=1)]
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/TableNameAndSchema.cs?name=TableNameAndSchema&highlight=3-4)]
 

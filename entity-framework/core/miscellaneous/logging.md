@@ -4,17 +4,17 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f6e35c6d-45b7-4258-be1d-87c1bb67438d
 uid: core/miscellaneous/logging
-ms.openlocfilehash: 1a3863ee5f508c1fd393d4ec2c25c46ab8634f00
-ms.sourcegitcommit: 32c51c22988c6f83ed4f8e50a1d01be3f4114e81
+ms.openlocfilehash: e8adc39ec01ff75112b03446a488df6199cc7041
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/27/2019
-ms.locfileid: "75502099"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414088"
 ---
 # <a name="logging"></a>로깅
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Miscellaneous/Logging)을 볼 수 있습니다.
 
 ## <a name="aspnet-core-applications"></a>응용 프로그램 ASP.NET Core
 
@@ -33,11 +33,11 @@ EF Core 로깅에는 하나 이상의 로깅 공급자를 사용 하 여 구성 
 
 적절 한 패키지를 설치한 후 응용 프로그램은 Server.loggerfactory의 단일/전역 인스턴스를 만들어야 합니다. 예를 들어 콘솔로 거를 사용 합니다.
 
-### <a name="version-30tabv3"></a>[버전 3.0](#tab/v3)
+### <a name="version-3x"></a>[버전 3.x](#tab/v3)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#DefineLoggerFactory)]
 
-### <a name="version-2xtabv2"></a>[버전 2.x](#tab/v2)
+### <a name="version-2x"></a>[버전 2.x](#tab/v2)
 
 > [!NOTE]
 > 다음 코드 샘플에서는 2.2 버전에서 사용 되지 않는 `ConsoleLoggerProvider` 생성자를 사용 하 고 3.0에서 대체 했습니다. 2\.2을 사용 하는 경우 경고를 무시 하 고 표시 하지 않는 것이 안전 합니다.
@@ -49,7 +49,7 @@ public static readonly LoggerFactory MyLoggerFactory
 
 ***
 
-그런 다음이 단일/전역 인스턴스를 `DbContextOptionsBuilder`EF Core에 등록 해야 합니다. 예를 들면 다음과 같습니다.:
+그런 다음이 단일/전역 인스턴스를 `DbContextOptionsBuilder`EF Core에 등록 해야 합니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContext.cs#RegisterLoggerFactory)]
 
@@ -58,13 +58,13 @@ public static readonly LoggerFactory MyLoggerFactory
 
 ## <a name="filtering-what-is-logged"></a>기록 되는 내용 필터링
 
-응용 프로그램은 ILoggerProvider에 대 한 필터를 구성 하 여 로깅되는 내용을 제어할 수 있습니다. 예를 들면 다음과 같습니다.:
+응용 프로그램은 ILoggerProvider에 대 한 필터를 구성 하 여 로깅되는 내용을 제어할 수 있습니다. 예를 들면 다음과 같습니다.
 
-### <a name="version-30tabv3"></a>[버전 3.0](#tab/v3)
+### <a name="version-3x"></a>[버전 3.x](#tab/v3)
 
 [!code-csharp[Main](../../../samples/core/Miscellaneous/Logging/Logging/BloggingContextWithFiltering.cs#DefineLoggerFactory)]
 
-### <a name="version-2xtabv2"></a>[버전 2.x](#tab/v2)
+### <a name="version-2x"></a>[버전 2.x](#tab/v2)
 
 > [!NOTE]
 > 다음 코드 샘플에서는 2.2 버전에서 사용 되지 않는 `ConsoleLoggerProvider` 생성자를 사용 하 고 3.0에서 대체 했습니다. 2\.2을 사용 하는 경우 경고를 무시 하 고 표시 하지 않는 것이 안전 합니다.

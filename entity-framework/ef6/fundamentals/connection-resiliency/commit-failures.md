@@ -1,29 +1,29 @@
 ---
-title: 트랜잭션 커밋 오류-EF6를 처리합니다.
+title: 트랜잭션 커밋 실패 처리-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: 5b1f7a7d-1b24-4645-95ec-5608a31ef577
 ms.openlocfilehash: 27e75e6a1919ee2300fe76cfcdf67cceaad887b3
-ms.sourcegitcommit: 269c8a1a457a9ad27b4026c22c4b1a76991fb360
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46283656"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414676"
 ---
-# <a name="handling-transaction-commit-failures"></a>트랜잭션 커밋 오류 처리
+# <a name="handling-transaction-commit-failures"></a>트랜잭션 커밋 실패 처리
 > [!NOTE]
-> **EF6.1 이상만** -Api 기능 등이이 페이지에 설명 된 Entity Framework 6.1에서 도입 되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.  
+> **Ef 6.1** 이상-이 페이지에서 설명 하는 기능, api 등은 Entity Framework 6.1에서 도입 되었습니다. 이전 버전을 사용하는 경우 이 정보의 일부 또는 전체가 적용되지 않습니다.  
 
-6.1 일부로 EF에 대 한 새 연결 복원 력 기능 도입 됩니다: 검색 하 고 일시적인 연결 오류가 발생할 트랜잭션 커밋 승인을 영향을 주는 경우 자동으로 복구 하는 기능입니다. 시나리오의 전체 세부 정보는 블로그 게시물에 잘 설명 [SQL Database 연결 및 멱 등 성 문제가](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx)합니다.  요약 하자면, 시나리오의 트랜잭션 커밋하는 동안 예외가 발생 하는 경우는 두 가지 가능한 원인:  
+6\.1의 일부로 EF: 일시적인 연결 오류가 트랜잭션 커밋의 승인에 영향을 주는 경우 자동으로 검색 하 고 복구할 수 있는 EF: 새 연결 복원 력 기능을 도입 하 고 있습니다. 이 시나리오에 대 한 자세한 내용은 블로그 게시물 [SQL Database 연결 및 멱 등 성 문제](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx)에 설명 되어 있습니다.  요약 하자면, 시나리오는 트랜잭션 커밋 중에 예외가 발생 하는 경우 두 가지 가능한 원인이 있습니다.  
 
 1. 서버에서 트랜잭션 커밋이 실패 했습니다.
-2. 서버에서 트랜잭션 커밋에 성공 했지만 연결 문제를 방지 클라이언트에 도달 하에서 성공 알림  
+2. 서버에서 트랜잭션 커밋이 성공 했지만 연결 문제로 인해 성공 알림이 클라이언트에 도달 하지 못했습니다.  
 
-사용자나 응용 프로그램이 첫 번째 상황은 표시 되는 경우 작업을 다시 시도할 수 있지만 두 번째 상황이 발생 하면 다시 시도 하지 않아야 합니다 및 응용 프로그램을 자동으로 복구할 수 없습니다. 과제 없으면 무엇 이었습니까 실제 응용 프로그램이 올바른 작업 과정을 선택할 수 없습니다. 예외가, 커밋하는 동안 보고 된 이유를 검색할 수 있습니다. 6.1 EF의에서 새로운 기능에는 트랜잭션이 성공 하 고 오른쪽 작업 과정을 투명 하 게 수행 하는 경우 데이터베이스를 사용 하 여 다시 확인 하려면 EF 수 있습니다.  
+첫 번째 상황이 응용 프로그램에서 발생 하거나 사용자가 작업을 다시 시도할 수 있지만 두 번째 상황에서 재시도를 방지 하 고 응용 프로그램이 자동으로 복구 될 수 있습니다. 문제는 커밋 중에 예외가 보고 된 실제 이유를 검색 하는 기능이 없으므로 응용 프로그램에서 올바른 작업 과정을 선택할 수 없습니다. EF 6.1의 새로운 기능을 통해 EF는 트랜잭션이 성공한 경우 데이터베이스를 다시 확인 하 고 적절 한 작업을 투명 하 게 수행할 수 있습니다.  
 
 ## <a name="using-the-feature"></a>기능 사용  
 
-기능을 사용 하도록 설정 하려면에 대 한 호출을 포함 해야 [SetTransactionHandler](https://msdn.microsoft.com/library/system.data.entity.dbconfiguration.setdefaulttransactionhandler.aspx) 의 생성자에서 프로그램 **DbConfiguration**합니다. 익숙한 없는 경우 **DbConfiguration**를 참조 하십시오 [코드 기반 구성](~/ef6/fundamentals/configuring/code-based.md)합니다. 트랜잭션이 실제로 커밋하지 못했습니다 일시적인 오류로 인해 서버에서 상황에 도움이 되는 ef6를 도입 했습니다 자동 재시도와 함께에서이 기능을 사용할 수 있습니다.  
+이 기능을 사용 하도록 설정 하려면 **Dbconfiguration**의 생성자에 [settransactionhandler](https://msdn.microsoft.com/library/system.data.entity.dbconfiguration.setdefaulttransactionhandler.aspx) 에 대 한 호출을 포함 해야 합니다. **Dbconfiguration**에 익숙하지 않은 경우 [코드 기반 구성](~/ef6/fundamentals/configuring/code-based.md)을 참조 하세요. 이 기능은 EF6에서 도입 된 자동 재시도와 함께 사용할 수 있습니다 .이는 일시적인 오류로 인해 트랜잭션이 실제로 서버에서 커밋하지 못한 상황에 도움이 됩니다.  
 
 ``` csharp
 using System.Data.Entity;
@@ -40,33 +40,33 @@ public class MyConfiguration : DbConfiguration
 }
 ```  
 
-## <a name="how-transactions-are-tracked"></a>트랜잭션은 추적 하는 방법  
+## <a name="how-transactions-are-tracked"></a>트랜잭션 추적 방법  
 
-라는 데이터베이스에 EF가 새 테이블을 추가할 자동으로 기능을 사용 하는 경우 **__Transactions**합니다. EF에서 트랜잭션 만들어지고 커밋하는 동안 트랜잭션 오류가 발생할 경우 해당 행이 있는지 검사 될 때마다 새 행이이 테이블에 삽입 됩니다.  
+이 기능을 사용 하도록 설정 하면 EF가 **__Transactions**라는 데이터베이스에 새 테이블을 자동으로 추가 합니다. EF에서 트랜잭션을 만들 때마다이 테이블에 새 행이 삽입 되 고 커밋 중에 트랜잭션 오류가 발생 하는 경우 해당 행이 있는지 확인 됩니다.  
 
-EF는 더 이상 필요 하지 않은 경우 테이블의 행을 정리 하는 최고의 수행 하지만 일부 경우에서 수동으로 테이블을 제거 해야 할 수 있습니다에 대 한 중간 응용 프로그램에 종료 되 면 테이블 증가할 수 있습니다.  
+EF가 더 이상 필요 하지 않을 때 테이블에서 행을 정리 하는 데 가장 적합 하지만, 응용 프로그램이 중간에 종료 될 때 테이블이 커질 수 있으며, 따라서 경우에 따라 테이블을 수동으로 제거 해야 할 수도 있습니다.  
 
-## <a name="how-to-handle-commit-failures-with-previous-versions"></a>이전 버전을 사용 하 여 커밋 실패를 처리 하는 방법
+## <a name="how-to-handle-commit-failures-with-previous-versions"></a>이전 버전과의 커밋 실패를 처리 하는 방법
 
-EF 6.1 이전 EF 제품에 커밋 실패를 처리 하는 메커니즘 하지 못했습니다. EF6의 이전 버전에 적용할 수 있는 이러한 상황을 처리 하는 방법은 여러 가지가 있습니다.  
+EF 6.1 이전에는 EF 제품의 커밋 실패를 처리 하는 메커니즘이 없었습니다. 이전 버전의 EF6에 적용 될 수 있는 이러한 상황을 처리 하는 몇 가지 방법이 있습니다.  
 
-* 옵션 1-작업 안 함  
+* 옵션 1-아무 작업도 수행 하지 않음  
 
-  트랜잭션 커밋하는 동안 연결 오류의 가능성 낮은 이므로 응용 프로그램이이 조건에서 실제로 발생 하는 경우 실패를 허용할 수도 있습니다.  
+  트랜잭션 커밋 중에 연결 오류가 발생 하는 경우이 상태가 실제로 발생 하는 경우 응용 프로그램이 실패할 수 있습니다.  
 
-* 옵션 2-데이터베이스를 사용 하 여 상태를 다시 설정  
+* 옵션 2-데이터베이스를 사용 하 여 상태 다시 설정  
 
-  1. 현재 DbContext를 삭제 합니다.  
-  2. 새 DbContext를 만들고 데이터베이스에서 응용 프로그램의 상태를 복원 합니다.  
-  3. 마지막 작업 수 완료 되지 않은 성공적으로 사용자에 게 알릴  
+  1. 현재 DbContext를 취소 합니다.  
+  2. 새 DbContext을 만들고 데이터베이스에서 응용 프로그램의 상태를 복원 합니다.  
+  3. 마지막 작업이 성공적으로 완료 되지 않았을 수 있음을 사용자에 게 알립니다.  
 
 * 옵션 3-수동으로 트랜잭션 추적  
 
-  1. 트랜잭션의 상태를 추적 하는 데 데이터베이스에 추적 된 테이블을 추가 합니다.  
-  2. 각 트랜잭션의 시작 부분에 있는 테이블에 행을 삽입 합니다.  
-  3. 커밋 중 연결이 실패 하는 경우 데이터베이스에서 해당 행의 존재 여부 확인 합니다.  
-     - 행이 있는 경우 정상적으로 계속, 트랜잭션이 성공적으로 커밋된 처럼  
+  1. 트랜잭션 상태를 추적 하는 데 사용 되는 데이터베이스에 추적 되지 않은 테이블을 추가 합니다.  
+  2. 각 트랜잭션의 시작 부분에서 테이블에 행을 삽입 합니다.  
+  3. 커밋하는 동안 연결이 실패 하는 경우 데이터베이스에 해당 하는 행이 있는지 확인 합니다.  
+     - 행이 있는 경우 트랜잭션이 성공적으로 커밋 됨에 따라 정상적으로 계속 진행 합니다.  
      - 행이 없으면 실행 전략을 사용 하 여 현재 작업을 다시 시도 합니다.  
-  4. 커밋이 성공 하면 테이블의 증가 방지 하려면 해당 행을 삭제 합니다.  
+  4. 커밋이 성공한 경우 테이블의 증가를 방지 하려면 해당 행을 삭제 합니다.  
 
-[이 블로그 게시물](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) SQL Azure이 작업을 수행 하는 것에 대 한 샘플 코드가 포함 되어 있습니다.  
+[이 블로그 게시물](https://blogs.msdn.com/b/adonet/archive/2013/03/11/sql-database-connectivity-and-the-idempotency-issue.aspx) 에는 SQL Azure에서이를 수행 하기 위한 샘플 코드가 포함 되어 있습니다.  

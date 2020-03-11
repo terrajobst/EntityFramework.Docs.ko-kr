@@ -5,11 +5,11 @@ ms.author: bricelam
 ms.date: 10/30/2017
 uid: core/managing-schemas/migrations/teams
 ms.openlocfilehash: 6c17c56277821159962884aef72d46c624442e20
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655539"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414244"
 ---
 # <a name="migrations-in-team-environments"></a>팀 환경의 마이그레이션
 
@@ -48,7 +48,7 @@ b.Property<string>("Alias");
 >>>>>>> Theirs
 ```
 
-이러한 종류의 충돌이 발생 하면 마이그레이션을 다시 만들어 문제를 해결 합니다. 아래 단계를 수행합니다.
+이러한 종류의 충돌이 발생 하면 마이그레이션을 다시 만들어 문제를 해결 합니다. 다음 단계를 수행하세요.
 
 1. 병합을 중단 하 고 병합 하기 전에 작업 디렉터리로 롤백
 2. 마이그레이션 제거 (그러나 모델 변경 내용 유지)

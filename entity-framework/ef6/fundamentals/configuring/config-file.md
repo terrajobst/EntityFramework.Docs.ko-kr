@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 000044c6-1d32-4cf7-ae1f-ea21d86ebf8f
 ms.openlocfilehash: 86389e4a3a3bac46e2a4cf2da648a4b19e29f3c3
-ms.sourcegitcommit: 299011fc4bd576eed58a4274f967639fa13fec53
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 08/21/2019
-ms.locfileid: "69886563"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414856"
 ---
 # <a name="configuration-file-settings"></a>구성 파일 설정
 Entity Framework 구성 파일에서 여러 가지 설정을 지정할 수 있습니다. 일반적으로 EF는 ' 구성 규칙 ' 원칙을 따릅니다 .이 게시물에 설명 된 모든 설정은 기본 동작을 수행 합니다. 기본값이 더 이상 요구 사항을 충족 하지 않는 경우에만 설정을 변경 하는 것에 대해서만 걱정할 필요가 있습니다.  
@@ -40,7 +40,7 @@ Entityframework NuGet 패키지를 설치할 때 **entityframework** 섹션이 �
 
 연결 문자열은 표준 **connectionStrings** 요소로 이동 하며 **entityframework** 섹션이 필요 하지 않습니다.  
 
-Code First 기반 모델은 일반 ADO.NET 연결 문자열을 사용 합니다. 예를 들어:  
+Code First 기반 모델은 일반 ADO.NET 연결 문자열을 사용 합니다. 예를 들면 다음과 같습니다.  
 
 ``` xml
 <connectionStrings>
@@ -50,7 +50,7 @@ Code First 기반 모델은 일반 ADO.NET 연결 문자열을 사용 합니다.
 </connectionStrings>
 ```  
 
-EF Designer 기반 모델은 특수 EF 연결 문자열을 사용 합니다. 예:  
+EF Designer 기반 모델은 특수 EF 연결 문자열을 사용 합니다. 예를 들면 다음과 같습니다.  
 
 ``` xml  
 <connectionStrings>
@@ -145,7 +145,7 @@ EF 6.1부터 구성 파일에 인터셉터를 등록할 수 있습니다. 인터
 </interceptors>
 ```  
 
-**Databaselogger** 나 인터셉터 등록에 대 한 자세한 내용은 블로그 게시물 [EF 6.1: 다시 컴파일하지](https://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/)않고 로깅을 설정 합니다.  
+**Databaselogger** 나 인터셉터 등록에 대 한 자세한 내용은 블로그 게시물 [EF 6.1: 다시 컴파일하지 않고 로깅 설정](https://blog.oneunicorn.com/2014/02/09/ef-6-1-turning-on-logging-without-recompiling/)을 참조 하세요.  
 
 ## <a name="code-first-default-connection-factory"></a>Code First 기본 연결 팩터리  
 
@@ -180,7 +180,7 @@ EF NuGet 패키지를 설치 하는 경우 설치 된 기본 연결 팩터리가
 </entityFramework>
 ```  
 
-기본 연결 팩터리를 설정 하지 않으면 Code First SqlConnectionFactory `.\SQLEXPRESS`를 사용 하 여를 가리킵니다. 또한 SqlConnectionFactory에는 연결 문자열의 일부를 재정의할 수 있는 생성자가 있습니다. 이외의 `.\SQLEXPRESS` SQL Server 인스턴스를 사용 하려는 경우이 생성자를 사용 하 여 서버를 설정할 수 있습니다.  
+기본 연결 팩터리를 설정 하지 않으면 Code First SqlConnectionFactory를 사용 하 여 `.\SQLEXPRESS`를 가리킵니다. 또한 SqlConnectionFactory에는 연결 문자열의 일부를 재정의할 수 있는 생성자가 있습니다. `.\SQLEXPRESS` 이외의 SQL Server 인스턴스를 사용 하려는 경우이 생성자를 사용 하 여 서버를 설정할 수 있습니다.  
 
 다음 구성에서는 명시적 연결 문자열이 설정 되지 않은 컨텍스트에 대해 **Mydatabaseserver** 를 사용 Code First 합니다.  
 

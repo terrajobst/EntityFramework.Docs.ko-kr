@@ -1,75 +1,75 @@
 ---
-title: 쿼리-EF 디자이너-EF6를 정의합니다.
+title: 쿼리 정의-EF 디자이너-EF6
 author: divega
 ms.date: 10/23/2016
 ms.assetid: e52a297e-85aa-42f6-a922-ba960f8a4b22
 ms.openlocfilehash: b1589dc12ccb50754c2e950932a2d82bc4869f6b
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489481"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415534"
 ---
-# <a name="defining-query---ef-designer"></a>정의 쿼리-EF 디자이너
-이 연습에서는 정의 추가 하는 방법을 보여 줍니다. 쿼리 및 해당 엔터티를 EF 디자이너를 사용 하 여 모델에 입력 합니다. 정의 쿼리는 일반적으로 데이터베이스 뷰를 제공 하는 유사한 기능을 제공 하는 데 사용 됩니다 있지만 뷰는 데이터베이스가 아닌 모델에서 정의 됩니다. 정의 쿼리를 사용 하면 지정 된 SQL 문을 실행 하는 **DefiningQuery** .edmx 파일의 요소입니다. 자세한 내용은 **DefiningQuery** 에 [SSDL 사양](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md)합니다.
+# <a name="defining-query---ef-designer"></a>쿼리 정의-EF 디자이너
+이 연습에서는 EF Designer를 사용 하 여 정의 쿼리와 해당 엔터티 형식을 모델에 추가 하는 방법을 보여 줍니다. 정의 쿼리는 데이터베이스 뷰에서 제공 하는 것과 유사한 기능을 제공 하는 데 일반적으로 사용 되지만, 뷰는 데이터베이스가 아니라 모델에 정의 됩니다. 정의 쿼리를 사용 하면 .edmx 파일의 **DefiningQuery** 요소에 지정 된 SQL 문을 실행할 수 있습니다. 자세한 내용은 **DefiningQuery** In The [SSDL Specification](~/ef6/modeling/designer/advanced/edmx/ssdl-spec.md)를 참조 하세요.
 
-정의 쿼리를 사용 하는 경우 모델에 엔터티 형식을 정의할 수도 있습니다. 엔터티 형식 정의 쿼리에 의해 노출 된 데이터를 노출 됩니다. 참고가 엔터티 형식을 통해 표시 되는 데이터는 읽기 전용입니다.
+쿼리 정의를 사용 하는 경우 모델에서 엔터티 형식을 정의 해야 합니다. 엔터티 형식은 정의 하는 쿼리에 의해 노출 되는 데이터를 표시 하는 데 사용 됩니다. 이 엔터티 형식을 통해 표시 되는 데이터는 읽기 전용입니다.
 
-매개 변수가 있는 쿼리를 정의 쿼리로 실행할 수 없습니다. 그러나 데이터는 저장 프로시저에 데이터를 표시하는 엔터티 형식의 삽입, 업데이트 및 삭제 함수를 매핑하여 업데이트할 수 있습니다. 자세한 내용은 [삽입, 업데이트 및 삭제 저장 프로시저를 사용 하 여](~/ef6/modeling/designer/stored-procedures/cud.md)입니다.
+매개 변수가 있는 쿼리를 정의 쿼리로 실행할 수 없습니다. 그러나 데이터는 저장 프로시저에 데이터를 표시하는 엔터티 형식의 삽입, 업데이트 및 삭제 함수를 매핑하여 업데이트할 수 있습니다. 자세한 내용은 [저장 프로시저를 사용 하 여 삽입, 업데이트 및 삭제](~/ef6/modeling/designer/stored-procedures/cud.md)를 참조 하세요.
 
 이 항목에서는 다음 작업을 수행 하는 방법을 보여 줍니다.
 
 -   정의 쿼리 추가
 -   모델에 엔터티 형식 추가
--   맵 엔터티 형식으로 정의 쿼리
+-   정의 쿼리를 엔터티 형식에 매핑
 
-## <a name="prerequisites"></a>전제 조건
+## <a name="prerequisites"></a>필수 조건
 
 이 연습을 완료하려면 다음 사항이 필요합니다.
 
-- Visual Studio의 최신 버전입니다.
-- 합니다 [School 샘플 데이터베이스](~/ef6/resources/school-database.md)합니다.
+- 최신 버전의 Visual Studio입니다.
+- [School 예제 데이터베이스](~/ef6/resources/school-database.md).
 
 ## <a name="set-up-the-project"></a>프로젝트 설정
 
-이 연습에서는 Visual Studio 2012 이상 사용 중입니다.
+이 연습에서는 Visual Studio 2012 이상 버전을 사용 합니다.
 
 -   Visual Studio를 엽니다.
 -   **파일** 메뉴에서 **새로 만들기**를 가리킨 다음 **프로젝트**를 클릭합니다.
--   왼쪽된 창에서 클릭 **Visual C\#** 를 선택한 후 합니다 **콘솔 응용 프로그램** 템플릿.
--   입력 **DefiningQuerySample** 고 프로젝트의 이름으로 **확인**합니다.
+-   왼쪽 창에서 **Visual C\#** 을 클릭 한 다음 **콘솔 응용 프로그램** 템플릿을 선택 합니다.
+-   프로젝트 이름으로 **DefiningQuerySample** 를 입력 하 고 **확인을**클릭 합니다.
 
- 
+ 
 
 ## <a name="create-a-model-based-on-the-school-database"></a>School 데이터베이스를 기반으로 모델 만들기
 
--   솔루션 탐색기에서 프로젝트 이름을 마우스 오른쪽 **추가**를 클릭 하 고 **새 항목**합니다.
--   선택 **데이터** 선택 고 왼쪽된 메뉴에서 **ADO.NET Entity Data Model** 템플릿 창에서.
--   입력 **DefiningQueryModel.edmx** 파일 이름 및 클릭 **추가**합니다.
--   Model 콘텐츠 선택 대화 상자에서 선택 **데이터베이스에서 생성**를 클릭 하 고 **다음**합니다.
--   새 연결을 클릭 합니다. 연결 속성 대화 상자에서 서버 이름을 입력 합니다 (예를 들어 **(localdb)\\mssqllocaldb**)을 선택 인증 방법, 형식 **학교** 데이터베이스 이름에 대 한 다음 클릭 **확인**합니다.
-    데이터 연결 선택 대화 상자는 데이터베이스 연결 설정으로 업데이트 됩니다.
--   데이터베이스 개체 선택 대화 상자에서 확인 합니다 **테이블** 노드. 이 테이블을 모두 추가 합니다 **학교** 모델입니다.
--   **마침**을 클릭합니다.
--   솔루션 탐색기에서 마우스 오른쪽 단추로 클릭 합니다 **DefiningQueryModel.edmx** 파일을 선택 **연결 프로그램...** .
--   선택 **XML (텍스트) 편집기**합니다.
+-   솔루션 탐색기에서 프로젝트 이름을 마우스 오른쪽 단추로 클릭 하 고 **추가**를 가리킨 다음 **새 항목**을 클릭 합니다.
+-   왼쪽 메뉴에서 **데이터** 를 선택 하 고 템플릿 창에서 **ADO.NET 엔터티 데이터 모델** 를 선택 합니다.
+-   파일 이름에 **DefiningQueryModel** 를 입력 한 다음 **추가**를 클릭 합니다.
+-   Model 콘텐츠 선택 대화 상자에서 **데이터베이스에서 생성**을 선택 하 고 **다음**을 클릭 합니다.
+-   새 연결을 클릭 합니다. 연결 속성 대화 상자에서 서버 이름 (\\예: **mssqllocaldb**)을 입력 하 고, 인증 방법을 선택 하 고, 데이터베이스 이름으로 **School** 을 입력 한 다음, **확인**을 클릭 합니다.
+    데이터 연결 선택 대화 상자가 데이터베이스 연결 설정으로 업데이트 됩니다.
+-   데이터베이스 개체 선택 대화 상자에서 **테이블** 노드를 선택 합니다. 이렇게 하면 모든 테이블이 **School** 모델에 추가 됩니다.
+-    **마침**을 클릭 합니다.
+-   솔루션 탐색기에서 **DefiningQueryModel** 파일을 마우스 오른쪽 단추로 클릭 하 고 **연결 프로그램 ...** 을 선택 합니다.
+-   **XML (텍스트) 편집기**를 선택 합니다.
 
     ![XML 편집기](~/ef6/media/xmleditor.png)
 
--   클릭 **예** 다음 메시지와 함께 메시지가 표시 되 면:
+-   다음 메시지가 표시 되 면 **예** 를 클릭 합니다.
 
     ![경고 2](~/ef6/media/warning2.png)
 
- 
+ 
 
 ## <a name="add-a-defining-query"></a>정의 쿼리 추가
 
-정의 추가 하려면 XML 편집기를 사용 하 여이 단계에서는 쿼리 및.edmx 파일의 SSDL 섹션에는 엔터티 형식입니다. 
+이 단계에서는 XML 편집기를 사용 하 여 정의 쿼리와 엔터티 형식을 .edmx 파일의 SSDL 섹션에 추가 합니다. 
 
--   추가 된 **EntitySet** (13 년에서 5 줄).edmx 파일의 SSDL 섹션에는 요소입니다. 다음을 지정 합니다.
-    -   만 **이름** 및 **EntityType** 의 특성을 **EntitySet** 요소를 지정 합니다.
-    -   엔터티 형식의 정규화 된 이름에 사용 되는 **EntityType** 특성입니다.
-    -   에 지정 된 SQL 문을 실행 합니다 **DefiningQuery** 요소입니다.
+-   .Edmx 파일의 SSDL 섹션에 **EntitySet** 요소를 추가 합니다 (5 ~ 13 번 줄). 다음 사항을 지정합니다.
+    -    **EntitySet** 요소의 **이름** 및 **EntityType** 특성만 지정 됩니다.
+    -   엔터티 형식의 정규화 된 이름은 **EntityType** 특성에 사용 됩니다.
+    -   실행할 SQL 문은 **DefiningQuery** 요소에 지정 되어 있습니다.
 
 ``` xml
     <!-- SSDL content -->
@@ -88,9 +88,9 @@ ms.locfileid: "45489481"
           <EntitySet Name="Course" EntityType="SchoolModel.Store.Course" store:Type="Tables" Schema="dbo" />
 ```
 
--   추가 된 **EntityType** 요소를.edmx 파일의 SSDL 섹션에 있습니다. 표시 된 것 처럼 아래 파일입니다. 다음 사항에 유의하십시오.
-    -   값을 **이름** 특성의 값에 해당는 **EntityType** 특성를 **EntitySet** 요소 위의 있지만의 정규화 된 이름을 엔터티 형식에 사용 되는 **EntityType** 특성입니다.
-    -   속성 이름은 SQL 문에서 반환 되는 열 이름에 해당 합니다 **DefiningQuery** 요소 (위의 설명 참조).
+-   .Edmx의 SSDL 섹션에 **EntityType** 요소를 추가 합니다. 파일이 아래와 같이 표시 됩니다. 유의 사항은 다음과 같습니다.
+    -   **이름** 특성의 값은 위의 **EntitySet** 요소에 있는 **entitytype** 특성의 값에 해당 합니다. 하지만 엔터티 형식의 정규화 된 이름은 **entitytype** 특성에 사용 됩니다.
+    -   속성 이름은 **DefiningQuery** 요소의 SQL 문에서 반환 되는 열 이름 (위)에 해당 합니다.
     -   이 예제에서 엔터티 키는 고유 키 값을 보장하는 세 개의 속성으로 구성되어 있습니다.
 
 ``` xml
@@ -119,40 +119,40 @@ ms.locfileid: "45489481"
 ```
 
 >[!NOTE]
-> 나중에 실행 하는 경우는 **모델 업데이트 마법사** 대화 상자에서 정의 쿼리를 포함 하 여 저장소 모델에 대 한 변경 내용을 덮어쓰게 됩니다.
+> 나중에 **모델 업데이트 마법사** 대화 상자를 실행 하는 경우 쿼리 정의를 비롯 하 여 저장소 모델에 대 한 변경 내용을 덮어씁니다.
 
- 
+ 
 
 ## <a name="add-an-entity-type-to-the-model"></a>모델에 엔터티 형식 추가
 
-이 단계에서는 EF 디자이너를 사용 하 여 개념적 모델에 엔터티 형식을 추가 합니다.  다음 사항에 유의하십시오.
+이 단계에서는 EF Designer를 사용 하 여 엔터티 형식을 개념적 모델에 추가 합니다.  다음 사항에 유의 하세요.
 
--   **이름** 엔터티의 값에 해당 하는 **EntityType** 특성을 **EntitySet** 위의 요소.
--   속성 이름은 SQL 문에서 반환 되는 열 이름에 해당 합니다 **DefiningQuery** 위의 요소.
+-   엔터티의 **이름은** 위의 **EntitySet** 요소에 있는 **EntityType** 특성의 값에 해당 합니다.
+-   속성 이름은 위의 **DefiningQuery** 요소에서 SQL 문에 의해 반환 되는 열 이름에 해당 합니다.
 -   이 예제에서 엔터티 키는 고유 키 값을 보장하는 세 개의 속성으로 구성되어 있습니다.
 
 EF 디자이너에서 모델을 엽니다.
 
--   DefiningQueryModel.edmx를 두 번 클릭 합니다.
--   예를 들어 **예** 다음 메시지:
+-   DefiningQueryModel를 두 번 클릭 합니다.
+-   **예** 를 들어 다음 메시지를 표시 합니다.
 
     ![경고 2](~/ef6/media/warning2.png)
 
- 
+ 
 
-모델 편집을 위해 디자인 화면을 제공 하는 Entity Designer에 표시 됩니다.
+모델 편집을 위한 디자인 화면을 제공 하는 Entity Designer 표시 됩니다.
 
--   화면 디자이너를 마우스 오른쪽 단추로 클릭 **새로 추가**-&gt;**엔터티 중...** .
--   지정할 **GradeReport** 엔터티 이름에 대 한 및 **CourseID** 에 대 한 합니다 **키 속성**합니다.
--   마우스 오른쪽 단추로 클릭 합니다 **GradeReport** 엔터티 및 선택 **새로 추가** - &gt; **스칼라 속성**합니다.
--   속성의 기본 이름을 변경할 **FirstName**합니다.
--   다른 스칼라 속성을 추가 하 고 지정할 **LastName** 이름입니다.
--   다른 스칼라 속성을 추가 하 고 지정할 **등급** 이름입니다.
--   에 **속성** 창에서 변경 합니다 **등급**의 **형식** 속성을 **10 진수**.
--   선택 된 **FirstName** 하 고 **LastName** 속성입니다.
--   에 **속성** 창에서 변경 합니다 **EntityKey** 속성 값을 **True**합니다.
+-   디자이너 화면을 마우스 오른쪽 단추로 클릭 하 고 **추가 새**-&gt;**엔터티 ...** 를 선택 합니다.
+-   엔터티 이름에 **GradeReport** 을 지정 하 고 **키 속성**에 **CourseID** 를 지정 합니다.
+-   **GradeReport** 엔터티를 마우스 오른쪽 단추로 클릭 하 고 **Add New**-&gt; **스칼라 속성**을 선택 합니다.
+-   속성의 기본 이름을 **FirstName**으로 변경 합니다.
+-   다른 스칼라 속성을 추가 하 고 이름에 **LastName** 을 지정 합니다.
+-   다른 스칼라 속성을 추가 하 고 이름에 대해 **등급** 을 지정 합니다.
+-   **속성** 창에서 **등급**의 **Type** 속성을 **Decimal**로 변경 합니다.
+-   **FirstName** 및 **LastName** 속성을 선택 합니다.
+-   **속성** 창에서 **EntityKey** 속성 값을 **True**로 변경 합니다.
 
-결과적으로, 다음 요소를 추가한 합니다 **CSDL** .edmx 파일의 섹션입니다.
+따라서 다음 요소가 .edmx 파일의 **CSDL** 섹션에 추가 되었습니다.
 
 ``` xml
     <EntitySet Name="GradeReport" EntityType="SchoolModel.GradeReport" />
@@ -162,19 +162,19 @@ EF 디자이너에서 모델을 엽니다.
     </EntityType>
 ```
 
- 
+ 
 
-## <a name="map-the-defining-query-to-the-entity-type"></a>맵 엔터티 형식으로 정의 쿼리
+## <a name="map-the-defining-query-to-the-entity-type"></a>정의 쿼리를 엔터티 형식에 매핑
 
-이 단계에서는 개념 매핑할 매핑 정보 창 및 저장소 엔터티 형식을 사용 합니다.
+이 단계에서는 매핑 정보 창을 사용 하 여 개념 및 저장소 엔터티 형식을 매핑합니다.
 
--   마우스 오른쪽 단추로 클릭 합니다 **GradeReport** 디자인 화면에서 엔터티 **테이블 매핑**합니다.  
-    합니다 **매핑 정보** 창이 표시 됩니다.
--   선택 **GradeReport** 에서 합니다 **&lt;테이블이 나 뷰 추가&gt;** 드롭다운 목록 (아래에 있는 **테이블**s).  
-    기본 개념 간의 매핑 및 저장소 **GradeReport** 엔터티 형식을 표시 합니다.  
-    ![Details3 매핑](~/ef6/media/mappingdetails.png)
+-   디자인 화면에서 **GradeReport** 엔터티를 마우스 오른쪽 단추로 클릭 하 고 **테이블 매핑**을 선택 합니다.  
+    **매핑 정보** 창이 표시 됩니다.
+-   테이블 **또는 뷰&gt;** 드롭다운 목록 ( **테이블**s 아래에 있음)&lt;에서 **GradeReport** 을 선택 합니다.  
+    개념 및 저장소 **GradeReport** 엔터티 형식 간의 기본 매핑이 표시 됩니다.  
+    ![매핑 Details3](~/ef6/media/mappingdetails.png)
 
-결과적으로 **EntitySetMapping** 요소가.edmx 파일의 매핑 섹션에 추가 됩니다. 
+결과적으로 **EntitySetMapping** 요소가 .edmx 파일의 매핑 섹션에 추가 됩니다. 
 
 ``` xml
     <EntitySetMapping Name="GradeReports">
@@ -191,11 +191,11 @@ EF 디자이너에서 모델을 엽니다.
 
 -   애플리케이션을 컴파일합니다.
 
- 
+ 
 
 ## <a name="call-the-defining-query-in-your-code"></a>코드에서 정의 쿼리를 호출 합니다.
 
-사용 하 여 이제 정의 쿼리를 실행할 수 있습니다 합니다 **GradeReport** 엔터티 형식입니다. 
+이제 **GradeReport** 엔터티 형식을 사용 하 여 정의 쿼리를 실행할 수 있습니다. 
 
 ``` csharp
     using (var context = new SchoolEntities())

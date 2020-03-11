@@ -5,11 +5,11 @@ ms.date: 02/23/2018
 ms.assetid: 420AFFE7-B709-4A68-9149-F06F8746FB33
 uid: core/modeling/constructors
 ms.openlocfilehash: ddfaa8eebde388a9d3309f21b8891de593077956
-ms.sourcegitcommit: 2355447d89496a8ca6bcbfc0a68a14a0bf7f0327
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72811886"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414652"
 ---
 # <a name="entity-types-with-constructors"></a>생성자가 포함 된 엔터티 형식
 
@@ -48,7 +48,7 @@ public class Post
 }
 ```
 
-쿼리 결과의 경우 처럼 이러한 형식의 인스턴스를 만들 EF Core 때 먼저 기본 매개 변수가 없는 생성자를 호출한 다음 각 속성을 데이터베이스의 값으로 설정 합니다. 그러나 EF Core는 매핑된 속성의 값과 일치 하는 매개 변수 이름 및 형식이 포함 된 매개 변수가 있는 생성자를 찾은 경우 대신 해당 속성에 대 한 값으로 매개 변수가 있는 생성자를 호출 하 고 각 속성을 명시적으로 설정 하지 않습니다. 예를 들면,
+쿼리 결과의 경우 처럼 이러한 형식의 인스턴스를 만들 EF Core 때 먼저 기본 매개 변수가 없는 생성자를 호출한 다음 각 속성을 데이터베이스의 값으로 설정 합니다. 그러나 EF Core는 매핑된 속성의 값과 일치 하는 매개 변수 이름 및 형식이 포함 된 매개 변수가 있는 생성자를 찾은 경우 대신 해당 속성에 대 한 값으로 매개 변수가 있는 생성자를 호출 하 고 각 속성을 명시적으로 설정 하지 않습니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 public class Blog
@@ -87,7 +87,7 @@ public class Post
 }
 ```
 
-유의 해야 할 몇 가지 사항은 다음과 같습니다.
+유의 사항:
 
 * 일부 속성에는 생성자 매개 변수를 사용할 필요가 없습니다. 예를 들어, Post. Content 속성은 생성자 매개 변수에 의해 설정 되지 않으므로 EF Core은 일반적인 방식으로 생성자를 호출한 후이를 설정 합니다.
 * 매개 변수 형식 및 이름은 속성 형식 및 이름과 일치 해야 합니다. 단, 매개 변수는 카멜식 대/소문자를 사용할 수 있습니다.
@@ -101,7 +101,7 @@ public class Post
 * Setter가 없는 속성은 규칙에 따라 매핑되지 않습니다. 이렇게 하면 계산 된 속성과 같이 매핑해야 하는 속성을 매핑하는 경향이 있습니다.
 * 새 엔터티를 삽입할 때 키 생성기에서 키 값을 설정 해야 하므로 자동으로 생성 된 키 값을 사용 하려면 읽기/쓰기 키 속성이 필요 합니다.
 
-이러한 작업을 방지 하는 쉬운 방법은 전용 setter를 사용 하는 것입니다. 예를 들면,
+이러한 작업을 방지 하는 쉬운 방법은 전용 setter를 사용 하는 것입니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 public class Blog

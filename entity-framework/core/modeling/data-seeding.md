@@ -5,12 +5,12 @@ ms.author: ansvyryd
 ms.date: 11/02/2018
 ms.assetid: 3154BF3C-1749-4C60-8D51-AE86773AA116
 uid: core/modeling/data-seeding
-ms.openlocfilehash: 0b11b6b3104b74e09c60c9c455e22f164df493c7
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 5c056c600f696ad1443ddb7b8c95c4b0ead06d21
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73655758"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414574"
 ---
 # <a name="data-seeding"></a>데이터 시드
 
@@ -48,7 +48,7 @@ EF6와는 달리, EF Core에서 시드 데이터는 모델 구성의 일부로 �
 
 [!code-csharp[OwnedTypeSeed](../../../samples/core/Modeling/DataSeeding/DataSeedingContext.cs?name=OwnedTypeSeed)]
 
-자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Modeling/DataSeeding) 를 참조 하세요.
+자세한 컨텍스트는 [전체 샘플 프로젝트](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Modeling/DataSeeding) 를 참조 하세요.
 
 모델에 데이터를 추가한 후에는 [마이그레이션을](xref:core/managing-schemas/migrations/index) 사용 하 여 변경 내용을 적용 해야 합니다.
 

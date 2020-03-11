@@ -5,11 +5,11 @@ ms.date: 08/13/2017
 ms.assetid: 8BD43C8C-63D9-4F3A-B954-7BC518A1B7DB
 uid: core/miscellaneous/1x-2x-upgrade
 ms.openlocfilehash: b27c09fdb6210dd7c6aa0c8bc912a8bd183c16b9
-ms.sourcegitcommit: 7a709ce4f77134782393aa802df5ab2718714479
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74824423"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414232"
 ---
 # <a name="upgrading-applications-from-previous-versions-to-ef-core-20"></a>이전 버전의 응용 프로그램을 EF Core 2.0로 업그레이드
 
@@ -118,7 +118,7 @@ var tableName = context.Model.FindEntityType(typeof(User)).SqlServer().TableName
 var tableName = context.Model.FindEntityType(typeof(User)).Relational().TableName;
 ```
 
-`ForSqlServerToTable`와 같은 메서드를 사용 하는 대신 확장 메서드를 사용 하 여 현재 사용 중인 공급자에 따라 조건부 코드를 작성할 수 있습니다. 예를 들면 다음과 같습니다.:
+`ForSqlServerToTable`와 같은 메서드를 사용 하는 대신 확장 메서드를 사용 하 여 현재 사용 중인 공급자에 따라 조건부 코드를 작성할 수 있습니다. 예를 들면 다음과 같습니다.
 
 ```csharp
 modelBuilder.Entity<User>().ToTable(
@@ -135,7 +135,7 @@ EF Core는 내부 구현에 대 한 내부 `IServiceProvider` (종속성 주입 
 
 ## <a name="in-memory-databases-must-be-named"></a>메모리 내 데이터베이스의 이름을 지정 해야 합니다.
 
-명명 되지 않은 전역 메모리 내 데이터베이스가 제거 되었으며 대신 모든 메모리 내 데이터베이스의 이름을 지정 해야 합니다. 예를 들면 다음과 같습니다.:
+명명 되지 않은 전역 메모리 내 데이터베이스가 제거 되었으며 대신 모든 메모리 내 데이터베이스의 이름을 지정 해야 합니다. 예를 들면 다음과 같습니다.
 
 ``` csharp
 optionsBuilder.UseInMemoryDatabase("MyDatabase");

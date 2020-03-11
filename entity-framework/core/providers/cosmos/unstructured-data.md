@@ -6,11 +6,11 @@ ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/unstructured-data
 ms.openlocfilehash: 69f979d46174ff56310b334f28438ac271f45155
-ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/30/2020
-ms.locfileid: "76888098"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414550"
 ---
 # <a name="working-with-unstructured-data-in-ef-core-azure-cosmos-db-provider"></a>EF Core Azure Cosmos DB 공급자에서 비구조적 데이터 작업
 
@@ -55,7 +55,7 @@ EF Core은 모델에 정의 된 스키마를 따르는 데이터를 쉽게 사�
 
 ## <a name="missing-property-values"></a>누락 된 속성 값
 
-이전 예제에서는 순서에서 `"TrackingNumber"` 속성을 제거 했습니다. Cosmos DB에서 인덱싱이 작동 하는 방식 때문에, 누락 된 속성을 참조 하는 쿼리가 프로젝션의 다른 위치에서 예기치 않은 결과를 반환할 수 있습니다. 예를 들면 다음과 같습니다.:
+이전 예제에서는 순서에서 `"TrackingNumber"` 속성을 제거 했습니다. Cosmos DB에서 인덱싱이 작동 하는 방식 때문에, 누락 된 속성을 참조 하는 쿼리가 프로젝션의 다른 위치에서 예기치 않은 결과를 반환할 수 있습니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[MissingProperties](../../../../samples/core/Cosmos/UnstructuredData/Sample.cs?name=MissingProperties)]
 

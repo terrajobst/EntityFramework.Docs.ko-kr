@@ -4,26 +4,26 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 2318e4d3-f561-4720-bbc3-921556806476
 ms.openlocfilehash: 81ae186201fdfac331b1d4e7836b222545fe78b5
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489156"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78416248"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
-낙관적 동시성은 낙관적으로 로드 된 데이터베이스 데이터 엔터티 이후 변경 되지 않은 기대에 엔터티를 저장 하려고 합니다. 것으로 확인 되는 경우 예외가 발생 하 고 다시 저장 하기 전에 충돌을 해결 해야 하는 데이터가 변경 되었습니다. 이 항목에서는 Entity Framework에서 이러한 예외를 처리 하는 방법에 설명 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
+낙관적 동시성에는 엔터티가 로드 된 후 데이터가 변경 되지 않은 것으로 낙관적으로 데이터베이스에 엔터티를 저장 하려고 시도 하는 작업이 포함 됩니다. 데이터가 변경 된 것으로 확인 되 면 예외가 throw 되 고 저장을 다시 시도 하기 전에 충돌을 해결 해야 합니다. 이 항목에서는 Entity Framework에서 이러한 예외를 처리 하는 방법을 설명 합니다. 이 토픽에서 설명하는 방법은 Code First 및 EF 디자이너를 사용하여 만든 모델에 동일하게 적용됩니다.  
 
-이 게시물에 대 한 전체 설명은 낙관적 동시성을 적절 한 위치로 아닙니다. 아래 섹션에서는 동시성 확인에 대 한 지식을 가정 하 고 일반적인 작업에 대 한 패턴을 보여 줍니다.  
+이 게시물은 낙관적 동시성에 대 한 전체 설명을 위한 적절 한 위치가 아닙니다. 다음 섹션에서는 동시성 확인에 대 한 몇 가지 정보를 가정 하 고 일반적인 태스크에 대 한 패턴을 보여 줍니다.  
 
-이러한 패턴의 대부분에서 다루는 항목 사용 [속성 값을 사용 하 여 작업](~/ef6/saving/change-tracking/property-values.md)합니다.  
+이러한 패턴은 대부분 [속성 값 작업](~/ef6/saving/change-tracking/property-values.md)에 설명 된 항목을 활용 합니다.  
 
-(여기서 외래 키에 매핑되지 않은 엔터티에 속성) 독립 연결을 사용할 때 동시성 문제를 해결 하는 것은 외래 키 연결을 사용할 때 보다 훨씬 더 어렵습니다. 따라서 응용 프로그램에서 동시성 확인을 수행 하려는 경우 엔터티를 외래 키에 항상 매핑하는 것이 좋습니다. 아래의 모든 예제는 외래 키 연결을 사용 한다고 가정 합니다.  
+외래 키가 엔터티의 속성에 매핑되지 않는 독립 연결을 사용할 때 동시성 문제를 해결 하는 것은 외래 키 연결을 사용 하는 경우 보다 훨씬 더 어렵습니다. 따라서 응용 프로그램에서 동시성을 확인 하려는 경우 항상 외래 키를 엔터티에 매핑하는 것이 좋습니다. 아래의 모든 예제에서는 외래 키 연결을 사용 한다고 가정 합니다.  
 
-외래 키 연결을 사용 하는 엔터티를 저장 하는 동안 낙관적 동시성 예외가 발견 되는 DbUpdateConcurrencyException SaveChanges에서 throw 됩니다.  
+외래 키 연결을 사용 하는 엔터티를 저장 하려고 시도 하는 동안 낙관적 동시성 예외가 검색 되 면 SaveChanges에서 DbUpdateConcurrencyException이 throw 됩니다.  
 
-## <a name="resolving-optimistic-concurrency-exceptions-with-reload-database-wins"></a>다시 로드 (데이터베이스 wins)를 사용 하 여 낙관적 동시성 예외를 확인합니다.  
+## <a name="resolving-optimistic-concurrency-exceptions-with-reload-database-wins"></a>다시 로드를 사용 하 여 낙관적 동시성 예외 해결 (데이터베이스 wins)  
 
-다시 로드 메서드는 데이터베이스의 현재 값을 사용 하 여 엔터티의 현재 값을 덮어써서 데 사용할 수 있습니다. 엔터티는 다음 일반적으로 다시 모종의 형태로 사용자에 게 고 변경 사항을 다시 확인 하 고 다시 저장 하려고 해야 합니다. 예를 들어:  
+Reload 메서드를 사용 하 여 엔터티의 현재 값을 데이터베이스의 현재 값으로 덮어쓸 수 있습니다. 엔터티는 일반적으로 특정 형식으로 사용자에 게 다시 제공 되며 다시 변경 하 고 다시 저장 해야 합니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -52,18 +52,18 @@ using (var context = new BloggingContext())
 }
 ```  
 
-동시성 예외를 시뮬레이션 하기 위해 SaveChanges 호출에 중단점을 설정 하 고 다음 SQL Management Studio와 같은 다른 도구를 사용 하 여 데이터베이스에 저장 되는 엔터티를 수정 하는 것이 좋습니다. 또한 SqlCommand를 사용 하 여 직접 데이터베이스를 업데이트 하는 SaveChanges 앞에 줄을 삽입할 수 있습니다. 예를 들어:  
+동시성 예외를 시뮬레이션 하는 좋은 방법은 SaveChanges 호출에 중단점을 설정한 다음 SQL Management Studio와 같은 다른 도구를 사용 하 여 데이터베이스에 저장 되는 엔터티를 수정 하는 것입니다. SaveChanges 앞에 줄을 삽입 하 여 SqlCommand를 사용 하 여 데이터베이스를 직접 업데이트할 수도 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 context.Database.SqlCommand(
     "UPDATE dbo.Blogs SET Name = 'Another Name' WHERE BlogId = 1");
 ```  
 
-DbUpdateConcurrencyException 항목 메서드 업데이트에 실패 한 엔터티에 대 한 DbEntityEntry 인스턴스를 반환 합니다. (이 속성 현재은 항상 반환 동시성 문제에 대 한 단일 값입니다. 이 값을 반환할 수 여러 일반적인 업데이트 예외에 대 한 합니다.) 이들 각각에 대해 호출을 다시 로드 및 일부 상황에서는 대신 데이터베이스에서 다시 로드 해야 하는 모든 엔터티에 대 한 항목을 가져올 수 있습니다.  
+DbUpdateConcurrencyException의 Entries 메서드는 업데이트 하지 못한 엔터티에 대 한 DbEntityEntry 인스턴스를 반환 합니다. 이 속성은 현재 동시성 문제에 대 한 단일 값을 항상 반환 합니다. 일반 업데이트 예외에 대해 여러 값을 반환할 수 있습니다. 경우에 따라 데이터베이스에서 다시 로드 해야 할 수 있는 모든 엔터티에 대 한 항목을 가져오고 각 엔터티에 대해 다시 로드를 호출 하는 것이 원인일 수 있습니다.  
 
-## <a name="resolving-optimistic-concurrency-exceptions-as-client-wins"></a>클라이언트 우선으로 낙관적 동시성 예외를 확인합니다.  
+## <a name="resolving-optimistic-concurrency-exceptions-as-client-wins"></a>클라이언트 wins로 낙관적 동시성 예외 해결  
 
-다시 로드를 사용 하는 위의 예제에는 데이터베이스 wins 라고 합니다. 또는 엔터티 내의 값은 데이터베이스에서 값으로 덮어쓰기 때문에 저장소 우선 합니다. 경우에 따라 반대를 엔터티의 현재 값을 사용 하 여 데이터베이스의 값을 덮어쓸 수도 있습니다. 클라이언트 우선 라고 하 고 현재 데이터베이스 값을 가져오고 엔터티에 대 한 원래 값으로 설정 하 여 수행할 수 있습니다. (참조 [속성 값을 사용 하 여 작업](~/ef6/saving/change-tracking/property-values.md) 현재 값인 원래 값에 대 한 정보에 대 한 합니다.) 예를 들어:  
+엔터티의 값을 데이터베이스의 값으로 덮어쓰기 때문에 다시 로드를 사용 하는 위의 예제를 데이터베이스 wins 또는 저장소 wins 라고도 합니다. 경우에 따라 데이터베이스의 값을 현재 엔터티에 있는 값으로 덮어쓸 수도 있습니다. 이를 클라이언트 wins 라고도 하며, 현재 데이터베이스 값을 가져와 엔터티에 대 한 원래 값으로 설정 하 여 수행할 수 있습니다. 현재 값과 원래 값에 대 한 자세한 내용은 [속성 값 작업](~/ef6/saving/change-tracking/property-values.md) 을 참조 하세요. 예를 들어:  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -92,9 +92,9 @@ using (var context = new BloggingContext())
 }
 ```  
 
-## <a name="custom-resolution-of-optimistic-concurrency-exceptions"></a>사용자 지정 해결 낙관적 동시성 예외  
+## <a name="custom-resolution-of-optimistic-concurrency-exceptions"></a>낙관적 동시성 예외의 사용자 지정 확인  
 
-경우에 따라 다음 엔터티의 현재 값을 사용 하 여 데이터베이스의 현재 값을 결합 하는 것이 좋습니다. 일반적으로 일부 사용자 지정 논리 또는 사용자 상호 작용이 필요합니다. 예를 들어, 현재 값을 데이터베이스에서 값을 포함 하는 사용자에 게 표시 수 있습니다 하 고 확인 되는 값의 기본 설정 합니다. 사용자는 필요에 따라 확인 된 값을 수정 합니다. 이러한 확인 되는 값을 데이터베이스에 저장 하는 것을 이렇게 하려면 엔터티의 항목 CurrentValues 및 GetDatabaseValues에서 반환 된 DbPropertyValues 개체를 사용 하 여 합니다. 예를 들어:  
+현재 데이터베이스에 있는 값을 현재 엔터티에 있는 값과 결합할 수 있습니다. 일반적으로 사용자 지정 논리 또는 사용자 조작이 필요 합니다. 예를 들어 현재 값, 데이터베이스의 값 및 확인 된 값의 기본 집합을 포함 하는 사용자에 게 폼을 제공할 수 있습니다. 그런 다음 사용자는 필요에 따라 확인 된 값을 편집 하 고 이러한 값이 데이터베이스에 저장 됩니다. 이 작업은 CurrentValues에서 반환 된 DbPropertyValues 개체와 엔터티 항목의 GetDatabaseValues를 사용 하 여 수행할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())
@@ -143,9 +143,9 @@ public void HaveUserResolveConcurrency(DbPropertyValues currentValues,
 }
 ```  
 
-## <a name="custom-resolution-of-optimistic-concurrency-exceptions-using-objects"></a>사용자 지정 개체를 사용 하 여 낙관적 동시성 예외 확인  
+## <a name="custom-resolution-of-optimistic-concurrency-exceptions-using-objects"></a>개체를 사용한 낙관적 동시성 예외의 사용자 지정 확인  
 
-위의 코드는 현재 전달, 데이터베이스 및 확인 되는 값에 대 한 DbPropertyValues 인스턴스를 사용합니다. 경우에 따라 쉽게이 엔터티 형식의 인스턴스를 사용할 수 있습니다. 이렇게 하려면 DbPropertyValues의 ToObject 및 SetValues 메서드를 사용 합니다. 예를 들어:  
+위의 코드는 DbPropertyValues 인스턴스를 사용 하 여 현재, 데이터베이스 및 해결 된 값을 전달 합니다. 경우에 따라이에 대 한 엔터티 형식의 인스턴스를 사용 하는 것이 더 쉬울 수 있습니다. DbPropertyValues의 ToObject 및 SetValues 메서드를 사용 하 여이 작업을 수행할 수 있습니다. 예를 들면 다음과 같습니다.  
 
 ``` csharp
 using (var context = new BloggingContext())

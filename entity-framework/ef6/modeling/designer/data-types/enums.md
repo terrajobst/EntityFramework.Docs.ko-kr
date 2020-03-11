@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: c6ae6d8f-1ace-47db-ad47-b1718f1ba082
 ms.openlocfilehash: 92a763b84a04d3ce7ec0853ef2a4852356cf7997
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72182515"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78415354"
 ---
 # <a name="enum-support---ef-designer"></a>열거형 지원-EF 디자이너
 > [!NOTE]
@@ -46,7 +46,7 @@ Entity Framework에서 열거형은 **Byte**, **Int16**, **Int32**, **Int64** �
 2.  왼쪽 메뉴에서 **데이터** 를 선택 하 고 템플릿 창에서 **ADO.NET 엔터티 데이터 모델** 를 선택 합니다.
 3.  파일 이름으로 **Enumtestmodel .edmx** 를 입력 한 다음 **추가** 를 클릭 합니다.
 4.  엔터티 데이터 모델 마법사 페이지의 Model 콘텐츠 선택 대화 상자에서 **빈 모델** 을 선택 합니다.
-5.  **마침** 클릭
+5.  **마침**을 클릭합니다.
 
 모델 편집을 위한 디자인 화면을 제공 하는 Entity Designer 표시 됩니다.
 
