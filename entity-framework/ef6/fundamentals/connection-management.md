@@ -4,32 +4,32 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: ecaa5a27-b19e-4bf9-8142-a3fb00642270
 ms.openlocfilehash: a6352bbbc38c38bd5f30536736ec969056df2c7d
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45489338"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414868"
 ---
-# <a name="connection-management"></a><span data-ttu-id="5d2d3-102">연결 관리</span><span class="sxs-lookup"><span data-stu-id="5d2d3-102">Connection management</span></span>
-<span data-ttu-id="5d2d3-103">이 페이지는 컨텍스트 및의 기능에 연결을 전달 하는 관련 하 여 Entity Framework의 동작을 설명 합니다 **Database.Connection.Open()** API.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-103">This page describes the behavior of Entity Framework with regard to passing connections to the context and the functionality of the **Database.Connection.Open()** API.</span></span>  
+# <a name="connection-management"></a><span data-ttu-id="868f5-102">연결 관리</span><span class="sxs-lookup"><span data-stu-id="868f5-102">Connection management</span></span>
+<span data-ttu-id="868f5-103">이 페이지에서는 컨텍스트와 데이터베이스의 기능에 연결을 전달 하는 것과 관련 된 Entity Framework 동작에 대해 설명 합니다. **Open ()** API.</span><span class="sxs-lookup"><span data-stu-id="868f5-103">This page describes the behavior of Entity Framework with regard to passing connections to the context and the functionality of the **Database.Connection.Open()** API.</span></span>  
 
-## <a name="passing-connections-to-the-context"></a><span data-ttu-id="5d2d3-104">컨텍스트에 전달 연결</span><span class="sxs-lookup"><span data-stu-id="5d2d3-104">Passing Connections to the Context</span></span>  
+## <a name="passing-connections-to-the-context"></a><span data-ttu-id="868f5-104">컨텍스트에 연결 전달</span><span class="sxs-lookup"><span data-stu-id="868f5-104">Passing Connections to the Context</span></span>  
 
-### <a name="behavior-for-ef5-and-earlier-versions"></a><span data-ttu-id="5d2d3-105">EF5 및 이전 버전에 대 한 동작</span><span class="sxs-lookup"><span data-stu-id="5d2d3-105">Behavior for EF5 and earlier versions</span></span>  
+### <a name="behavior-for-ef5-and-earlier-versions"></a><span data-ttu-id="868f5-105">EF5 이전 버전에 대 한 동작</span><span class="sxs-lookup"><span data-stu-id="868f5-105">Behavior for EF5 and earlier versions</span></span>  
 
-<span data-ttu-id="5d2d3-106">연결을 허용 하는 생성자 두 가지가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-106">There are two constructors which accept connections:</span></span>  
+<span data-ttu-id="868f5-106">연결을 허용 하는 두 개의 생성자가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-106">There are two constructors which accept connections:</span></span>  
 
 ``` csharp
 public DbContext(DbConnection existingConnection, bool contextOwnsConnection)
 public DbContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
 ```  
 
-<span data-ttu-id="5d2d3-107">이 방법을 사용 하는 것이 가능 하지만 몇 가지 제한 사항 해결 해야:</span><span class="sxs-lookup"><span data-stu-id="5d2d3-107">It is possible to use these but you have to work around a couple of limitations:</span></span>  
+<span data-ttu-id="868f5-107">이러한 작업은 사용할 수 있지만 몇 가지 제한 사항을 해결 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-107">It is possible to use these but you have to work around a couple of limitations:</span></span>  
 
-1. <span data-ttu-id="5d2d3-108">그런 다음 처음 프레임 워크를 InvalidOperationException 예외가 사용 하려고 합니다. 이러한 열려 있는 연결을 전달 하면 말하고 다시 열 수 없습니다 이미 열려 있는 연결 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-108">If you pass an open connection to either of these then the first time the framework attempts to use it an InvalidOperationException is thrown saying it cannot re-open an already open connection.</span></span>  
-2. <span data-ttu-id="5d2d3-109">ContextOwnsConnection 플래그 컨텍스트가 삭제 될 때 기본 저장소 연결을 삭제 해야 하는지 여부를 의미로 해석 됩니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-109">The contextOwnsConnection flag is interpreted to mean whether or not the underlying store connection should be disposed when the context is disposed.</span></span> <span data-ttu-id="5d2d3-110">그러나 해당 설정에 관계 없이 저장소 연결이 항상 닫힌 컨텍스트가 삭제 될 때.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-110">But, regardless of that setting, the store connection is always closed when the context is disposed.</span></span> <span data-ttu-id="5d2d3-111">동일한 연결을 사용 하 여 DbContext를 둘 이상 있는 경우 어떤 컨텍스트가 먼저 연결을 종료 합니다 (마찬가지로 DbContext 사용 하 여 기존 ADO.NET 연결을 혼합 한 경우 DbContext 항상 연결이 닫힙니다 삭제 되 면) 하므로 .</span><span class="sxs-lookup"><span data-stu-id="5d2d3-111">So if you have more than one DbContext with the same connection whichever context is disposed first will close the connection (similarly if you have mixed an existing ADO.NET connection with a DbContext, DbContext will always close the connection when it is disposed).</span></span>  
+1. <span data-ttu-id="868f5-108">이러한 두 개체 중 하나에 대 한 열린 연결을 전달 하는 경우 프레임 워크에서 처음으로 사용 하려고 하면 이미 열려 있는 연결을 다시 열 수 없다는 InvalidOperationException이 throw 됩니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-108">If you pass an open connection to either of these then the first time the framework attempts to use it an InvalidOperationException is thrown saying it cannot re-open an already open connection.</span></span>  
+2. <span data-ttu-id="868f5-109">ContextOwnsConnection 플래그는 컨텍스트가 삭제 될 때 기본 저장소 연결을 삭제 해야 하는지 여부를 의미 하는 것으로 해석 됩니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-109">The contextOwnsConnection flag is interpreted to mean whether or not the underlying store connection should be disposed when the context is disposed.</span></span> <span data-ttu-id="868f5-110">그러나이 설정에 관계 없이 컨텍스트가 삭제 되 면 항상 저장소 연결이 닫힙니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-110">But, regardless of that setting, the store connection is always closed when the context is disposed.</span></span> <span data-ttu-id="868f5-111">따라서 동일한 연결을 사용 하는 DbContext이 두 개 이상 있는 경우 어떤 컨텍스트가 먼저 삭제 되는지는 먼저 연결을 닫습니다. 예를 들어 DbContext를 사용 하 여 기존 ADO.NET 연결을 혼합 한 경우 DbContext는 항상 연결이 삭제 될 때 해당 연결을 닫습니다. .</span><span class="sxs-lookup"><span data-stu-id="868f5-111">So if you have more than one DbContext with the same connection whichever context is disposed first will close the connection (similarly if you have mixed an existing ADO.NET connection with a DbContext, DbContext will always close the connection when it is disposed).</span></span>  
 
-<span data-ttu-id="5d2d3-112">닫힌된 연결을 전달 하 고만 열리는 것 모든 컨텍스트에서 생성 된 후 코드를 실행 하 여 위의 첫 번째 제한 사항을 해결 하는 것이 가능 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-112">It is possible to work around the first limitation above by passing a closed connection and only executing code that would open it once all contexts have been created:</span></span>  
+<span data-ttu-id="868f5-112">닫힌 연결을 전달 하 고, 모든 컨텍스트를 만든 후에 해당 연결을 여는 코드를 실행 하는 경우 위의 첫 번째 제한 사항을 해결할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-112">It is possible to work around the first limitation above by passing a closed connection and only executing code that would open it once all contexts have been created:</span></span>  
 
 ``` csharp
 using System.Collections.Generic;
@@ -71,11 +71,11 @@ namespace ConnectionManagementExamples
 }
 ```  
 
-<span data-ttu-id="5d2d3-113">두 번째 제한은 의미에서 닫을 수에 대 한 연결에 대 한 준비가 될 때까지 DbContext 개체를 삭제 하지 않도록 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-113">The second limitation just means you need to refrain from disposing any of your DbContext objects until you are ready for the connection to be closed.</span></span>  
+<span data-ttu-id="868f5-113">두 번째 제한은 연결을 닫을 준비가 될 때까지 DbContext 개체를 삭제 하는 것을 방지 해야 한다는 것을 의미 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-113">The second limitation just means you need to refrain from disposing any of your DbContext objects until you are ready for the connection to be closed.</span></span>  
 
-### <a name="behavior-in-ef6-and-future-versions"></a><span data-ttu-id="5d2d3-114">EF6 및 이후 버전의 동작</span><span class="sxs-lookup"><span data-stu-id="5d2d3-114">Behavior in EF6 and future versions</span></span>  
+### <a name="behavior-in-ef6-and-future-versions"></a><span data-ttu-id="868f5-114">EF6 및 이후 버전의 동작</span><span class="sxs-lookup"><span data-stu-id="868f5-114">Behavior in EF6 and future versions</span></span>  
 
-<span data-ttu-id="5d2d3-115">EF6 및 이후 버전에서 DbContext 동일한 두 명의 생성자가 있지만 수신 될 때 생성자에 전달 된 연결을 닫을 수 있음을 더 이상 필요 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-115">In EF6 and future versions the DbContext has the same two constructors but no longer requires that the connection passed to the constructor be closed when it is received.</span></span> <span data-ttu-id="5d2d3-116">따라서이 수 있게 되었습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-116">So this is now possible:</span></span>  
+<span data-ttu-id="868f5-115">EF6 및 이후 버전에서 DbContext는 동일한 두 개의 생성자를 포함 하지만 수신 될 때 생성자에 전달 된 연결을 닫을 필요가 없습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-115">In EF6 and future versions the DbContext has the same two constructors but no longer requires that the connection passed to the constructor be closed when it is received.</span></span> <span data-ttu-id="868f5-116">이제 다음과 같은 작업을 수행할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-116">So this is now possible:</span></span>  
 
 ``` csharp
 using System.Collections.Generic;
@@ -123,24 +123,24 @@ namespace ConnectionManagementExamples
 }
 ```  
 
-<span data-ttu-id="5d2d3-117">ContextOwnsConnection 플래그를 지금 제어 여부는 연결이 모두 닫히고 DbContext가 삭제 될 때 삭제 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-117">Also the contextOwnsConnection flag now controls whether or not the connection is both closed and disposed when the DbContext is disposed.</span></span> <span data-ttu-id="5d2d3-118">위의 예제에서 연결이 닫혀 있지 않으면 컨텍스트가 경우 하므로 이전 버전의 EF 되었을 있지만 자체 연결이 삭제 될 때가 아니라 (줄 32)를 삭제 (40 줄).</span><span class="sxs-lookup"><span data-stu-id="5d2d3-118">So in the above example the connection is not closed when the context is disposed (line 32) as it would have been in previous versions of EF, but rather when the connection itself is disposed (line 40).</span></span>  
+<span data-ttu-id="868f5-117">또한 contextOwnsConnection 플래그는 이제 DbContext 삭제 될 때 연결이 닫히고 삭제 되는지 여부를 제어 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-117">Also the contextOwnsConnection flag now controls whether or not the connection is both closed and disposed when the DbContext is disposed.</span></span> <span data-ttu-id="868f5-118">따라서 위의 예에서는 컨텍스트가 삭제 될 때 (32 줄) 연결이 닫혀 있지 않습니다. 즉, 이전 버전의 EF에서와 같이 연결 자체가 삭제 된 경우 (40 줄)에는 연결이 닫혀 있지 않습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-118">So in the above example the connection is not closed when the context is disposed (line 32) as it would have been in previous versions of EF, but rather when the connection itself is disposed (line 40).</span></span>  
 
-<span data-ttu-id="5d2d3-119">물론 것도 가능 (방금 true 또는 다른 생성자 중 하나를 사용 하려면 집합 contextOwnsConnection) 연결을 제어할 수 dbcontext 따라서 하려는 경우.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-119">Of course it is still possible for the DbContext to take control of the connection (just set contextOwnsConnection to true or use one of the other constructors) if you so wish.</span></span>  
+<span data-ttu-id="868f5-119">물론 원하는 경우에도 DbContext가 연결을 제어할 수 있습니다 (contextOwnsConnection를 true로 설정 하거나 다른 생성자 중 하나를 사용).</span><span class="sxs-lookup"><span data-stu-id="868f5-119">Of course it is still possible for the DbContext to take control of the connection (just set contextOwnsConnection to true or use one of the other constructors) if you so wish.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="5d2d3-120">이 새 모델을 사용 하 여 트랜잭션을 사용할 때는 몇 가지 추가 고려 사항이 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-120">There are some additional considerations when using transactions with this new model.</span></span> <span data-ttu-id="5d2d3-121">자세한 내용은 참조 하십시오 [트랜잭션과 작업](~/ef6/saving/transactions.md)합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-121">For details see [Working with Transactions](~/ef6/saving/transactions.md).</span></span>  
+> <span data-ttu-id="868f5-120">이 새 모델에서 트랜잭션을 사용할 때 몇 가지 사항을 추가로 고려해 야 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-120">There are some additional considerations when using transactions with this new model.</span></span> <span data-ttu-id="868f5-121">자세한 내용은 [트랜잭션 작업](~/ef6/saving/transactions.md)을 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="868f5-121">For details see [Working with Transactions](~/ef6/saving/transactions.md).</span></span>  
 
-## <a name="databaseconnectionopen"></a><span data-ttu-id="5d2d3-122">Database.Connection.Open()</span><span class="sxs-lookup"><span data-stu-id="5d2d3-122">Database.Connection.Open()</span></span>  
+## <a name="databaseconnectionopen"></a><span data-ttu-id="868f5-122">Database. Connection. Open ()</span><span class="sxs-lookup"><span data-stu-id="868f5-122">Database.Connection.Open()</span></span>  
 
-### <a name="behavior-for-ef5-and-earlier-versions"></a><span data-ttu-id="5d2d3-123">EF5 및 이전 버전에 대 한 동작</span><span class="sxs-lookup"><span data-stu-id="5d2d3-123">Behavior for EF5 and earlier versions</span></span>  
+### <a name="behavior-for-ef5-and-earlier-versions"></a><span data-ttu-id="868f5-123">EF5 이전 버전에 대 한 동작</span><span class="sxs-lookup"><span data-stu-id="868f5-123">Behavior for EF5 and earlier versions</span></span>  
 
-<span data-ttu-id="5d2d3-124">EF5 및 이전 버전에는 버그는 합니다 **ObjectContext.Connection.State** 기본 저장소 연결의 실제 상태를 반영 하도록 업데이트 되지 않았습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-124">In EF5 and earlier versions there is a bug such that the **ObjectContext.Connection.State** was not updated to reflect the true state of the underlying store connection.</span></span> <span data-ttu-id="5d2d3-125">예를 들어, 다음 코드를 실행 하는 경우 있습니다 수 반환할 상태 **닫힘** 기본 연결을 저장 하는 사실 없지만입니다 **오픈**합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-125">For example, if you executed the following code you can be returned the status **Closed** even though in fact the underlying store connection is **Open**.</span></span>  
+<span data-ttu-id="868f5-124">EF5 이전 버전에서는 기본 저장소 연결의 실제 상태를 반영 하도록 **ObjectContext** 를 업데이트 하지 않은 버그가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-124">In EF5 and earlier versions there is a bug such that the **ObjectContext.Connection.State** was not updated to reflect the true state of the underlying store connection.</span></span> <span data-ttu-id="868f5-125">예를 들어 다음 코드를 실행 하는 경우 기본 저장소 연결이 **열려**있더라도 상태를 **닫을** 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-125">For example, if you executed the following code you can be returned the status **Closed** even though in fact the underlying store connection is **Open**.</span></span>  
 
 ``` csharp
 ((IObjectContextAdapter)context).ObjectContext.Connection.State
 ```  
 
-<span data-ttu-id="5d2d3-126">별도로 Database.Connection.Open()를 호출 하 여 데이터베이스 연결을 열면 됩니다 열린 다음에 하면 쿼리를 실행 하거나 데이터베이스에 연결 해야 하는 호출 될 때까지 (예를 들어 SaveChanges()) 뒤는 기본 저장소 연결을 닫습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-126">Separately, if you open the database connection by calling Database.Connection.Open() it will be open until the next time you execute a query or call anything which requires a database connection (for example, SaveChanges()) but after that the underlying store connection will be closed.</span></span> <span data-ttu-id="5d2d3-127">컨텍스트를 다시 열리고 다시 다른 데이터베이스 작업은 필요 하 든 지 연결을 닫습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-127">The context will then re-open and re-close the connection any time another database operation is required:</span></span>  
+<span data-ttu-id="868f5-126">데이터베이스 연결을 호출 하 여 데이터베이스 연결을 여는 경우에는 다음에 쿼리를 실행 하거나 데이터베이스 연결을 필요로 하는 모든 항목 (예: SaveChanges ())을 호출 하는 경우를 제외 하 고 기본 저장소 연결을 닫습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-126">Separately, if you open the database connection by calling Database.Connection.Open() it will be open until the next time you execute a query or call anything which requires a database connection (for example, SaveChanges()) but after that the underlying store connection will be closed.</span></span> <span data-ttu-id="868f5-127">그러면 컨텍스트는 다른 데이터베이스 작업이 필요한 경우 언제 든 지 다시 열고 다시 연결을 닫습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-127">The context will then re-open and re-close the connection any time another database operation is required:</span></span>  
 
 ``` csharp
 using System;
@@ -184,14 +184,14 @@ namespace ConnectionManagementExamples
 }
 ```  
 
-### <a name="behavior-in-ef6-and-future-versions"></a><span data-ttu-id="5d2d3-128">EF6 및 이후 버전의 동작</span><span class="sxs-lookup"><span data-stu-id="5d2d3-128">Behavior in EF6 and future versions</span></span>  
+### <a name="behavior-in-ef6-and-future-versions"></a><span data-ttu-id="868f5-128">EF6 및 이후 버전의 동작</span><span class="sxs-lookup"><span data-stu-id="868f5-128">Behavior in EF6 and future versions</span></span>  
 
-<span data-ttu-id="5d2d3-129">EF6 및 이후 버전에 대 한 이동 방법은 호출 코드에서 호출 컨텍스트와 연결 하 여 하기로 선택한 경우. Database.Connection.Open() 고 이렇게 하는 것에 대 한 이유가 있으며 열기 및 연결의 닫기에 대 한 제어 하려고 하면 연결이 자동으로 닫힙니다 더 이상를 프레임 워크를 가정 합니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-129">For EF6 and future versions we have taken the approach that if the calling code chooses to open the connection by calling context.Database.Connection.Open() then it has a good reason for doing so and the framework will assume that it wants control over opening and closing of the connection and will no longer close the connection automatically.</span></span>  
+<span data-ttu-id="868f5-129">EF6 및 이후 버전의 경우 호출 하는 코드가 컨텍스트를 호출 하 여 연결을 열도록 선택 하는 방식을 수행 했습니다. Database. Connection. Open ()을 수행 하는 것이 좋습니다 .이 경우 프레임 워크는 연결 열기 및 닫기를 제어 하 고 더 이상 연결을 자동으로 닫지 않는 것으로 가정 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-129">For EF6 and future versions we have taken the approach that if the calling code chooses to open the connection by calling context.Database.Connection.Open() then it has a good reason for doing so and the framework will assume that it wants control over opening and closing of the connection and will no longer close the connection automatically.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="5d2d3-130">오랫동안 신중 하 게 되므로 사용에 대 한 열려 있는 연결을 일으킬 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-130">This can potentially lead to connections which are open for a long time so use with care.</span></span>  
+> <span data-ttu-id="868f5-130">이로 인해 오랜 시간 동안 열려 있는 연결을 사용 하 여 신중 하 게 사용할 수 있습니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-130">This can potentially lead to connections which are open for a long time so use with care.</span></span>  
 
-<span data-ttu-id="5d2d3-131">코드를 ObjectContext.Connection.State 이제는 추적 기본 연결 상태를 올바르게 있도록도 업데이트 했습니다.</span><span class="sxs-lookup"><span data-stu-id="5d2d3-131">We also updated the code so that ObjectContext.Connection.State now keeps track of the state of the underlying connection correctly.</span></span>  
+<span data-ttu-id="868f5-131">또한 코드를 업데이트 하 여 이제 ObjectContext. Connection. State가 기본 연결의 상태를 올바르게 추적 합니다.</span><span class="sxs-lookup"><span data-stu-id="868f5-131">We also updated the code so that ObjectContext.Connection.State now keeps track of the state of the underlying connection correctly.</span></span>  
 
 ``` csharp
 using System;

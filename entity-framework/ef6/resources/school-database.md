@@ -4,36 +4,36 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: e83a6a06-e63b-4530-8656-614bf609b12b
 ms.openlocfilehash: 1e9dc98edb8590021bbf3393e9edda1929d505e0
-ms.sourcegitcommit: 2b787009fd5be5627f1189ee396e708cd130e07b
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45490716"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78414394"
 ---
-# <a name="school-sample-database"></a><span data-ttu-id="8bd97-102">School 샘플 데이터베이스</span><span class="sxs-lookup"><span data-stu-id="8bd97-102">School Sample Database</span></span>
-<span data-ttu-id="8bd97-103">이 항목에서는 스키마 및 School 데이터베이스에 대 한 데이터를 포함합니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-103">This topic contains the schema and data for the School database.</span></span> <span data-ttu-id="8bd97-104">샘플 School 데이터베이스는 Entity Framework 설명서의 여러 위치에서 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-104">The sample School database is used in various places throughout the Entity Framework documentation.</span></span>  
+# <a name="school-sample-database"></a><span data-ttu-id="25eaf-102">School 샘플 데이터베이스</span><span class="sxs-lookup"><span data-stu-id="25eaf-102">School Sample Database</span></span>
+<span data-ttu-id="25eaf-103">이 항목에는 School 데이터베이스의 스키마 및 데이터가 포함 되어 있습니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-103">This topic contains the schema and data for the School database.</span></span> <span data-ttu-id="25eaf-104">샘플 School 데이터베이스는 Entity Framework 설명서 전체에서 다양 한 위치에 사용 됩니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-104">The sample School database is used in various places throughout the Entity Framework documentation.</span></span>  
 
 > [!NOTE]
-> <span data-ttu-id="8bd97-105">Visual Studio와 함께 설치 되는 데이터베이스 서버 사용 하면 Visual Studio의 버전에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-105">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you use.</span></span> <span data-ttu-id="8bd97-106">참조 [Visual Studio 릴리스](~/ef6/what-is-new/visual-studio.md) 사용에 대 한 자세한 내용은 합니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-106">See [Visual Studio Releases](~/ef6/what-is-new/visual-studio.md) for details on what to use.</span></span>  
+> <span data-ttu-id="25eaf-105">Visual Studio와 함께 설치 되는 데이터베이스 서버는 사용 하는 Visual Studio 버전에 따라 다릅니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-105">The database server that is installed with Visual Studio is different depending on the version of Visual Studio you use.</span></span> <span data-ttu-id="25eaf-106">사용할 항목에 대 한 자세한 내용은 [Visual Studio 릴리스](~/ef6/what-is-new/visual-studio.md) 를 참조 하세요.</span><span class="sxs-lookup"><span data-stu-id="25eaf-106">See [Visual Studio Releases](~/ef6/what-is-new/visual-studio.md) for details on what to use.</span></span>  
 
-<span data-ttu-id="8bd97-107">데이터베이스를 만드는 단계는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-107">Here are the steps to create the database:</span></span>
+<span data-ttu-id="25eaf-107">데이터베이스를 만드는 단계는 다음과 같습니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-107">Here are the steps to create the database:</span></span>
 
-- <span data-ttu-id="8bd97-108">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-108">Open Visual Studio</span></span>  
-- <span data-ttu-id="8bd97-109">**뷰** -> **서버 탐색기**</span><span class="sxs-lookup"><span data-stu-id="8bd97-109">**View** -> **Server Explorer**</span></span>  
-- <span data-ttu-id="8bd97-110">마우스 오른쪽 단추로 클릭 **데이터 연결** -> **연결 추가 중...**</span><span class="sxs-lookup"><span data-stu-id="8bd97-110">Right click on **Data Connections** -> **Add Connection…**</span></span>  
-- <span data-ttu-id="8bd97-111">선택 해야 하기 전에 서버 탐색기에서 데이터베이스에 연결 하지 않았으면 **Microsoft SQL Server** 데이터 원본으로</span><span class="sxs-lookup"><span data-stu-id="8bd97-111">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>  
-- <span data-ttu-id="8bd97-112">LocalDB 또는 어느에 따라 설치한 SQL Express에 연결</span><span class="sxs-lookup"><span data-stu-id="8bd97-112">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>  
-- <span data-ttu-id="8bd97-113">입력 **학교** 데이터베이스 이름으로</span><span class="sxs-lookup"><span data-stu-id="8bd97-113">Enter **School** as the database name</span></span>  
-- <span data-ttu-id="8bd97-114">선택 **확인** 를 묻는 새 데이터베이스를 만들려는 경우 **예**</span><span class="sxs-lookup"><span data-stu-id="8bd97-114">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>  
-- <span data-ttu-id="8bd97-115">새 데이터베이스 서버 탐색기에 나타납니다.</span><span class="sxs-lookup"><span data-stu-id="8bd97-115">The new database will now appear in Server Explorer</span></span>  
-- <span data-ttu-id="8bd97-116">Visual Studio 2012 이상 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="8bd97-116">If you are using Visual Studio 2012 or newer</span></span>
-    - <span data-ttu-id="8bd97-117">서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 선택 **새 쿼리**</span><span class="sxs-lookup"><span data-stu-id="8bd97-117">Right-click on the database in Server Explorer and select **New Query**</span></span>  
-    - <span data-ttu-id="8bd97-118">새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **실행**</span><span class="sxs-lookup"><span data-stu-id="8bd97-118">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>  
-- <span data-ttu-id="8bd97-119">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="8bd97-119">If you are using Visual Studio 2010</span></span>  
-    - <span data-ttu-id="8bd97-120">선택 **데이터** -> **Transact SQL 편집기** -> **새 쿼리 연결 하는 중...**</span><span class="sxs-lookup"><span data-stu-id="8bd97-120">Select **Data** -> **Transact SQL Editor** -> **New Query Connection...**</span></span>  
-    - <span data-ttu-id="8bd97-121">입력 **. \SQLEXPRESS** 서버 이름 및 클릭으로 **확인**</span><span class="sxs-lookup"><span data-stu-id="8bd97-121">Enter **.\SQLEXPRESS** as the server name and click **OK**</span></span>  
-    - <span data-ttu-id="8bd97-122">선택 된 **STESample** 쿼리 편집기의 맨 위에 있는 드롭다운에서 아래로 데이터베이스</span><span class="sxs-lookup"><span data-stu-id="8bd97-122">Select the **STESample** database from the drop down at the top of the query editor</span></span>  
-    - <span data-ttu-id="8bd97-123">새 쿼리를 다음과 같은 SQL 복사 후 선택한 쿼리를 마우스 오른쪽 단추로 클릭 **SQL 실행**</span><span class="sxs-lookup"><span data-stu-id="8bd97-123">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>  
+- <span data-ttu-id="25eaf-108">Visual Studio를 엽니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-108">Open Visual Studio</span></span>  
+- <span data-ttu-id="25eaf-109"> -> **서버 탐색기** **보기**</span><span class="sxs-lookup"><span data-stu-id="25eaf-109">**View** -> **Server Explorer**</span></span>  
+- <span data-ttu-id="25eaf-110">**연결 추가** -> **데이터 연결** 을 마우스 오른쪽 단추로 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-110">Right click on **Data Connections** -> **Add Connection…**</span></span>  
+- <span data-ttu-id="25eaf-111">서버 탐색기 데이터베이스에 연결 하지 않은 경우 **Microsoft SQL Server** 를 데이터 원본으로 선택 해야 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-111">If you haven’t connected to a database from Server Explorer before you’ll need to select **Microsoft SQL Server** as the data source</span></span>  
+- <span data-ttu-id="25eaf-112">설치한 항목에 따라 LocalDB 또는 SQL Express에 연결</span><span class="sxs-lookup"><span data-stu-id="25eaf-112">Connect to either LocalDB or SQL Express, depending on which one you have installed</span></span>  
+- <span data-ttu-id="25eaf-113">데이터베이스 이름으로 **School** 을 입력 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-113">Enter **School** as the database name</span></span>  
+- <span data-ttu-id="25eaf-114">**확인** 을 선택 하 고 새 데이터베이스를 만들지 여부를 묻는 메시지가 표시 되 면 **예** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-114">Select **OK** and you will be asked if you want to create a new database, select **Yes**</span></span>  
+- <span data-ttu-id="25eaf-115">이제 새 데이터베이스가 서버 탐색기에 표시 됩니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-115">The new database will now appear in Server Explorer</span></span>  
+- <span data-ttu-id="25eaf-116">Visual Studio 2012 이상 버전을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="25eaf-116">If you are using Visual Studio 2012 or newer</span></span>
+    - <span data-ttu-id="25eaf-117">서버 탐색기에서 데이터베이스를 마우스 오른쪽 단추로 클릭 하 고 **새 쿼리** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-117">Right-click on the database in Server Explorer and select **New Query**</span></span>  
+    - <span data-ttu-id="25eaf-118">다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **실행** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-118">Copy the following SQL into the new query, then right-click on the query and select **Execute**</span></span>  
+- <span data-ttu-id="25eaf-119">Visual Studio 2010을 사용 하는 경우</span><span class="sxs-lookup"><span data-stu-id="25eaf-119">If you are using Visual Studio 2010</span></span>  
+    - <span data-ttu-id="25eaf-120">**새 쿼리 연결** -> **데이터** -> **transact-sql 편집기** 를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-120">Select **Data** -> **Transact SQL Editor** -> **New Query Connection...**</span></span>  
+    - <span data-ttu-id="25eaf-121">서버 이름으로 **.\SQLEXPRESS** 를 입력 하 고 **확인을** 클릭 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-121">Enter **.\SQLEXPRESS** as the server name and click **OK**</span></span>  
+    - <span data-ttu-id="25eaf-122">쿼리 편집기 위쪽의 드롭다운에서 **STESample** 데이터베이스를 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-122">Select the **STESample** database from the drop down at the top of the query editor</span></span>  
+    - <span data-ttu-id="25eaf-123">다음 SQL을 새 쿼리에 복사한 다음 쿼리를 마우스 오른쪽 단추로 클릭 하 고 **Sql 실행** 을 선택 합니다.</span><span class="sxs-lookup"><span data-stu-id="25eaf-123">Copy the following SQL into the new query, then right-click on the query and select **Execute SQL**</span></span>  
 
 ``` SQL  
 SET ANSI_NULLS ON
