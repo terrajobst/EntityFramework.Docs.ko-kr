@@ -4,11 +4,11 @@ author: divega
 ms.date: 10/23/2016
 ms.assetid: 36591d8f-36e1-4835-8a51-90f34f633d1e
 ms.openlocfilehash: e5a91af73bab9d45b0f1f4242ce503c6b6f407f6
-ms.sourcegitcommit: 159c2e9afed7745e7512730ffffaf154bcf2ff4a
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/03/2019
-ms.locfileid: "55668702"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413308"
 ---
 # <a name="code-first-migrations"></a>Code First 마이그레이션
 Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 애플리케이션의 데이터베이스 스키마를 향상시키는 데 권장되는 방법입니다. 마이그레이션에서 제공하는 도구 집합이 허용하는 작업은 다음과 같습니다.
@@ -96,7 +96,7 @@ Code First 워크플로를 사용하는 경우 Code First 마이그레이션은 
     public string Url { get; set; }
 ```
 
-애플리케이션을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 *'BlogContext' 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.라고 나타냅니다(* [*http://go.microsoft.com/fwlink/?LinkId=238269*](https://go.microsoft.com/fwlink/?LinkId=238269)*).*
+애플리케이션을 다시 실행하는 경우 InvalidOperationException이 발생합니다. 이 예외에서는 ‘‘BlogContext’ 컨텍스트를 지원하는 모델이 변경되었습니다. Code First 마이그레이션을 사용하여 데이터베이스를 업데이트하는 것이 좋습니다.’라고 나타냅니다( [ *http://go.microsoft.com/fwlink/?LinkId=238269* ](https://go.microsoft.com/fwlink/?LinkId=238269) *).* 
 
 예외에서 암시하듯이 이제 Code First 마이그레이션 사용을 시작할 시간입니다. 첫 번째 단계는 컨텍스트에 맞게 마이그레이션을 사용하도록 설정하는 것입니다.
 
@@ -296,9 +296,9 @@ Code First 마이그레이션은 이러한 변경을 매우 효과적으로 스�
 
 ## <a name="getting-a-sql-script"></a>SQL 스크립트 가져오기
 
-다른 개발자가 컴퓨터에 대해 이러한 변경이 필요한 경우 변경 내용이 원본 제어에서 확인되면 한 번만 동기화할 수 있습니다. 새 마이그레이션이 적용되면 Update-Database 명령을 실행하여 변경 내용을 로컬에 적용할 수 있습니다. 그러나 이러한 변경 내용을 테스트 서버 및 최종적으로 프로덕션 환경에 적용하려면 DBA에게 전달할 수 있는 SQL 스크립트가 필요합니다.
+다른 개발자가 머신에 대해 이러한 변경이 필요한 경우 변경 내용이 원본 제어에서 확인되면 한 번만 동기화할 수 있습니다. 새 마이그레이션이 적용되면 Update-Database 명령을 실행하여 변경 내용을 로컬에 적용할 수 있습니다. 그러나 이러한 변경 내용을 테스트 서버 및 최종적으로 프로덕션 환경에 적용하려면 DBA에게 전달할 수 있는 SQL 스크립트가 필요합니다.
 
--   **Update-Database** 명령을 실행하지만, 이번에는 변경 내용이 적용되지 않고 스크립트로 작성되도록 **–Script** 플래그를 지정합니다. 또한 스크립트를 생성하기 위해 원본 및 대상 마이그레이션을 지정합니다. 빈 데이터베이스(**$InitialDatabase**)에서 최신 버전(**AddPostAbstract** 마이그레이션)으로 이동하는 스크립트를 만들겠습니다.
+-   **Update-Database** 명령을 실행하지만, 이번에는 변경 내용이 적용되지 않고 스크립트로 작성되도록 **–Script** 플래그를 지정합니다. 또한 스크립트를 생성하기 위해 원본 및 대상 마이그레이션을 지정합니다. 빈 데이터베이스( **$InitialDatabase**)에서 최신 버전(**AddPostAbstract** 마이그레이션)으로 이동하는 스크립트를 만들겠습니다.
     *대상 마이그레이션을 지정하지 않으면 마이그레이션에서 최신 마이그레이션을 대상으로 사용합니다. 원본 마이그레이션을 지정하지 않으면 마이그레이션에서 데이터베이스의 현재 상태를 사용합니다.*
 -   패키지 관리자 콘솔에서 **Update-Database -Script -SourceMigration: $InitialDatabase -TargetMigration: AddPostAbstract** 명령을 실행합니다.
 

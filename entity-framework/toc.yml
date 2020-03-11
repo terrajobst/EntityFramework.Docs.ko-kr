@@ -61,7 +61,7 @@
               href: core/get-started/index.md
             - name: EF Core 설치
               href: core/get-started/install/index.md
-            - name: ASP.NET Core 자습서
+            - name: ASP.NET Core 자습서 >>
               href: /aspnet/core/data/ef-rp/intro
         - name: 기본 사항
           items:
@@ -75,9 +75,9 @@
               items:
                 - name: 개요
                   href: core/miscellaneous/testing/index.md
-                - name: SQLite 테스트
+                - name: SQLite로 테스트
                   href: core/miscellaneous/testing/sqlite.md
-                - name: InMemory 테스트
+                - name: InMemory로 테스트
                   href: core/miscellaneous/testing/in-memory.md
             - name: DbContext 구성
               href: core/miscellaneous/configuring-dbcontext.md
@@ -117,7 +117,7 @@
               href: core/modeling/constructors.md
             - name: 테이블 분할
               href: core/modeling/table-splitting.md
-            - name: 소유한 엔터티 형식
+            - name: 소유 엔터티 형식
               href: core/modeling/owned-entities.md
             - name: 키 없는 엔터티 형식
               href: core/modeling/keyless-entity-types.md
@@ -148,7 +148,7 @@
               href: core/managing-schemas/ensure-created.md
             - name: 리버스 엔지니어링(스캐폴딩)
               href: core/managing-schemas/scaffolding.md
-        - name: 데이터 쿼리
+        - name: 쿼리 데이터
           items:
             - name: 개요
               href: core/querying/index.md
@@ -168,7 +168,7 @@
               href: core/querying/filters.md
             - name: 쿼리 태그
               href: core/querying/tags.md
-            - name: 쿼리가 작동하는 방법
+            - name: 쿼리 작동 방식
               href: core/querying/how-query-works.md
         - name: 데이터 저장
           items:
@@ -190,7 +190,7 @@
               href: core/saving/disconnected-entities.md
             - name: 생성된 속성에 대한 명시적 값
               href: core/saving/explicit-values-generated-properties.md
-        - name: 지원되는 .NET 구현
+        - name: 지원되는 .NET 구현체
           href: core/platforms/index.md
         - name: 데이터베이스 공급자
           items:
@@ -214,7 +214,7 @@
               items:
                 - name: 개요
                   href: core/providers/cosmos/index.md
-                - name: 비구조적 데이터 작업
+                - name: 비정형 데이터 작업
                   href: core/providers/cosmos/unstructured-data.md
                 - name: Cosmos 제한 사항
                   href: core/providers/cosmos/limitations.md
@@ -250,7 +250,7 @@
               href: ef6/what-is-new/index.md
             - name: 이전 릴리스
               href: ef6/what-is-new/past-releases.md
-            - name: EF6로 업그레이드
+            - name: EF6으로 업그레이드
               href: ef6/what-is-new/upgrading-to-ef6.md
             - name: Visual Studio 릴리스
               href: ef6/what-is-new/visual-studio.md
@@ -270,7 +270,7 @@
               items:
                 - name: 코드 기반
                   href: ef6/fundamentals/configuring/code-based.md
-                - name: 구성 파일
+                - name: Config 파일
                   href: ef6/fundamentals/configuring/config-file.md
                 - name: 연결 문자열
                   href: ef6/fundamentals/configuring/connection-strings.md
@@ -294,7 +294,7 @@
               items:
                 - name: 개요
                   href: ef6/fundamentals/disconnected-entities/index.md
-                - name: 자체 추적 엔터티
+                - name: 자동 추적 엔터티
                   items:
                     - name: 개요
                       href: ef6/fundamentals/disconnected-entities/self-tracking-entities/index.md
@@ -326,7 +326,7 @@
                   href: ef6/fundamentals/testing/mocking.md
                 - name: 고유한 이중 테스트 작성
                   href: ef6/fundamentals/testing/writing-test-doubles.md
-                - name: EF4를 사용한 테스트 용이성(아티클)
+                - name: EF4를 사용한 테스트 용이성(문서)
                   href: ef6/fundamentals/testing/testability-article.md
         - name: 모델 만들기
           items:
@@ -382,7 +382,7 @@
                       href: ef6/modeling/code-first/migrations/migrate-exe.md
                     - name: 팀 환경의 마이그레이션
                       href: ef6/modeling/code-first/migrations/teams.md
-            - name: EF 디자이너 사용
+            - name: EF Designer 사용
               items:
                 - name: 워크플로
                   items:
@@ -410,13 +410,13 @@
                       href: ef6/modeling/designer/inheritance/tph.md
                     - name: 형식당 테이블
                       href: ef6/modeling/designer/inheritance/tpt.md
-                - name: 저장 프로시저 매핑
+                - name: 맵 저장 프로시저
                   items:
                     - name: 쿼리
                       href: ef6/modeling/designer/stored-procedures/query.md
                     - name: 업데이트
                       href: ef6/modeling/designer/stored-procedures/cud.md
-                - name: 관계 매핑
+                - name: 맵 관계
                   href: ef6/modeling/designer/relationships.md
                 - name: 다중 다이어그램
                   href: ef6/modeling/designer/multiple-diagrams.md
@@ -434,27 +434,27 @@
                       items:
                         - name: CSDL 사양
                           href: ef6/modeling/designer/advanced/edmx/csdl-spec.md
-                        - name: XML 사양
+                        - name: MSL 사양
                           href: ef6/modeling/designer/advanced/edmx/msl-spec.md
                         - name: SSDL 사양
                           href: ef6/modeling/designer/advanced/edmx/ssdl-spec.md
                     - name: 쿼리 정의
                       href: ef6/modeling/designer/advanced/defining-query.md
-                    - name: 여러 결과 집합
+                    - name: 다중 결과 집합
                       href: ef6/modeling/designer/advanced/multiple-result-sets.md
                     - name: 테이블 반환 함수
                       href: ef6/modeling/designer/advanced/tvfs.md
                 - name: 바로 가기 키
                   href: ef6/modeling/designer/keyboard-shortcuts.md
-        - name: 데이터 쿼리
+        - name: 쿼리 데이터
           items:
             - name: 개요
               href: ef6/querying/index.md
-            - name: Load 메서드
+            - name: 로드 메서드
               href: ef6/querying/load-method.md
             - name: 로컬 데이터
               href: ef6/querying/local-data.md
-            - name: 추적 및 추적 쿼리 없음
+            - name: 추적 및 비추적 쿼리
               href: ef6/querying/no-tracking.md
             - name: 원시 SQL 쿼리 사용
               href: ef6/querying/raw-sql.md
@@ -464,7 +464,7 @@
           items:
             - name: 개요
               href: ef6/saving/index.md
-            - name: 변경 내용 추적
+            - name: Change tracking
               items:
                 - name: 변경 내용 자동 검색
                   href: ef6/saving/change-tracking/auto-detect-changes.md
@@ -478,7 +478,7 @@
               href: ef6/saving/transactions.md
             - name: 데이터 유효성 검사
               href: ef6/saving/validation.md
-        - name: 추가 리소스
+        - name: 추가 자료
           items:
             - name: 블로그
               href: ef6/resources/blogs.md
@@ -498,9 +498,9 @@
               items:
                 - name: EF5
                   items:
-                    - name: 중국어 간체
+                    - name: 중국어(간체)
                       href: ef6/resources/licenses/ef5/chs.md
-                    - name: 중국어 번체
+                    - name: 중국어(번체)
                       href: ef6/resources/licenses/ef5/cht.md
                     - name: 독일어
                       href: ef6/resources/licenses/ef5/deu.md
@@ -526,9 +526,9 @@
                           href: ef6/resources/licenses/ef6/prerelease/alpha.md
                         - name: 베타 - 릴리스 후보
                           href: ef6/resources/licenses/ef6/prerelease/beta-rc.md
-                    - name: 중국어 간체
+                    - name: 중국어(간체)
                       href: ef6/resources/licenses/ef6/chs.md
-                    - name: 중국어 번체
+                    - name: 중국어(번체)
                       href: ef6/resources/licenses/ef6/cht.md
                     - name: 독일어
                       href: ef6/resources/licenses/ef6/deu.md
@@ -547,4 +547,4 @@
                     - name: 러시아어
                       href: ef6/resources/licenses/ef6/rus.md
         - name: EF6 API 참조 >>
-          href: 'https://docs.microsoft.com/dotnet/api/?view=entity-framework-6.2.0'
+          href: /dotnet/api/?view=entity-framework-6.2.0
