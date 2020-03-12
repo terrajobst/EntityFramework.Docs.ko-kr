@@ -4,12 +4,12 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 8b6697cc-7067-4dc2-8007-85d80503d123
 uid: core/querying/client-eval
-ms.openlocfilehash: 5cfb05041f04246712fb699f58b407f70a75ce92
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: e01bd146c4dfe7a8d36b641cb52ae366fddd8239
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445959"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413788"
 ---
 # <a name="client-vs-server-evaluation"></a>클라이언트 및 서버 평가
 
@@ -19,7 +19,7 @@ ms.locfileid: "72445959"
 > 버전 3.0 전까지는 Entity Framework Core가 쿼리의 모든 곳에서 클라이언트 평가를 지원했습니다. 자세한 내용은 [이전 버전 섹션](#previous-versions)을 참조하세요.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 ## <a name="client-evaluation-in-the-top-level-projection"></a>최상위 프로젝션에서의 클라이언트 평가
 

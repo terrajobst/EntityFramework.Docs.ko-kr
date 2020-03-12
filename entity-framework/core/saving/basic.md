@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 850d842e-3fad-4ef2-be17-053768e97b9e
 uid: core/saving/basic
-ms.openlocfilehash: 6f72458504a9dbe99038af7cfd23b6991258f6b8
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 066d67d6104316832a33f5a3648f1f2fa6cc9c50
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197781"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413686"
 ---
 # <a name="basic-save"></a>기본 저장
 
 컨텍스트 및 엔터티 클래스를 사용하여 데이터를 추가, 수정 및 제거하는 방법을 알아보세요.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Basics/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Basics/)을 볼 수 있습니다.
 
 ## <a name="adding-data"></a>데이터 추가
 

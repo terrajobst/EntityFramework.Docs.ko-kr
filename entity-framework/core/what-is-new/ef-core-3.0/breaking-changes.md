@@ -4,11 +4,11 @@ author: ajcvickers
 ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
 ms.openlocfilehash: 6e0c17a22b56b206f18e47f678e3e237d5c42375
-ms.sourcegitcommit: b3cf5d2e3cb170b9916795d1d8c88678269639b1
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/30/2020
-ms.locfileid: "76888111"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413560"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
 
@@ -191,7 +191,7 @@ EF Core 3.0이 나오기 전에는 이런 메서드 이름이 일반 문자열 �
 **새 동작**
 
 EF Core 3.0부터는 `FromSqlRaw`, `ExecuteSqlRaw` 및 `ExecuteSqlRawAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
-예:
+예를 들어:
 
 ```csharp
 context.Products.FromSqlRaw(
@@ -200,7 +200,7 @@ context.Products.FromSqlRaw(
 ```
 
 `FromSqlInterpolated`, `ExecuteSqlInterpolated` 및 `ExecuteSqlInterpolatedAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
-예:
+예를 들어:
 
 ```csharp
 context.Products.FromSqlInterpolated(
@@ -397,7 +397,7 @@ public string Id { get; set; }
 **완화 방법**
 
 이전 동작은 `context.ChangeTracker`의 설정을 통해 복원할 수 있습니다.
-예:
+예를 들어:
 
 ```csharp
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
@@ -490,7 +490,7 @@ EF Core 3.0 이전에는 소유 관계의 구성은 `OwnsOne` 또는 `OwnsMany` 
 **새 동작**
 
 EF Core 3.0부터 이제 `WithOwner()`를 사용하여 소유자에게 탐색 속성을 구성하는 흐름 API가 있습니다.
-예:
+예를 들어:
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
@@ -498,7 +498,7 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
 
 이제 소유자와 소유 간의 관계와 관련된 구성이 다른 관계가 구성되는 것과 유사하게 `WithOwner()` 후에 연결되어야 합니다.
 소유 형식 자체에 대한 구성은 `OwnsOne()/OwnsMany()` 이후에도 여전히 연결됩니다.
-예:
+예를 들어:
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
@@ -744,7 +744,7 @@ EF Core 3.0 이전에는 규칙에 따라 외래 키에 대해 `CustomerId` 속�
 
 3\.0부터 EF Core는 보안 주체 속성과 동일한 이름을 가지는 경우 규칙에 따라 외래 키에 대한 속성을 사용하려고 하지 않습니다.
 보안 주체 속성 이름과 연결된 보안 주체 유형 이름 및 보안 주체 속성 이름 패턴과 연결된 탐색 이름은 여전히 일치합니다.
-예:
+예를 들어:
 
 ```csharp
 public class Customer
@@ -880,7 +880,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 **완화 방법**
 
 `ModelBuilder`에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
-예:
+예를 들어:
 
 ```csharp
 modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
@@ -1140,7 +1140,7 @@ EF Core 3.0부터 이제 이 경고가 고려되며 오류와 예외가 throw됩
 
 이 오류가 발생했을 때 가장 적절한 조치는 근본 원인을 이해하고 많은 내부 서비스 공급자를 만드는 것을 중단하는 것입니다.
 그러나 오류는 `DbContextOptionsBuilder`의 구성을 통해 경고(또는 무시)로 다시 변환될 수 있습니다.
-예:
+예를 들어:
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -1159,7 +1159,7 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 **이전 동작**
 
 EF Core 3.0 이전에는 단일 문자열을 사용하여 `HasOne` 또는 `HasMany`를 호출하는 코드가 혼란스러운 방식으로 해석되었습니다.
-예:
+예를 들어:
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 ```
@@ -1181,7 +1181,7 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 새 동작은 형식 이름의 문자열을 사용하고 탐색 속성을 명시적으로 지정하지 않은 채 명시적으로 관계를 구성하는 애플리케이션만 중단됩니다.
 이는 일반적이지 않습니다.
 이전 동작은 탐색 속성 이름에 대해 `null`을 전달하여 명시적으로 얻을 수 있습니다.
-예:
+예를 들어:
 
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
@@ -1571,7 +1571,7 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 **이전 동작**
 
-EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예:
+EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예를 들어:
 
 ```csharp
 var constraintName = myForeignKey.Name;
@@ -1579,7 +1579,7 @@ var constraintName = myForeignKey.Name;
 
 **새 동작**
 
-이제 EF Core 3.0부터 외래 키 제약 조건 이름은 “제약 조건 이름”이라고 합니다. 예:
+이제 EF Core 3.0부터 외래 키 제약 조건 이름은 “제약 조건 이름”이라고 합니다. 예를 들어:
 
 ```csharp
 var constraintName = myForeignKey.ConstraintName;
@@ -1722,7 +1722,7 @@ Always Encrypted와 같은 일부 중요한 기능은 Microsoft.Data.SqlClient�
 
 **이전 동작**
 
-복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예:
+복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예를 들어:
 
 ```csharp
 public class User 
@@ -1745,7 +1745,7 @@ public class User
 
 **완화 방법**
 
-관계의 전체 구성을 사용합니다. 예:
+관계의 전체 구성을 사용합니다. 예를 들어:
 
 ```csharp
 modelBuilder

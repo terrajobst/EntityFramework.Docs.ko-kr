@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
-ms.openlocfilehash: bfabe8fd5b0a64edd5d97baff3beab9d712f1c20
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 915aaa41beb495a046f2d6260e9c3b174d5f3031
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654628"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413722"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
 
@@ -20,7 +20,7 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 * **지연 로드**는 탐색 속성에 액세스할 때 관련 데이터가 데이터베이스에서 투명하게 로드됨을 의미합니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 ## <a name="eager-loading"></a>즉시 로드
 
@@ -136,7 +136,7 @@ public class School
 
 ## <a name="lazy-loading"></a>지연 로드
 
-지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예:
+지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예를 들어:
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -176,7 +176,7 @@ public class Post
 
 ### <a name="lazy-loading-without-proxies"></a>프록시 없는 지연 로드
 
-지연 로드 프록시는 [엔터티 형식 생성자](../modeling/constructors.md)에 설명된 대로 `ILazyLoader` 서비스를 엔터티에 삽입하여 작동합니다. 예:
+지연 로드 프록시는 [엔터티 형식 생성자](../modeling/constructors.md)에 설명된 대로 `ILazyLoader` 서비스를 엔터티에 삽입하여 작동합니다. 예를 들어:
 
 ```csharp
 public class Blog
@@ -231,7 +231,7 @@ public class Post
 }
 ```
 
-이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 패키지에 정의된 `ILazyLoader` 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예:
+이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 패키지에 정의된 `ILazyLoader` 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예를 들어:
 
 ```csharp
 public class Blog

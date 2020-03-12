@@ -5,12 +5,12 @@ ms.author: avickers
 ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 uid: core/saving/disconnected-entities
-ms.openlocfilehash: 88c3fa8ea5b8246a932f5cf21e674bc7cc71c0ea
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 421531e68ac98c0553938f1c24892701f22fef3c
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656264"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413656"
 ---
 # <a name="disconnected-entities"></a>연결이 끊긴 엔터티
 
@@ -20,7 +20,7 @@ DbContext 인스턴스는 데이터베이스에서 반환된 엔터티를 자동
 
 <!-- markdownlint-disable MD028 -->
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Disconnected/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Disconnected/)을 볼 수 있습니다.
 
 > [!TIP]
 > EF Core는 지정된 기본 키 값이 있는 엔터티의 인스턴스 하나만 추적할 수 있습니다. 문제가 되지 않도록 하는 가장 좋은 방법은 각 작업 단위에 대해 단기 컨텍스트를 사용하여 컨텍스트가 빈 상태로 시작되고 엔터티를 연결하고 해당 엔터티를 저장한 후 컨텍스트가 삭제되고 취소되도록 하는 것입니다.
@@ -77,7 +77,7 @@ Update 메서드는 일반적으로 엔터티를 삽입이 아닌 업데이트�
 > [!TIP]  
 > 이 동작은 EF Core 2.0에서 도입되었습니다. 이전 릴리스에서는 항상 Add 또는 Update를 명시적으로 선택해야 합니다.
 
-엔터티에서 자동 생성 키를 사용하지 않는 경우 애플리케이션에서 엔터티를 삽입해야 하는지 업데이트해야 하는지를 결정해야 합니다. 예:
+엔터티에서 자동 생성 키를 사용하지 않는 경우 애플리케이션에서 엔터티를 삽입해야 하는지 업데이트해야 하는지를 결정해야 합니다. 예를 들어:
 
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
 
@@ -131,7 +131,7 @@ Update는 키 값 집합이 없는 경우 그래프의 모든 엔터티인 블�
 
 엔터티가 없으면 삭제되어야 함을 의미하기 때문에 삭제는 처리하기가 어려울 수 있습니다. 삭제를 처리하는 한 가지 방법은 엔터티가 실제로 삭제되는 것이 아니라 삭제됨으로 표시되도록 “일시 삭제”를 사용하는 것입니다. 그러면 삭제가 업데이트와 동일하게 됩니다. 일시 삭제는 [쿼리 필터](xref:core/querying/filters)를 사용하여 구현할 수 있습니다.
 
-실제 삭제의 경우 일반적인 패턴은 쿼리 패턴의 확장을 사용하여 기본적으로 그래프 차이점을 수행하는 것입니다. 예:
+실제 삭제의 경우 일반적인 패턴은 쿼리 패턴의 확장을 사용하여 기본적으로 그래프 차이점을 수행하는 것입니다. 예를 들어:
 
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertUpdateOrDeleteGraphWithFind)]
 

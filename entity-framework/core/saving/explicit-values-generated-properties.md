@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
-ms.openlocfilehash: ea469b9b7199cc767b2d0da1a5999026f938d087
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 43c4ab3c2a60645cdeff2a6cc40ce979f832f2fd
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656252"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413632"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>생성된 속성에 대한 명시적 값 설정
 
@@ -18,7 +18,7 @@ ms.locfileid: "73656252"
 생성된 속성에 대해 값을 생성하지 않고 명시적 값을 설정하려는 경우가 있을 수 있습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/ExplicitValuesGenerateProperties/)을 볼 수 있습니다.
 
 ## <a name="the-model"></a>모델
 

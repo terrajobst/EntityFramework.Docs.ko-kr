@@ -4,19 +4,19 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 uid: core/saving/related-data
-ms.openlocfilehash: 45c7b8e4bfa4ce7967ad76ef4a7d4818b0d3aebf
-ms.sourcegitcommit: ec196918691f50cd0b21693515b0549f06d9f39c
+ms.openlocfilehash: 86d32b6172ee21c12a15e9ed4bb0142afc99c8bd
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71197883"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413614"
 ---
 # <a name="saving-related-data"></a>관련 데이터 저장
 
 격리된 엔터티 외에 모델에 정의된 관계도 사용할 수 있습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/RelatedData/)을 볼 수 있습니다.
 
 ## <a name="adding-a-graph-of-new-entities"></a>새 엔터티 그래프 추가
 

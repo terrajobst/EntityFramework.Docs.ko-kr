@@ -3,12 +3,12 @@ title: EF Core 5.0의 새로운 기능
 author: ajcvickers
 ms.date: 01/29/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: e858379cc46abbef999fd32a3685e1d522524889
-ms.sourcegitcommit: 89567d08c9d8bf9c33bb55a62f17067094a4065a
+ms.openlocfilehash: 65d7bd43e8a00c77fd6091a74c677635710d03e3
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77052019"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413848"
 ---
 # <a name="whats-new-in-ef-core-50"></a>EF Core 5.0의 새로운 기능
 
@@ -30,7 +30,7 @@ EF Core 5.0의 첫 번째 미리 보기는 2020년 1분기에 공개될 예정�
 
 예비 설명서는 [2019년 12월 5일의 EF 주간 상태](https://github.com/dotnet/efcore/issues/15403#issuecomment-562332863)에 포함되어 있습니다.
 
-추가 설명서는 문제 [#2085](https://github.com/aspnet/EntityFramework.Docs/issues/2085)에서 찾아볼 수 있습니다.
+추가 설명서는 문제 [#2085](https://github.com/dotnet/EntityFramework.Docs/issues/2085)에서 찾아볼 수 있습니다.
 
 ### <a name="simple-way-to-get-generated-sql"></a>SQL을 생성하는 간단한 방법
 
@@ -38,7 +38,7 @@ EF Core 5.0에는 EF Core가 LINQ 쿼리를 실행할 때 생성하는 SQL을 �
 
 예비 설명서는 [2020년 1월 9일의 EF 주간 상태](https://github.com/dotnet/efcore/issues/19549#issuecomment-572823246)에 포함되어 있습니다.
 
-추가 설명서는 문제 [#1331](https://github.com/aspnet/EntityFramework.Docs/issues/1331)에서 찾아볼 수 있습니다.
+추가 설명서는 문제 [#1331](https://github.com/dotnet/EntityFramework.Docs/issues/1331)에서 찾아볼 수 있습니다.
 
 ### <a name="enhanced-debug-views"></a>향상된 디버그 보기
 
@@ -48,7 +48,7 @@ EF Core 5.0에서는 모델 보기를 간편하게 읽을 수 있으며, 상태 
 
 예비 설명서는 [2019년 12월 12일의 EF 주간 상태](https://github.com/dotnet/efcore/issues/15403#issuecomment-565196206)에 포함되어 있습니다.
 
-추가 설명서는 문제 [#2086](https://github.com/aspnet/EntityFramework.Docs/issues/2086)에서 찾아볼 수 있습니다.
+추가 설명서는 문제 [#2086](https://github.com/dotnet/EntityFramework.Docs/issues/2086)에서 찾아볼 수 있습니다.
 
 ### <a name="connection-or-connection-string-can-be-changed-on-initialized-dbcontext"></a>초기화된 DbContext에서 연결 또는 연결 문자열을 변경할 수 있습니다.
 
@@ -56,7 +56,7 @@ EF Core 5.0에서는 모델 보기를 간편하게 읽을 수 있으며, 상태 
 또한 이제 컨텍스트 인스턴스에서 연결 또는 연결 문자열을 변경할 수 있습니다.
 이에 따라 동일한 컨텍스트 인스턴스를 다른 데이터베이스에 동적으로 연결할 수 있습니다.
 
-설명서는 문제 [#2075](https://github.com/aspnet/EntityFramework.Docs/issues/2075)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2075](https://github.com/dotnet/EntityFramework.Docs/issues/2075)에서 찾아볼 수 있습니다.
 
 ### <a name="change-tracking-proxies"></a>변경 내용 추적 프록시
 
@@ -64,7 +64,7 @@ EF Core 5.0에서는 모델 보기를 간편하게 읽을 수 있으며, 상태 
 이후 엔터티 속성의 값 변경 내용을 EF Core에 직접 보고하므로 변경 내용을 별도로 검사하지 않아도 됩니다.
 그러나 프록시에는 자체적으로 제한 사항이 적용되어 있어 일부 사용자에게는 적합하지 않습니다.
 
-설명서는 문제 [#2076](https://github.com/aspnet/EntityFramework.Docs/issues/2076)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2076](https://github.com/dotnet/EntityFramework.Docs/issues/2076)에서 찾아볼 수 있습니다.
 
 ### <a name="improved-handling-of-database-null-semantics"></a>향상된 데이터베이스 null 의미 체계 처리
 
@@ -73,14 +73,14 @@ EF Core 5.0에서는 모델 보기를 간편하게 읽을 수 있으며, 상태 
 기본적으로 EF Core는 쿼리를 변환하여 C# null 의미 체계를 사용합니다.
 EF Core 5.0은 이 변환 과정의 효율성을 크게 향상시킵니다.
 
-설명서는 문제 [#1612](https://github.com/aspnet/EntityFramework.Docs/issues/1612)에서 찾아볼 수 있습니다.
+설명서는 문제 [#1612](https://github.com/dotnet/EntityFramework.Docs/issues/1612)에서 찾아볼 수 있습니다.
 
 ### <a name="indexer-properties"></a>인덱서 속성
 
 EF Core 5.0는 C# 인덱서 속성의 매핑을 지원합니다.
 이에 따라 엔터티를 속성 모음으로 사용할 수 있으며 속성 모음의 명명된 속성으로 열이 매핑됩니다.
 
-설명서는 문제 [#2018](https://github.com/aspnet/EntityFramework.Docs/issues/2018)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2018](https://github.com/dotnet/EntityFramework.Docs/issues/2018)에서 찾아볼 수 있습니다.
 
 ### <a name="generation-of-check-constraints-for-enum-mappings"></a>열거형 매핑의 check 제약 조건 생성
 
@@ -91,14 +91,14 @@ EF Core 5.0는 C# 인덱서 속성의 매핑을 지원합니다.
 MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'Unknown'))
 ```
 
-설명서는 문제 [#2082](https://github.com/aspnet/EntityFramework.Docs/issues/2082)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2082](https://github.com/dotnet/EntityFramework.Docs/issues/2082)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translations-for-more-datetime-constructs"></a>더 많은 날짜/시간 구문의 쿼리 변환
 
 이제 새로운 DataTime 생성을 포함하는 쿼리가 변환됩니다.
 또한 이제 SQL Server 함수 DateDiffWeek가 매핑됩니다.
 
-설명서는 문제 [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translations-for-more-byte-array-constructs"></a>더 많은 바이트 배열 구문의 쿼리 변환
 
@@ -106,7 +106,7 @@ Contains, Length, SequenceEqual 등을 사용하는 쿼리는 byte[] 속성에�
 
 예비 설명서는 [2019년 12월 5일의 EF 주간 상태](https://github.com/dotnet/efcore/issues/15403#issuecomment-562332863)에 포함되어 있습니다.
 
-추가 설명서는 문제 [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
+추가 설명서는 문제 [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translation-for-reverse"></a>역방향 쿼리 변환
 
@@ -117,7 +117,7 @@ Contains, Length, SequenceEqual 등을 사용하는 쿼리는 byte[] 속성에�
 context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 ```
 
-설명서는 문제 [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translation-for-bitwise-operators"></a>비트 연산자의 쿼리 변환
 
@@ -127,10 +127,10 @@ context.Employees.OrderBy(e => e.EmployeeID).Reverse()
 context.Orders.Where(o => ~o.OrderID == negatedId)
 ```
 
-설명서는 문제 [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translation-for-strings-on-cosmos"></a>Cosmos 문자열의 쿼리 변환
 
 이제 Azure Cosmos DB 공급자를 사용할 때 Contains, StartsWith 및 EndsWith 문자열 메서드를 사용하는 쿼리가 변환됩니다.
 
-설명서는 문제 [#2079](https://github.com/aspnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.
+설명서는 문제 [#2079](https://github.com/dotnet/EntityFramework.Docs/issues/2079)에서 찾아볼 수 있습니다.

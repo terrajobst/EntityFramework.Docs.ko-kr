@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 09f0b9e623e69ed8d6a66f00eb466d55bc8ad5e4
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76124344"
----
 ## <a name="entity-framework-docs"></a>Entity Framework 문서
 
 이 프로젝트에는 [docs.microsoft.com/ef](https://docs.microsoft.com/ef/)의 EF Core 및 EF6 문서 원본이 포함되어 있습니다. 

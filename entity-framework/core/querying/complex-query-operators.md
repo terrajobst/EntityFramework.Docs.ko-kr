@@ -4,19 +4,19 @@ author: smitpatel
 ms.date: 10/03/2019
 ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
-ms.openlocfilehash: 350a7fa6a3ee1de16bad4b63e10842f9356a1b60
-ms.sourcegitcommit: 708b18520321c587b2046ad2ea9fa7c48aeebfe5
+ms.openlocfilehash: 44c2695ea003da043925740a52596fd27da638f8
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72186235"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413776"
 ---
 # <a name="complex-query-operators"></a>복합 쿼리 연산자
 
 LINQ(통합 언어 쿼리)에는 여러 데이터 원본을 결합하거나 복잡한 처리를 수행하는 여러 복합 연산자가 포함되어 있습니다. 모든 LINQ 연산자가 서버 쪽에 적절한 변환을 가지고 있는 것은 아닙니다. 쿼리가 특정 형식에서는 서버에서 변환되지만 다른 형식에서는 결과가 동일하더라도 변환되지 않는 경우가 있습니다. 이 페이지에서는 몇 가지 복합 연산자와 지원되는 변형에 대해 설명합니다. 이후 릴리스에서는 더 많은 패턴을 인식하고 해당 변환을 추가할 수 있습니다. 변환 지원은 공급자 간에 다를 수 있다는 점을 염두에 두어야 합니다. SqlServer에서는 변환되는 쿼리가 SQLite 데이터베이스에서는 작동하지 않을 수 있습니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 ## <a name="join"></a>Join
 

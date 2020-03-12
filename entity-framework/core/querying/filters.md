@@ -3,12 +3,12 @@ title: 전역 쿼리 필터 - EF Core
 author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
-ms.openlocfilehash: f4ee9b77411290249e763f9cb8492eea61803e91
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
+ms.openlocfilehash: 9262ff7970b0502945480c673315071cbc3f44b9
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76124394"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413764"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
 
@@ -25,7 +25,7 @@ ms.locfileid: "76124394"
 다음 예제에서는 전역 쿼리 필터를 사용하여 간단한 블로그 모델에서 일시 삭제 및 다중 테넌트 쿼리 동작을 구현하는 방법을 보여줍니다.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/QueryFilters)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/QueryFilters)을 볼 수 있습니다.
 
 먼저 엔터티를 정의합니다.
 

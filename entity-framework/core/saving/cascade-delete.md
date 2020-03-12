@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: ee8e14ec-2158-4c9c-96b5-118715e2ed9e
 uid: core/saving/cascade-delete
-ms.openlocfilehash: 51c8b6f4517a3f87821ed1e4e2d60549e06ed39d
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: 6e92b869d691d0224abf1997d9eb7ea035489c5d
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656068"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413668"
 ---
 # <a name="cascade-delete"></a>하위 삭제
 
@@ -75,7 +75,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ## <a name="entity-deletion-examples"></a>엔터티 삭제 예제
 
-다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모 엔터티가 삭제될 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모 엔터티가 삭제될 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/CascadeDelete/Sample.cs#DeleteBehaviorVariations)]
 
@@ -186,7 +186,7 @@ EF Core는 여러 다른 삭제 동작을 구현하며 개별 관계의 삭제 �
 
 ## <a name="delete-orphans-examples"></a>고아 삭제 예제
 
-다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모/주와 자식/종속 같 관계가 끊어진 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다. 이 예제에서는 주/부모(블로그)의 컬렉션 탐색 속성에서 종속/자식(게시물)을 제거하여 관계를 끊습니다. 그러나 주/부모에 대한 종속/자식의 참조가 무효화되는 경우에는 동작이 동일합니다.
+다음 코드는 다운로드하여 실행할 수 있는 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/CascadeDelete/)의 일부입니다. 이 샘플에서는 부모/주와 자식/종속 같 관계가 끊어진 경우 선택적 관계와 필수 관계에 대한 각 삭제 동작에서 발생하는 상황을 보여줍니다. 이 예제에서는 주/부모(블로그)의 컬렉션 탐색 속성에서 종속/자식(게시물)을 제거하여 관계를 끊습니다. 그러나 주/부모에 대한 종속/자식의 참조가 무효화되는 경우에는 동작이 동일합니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/CascadeDelete/Sample.cs#DeleteOrphansVariations)]
 

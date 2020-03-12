@@ -4,19 +4,19 @@ author: smitpatel
 ms.date: 10/08/2019
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
-ms.openlocfilehash: b7087771f1a9e8ee5e044cfea367d74a0b1c1d35
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: a54bb67c0fce9d621382f6372e70fe4cdca48a20
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445931"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413716"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
 
 Entity Framework Core를 사용하면 관계형 데이터베이스로 작업할 때 원시 SQL 쿼리로 드롭다운할 수 있습니다. 원시 SQL 쿼리는 LINQ를 사용하여 원하는 쿼리를 표현할 수 없는 경우에 유용합니다. 원시 SQL 쿼리는 LINQ 쿼리를 사용하면 비효율적인 SQL 쿼리가 발생하는 경우에도 유용합니다. 원시 SQL 쿼리는 기본 엔터티 형식 또는 모델의 일부인 [키 없는 엔터티 형식](xref:core/modeling/keyless-entity-types)을 반환할 수 있습니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying/)을 볼 수 있습니다.
 
 ## <a name="basic-raw-sql-queries"></a>기본 원시 SQL 쿼리
 

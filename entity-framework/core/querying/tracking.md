@@ -4,12 +4,12 @@ author: smitpatel
 ms.date: 10/10/2019
 ms.assetid: e17e060c-929f-4180-8883-40c438fbcc01
 uid: core/querying/tracking
-ms.openlocfilehash: 66988f936ab75e17620398c8f21e4a32bbc950bd
-ms.sourcegitcommit: 37d0e0fd1703467918665a64837dc54ad2ec7484
+ms.openlocfilehash: a6c71c12f429f1324abe91d1b2cef96312bec051
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72445947"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413698"
 ---
 # <a name="tracking-vs-no-tracking-queries"></a>추적 및 비 추적 쿼리
 
@@ -19,7 +19,7 @@ ms.locfileid: "72445947"
 > [키 없는 엔터티 형식](xref:core/modeling/keyless-entity-types)은 추적되지 않습니다. 이 문서에서 언급되는 모든 엔터티 형식은 키가 정의된 엔터티 형식을 가리킵니다.
 
 > [!TIP]  
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Querying)을 볼 수 있습니다.
 
 ## <a name="tracking-queries"></a>추적 쿼리
 
