@@ -5,11 +5,11 @@ author: AndriySvyryd
 ms.date: 11/21/2019
 uid: core/modeling/relationships
 ms.openlocfilehash: 6d68e813cec6c989e8e4cb848f8740489645c65c
-ms.sourcegitcommit: 89567d08c9d8bf9c33bb55a62f17067094a4065a
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/06/2020
-ms.locfileid: "77051409"
+ms.lasthandoff: 03/15/2020
+ms.locfileid: "79402116"
 ---
 # <a name="relationships"></a>관계
 
@@ -118,13 +118,13 @@ ms.locfileid: "77051409"
 
 ## <a name="manual-configuration"></a>수동 구성
 
-### <a name="fluent-apitabfluent-api"></a>[흐름 API](#tab/fluent-api)
+### <a name="fluent-api"></a>[흐름 API](#tab/fluent-api)
 
 흐름 API에서 관계를 구성 하려면 먼저 관계를 구성 하는 탐색 속성을 식별 합니다. `HasOne` 또는 `HasMany`는 구성을 시작 하는 엔터티 형식에 대 한 탐색 속성을 식별 합니다. 그런 다음 `WithOne` 또는 `WithMany`에 대 한 호출을 연결 하 여 역 탐색을 식별 합니다. `HasOne`/`WithOne` 참조 탐색 속성에 사용 되 고 `HasMany`/`WithMany` 컬렉션 탐색 속성에 사용 됩니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/NoForeignKey.cs?name=NoForeignKey&highlight=8-10)]
 
-### <a name="data-annotationstabdata-annotations"></a>[데이터 주석](#tab/data-annotations)
+### <a name="data-annotations"></a>[데이터 주석](#tab/data-annotations)
 
 데이터 주석을 사용 하 여 종속 및 주요 엔터티의 탐색 속성이 페어링 되는 방법을 구성할 수 있습니다. 이는 일반적으로 두 엔터티 형식 간에 둘 이상의 탐색 속성 쌍이 있는 경우에 수행 됩니다.
 
@@ -146,19 +146,19 @@ ms.locfileid: "77051409"
 
 ### <a name="foreign-key"></a>외래 키
 
-#### <a name="fluent-api-simple-keytabfluent-api-simple-key"></a>[흐름 API (단순 키)](#tab/fluent-api-simple-key)
+#### <a name="fluent-api-simple-key"></a>[흐름 API (단순 키)](#tab/fluent-api-simple-key)
 
 흐름 API를 사용 하 여 지정 된 관계에 대 한 외래 키 속성으로 사용할 속성을 구성할 수 있습니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/ForeignKey.cs?name=ForeignKey&highlight=11)]
 
-#### <a name="fluent-api-composite-keytabfluent-api-composite-key"></a>[흐름 API (복합 키)](#tab/fluent-api-composite-key)
+#### <a name="fluent-api-composite-key"></a>[흐름 API (복합 키)](#tab/fluent-api-composite-key)
 
 흐름 API를 사용 하 여 지정 된 관계에 대 한 복합 외래 키 속성으로 사용할 속성을 구성할 수 있습니다.
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositeForeignKey.cs?name=CompositeForeignKey&highlight=13)]
 
-#### <a name="data-annotations-simple-keytabdata-annotations-simple-key"></a>[데이터 주석 (단순 키)](#tab/data-annotations-simple-key)
+#### <a name="data-annotations-simple-key"></a>[데이터 주석 (단순 키)](#tab/data-annotations-simple-key)
 
 데이터 주석을 사용 하 여 지정 된 관계에 대 한 외래 키 속성으로 사용할 속성을 구성할 수 있습니다. 이는 일반적으로 외래 키 속성이 규칙에 의해 검색 되지 않는 경우에 수행 됩니다.
 
@@ -196,11 +196,11 @@ ms.locfileid: "77051409"
 
 외래 키가 기본 키 이외의 속성을 참조 하도록 하려는 경우 흐름 API를 사용 하 여 관계에 대 한 principal key 속성을 구성할 수 있습니다. 주 키로 구성 하는 속성은 자동으로 [대체 키](alternate-keys.md)로 설정 됩니다.
 
-#### <a name="simple-keytabsimple-key"></a>[단순 키](#tab/simple-key)
+#### <a name="simple-key"></a>[단순 키](#tab/simple-key)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/PrincipalKey.cs?name=PrincipalKey&highlight=11)]
 
-#### <a name="composite-keytabcomposite-key"></a>[복합 키](#tab/composite-key)
+#### <a name="composite-key"></a>[복합 키](#tab/composite-key)
 
 [!code-csharp[Main](../../../samples/core/Modeling/FluentAPI/Relationships/CompositePrincipalKey.cs?name=CompositePrincipalKey&highlight=11)]
 

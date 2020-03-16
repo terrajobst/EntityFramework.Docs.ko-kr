@@ -1,11 +1,3 @@
----
-ms.openlocfilehash: 79a2a10cae9f8a5541bca132e407d4abbe95e093
-ms.sourcegitcommit: 87fcaba46535aa351db4bdb1231bd14b40e459b9
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59929889"
----
 # <a name="contributing-to-the-entity-framework-documentation"></a>Entity Framework 설명서에 기여
 
 Entity Framework 설명서에 문서 및 코드 샘플을 제공하는 프로세스를 아래에 설명합니다. 기여는 오타 수정만큼 간단할 수도 있고 새 문서처럼 복잡할 수도 있습니다.
@@ -18,8 +10,8 @@ Entity Framework 설명서에 문서 및 코드 샘플을 제공하는 프로세
 
 [Git 및 GitHub.com](https://guides.github.com/activities/hello-world/)의 기본적인 내용을 이해하고 있어야 합니다.
 
-* 기존 문서를 변경하거나 새 문서를 만드는 등 원하는 작업을 설명하는 [문제](https://github.com/aspnet/EntityFramework.Docs/issues/new)를 엽니다. 많은 시간을 투자하기 전에 EF 팀의 승인을 기다리세요.
-* [aspnet/EntityFramework.Docs](https://github.com/aspnet/EntityFramework.Docs/) 리포지토리를 포크하고 변경 내용에 대한 분기를 만듭니다.
+* 기존 문서를 변경하거나 새 문서를 만드는 등 원하는 작업을 설명하는 [문제](https://github.com/dotnet/EntityFramework.Docs/issues/new)를 엽니다. 많은 시간을 투자하기 전에 EF 팀의 승인을 기다리세요.
+* [dotnet/EntityFramework.Docs](https://github.com/dotnet/EntityFramework.Docs/) 리포지토리를 포크하고 변경 내용에 대한 분기를 만듭니다.
 * 마스터에게 변경 내용이 포함된 PR(끌어오기 요청)을 제출합니다.
 * PR 피드백에 응답합니다.
 

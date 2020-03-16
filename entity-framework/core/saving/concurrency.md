@@ -3,12 +3,12 @@ title: 동시성 충돌 처리 - EF Core
 author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
-ms.openlocfilehash: b72fa472698e76e18f155cf96b738b0e193eee0f
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: a1d1a5a11d482f9104691aa3c072dbd1c548e9f1
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73654625"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413650"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
 
@@ -16,7 +16,7 @@ ms.locfileid: "73654625"
 > 이 페이지에서는 EF Core에서 동시성의 작동 방식과 애플리케이션에서 동시성 충돌을 처리하는 방법에 대해 설명합니다. 모델에서 동시성 토큰을 구성하는 방법에 대한 자세한 내용은 [동시성 토큰](xref:core/modeling/concurrency)을 참조하세요.
 
 > [!TIP]
-> GitHub에서 이 문서의 [샘플](https://github.com/aspnet/EntityFramework.Docs/tree/master/samples/core/Saving/Concurrency/)을 볼 수 있습니다.
+> GitHub에서 이 문서의 [샘플](https://github.com/dotnet/EntityFramework.Docs/tree/master/samples/core/Saving/Concurrency/)을 볼 수 있습니다.
 
 ‘데이터베이스 동시성’이란 여러 프로세스 또는 사용자가 동시에 데이터베이스에서 동일한 데이터를 액세스하거나 변경하는 상황을 의미합니다.  ‘동시성 제어’는 동시 변경 내용이 있을 경우 데이터 일관성을 보장하는 데 사용되는 특정 메커니즘을 의미합니다. 
 

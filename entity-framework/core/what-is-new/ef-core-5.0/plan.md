@@ -3,12 +3,12 @@ title: Entity Framework Core 5.0 계획
 author: ajcvickers
 ms.date: 01/14/2020
 uid: core/what-is-new/ef-core-5.0/plan.md
-ms.openlocfilehash: 0472841fdcd105ec8ea38db062c6768510b8735d
-ms.sourcegitcommit: f2a38c086291699422d8b28a72d9611d1b24ad0d
+ms.openlocfilehash: c5b7300c61c2f668b6f9393ae51bf9ebddf330a7
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76125357"
+ms.lasthandoff: 03/06/2020
+ms.locfileid: "78413824"
 ---
 # <a name="plan-for-entity-framework-core-50"></a>Entity Framework Core 5.0 계획
 
@@ -47,11 +47,13 @@ Microsoft는 EF Core 5.0 투자 상당분의 토대를 구성할 몇몇 주요 �
 
 상태: 진행 중
 
-다대다는 GitHub 백로그에서 가장 많이 요청되는 기능(약 407표 투표됨)입니다. 다대다 관계 지원은 크게 세 가지의 주요 영역으로 세분화가 가능합니다.
+다대다는 GitHub 백로그에서 [가장 많이 요청되는 기능](https://github.com/aspnet/EntityFrameworkCore/issues/1368)(약 407표 투표됨)입니다.
 
-* 건너뛰기 링크 속성. 이 속성을 통해 모델은 기본 조인 테이블 엔터티 참조 없이 쿼리 등에 사용될 수 있습니다.
-* 속성 모음 엔터티 형식. 이 형식을 통해 표준 CLR 형식(예: `Dictionary`)은 각 엔터티 형식에 대해 명시적 CLR 형식이 불필요한 엔터티 인스턴스에 사용될 수 있습니다.
-* 간편한 다대다 관계 구성을 위한 Sugar.
+다대다 관계 전체에 대한 지원은 [#10508](https://github.com/aspnet/EntityFrameworkCore/issues/10508)으로 추적됩니다. 다음 세 가지 주요 영역으로 나눌 수 있습니다.
+
+* 건너뛰기 링크 속성. 이 속성을 통해 모델은 기본 조인 테이블 엔터티 참조 없이 쿼리 등에 사용될 수 있습니다. ([#19003](https://github.com/aspnet/EntityFrameworkCore/issues/19003))
+* 속성 모음 엔터티 형식. 이 형식을 통해 표준 CLR 형식(예: `Dictionary`)은 각 엔터티 형식에 대해 명시적 CLR 형식이 불필요한 엔터티 인스턴스에 사용될 수 있습니다. (5.0용 Stretch: [#9914](https://github.com/aspnet/EntityFrameworkCore/issues/9914).)
+* 간편한 다대다 관계 구성을 위한 Sugar. (5.0용 Stretch.)
 
 이와 같이 필요한 다대다 지원의 가장 큰 걸림돌은 쿼리 같은 비즈니스 논리에서 조인 테이블 참조 없이 “자연” 관계를 사용할 수 없다는 점입니다. 조인 테이블 엔터티 형식은 여전히 존재하겠지만 비즈니스 논리에 지장을 줘서는 안 됩니다. 이 때문에 Microsoft에서는 5.0에서 건너뛰기 링크 속성을 다루기로 했습니다.
 
@@ -144,7 +146,7 @@ Microsoft는 배포 시점에 데이터베이스를 간편히 마이그레이션
 
 상태: 시작 안 됨
 
-Microsoft의 지침은 기존의 MVC 유사 웹 애플리케이션에서 EF Core를 사용하는 데 매우 유용합니다. 다른 플랫폼과 애플리케이션 모델에 대한 지침은 찾을 수 없거나 너무 오래되어 유용하지 않습니다. EF Core 5.0에 대해서는 다음 항목과 함께 EF Core 사용했을 때의 환경을 조사, 개선 및 서류화할 계획입니다.
+Microsoft의 지침은 기존의 MVC 유사 웹 애플리케이션에서 EF Core를 사용하는 데 매우 유용합니다. 다른 플랫폼과 애플리케이션 모델에 대한 지침은 찾을 수 없거나 너무 오래되어 유용하지 않습니다. EF Core 5.0에 대해서는 다음 항목과 함께 EF Core을 사용했을 때의 환경을 조사, 개선 및 서류화할 계획입니다.
 
 * Blazor
 * Xamarin(AOT/링커 스토리 사용 포함)
@@ -178,7 +180,7 @@ Microsoft는 EF Core에 대해 성능 벤치마크 도구 모음을 개선하고
 
 선임 작성자: @ajcvickers
 
-추적 위치: [#1920](https://github.com/aspnet/EntityFramework.Docs/issues/1920)
+추적 위치: [#1920](https://github.com/dotnet/EntityFramework.Docs/issues/1920)
 
 티셔츠 크기: L
 
@@ -194,7 +196,7 @@ Microsoft는 EF Core에 대해 성능 벤치마크 도구 모음을 개선하고
 
 선임 작성자: @bricelam
 
-추적 위치: [#1675](https://github.com/aspnet/EntityFramework.Docs/issues/1675)
+추적 위치: [#1675](https://github.com/dotnet/EntityFramework.Docs/issues/1675)
 
 티셔츠 크기: M
 
@@ -206,7 +208,7 @@ EF 팀은 Microsoft.Data.Sqlite ADO.NET 공급자도 소유합니다. Microsoft�
 
 선임 작성자: @ajcvickers
 
-추적 위치: [5.0 마일스톤에서 문서 리포지토리의 문제](https://github.com/aspnet/EntityFramework.Docs/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A5.0.0+)
+추적 위치: [5.0 마일스톤에서 문서 리포지토리의 문제](https://github.com/dotnet/EntityFramework.Docs/issues?utf8=%E2%9C%93&q=is%3Aissue+milestone%3A5.0.0+)
 
 티셔츠 크기: L
 
