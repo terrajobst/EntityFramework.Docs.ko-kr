@@ -4,12 +4,12 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 1060bb99-765f-4f32-aaeb-d6635d3dbd3e
 uid: ef6/what-is-new/past-releases
-ms.openlocfilehash: fada7740453cd9a55a1d0069236efcecbd9aa314
-ms.sourcegitcommit: 18ab4c349473d94b15b4ca977df12147db07b77f
+ms.openlocfilehash: b7181334cd125c5cbf296d5b3674c0b5f087f438
+ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73656136"
+ms.lasthandoff: 03/15/2020
+ms.locfileid: "79402122"
 ---
 # <a name="past-releases-of-entity-framework"></a>Entity Framework의 이전 릴리스
 
@@ -19,7 +19,7 @@ EF 4.1 릴리스부터는 [Entityframework NuGet 패키지로](https://www.nuget
 
 버전 4.1과 5.0 사이의 EntityFramework NuGet 패키지는 .NET Framework의 일부로 제공 된 EF 라이브러리를 확장 했습니다.
 
-버전 6부터 EF는 오픈 소스 프로젝트를 사용 하 고 .NET Framework의 대역 외로 완전히 이동 했습니다.
+버전 6부터 EF는 오픈 소스 프로젝트 이며 .NET Framework에서 대역 외로도 완전히 이동 했습니다.
 즉, 응용 프로그램에 EntityFramework 버전 6 NuGet 패키지를 추가 하는 경우 .NET Framework의 일부로 제공 되는 EF 비트에 의존 하지 않는 EF 라이브러리의 전체 복사본을 가져옵니다.
 이렇게 하면 개발 속도를 높이고 새로운 기능을 제공 하는 데 도움이 됩니다.
 
@@ -94,7 +94,7 @@ EF 6.1.0 런타임은 2014 년 3 월에 NuGet에 릴리스 되었습니다.
 - **[앱/web.config 파일을 통해 인터셉터를 구성](~/ef6/fundamentals/configuring/config-file.md)** 하면 응용 프로그램을 다시 컴파일하지 않고도 인터셉터를 추가할 수 있습니다.
 - **System.object**는 모든 데이터베이스 작업을 파일에 쉽게 기록할 수 있게 해 주는 새로운 인터셉터입니다. 이전 기능과 함께이 기능을 사용 하면 다시 컴파일하지 않아도 [배포 된 응용 프로그램에 대 한 데이터베이스 작업의 로깅을 쉽게 전환할](~/ef6/fundamentals/configuring/config-file.md)수 있습니다.
 - **마이그레이션 모델 변경 검색** 은 스 캐 폴드 마이그레이션의 정확성을 높이기 위해 개선 되었습니다. 변경 내용 검색 프로세스의 성능도 향상 되었습니다.
-- 초기화 중에 발생 하는 데이터베이스 작업, LINQ 쿼리의 null 같음 비교를 위한 최적화, 더 많은 시나리오에서 더 빠른 보기 생성 (모델 생성), 보다 효율적인 구체화 등의 **성능 향상** 여러 연결이 있는 추적 된 엔터티입니다.
+- 초기화 중 데이터베이스 작업 감소, LINQ 쿼리의 null 같음 비교에 대 한 최적화, 더 많은 시나리오에서 더 빠른 보기 생성 (모델 생성), 여러 연결이 있는 추적 된 엔터티의 보다 효율적인 구체화 등의 **성능 향상**
 
 ## <a name="ef-602"></a>EF 6.0.2
 EF 6.0.2 런타임은 2013 년 12 월에 NuGet에 릴리스 되었습니다.
@@ -121,7 +121,7 @@ EF 6.0.0 런타임은 2013 년 10 월에 NuGet에 릴리스 되었습니다.
 - **[종속성 확인](~/ef6/fundamentals/configuring/dependency-resolution.md)** 에는 서비스 로케이터 패턴에 대 한 지원이 도입 되었으며 사용자 지정 구현으로 바꿀 수 있는 몇 가지 기능이 포함 되어 있습니다.
 - **[가로채기/sql 로깅은](~/ef6/fundamentals/logging-and-interception.md)** 위에 구축 된 간단한 SQL 로깅을 사용 하 여 EF 작업 가로채기를 위한 하위 수준의 빌딩 블록을 제공 합니다.
 - 테스트 **용이성 기능** 을 [사용 하면 모의 프레임 워크를 사용](~/ef6/fundamentals/testing/mocking.md) 하거나 [사용자 고유의 테스트를 작성](~/ef6/fundamentals/testing/writing-test-doubles.md)하는 경우 DbContext 및 dbset에 대 한 테스트 double을 보다 쉽게 만들 수 있습니다.
-- **[이제 이미 열려 있는 DbConnection을 사용 하 여 DbContext를 만들 수 있습니다](~/ef6/fundamentals/connection-management.md)** .이 경우에는 컨텍스트를 만들 때 연결을 열 수 있는 경우 (예: 구성 요소 간 연결 공유) 연결의 상태입니다.
+- **[이제 이미 열려 있는 DbConnection을 사용 하 여 DbContext를 만들 수 있습니다](~/ef6/fundamentals/connection-management.md)** .이 경우에는 컨텍스트를 만들 때 연결을 확인할 수 없는 경우 (예: 연결 상태를 보장할 수 없는 구성 요소 간 연결 공유) 연결을 열 수 있는 경우에 유용 합니다.
 - **[향상 된 트랜잭션 지원은](~/ef6/saving/transactions.md)** 프레임 워크 외부의 트랜잭션을 지원 하 고 프레임 워크 내에서 트랜잭션을 만드는 향상 된 방법을 제공 합니다.
 - **.Net 4.0의 열거형, 공간 및 향상 된 성능** -.NET Framework에 사용 되는 핵심 구성 요소를 EF NuGet 패키지로 이동 하 여 이제 열거형 지원, 공간 데이터 형식 및 .net 4.0에서 EF5의 성능 향상을 제공할 수 있습니다.
 - **LINQ 쿼리에서 열거 가능. Contains의 성능 향상**.
@@ -142,7 +142,7 @@ EF 6.0.0 런타임은 2013 년 10 월에 NuGet에 릴리스 되었습니다.
 - **[Dbmodelbuilder. HasDefaultSchema](~/ef6/modeling/code-first/fluent/types-and-properties.md)** 는 Code First 모델에 대 한 기본 데이터베이스 스키마를 한 곳에서 구성할 수 있도록 하는 새로운 Code First API입니다. 이전에는 Code First 기본 스키마가 dbo&quot; &quot;하드 코딩 되었으며 ToTable API를 통해 테이블이 속한 스키마를 구성 하는 유일한 방법이 있습니다.
 - **AddFromAssembly 메서드** 를 사용 하면 CODE FIRST 흐름 API와 함께 구성 클래스를 사용 하는 경우 어셈블리에 정의 된 모든 구성 클래스를 쉽게 추가할 수 있습니다.
 - **[사용자 지정 마이그레이션 작업](https://romiller.com/2013/02/27/ef6-writing-your-own-code-first-migration-operations/)** 을 통해 코드 기반 마이그레이션에 사용할 추가 작업을 추가할 수 있습니다.
-- Code First를 사용 하 여 만든 데이터베이스의 경우 **기본 트랜잭션 격리 수준이 READ_COMMITTED_SNAPSHOT로 변경 되어** 확장성 및 교착 상태를 줄일 수 있습니다.
+- **기본 트랜잭션 격리 수준은** Code First를 사용 하 여 만든 데이터베이스에 대 한 READ_COMMITTED_SNAPSHOT로 변경 되므로 확장성이 향상 되 고 교착 상태가 줄어듭니다.
 - **이제 엔터티 및 복합 형식이 nestedinside 클래스 일 수 있습니다**.
 
 ## <a name="ef-50"></a>EF 5.0
@@ -168,7 +168,7 @@ EF 5 릴리스에 대해 구체적으로 함께 제공 되는 콘텐츠 목록�
     -   [성능 고려 사항](~/ef6/fundamentals/performance/perf-whitepaper.md)
     -   [Microsoft SQL Azure 사용](~/ef6/fundamentals/connection-resiliency/retry-logic.md)
     -   [구성 파일 설정](~/ef6/fundamentals/configuring/config-file.md)
-    -   [용어](~/ef6/resources/glossary.md)
+    -   [용어 설명](~/ef6/resources/glossary.md)
     -   Code First
         -   [새 데이터베이스에 Code First (연습 및 비디오)](~/ef6/modeling/code-first/workflows/new-database.md)
         -   [기존 데이터베이스에 Code First (연습 및 비디오)](~/ef6/modeling/code-first/workflows/existing-database.md)
@@ -234,7 +234,7 @@ Ef 4.3 릴리스를 위해 특별히 함께 제공 되는 콘텐츠 목록은 ef
 ## <a name="ef-42"></a>EF 4.2
 EF 4.2.0 런타임은 2011 년 11 월에 NuGet에 릴리스 되었습니다.
 이 릴리스에는 EF 4.1.1 릴리스에 대 한 버그 수정이 포함 되어 있습니다.
-이 릴리스에는 버그 수정만 포함 되어 있지만 EF 4.1.2 patch 릴리스 었 기는 하지만 4.2로 이동 하 여, 4.1. x에서 사용한 날짜 기반 패치 버전 번호에서 멀리 이동할 수 있도록 하 고에 대 한 [의미 체계 versionsing](https://semver.org) 를 채택 합니다. emantic 버전 관리.
+이 릴리스에는 버그 수정만 포함 되어 있지만 EF 4.1.2 patch 릴리스 었 기는 하지만 4.2로 이동 하 여이를로 이동 하 여 [의미 체계 버전](https://semver.org) 관리를 위해 사용 했던 날짜 기반 패치 버전 번호에서 벗어나 이동할 수 있도록 했습니다.
 
 Ef 4.2 릴리스를 위해 특별히 함께 제공 되는 콘텐츠 목록은 ef 4.1에 제공 된 콘텐츠가 여전히 EF 4.2에도 적용 됩니다.
 
