@@ -4,18 +4,18 @@ author: divega
 ms.date: 08/06/2017
 ms.assetid: 608cc774-c570-4809-8a3e-cd2c8446b8b2
 uid: core/get-started/install/index
-ms.openlocfilehash: 987b6f38954c291f88b5167fa9b061853b15a6cb
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 6575b1ac028f8b67b49ca7f4e49d6f19500be98f
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412858"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136180"
 ---
 # <a name="installing-entity-framework-core"></a>Entity Framework Core 설치
 
 ## <a name="prerequisites"></a>사전 요구 사항
 
-* EF Core는 [.NET Standard 2.1](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.1을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.1 라이브러리에서도 참조할 수 있습니다.
+* EF Core는 [.NET Standard 2.0](/dotnet/standard/net-standard) 라이브러리입니다. 따라서 EF Core는 .NET Standard 2.0을 지원하는 .NET 구현이 필요합니다. EF Core는 다른 .NET Standard 2.0 라이브러리에서도 참조할 수 있습니다.
 
 * 예를 들어 .NET Core를 사용하여 EF Core를 대상으로 하는 앱을 개발할 수 있습니다. .NET Core 앱을 빌드하려면 [.NET Core SDK](https://dotnet.microsoft.com/download)가 필요합니다. 필요에 따라 [Visual Studio](https://visualstudio.microsoft.com/vs), [Mac용 Visual Studio](https://visualstudio.microsoft.com/vs/mac) 또는 [Visual Studio Code](https://code.visualstudio.com)와 같은 개발 환경을 사용할 수도 있습니다. 자세한 내용은 [.NET Core 시작](/dotnet/core/get-started)을 확인하세요.
 
