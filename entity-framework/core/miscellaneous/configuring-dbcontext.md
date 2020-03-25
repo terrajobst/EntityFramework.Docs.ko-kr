@@ -4,12 +4,12 @@ author: rowanmiller
 ms.date: 10/27/2016
 ms.assetid: d7a22b5a-4c5b-4e3b-9897-4d7320fcd13f
 uid: core/miscellaneous/configuring-dbcontext
-ms.openlocfilehash: 3ab90d46b7a4476044e5ea38eaf04f995708e7bf
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 53b38f288cd45e66d68ebcc3b6066646d59b0262
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: MT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78414160"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136186"
 ---
 # <a name="configuring-a-dbcontext"></a>DbContext 구성
 
@@ -186,11 +186,11 @@ EF Core `DbContext` 인스턴스를 동시에 사용 하려는 시도를 감지 
 
 [`AddDbContext`](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.entityframeworkservicecollectionextensions.adddbcontext) 확장 메서드는 기본적으로 범위가 지정 된 [수명](https://docs.microsoft.com/aspnet/core/fundamentals/dependency-injection#service-lifetimes) 으로 `DbContext` 형식을 등록 합니다.
 
-이는 지정 된 시간에 각 클라이언트 요청을 실행 하는 스레드가 하나 뿐 이며 각 요청이 별도의 종속성 주입 범위 (따라서 별도의 `DbContext` 인스턴스)를 가져오기 때문에 ASP.NET Core 응용 프로그램의 동시 액세스 문제와는 안전 합니다.
+이는 지정 된 시간에 각 클라이언트 요청을 실행 하는 스레드가 하나 뿐 이며 각 요청이 별도의 종속성 주입 범위 (따라서 별도의 `DbContext` 인스턴스)를 가져오기 때문에 대부분의 ASP.NET Core 응용 프로그램에서 동시 액세스 문제를 해결 하는 것이 안전 합니다. Blazor 서버 호스팅 모델의 경우, Blazor 사용자 회로를 유지 관리 하기 위해 하나의 논리적 요청이 사용 되므로 기본 삽입 범위를 사용 하는 경우 사용자 회로 마다 범위가 지정 된 DbContext 인스턴스를 하나만 사용할 수 있습니다.
 
-그러나 동시에 여러 스레드를 명시적으로 실행 하는 코드는 `DbContext` 인스턴스가 동시에 액세스 되지 않도록 해야 합니다.
+동시에 여러 스레드를 명시적으로 실행 하는 코드는 `DbContext` 인스턴스가 동시에 액세스 되지 않도록 해야 합니다.
 
-종속성 주입을 사용 하 여이 작업을 수행 하려면 컨텍스트를 범위 지정으로 등록 하 고 각 스레드에 대해 범위 (`IServiceScopeFactory`사용)를 만들거나 `DbContext`를 임시로 등록 하 여 (`ServiceLifetime` 매개 변수를 사용 하는 `AddDbContext`의 오버 로드를 사용 하 여) 이러한 작업을 수행할 수 있습니다.
+종속성 주입을 사용 하 여이 작업을 수행 하려면 컨텍스트를 범위가 지정 된 상태로 등록 하 고, 각 스레드에 대해 범위 (`IServiceScopeFactory`사용)를 만들거나, `DbContext`를 임시로 등록 하 여 (`ServiceLifetime` 매개 변수를 사용 하는 `AddDbContext` 오버 로드 사용) 수행할 수 있습니다.
 
 ## <a name="more-reading"></a>추가 정보
 
