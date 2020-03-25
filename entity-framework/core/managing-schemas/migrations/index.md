@@ -4,12 +4,12 @@ author: bricelam
 ms.author: bricelam
 ms.date: 10/05/2018
 uid: core/managing-schemas/migrations/index
-ms.openlocfilehash: dc0c1ae1a03c98c6f230557dc0bdd4d29ec191dd
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 190057daed61c58c1f89ee8d775913458e413a50
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412848"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136207"
 ---
 # <a name="migrations"></a>마이그레이션
 
@@ -215,15 +215,43 @@ Update-Database LastGoodMigration
 
 ### <a name="net-core-cli"></a>[.NET Core CLI](#tab/dotnet-core-cli)
 
+#### <a name="basic-usage"></a>기본 사용
 ```dotnetcli
 dotnet ef migrations script
 ```
 
+#### <a name="with-from-to-implied"></a>From을 사용할 경우(implied에 대해)
+이 마이그레이션에서 최신 마이그레이션으로의 SQL 스크립트가 생성됩니다.
+```dotnetcli
+dotnet ef migrations script 20190725054716_Add_new_tables
+```
+
+#### <a name="with-from-and-to"></a>From 및 To를 사용할 경우
+`from` 마이그레이션에서 지정된 `to` 마이그레이션으로의 SQL 스크립트가 생성됩니다.
+```dotnetcli
+dotnet ef migrations script 20190725054716_Add_new_tables 20190829031257_Add_audit_table
+```
+롤백 스크립트를 생성하기 위해 `to`보다 최신인 `from`을 사용할 수 있습니다. ‘잠재적 데이터 손실 시나리오를 기록해 두세요.’ 
+
 ### <a name="visual-studio"></a>[Visual Studio](#tab/vs)
 
+#### <a name="basic-usage"></a>기본 사용
 ``` powershell
 Script-Migration
 ```
+
+#### <a name="with-from-to-implied"></a>From을 사용할 경우(implied에 대해)
+이 마이그레이션에서 최신 마이그레이션으로의 SQL 스크립트가 생성됩니다.
+```powershell
+Script-Migration 20190725054716_Add_new_tables
+```
+
+#### <a name="with-from-and-to"></a>From 및 To를 사용할 경우
+`from` 마이그레이션에서 지정된 `to` 마이그레이션으로의 SQL 스크립트가 생성됩니다.
+```powershell
+Script-Migration 20190725054716_Add_new_tables 20190829031257_Add_audit_table
+```
+롤백 스크립트를 생성하기 위해 `to`보다 최신인 `from`을 사용할 수 있습니다. ‘잠재적 데이터 손실 시나리오를 기록해 두세요.’ 
 
 ***
 

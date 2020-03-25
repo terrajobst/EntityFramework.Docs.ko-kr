@@ -4,18 +4,22 @@ author: divega
 ms.date: 09/12/2019
 ms.assetid: 41d1f86b-ce66-4bf2-8963-48514406fb4c
 uid: ef6/what-is-new/index
-ms.openlocfilehash: 9daae787d0cec0ca536413e6263bb363ba76ff2c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: e0367aeefd682434bf520301776bcff4f0e72e06
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78413418"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136130"
 ---
 # <a name="whats-new-in-ef6"></a>EF6의 새로운 기능
 
 최신 기능 및 높은 안정성을 얻을 수 있도록 Entity Framework 최신 릴리스 버전을 사용하는 것이 좋습니다.
 하지만 이전 버전을 사용해야 하거나 최신 시험판 릴리스의 개선된 기능을 사용해 보려는 분들도 있다는 사실을 잘 알고 있습니다.
 EF 특정 버전을 설치하는 방법은 [Entity Framework 받기](~/ef6/fundamentals/install.md)를 참조하세요.
+
+## <a name="ef-640"></a>EF 6.4.0
+
+EF 6.4.0 런타임은 2019년 12월에 NuGet에서 릴리스되었습니다. EF 6.4의 주요 목표는 EF 6.3에서 제공된 기능 및 시나리오를 개선하는 것입니다. GitHub에서 [중요한 수정 사항 목록](https://github.com/dotnet/ef6/milestone/14?closed=1)을 참조하세요.
 
 ## <a name="ef-630"></a>EF 6.3.0
 
@@ -31,7 +35,7 @@ EF 6.3.0 런타임은 2019년 9월에 NuGet에서 출시되었습니다. 이 릴
 
 ### <a name="ef-designer-support"></a>EF 디자이너 지원
 
-현재 .NET Core 또는 .NET Standard 프로젝트에서 직접 EF 디자이너를 사용하는 것은 지원되지 않습니다. 
+현재 .NET Core 또는 .NET Standard 프로젝트에서나 SDK 스타일 .NET Framework 프로젝트에서 직접 EF 디자이너를 사용할 수는 없습니다. 
 
 동일한 솔루션의 .NET Core 3.0 또는 .NET Standard 2.1 프로젝트에 EDMX 파일 및 엔터티와 DbContext에 대해 생성된 클래스를 연결 파일로 추가하여 이 제한을 해결할 수 있습니다.
 
@@ -47,6 +51,8 @@ EF 6.3.0 런타임은 2019년 9월에 NuGet에서 출시되었습니다. 이 릴
 ```
 
 EDMX 파일은 EntityDeploy 빌드 작업과 연결됩니다. 이 작업은 EF 모델을 대상 어셈블리에 포함 리소스로 추가하거나 EDMX의 메타데이터 아티팩트 처리 설정에 따라 출력 폴더의 파일로 복사하는 특수 MSBuild 작업(현재 EF 6.3 패키지에 포함됨)입니다. 설정하는 방법에 대한 자세한 내용은 [EDMX .NET Core 샘플](https://aka.ms/EdmxDotNetCoreSample)을 참조하세요.
+
+경고: “실제” .edmx 파일을 정의하는 이전 스타일(즉, 비 SDK 스타일) .NET Framework 프로젝트가 .sln 파일 내 링크를 정의하는 프로젝트보다 ‘먼저’ 생성되어야 합니다.  그렇지 않으면 디자이너에서 .edmx 파일을 열 때 “현재 프로젝트에 지정된 대상 프레임워크에서 Entity Framework를 사용할 수 없습니다. 프로젝트의 대상 프레임워크를 변경하거나 XmlEditor에서 모델을 편집하십시오.”라는 오류 메시지가 표시됩니다.
 
 ## <a name="past-releases"></a>이전 릴리스
 

@@ -4,12 +4,12 @@ author: ajcvickers
 ms.date: 03/03/2020
 ms.assetid: C21F89EE-FB08-4ED9-A2A0-76CB7656E6E4
 uid: core/what-is-new/index
-ms.openlocfilehash: 2c41f65d1fead8430a39c6230a0f22506686504e
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: 7b58b4de0eb8d9575f77e0b147da017eabad1867
+ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78413208"
+ms.lasthandoff: 03/24/2020
+ms.locfileid: "80136222"
 ---
 # <a name="ef-core-releases-and-planning"></a>EF Core 릴리스 및 계획
 
@@ -57,10 +57,12 @@ EF Core 릴리스는 [.NET Core 배송 일정](https://github.com/dotnet/core/bl
 
 ### <a name="get-it-now"></a>지금 바로 사용하세요!
 
-EF Core 5.0 패키지는 [일별 빌드](https://github.com/aspnet/AspNetCore/blob/master/docs/DailyBuilds.md)로 **지금 사용할 수 있습니다**. 
+EF Core 5.0 패키지를 **이제 다음으로 사용할 수 있습니다**.
 
-일별 빌드를 사용하는 것은 이슈를 찾고 가능한 한 빨리 피드백을 제공하는 좋은 방법입니다.
+* [일별 빌드](https://github.com/dotnet/aspnetcore/blob/master/docs/DailyBuilds.md)
+  * 모든 최신 기능 및 버그 수정이 포함되어 있습니다. 일반적으로 매우 안정적이며, 각 빌드에 대해 테스트 실행이 57,000번 이상 이루어졌습니다.
+* [NuGet의 미리 보기](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore)
+  * 일별 빌드보다 뒤처지지만, 해당 ASP.NET Core 및 .NET Core 미리 보기에서 작동하도록 테스트됩니다.
+
+미리 보기 또는 일별 빌드를 사용하는 것은 이슈를 찾고 가능한 한 빨리 피드백을 제공하는 좋은 방법입니다.
 그런 피드백을 빨리 제공할수록 다음 공식 릴리스 전에 실행될 가능성이 커집니다.
-각 빌드마다 플랫폼 당 56,000회 이상의 테스트를 실행하여 일별 빌드를 양호한 상태로 유지하기 위해 노력하고 있습니다.
-
-미리 보기 패키지는 연말에 NuGet에 제공됩니다.
