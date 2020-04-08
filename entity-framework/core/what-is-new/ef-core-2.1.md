@@ -5,10 +5,10 @@ ms.date: 02/20/2018
 ms.assetid: 585F90A3-4D5A-4DD1-92D8-5243B14E0FEC
 uid: core/what-is-new/ef-core-2.1
 ms.openlocfilehash: ba3a26bcd76cd0b9615b13f32456e7280afe533a
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413566"
 ---
 # <a name="new-features-in-ef-core-21"></a>EF Core 2.1의 새로운 기능
@@ -129,11 +129,11 @@ var query = context.Customers.Select(
     c => c.Orders.Where(o => o.Amount  > 100).Select(o => o.Amount).ToList());
 ```
 
-이 쿼리는 두 개의 SQL 쿼리로 변환됩니다. 하나는 고객, 다른 하나는 주문에 대한 쿼리입니다.
+이 쿼리를 두 개의 SQL 쿼리로 변환할 수 있습니다. 하나는 고객, 다른 하나는 순서로 변환합니다.
 
 ## <a name="owned-attribute"></a>[Owned] 특성
 
-이제 형식에 `[Owned]`라는 주석을 달고 소유자 엔터티를 모델에 추가하여 [소유한 엔터티 형식](xref:core/modeling/owned-entities)을 구성할 수 있습니다.
+이제 형식에 [라는 주석을 달고 소유자 엔터티를 모델에 추가하여 ](xref:core/modeling/owned-entities)소유한 엔터티 형식`[Owned]`을 구성할 수 있습니다.
 
 ``` csharp
 [Owned]
@@ -162,7 +162,7 @@ _dotnet-ef_ 명령은 이제 .NET Core SDK의 일부이므로, 마이그레이�
 
 ## <a name="state-change-events"></a>상태 변경 이벤트
 
-`ChangeTracker`의 새 `Tracked` 및 `StateChanged` 이벤트를 사용하여 DbContext를 입력하거나 상태를 변경하는 엔터티에 대응하는 논리를 작성할 수 있습니다.
+`Tracked`의 새 `StateChanged` 및 `ChangeTracker` 이벤트를 사용하여 DbContext를 입력하거나 상태를 변경하는 엔터티에 대응하는 논리를 작성할 수 있습니다.
 
 ## <a name="raw-sql-parameter-analyzer"></a>원시 SQL 매개 변수 분석기
 

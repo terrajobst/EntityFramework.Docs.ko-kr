@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: 20A25111-AEBE-4BC2-83A5-3F651952DF72
 uid: core/what-is-new/ef-core-1.0
 ms.openlocfilehash: 2cd2a54d75ed3f0caa8b674dfb56babcfcc13592
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413596"
 ---
 # <a name="features-included-in-ef-core-10"></a>EF Core 1.0에 포함된 기능
@@ -117,11 +117,11 @@ Windows, OSX 및 Linux에서 .NET Framework 및 .NET Core를 둘 다 대상으�
 
 `SaveChanges`는 항상 원자성입니다(완전히 성공하거나 데이터베이스가 변경되지 않음). 컨텍스트 인스턴스 간에 트랜잭션 공유를 허용하는 트랜잭션 관련 API도 있습니다.
 
-### <a name="relational-batching-of-statements"></a>관계: 문 일괄 처리
+### <a name="relational-batching-of-statements"></a>관계형: 문 일괄 처리
 
 여러 INSERT/UPDATE/DELETE 명령을 데이터베이스에 대한 단일 왕복으로 일괄 처리하여 성능을 개선합니다.
 
-## <a name="query"></a>쿼리
+## <a name="query"></a>Query
 
 ### <a name="basic-linq-support"></a>기본 LINQ 지원
 

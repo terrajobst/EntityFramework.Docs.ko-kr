@@ -5,10 +5,10 @@ ms.date: 02/20/2018
 ms.assetid: 2CB5809E-0EFB-44F6-AF14-9D5BFFFBFF9D
 uid: core/what-is-new/ef-core-2.0
 ms.openlocfilehash: 83f6b819409d502dba17a678d44a0746a4a77f4b
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413578"
 ---
 # <a name="new-features-in-ef-core-20"></a>EF Core 2.0의 새로운 기능
@@ -164,7 +164,7 @@ builder.ApplyConfiguration(new CustomerConfiguration());
 
 일반적으로 ASP.NET Core 애플리케이션에서 EF Core 사용을 위한 기본 패턴에는 사용자 지정 DbContext 형식을 종속성 주입 시스템에 등록하고 나중에 컨트롤러의 생성자 매개 변수를 통해 해당 형식의 인스턴스를 구하는 것이 관련됩니다. 즉 각 요청에 대해 DbContext의 새 인스턴스가 만들어집니다.
 
-버전 2.0에서는 투명하게 재사용 가능한 DbContext 인스턴스의 풀을 도입하는 종속성 주입에서 사용자 지정 DbContext 형식을 등록하는 새로운 방법이 도입됩니다. DbContext 풀링을 사용하려면 서비스 등록 중에 `AddDbContext` 대신 `AddDbContextPool`을 사용합니다.
+버전 2.0에서는 투명하게 재사용 가능한 DbContext 인스턴스의 풀을 도입하는 종속성 주입에서 사용자 지정 DbContext 형식을 등록하는 새로운 방법이 도입됩니다. DbContext 풀링을 사용하려면 서비스 등록 중에 `AddDbContextPool` 대신 `AddDbContext`을 사용합니다.
 
 ``` csharp
 services.AddDbContextPool<BloggingContext>(
@@ -209,9 +209,9 @@ using (var db = new CustomerContext())
 
 ### <a name="attach-can-track-a-graph-of-new-and-existing-entities"></a>연결은 새 및 기존 엔터티의 그래프를 추적할 수 있습니다.
 
-EF Core는 다양한 메커니즘을 통해 키 값의 자동 생성을 지원합니다. 이 기능을 사용할 경우 키 속성이 CLR 기본값(보통 0 또는 null)이면 값이 생성됩니다. 즉 엔터티의 그래프가 `DbContext.Attach` 또는 `DbSet.Attach`로 전달되며 EF Core는 키가 이미 설정된 엔터티는 `Unchanged`, 키 설정이 없는 엔터티는 `Added`로 표시합니다. 이렇게 하면 생성된 키를 사용할 때 새 엔터티와 기존 엔터티의 혼합 그래프를 간편하게 연결할 수 있습니다. `DbContext.Update` 및 `DbSet.Update`는 키 설정이 있는 엔터티가 `Unchanged` 대신 `Modified`로 표시된다는 점을 제외하고는 동일한 방식으로 작동합니다.
+EF Core는 다양한 메커니즘을 통해 키 값의 자동 생성을 지원합니다. 이 기능을 사용할 경우 키 속성이 CLR 기본값(보통 0 또는 null)이면 값이 생성됩니다. 즉 엔터티의 그래프가 `DbContext.Attach` 또는 `DbSet.Attach`로 전달되며 EF Core는 키가 이미 설정된 엔터티는 `Unchanged`, 키 설정이 없는 엔터티는 `Added`로 표시합니다. 이렇게 하면 생성된 키를 사용할 때 새 엔터티와 기존 엔터티의 혼합 그래프를 간편하게 연결할 수 있습니다. `DbContext.Update` 및 `DbSet.Update`는 키 설정이 있는 엔터티가 `Modified` 대신 `Unchanged`로 표시된다는 점을 제외하고는 동일한 방식으로 작동합니다.
 
-## <a name="query"></a>쿼리
+## <a name="query"></a>Query
 
 ### <a name="improved-linq-translation"></a>향상된 LINQ 변환
 
@@ -309,7 +309,7 @@ public class MyPluralizer : IPluralizer
 
 공급자가 모델과 상호 작용하는 방식을 보완하고 규칙, 주석 및 복합 API가 다양한 공급자에서 작동하는 방식을 간소화합니다.
 
-이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/master/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 애플리케이션에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 *공통 관계형 메타데이터 개념*에 대한 모든 액세스가 항상 `.SqlServer`, `.Sqlite` 등이 아닌 `.Relational` 호출을 통해 이루어집니다.
+이제 EF Core 2.0은 사용하는 각각의 다른 공급자마다 다른 [IModel](https://github.com/aspnet/EntityFramework/blob/master/src/EFCore/Metadata/IModel.cs)을 빌드합니다. 일반적으로 애플리케이션에 투명합니다. 이렇게 하면 하위 수준 메타데이터 API가 간소화되어 *공통 관계형 메타데이터 개념*에 대한 모든 액세스가 항상 `.Relational`, `.SqlServer` 등이 아닌 `.Sqlite` 호출을 통해 이루어집니다.
 
 ### <a name="consolidated-logging-and-diagnostics"></a>통합된 로깅 및 진단
 

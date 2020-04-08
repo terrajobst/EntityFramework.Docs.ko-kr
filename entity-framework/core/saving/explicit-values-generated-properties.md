@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: 3f1993c2-cdf5-425b-bac2-a2665a20322b
 uid: core/saving/explicit-values-generated-properties
 ms.openlocfilehash: 43c4ab3c2a60645cdeff2a6cc40ce979f832f2fd
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413632"
 ---
 # <a name="setting-explicit-values-for-generated-properties"></a>생성된 속성에 대한 명시적 값 설정
@@ -50,7 +50,7 @@ ms.locfileid: "78413632"
 
 일반적으로 `Employee.EmployeeId` 속성은 저장소 생성 `IDENTITY` 열입니다.
 
-대부분의 경우 위에 표시된 접근 방법은 주요 속성에 대해 작동합니다. 그러나 SQL Server `IDENTITY` 열에 명시적 값을 삽입하려면 `SaveChanges()`를 호출하기 전에 `IDENTITY_INSERT`를 수동으로 사용해야 합니다.
+대부분의 경우 위에 표시된 접근 방법은 주요 속성에 대해 작동합니다. 그러나 SQL Server `IDENTITY` 열에 명시적 값을 삽입하려면 `IDENTITY_INSERT`를 호출하기 전에 `SaveChanges()`를 수동으로 사용해야 합니다.
 
 > [!NOTE]  
 > SQL Server 공급자 내에서 자동으로 이 작업을 수행하려면 백로그에 [기능 요청](https://github.com/aspnet/EntityFramework/issues/703)이 있어야 합니다.
@@ -76,7 +76,7 @@ ms.locfileid: "78413632"
 > [!NOTE]  
 > **EF Core 2.0의 변경 내용:** 이전 릴리스에서는 after-save 동작이 `IsReadOnlyAfterSave` 플래그를 통해 제어되었습니다. 이 플래그는 사용되지 않으며 `AfterSaveBehavior`로 대체되었습니다.
 
-데이터베이스에는 `UPDATE` 작업 중에 `LastPayRaise` 열에 대한 값을 생성하는 트리거도 있습니다.
+데이터베이스에는 `LastPayRaise` 작업 중에 `UPDATE` 열에 대한 값을 생성하는 트리거도 있습니다.
 
 [!code-sql[Main](../../../samples/core/Saving/ExplicitValuesGenerateProperties/employee_UPDATE.sql)]
 

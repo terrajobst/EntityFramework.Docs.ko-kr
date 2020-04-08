@@ -5,10 +5,10 @@ ms.date: 10/08/2019
 ms.assetid: 70aae9b5-8743-4557-9c5d-239f688bf418
 uid: core/querying/raw-sql
 ms.openlocfilehash: a54bb67c0fce9d621382f6372e70fe4cdca48a20
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413716"
 ---
 # <a name="raw-sql-queries"></a>원시 SQL 쿼리
@@ -83,9 +83,9 @@ LINQ를 사용하여 구성하려면 원시 SQL 쿼리가 구성 가능해야 �
 
 - 후행 세미콜론
 - SQL Server의 후행 쿼리 수준 힌트(예: `OPTION (HASH JOIN)`)
-- SQL Server에서, `SELECT` 절에서 `OFFSET 0` 또는 `TOP 100 PERCENT`와 함께 사용되지 않는 `ORDER BY` 절
+- SQL Server에서, `ORDER BY` 절에서 `OFFSET 0` 또는 `TOP 100 PERCENT`와 함께 사용되지 않는 `SELECT` 절
 
-SQL Server는 저장 프로시저 호출에 대한 구성을 허용하지 않으므로 그러한 호출에 추가 쿼리 연산자를 적용하려고 하면 잘못된 SQL이 발생합니다. EF Core가 저장 프로시저에 대해 구성을 시도하지 않도록 `FromSqlRaw` 또는 `FromSqlInterpolated` 메서드 직후에 `AsEnumerable` 또는 `AsAsyncEnumerable` 메서드를 사용하세요.
+SQL Server는 저장 프로시저 호출에 대한 구성을 허용하지 않으므로 그러한 호출에 추가 쿼리 연산자를 적용하려고 하면 잘못된 SQL이 발생합니다. EF Core가 저장 프로시저에 대해 구성을 시도하지 않도록 `AsEnumerable` 또는 `AsAsyncEnumerable` 메서드 직후에 `FromSqlRaw` 또는 `FromSqlInterpolated` 메서드를 사용하세요.
 
 ## <a name="change-tracking"></a>변경 내용 추적
 
@@ -105,4 +105,4 @@ SQL Server는 저장 프로시저 호출에 대한 구성을 허용하지 않으
 
 ## <a name="previous-versions"></a>이전 버전
 
-EF Core 버전 2.2 및 이전 버전에는 최신 `FromSqlRaw` 및 `FromSqlInterpolated`와 동일한 방식으로 작동하는 `FromSql` 메서드라는 두 개의 오버로드가 있습니다. 이로 인해 보간된 문자열 메서드를 호출하려다 실수로 원시 문자열 메서드를 호출하거나, 반대로 후자를 호출하려다 전자를 호출하는 실수를 저지를 가능성이 매우 높습니다. 실수로 잘못된 오버로드를 호출하면 매개 변수가 있어야 하는 쿼리에 매개 변수가 있지 않게 될 수 있습니다.
+EF Core 버전 2.2 및 이전 버전에는 최신 `FromSql` 및 `FromSqlRaw`와 동일한 방식으로 작동하는 `FromSqlInterpolated` 메서드라는 두 개의 오버로드가 있습니다. 이로 인해 보간된 문자열 메서드를 호출하려다 실수로 원시 문자열 메서드를 호출하거나, 반대로 후자를 호출하려다 전자를 호출하는 실수를 저지를 가능성이 매우 높습니다. 실수로 잘못된 오버로드를 호출하면 매개 변수가 있어야 하는 쿼리에 매개 변수가 있지 않게 될 수 있습니다.

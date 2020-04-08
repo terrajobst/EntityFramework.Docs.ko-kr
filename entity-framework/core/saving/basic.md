@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: 850d842e-3fad-4ef2-be17-053768e97b9e
 uid: core/saving/basic
 ms.openlocfilehash: 066d67d6104316832a33f5a3648f1f2fa6cc9c50
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413686"
 ---
 # <a name="basic-save"></a>기본 저장
@@ -25,7 +25,7 @@ ms.locfileid: "78413686"
 [!code-csharp[Main](../../../samples/core/Saving/Basics/Sample.cs#Add)]
 
 > [!TIP]  
-> Add, Attach 및 Update 메서드는 모두 [관련 데이터](related-data.md) 섹션에 설명된 대로 해당 메서드에 전달된 엔터티의 전체 그래프에서 작동합니다. 또는 EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정할 수 있습니다. 예: `context.Entry(blog).State = EntityState.Modified`.
+> Add, Attach 및 Update 메서드는 모두 [관련 데이터](related-data.md) 섹션에 설명된 대로 해당 메서드에 전달된 엔터티의 전체 그래프에서 작동합니다. 또는 EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정할 수 있습니다. 예를 들어 `context.Entry(blog).State = EntityState.Modified`과 같은 형식입니다.
 
 ## <a name="updating-data"></a>데이터 업데이트
 

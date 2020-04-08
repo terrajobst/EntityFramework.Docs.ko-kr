@@ -6,10 +6,10 @@ ms.author: ansvyryd
 ms.date: 11/05/2019
 uid: core/providers/cosmos/index
 ms.openlocfilehash: 74284bf78f404e376436a1ef5d5933186c85ae49
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413058"
 ---
 # <a name="ef-core-azure-cosmos-db-provider"></a>EF Core Azure Cosmos DB 공급자
@@ -65,7 +65,7 @@ Install-Package Microsoft.EntityFrameworkCore.Cosmos
 [!code-csharp[HelloCosmos](../../../../samples/core/Cosmos/ModelBuilding/Sample.cs?name=HelloCosmos)]
 
 > [!IMPORTANT]
-> 필요한 컨테이너를 만들고 모델에 있는 경우 [시드 데이터](../../modeling/data-seeding.md)를 삽입하려면 [EnsureCreatedAsync](/dotnet/api/Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator.EnsureCreatedAsync)를 호출해야 합니다. 그러나 성능 문제가 발생할 수 있으므로 `EnsureCreatedAsync`는 정상 작업이 아닌 배포 중에만 호출해야 합니다.
+> 필요한 컨테이너를 만들고 모델에 있는 경우 [시드 데이터](/dotnet/api/Microsoft.EntityFrameworkCore.Storage.IDatabaseCreator.EnsureCreatedAsync)를 삽입하려면 [EnsureCreatedAsync](../../modeling/data-seeding.md)를 호출해야 합니다. 그러나 성능 문제가 발생할 수 있으므로 `EnsureCreatedAsync`는 정상 작업이 아닌 배포 중에만 호출해야 합니다.
 
 ## <a name="cosmos-specific-model-customization"></a>Cosmos 특정 모델 사용자 지정
 
@@ -164,7 +164,7 @@ Cosmos의 경우 소유된 엔터티는 소유자와 동일한 항목에 포함�
 
 ## <a name="working-with-disconnected-entities"></a>연결이 끊긴 엔터티 사용
 
-모든 항목은 지정된 파티션 키에 고유한 `id` 값이 있어야 합니다. 기본적으로 EF Core는 '|'를 구분 기호로 사용하여 판별자 및 기본 키 값을 연결하고 값을 생성합니다. 키 값은 엔터티가 `Added` 상태로 전환될 때만 생성됩니다. 이 경우 .NET 형식에 값을 저장할 `id` 속성이 없는 경우 [엔터티를 연결](../../saving/disconnected-entities.md)할 때 문제가 발생할 수 있습니다.
+모든 항목은 지정된 파티션 키에 고유한 `id` 값이 있어야 합니다. 기본적으로 EF Core는 '|'를 구분 기호로 사용하여 판별자 및 기본 키 값을 연결하고 값을 생성합니다. 키 값은 엔터티가 `Added` 상태로 전환될 때만 생성됩니다. 이 경우 .NET 형식에 값을 저장할 [ 속성이 없는 경우 ](../../saving/disconnected-entities.md)엔터티를 연결`id`할 때 문제가 발생할 수 있습니다.
 
 이 제한 사항을 해결하려면 `id` 값을 수동으로 만들어 설정하거나 먼저 엔터티를 추가된 것으로 표시한 다음 원하는 상태로 변경할 수 있습니다.
 

@@ -17,7 +17,7 @@ Entity Framework 설명서에 문서 및 코드 샘플을 제공하는 프로세
 
 ## <a name="markdown-syntax"></a>Markdown 구문
 
-문서는 [GFM(GitHub-flavored Markdown)](https://guides.github.com/features/mastering-markdown/)의 상위 집합인 [DFM(DocFx-flavored Markdown)](http://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html)으로 작성됩니다. EF 설명서에서 일반적으로 사용되는 UI 기능의 DFM 구문 및 메타데이터 예제는 .NET Core 리포지토리 스타일 가이드의 [메타데이터 및 Markdown 템플릿](https://github.com/dotnet/docs/blob/master/styleguide/template.md)을 참조하세요.
+문서는 [GFM(GitHub-flavored Markdown)](http://dotnet.github.io/docfx/spec/docfx_flavored_markdown.html)의 상위 집합인 [DFM(DocFx-flavored Markdown)](https://guides.github.com/features/mastering-markdown/)으로 작성됩니다. EF 설명서에서 일반적으로 사용되는 UI 기능의 DFM 구문 및 메타데이터 예제는 .NET Core 리포지토리 스타일 가이드의 [메타데이터 및 Markdown 템플릿](https://github.com/dotnet/docs/blob/master/styleguide/template.md)을 참조하세요.
 
 ## <a name="folder-structure-conventions"></a>폴더 구조 규칙
 
@@ -37,7 +37,7 @@ Entity Framework 설명서에 문서 및 코드 샘플을 제공하는 프로세
 [!code-csharp[Main](../../../samples/core/saving/Program.cs)]
 ```
 
-줄 번호를 사용하여 파일의 일부를 코드 조각으로 렌더링하려면:
+줄 번호를 사용하여 파일의 일부를 코드 조각으로 렌더링하려면
 
 ``` none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs?range=1-10]
@@ -45,7 +45,7 @@ Entity Framework 설명서에 문서 및 코드 샘플을 제공하는 프로세
 
 C# 코드 조각의 경우 [C# 지역](https://msdn.microsoft.com/library/9a1ybwek.aspx)을 참조할 수 있습니다. 줄 번호보다는 영역을 사용하십시오. 코드 파일의 줄 번호는 변경되거나, Markdown의 줄 번호 참조와 비동기화될 가능성이 높습니다. C# 지역은 중첩할 수 있습니다. 외부 영역을 참조하는 경우 내부 `#region` 및 `#endregion` 지시문이 코드 조각에서 렌더링되지 않습니다.
 
-"snippet_Example"이라는 C# 지역을 렌더링하려면:
+"snippet_Example"이라는 C# 지역을 렌더링하려면
 
 ``` none
 [!code-csharp[Main](../../../samples/core/saving/Program.cs?name=snippet_Example)]
@@ -65,7 +65,7 @@ DocFX에는 Windows용 .NET Framework나 Linux 또는 macOS용 Mono가 필요합
 
 ### <a name="windows-instructions"></a>Windows 지침
 
-* [DocFX 릴리스](https://github.com/dotnet/docfx/releases)에서 *docfx.zip*을 다운로드하고 압축을 풉니다.
+* *DocFX 릴리스*에서 [docfx.zip](https://github.com/dotnet/docfx/releases)을 다운로드하고 압축을 풉니다.
 * PATH에 DocFX를 추가합니다.
 * 명령줄 창에서 복제된 리포지토리(*docfx.json* 파일 포함)로 이동하고 다음 명령을 실행합니다.
 
@@ -80,7 +80,7 @@ DocFX에는 Windows용 .NET Framework나 Linux 또는 macOS용 Mono가 필요합
 * Homebrew를 통해 Mono 설치 - `brew install mono`.
 * [최신 버전의 DocFX](https://github.com/dotnet/docfx/releases/tag/v2.7.2)를 다운로드합니다.
 * `\bin\docfx`로 추출합니다.
-* **docfx**의 별칭을 만듭니다.
+* **docfx**의 별칭 만들기:
 
   ``` console
   function docfx {

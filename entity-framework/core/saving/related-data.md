@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: 07b6680f-ffcf-412c-9857-f997486b386c
 uid: core/saving/related-data
 ms.openlocfilehash: 86d32b6172ee21c12a15e9ed4bb0142afc99c8bd
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413614"
 ---
 # <a name="saving-related-data"></a>관련 데이터 저장
@@ -27,13 +27,13 @@ ms.locfileid: "78413614"
 [!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingGraphOfEntities)]
 
 > [!TIP]  
-> EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정합니다. 예: `context.Entry(blog).State = EntityState.Modified`.
+> EntityEntry.State 속성을 사용하여 단일 엔터티의 상태를 설정합니다. 예를 들어 `context.Entry(blog).State = EntityState.Modified`과 같은 형식입니다.
 
 ## <a name="adding-a-related-entity"></a>관련 엔터티 추가하기
 
 컨텍스트에서 이미 추적한 엔터티의 탐색 속성에서 새 엔터티를 참조하는 경우 엔터티가 검색되어 데이터베이스에 삽입됩니다.
 
-다음 예제에서는 `post` 엔터티가 데이터베이스에서 가져온 `blog` 엔터티의 `Posts` 속성에 추가되어 삽입됩니다.
+다음 예제에서는 `post` 엔터티가 데이터베이스에서 가져온 `Posts` 엔터티의 `blog` 속성에 추가되어 삽입됩니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#AddingRelatedEntity)]
 
@@ -41,7 +41,7 @@ ms.locfileid: "78413614"
 
 엔터티의 탐색 속성을 변경하는 경우 데이터베이스의 외래 키 열에도 해당 변경 내용이 적용됩니다.
 
-다음 예제에서는 해당 `Blog` 탐색 속성이 `blog`를 가리키도록 설정되어 있으므로 `post` 엔터티가 새 `blog` 엔터티에 속하도록 업데이트됩니다. 또한 `blog`는 컨텍스트에서 이미 추적한 엔터티(`post`)의 탐색 속성에서 참조되는 새 엔터티이므로 데이터베이스에 삽입됩니다.
+다음 예제에서는 해당 `post` 탐색 속성이 `blog`를 가리키도록 설정되어 있으므로 `Blog` 엔터티가 새 `blog` 엔터티에 속하도록 업데이트됩니다. 또한 `blog`는 컨텍스트에서 이미 추적한 엔터티(`post`)의 탐색 속성에서 참조되는 새 엔터티이므로 데이터베이스에 삽입됩니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/RelatedData/Sample.cs#ChangingRelationships)]
 

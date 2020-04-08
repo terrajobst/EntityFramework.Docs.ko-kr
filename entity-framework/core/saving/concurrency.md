@@ -4,10 +4,10 @@ author: rowanmiller
 ms.date: 03/03/2018
 uid: core/saving/concurrency
 ms.openlocfilehash: a1d1a5a11d482f9104691aa3c072dbd1c548e9f1
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413650"
 ---
 # <a name="handling-concurrency-conflicts"></a>동시성 충돌 처리
@@ -33,11 +33,11 @@ EF Core는 ‘낙관적 동시성 제어’를 구현하여 여러 프로세스 
 
 데이터베이스 공급자는 동시성 토큰 값 비교를 구현해야 합니다.
 
-관계형 데이터베이스에서 EF Core는 `UPDATE` 또는 `DELETE` 문의 `WHERE` 절에 동시성 토큰 값 검사를 포함합니다. 문을 실행한 후 EF Core는 영향을 받은 행 수를 읽습니다.
+관계형 데이터베이스에서 EF Core는 `WHERE` 또는 `UPDATE` 문의 `DELETE` 절에 동시성 토큰 값 검사를 포함합니다. 문을 실행한 후 EF Core는 영향을 받은 행 수를 읽습니다.
 
 영향을 받은 행이 없는 경우 동시성 충돌이 감지되고 EF Core는 `DbUpdateConcurrencyException`을 throw합니다.
 
-예를 들어 `Person`의 `LastName`을 동시성 토큰으로 구성할 수 있습니다. 그러면 Person에 대한 업데이트 작업에서 `WHERE` 절에 동시성 검사를 포함합니다.
+예를 들어 `LastName`의 `Person`을 동시성 토큰으로 구성할 수 있습니다. 그러면 Person에 대한 업데이트 작업에서 `WHERE` 절에 동시성 검사를 포함합니다.
 
 ``` sql
 UPDATE [Person] SET [FirstName] = @p1
@@ -62,7 +62,7 @@ WHERE [PersonId] = @p0 AND [LastName] = @p2;
 
 동시성 충돌을 처리하는 일반적인 접근 방법은 다음과 같습니다.
 
-1. `SaveChanges` 중 `DbUpdateConcurrencyException`을 catch합니다.
+1. `DbUpdateConcurrencyException` 중 `SaveChanges`을 catch합니다.
 2. `DbUpdateConcurrencyException.Entries`를 사용하여 영향을 받는 엔터티에 대해 새로운 변경 내용 집합을 준비합니다.
 3. 데이터베이스의 현재 값을 반영하도록 동시성 토큰의 원래 값을 새로 고칩니다.
 4. 충돌이 발생하지 않을 때까지 프로세스를 다시 시도합니다.

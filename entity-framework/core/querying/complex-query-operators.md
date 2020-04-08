@@ -5,10 +5,10 @@ ms.date: 10/03/2019
 ms.assetid: 2e187a2a-4072-4198-9040-aaad68e424fd
 uid: core/querying/complex-query-operators
 ms.openlocfilehash: 44c2695ea003da043925740a52596fd27da638f8
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413776"
 ---
 # <a name="complex-query-operators"></a>복합 쿼리 연산자
@@ -56,7 +56,7 @@ CROSS JOIN [Posts] AS [p]
 
 ### <a name="collection-selector-references-outer-in-a-where-clause"></a>컬렉션 선택기는 where 절에서 외부를 참조함
 
-컬렉션 선택기에 외부 요소를 참조하는 where 절이 있는 경우 EF Core는 이를 데이터베이스 조인으로 변환하고 조건자를 조인 조건으로 사용합니다. 일반적으로 이 사례는 외부 요소에 대한 컬렉션 탐색을 컬렉션 선택기로 사용하는 경우에 발생합니다. 외부 요소에 대한 컬렉션이 비어 있으면 해당 외부 요소에 대해 결과가 생성되지 않습니다. 그러나 컬렉션 선택기에 `DefaultIfEmpty`가 적용된 경우에는 외부 요소가 내부 요소의 기본값에 연결됩니다. 이러한 차이 때문에 이 유형의 쿼리는 `DefaultIfEmpty`가 적용되지 않은 경우 `INNER JOIN`으로 변환되고 `DefaultIfEmpty`가 적용된 경우 `LEFT JOIN`으로 변환됩니다.
+컬렉션 선택기에 외부 요소를 참조하는 where 절이 있는 경우 EF Core는 이를 데이터베이스 조인으로 변환하고 조건자를 조인 조건으로 사용합니다. 일반적으로 이 사례는 외부 요소에 대한 컬렉션 탐색을 컬렉션 선택기로 사용하는 경우에 발생합니다. 외부 요소에 대한 컬렉션이 비어 있으면 해당 외부 요소에 대해 결과가 생성되지 않습니다. 그러나 컬렉션 선택기에 `DefaultIfEmpty`가 적용된 경우에는 외부 요소가 내부 요소의 기본값에 연결됩니다. 이러한 차이 때문에 이 유형의 쿼리는 `INNER JOIN`가 적용되지 않은 경우 `DefaultIfEmpty`으로 변환되고 `LEFT JOIN`가 적용된 경우 `DefaultIfEmpty`으로 변환됩니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#SelectManyConvertedToJoin)]
 
@@ -72,7 +72,7 @@ LEFT JOIN [Posts] AS [p] ON [b].[BlogId] = [p].[BlogId]
 
 ### <a name="collection-selector-references-outer-in-a-non-where-case"></a>where가 아닌 케이스에서 컬렉션 선택기가 외부를 참조함
 
-컬렉션 선택기가 위 사례와 달리 where 절에 있지 않은 외부 요소를 참조하는 경우에는 데이터베이스 조인으로 변환되지 않습니다. 따라서 각 외부 요소에 대해 컬렉션 선택기를 평가해야 합니다. 많은 관계형 데이터베이스에서 이는 `APPLY` 연산으로 변환됩니다. 외부 요소에 대한 컬렉션이 비어 있으면 해당 외부 요소에 대해 결과가 생성되지 않습니다. 그러나 컬렉션 선택기에 `DefaultIfEmpty`가 적용된 경우에는 외부 요소가 내부 요소의 기본값에 연결됩니다. 이러한 차이 때문에 이 유형의 쿼리는 `DefaultIfEmpty`가 적용되지 않은 경우 `CROSS APPLY`로 변환되고 `DefaultIfEmpty`가 적용된 경우 `OUTER APPLY`로 변환됩니다. SQLite와 같은 특정 데이터베이스에서는 `APPLY` 연산자를 지원하지 않으므로 이러한 유형의 쿼리가 변환되지 않을 수 있습니다.
+컬렉션 선택기가 위 사례와 달리 where 절에 있지 않은 외부 요소를 참조하는 경우에는 데이터베이스 조인으로 변환되지 않습니다. 따라서 각 외부 요소에 대해 컬렉션 선택기를 평가해야 합니다. 많은 관계형 데이터베이스에서 이는 `APPLY` 연산으로 변환됩니다. 외부 요소에 대한 컬렉션이 비어 있으면 해당 외부 요소에 대해 결과가 생성되지 않습니다. 그러나 컬렉션 선택기에 `DefaultIfEmpty`가 적용된 경우에는 외부 요소가 내부 요소의 기본값에 연결됩니다. 이러한 차이 때문에 이 유형의 쿼리는 `CROSS APPLY`가 적용되지 않은 경우 `DefaultIfEmpty`으로 변환되고 `OUTER APPLY`가 적용된 경우 `DefaultIfEmpty`으로 변환됩니다. SQLite와 같은 특정 데이터베이스에서는 `APPLY` 연산자를 지원하지 않으므로 이러한 유형의 쿼리가 변환되지 않을 수 있습니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/ComplexQuery/Sample.cs#SelectManyConvertedToApply)]
 

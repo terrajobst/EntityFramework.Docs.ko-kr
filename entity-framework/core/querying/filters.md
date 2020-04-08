@@ -4,10 +4,10 @@ author: anpete
 ms.date: 11/03/2017
 uid: core/querying/filters
 ms.openlocfilehash: 9262ff7970b0502945480c673315071cbc3f44b9
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413764"
 ---
 # <a name="global-query-filters"></a>전역 쿼리 필터
@@ -33,7 +33,7 @@ ms.locfileid: "78413764"
 
 _블로그_ 엔터티에서 _tenantId_ 필드의 선언을 확인하세요. 이 선언은 각 Blog 인스턴스를 특정 테넌트와 연결하는 데 사용됩니다. 또한 _IsDeleted_ 속성은 _Post_ 엔터티 형식에 정의되어 있습니다. 이 속성은 _Post_ 인스턴스가 “일시 삭제”되었는지 여부를 추적하는 데 사용됩니다. 즉, 기본 데이터를 물리적으로 제거하지 않아도 인스턴스가 삭제된 것으로 표시됩니다.
 
-다음으로, `HasQueryFilter` API를 사용하여 _OnModelCreating_에서 쿼리 필터를 구성합니다.
+다음으로, _API를 사용하여_OnModelCreating`HasQueryFilter`에서 쿼리 필터를 구성합니다.
 
 [!code-csharp[Main](../../../samples/core/QueryFilters/Program.cs#Configuration)]
 

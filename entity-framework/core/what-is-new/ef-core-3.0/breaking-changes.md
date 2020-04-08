@@ -4,10 +4,10 @@ author: ajcvickers
 ms.date: 12/03/2019
 uid: core/what-is-new/ef-core-3.0/breaking-changes
 ms.openlocfilehash: 6e0c17a22b56b206f18e47f678e3e237d5c42375
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413560"
 ---
 # <a name="breaking-changes-included-in-ef-core-30"></a>EF Core 3.0에 포함된 주요 변경 내용
@@ -191,7 +191,7 @@ EF Core 3.0이 나오기 전에는 이런 메서드 이름이 일반 문자열 �
 **새 동작**
 
 EF Core 3.0부터는 `FromSqlRaw`, `ExecuteSqlRaw` 및 `ExecuteSqlRawAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 context.Products.FromSqlRaw(
@@ -200,7 +200,7 @@ context.Products.FromSqlRaw(
 ```
 
 `FromSqlInterpolated`, `ExecuteSqlInterpolated` 및 `ExecuteSqlInterpolatedAsync`를 사용하여 매개 변수를 생성합니다. 여기서 매개 변수는 보간된 쿼리 문자열의 일부로서 전달됩니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 context.Products.FromSqlInterpolated(
@@ -263,7 +263,7 @@ EF Core 3.0부터는 새로운 `FromSqlRaw` 및 `FromSqlInterpolated` 메서드(
 
 **이유**
 
-`DbSet`가 아닌 위치에 `FromSql`을 지정하는 것은 추가 의미 또는 추가 가치가 없으므로 특정 시나리오에서 모호성을 발생시킬 수 있습니다.
+`FromSql`가 아닌 위치에 `DbSet`을 지정하는 것은 추가 의미 또는 추가 가치가 없으므로 특정 시나리오에서 모호성을 발생시킬 수 있습니다.
 
 **완화 방법**
 
@@ -281,11 +281,11 @@ EF Core 3.0 이전에는 지정된 형식 및 ID의 엔터티가 발생할 때�
 ```csharp
 var results = context.Products.Include(e => e.Category).AsNoTracking().ToList();
 ```
-지정된 범주와 연결된 각 `Product`에 대해 동일한 `Category` 인스턴스를 반환합니다.
+지정된 범주와 연결된 각 `Category`에 대해 동일한 `Product` 인스턴스를 반환합니다.
 
 **새 동작**
 
-EF Core 3.0부터 지정된 형식 및 ID의 엔터티가 반환된 그래프의 여러 위치에서 발생할 때 여러 엔터티 인스턴스가 생성됩니다. 예를 들어 위 쿼리는 이제 두 제품이 동일한 범주에 연결되어 있는 경우에도 각 `Product`에 대해 새 `Category` 인스턴스를 반환합니다.
+EF Core 3.0부터 지정된 형식 및 ID의 엔터티가 반환된 그래프의 여러 위치에서 발생할 때 여러 엔터티 인스턴스가 생성됩니다. 예를 들어 위 쿼리는 이제 두 제품이 동일한 범주에 연결되어 있는 경우에도 각 `Category`에 대해 새 `Product` 인스턴스를 반환합니다.
 
 **이유**
 
@@ -392,12 +392,12 @@ public string Id { get; set; }
 
 **이유**
 
-이 변경으로 인해 `SaveChanges`가 호출되기 _전에_ 삭제될 엔터티를 이해하는 것이 중요한 데이터 바인딩 및 감사 시나리오 환경이 개선되었습니다.
+이 변경으로 인해 _가 호출되기_ 전에`SaveChanges` 삭제될 엔터티를 이해하는 것이 중요한 데이터 바인딩 및 감사 시나리오 환경이 개선되었습니다.
 
 **완화 방법**
 
 이전 동작은 `context.ChangeTracker`의 설정을 통해 복원할 수 있습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 context.ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
@@ -490,7 +490,7 @@ EF Core 3.0 이전에는 소유 관계의 구성은 `OwnsOne` 또는 `OwnsMany` 
 **새 동작**
 
 EF Core 3.0부터 이제 `WithOwner()`를 사용하여 소유자에게 탐색 속성을 구성하는 흐름 API가 있습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
@@ -498,7 +498,7 @@ modelBuilder.Entity<Order>.OwnsOne(e => e.Details).WithOwner(e => e.Order);
 
 이제 소유자와 소유 간의 관계와 관련된 구성이 다른 관계가 구성되는 것과 유사하게 `WithOwner()` 후에 연결되어야 합니다.
 소유 형식 자체에 대한 구성은 `OwnsOne()/OwnsMany()` 이후에도 여전히 연결됩니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 modelBuilder.Entity<Order>.OwnsOne(e => e.Details, eb =>
@@ -556,13 +556,13 @@ public class OrderDetails
     public string ShippingAddress { get; set; }
 }
 ```
-EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이블에 명시적으로 매핑되는 경우 새 `Order`를 추가할 때 `OrderDetails` 인스턴스가 언제나 필수였습니다.
+EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이블에 명시적으로 매핑되는 경우 새 `OrderDetails`를 추가할 때 `Order` 인스턴스가 언제나 필수였습니다.
 
 
 **새 동작**
 
-3\.0부터는 EF Core가 `OrderDetails` 없이 `Order`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
-EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `null`이면 `OrderDetails`를 `null`로 설정합니다.
+3\.0부터는 EF Core가 `Order` 없이 `OrderDetails`를 추가할 수 있으며 기본 키를 제외한 모든 `OrderDetails` 속성을 Null 허용 열에 매핑할 수 있습니다.
+EF Core를 쿼리하는 경우 해당 필수 속성에 값이 없거나 기본 키 이외의 필수 속성이 없고 모든 속성이 `OrderDetails`이면 `null`를 `null`로 설정합니다.
 
 **완화 방법**
 
@@ -603,7 +603,7 @@ EF Core 3.0 전에는 `OrderDetails`를 `Order`가 소유하거나 같은 테이
 
 **새 동작**
 
-3\.0부터 EF Core는 `OrderDetails`를 소유하는 경우 새 `Version` 값을 `Order`에 전파합니다. 그렇지 않으면 모델 유효성 검사 중에 예외가 발생합니다.
+3\.0부터 EF Core는 `Version`를 소유하는 경우 새 `Order` 값을 `OrderDetails`에 전파합니다. 그렇지 않으면 모델 유효성 검사 중에 예외가 발생합니다.
 
 **이유**
 
@@ -744,7 +744,7 @@ EF Core 3.0 이전에는 규칙에 따라 외래 키에 대해 `CustomerId` 속�
 
 3\.0부터 EF Core는 보안 주체 속성과 동일한 이름을 가지는 경우 규칙에 따라 외래 키에 대한 속성을 사용하려고 하지 않습니다.
 보안 주체 속성 이름과 연결된 보안 주체 유형 이름 및 보안 주체 속성 이름 패턴과 연결된 탐색 이름은 여전히 일치합니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 public class Customer
@@ -880,7 +880,7 @@ EF Core 3.0부터 속성 지원 필드가 알려진 경우 EF Core는 항상 지
 **완화 방법**
 
 `ModelBuilder`에서 속성 액세스 모드의 구성을 통해 3.0 이전 버전의 동작을 복원할 수 있습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 modelBuilder.UsePropertyAccessMode(PropertyAccessMode.PreferFieldDuringConstruction);
@@ -1001,7 +1001,7 @@ EF Core 3.0부터 `AddEntityFramework*`은(는) 크기 제한으로 IMemoryCache
 
 **완화 방법**
 
-대부분의 경우 `AddDbContext` 또는 `AddDbContextPool`을(를) 호출하면 `AddEntityFramework*`을(를) 호출할 필요가 없습니다. 따라서 가장 좋은 완화 방법은 `AddEntityFramework*` 호출을 제거하는 것입니다.
+대부분의 경우 `AddEntityFramework*` 또는 `AddDbContext`을(를) 호출하면 `AddDbContextPool`을(를) 호출할 필요가 없습니다. 따라서 가장 좋은 완화 방법은 `AddEntityFramework*` 호출을 제거하는 것입니다.
 
 애플리케이션에 이 서비스가 필요한 경우 [AddMemoryCache](https://docs.microsoft.com/dotnet/api/microsoft.extensions.dependencyinjection.memorycacheservicecollectionextensions.addmemorycache)를 사용하여 미리 DI 컨테이너로 IMemoryCache 구현을 명시적으로 등록합니다.
 
@@ -1031,7 +1031,7 @@ EF Core 3.0부터 `DbContext.Entry` 호출은 지정된 엔터티와 이와 관�
 
 **완화 방법**
 
-`Entry`를 호출하기 전에 명시적으로 `ChangeTracker.DetectChanges()`를 호출하여 3.0 이전 버전의 동작을 확인합니다.
+`ChangeTracker.DetectChanges()`를 호출하기 전에 명시적으로 `Entry`를 호출하여 3.0 이전 버전의 동작을 확인합니다.
 
 ### <a name="string-and-byte-array-keys-are-not-client-generated-by-default"></a>문자열 및 바이트 배열 키는 기본적으로 클라이언트에서 생성되지 않습니다.
 
@@ -1140,7 +1140,7 @@ EF Core 3.0부터 이제 이 경고가 고려되며 오류와 예외가 throw됩
 
 이 오류가 발생했을 때 가장 적절한 조치는 근본 원인을 이해하고 많은 내부 서비스 공급자를 만드는 것을 중단하는 것입니다.
 그러나 오류는 `DbContextOptionsBuilder`의 구성을 통해 경고(또는 무시)로 다시 변환될 수 있습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -1159,12 +1159,12 @@ protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 **이전 동작**
 
 EF Core 3.0 이전에는 단일 문자열을 사용하여 `HasOne` 또는 `HasMany`를 호출하는 코드가 혼란스러운 방식으로 해석되었습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Entrance").WithOne();
 ```
 
-코드는 비공개일 수 있는 `Entrance` 탐색 속성을 사용하여 `Samurai`를 다른 엔터티 형식과 관련시키려는 것 같습니다.
+코드는 비공개일 수 있는 `Samurai` 탐색 속성을 사용하여 `Entrance`를 다른 엔터티 형식과 관련시키려는 것 같습니다.
 
 실제로 이 코드는 탐색 속성을 사용하지 않고 `Entrance`라고 하는 엔터티 형식과 관계를 생성하려고 합니다.
 
@@ -1181,7 +1181,7 @@ EF Core 3.0부터 이제 위 코드는 이전에 수행했어야 하는 것처�
 새 동작은 형식 이름의 문자열을 사용하고 탐색 속성을 명시적으로 지정하지 않은 채 명시적으로 관계를 구성하는 애플리케이션만 중단됩니다.
 이는 일반적이지 않습니다.
 이전 동작은 탐색 속성 이름에 대해 `null`을 전달하여 명시적으로 얻을 수 있습니다.
-예를 들어:
+예들 들어 다음과 같습니다.
 
 ```csharp
 modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
@@ -1205,7 +1205,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 
 **새 동작**
 
-앞서 언급한 메서드는 이제 이전과 같은 `T`를 통해 `ValueTask<T>`를 반환합니다.
+앞서 언급한 메서드는 이제 이전과 같은 `ValueTask<T>`를 통해 `T`를 반환합니다.
 
 **이유**
 
@@ -1214,7 +1214,7 @@ modelBuilder.Entity<Samurai>().HasOne("Some.Entity.Type.Name", null).WithOne();
 **완화 방법**
 
 단순히 위의 API를 대기 중인 애플리케이션은 다시 컴파일하기만 하면 됩니다. 소스 변경은 필요 없습니다.
-더 복잡한 사용(예: 반환된 `Task`를 `Task.WhenAny()`에 전달)의 경우 일반적으로 반환된 `ValueTask<T>`에 대해 `AsTask()`를 호출하여 `Task<T>`로 변환해야 합니다.
+더 복잡한 사용(예: 반환된 `Task`를 `Task.WhenAny()`에 전달)의 경우 일반적으로 반환된 `ValueTask<T>`에 대해 `Task<T>`를 호출하여 `AsTask()`로 변환해야 합니다.
 이렇게 하면 이 변경으로 인한 할당 감소가 무효화됩니다.
 
 <a name="rtt"></a>
@@ -1367,7 +1367,7 @@ EF Core 3.0부터 EF Core가 `SQLitePCLRaw.bundle_e_sqlite3`을 사용합니다.
 
 **완화 방법**
 
-iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `SQLitePCLRaw` 번들을 사용하도록 `Microsoft.Data.Sqlite`를 구성합니다.
+iOS에서 네이티브 SQLite 버전을 사용하려면 다른 `Microsoft.Data.Sqlite` 번들을 사용하도록 `SQLitePCLRaw`를 구성합니다.
 
 <a name="guid"></a>
 
@@ -1533,7 +1533,7 @@ EF Core 3.0부터 EF는 SQL Server 2008 이후 버전하고만 호환되는 페�
 
 **새 동작**
 
-이러한 메서드가 새 `IDbContextOptionsExtension.Info` 속성에서 반환된 새 `DbContextOptionsExtensionInfo` 추상 기본 클래스로 옮겨졌습니다.
+이러한 메서드가 새 `DbContextOptionsExtensionInfo` 속성에서 반환된 새 `IDbContextOptionsExtension.Info` 추상 기본 클래스로 옮겨졌습니다.
 
 **이유**
 
@@ -1571,7 +1571,7 @@ EF Core 소스 코드에서 다양한 종류의 확장을 위해 `IDbContextOpti
 
 **이전 동작**
 
-EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예를 들어:
+EF Core 3.0 이전에 외래 키 제약 조건 이름은 "이름"과 같이 간단했습니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 var constraintName = myForeignKey.Name;
@@ -1579,7 +1579,7 @@ var constraintName = myForeignKey.Name;
 
 **새 동작**
 
-이제 EF Core 3.0부터 외래 키 제약 조건 이름은 “제약 조건 이름”이라고 합니다. 예를 들어:
+이제 EF Core 3.0부터 외래 키 제약 조건 이름은 “제약 조건 이름”이라고 합니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 var constraintName = myForeignKey.ConstraintName;
@@ -1722,7 +1722,7 @@ Always Encrypted와 같은 일부 중요한 기능은 Microsoft.Data.SqlClient�
 
 **이전 동작**
 
-복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예를 들어:
+복수의 자기 참조 단방향 탐색 속성 및 매칭되는 FK를 갖는 엔터티 형식이 단일 관계로 잘못 구성되었습니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 public class User 
@@ -1745,7 +1745,7 @@ public class User
 
 **완화 방법**
 
-관계의 전체 구성을 사용합니다. 예를 들어:
+관계의 전체 구성을 사용합니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 modelBuilder

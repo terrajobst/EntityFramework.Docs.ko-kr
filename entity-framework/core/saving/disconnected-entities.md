@@ -6,10 +6,10 @@ ms.date: 10/27/2016
 ms.assetid: 2533b195-d357-4056-b0e0-8698971bc3b0
 uid: core/saving/disconnected-entities
 ms.openlocfilehash: 421531e68ac98c0553938f1c24892701f22fef3c
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413656"
 ---
 # <a name="disconnected-entities"></a>연결이 끊긴 엔터티
@@ -77,7 +77,7 @@ Update 메서드는 일반적으로 엔터티를 삽입이 아닌 업데이트�
 > [!TIP]  
 > 이 동작은 EF Core 2.0에서 도입되었습니다. 이전 릴리스에서는 항상 Add 또는 Update를 명시적으로 선택해야 합니다.
 
-엔터티에서 자동 생성 키를 사용하지 않는 경우 애플리케이션에서 엔터티를 삽입해야 하는지 업데이트해야 하는지를 결정해야 합니다. 예를 들어:
+엔터티에서 자동 생성 키를 사용하지 않는 경우 애플리케이션에서 엔터티를 삽입해야 하는지 업데이트해야 하는지를 결정해야 합니다. 예를 들면 다음과 같습니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertOrUpdateSingleEntityWithFind)]
 
@@ -131,7 +131,7 @@ Update는 키 값 집합이 없는 경우 그래프의 모든 엔터티인 블�
 
 엔터티가 없으면 삭제되어야 함을 의미하기 때문에 삭제는 처리하기가 어려울 수 있습니다. 삭제를 처리하는 한 가지 방법은 엔터티가 실제로 삭제되는 것이 아니라 삭제됨으로 표시되도록 “일시 삭제”를 사용하는 것입니다. 그러면 삭제가 업데이트와 동일하게 됩니다. 일시 삭제는 [쿼리 필터](xref:core/querying/filters)를 사용하여 구현할 수 있습니다.
 
-실제 삭제의 경우 일반적인 패턴은 쿼리 패턴의 확장을 사용하여 기본적으로 그래프 차이점을 수행하는 것입니다. 예를 들어:
+실제 삭제의 경우 일반적인 패턴은 쿼리 패턴의 확장을 사용하여 기본적으로 그래프 차이점을 수행하는 것입니다. 예들 들어 다음과 같습니다.
 
 [!code-csharp[Main](../../../samples/core/Saving/Disconnected/Sample.cs#InsertUpdateOrDeleteGraphWithFind)]
 

@@ -5,10 +5,10 @@ ms.date: 11/14/2018
 ms.assetid: 998C04F3-676A-4FCF-8450-CFB0457B4198
 uid: core/what-is-new/ef-core-2.2
 ms.openlocfilehash: fb9de799753bebd7b4092cd8f4af74703dee3e45
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413554"
 ---
 # <a name="new-features-in-ef-core-22"></a>EF Core 2.2의 새로운 기능
@@ -25,7 +25,7 @@ EF Core 2.2는 이제 [NTS](https://github.com/NetTopologySuite/NetTopologySuite
 그러한 공급자 확장은 [SQL Server](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.SqlServer.NetTopologySuite/), [SQLite](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Sqlite.NetTopologySuite/), [PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.NetTopologySuite/)([Npgsql 프로젝트](https://www.npgsql.org/))에 대해 현재 사용 가능합니다.
 공간 형식은 추가 확장 없이 [EF Core 메모리 내 공급자](xref:core/providers/in-memory/index)에서 바로 사용할 수 있습니다.
 
-공급자 확장을 설치하면 지원되는 형식의 속성을 엔터티에 추가할 수 있습니다. 예를 들어:
+공급자 확장을 설치하면 지원되는 형식의 속성을 엔터티에 추가할 수 있습니다. 예들 들어 다음과 같습니다.
 
 ``` csharp
 using NetTopologySuite.Geometries;

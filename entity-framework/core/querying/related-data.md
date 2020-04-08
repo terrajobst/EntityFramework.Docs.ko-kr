@@ -5,10 +5,10 @@ ms.date: 10/27/2016
 ms.assetid: f9fb64e2-6699-4d70-a773-592918c04c19
 uid: core/querying/related-data
 ms.openlocfilehash: 915aaa41beb495a046f2d6260e9c3b174d5f3031
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413722"
 ---
 # <a name="loading-related-data"></a>관련 데이터 로드
@@ -49,7 +49,7 @@ Entity Framework Core에서는 모델의 탐색 속성을 사용하여 관련 �
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#IncludeTree)]
 
-포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blogs`를 쿼리하는 경우 `Posts`를 포함한 다음, `Posts`의 `Author` 및 `Tags`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
+포함하려는 엔터티 중 하나에 대한 여러 관련 엔터티를 포함할 수 있습니다. 예를 들어 `Blogs`를 쿼리하는 경우 `Posts`를 포함한 다음, `Author`의 `Tags` 및 `Posts`를 모두 포함할 수 있습니다. 이렇게 하려면 루트에서 시작하는 각 포함 경로를 지정해야 합니다. 예를 들어 `Blog -> Posts -> Author` 및 `Blog -> Posts -> Tags`를 지정합니다. 그렇다고 중복 조인을 가져온다는 의미는 아니며, 대부분의 경우 EF에서 SQL을 생성할 때 조인을 통합합니다.
 
 [!code-csharp[Main](../../../samples/core/Querying/RelatedData/Sample.cs#MultipleLeafIncludes)]
 
@@ -108,7 +108,7 @@ public class School
   context.People.Include(person => (person as Student).School).ToList()
   ```
 
-* `string` 형식의 매개 변수를 사용하는 `Include`의 오버로드 사용
+* `Include` 형식의 매개 변수를 사용하는 `string`의 오버로드 사용
 
   ```csharp
   context.People.Include("School").ToList()
@@ -136,7 +136,7 @@ public class School
 
 ## <a name="lazy-loading"></a>지연 로드
 
-지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예를 들어:
+지연 로드를 사용하는 가장 간단한 방법은 [Microsoft.EntityFrameworkCore.Proxies](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Proxies/) 패키지를 설치하고 이를 사용하여 `UseLazyLoadingProxies`를 호출하는 것입니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -176,7 +176,7 @@ public class Post
 
 ### <a name="lazy-loading-without-proxies"></a>프록시 없는 지연 로드
 
-지연 로드 프록시는 [엔터티 형식 생성자](../modeling/constructors.md)에 설명된 대로 `ILazyLoader` 서비스를 엔터티에 삽입하여 작동합니다. 예를 들어:
+지연 로드 프록시는 `ILazyLoader`엔터티 형식 생성자[에 설명된 대로 ](../modeling/constructors.md) 서비스를 엔터티에 삽입하여 작동합니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 public class Blog
@@ -231,7 +231,7 @@ public class Post
 }
 ```
 
-이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 [Microsoft.EntityFrameworkCore.Abstractions](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 패키지에 정의된 `ILazyLoader` 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예를 들어:
+이 경우에는 상속되는 엔터티 형식이나 탐색 속성이 가상일 필요가 없으며 컨텍스트에 연결되면 `new`로 만든 엔터티 인스턴스가 지연 로드되도록 합니다. 하지만 `ILazyLoader`Microsoft.EntityFrameworkCore.Abstractions[ 패키지에 정의된 ](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore.Abstractions/) 서비스에 대한 참조가 필요합니다. 이 패키지에는 최소의 형식 집합이 포함되어 있으므로 이 패키지에 따른 영향이 거의 없습니다. 그러나 엔터티 형식의 EF Core 패키지를 전혀 사용하지 않으려면 `ILazyLoader.Load` 메서드를 대리자로 삽입할 수 있습니다. 예들 들어 다음과 같습니다.
 
 ```csharp
 public class Blog
@@ -314,9 +314,9 @@ EF Core는 탐색 속성을 자동으로 수정하므로 개체 그래프의 주
 
 일부 serialization 프레임워크에서는 이러한 주기를 허용하지 않습니다. 예를 들어 주기가 발생하면 Json.NET은 다음 예외를 throw합니다.
 
-> Newtonsoft.Json.JsonSerializationException: 형식이 'MyApplication.Models.Blog'인 'Blog' 속성에 대해 자체 참조 루프가 검색되었습니다.
+> Newtonsoft.Json.JsonSerializationException: 형식이 ‘MyApplication.Models.Blog’인 ‘Blog’ 속성에 대해 자체 참조 루프가 검색되었습니다.
 
-ASP.NET Core를 사용하는 경우 개체 그래프에서 찾은 주기를 무시하도록 Json.NET을 구성할 수 있습니다. 이 작업은 `Startup.cs`의 `ConfigureServices(...)` 메서드에서 수행됩니다.
+ASP.NET Core를 사용하는 경우 개체 그래프에서 찾은 주기를 무시하도록 Json.NET을 구성할 수 있습니다. 이 작업은 `ConfigureServices(...)`의 `Startup.cs` 메서드에서 수행됩니다.
 
 ```csharp
 public void ConfigureServices(IServiceCollection services)
