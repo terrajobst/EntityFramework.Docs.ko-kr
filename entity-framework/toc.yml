@@ -412,7 +412,7 @@
                       href: ef6/modeling/designer/inheritance/tpt.md
                 - name: 맵 저장 프로시저
                   items:
-                    - name: 쿼리
+                    - name: Query
                       href: ef6/modeling/designer/stored-procedures/query.md
                     - name: 업데이트
                       href: ef6/modeling/designer/stored-procedures/cud.md

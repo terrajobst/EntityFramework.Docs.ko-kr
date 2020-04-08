@@ -5,12 +5,12 @@ ms.date: 10/27/2016
 ms.assetid: ef044629-feca-4fd1-a48f-d208daedaf92
 uid: core/saving/index
 ms.openlocfilehash: c610ea2a9138482f93d2d54c9085ef827af276c8
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
+ms.lasthandoff: 04/07/2020
 ms.locfileid: "78413098"
 ---
-# <a name="saving-data"></a><span data-ttu-id="44cc2-102">데이터 저장</span><span class="sxs-lookup"><span data-stu-id="44cc2-102">Saving Data</span></span>
+# <a name="saving-data"></a><span data-ttu-id="42c54-102">데이터 저장</span><span class="sxs-lookup"><span data-stu-id="42c54-102">Saving Data</span></span>
 
-<span data-ttu-id="44cc2-103">각각의 컨텍스트 인스턴스에는 데이터베이스에 기록해야 하는 변경 내용의 추적을 담당하는 `ChangeTracker`가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="44cc2-103">Each context instance has a `ChangeTracker` that is responsible for keeping track of changes that need to be written to the database.</span></span> <span data-ttu-id="44cc2-104">엔터티 클래스 인스턴스를 변경하면 해당 변경이 `ChangeTracker`에 기록된 다음 `SaveChanges`를 호출할 때 데이터베이스에 기록됩니다.</span><span class="sxs-lookup"><span data-stu-id="44cc2-104">As you make changes to instances of your entity classes, these changes are recorded in the `ChangeTracker` and then written to the database when you call `SaveChanges`.</span></span> <span data-ttu-id="44cc2-105">데이터베이스 공급자는 변경 내용을 데이터베이스 특정 작업으로 변환하는 것을 담당합니다(예: 관계형 데이터베이스에 대한 `INSERT`, `UPDATE` 및 `DELETE` 명령).</span><span class="sxs-lookup"><span data-stu-id="44cc2-105">The database provider is responsible for translating the changes into database-specific operations (for example, `INSERT`, `UPDATE`, and `DELETE` commands for a relational database).</span></span>
+<span data-ttu-id="42c54-103">각각의 컨텍스트 인스턴스에는 데이터베이스에 기록해야 하는 변경 내용의 추적을 담당하는 `ChangeTracker`가 있습니다.</span><span class="sxs-lookup"><span data-stu-id="42c54-103">Each context instance has a `ChangeTracker` that is responsible for keeping track of changes that need to be written to the database.</span></span> <span data-ttu-id="42c54-104">엔터티 클래스 인스턴스를 변경하면 해당 변경이 `ChangeTracker`에 기록된 다음 `SaveChanges`를 호출할 때 데이터베이스에 기록됩니다.</span><span class="sxs-lookup"><span data-stu-id="42c54-104">As you make changes to instances of your entity classes, these changes are recorded in the `ChangeTracker` and then written to the database when you call `SaveChanges`.</span></span> <span data-ttu-id="42c54-105">데이터베이스 공급자는 변경 내용을 데이터베이스 특정 작업으로 변환하는 것을 담당합니다(예: 관계형 데이터베이스에 대한 `INSERT`, `UPDATE` 및 `DELETE` 명령).</span><span class="sxs-lookup"><span data-stu-id="42c54-105">The database provider is responsible for translating the changes into database-specific operations (for example, `INSERT`, `UPDATE`, and `DELETE` commands for a relational database).</span></span>
