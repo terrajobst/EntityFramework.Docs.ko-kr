@@ -4,12 +4,12 @@ author: ErikEJ
 ms.date: 12/17/2019
 ms.assetid: 14fffb6c-a687-4881-a094-af4a1359a296
 uid: core/extensions/index
-ms.openlocfilehash: 99f59153a452a2f4aad5811110ebc5b5da7717ef
-ms.sourcegitcommit: cc0ff36e46e9ed3527638f7208000e8521faef2e
+ms.openlocfilehash: e3806f7161fecfe66450d3e08f97caf3d2c84cf3
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/06/2020
-ms.locfileid: "78412998"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80634234"
 ---
 # <a name="ef-core-tools--extensions"></a>EF Core 도구 및 확장
 
@@ -175,3 +175,14 @@ SQL Server를 사용하여 임시 테이블을 쉽게 사용할 수 있도록 �
 LINQ 람다에서 확장 메서드를 호출하기 위한 지원을 추가합니다. EF Core용: 3.1
 
 [GitHub 리포지토리](https://github.com/ClaveConsulting/Expressionify)
+
+### <a name="xlinq"></a>XLinq
+
+관계형 데이터에 대한 LINQ(Language-Integrated Query)입니다. C#을 사용하여 강력한 형식의 쿼리를 작성할 수 있도록 합니다. EF Core용: 3.1
+
+- 쿼리 생성에 대한 완전한 C# 지원: 람다, 변수, 함수 등에 포함된 여러 문
+- 의미상으로 SQL과 차이는 없습니다. XLinq는 SQL 문(예: `SELECT`, `FROM`, `WHERE`)을 최고 C# 메서드로 선언하고 친숙한 구문에 Intellisense, 형식 안전성 및 리팩터링을 결합합니다.
+
+결과적으로 SQL은 API를 로컬로 노출하는 “또 다른” 단순한 클래스 라이브러리가 아니라 “언어 통합 SQL”입니다. 
+
+[웹 사이트](http://xlinq.live/)
