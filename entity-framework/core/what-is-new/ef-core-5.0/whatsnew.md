@@ -1,14 +1,15 @@
 ---
 title: EF Core 5.0의 새로운 기능
+description: EF Core 5.0의 새로운 기능 개요
 author: ajcvickers
-ms.date: 03/15/2020
+ms.date: 03/30/2020
 uid: core/what-is-new/ef-core-5.0/whatsnew.md
-ms.openlocfilehash: 08a93555fd76d8a9f6d3011f59d9a34f76d0b22f
-ms.sourcegitcommit: c3b8386071d64953ee68788ef9d951144881a6ab
+ms.openlocfilehash: c047a308cadf44eea577dcab29b68b36942a50df
+ms.sourcegitcommit: 9b562663679854c37c05fca13d93e180213fb4aa
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "80136252"
+ms.lasthandoff: 04/07/2020
+ms.locfileid: "80634275"
 ---
 # <a name="whats-new-in-ef-core-50"></a>EF Core 5.0의 새로운 기능
 
@@ -19,6 +20,64 @@ ms.locfileid: "80136252"
 이 플랜에서는 최종 릴리스를 출시하기 전에 포함할 예정인 모든 항목을 비롯하여 EF Core 5.0의 전체 테마를 설명합니다.
 
 공식 설명서가 게시되면 여기의 링크가 설명서에 추가됩니다.
+
+## <a name="preview-2"></a>Preview 2
+
+### <a name="use-a-c-attribute-to-specify-a-property-backing-field"></a>C# 특성을 사용하여 속성 지원 필드 지정
+
+이제 C# 특성을 사용하여 속성의 지원 필드를 지정할 수 있습니다.
+이 특성을 사용하면 EF Core에서는 지원 필드를 자동으로 찾을 수 없는 경우에도 일반적으로 발생하는 지원 필드에 대해 쓰기 및 읽기를 계속 수행할 수 있습니다.
+예를 들어:
+
+```CSharp
+public class Blog
+{
+    private string _mainTitle;
+
+    public int Id { get; set; }
+
+    [BackingField(nameof(_mainTitle))]
+    public string Title
+    {
+        get => _mainTitle;
+        set => _mainTitle = value;
+    }
+}
+```
+
+설명서는 문제 [#2230](https://github.com/dotnet/EntityFramework.Docs/issues/2230)에서 찾아볼 수 있습니다.
+
+### <a name="complete-discriminator-mapping"></a>완전한 판별자 매핑
+
+EF Core는 [상속 계층 구조의 TPH 매핑](/ef/core/modeling/inheritance)을 위해 판별자 열을 사용합니다.
+EF Core에서 판별자의 가능한 모든 값을 알고 있는 경우 몇 가지 성능 개선이 가능해집니다.
+EF Core 5.0은 이제 이러한 향상된 기능을 구현합니다.
+
+예를 들어 이전 버전의 EF Core는 항상 계층의 모든 형식을 반환하는 쿼리에 대해 이 SQL을 생성합니다.
+
+```sql
+SELECT [a].[Id], [a].[Discriminator], [a].[Name]
+FROM [Animal] AS [a]
+WHERE [a].[Discriminator] IN (N'Animal', N'Cat', N'Dog', N'Human')
+```
+
+EF Core 5.0은 이제 전체 판별자 매핑이 구성될 때 다음을 생성합니다.
+
+```sql
+SELECT [a].[Id], [a].[Discriminator], [a].[Name]
+FROM [Animal] AS [a]
+```
+
+미리 보기 3부터 기본 동작으로 사용됩니다.
+
+### <a name="performance-improvements-in-microsoftdatasqlite"></a>Microsoft.Data.Sqlite의 성능 향상
+
+SQLIte에 대해 다음과 같은 두 가지 개선된 성능 기능이 구현되었습니다.
+
+* 이제 SqliteBlob 및 스트림을 사용하여 GetBytes, GetChars 및 GetTextReader를 사용한 이진 및 문자열 데이터 검색을 보다 효율적으로 진행할 수 있습니다.
+* 이제 SqliteConnection의 초기화가 지연됩니다.
+
+이러한 향상된 기능은 ADO.NET Microsoft.Data.Sqlite 공급자에서 제공되므로 EF Core 외부의 성능도 향상됩니다.
 
 ## <a name="preview-1"></a>미리 보기 1
 
@@ -60,7 +119,7 @@ public class Address
 
 이제 연결 문자열 또는 연결 문자열 없이 DbContext 인스턴스를 보다 쉽게 만들 수 있습니다.
 또한 이제 컨텍스트 인스턴스에서 연결 또는 연결 문자열을 변경할 수 있습니다.
-이에 따라 동일한 컨텍스트 인스턴스를 다른 데이터베이스에 동적으로 연결할 수 있습니다.
+이 기능을 사용하면 동일한 컨텍스트 인스턴스를 다른 데이터베이스에 동적으로 연결할 수 있습니다.
 
 설명서는 문제 [#2075](https://github.com/dotnet/EntityFramework.Docs/issues/2075)에서 찾아볼 수 있습니다.
 
@@ -85,7 +144,7 @@ EF Core 5.0에서는 모델 보기를 간편하게 읽을 수 있으며, 상태 
 ### <a name="improved-handling-of-database-null-semantics"></a>향상된 데이터베이스 null 의미 체계 처리
 
 관계형 데이터베이스는 일반적으로 NULL을 알 수 없는 값으로 처리하므로 다른 NULL과 같지 않습니다.
-반면 C#은 null을 다른 null과 동일하게 비교하는 정의된 값으로 처리합니다.
+그렇지만 C#은 null을 다른 null과 동일하게 비교하는 정의된 값으로 처리합니다.
 기본적으로 EF Core는 쿼리를 변환하여 C# null 의미 체계를 사용합니다.
 EF Core 5.0은 이 변환 과정의 효율성을 크게 향상시킵니다.
 
@@ -94,7 +153,7 @@ EF Core 5.0은 이 변환 과정의 효율성을 크게 향상시킵니다.
 ### <a name="indexer-properties"></a>인덱서 속성
 
 EF Core 5.0는 C# 인덱서 속성의 매핑을 지원합니다.
-이에 따라 엔터티를 속성 모음으로 사용할 수 있으며 속성 모음의 명명된 속성으로 열이 매핑됩니다.
+이러한 속성을 사용하여 엔터티를 열이 속성 모음의 명명된 속성으로 매핑되는 속성 모음으로 사용할 수 있습니다.
 
 설명서는 문제 [#2018](https://github.com/dotnet/EntityFramework.Docs/issues/2018)에서 찾아볼 수 있습니다.
 
@@ -104,7 +163,7 @@ EF Core 5.0는 C# 인덱서 속성의 매핑을 지원합니다.
 예를 들어:
 
 ```SQL
-MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'Unknown'))
+MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN ('Useful', 'Useless', 'Unknown'))
 ```
 
 설명서는 문제 [#2082](https://github.com/dotnet/EntityFramework.Docs/issues/2082)에서 찾아볼 수 있습니다.
@@ -112,7 +171,7 @@ MyEnumColumn VARCHAR(10) NOT NULL CHECK (MyEnumColumn IN('Useful', 'Useless', 'U
 ### <a name="isrelational"></a>IsRelational
 
 기존의 `IsSqlServer`, `IsSqlite`, `IsInMemory` 외에 새로운 `IsRelational` 메서드가 추가되었습니다.
-DbContext가 관계형 데이터베이스 공급자를 사용 중인지 여부를 테스트하는 데 사용할 수 있습니다.
+이 메서드는 DbContext가 관계형 데이터베이스 공급자를 사용 중인지를 테스트하는 데 사용할 수 있습니다.
 예를 들어:
 
 ```CSharp
@@ -138,7 +197,6 @@ builder.Entity<Customer>().Property(c => c.ETag).IsEtagConcurrency();
 
 그런 다음 SaveChanges에서 동시성 충돌 시 `DbUpdateConcurrencyException`을 throw하며, 다시 시도를 구현하기 위해 충돌을 [처리할 수 있습니다](https://docs.microsoft.com/ef/core/saving/concurrency).
 
-
 설명서는 문제 [#2099](https://github.com/dotnet/EntityFramework.Docs/issues/2099)에서 찾아볼 수 있습니다.
 
 ### <a name="query-translations-for-more-datetime-constructs"></a>더 많은 날짜/시간 구문의 쿼리 변환
@@ -146,6 +204,7 @@ builder.Entity<Customer>().Property(c => c.ETag).IsEtagConcurrency();
 이제 새로운 DateTime 생성을 포함하는 쿼리가 변환됩니다.
 
 또한 이제 다음과 같은 SQL Server 함수가 매핑됩니다.
+
 * DateDiffWeek
 * DateFromParts
 
